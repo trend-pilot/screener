@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>추세추종 스크리너</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, 'Malgun Gothic', sans-serif; background: #f5f5f0; color: #1a1a1a; font-size: 14px; }
+
+/* 헤더 */
+.hdr { background: #fff; border-bottom: 1px solid #e0e0d8; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; position: sticky; top: 0; z-index: 100; }
+.hdr-left { display: flex; align-items: baseline; gap: 10px; }
+.hdr-title { font-size: 16px; font-weight: 700; }
+.hdr-meta { font-size: 12px; color: #999; }
+.auto-badge { font-size: 11px; background: #eaf6ee; color: #1a5c1a; padding: 2px 8px; border-radius: 99px; font-weight: 600; display: none; }
+.hdr-btns { display: flex; gap: 6px; }
+.hbtn { padding: 5px 12px; border: 1px solid #ccc; border-radius: 6px; background: #fff; font-size: 12px; cursor: pointer; }
+.hbtn:hover { background: #f0f0ea; }
+
+/* 탭 */
+.tabs { display: flex; background: #fff; border-bottom: 1px solid #e0e0d8; padding: 0 20px; overflow-x: auto; }
+.tab { padding: 10px 16px; font-size: 13px; cursor: pointer; color: #666; border-bottom: 2px solid transparent; white-space: nowrap; background: none; border-top: none; border-left: none; border-right: none; }
+.tab.on { color: #1a56db; border-bottom-color: #1a56db; font-weight: 600; }
+
+/* 신호등 패널 */
+.signal-panel { background: #fff; border-bottom: 1px solid #e0e0d8; padding: 14px 20px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.signal-main { display: flex; align-items: center; gap: 12px; }
+.signal-dot { width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0; }
+.sig-green  { background: #1a8a4a; }
+.sig-red    { background: #c0392b; }
+.sig-yellow { background: #e6a817; }
+.sig-blue   { background: #1a56db; }
+.sig-unknown { background: #ccc; }
+.signal-label { font-size: 16px; font-weight: 700; }
+.signal-action { font-size: 12px; color: #666; margin-top: 2px; }
+.signal-divider { width: 1px; height: 40px; background: #e0e0d8; }
+.signal-metrics { display: flex; gap: 20px; }
+.sm { text-align: center; }
+.sm-lbl { font-size: 11px; color: #999; margin-bottom: 3px; }
+.sm-val { font-size: 20px; font-weight: 700; }
+.sm-bar-wrap { height: 5px; background: #eee; border-radius: 3px; margin-top: 4px; width: 80px; }
+.sm-bar { height: 100%; border-radius: 3px; transition: width 0.5s; }
+.bar-green  { background: #1a8a4a; }
+.bar-yellow { background: #e6a817; }
+.bar-red    { background: #c0392b; }
+.bar-blue   { background: #1a56db; }
+.signal-guide { margin-left: auto; background: #f8f8f4; border-radius: 8px; padding: 10px 14px; font-size: 12px; }
+.sg-title { font-weight: 600; margin-bottom: 6px; color: #444; }
+.sg-row { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; }
+.sg-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.sg-text { color: #666; }
+.sg-text strong { color: #1a1a1a; }
+
+/* 통계 카드 */
+.stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; padding: 12px 20px; background: #fff; border-bottom: 1px solid #e0e0d8; }
+.sc { background: #f8f8f4; border-radius: 8px; padding: 10px 14px; }
+.sc-lbl { font-size: 11px; color: #999; margin-bottom: 3px; }
+.sc-val { font-size: 24px; font-weight: 700; }
+.sc-val.green { color: #1a8a4a; }
+.sc-val.blue  { color: #1a56db; }
+
+/* 컨트롤 */
+.controls { background: #fff; padding: 10px 20px; border-bottom: 1px solid #e0e0d8; }
+.ctrl-row { display: flex; align-items: center; gap: 5px; margin-bottom: 6px; flex-wrap: wrap; }
+.ctrl-row:last-child { margin-bottom: 0; }
+.row-lbl { font-size: 12px; color: #777; font-weight: 600; min-width: 28px; }
+.sbtn { font-size: 12px; padding: 4px 11px; border: 1px solid #d5d5cc; border-radius: 6px; cursor: pointer; background: #fff; color: #444; white-space: nowrap; }
+.sbtn:hover { background: #f0f0ea; }
+.sbtn.on { background: #1a56db; color: #fff; border-color: #1a56db; font-weight: 600; }
+.fbtn { font-size: 12px; padding: 4px 11px; border: 1px solid #d5d5cc; border-radius: 6px; cursor: pointer; background: #fff; color: #444; white-space: nowrap; }
+.fbtn:hover { background: #f0f0ea; }
+.fbtn.on { background: #1a5c1a; color: #c8f0c8; border-color: #1a5c1a; font-weight: 600; }
+
+/* 결과바 */
+.result-bar { display: flex; align-items: center; justify-content: space-between; padding: 8px 20px; background: #fff; border-bottom: 1px solid #e0e0d8; }
+.res-count { font-size: 13px; color: #666; }
+.res-count strong { color: #1a1a1a; font-size: 15px; }
+.export-btn { font-size: 12px; padding: 5px 14px; border: 1px solid #1a8a4a; border-radius: 6px; background: #eaf6ee; color: #1a5c1a; font-weight: 600; cursor: pointer; }
+
+/* 종목 리스트 */
+.stock-list { padding-bottom: 60px; }
+.stock-row { background: #fff; border-bottom: 1px solid #eeecea; padding: 10px 20px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.stock-row:hover { background: #f8f8f4; }
+.row-left { flex: 1; min-width: 0; }
+.row-top { display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px; }
+.star { font-size: 14px; color: #ddd; cursor: pointer; flex-shrink: 0; user-select: none; }
+.star.on { color: #e6a817; }
+.ticker { font-size: 14px; font-weight: 800; font-family: 'Courier New', monospace; color: #111; }
+.co-name { font-size: 12px; color: #999; }
+.row-bot { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+.pl { font-size: 11px; color: #bbb; }
+.pv { font-size: 12px; font-weight: 600; }
+.pos { color: #1a8a4a; }
+.neg { color: #d63031; }
+.neu { color: #aaa; }
+.bolt { color: #e6a817; font-size: 12px; }
+.rs-arr { font-size: 11px; color: #1a56db; font-weight: 700; }
+.dots { display: flex; gap: 2px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; }
+.don { background: #1a8a4a; }
+.dof { background: #ddd; }
+.row-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.sg2 { text-align: right; }
+.sg2-lbl { font-size: 10px; color: #aaa; display: block; margin-bottom: 1px; }
+.sg2-num { font-size: 15px; font-weight: 700; }
+.sg2-num.blue { color: #1a56db; }
+.sg2-num.grn { color: #1a8a4a; }
+.sg2-num.dim { color: #bbb; font-size: 13px; }
+
+.empty { text-align: center; padding: 4rem; color: #bbb; font-size: 14px; line-height: 2.2; }
+#file-input { display: none; }
+
+@media (max-width: 600px) {
+  .stats { grid-template-columns: repeat(3, 1fr); }
+  .signal-guide { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-left">
+    <div class="hdr-title">추세추종 스크리너</div>
+    <div class="hdr-meta" id="meta-date">데이터 로딩 중...</div>
+    <span class="auto-badge" id="auto-badge">· 자동</span>
+  </div>
+  <div class="hdr-btns">
+    <button class="hbtn" onclick="document.getElementById('file-input').click()">📂 JSON 불러오기</button>
+    <input type="file" id="file-input" accept=".json" onchange="loadFile(event)">
+    <button class="hbtn" onclick="doExport()">📤 내보내기</button>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab on">RS 모멘텀</button>
+  <button class="tab">스크리너</button>
+  <button class="tab">패턴 감지</button>
+  <button class="tab">섹터 분석</button>
+</div>
+
+<!-- 신호등 패널 -->
+<div class="signal-panel" id="signal-panel" style="display:none">
+  <div class="signal-main">
+    <div class="signal-dot" id="sig-dot"></div>
+    <div>
+      <div class="signal-label" id="sig-label">—</div>
+      <div class="signal-action" id="sig-action">—</div>
+    </div>
+  </div>
+  <div class="signal-divider"></div>
+  <div class="signal-metrics">
+    <div class="sm">
+      <div class="sm-lbl">$NDFI (나스닥)</div>
+      <div class="sm-val" id="ndfi-val">—</div>
+      <div class="sm-bar-wrap"><div class="sm-bar" id="ndfi-bar" style="width:0%"></div></div>
+    </div>
+    <div class="sm">
+      <div class="sm-lbl">$S5FI (S&P500)</div>
+      <div class="sm-val" id="s5fi-val">—</div>
+      <div class="sm-bar-wrap"><div class="sm-bar" id="s5fi-bar" style="width:0%"></div></div>
+    </div>
+    <div class="sm">
+      <div class="sm-lbl">권장 주식 비중</div>
+      <div class="sm-val" id="invest-pct" style="font-size:16px">—</div>
+    </div>
+  </div>
+  <div class="signal-guide">
+    <div class="sg-title">신호등 기준</div>
+    <div class="sg-row"><div class="sg-dot" style="background:#c0392b"></div><div class="sg-text"><strong>80%+</strong> 과열 — 신규 매수 자제</div></div>
+    <div class="sg-row"><div class="sg-dot" style="background:#1a8a4a"></div><div class="sg-text"><strong>50~80%</strong> 강세장 — 적극 매수</div></div>
+    <div class="sg-row"><div class="sg-dot" style="background:#e6a817"></div><div class="sg-text"><strong>20~50%</strong> 약세장 — 현금 확대</div></div>
+    <div class="sg-row"><div class="sg-dot" style="background:#1a56db"></div><div class="sg-text"><strong>20%-</strong> 과매도 — 역발상 기회</div></div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="sc"><div class="sc-lbl">전체 종목</div><div class="sc-val" id="s-total">—</div></div>
+  <div class="sc"><div class="sc-lbl">평균 RS</div><div class="sc-val blue" id="s-avgrs">—</div></div>
+  <div class="sc"><div class="sc-lbl">Stage 2</div><div class="sc-val green" id="s-stage2">—</div></div>
+  <div class="sc"><div class="sc-lbl">가속중</div><div class="sc-val" id="s-acc">—</div></div>
+  <div class="sc"><div class="sc-lbl">52주 신고가</div><div class="sc-val" id="s-h52">—</div></div>
+</div>
+
+<div class="controls">
+  <div class="ctrl-row">
+    <span class="row-lbl">정렬</span>
+    <button class="sbtn on" onclick="setSort('rs',this)">RS 점수↓</button>
+    <button class="sbtn" onclick="setSort('rs_now',this)">RS now↓</button>
+    <button class="sbtn" onclick="setSort('w1',this)">최근1주↓</button>
+    <button class="sbtn" onclick="setSort('w3',this)">1~3주↓</button>
+    <button class="sbtn" onclick="setSort('w6',this)">1~6주↓</button>
+    <button class="sbtn" onclick="setSort('gap',this)">갭(now-RS)↓</button>
+  </div>
+  <div class="ctrl-row">
+    <span class="row-lbl">필터</span>
+    <button class="fbtn" id="f-acc"     onclick="toggleF('acc',this)">⚡ 가속중</button>
+    <button class="fbtn" id="f-acc2"    onclick="toggleF('acc2',this)">⚡⚡ 가속추세</button>
+    <button class="fbtn" id="f-h52"     onclick="toggleF('h52',this)">🚀 52주신고가</button>
+    <button class="fbtn" id="f-s2"      onclick="toggleF('s2',this)">Stage 2</button>
+    <button class="fbtn" id="f-ma200"   onclick="toggleF('ma200',this)">200일선 위</button>
+    <button class="fbtn" id="f-aligned" onclick="toggleF('aligned',this)">정배열</button>
+    <button class="fbtn" id="f-rs70"    onclick="toggleF('rs70',this)">RS 70+</button>
+    <button class="fbtn" id="f-rs80"    onclick="toggleF('rs80',this)">RS 80+</button>
+    <button class="fbtn" id="f-rs90"    onclick="toggleF('rs90',this)">RS 90+</button>
+  </div>
+</div>
+
+<div class="result-bar">
+  <div class="res-count">필터 결과: <strong id="res-count">—</strong>종목</div>
+  <button class="export-btn" onclick="doExport()">🌱 내보내기</button>
+</div>
+
+<div class="stock-list" id="stock-list">
+  <div class="empty">
+    데이터를 불러오는 중...<br>
+    <span style="font-size:12px">실패 시 📂 JSON 불러오기 클릭</span><br>
+    <span style="font-size:11px;color:#ccc">screener 폴더 → output → screener_data.json</span>
+  </div>
+</div>
+
+<script>
+let DATA=[], MARKET={}, sortKey='rs', filters=new Set(), stars=new Set();
+
+// ── 자동 로드 ─────────────────────────────────────────────────────────────────
+async function autoLoad() {
+  const paths = ['./output/screener_data.json','../output/screener_data.json','./screener_data.json'];
+  for (const p of paths) {
+    try {
+      const r = await fetch(p);
+      if (!r.ok) continue;
+      ingest(await r.json());
+      document.getElementById('auto-badge').style.display = '';
+      return;
+    } catch(e) {}
+  }
+  document.getElementById('meta-date').textContent = '자동 로드 실패 — JSON 불러오기 클릭';
+  document.getElementById('stock-list').innerHTML =
+    '<div class="empty">📂 JSON 불러오기를 눌러 screener_data.json 파일을 선택하세요<br>' +
+    '<span style="font-size:12px;color:#bbb">screener 폴더 → output 폴더 → screener_data.json</span></div>';
+}
+autoLoad();
+
+function loadFile(e) {
+  const f = e.target.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = ev => { try { ingest(JSON.parse(ev.target.result)); } catch(ex){ alert('오류: '+ex); } };
+  r.readAsText(f);
+}
+
+function ingest(data) {
+  DATA   = data.stocks || [];
+  MARKET = data.market || {};
+  const m = data.meta || {};
+
+  // 메타 업데이트
+  const dt = m.updated_at ? new Date(m.updated_at).toLocaleString('ko-KR') : '-';
+  document.getElementById('meta-date').textContent  = dt + ' 기준';
+  document.getElementById('s-total').textContent    = m.total || DATA.length;
+  document.getElementById('s-avgrs').textContent    = m.avg_rs ?? '-';
+  document.getElementById('s-stage2').textContent   = m.stage2_count ?? DATA.filter(s=>s.is_stage2).length;
+  document.getElementById('s-acc').textContent      = m.acc_count ?? DATA.filter(s=>s.acc2).length;
+  document.getElementById('s-h52').textContent      = DATA.filter(s=>s.h52_new).length;
+
+  // 신호등 업데이트
+  updateSignal(MARKET);
+  render();
+}
+
+function updateSignal(mkt) {
+  if (!mkt || !mkt.overall) return;
+
+  const panel = document.getElementById('signal-panel');
+  panel.style.display = 'flex';
+
+  const colorMap = { green:'#1a8a4a', red:'#c0392b', yellow:'#e6a817', blue:'#1a56db', unknown:'#ccc' };
+  const barClass = { green:'bar-green', red:'bar-red', yellow:'bar-yellow', blue:'bar-blue', unknown:'bar-green' };
+
+  document.getElementById('sig-dot').style.background   = colorMap[mkt.overall] || '#ccc';
+  document.getElementById('sig-label').textContent      = mkt.overall_label || '-';
+  document.getElementById('sig-action').textContent     = mkt.ndfi?.action || '-';
+  document.getElementById('invest-pct').textContent     = mkt.invest_pct || '-';
+
+  const ndfiVal = mkt.ndfi?.value ?? 0;
+  const s5fiVal = mkt.s5fi?.value ?? 0;
+
+  document.getElementById('ndfi-val').textContent = ndfiVal + '%';
+  document.getElementById('s5fi-val').textContent = s5fiVal + '%';
+
+  const ndfiBar = document.getElementById('ndfi-bar');
+  const s5fiBar = document.getElementById('s5fi-bar');
+  ndfiBar.style.width = ndfiVal + '%';
+  s5fiBar.style.width = s5fiVal + '%';
+
+  const bc = barClass[mkt.overall] || 'bar-green';
+  ndfiBar.className = 'sm-bar ' + bc;
+  s5fiBar.className = 'sm-bar ' + bc;
+}
+
+// ── 정렬 / 필터 ──────────────────────────────────────────────────────────────
+function setSort(k,el){ sortKey=k; document.querySelectorAll('.sbtn').forEach(b=>b.classList.remove('on')); el.classList.add('on'); render(); }
+function toggleF(k,el){ filters.has(k)?(filters.delete(k),el.classList.remove('on')):(filters.add(k),el.classList.add('on')); render(); }
+
+function filtered() {
+  return DATA.filter(s=>{
+    if(filters.has('acc')     && !s.acc)                    return false;
+    if(filters.has('acc2')    && !s.acc2)                   return false;
+    if(filters.has('h52')     && !s.h52_new)                return false;
+    if(filters.has('s2')      && !s.is_stage2)              return false;
+    if(filters.has('ma200')   && !s.stage2?.above_ma200)    return false;
+    if(filters.has('aligned') && !s.stage2?.ma_aligned)     return false;
+    if(filters.has('rs70')    && (s.rs||0)<70)              return false;
+    if(filters.has('rs80')    && (s.rs||0)<80)              return false;
+    if(filters.has('rs90')    && (s.rs||0)<90)              return false;
+    return true;
+  });
+}
+function sorted(d) {
+  return [...d].sort((a,b)=>{
+    if(sortKey==='rs')     return b.rs-a.rs;
+    if(sortKey==='rs_now') return b.rs_now-a.rs_now;
+    if(sortKey==='w1')     return b.w1-a.w1;
+    if(sortKey==='w3')     return b.w3-a.w3;
+    if(sortKey==='w6')     return b.w6-a.w6;
+    if(sortKey==='gap')    return (b.rs_now-b.rs)-(a.rs_now-a.rs);
+    return 0;
+  });
+}
+
+function render() {
+  const list = sorted(filtered());
+  document.getElementById('res-count').textContent = list.length;
+  const el = document.getElementById('stock-list');
+  if(!list.length){ el.innerHTML='<div class="empty">조건에 맞는 종목이 없습니다.<br>필터를 조정해보세요.</div>'; return; }
+  el.innerHTML = list.map(rowHTML).join('');
+}
+
+function pv(lbl,v) {
+  if(v==null) return '';
+  const c=v>0?'pos':v<0?'neg':'neu', s=v>0?'+':'';
+  return `<span class="pl">${lbl}</span><span class="pv ${c}">${s}${v.toFixed(1)}%</span>`;
+}
+
+function rowHTML(s) {
+  const sc=stars.has(s.ticker)?'on':'', sch=stars.has(s.ticker)?'★':'☆';
+  const dots=(s.pass_dots||[0,0,0,0,0,0,0]).map(v=>`<div class="dot ${v?'don':'dof'}"></div>`).join('');
+  const bolts=s.acc2?'<span class="bolt">⚡⚡</span>':s.acc?'<span class="bolt">⚡</span>':'';
+  const rsA=(s.rs_now||0)>(s.rs||0)?'<span class="rs-arr">↗RS</span>':'';
+  const h52=s.h52_new?'<span style="font-size:12px">🚀</span>':'';
+  const arr=s.w1>=0?'<span class="pos">↑</span>':'<span class="neg">↓</span>';
+  const s2d=s.is_stage2
+    ?`<span class="sg2-num grn">✓ S2</span>`
+    :`<span class="sg2-num dim">${(s.pass_dots||[]).filter(Boolean).length}/7</span>`;
+  return `<div class="stock-row">
+    <div class="row-left">
+      <div class="row-top">
+        <span class="star ${sc}" onclick="toggleStar('${s.ticker}',this)">${sch}</span>
+        <span class="ticker">${s.ticker}</span>
+        <span class="co-name">${(s.name||'').slice(0,20)}</span>
+      </div>
+      <div class="row-bot">
+        ${pv('1w',s.w1)} ${pv('3w',s.w3)} ${pv('6w',s.w6)}
+        ${arr} ${bolts} ${rsA} ${h52}
+        <div class="dots" title="Stage 2 조건">${dots}</div>
+      </div>
+    </div>
+    <div class="row-right">
+      <div class="sg2"><span class="sg2-lbl">RS</span><span class="sg2-num blue">${s.rs??'-'}</span></div>
+      <div class="sg2"><span class="sg2-lbl">now</span><span class="sg2-num">${s.rs_now??'-'}</span></div>
+      <div class="sg2">${s2d}</div>
+    </div>
+  </div>`;
+}
+
+function toggleStar(t,el){ stars.has(t)?(stars.delete(t),el.classList.remove('on'),el.textContent='☆'):(stars.add(t),el.classList.add('on'),el.textContent='★'); }
+
+function doExport() {
+  const list = sorted(filtered());
+  const rows = [
+    ['Ticker','Name','RS','RS_now','W1%','W3%','W6%','Stage2','MA50','MA150','MA200'].join('\t'),
+    ...list.map(s=>[s.ticker,s.name,s.rs,s.rs_now,s.w1,s.w3,s.w6,s.is_stage2?'Y':'N',s.ma50,s.ma150,s.ma200].join('\t'))
+  ];
+  const blob=new Blob(['\uFEFF'+rows.join('\n')],{type:'text/plain;charset=utf-8'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download=`screener_${new Date().toISOString().slice(0,10)}.tsv`; a.click();
+}
+</script>
+</body>
+</html>
