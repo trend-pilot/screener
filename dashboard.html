@@ -46,6 +46,10 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 .mkt-tab:hover{color:#444;background:#f8f8f4}
 .mkt-tab.us.on{color:#1a56db;border-bottom-color:#1a56db}
 .mkt-tab.kr.on{color:#e84040;border-bottom-color:#e84040}
+.mkt-tab.kr2{color:#999}
+.mkt-tab.kr2:hover{color:#444;background:#f8f8f4}
+.mkt-tab.kr2.on{color:#e06000;border-bottom-color:#e06000}
+.mkt-tab.kr2.on .mkt-badge{background:#fff3e6;color:#e06000}
 .mkt-badge{font-size:10px;font-weight:700;padding:2px 6px;border-radius:99px;background:#f0f0ea;color:#888}
 .mkt-tab.us.on .mkt-badge{background:#e8f0fe;color:#1a56db}
 .mkt-tab.kr.on .mkt-badge{background:#fff0f0;color:#e84040}
@@ -416,7 +420,11 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
   </div>
   <div class="mkt-divider"></div>
   <div class="mkt-tab kr" onclick="switchMarket('kr',this)">
-    🇰🇷 한국 주식 <span class="mkt-badge" id="kr-mkt-badge">—</span>
+    🇰🇷 KOSPI <span class="mkt-badge" id="kospi-mkt-badge">—</span>
+  </div>
+  <div class="mkt-divider"></div>
+  <div class="mkt-tab kr2" onclick="switchMarket('kr2',this)">
+    🇰🇷 KOSDAQ <span class="mkt-badge" id="kosdaq-mkt-badge">—</span>
   </div>
 </div>
 
@@ -537,13 +545,14 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 <div class="mkt-panel" id="panel-kr">
 
   <!-- KR 통계 -->
-  <div class="stats">
+  <div class="stats" style="grid-template-columns:repeat(7,1fr)">
     <div class="sc"><div class="sc-lbl">전체 종목</div><div class="sc-val blue" id="kr-s-total">—</div></div>
     <div class="sc"><div class="sc-lbl">평균 RS</div><div class="sc-val" id="kr-s-avgrs">—</div></div>
+    <div class="sc"><div class="sc-lbl">Stage 2</div><div class="sc-val green" id="kr-s-stage2">—</div></div>
+    <div class="sc"><div class="sc-lbl">52주 신고가</div><div class="sc-val" id="kr-s-h52">—</div></div>
+    <div class="sc"><div class="sc-lbl">RS Line선행</div><div class="sc-val blue" id="kr-s-rsl">—</div></div>
     <div class="sc"><div class="sc-lbl">강세 섹터</div><div class="sc-val green" id="kr-s-strong">—</div></div>
-    <div class="sc"><div class="sc-lbl">중립 섹터</div><div class="sc-val amber" id="kr-s-neutral">—</div></div>
-    <div class="sc"><div class="sc-lbl">약세 섹터</div><div class="sc-val red" id="kr-s-weak">—</div></div>
-    <div class="sc"><div class="sc-lbl">데이터</div><div class="sc-val" id="kr-s-date" style="font-size:13px">—</div></div>
+    <div class="sc"><div class="sc-lbl">🏦 대형주(1조+)</div><div class="sc-val" id="kr-s-large">—</div></div>
   </div>
 
   <!-- KR 서브탭 -->
@@ -561,16 +570,31 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
         <span class="row-lbl">정렬</span>
         <button class="sbtn on" onclick="setSort('rs_score',this,'kr')">RS 점수↓</button>
         <button class="sbtn" onclick="setSort('ibd_rs',this,'kr')">IBD RS↓</button>
-        <button class="sbtn" onclick="setSort('price',this,'kr')">현재가↓</button>
+        <button class="sbtn" onclick="setSort('w1',this,'kr')">최근1주↓</button>
+        <button class="sbtn" onclick="setSort('w3',this,'kr')">1~3주↓</button>
         <button class="sbtn" onclick="setSort('mktcap',this,'kr')">🏦 시총↓</button>
       </div>
       <div class="ctrl-row">
+        <span class="row-lbl">시총</span>
+        <button class="fbtn on" id="kr-cap-all"   onclick="setCapFilter('all',this,'kr')">전체</button>
+        <button class="fbtn" id="kr-cap-mega"  onclick="setCapFilter('mega',this,'kr')">🏛️ 10조+</button>
+        <button class="fbtn" id="kr-cap-large" onclick="setCapFilter('large',this,'kr')">🏦 1조~10조</button>
+        <button class="fbtn" id="kr-cap-mid"   onclick="setCapFilter('mid',this,'kr')">🏢 1000억~1조</button>
+        <button class="fbtn" id="kr-cap-small" onclick="setCapFilter('small',this,'kr')">🔬 1000억↓</button>
+      </div>
+      <div class="ctrl-row">
         <span class="row-lbl">필터</span>
+        <button class="fbtn" id="kr-f-s2"     onclick="toggleF('s2',this,'kr')">✓ Stage2</button>
+        <button class="fbtn" id="kr-f-acc"    onclick="toggleF('acc',this,'kr')">⚡ 가속중</button>
+        <button class="fbtn" id="kr-f-acc2"   onclick="toggleF('acc2',this,'kr')">⚡⚡ 가속추세</button>
+        <button class="fbtn" id="kr-f-h52"    onclick="toggleF('h52',this,'kr')">🚀 52주신고가</button>
+        <button class="fbtn" id="kr-f-rsl"    onclick="toggleF('rsl',this,'kr')">📡 RS선행</button>
         <button class="fbtn" id="kr-f-rs70"   onclick="toggleF('rs70',this,'kr')">RS 70+</button>
         <button class="fbtn" id="kr-f-rs80"   onclick="toggleF('rs80',this,'kr')">RS 80+</button>
         <button class="fbtn" id="kr-f-rs90"   onclick="toggleF('rs90',this,'kr')">RS 90+</button>
         <button class="fbtn" id="kr-f-kospi"  onclick="toggleF('kospi',this,'kr')">KOSPI</button>
         <button class="fbtn" id="kr-f-kosdaq" onclick="toggleF('kosdaq',this,'kr')">KOSDAQ</button>
+        <button class="fbtn" id="kr-f-large"  onclick="toggleF('large',this,'kr')">🏦 대형주(1조+)</button>
       </div>
     </div>
     <div class="result-bar">
@@ -621,7 +645,27 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 // 상태
 // ══════════════════════════════════════════════════════════
 let US={data:[],market:{},sortKey:'rs',filters:new Set(),patFilter:'all',secFilter:'all'};
-let KR={data:[],meta:{},sortKey:'rs_score',filters:new Set(),secFilter:'all'};
+let KR={data:[],meta:{},sortKey:'rs_score',filters:new Set(),secFilter:'all',capFilter:'all'};
+let KR2={data:[],meta:{},sortKey:'rs_score',filters:new Set(),secFilter:'all',capFilter:'all'};
+
+// 시총 구간 정의 (억원)
+const CAP_TIERS = {
+  mega:  {min:100000, max:Infinity, label:'🏛️ 초대형 10조+',    color:'#1a56db'},
+  large: {min:10000,  max:100000,   label:'🏦 대형 1조~10조',   color:'#1a8a4a'},
+  mid:   {min:1000,   max:10000,    label:'🏢 중형 1000억~1조', color:'#854F0B'},
+  small: {min:0,      max:1000,     label:'🔬 소형 1000억↓',   color:'#c0392b'},
+};
+
+function getCapTier(mktcap){
+  const c=mktcap||0;
+  if(c>=100000) return 'mega';
+  if(c>=10000)  return 'large';
+  if(c>=1000)   return 'mid';
+  return 'small';
+}
+function getCapLabel(mktcap){
+  return CAP_TIERS[getCapTier(mktcap)]?.label||'—';
+}
 let stars=new Set();
 let activeMkt='us';
 
@@ -638,6 +682,11 @@ async function autoLoad(){
     try{const r=await fetch(p);if(!r.ok)continue;ingestKR(await r.json());break;}catch(e){}
   }
   if(!US.data.length) document.getElementById('meta-date').textContent='JSON 불러오기 클릭';
+  // KR 데이터 없을 때 KOSDAQ 패널 안내
+  if(!KR.data.length){
+    document.getElementById('kospi-mkt-badge').textContent='로드 필요';
+    document.getElementById('kosdaq-mkt-badge').textContent='로드 필요';
+  }
 }
 autoLoad();
 
@@ -690,21 +739,49 @@ function updateUSSignal(mkt){
 // KR 데이터 처리
 // ══════════════════════════════════════════════════════════
 function ingestKR(raw){
-  KR.data=raw.all_stocks||raw.top_stocks||[];
-  KR.sectors=raw.sectors||[];
-  KR.meta=raw.meta||{};
-  KR.summary=raw.summary||{};
-  const sum=KR.summary;
-  document.getElementById('kr-s-total').textContent=(sum.total_stocks||KR.data.length).toLocaleString();
-  document.getElementById('kr-s-avgrs').textContent=sum.avg_rs_score||'-';
-  document.getElementById('kr-s-strong').textContent=sum.strong_sectors_count||0;
-  document.getElementById('kr-s-neutral').textContent=sum.neutral_sectors_count||0;
-  document.getElementById('kr-s-weak').textContent=sum.weak_sectors_count||0;
-  document.getElementById('kr-s-date').textContent=KR.meta.analysis_date||'-';
-  document.getElementById('kr-mkt-badge').textContent=(sum.total_stocks||KR.data.length)+'종목';
-  updateKRSignal(sum);
+  const allStocks = raw.all_stocks||raw.top_stocks||[];
+  // KOSPI / KOSDAQ 분리
+  KR.data    = allStocks.filter(s=>s.market==='KOSPI');
+  KR2.data   = allStocks.filter(s=>s.market==='KOSDAQ');
+  KR.sectors = (raw.sectors||[]).map(sec=>({
+    ...sec,
+    top_stocks:(sec.top_stocks||[]).filter(t=>!t.market||t.market==='KOSPI')
+  }));
+  KR2.sectors = (raw.sectors||[]).map(sec=>({
+    ...sec,
+    top_stocks:(sec.top_stocks||[]).filter(t=>t.market==='KOSDAQ')
+  }));
+  KR.meta=KR2.meta=raw.meta||{};
+  KR.summary=KR2.summary=raw.summary||{};
+
+  // KOSPI 통계
+  updateKRStats('kr', KR.data, raw);
+  // KOSDAQ 통계
+  updateKRStats('kr2', KR2.data, raw);
+
+  document.getElementById('kospi-mkt-badge').textContent=KR.data.length+'종목';
+  document.getElementById('kosdaq-mkt-badge').textContent=KR2.data.length+'종목';
+  updateKRSignal(raw.summary||{});
   renderKRMomentum();
+  renderKR2Momentum();
   renderKRSectors();
+  renderKR2Sectors();
+}
+
+function updateKRStats(mkt, data, raw){
+  const m=raw.meta||{}, sum=raw.summary||{};
+  const pfx=mkt+'-s-';
+  const setText=(id,v)=>{const el=document.getElementById(pfx+id);if(el)el.textContent=v;};
+  setText('total',    data.length.toLocaleString());
+  setText('avgrs',    data.length?Math.round(data.reduce((a,s)=>a+s.rs_score,0)/data.length):'—');
+  setText('stage2',   data.filter(s=>s.is_stage2).length);
+  setText('h52',      data.filter(s=>s.h52_new).length);
+  setText('rsl',      data.filter(s=>s.rs_line_lead).length);
+  setText('strong',   (raw.sectors||[]).filter(s=>s.strength==='strong').length);
+  if(mkt==='kr')
+    setText('large', data.filter(s=>(s.mktcap||0)>=10000).length);
+  else
+    setText('large', data.filter(s=>(s.mktcap||0)>=1000).length);
 }
 
 function updateKRSignal(sum){
@@ -714,7 +791,7 @@ function updateKRSignal(sum){
   const label=avg>=70?'강세장':avg>=50?'중립장':'약세장';
   document.getElementById('kr-sig-dot').style.background=color;
   document.getElementById('kr-sig-label').textContent=label;
-  document.getElementById('kr-sig-sub').textContent='평균 RS '+avg;
+  document.getElementById('kr-sig-sub').textContent='KOSPI 평균 RS '+avg;
   document.getElementById('kr-avgrs-val').textContent=avg;
   document.getElementById('kr-strong-val').textContent=sum.strong_sectors_count||0;
   document.getElementById('kr-total-val').textContent=(sum.total_stocks||0).toLocaleString();
@@ -742,14 +819,23 @@ function switchSubTab(mkt,name,el){
 // ══════════════════════════════════════════════════════════
 // US RS 모멘텀
 // ══════════════════════════════════════════════════════════
+function setCapFilter(cap, el, mkt){
+  const S = mkt==='kr' ? KR : KR2;
+  S.capFilter = cap;
+  el.closest('.ctrl-row').querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+  el.classList.add('on');
+  mkt==='kr' ? renderKRMomentum() : renderKR2Momentum();
+}
+
 function setSort(k,el,mkt){
   if(mkt==='us'){US.sortKey=k;document.querySelectorAll('#us-sub-momentum .sbtn').forEach(b=>b.classList.remove('on'));el.classList.add('on');renderUSMomentum();}
-  else{KR.sortKey=k;document.querySelectorAll('#kr-sub-momentum .sbtn').forEach(b=>b.classList.remove('on'));el.classList.add('on');renderKRMomentum();}
+  else if(mkt==='kr'){KR.sortKey=k;document.querySelectorAll('#kr-sub-momentum .sbtn').forEach(b=>b.classList.remove('on'));el.classList.add('on');renderKRMomentum();}
+  else{KR2.sortKey=k;document.querySelectorAll('#kr2-sub-momentum .sbtn').forEach(b=>b.classList.remove('on'));el.classList.add('on');renderKR2Momentum();}
 }
 function toggleF(k,el,mkt){
-  const S=mkt==='us'?US:KR;
+  const S=mkt==='us'?US:mkt==='kr'?KR:KR2;
   S.filters.has(k)?(S.filters.delete(k),el.classList.remove('on')):(S.filters.add(k),el.classList.add('on'));
-  mkt==='us'?renderUSMomentum():renderKRMomentum();
+  if(mkt==='us')renderUSMomentum();else if(mkt==='kr')renderKRMomentum();else renderKR2Momentum();
 }
 
 function usFiltered(){
@@ -842,31 +928,90 @@ function usRowHTML(s){
 // ══════════════════════════════════════════════════════════
 // KR RS 모멘텀
 // ══════════════════════════════════════════════════════════
-function krFiltered(){
-  return KR.data.filter(s=>{
-    if(KR.filters.has('rs70')&&(s.rs_score||0)<70)return false;
-    if(KR.filters.has('rs80')&&(s.rs_score||0)<80)return false;
-    if(KR.filters.has('rs90')&&(s.rs_score||0)<90)return false;
-    if(KR.filters.has('kospi')&&s.market!=='KOSPI')return false;
-    if(KR.filters.has('kosdaq')&&s.market!=='KOSDAQ')return false;
+function krFilterBase(data, filters, capFilter){
+  return data.filter(s=>{
+    if(filters.has('s2')&&!s.is_stage2)return false;
+    if(filters.has('acc')&&!s.acc)return false;
+    if(filters.has('acc2')&&!s.acc2)return false;
+    if(filters.has('h52')&&!s.h52_new)return false;
+    if(filters.has('rsl')&&!s.rs_line_lead)return false;
+    if(filters.has('rs70')&&(s.rs_score||0)<70)return false;
+    if(filters.has('rs80')&&(s.rs_score||0)<80)return false;
+    if(filters.has('rs90')&&(s.rs_score||0)<90)return false;
+    if(filters.has('kospi')&&s.market!=='KOSPI')return false;
+    if(filters.has('kosdaq')&&s.market!=='KOSDAQ')return false;
+    if(filters.has('large')&&(s.mktcap||0)<10000)return false;
+    // 시총 구간 필터
+    const cap=s.mktcap||0;
+    if(capFilter==='mega'  && cap<100000)return false;
+    if(capFilter==='large' && (cap<10000||cap>=100000))return false;
+    if(capFilter==='mid'   && (cap<1000||cap>=10000))return false;
+    if(capFilter==='small' && cap>=1000)return false;
     return true;
   });
 }
-function krSorted(d){
+function krFiltered(){ return krFilterBase(KR.data,  KR.filters,  KR.capFilter||'all'); }
+function kr2Filtered(){ return krFilterBase(KR2.data, KR2.filters, KR2.capFilter||'all'); }
+function krSortBase(d, key){
   return [...d].sort((a,b)=>{
-    if(KR.sortKey==='rs_score')return(b.rs_score||0)-(a.rs_score||0);
-    if(KR.sortKey==='ibd_rs')return(b.ibd_rs||0)-(a.ibd_rs||0);
-    if(KR.sortKey==='price')return(b.price||0)-(a.price||0);
-    if(KR.sortKey==='mktcap')return(b.mktcap||b.market_cap||0)-(a.mktcap||a.market_cap||0);
+    if(key==='rs_score')return(b.rs_score||0)-(a.rs_score||0);
+    if(key==='ibd_rs')return(b.ibd_rs||0)-(a.ibd_rs||0);
+    if(key==='price')return(b.price||0)-(a.price||0);
+    if(key==='mktcap')return(b.mktcap||0)-(a.mktcap||0);
+    if(key==='w1')return(b.w1||0)-(a.w1||0);
+    if(key==='w3')return(b.w3||0)-(a.w3||0);
     return 0;
   });
 }
+function krSorted(d){ return krSortBase(d, KR.sortKey||'rs_score'); }
+function kr2Sorted(d){ return krSortBase(d, KR2.sortKey||'rs_score'); }
 function renderKRMomentum(){
   const list=krSorted(krFiltered());
   document.getElementById('kr-res-count').textContent=list.length;
-  const el=document.getElementById('kr-stock-list');
+  renderKRList('kr-stock-list', list, KR.capFilter);
+}
+
+function renderKR2Momentum(){
+  const list=kr2Sorted(kr2Filtered());
+  document.getElementById('kr2-res-count').textContent=list.length;
+  renderKRList('kr2-stock-list', list, KR2.capFilter);
+}
+
+function renderKRList(elId, list, capFilter){
+  const el=document.getElementById(elId);
   if(!list.length){el.innerHTML='<div class="empty">조건에 맞는 종목이 없습니다.</div>';return;}
-  el.innerHTML=list.map(s=>krRowHTML(s)).join('');
+
+  // capFilter=all이면 시총 구간별 섹션 헤더 추가
+  if(capFilter==='all'){
+    const tiers=[
+      {key:'mega',  min:100000, label:'🏛️ 초대형 (시총 10조 이상)'},
+      {key:'large', min:10000,  label:'🏦 대형 (시총 1조 ~ 10조)'},
+      {key:'mid',   min:1000,   label:'🏢 중형 (시총 1000억 ~ 1조)'},
+      {key:'small', min:0,      label:'🔬 소형 (시총 1000억 미만)'},
+    ];
+    let html='';
+    tiers.forEach((tier,ti)=>{
+      const nextMin = ti+1<tiers.length ? tiers[ti+1].min : -1;
+      const group = list.filter(s=>{
+        const c=s.mktcap||0;
+        if(ti===0) return c>=tier.min;
+        if(ti===tiers.length-1) return c<tiers[ti-1].min;
+        return c>=tier.min && c<tiers[ti-1].min;
+      });
+      if(!group.length) return;
+      const avgRs=Math.round(group.reduce((a,s)=>a+s.rs_score,0)/group.length);
+      const rsColor=avgRs>=75?'#1a8a4a':avgRs>=50?'#e6a817':'#c0392b';
+      html+=`<div style="padding:8px 20px;background:#f8f8f4;border-bottom:1px solid #e0e0d8;
+        display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10">
+        <span style="font-size:12px;font-weight:700;color:#444">${tier.label}</span>
+        <span style="font-size:11px;color:#aaa">${group.length}종목 · 평균RS <span style="color:${rsColor};font-weight:700">${avgRs}</span></span>
+      </div>`;
+      html+=group.map(s=>krRowHTML(s)).join('');
+    });
+    el.innerHTML=html;
+  } else {
+    el.innerHTML=list.map(s=>krRowHTML(s)).join('');
+  }
 }
 function krRowHTML(s){
   const mktTag=`<span class="mkt-tag ${s.market==='KOSPI'?'tag-kospi':'tag-kosdaq'}">${s.market||''}</span>`;
@@ -898,10 +1043,11 @@ function krRowHTML(s){
 // ══════════════════════════════════════════════════════════
 function setSecFilter(f,el,mkt){
   if(mkt==='us') US.secFilter=f;
-  else KR.secFilter=f;
+  else if(mkt==='kr') KR.secFilter=f;
+  else KR2.secFilter=f;
   el.closest('.sec-filter-tabs').querySelectorAll('.sec-ftab').forEach(b=>b.classList.remove('on'));
   el.classList.add('on');
-  mkt==='us'?renderUSSectors():renderKRSectors();
+  if(mkt==='us')renderUSSectors();else if(mkt==='kr')renderKRSectors();else renderKR2Sectors();
 }
 
 function renderUSSectors(){
@@ -1066,13 +1212,13 @@ function renderSectorPage(pageId, sectors, filter, mkt){
 function setSectorSort(key, mkt){
   if(secSortKey[mkt]===key) secSortDir[mkt]*=-1;
   else{secSortKey[mkt]=key;secSortDir[mkt]=-1;}
-  mkt==='us'?renderUSSectors():renderKRSectors();
+  if(mkt==='us')renderUSSectors();else if(mkt==='kr')renderKRSectors();else renderKR2Sectors();
 }
 
 function toggleSecExpand(mkt, name, pageId, idx){
   const k=mkt+'_'+name;
   expandedSectors.has(k)?expandedSectors.delete(k):expandedSectors.add(k);
-  mkt==='us'?renderUSSectors():renderKRSectors();
+  if(mkt==='us')renderUSSectors();else if(mkt==='kr')renderKRSectors();else renderKR2Sectors();
 }
 
 // ══════════════════════════════════════════════════════════
@@ -1336,6 +1482,81 @@ const PAT_INFO={
   s1_to_s2:{name:"S1→S2 전환",icon:"🌱",color:"#633806",bg:"#FAEEDA",desc:"Stage 1에서 Stage 2로 막 전환되는 초기 종목.",checks:["최근 4주 이내 200일선 상향 돌파","200일선이 막 상승 기울기로 전환","거래량 증가하며 돌파"],action:"200일선 돌파 후 첫 번째 눌림목에서 매수.",warning:"200일선 재이탈 시 즉시 손절."},
 };
 </script>
+
+<!-- ══════════════════════════════════════════════════════════
+     🇰🇷 KOSDAQ 패널 (kr2)
+══════════════════════════════════════════════════════════ -->
+<div class="mkt-panel" id="panel-kr2">
+  <div class="stats" style="grid-template-columns:repeat(7,1fr)">
+    <div class="sc"><div class="sc-lbl">전체 종목</div><div class="sc-val blue" id="kr2-s-total">—</div></div>
+    <div class="sc"><div class="sc-lbl">평균 RS</div><div class="sc-val" id="kr2-s-avgrs">—</div></div>
+    <div class="sc"><div class="sc-lbl">Stage 2</div><div class="sc-val green" id="kr2-s-stage2">—</div></div>
+    <div class="sc"><div class="sc-lbl">52주 신고가</div><div class="sc-val" id="kr2-s-h52">—</div></div>
+    <div class="sc"><div class="sc-lbl">RS Line선행</div><div class="sc-val blue" id="kr2-s-rsl">—</div></div>
+    <div class="sc"><div class="sc-lbl">강세 섹터</div><div class="sc-val green" id="kr2-s-strong">—</div></div>
+    <div class="sc"><div class="sc-lbl">🏦 중대형(1조+)</div><div class="sc-val" id="kr2-s-large">—</div></div>
+  </div>
+  <div class="sub-tabs">
+    <button class="sub-tab on" onclick="switchSubTab('kr2','momentum',this)">📈 RS 모멘텀</button>
+    <button class="sub-tab" onclick="switchSubTab('kr2','pattern',this)">🔍 패턴 감지</button>
+    <button class="sub-tab" onclick="switchSubTab('kr2','sector',this)">🏭 섹터 분석</button>
+    <button class="sub-tab" onclick="switchSubTab('kr2','screener',this)">⚙️ 스크리너</button>
+  </div>
+  <div class="sub-content on" id="kr2-sub-momentum">
+    <div class="controls">
+      <div class="ctrl-row">
+        <span class="row-lbl">정렬</span>
+        <button class="sbtn on" onclick="setSort('rs_score',this,'kr2')">RS 점수↓</button>
+        <button class="sbtn" onclick="setSort('ibd_rs',this,'kr2')">IBD RS↓</button>
+        <button class="sbtn" onclick="setSort('w1',this,'kr2')">최근1주↓</button>
+        <button class="sbtn" onclick="setSort('w3',this,'kr2')">1~3주↓</button>
+        <button class="sbtn" onclick="setSort('mktcap',this,'kr2')">🏦 시총↓</button>
+      </div>
+      <div class="ctrl-row">
+        <span class="row-lbl">시총</span>
+        <button class="fbtn on" id="kr2-cap-all"    onclick="setCapFilter('all',this,'kr2')">전체</button>
+        <button class="fbtn" id="kr2-cap-large"  onclick="setCapFilter('large',this,'kr2')">🏦 1조+</button>
+        <button class="fbtn" id="kr2-cap-mid"    onclick="setCapFilter('mid',this,'kr2')">🏢 1000억~1조</button>
+        <button class="fbtn" id="kr2-cap-small"  onclick="setCapFilter('small',this,'kr2')">🔬 1000억↓</button>
+      </div>
+      <div class="ctrl-row">
+        <span class="row-lbl">필터</span>
+        <button class="fbtn" id="kr2-f-s2"    onclick="toggleF('s2',this,'kr2')">✓ Stage2</button>
+        <button class="fbtn" id="kr2-f-acc"   onclick="toggleF('acc',this,'kr2')">⚡ 가속중</button>
+        <button class="fbtn" id="kr2-f-acc2"  onclick="toggleF('acc2',this,'kr2')">⚡⚡ 가속추세</button>
+        <button class="fbtn" id="kr2-f-h52"   onclick="toggleF('h52',this,'kr2')">🚀 52주신고가</button>
+        <button class="fbtn" id="kr2-f-rsl"   onclick="toggleF('rsl',this,'kr2')">📡 RS선행</button>
+        <button class="fbtn" id="kr2-f-rs70"  onclick="toggleF('rs70',this,'kr2')">RS 70+</button>
+        <button class="fbtn" id="kr2-f-rs80"  onclick="toggleF('rs80',this,'kr2')">RS 80+</button>
+        <button class="fbtn" id="kr2-f-rs90"  onclick="toggleF('rs90',this,'kr2')">RS 90+</button>
+      </div>
+    </div>
+    <div class="result-bar">
+      <div class="res-count">필터 결과: <strong id="kr2-res-count">—</strong>종목</div>
+    </div>
+    <div class="stock-list" id="kr2-stock-list">
+      <div class="empty">🇰🇷 KR JSON을 불러오세요</div>
+    </div>
+  </div>
+  <div class="sub-content" id="kr2-sub-pattern">
+    <div class="coming-soon"><div class="icon">🔍</div><h3>KOSDAQ 패턴 감지</h3><p style="font-size:13px;margin-top:8px">pykrx 실제 데이터 연동 후 활성화</p></div>
+  </div>
+  <div class="sub-content" id="kr2-sub-sector">
+    <div class="sec-filter-tabs">
+      <span style="font-size:12px;color:#777;font-weight:600">필터</span>
+      <button class="sec-ftab all on" onclick="setSecFilter('all',this,'kr2')">전체</button>
+      <button class="sec-ftab strong" onclick="setSecFilter('strong',this,'kr2')">🟢 강세</button>
+      <button class="sec-ftab neutral" onclick="setSecFilter('neutral',this,'kr2')">🟡 중립</button>
+      <button class="sec-ftab weak" onclick="setSecFilter('weak',this,'kr2')">🔴 약세</button>
+    </div>
+    <div id="kr2-sector-page" class="sec-table-wrap">
+      <div class="empty">데이터를 불러오면 섹터 분석이 표시됩니다.</div>
+    </div>
+  </div>
+  <div class="sub-content" id="kr2-sub-screener">
+    <div class="coming-soon"><div class="icon">⚙️</div><h3>KOSDAQ 스크리너</h3><p style="font-size:13px;margin-top:8px">준비 중</p></div>
+  </div>
+</div>
 
 <!-- ══ 종목 상세 슬라이드 패널 ══════════════════════════ -->
 <div class="detail-overlay" id="detail-overlay" onclick="closeDetail()"></div>
