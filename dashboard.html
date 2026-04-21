@@ -154,6 +154,49 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 .sec-filter-bar{display:flex;align-items:center;gap:6px;padding:10px 20px;background:#fff;border-bottom:1px solid #e0e0d8;flex-wrap:wrap}
 
 
+/* ══ 스크리너 테이블 ══ */
+.scr-toolbar{background:#fff;padding:8px 20px;border-bottom:1px solid #e0e0d8;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.scr-result-count{font-size:13px;color:#666;font-weight:600;white-space:nowrap}
+.scr-result-count strong{color:#1a1a1a;font-size:15px}
+.scr-phase-bar{background:#fff;padding:6px 20px 8px;border-bottom:1px solid #e0e0d8;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.scr-tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:60px}
+.scr-tbl{width:100%;border-collapse:collapse;min-width:1200px;background:#fff}
+.scr-tbl thead th{padding:8px 10px;text-align:left;font-size:10px;color:#999;font-weight:600;border-bottom:2px solid #e0e0d8;background:#f8f8f4;white-space:nowrap;cursor:pointer;user-select:none;position:sticky;top:0;z-index:5}
+.scr-tbl thead th:hover{background:#f0f0ea;color:#444}
+.scr-tbl thead th.sorted{color:#185FA5}
+.scr-tbl tbody td{padding:8px 10px;border-bottom:1px solid #f0f0ea;font-size:12px;white-space:nowrap;vertical-align:middle}
+.scr-tbl tbody tr:hover td{background:#f8f8f4;cursor:pointer}
+.scr-sym{font-family:'Courier New',monospace;font-weight:800;font-size:14px;color:#1a1a1a}
+.scr-co{font-size:10px;color:#aaa;display:block;margin-top:1px}
+.scr-ind{font-size:10px;color:#888}
+.rs-bar-cell{display:flex;align-items:center;gap:5px}
+.rs-bar-wrap{width:44px;height:5px;background:#f0f0ea;border-radius:3px;overflow:hidden;flex-shrink:0}
+.rs-bar-fill{height:100%;border-radius:3px}
+.rs-num{font-size:13px;font-weight:800;min-width:22px;text-align:right}
+.stage-pill{font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;white-space:nowrap;display:inline-block}
+.sp-s2{background:#eaf6ee;color:#1a5c1a}
+.sp-s2e{background:#fff8e6;color:#854F0B}
+.sp-s1{background:#f0f0ea;color:#888}
+.phase-pill{font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;white-space:nowrap;display:inline-flex;align-items:center;gap:3px}
+.pp-4plus{background:#eaf6ee;color:#1F5A09;border:1px solid #3B6D11}
+.pp-4{background:#D1F2C4;color:#1F5A09}
+.pp-5{background:#e8f0fe;color:#185FA5}
+.pp-3{background:#f3e8ff;color:#7c3aed}
+.pp-2{background:#f0f0ea;color:#666}
+.pp-67{background:#FDE68A;color:#854F0B}
+.pp-01{background:#f5f5f5;color:#aaa}
+.sig-chip{font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;margin-right:2px;white-space:nowrap}
+.pat-setup-chip{font-size:9px;padding:1px 6px;border-radius:3px;font-weight:600;margin-right:2px;white-space:nowrap;display:inline-block}
+.scr-score{font-size:14px;font-weight:800;min-width:28px;text-align:center;display:inline-block}
+.grade-a{color:#1a8a4a;font-weight:700}
+.grade-b{color:#185FA5;font-weight:600}
+.grade-c{color:#854F0B}
+.grade-d{color:#c0392b}
+.pivot-pos{color:#1a8a4a;font-weight:600}
+.pivot-neg{color:#c0392b;font-weight:600}
+.scr-star{font-size:13px;color:#ddd;cursor:pointer;user-select:none;display:inline-block;padding:2px}
+.scr-star.on{color:#e6a817}
+
 /* ══ 섹터 ETF 테이블 ══ */
 .etf-tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .etf-tbl-head{
@@ -3523,11 +3566,94 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 
 <!-- ══ 스크리너 탭 패널 ══ -->
 <div class="top-panel" id="top-panel-screener">
-  <div style="padding:24px;text-align:center;color:#aaa;font-size:13px">
-    <div style="font-size:28px;margin-bottom:10px">🔍</div>
-    <div style="font-weight:700;color:#444;font-size:14px;margin-bottom:6px">스크리너</div>
-    <div>준비 중입니다.</div>
+
+  <!-- 상단 툴바 -->
+  <div class="scr-toolbar">
+    <span class="scr-result-count">Results: <strong id="scr-res-count">—</strong> ★ <span id="scr-star-count" style="color:#e6a817">0</span></span>
+    <div style="width:1px;height:20px;background:#e0e0d8;margin:0 4px"></div>
+    <span class="row-lbl">정렬:</span>
+    <button class="sbtn on" id="scr-sort-ibdrs"   onclick="setScrSort('rs',this)">IBD RS↓</button>
+    <button class="sbtn" id="scr-sort-rsnow"       onclick="setScrSort('rs_now',this)">RS now↓</button>
+    <button class="sbtn" id="scr-sort-rsline"      onclick="setScrSort('rs_line_score',this)">RS Line 점수↓</button>
+    <div style="width:1px;height:20px;background:#e0e0d8;margin:0 4px"></div>
+    <span class="row-lbl">RS:</span>
+    <button class="sbtn" id="scr-rs-all"   onclick="setScrRS('all',this)">전체</button>
+    <button class="sbtn on" id="scr-rs-8090" onclick="setScrRS('8090',this)" style="background:#1a1a1a;color:#fff;border-color:#1a1a1a">80~90</button>
+    <button class="sbtn" id="scr-rs-91"    onclick="setScrRS('91',this)">91~99</button>
+    <div style="width:1px;height:20px;background:#e0e0d8;margin:0 4px"></div>
+    <span class="row-lbl">Stage:</span>
+    <button class="fbtn" id="scr-f-s2"    onclick="toggleScrF('s2',this)">S2</button>
+    <button class="fbtn" id="scr-f-s2e"   onclick="toggleScrF('s2e',this)">S2초</button>
+    <button class="fbtn" id="scr-f-s1s2"  onclick="toggleScrF('s1s2',this)">S1→S2</button>
+    <div style="width:1px;height:20px;background:#e0e0d8;margin:0 4px"></div>
+    <span class="row-lbl">신호:</span>
+    <button class="fbtn" id="scr-f-rsl"   onclick="toggleScrF('rsl',this)">RS Line선행</button>
+    <button class="fbtn" id="scr-f-h52"   onclick="toggleScrF('h52',this)">RS Line신고</button>
+    <button class="fbtn" id="scr-f-dol"   onclick="toggleScrF('dol',this)">돌파임박5%</button>
+    <div style="width:1px;height:20px;background:#e0e0d8;margin:0 4px"></div>
+    <span class="row-lbl">편입:</span>
+    <button class="fbtn" id="scr-f-new"   onclick="toggleScrF('new',this)" style="background:#FFF4E6;color:#854F0B;border-color:#EF9F27">🔴 NEW</button>
+    <button class="fbtn" id="scr-f-hot"   onclick="toggleScrF('hot',this)" style="background:#FFF0D6;color:#8B4F00;border-color:#CC7700">🔥 HOT</button>
+    <button class="fbtn" id="scr-f-locked" onclick="toggleScrF('locked',this)" style="background:#E6F1FB;color:#185FA5;border-color:#185FA5">🔒 LOCKED</button>
+    <button class="hbtn" onclick="exportScr()" style="margin-left:auto;font-size:12px;padding:4px 12px">📤 내보내기</button>
   </div>
+
+  <!-- Phase 필터 버튼 행 -->
+  <div class="scr-phase-bar">
+    <span class="row-lbl">Phase:</span>
+    <button class="sbtn on" id="scr-phase-all"    onclick="setScrPhase('all',this)">전체</button>
+    <button class="sbtn"    id="scr-phase-4plus"  onclick="setScrPhase('4plus',this)"
+      style="background:#eaf6ee;color:#1F5A09;border-color:#3B6D11">🎯+ Phase 4+★★</button>
+    <button class="sbtn"    id="scr-phase-4"      onclick="setScrPhase('4',this)"
+      style="color:#1F5A09;border-color:#2d7a2d">● Phase 4</button>
+    <button class="sbtn"    id="scr-phase-5"      onclick="setScrPhase('5',this)"
+      style="color:#185FA5;border-color:#185FA5">● Phase 5</button>
+    <button class="sbtn"    id="scr-phase-3"      onclick="setScrPhase('3',this)"
+      style="color:#7c3aed;border-color:#7c3aed">△ Phase 3</button>
+    <button class="sbtn"    id="scr-phase-2"      onclick="setScrPhase('2',this)"
+      style="color:#888;border-color:#ccc">○ Phase 2</button>
+    <button class="sbtn"    id="scr-phase-67"     onclick="setScrPhase('67',this)"
+      style="color:#854F0B;border-color:#e6a817">Phase 6~7</button>
+    <button class="sbtn"    id="scr-phase-up"     onclick="setScrPhase('up',this)"
+      style="color:#c0392b;border-color:#c0392b">⬆ 베 전환↑</button>
+    <button class="sbtn"    id="scr-phase-4pbig"  onclick="setScrPhase('4plus',this)"
+      style="background:#1F5A09;color:#fff;border-color:#1F5A09;margin-left:8px">🎯+ Phase 4+★★★</button>
+    <span style="font-size:11px;color:#aaa;margin-left:auto">클릭 시 해당 Phase 만 필터링 · 재클릭 시 이전 상태로</span>
+  </div>
+
+  <!-- 테이블 -->
+  <div class="scr-tbl-wrap">
+    <table class="scr-tbl" id="scr-table">
+      <thead>
+        <tr>
+          <th style="width:22px"></th><!-- 별 -->
+          <th onclick="setScrSort('ticker',this)" style="min-width:130px">Symbol</th>
+          <th onclick="setScrSort('price',this)"  style="min-width:60px">Price</th>
+          <th onclick="setScrSort('comp',this)"   style="min-width:36px">Comp</th>
+          <th onclick="setScrSort('eps',this)"    style="min-width:36px">EPS</th>
+          <th onclick="setScrSort('rs',this)"     class="sorted" style="min-width:90px">IBD RS</th>
+          <th onclick="setScrSort('rs_now',this)" style="min-width:90px">RS now</th>
+          <th onclick="setScrSort('rs_line_score',this)" style="min-width:80px">RS Line<br>점수</th>
+          <th style="min-width:70px">Stage</th>
+          <th style="min-width:90px">Phase</th>
+          <th style="min-width:60px">RS신호</th>
+          <th style="min-width:60px">IBD 모멘텀</th>
+          <th style="min-width:160px">패턴 셋업</th>
+          <th onclick="setScrSort('h52_pct',this)" style="min-width:55px">피벗%</th>
+          <th style="min-width:100px">Ind Grp</th>
+          <th style="min-width:36px">SMR</th>
+          <th style="min-width:50px">Acc/Dis</th>
+          <th onclick="setScrSort('score',this)"  style="min-width:44px;text-align:right">점수</th>
+        </tr>
+      </thead>
+      <tbody id="scr-tbody">
+        <tr><td colspan="18" class="empty" style="text-align:center;padding:40px">
+          📂 US JSON을 불러오면 스크리너 결과가 표시됩니다.
+        </td></tr>
+      </tbody>
+    </table>
+  </div>
+
 </div>
 
 <!-- ══ 패턴 감지 탭 패널 ══ -->
@@ -4690,8 +4816,258 @@ function showPatDoc(key) {
 }
 
 // ════════════════════════════════════════════════════════
-// 섹터 ETF 탭 전용
+// 스크리너 탭 전용
 // ════════════════════════════════════════════════════════
+
+let scrSortKey   = 'rs';
+let scrSortDesc  = true;
+let scrRsFilter  = '8090';      // 'all' | '8090' | '91'
+let scrPhaseFilter = 'all';
+let scrFilters   = new Set();
+let scrStars     = new Set();   // 별표 티커
+
+// ── 스크리너 점수 계산 (샘플 기준: IBD RS + RS Line + Stage + 패턴)
+function calcScrScore(s) {
+  let score = 0;
+  const rs = s.rs || 0, rsNow = s.rs_now || 0;
+  // RS 기여 (0~40점)
+  score += Math.round(rs * 0.25);
+  // RS now 가속 (0~10점)
+  if (rsNow > rs) score += Math.min(10, Math.round((rsNow - rs) * 2));
+  // Stage2 (0~15점)
+  if (s.is_stage2) score += 15;
+  else {
+    const dots = (s.pass_dots || []).filter(Boolean).length;
+    score += Math.round(dots * 2);
+  }
+  // 신호들 (0~20점)
+  if (s.h52_new)        score += 8;
+  if (s.acc2)           score += 8;
+  else if (s.acc)       score += 4;
+  if (s.rs_line_lead)   score += 8;
+  // 패턴 (0~10점)
+  if (s.patterns && s.patterns.length > 0) score += 6;
+  if (s.patterns && s.patterns.length > 1) score += 4;
+  return Math.min(100, score);
+}
+
+function setScrSort(k, el) {
+  if (scrSortKey === k) { scrSortDesc = !scrSortDesc; }
+  else { scrSortKey = k; scrSortDesc = true; }
+  document.querySelectorAll('.scr-tbl thead th').forEach(th => th.classList.remove('sorted'));
+  if (el && el.tagName === 'TH') el.classList.add('sorted');
+  renderScreener();
+}
+
+function setScrRS(v, el) {
+  scrRsFilter = v;
+  document.querySelectorAll('[id^="scr-rs-"]').forEach(b => b.classList.remove('on'));
+  if (el) el.classList.add('on');
+  renderScreener();
+}
+
+function setScrPhase(phase, el) {
+  if (scrPhaseFilter === phase) { scrPhaseFilter = 'all'; document.getElementById('scr-phase-all')?.classList.add('on'); }
+  else {
+    scrPhaseFilter = phase;
+    document.querySelectorAll('[id^="scr-phase-"]').forEach(b => b.classList.remove('on'));
+    if (el) el.classList.add('on');
+  }
+  renderScreener();
+}
+
+function toggleScrF(k, el) {
+  scrFilters.has(k) ? scrFilters.delete(k) : scrFilters.add(k);
+  el.classList.toggle('on');
+  renderScreener();
+}
+
+function scrFiltered() {
+  return US.data.filter(s => {
+    const rs = s.rs || 0;
+    // RS 필터
+    if (scrRsFilter === '8090' && (rs < 80 || rs > 90)) return false;
+    if (scrRsFilter === '91'   && rs < 91)               return false;
+    // Stage 필터
+    const dots = (s.pass_dots || []).filter(Boolean).length;
+    if (scrFilters.has('s2')   && !s.is_stage2)                                          return false;
+    if (scrFilters.has('s2e')  && !(dots >= 4 && !s.is_stage2))                          return false;
+    if (scrFilters.has('s1s2') && !(s.patterns && s.patterns.includes('s1_to_s2')))      return false;
+    // 신호 필터
+    if (scrFilters.has('rsl')  && !s.rs_line_lead)  return false;
+    if (scrFilters.has('h52')  && !s.h52_new)        return false;
+    if (scrFilters.has('dol')  && !(s.h52_pct != null && s.h52_pct >= -5 && s.h52_pct < 0)) return false;
+    if (scrFilters.has('new')  && !s.is_new)         return false;
+    if (scrFilters.has('hot')  && !s.is_hot)         return false;
+    if (scrFilters.has('locked') && !s.is_locked)    return false;
+    // Phase 필터
+    if (scrPhaseFilter !== 'all') {
+      const p = calcPhase(s);
+      if (scrPhaseFilter === '4plus' && p !== '4plus') return false;
+      if (scrPhaseFilter === '4'     && p !== '4')     return false;
+      if (scrPhaseFilter === '5'     && p !== '5')     return false;
+      if (scrPhaseFilter === '3'     && p !== '3')     return false;
+      if (scrPhaseFilter === '2'     && p !== '2')     return false;
+      if (scrPhaseFilter === '67'    && p !== '67')    return false;
+      if (scrPhaseFilter === 'up'    && !(s.phase_changed_up)) return false;
+    }
+    return true;
+  });
+}
+
+function scrSorted(d) {
+  const k = scrSortKey, desc = scrSortDesc;
+  const get = (s) => {
+    if (k === 'ticker')        return s.ticker || '';
+    if (k === 'price')         return s.price || 0;
+    if (k === 'comp')          return s.comp || 0;
+    if (k === 'eps')           return s.eps_rank || 0;
+    if (k === 'rs')            return s.rs || 0;
+    if (k === 'rs_now')        return s.rs_now || 0;
+    if (k === 'rs_line_score') return s.rs_line_score || 0;
+    if (k === 'h52_pct')       return s.h52_pct || 0;
+    if (k === 'score')         return calcScrScore(s);
+    return 0;
+  };
+  return [...d].sort((a, b) => {
+    const va = get(a), vb = get(b);
+    if (typeof va === 'string') return desc ? vb.localeCompare(va) : va.localeCompare(vb);
+    return desc ? vb - va : va - vb;
+  });
+}
+
+function gradeColor(g) {
+  if (!g) return '<span style="color:#aaa">—</span>';
+  const cls = g.startsWith('A') ? 'grade-a' : g.startsWith('B') ? 'grade-b' : g.startsWith('C') ? 'grade-c' : 'grade-d';
+  return `<span class="${cls}">${g}</span>`;
+}
+
+function rsBarHTML(v, max) {
+  max = max || 99;
+  if (v == null) return '<span style="color:#aaa">—</span>';
+  const pct  = Math.round((v / max) * 100);
+  const color = v >= 90 ? '#1a5c1a' : v >= 75 ? '#185FA5' : v >= 50 ? '#854F0B' : '#c0392b';
+  return `<div class="rs-bar-cell">
+    <div class="rs-bar-wrap"><div class="rs-bar-fill" style="width:${pct}%;background:${color}"></div></div>
+    <span class="rs-num" style="color:${color}">${v}</span>
+  </div>`;
+}
+
+function scrRowHTML(s) {
+  const score = calcScrScore(s);
+  const phase = calcPhase(s);
+  const rs    = s.rs || 0, rsNow = s.rs_now || 0;
+  const dots  = (s.pass_dots || []).filter(Boolean).length;
+  const isStarred = scrStars.has(s.ticker);
+
+  // Stage 뱃지
+  const stageBadge = s.is_stage2
+    ? '<span class="stage-pill sp-s2">S2</span>'
+    : dots >= 4
+      ? `<span class="stage-pill sp-s2e">S2초 ${dots}/7</span>`
+      : `<span class="stage-pill sp-s1">${dots}/7</span>`;
+
+  // Phase 뱃지
+  const phaseMap = {
+    '4plus': ['pp-4plus', '🎯+ 4+ 2d'],
+    '4':     ['pp-4',     '● 4 2d'],
+    '5':     ['pp-5',     '● 5 2d'],
+    '3':     ['pp-3',     '△ 3 2d'],
+    '2':     ['pp-2',     '○ 2'],
+    '67':    ['pp-67',    '▽ 6-7 2d'],
+    '01':    ['pp-01',    '✕ 0-1'],
+  };
+  const [phaseCls, phaseLabel] = phaseMap[phase] || ['pp-01', '—'];
+
+  // RS 신호 칩
+  const sigChips = [];
+  if (s.rs_line_lead) sigChips.push('<span class="sig-chip" style="background:#e8f0fe;color:#185FA5">RS↑</span>');
+  if (s.h52_new)      sigChips.push('<span class="sig-chip" style="background:#eaf6ee;color:#1a5c1a">신↑</span>');
+
+  // IBD 모멘텀 (pass_dots 수)
+  const ibd = dots >= 6 ? '<span style="color:#1a8a4a;font-weight:700">40</span>'
+    : dots >= 4 ? '<span style="color:#854F0B">30</span>'
+    : '<span style="color:#aaa">—</span>';
+
+  // 패턴 셋업 칩
+  const patChips = (s.patterns || []).slice(0, 3).map(pk => {
+    const pi = PAT_INFO[pk];
+    return pi ? `<span class="pat-setup-chip" style="background:${pi.bg};color:${pi.color}">${pi.icon} ${pi.name.split(' ')[0]}</span>` : '';
+  }).join('');
+
+  // 피벗 퍼센트
+  const pivotPct = s.h52_pct != null
+    ? `<span class="${s.h52_pct >= 0 ? 'pivot-pos' : 'pivot-neg'}">${s.h52_pct > 0 ? '+' : ''}${s.h52_pct.toFixed(1)}%</span>`
+    : '<span style="color:#aaa">—</span>';
+
+  // 점수 색상
+  const scoreColor = score >= 80 ? '#1a5c1a' : score >= 60 ? '#185FA5' : score >= 40 ? '#854F0B' : '#aaa';
+
+  const price = s.price != null ? (s.price >= 1000 ? s.price.toLocaleString() : s.price.toFixed(2)) : '—';
+  const _sd = safeStringify(s);
+
+  return `<tr onclick="openDetail('${s.ticker}',${_sd},'us')">
+    <td><span class="scr-star${isStarred?' on':''}" onclick="event.stopPropagation();toggleScrStar('${s.ticker}',this)">${isStarred?'★':'☆'}</span></td>
+    <td>
+      <span class="scr-sym">${s.ticker}</span>
+      <span class="scr-co">${(s.name||'').slice(0,20)}</span>
+      <span class="scr-ind">${s.industry||s.ind_grp||''}</span>
+    </td>
+    <td style="font-weight:600">${price}</td>
+    <td>${gradeColor(s.comp != null ? (s.comp >= 80 ? 'A+' : s.comp >= 60 ? 'A' : s.comp >= 40 ? 'B' : 'C') : null)}</td>
+    <td>${gradeColor(s.eps_rank != null ? (s.eps_rank >= 80 ? 'A+' : s.eps_rank >= 60 ? 'A' : s.eps_rank >= 40 ? 'B' : 'C') : null)}</td>
+    <td>${rsBarHTML(rs)}</td>
+    <td>${rsBarHTML(rsNow)}</td>
+    <td>
+      <div class="rs-bar-cell">
+        <div class="rs-bar-wrap"><div class="rs-bar-fill" style="width:${Math.min(100,s.rs_line_score||0)}%;background:#185FA5"></div></div>
+        <span style="font-size:12px;font-weight:700;color:#185FA5;min-width:22px;text-align:right">${s.rs_line_score!=null?Math.round(s.rs_line_score):'—'}</span>
+      </div>
+    </td>
+    <td>${stageBadge}</td>
+    <td><span class="phase-pill ${phaseCls}">${phaseLabel}</span></td>
+    <td>${sigChips.join('')||'<span style="color:#aaa">—</span>'}</td>
+    <td>${ibd}</td>
+    <td>${patChips||'<span style="color:#aaa;font-size:10px">—</span>'}</td>
+    <td>${pivotPct}</td>
+    <td style="font-size:10px;color:#666">${(s.industry||s.ind_grp||'').slice(0,16)}</td>
+    <td>${gradeColor(s.smr)}</td>
+    <td>${gradeColor(s.acc_dis)}</td>
+    <td style="text-align:right"><span class="scr-score" style="color:${scoreColor}">${score}</span></td>
+  </tr>`;
+}
+
+function toggleScrStar(ticker, el) {
+  if (scrStars.has(ticker)) { scrStars.delete(ticker); el.textContent='☆'; el.classList.remove('on'); }
+  else { scrStars.add(ticker); el.textContent='★'; el.classList.add('on'); }
+  setText('scr-star-count', scrStars.size);
+}
+
+function renderScreener() {
+  const list = scrSorted(scrFiltered());
+  setText('scr-res-count', list.length);
+  const tbody = document.getElementById('scr-tbody');
+  if (!tbody) return;
+  if (!list.length) {
+    tbody.innerHTML = '<tr><td colspan="18" class="empty" style="text-align:center;padding:40px">조건에 맞는 종목이 없습니다.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = list.map(scrRowHTML).join('');
+}
+
+function exportScr() {
+  const list = scrSorted(scrFiltered());
+  const rows = [['Ticker','Name','Price','RS','RS_Now','RS_Line','Stage2','H52','Acc','Patterns','Score','Sector']];
+  list.forEach(s => rows.push([
+    s.ticker, s.name, s.price, s.rs, s.rs_now, s.rs_line_score,
+    s.is_stage2?1:0, s.h52_new?1:0, s.acc?1:0,
+    (s.patterns||[]).join(';'), calcScrScore(s), s.sector
+  ]));
+  const csv = rows.map(r=>r.map(v=>'"'+(v??'')+'"').join(',')).join('\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));
+  a.download = 'screener_export.csv'; a.click();
+}
 
 // 주요 ETF 티커 목록 (섹터 ETF 필터링용)
 const ETF_TICKERS = new Set([
@@ -5144,6 +5520,7 @@ ingestUS = function(raw) {
   _origIngestUS(raw);
   renderSectorTab();
   renderEtfMomentum();
+  renderScreener();
 };
 
 autoLoad();
