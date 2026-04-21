@@ -4264,17 +4264,57 @@ let activeMkt='us';
 // 자동 로드
 // ══════════════════════════════════════════════════════════
 async function autoLoad(){
-  const usPaths=['./output/screener_data.json','../output/screener_data.json','./screener_data.json'];
+  // US JSON 경로 (로컬 서버 + GitHub Pages 모두 지원)
+  const usPaths=[
+    './output/screener_data.json',
+    './screener_data.json',
+    'output/screener_data.json',
+    'screener_data.json',
+    '../output/screener_data.json',
+    '../screener_data.json',
+    'https://trend-pilot.github.io/screener/screener_data.json'
+  ];
+  // KR JSON 경로
+  const krPaths=[
+    './kr_screener_output.json',
+    '../kr_screener_output.json',
+    'https://trend-pilot.github.io/screener/kr_screener_output.json'
+  ];
+
+  // 로딩 상태 표시
+  document.getElementById('meta-date').textContent='데이터 로딩 중...';
+
+  let usLoaded = false, krLoaded = false;
+
   for(const p of usPaths){
-    try{const r=await fetch(p);if(!r.ok)continue;ingestUS(await r.json());break;}catch(e){}
+    try{
+      const r = await fetch(p);
+      if(!r.ok) continue;
+      const d = await r.json();
+      ingestUS(d);
+      usLoaded = true;
+      console.log('US 데이터 로드:', p);
+      break;
+    }catch(e){ console.debug('US 시도 실패:', p, e.message); }
   }
-  const krPaths=['./kr_screener_output.json','../kr_screener_output.json'];
+
   for(const p of krPaths){
-    try{const r=await fetch(p);if(!r.ok)continue;ingestKR(await r.json());break;}catch(e){}
+    try{
+      const r = await fetch(p);
+      if(!r.ok) continue;
+      const d = await r.json();
+      ingestKR(d);
+      krLoaded = true;
+      console.log('KR 데이터 로드:', p);
+      break;
+    }catch(e){ console.debug('KR 시도 실패:', p, e.message); }
   }
-  if(!US.data.length) document.getElementById('meta-date').textContent='JSON 불러오기 클릭';
-  // KR 데이터 없을 때 KOSDAQ 패널 안내
-  if(!KR.data.length){
+
+  if(!usLoaded){
+    document.getElementById('meta-date').textContent='US JSON 버튼 클릭';
+    console.warn('US 데이터 자동 로드 실패 — 수동으로 불러주세요');
+  }
+  if(!krLoaded){
     document.getElementById('kospi-mkt-badge').textContent='로드 필요';
     document.getElementById('kosdaq-mkt-badge').textContent='로드 필요';
   }
@@ -4302,7 +4342,7 @@ function ingestUS(raw){
   document.getElementById('us-s-large').textContent=m.largecap_count??US.data.filter(s=>(s.mktcap||0)>=10_000_000_000).length;
   document.getElementById('us-mkt-badge').textContent=US.data.length+'종목';
   updateUSSignal(US.market);
-  updateMarketPulse(d, null);
+  updateMarketPulse(raw, null);
   renderUSMomentum();
   renderUSPatterns();
   renderUSSectors();
