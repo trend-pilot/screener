@@ -6,12 +6,12 @@
 <title>추세추종 스크리너 · US & KR</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html{overflow:hidden auto}
+
 body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;color:#1a1a1a;font-size:14px}
 *{box-sizing:border-box}
 
 /* ── 헤더 ── */
-.hdr{background:#fff;border-bottom:1px solid #e0e0d8;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:200;max-width:100%}
+.hdr{background:#fff;border-bottom:1px solid #e0e0d8;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:200}
 .hdr-left{display:flex;align-items:baseline;gap:10px}
 .hdr-title{font-size:16px;font-weight:700}
 .hdr-meta{font-size:12px;color:#999}
@@ -49,8 +49,8 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 .top-tab.on{color:#1a56db;border-bottom-color:#1a56db;font-weight:700}
 
 /* ══ 탑탭 패널 ══ */
-.top-panel{display:none;max-width:100%}
-.top-panel.on{display:block;max-width:100%;overflow-x:hidden}
+.top-panel{display:none}
+.top-panel.on{display:block}
 
 /* ══ 마켓 서브탭 (top-panel 내부) ══ */
 .market-tabs{background:#fff;border-bottom:1px solid #e0e0d8;padding:0 20px;display:flex;align-items:center;gap:0}
@@ -81,7 +81,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 .sub-tab.on{color:#1a56db;border-bottom-color:#1a56db;font-weight:600}
 
 /* ── 컨트롤 영역 ── */
-.controls{background:#fff;padding:10px 20px;border-bottom:1px solid #e0e0d8;max-width:100%}
+.controls{background:#fff;padding:10px 20px;border-bottom:1px solid #e0e0d8}
 .ctrl-row{display:flex;align-items:center;gap:5px;margin-bottom:6px;flex-wrap:wrap}
 .ctrl-row:last-child{margin-bottom:0}
 .row-lbl{font-size:12px;color:#777;font-weight:600;min-width:28px}
@@ -157,13 +157,13 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 
 
 /* ══ 스크리너 테이블 ══ */
-.scr-toolbar{background:#fff;padding:8px 20px;border-bottom:1px solid #e0e0d8;display:flex;align-items:center;gap:6px;flex-wrap:wrap;max-width:100%}
+.scr-toolbar{background:#fff;padding:8px 20px;border-bottom:1px solid #e0e0d8;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .scr-result-count{font-size:13px;color:#666;font-weight:600;white-space:nowrap}
 .scr-result-count strong{color:#1a1a1a;font-size:15px}
 .scr-phase-bar{background:#fff;padding:6px 20px 8px;border-bottom:1px solid #e0e0d8;display:flex;align-items:center;gap:5px;flex-wrap:wrap;max-width:100%}
-.scr-tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:60px;display:block;width:100%;overflow-anchor:none}
-.scr-tbl{width:100%;border-collapse:collapse;min-width:1200px;background:#fff}
-.scr-tbl thead th{padding:8px 10px;text-align:left;font-size:10px;color:#999;font-weight:600;border-bottom:2px solid #e0e0d8;background:#f8f8f4;white-space:nowrap;cursor:pointer;user-select:none}
+.scr-tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:60px}
+.scr-tbl{width:100%;border-collapse:collapse;table-layout:fixed;min-width:1200px;background:#fff}
+.scr-tbl thead th{padding:8px 10px;text-align:left;font-size:10px;color:#999;font-weight:600;border-bottom:2px solid #e0e0d8;background:#f8f8f4;white-space:nowrap;cursor:pointer;user-select:none;overflow:hidden}
 .scr-tbl thead th:hover{background:#f0f0ea;color:#444}
 .scr-tbl thead th.sorted{color:#185FA5}
 .scr-tbl tbody td{padding:8px 10px;border-bottom:1px solid #f0f0ea;font-size:12px;white-space:nowrap;vertical-align:middle}
@@ -200,7 +200,8 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 .scr-star.on{color:#e6a817}
 
 /* ══ 섹터 ETF 테이블 ══ */
-.etf-tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:40px;overflow-anchor:none}
+.etf-tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
 .etf-tbl-head{
   display:grid;
   grid-template-columns: 60px 160px 80px 160px 36px 36px 36px 60px 60px 60px 60px 60px 56px 56px 56px 56px 28px 28px 28px 28px 50px 70px;
@@ -234,7 +235,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 
 /* ══ 모바일 반응형 (전체) ══════════════════════════════ */
 
-.sec-sort-toolbar{display:flex;align-items:center;gap:6px;padding:10px 20px;background:#fff;border-bottom:2px solid #e0e0d8;flex-wrap:wrap;max-width:100%}
+.sec-sort-toolbar{display:flex;align-items:center;gap:6px;padding:10px 20px;background:#fff;border-bottom:2px solid #e0e0d8;flex-wrap:wrap}
 .sec-sort-lbl{font-size:12px;font-weight:700;color:#444}
 .sec-sort-btn{font-size:12px;padding:4px 12px;border:1px solid #d5d5cc;border-radius:6px;cursor:pointer;background:#fff;color:#444;white-space:nowrap;display:flex;align-items:center;gap:3px}
 .sec-sort-btn:hover{background:#f0f0ea}
@@ -590,7 +591,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 /* Phase 분포 */
 .phase-dist{display:flex;flex-direction:column;gap:3px;padding:6px 10px}
 .phase-row{display:flex;align-items:center;gap:5px;font-size:11px}
-.phase-badge{font-size:9px;font-weight:700;padding:2px 5px;border-radius:99px;white-space:nowrap;min-width:74px;max-width:80px;text-align:center;letter-spacing:-0.3px;overflow:hidden;text-overflow:ellipsis}
+.phase-badge{font-size:8.5px;font-weight:700;padding:2px 4px;border-radius:99px;white-space:nowrap;min-width:72px;text-align:center;letter-spacing:-0.5px}
 .phase-bar-wrap{flex:1;height:4px;background:#f0f0ea;border-radius:2px;overflow:hidden}
 .phase-bar{height:100%;border-radius:2px}
 .phase-count{font-size:10px;color:#aaa;min-width:22px;text-align:right;font-weight:600}
@@ -608,17 +609,11 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 .qv-ticker{font-size:10px;color:#aaa;margin-bottom:2px}
 .qv-stage{font-size:12px;font-weight:700;color:#1a56db}
 /* 메인 콘텐츠 마진 */
-.main-with-sidebar{
-  margin-left:200px;
-  width:calc(100% - 200px);
-  transition:margin-left .25s,width .25s;
-  min-width:0;
-}
-.main-with-sidebar.expanded{margin-left:32px;width:calc(100% - 32px)}
+.main-with-sidebar{margin-left:200px;min-width:0;transition:margin-left .25s}
+.main-with-sidebar.expanded{margin-left:32px}
 @media(max-width:900px){
   .mp-sidebar{transform:translateX(-200px)}
-  .main-with-sidebar{margin-left:32px;width:calc(100% - 32px)}
-}
+  .main-with-sidebar{margin-left:32px}
 
 /* ── 모바일 완전 수정 ── */
 @media(max-width:768px){
@@ -629,7 +624,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
   .mp-toggle{right:-18px;width:18px;height:32px;font-size:8px;opacity:0.7}
   .mp-sidebar.mobile-open .mp-toggle{right:-22px;width:22px;height:36px;opacity:1}
   /* 메인 영역: 사이드바 없으므로 0부터 */
-  .main-with-sidebar{margin-left:0 !important;width:100% !important;overflow-x:clip}
+  .main-with-sidebar{margin-left:0 !important;width:100% !important;overflow-x:hidden}
 
   /* 헤더 */
   .hdr{padding:8px 12px;flex-wrap:wrap;gap:6px}
@@ -751,8 +746,10 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 
 /* 테이블 헤더 */
 .stock-table-header{
-  display:grid;
-  grid-template-columns:70px 160px 52px 52px 40px 70px 60px 55px 55px 55px 65px;
+  display:flex !important;
+  flex-direction:row;
+  align-items:center;
+  flex-wrap:nowrap;
   gap:0;padding:6px 20px;background:#f8f8f4;border-bottom:2px solid #e0e0d8;
   font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.3px;
   position:sticky;top:0;z-index:10;
@@ -761,34 +758,54 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 
 /* 고급 종목 행 */
 .stock-row-adv{
-  display:grid;
-  grid-template-columns:70px 160px 52px 52px 40px 70px 60px 55px 55px 55px 65px;
-  gap:0;padding:8px 20px;background:#fff;border-bottom:1px solid #eeecea;
-  cursor:pointer;align-items:center;font-size:12px;
+  display:flex !important;
+  flex-direction:row;
+  align-items:center;
+  flex-wrap:nowrap;
+  padding:8px 20px;background:#fff;border-bottom:1px solid #eeecea;
+  cursor:pointer;font-size:12px;min-width:0;
 }
 .stock-row-adv:hover{background:#f8f8f4}
-.adv-ticker{font-size:13px;font-weight:800;font-family:'Courier New',monospace;color:#111;display:flex;flex-direction:column;gap:2px}
+.adv-ticker{font-size:13px;font-weight:800;font-family:'Courier New',monospace;color:#111;display:flex;flex-direction:column;gap:2px;width:70px;flex-shrink:0;flex-grow:0;overflow:hidden}
 .adv-ticker .star{font-size:11px;color:#ddd;cursor:pointer}
 .adv-ticker .star.on{color:#e6a817}
-.adv-name{font-size:11px;color:#666;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;display:flex;flex-direction:column;gap:2px}
+.adv-name{font-size:11px;color:#666;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;display:flex;flex-direction:column;gap:2px;width:160px;flex-shrink:0;flex-grow:0;overflow:hidden}
 .adv-name .co{font-size:12px;color:#333;font-weight:500}
 .adv-name .sector{font-size:10px;color:#aaa}
-.adv-rs{text-align:right;font-weight:700}
+.adv-rs{text-align:right;font-weight:700;width:52px;flex-shrink:0;flex-grow:0;text-align:right}
 .adv-rs.r90{color:#1a5c1a}.adv-rs.r80{color:#185FA5}.adv-rs.r70{color:#854F0B}.adv-rs.rlo{color:#c0392b}
-.adv-gap{text-align:right;font-size:11px}
-.adv-stage{text-align:center}
+.adv-gap{text-align:right;font-size:11px;width:40px;flex-shrink:0;flex-grow:0;text-align:right}
+.adv-stage{text-align:center;width:70px;flex-shrink:0;flex-grow:0}
 .stage-badge{font-size:9px;font-weight:700;padding:2px 5px;border-radius:4px;white-space:nowrap}
 .sb-s2{background:#D1F2C4;color:#1F5A09}
 .sb-s2e{background:#fff8e6;color:#854F0B}
 .sb-s1{background:#f0f0ea;color:#888}
 .sb-4p{background:#1F5A09;color:#fff}
-.adv-rsl{text-align:right;font-size:11px;color:#185FA5;font-weight:600}
-.adv-ret{text-align:right;font-size:11px;font-weight:600}
+.adv-rsl{text-align:right;font-size:11px;color:#185FA5;font-weight:600;width:60px;flex-shrink:0;flex-grow:0;text-align:right}
+.adv-ret{text-align:right;font-size:11px;font-weight:600;width:55px;flex-shrink:0;flex-grow:0;text-align:right}
 .adv-ret.pos{color:#1a8a4a}.adv-ret.neg{color:#c0392b}.adv-ret.neu{color:#aaa}
-.adv-cap{text-align:right;font-size:10px;color:#aaa}
+.adv-cap{text-align:right;font-size:10px;color:#aaa;width:65px;flex-shrink:0;flex-grow:0;text-align:right;font-size:11px;color:#aaa}
 .pat-chips{display:flex;gap:2px;flex-wrap:wrap;margin-top:2px}
 .pat-chip{font-size:9px;padding:1px 4px;border-radius:3px;font-weight:600}
 
+
+/* ── 스크리너·ETF 왼쪽 고정 컬럼 ──────────────────── */
+.scr-tbl-wrap{position:relative}
+.scr-tbl thead th:first-child,
+.scr-tbl tbody td:first-child{
+  position:sticky;left:0;z-index:3;
+  background:#f8f8f4;
+}
+.scr-tbl tbody td:first-child{background:#fff}
+.scr-tbl tbody tr:hover td:first-child{background:#f5f5f0}
+.scr-tbl thead th:nth-child(2),
+.scr-tbl tbody td:nth-child(2){
+  position:sticky;left:22px;z-index:3;
+  background:#f8f8f4;
+  box-shadow:2px 0 4px rgba(0,0,0,.06);
+}
+.scr-tbl tbody td:nth-child(2){background:#fff}
+.scr-tbl tbody tr:hover td:nth-child(2){background:#f5f5f0}
 </style>
 </head>
 <body>
@@ -847,7 +864,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
   <div class="mp-section">
     <div class="mp-section-title" style="display:flex;align-items:center;justify-content:space-between">
       <span>● BASE PHASE 분포</span>
-      <span style="font-size:9px;color:#aaa;font-weight:400;cursor:pointer" onclick="alert('Phase 정의: Phase 4+=최상위 모멘텀, 4=폼팝백, 5=본격리더, 3=베이스성숙, 2=바닥매집, 6-7=주변희피, 0-1=반등외심')">ⓘ</span>
+      <span style="font-size:9px;color:#aaa;font-weight:400;cursor:pointer" onclick="alert('Phase 정의: Phase 4+=최상위 모멘텀, 4=돌파임박, 5=본격리더, 3=베이스성숙, 2=바닥매집, 6-7=주변희피, 0-1=반등외심')">ⓘ</span>
     </div>
     <div class="phase-dist" id="mp-phase-dist"></div>
   </div>
@@ -1052,14 +1069,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
     <div class="sc"><div class="sc-lbl">🏦 대형주($10B+)</div><div class="sc-val blue" id="us-s-large">—</div></div>
   </div>
 
-  <!-- US 서브탭 -->
-  <div class="sub-tabs">
-    <button class="sub-tab on" onclick="switchSubTab('us','momentum',this)">📈 RS 모멘텀</button>
-    <button class="sub-tab" onclick="switchSubTab('us','pattern',this)">🔍 패턴 감지</button>
-    <button class="sub-tab" onclick="switchSubTab('us','sector',this)">🏭 섹터 분석</button>
-    <button class="sub-tab" onclick="switchSubTab('us','screener',this)">⚙️ 스크리너</button>
-    <button class="sub-tab" onclick="switchSubTab('us','guide',this)" style="color:#185FA5;font-weight:700">📘 전략 가이드</button>
-  </div>
+
 
   <!-- US: RS 모멘텀 -->
   <div class="sub-content on" id="us-sub-momentum">
@@ -1108,7 +1118,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
         <span class="row-lbl">Phase</span>
         <button class="fbtn on" id="us-phase-all" onclick="setPhaseFilter('all',this)">전체</button>
         <button class="fbtn" id="us-phase-4plus" onclick="setPhaseFilter('4plus',this)" style="background:#D1F2C4;border-color:#1F5A09;color:#1F5A09">🎯+ 4+최상위★</button>
-        <button class="fbtn" id="us-phase-4" onclick="setPhaseFilter('4',this)" style="background:#eaf6ee;border-color:#1a8a4a;color:#1a8a4a">🎯 4폼팝백★</button>
+        <button class="fbtn" id="us-phase-4" onclick="setPhaseFilter('4',this)" style="background:#eaf6ee;border-color:#1a8a4a;color:#1a8a4a">🎯 4돌파임박★</button>
         <button class="fbtn" id="us-phase-5" onclick="setPhaseFilter('5',this)">5분커다</button>
         <button class="fbtn" id="us-phase-3" onclick="setPhaseFilter('3',this)">3베이스성숙</button>
         <button class="fbtn" id="us-phase-67" onclick="setPhaseFilter('67',this)">6·7분배</button>
@@ -3095,7 +3105,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
         <h2>📊 좌측 사이드바 보는 법</h2>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
           <div class="g-card" style="margin:0"><div style="font-size:12px;font-weight:700;margin-bottom:3px">QQQ / VOO Stage2 ✓</div><div style="font-size:11px;color:#666">나스닥100·S&P500 ETF 자체가 Stage2(상승추세)인지 확인. 둘 다 Stage2면 강세 환경</div></div>
-          <div class="g-card" style="margin:0"><div style="font-size:12px;font-weight:700;margin-bottom:3px">Phase 분포</div><div style="font-size:11px;color:#666">4+최상위·4폼팝백 숫자가 많을수록 진입 후보가 풍부한 상황</div></div>
+          <div class="g-card" style="margin:0"><div style="font-size:12px;font-weight:700;margin-bottom:3px">Phase 분포</div><div style="font-size:11px;color:#666">4+최상위·4돌파임박 숫자가 많을수록 진입 후보가 풍부한 상황</div></div>
           <div class="g-card" style="margin:0"><div style="font-size:12px;font-weight:700;margin-bottom:3px">핵심 신호 카운터</div><div style="font-size:11px;color:#666">⚡⚡ 가속추세+↗RS가 많을수록 강한 모멘텀 환경</div></div>
           <div class="g-card" style="margin:0"><div style="font-size:12px;font-weight:700;margin-bottom:3px">투자 비중 표시</div><div style="font-size:11px;color:#666">현재 Regime에서 권장하는 포트폴리오 주식 비중</div></div>
         </div>
@@ -3637,23 +3647,23 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
       <thead>
         <tr>
           <th style="width:22px"></th><!-- 별 -->
-          <th onclick="setScrSort('ticker',this)" style="min-width:130px">Symbol</th>
-          <th onclick="setScrSort('price',this)"  style="min-width:60px">Price</th>
-          <th onclick="setScrSort('comp',this)"   style="min-width:36px">Comp</th>
-          <th onclick="setScrSort('eps',this)"    style="min-width:36px">EPS</th>
-          <th onclick="setScrSort('rs',this)"     class="sorted" style="min-width:90px">IBD RS</th>
-          <th onclick="setScrSort('rs_now',this)" style="min-width:90px">RS now</th>
-          <th onclick="setScrSort('rs_line_score',this)" style="min-width:80px">RS Line<br>점수</th>
-          <th style="min-width:70px">Stage</th>
-          <th style="min-width:90px">Phase</th>
-          <th style="min-width:60px">RS신호</th>
-          <th style="min-width:60px">IBD 모멘텀</th>
-          <th style="min-width:160px">패턴 셋업</th>
-          <th onclick="setScrSort('h52_pct',this)" style="min-width:55px">피벗%</th>
-          <th style="min-width:100px">Ind Grp</th>
-          <th style="min-width:36px">SMR</th>
-          <th style="min-width:50px">Acc/Dis</th>
-          <th onclick="setScrSort('score',this)"  style="min-width:44px;text-align:right">점수</th>
+          <th onclick="setScrSort('ticker',this)" style="width:130px">Symbol</th>
+          <th onclick="setScrSort('price',this)"  style="width:60px">Price</th>
+          <th onclick="setScrSort('comp',this)"   style="width:36px">Comp</th>
+          <th onclick="setScrSort('eps',this)"    style="width:36px">EPS</th>
+          <th onclick="setScrSort('rs',this)"     class="sorted" style="width:90px">IBD RS</th>
+          <th onclick="setScrSort('rs_now',this)" style="width:90px">RS now</th>
+          <th onclick="setScrSort('rs_line_score',this)" style="width:80px">RS Line<br>점수</th>
+          <th style="width:70px">Stage</th>
+          <th style="width:90px">Phase</th>
+          <th style="width:60px">RS신호</th>
+          <th style="width:60px">IBD 모멘텀</th>
+          <th style="width:160px">패턴 셋업</th>
+          <th onclick="setScrSort('h52_pct',this)" style="width:55px">피벗%</th>
+          <th style="width:100px">Ind Grp</th>
+          <th style="width:36px">SMR</th>
+          <th style="width:50px">Acc/Dis</th>
+          <th onclick="setScrSort('score',this)"  style="width:44px;text-align:right">점수</th>
         </tr>
       </thead>
       <tbody id="scr-tbody">
@@ -3910,7 +3920,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
           <span style="color:#1a8a4a">공격 매수</span>
         </div>
         <div style="display:flex;justify-content:space-between;padding:4px 8px;background:#D1F2C4;border-radius:4px">
-          <span><strong style="color:#1F5A09">Phase 4★★</strong> 폼팝백</span>
+          <span><strong style="color:#1F5A09">Phase 4★★</strong> 돌파임박</span>
           <span style="color:#2d7a2d">적극 매수</span>
         </div>
         <div style="display:flex;justify-content:space-between;padding:4px 8px;background:#e8f0fe;border-radius:4px">
@@ -4256,19 +4266,34 @@ function switchTopTab(tab, el) {
   const panel = document.getElementById('top-panel-' + tab);
   if (panel) {
     panel.classList.add('on');
+    // RS 모멘텀 탭: 서브컨텐츠 모두 숨기기
+    if (tab === 'rsmomentum') {
+      ['us-sub-pattern','us-sub-sector','us-sub-screener','us-sub-guide'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.remove('on');
+      });
+    }
     // 스크롤 위치 초기화 - 무조건 + 지연 두 번
     const resetScrolls = () => {
+      // 패널 자체 스크롤 리셋
+      panel.scrollLeft = 0;
+      panel.scrollTop = 0;
+      // main-content 리셋
+      const mc = document.getElementById('main-content');
+      if (mc) mc.scrollLeft = 0;
+      // 개별 스크롤 컨테이너 리셋
       ['scr-tbl-wrap','etf-tbl-wrap'].forEach(id => {
         const el = document.getElementById(id);
         if (el) { el.scrollLeft = 0; el.scrollTop = 0; }
       });
-      panel.querySelectorAll('.scr-tbl-wrap,.etf-tbl-wrap,.sec-tbl-wrap').forEach(el => {
+      panel.querySelectorAll('.scr-tbl-wrap,.etf-tbl-wrap,.sec-tbl-wrap,.pat-top-grid,.guide-wrap,.bt-wrap').forEach(el => {
         el.scrollLeft = 0;
       });
     };
     resetScrolls();
     requestAnimationFrame(() => { resetScrolls(); });
     setTimeout(() => { resetScrolls(); }, 50);
+    setTimeout(() => { resetScrolls(); }, 200);
   }
 }
 
@@ -4724,7 +4749,7 @@ function updateMarketPulse(raw, krRaw) {
     card.className = 'regime-card ' + regime.cls;
     const regimeDot = document.getElementById('regime-dot');
     if (regimeDot) regimeDot.style.background = regime.dot;
-    setText('regime-label', regime.label.replace(/^[🟢🟡🟠🔴]\s*/,''));
+    setText('regime-label', regime.label.replace(/^[🟢🟡🟠🔴◆♦⬥]\s*/,'').replace(/◆/g,''));
     setText('regime-invest', regime.invest);
     setText('regime-sub', regime.sub);
   }
@@ -4732,7 +4757,7 @@ function updateMarketPulse(raw, krRaw) {
   // ── 탭 내 큰 카드
   const bigDot = document.getElementById('mp-big-dot');
   if (bigDot) bigDot.style.background = regime.dot;
-  setText('mp-big-label', regime.label.replace(/^[🟢🟡🟠🔴]\s*/,''));
+  setText('mp-big-label', regime.label.replace(/^[🟢🟡🟠🔴◆♦⬥]\s*/,'').replace(/◆/g,''));
   setText('mp-big-desc', regime.action);
   setText('mp-big-invest', regime.invest);
 
@@ -4849,13 +4874,24 @@ function updateMarketPulse(raw, krRaw) {
     else { banner.className = 'regime-banner'; banner.textContent = ''; }
   }
 
-  const qqq = data.find(s => s.ticker === 'QQQ') || data.find(s => s.ticker === 'SPY');
-  const voo = data.find(s => s.ticker === 'VOO') || data.find(s => s.ticker === 'SPY');
+  // QQQ/VOO: 데이터에 없으면 평균RS 기준으로 시장 상태 대체 표시
+  const qqq = data.find(s => s.ticker === 'QQQ');
+  const voo = data.find(s => s.ticker === 'VOO');
+  const spy = data.find(s => s.ticker === 'SPY');
 
-  const fmtQV = (stock, stageId, rsId) => {
+  const fmtQV = (stock, stageId, rsId, fallbackLabel) => {
     if (!stock) {
-      setText(stageId, '—');
-      setText(rsId, 'RS —');
+      // QQQ/VOO 없으면 시장 평균으로 대체
+      const avgRS = Math.round(data.reduce((s,d)=>(s+(d.rs||0)),0)/data.length);
+      const stateEl = document.getElementById(stageId);
+      if (stateEl) {
+        const label = avgRS >= 60 ? '시장 강세' : avgRS >= 45 ? '시장 중립' : '시장 약세';
+        stateEl.textContent = label;
+        stateEl.style.color = avgRS >= 60 ? '#1a8a4a' : avgRS >= 45 ? '#854F0B' : '#c0392b';
+        stateEl.style.fontSize = '10px';
+      }
+      const rsInfoEl = document.getElementById(rsId);
+      if (rsInfoEl) { rsInfoEl.textContent = `RS평균 ${avgRS}`; rsInfoEl.style.color = '#aaa'; }
       return;
     }
     const stageLabel = stock.is_stage2 ? 'Stage 2 ↑' : ((stock.pass_dots||[]).filter(Boolean).length >= 4 ? 'S2 진입중' : 'Stage 1');
@@ -4864,25 +4900,24 @@ function updateMarketPulse(raw, krRaw) {
     if (rsEl) { rsEl.textContent = stageLabel; rsEl.style.color = stageColor; }
     const rsVal = stock.rs || 0;
     const w1Val = stock.w1 != null ? `${stock.w1>0?'+':''}${stock.w1}%` : '';
-    const rsInfo = `RS ${rsVal}${w1Val ? ' · '+w1Val : ''}`;
-    setText(rsId, rsInfo);
+    setText(rsId, `RS ${rsVal}${w1Val ? ' · '+w1Val : ''}`);
     const rsInfoEl = document.getElementById(rsId);
     if (rsInfoEl) rsInfoEl.style.color = stock.w1 > 0 ? '#1a8a4a' : stock.w1 < 0 ? '#c0392b' : '#aaa';
   };
-  fmtQV(qqq, 'qqq-stage', 'qqq-rs');
-  fmtQV(voo, 'voo-stage', 'voo-rs');
+  fmtQV(qqq || spy, 'qqq-stage', 'qqq-rs', 'QQQ');
+  fmtQV(voo || spy, 'voo-stage', 'voo-rs', 'VOO');
 
   // Phase 분포
   const dist = {'4plus':0,'4':0,'5':0,'3':0,'2':0,'67':0,'01':0};
   data.forEach(s => { const p = calcPhase(s); if (dist[p] != null) dist[p]++; });
   const phases = [
-    {key:'4plus',label:'4+★ 최상위',  barColor:'#1a8a4a', cls:'ph-4plus'},
-    {key:'4',    label:'4★ 폼팝백',   barColor:'#2d7a2d', cls:'ph-4'},
-    {key:'5',    label:'5 본격리더',   barColor:'#1a56db', cls:'ph-5'},
-    {key:'3',    label:'3 베이스성숙', barColor:'#7c3aed', cls:'ph-3'},
-    {key:'2',    label:'2 바닥매집',   barColor:'#aaa',    cls:'ph-2'},
-    {key:'67',   label:'6·7 주변회피', barColor:'#e6a817', cls:'ph-67'},
-    {key:'01',   label:'0·1 반등외심', barColor:'#ccc',    cls:'ph-01'},
+    {key:'4plus',label:'4+★최상위',   barColor:'#1a8a4a', cls:'ph-4plus'},
+    {key:'4',    label:'4★돌파임박',    barColor:'#2d7a2d', cls:'ph-4'},
+    {key:'5',    label:'5본격리더',    barColor:'#1a56db', cls:'ph-5'},
+    {key:'3',    label:'3베이스성숙',  barColor:'#7c3aed', cls:'ph-3'},
+    {key:'2',    label:'2바닥매집',    barColor:'#aaa',    cls:'ph-2'},
+    {key:'67',   label:'6·7주변회피',  barColor:'#e6a817', cls:'ph-67'},
+    {key:'01',   label:'0·1반등외심',  barColor:'#ccc',    cls:'ph-01'},
   ];
   const maxCount = Math.max(...Object.values(dist), 1);
   const el = document.getElementById('mp-phase-dist');
@@ -5856,16 +5891,12 @@ function exportEtf() {
 function toggleSidebar() {
   const sb = document.getElementById('mp-sidebar');
   const main = document.getElementById('main-content');
-  const toggle = document.getElementById('mp-toggle');
-  if (!sb) return;
   const isMobile = window.innerWidth <= 768;
   if (isMobile) {
     sb.classList.toggle('mobile-open');
-    if (toggle) toggle.textContent = sb.classList.contains('mobile-open') ? '◀' : '▶';
   } else {
     sb.classList.toggle('collapsed');
     if (main) main.classList.toggle('expanded');
-    if (toggle) toggle.textContent = sb.classList.contains('collapsed') ? '▶' : '◀';
   }
 }
 
@@ -6066,10 +6097,18 @@ ingestUS = function(raw) {
   renderScreener();
   renderPatternTop();
   renderBacktest();
+  // 데이터 로드 후 모든 패널 스크롤 리셋
+  setTimeout(() => {
+    document.querySelectorAll('.top-panel.on').forEach(p => { p.scrollLeft = 0; });
+    const w1 = document.getElementById('scr-tbl-wrap');
+    const w2 = document.getElementById('etf-tbl-wrap');
+    if (w1) w1.scrollLeft = 0;
+    if (w2) w2.scrollLeft = 0;
+  }, 100);
 };
 
 autoLoad();
-setTimeout(() => { if (typeof showPatDoc === 'function') showPatDoc('cup'); }, 800);
+// showPatDoc init removed
 
 </script>
 </body>
