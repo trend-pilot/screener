@@ -154,7 +154,123 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 .sec-filter-bar{display:flex;align-items:center;gap:6px;padding:10px 20px;background:#fff;border-bottom:1px solid #e0e0d8;flex-wrap:wrap}
 
 
-/* ══ 섹터 분석 탭 ══ */
+/* ══ 섹터 ETF 테이블 ══ */
+.etf-tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.etf-tbl-head{
+  display:grid;
+  grid-template-columns: 60px 160px 80px 160px 36px 36px 36px 60px 60px 60px 60px 60px 56px 56px 56px 56px 28px 28px 28px 28px 50px 70px;
+  padding:7px 20px;background:#f8f8f4;border-bottom:2px solid #e0e0d8;
+  font-size:10px;color:#999;font-weight:600;white-space:nowrap;min-width:1100px;
+  position:sticky;top:0;z-index:5;
+}
+.etf-row{
+  display:grid;
+  grid-template-columns: 60px 160px 80px 160px 36px 36px 36px 60px 60px 60px 60px 60px 56px 56px 56px 56px 28px 28px 28px 28px 50px 70px;
+  padding:8px 20px;border-bottom:1px solid #f0f0ea;cursor:pointer;
+  align-items:center;background:#fff;min-width:1100px;font-size:12px;
+  transition:background .1s;
+}
+.etf-row:hover{background:#f8f8f4}
+.etf-col-ticker{font-family:'Courier New',monospace;font-weight:800;font-size:13px;color:#1a56db}
+.etf-col-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.etf-col-name .co{display:block;font-size:12px;font-weight:600;color:#1a1a1a}
+.etf-col-name .cat{display:block;font-size:10px;color:#aaa;margin-top:1px}
+.etf-col-rs{text-align:right;font-weight:700}
+.etf-col-rsl{text-align:right;font-size:11px;color:#666}
+.etf-col-ret{text-align:right;font-size:11px}
+.etf-col-sm{text-align:center;font-size:11px}
+.etf-col-stage .stage-pill{font-size:9px;padding:2px 5px;border-radius:3px;font-weight:700;white-space:nowrap}
+.sp-s2{background:#eaf6ee;color:#1a5c1a}
+.sp-s2e{background:#fff8e6;color:#854F0B}
+.sp-s1{background:#f0f0ea;color:#888}
+.etf-pat-chip{font-size:9px;padding:1px 5px;border-radius:3px;font-weight:600;margin-right:2px;white-space:nowrap}
+.etf-phase-dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:4px;flex-shrink:0}
+.etf-phase-cell{display:flex;align-items:center;font-size:10px;font-weight:700;white-space:nowrap}
+
+/* ══ 모바일 반응형 (전체) ══════════════════════════════ */
+@media(max-width:768px){
+  /* 사이드바 — 모바일에선 완전히 숨김, 토글로만 열기 */
+  .mp-sidebar{transform:translateX(-200px);width:200px}
+  .mp-sidebar.mobile-open{transform:translateX(0)}
+  .mp-toggle{right:-30px;width:30px;height:44px}
+  .main-with-sidebar{margin-left:0 !important}
+
+  /* 헤더 */
+  .hdr{padding:8px 12px;flex-wrap:wrap;gap:6px}
+  .hdr-title{font-size:14px}
+  .hdr-btns{gap:4px;flex-wrap:wrap}
+  .hbtn{font-size:11px;padding:4px 8px}
+
+  /* 탭바 — 가로 스크롤 */
+  .top-tabs{padding:0 8px;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .top-tab{font-size:12px;padding:8px 10px;white-space:nowrap;flex-shrink:0}
+
+  /* 통계 바 */
+  .stats{grid-template-columns:repeat(3,1fr) !important;gap:5px;padding:8px 10px}
+  .sc{padding:7px 8px}
+  .sc-lbl{font-size:10px}
+  .sc-val{font-size:16px}
+
+  /* 컨트롤 영역 */
+  .controls{padding:8px 10px}
+  .ctrl-row{gap:4px}
+  .sbtn,.fbtn{font-size:11px;padding:3px 8px}
+
+  /* 종목 행 */
+  .stock-row{padding:8px 12px}
+  .stock-row-adv{padding:8px 12px;flex-wrap:wrap}
+
+  /* 고급 종목 행 — 모바일 2열 */
+  .adv-ticker{font-size:12px}
+  .adv-name .co{font-size:11px}
+  .adv-rs{font-size:12px}
+  .adv-ret{font-size:11px}
+  .adv-cap{display:none}
+
+  /* Market Pulse 탭 */
+  .sec-top1-wrap{grid-template-columns:1fr !important}
+  .sec-card-grid{grid-template-columns:1fr !important}
+
+  /* 상세 패널 */
+  .detail-panel{width:100vw}
+
+  /* 섹터 분석 툴바 */
+  .sec-sort-toolbar{padding:8px 12px;gap:4px}
+  .sec-sort-btn{font-size:11px;padding:3px 8px}
+
+  /* 섹터 ETF 테이블 — 가로 스크롤 */
+  .etf-tbl-wrap{overflow-x:auto}
+
+  /* Market Pulse 큰 카드 */
+  #mp-regime-big{padding:14px 16px}
+  #mp-big-label{font-size:20px !important}
+  #mp-big-invest{font-size:26px !important}
+
+  /* 결과바 */
+  .result-bar{padding:6px 12px}
+
+  /* 가이드 */
+  .guide-sub-tabs{padding:8px 10px}
+  .guide-sub-btn{font-size:11px;padding:5px 10px}
+
+  /* 서브탭 */
+  .sub-tabs{padding:0 10px}
+  .sub-tab{font-size:12px;padding:7px 10px}
+
+  /* 포지션 계산기 */
+  #mp-regime-big > div:first-child{flex-direction:column !important;gap:8px}
+  #mp-big-invest{font-size:28px !important}
+
+  /* ETF 상단 Phase 행 */
+  .etf-tbl-head,.etf-row{min-width:900px}
+}
+
+@media(max-width:480px){
+  .stats{grid-template-columns:repeat(2,1fr) !important}
+  .top-tab{font-size:11px;padding:7px 8px}
+  .hdr-title{font-size:13px}
+  .hdr-btns .hbtn:last-child{display:none}
+}
 .sec-sort-toolbar{display:flex;align-items:center;gap:6px;padding:10px 20px;background:#fff;border-bottom:2px solid #e0e0d8;flex-wrap:wrap}
 .sec-sort-lbl{font-size:12px;font-weight:700;color:#444}
 .sec-sort-btn{font-size:12px;padding:4px 12px;border:1px solid #d5d5cc;border-radius:6px;cursor:pointer;background:#fff;color:#444;white-space:nowrap;display:flex;align-items:center;gap:3px}
@@ -3322,11 +3438,87 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 
 <!-- ══ 섹터 ETF 탭 패널 ══ -->
 <div class="top-panel" id="top-panel-etf">
-  <div style="padding:24px;text-align:center;color:#aaa;font-size:13px">
-    <div style="font-size:28px;margin-bottom:10px">💹</div>
-    <div style="font-weight:700;color:#444;font-size:14px;margin-bottom:6px">섹터 ETF</div>
-    <div>준비 중입니다.</div>
+
+  <!-- 툴바 -->
+  <div class="controls" style="background:#fff;padding:10px 20px;border-bottom:1px solid #e0e0d8">
+    <div class="ctrl-row">
+      <span class="row-lbl">정렬</span>
+      <button class="sbtn on" onclick="setEtfSort('rs_line_score',this)">RS Line↓</button>
+      <button class="sbtn" onclick="setEtfSort('rs',this)">IBD RS↓</button>
+      <button class="sbtn" onclick="setEtfSort('rs_now',this)">RS now↓</button>
+      <button class="sbtn" onclick="setEtfSort('gap',this)">갭(now-IBD)↓</button>
+      <button class="sbtn" onclick="setEtfSort('w1',this)">최근1주↓</button>
+      <button class="sbtn" onclick="setEtfSort('w3',this)">1~3주↓</button>
+    </div>
+    <div class="ctrl-row">
+      <span class="row-lbl">필터</span>
+      <button class="fbtn" id="etf-f-acc"  onclick="toggleEtfF('acc',this)">⚡ 가속중</button>
+      <button class="fbtn" id="etf-f-h52"  onclick="toggleEtfF('h52',this)">🚀 주가신고</button>
+      <button class="fbtn" id="etf-f-rsl"  onclick="toggleEtfF('rsl',this)">↗RS Line신고</button>
+      <button class="fbtn" id="etf-f-s2"   onclick="toggleEtfF('s2',this)">Stage2</button>
+      <button class="fbtn" id="etf-f-rs70" onclick="toggleEtfF('rs70',this)">RS 70+</button>
+    </div>
+    <div class="ctrl-row">
+      <span class="row-lbl">Phase</span>
+      <button class="sbtn on" id="etf-phase-all"  onclick="setEtfPhase('all',this)">전체</button>
+      <button class="sbtn"    id="etf-phase-4plus" onclick="setEtfPhase('4plus',this)">🎯+ Phase 4+</button>
+      <button class="sbtn"    id="etf-phase-4"     onclick="setEtfPhase('4',this)">Phase 4</button>
+      <button class="sbtn"    id="etf-phase-5"     onclick="setEtfPhase('5',this)">Phase 5</button>
+      <button class="sbtn"    id="etf-phase-s2"    onclick="setEtfPhase('s2',this)">Stage 2↑</button>
+      <button class="sbtn"    id="etf-phase-67"    onclick="setEtfPhase('67',this)">Phase 6~7</button>
+    </div>
   </div>
+
+  <!-- Phase 버튼 행 2 -->
+  <div style="background:#fff;padding:6px 20px 8px;border-bottom:1px solid #e0e0d8;display:flex;gap:5px;flex-wrap:wrap">
+    <button class="sbtn" style="border-color:#1a8a4a;color:#1a8a4a" onclick="setEtfPhase('2',etfPhaseBtn('2'))">Phase 2</button>
+    <button class="sbtn" style="border-color:#7c3aed;color:#7c3aed" onclick="setEtfPhase('3',etfPhaseBtn('3'))">Phase 3</button>
+    <button class="sbtn" style="border-color:#1a56db;color:#1a56db" onclick="setEtfPhase('4s',etfPhaseBtn('4s'))">Phase 4</button>
+    <button class="sbtn" style="border-color:#0F6E56;color:#0F6E56" onclick="setEtfPhase('5s',etfPhaseBtn('5s'))">Phase 5</button>
+    <button class="sbtn" style="border-color:#e6a817;color:#e6a817" onclick="setEtfPhase('67s',etfPhaseBtn('67s'))">Phase 6~7</button>
+    <button class="sbtn" style="border-color:#c0392b;color:#c0392b" onclick="setEtfPhase('01',etfPhaseBtn('01'))">베 전환↑</button>
+    <button class="sbtn" style="border-color:#A32D2D;color:#A32D2D" onclick="setEtfPhase('01d',etfPhaseBtn('01d'))">베 전환↓</button>
+    <button class="sbtn" style="border-color:#1F5A09;color:#1F5A09" onclick="setEtfPhase('lbg',etfPhaseBtn('lbg'))">장기배경+</button>
+    <button class="sbtn" style="background:#1F5A09;color:#fff;border-color:#1F5A09" id="etf-phase4plus-btn" onclick="setEtfPhase('4plus2',etfPhaseBtn('4plus2'))">+ Phase 4+</button>
+    <button class="hbtn" onclick="exportEtf()" style="margin-left:auto;font-size:12px">📤 내보내기</button>
+  </div>
+
+  <!-- 결과 카운트 -->
+  <div class="result-bar">
+    <div class="res-count">Results: [ETF] <strong id="etf-res-count">—</strong> ★ <span id="etf-star-count">0</span></div>
+  </div>
+
+  <!-- 테이블 헤더 -->
+  <div class="etf-tbl-wrap">
+    <div class="etf-tbl-head">
+      <span class="etf-col-ticker">티커</span>
+      <span class="etf-col-name">종목명</span>
+      <span class="etf-col-cat">자산군</span>
+      <span class="etf-col-pat">패턴 셋업</span>
+      <span class="etf-col-rs">IBD<br>RS</span>
+      <span class="etf-col-rs">RS<br>now</span>
+      <span class="etf-col-rs">갭</span>
+      <span class="etf-col-stage">Stage</span>
+      <span class="etf-col-rsl">RS Line<br>현재</span>
+      <span class="etf-col-rsl">RS Line<br>1주전</span>
+      <span class="etf-col-rsl">RS Line<br>3주전</span>
+      <span class="etf-col-rsl">RS Line<br>6주전</span>
+      <span class="etf-col-ret">최근1주<br>변화율</span>
+      <span class="etf-col-ret">1~3주<br>변화율</span>
+      <span class="etf-col-ret">3~6주<br>변화율</span>
+      <span class="etf-col-ret">6~10주<br>변화율</span>
+      <span class="etf-col-sm">가속</span>
+      <span class="etf-col-sm">추세</span>
+      <span class="etf-col-sm">주가<br>신고</span>
+      <span class="etf-col-sm">RS<br>신고</span>
+      <span class="etf-col-rsl">RS Line<br>점수</span>
+      <span class="etf-col-phase">Phase</span>
+    </div>
+    <div id="etf-stock-list">
+      <div class="empty">📂 US JSON을 불러오면 ETF 목록이 표시됩니다.</div>
+    </div>
+  </div>
+
 </div>
 
 <!-- ══ 스크리너 탭 패널 ══ -->
@@ -3696,16 +3888,6 @@ function switchSubTab(mkt, tab, el) {
   const prefix = mkt === 'us' ? 'us' : mkt === 'kr2' ? 'kr2' : 'kr';
   const target = document.getElementById(prefix + '-sub-' + tab);
   if (target) target.classList.add('on');
-}
-
-function toggleSidebar() {
-  const sb = document.getElementById('mp-sidebar');
-  const main = document.getElementById('main-content');
-  const toggle = document.getElementById('mp-toggle');
-  if (!sb) return;
-  sb.classList.toggle('collapsed');
-  if (main) main.classList.toggle('expanded');
-  if (toggle) toggle.textContent = sb.classList.contains('collapsed') ? '▶' : '◀';
 }
 
 // ════════════════════════════════════════════════════════
@@ -4508,8 +4690,232 @@ function showPatDoc(key) {
 }
 
 // ════════════════════════════════════════════════════════
-// 섹터 분석 탭 전용
+// 섹터 ETF 탭 전용
 // ════════════════════════════════════════════════════════
+
+// 주요 ETF 티커 목록 (섹터 ETF 필터링용)
+const ETF_TICKERS = new Set([
+  'QQQ','SPY','VOO','IWM','DIA','VTI',
+  'XLK','XLF','XLE','XLV','XLI','XLB','XLU','XLRE','XLC','XLY','XLP',
+  'SMH','SOXX','HACK','CIBR',
+  'XBI','IBB','ARKG',
+  'GLD','SLV','GDX','GDXJ',
+  'USO','UCO','XOP','OIH',
+  'LIT','ICLN','TAN','QCLN','CNRG',
+  'ARKK','ARKG','ARKW','ARKF','ARKQ',
+  'MAGS','IBIT','BITO',
+  'EWJ','EWY','EWZ','EWG','EWU','EWC','EEM','VWO','ACWX',
+  'EWY','EWT','EWH','INDA',
+  'URA','URNM','COPX','REMX','PICK','LIT',
+  'BOTZ','ROBO','AIQ',
+  'XBI','SPYG','SPYV','VUG','VTV',
+  'HYG','TLT','IEF','SHY','TIP','LQD',
+  'VNQ','REM',
+  'FXI','KWEB','CQQQ',
+  'JETS','AWAY','PEJ',
+  'DRAM','MCHI','XNTK',
+  'SLV','PALL','PPLT',
+  'MOO','DBA','WOOD',
+]);
+
+let etfSortKey   = 'rs_line_score';
+let etfPhaseFilter = 'all';
+let etfFilters   = new Set();
+
+function etfPhaseBtn(key) {
+  return document.querySelector(`[onclick*="setEtfPhase('${key}'"]`);
+}
+
+function toggleEtfF(k, el) {
+  etfFilters.has(k) ? etfFilters.delete(k) : etfFilters.add(k);
+  el.classList.toggle('on');
+  renderEtfMomentum();
+}
+
+function setEtfSort(k, el) {
+  etfSortKey = k;
+  document.querySelectorAll('#top-panel-etf .sbtn').forEach(b => b.classList.remove('on'));
+  if (el) el.classList.add('on');
+  renderEtfMomentum();
+}
+
+function setEtfPhase(phase, el) {
+  etfPhaseFilter = phase;
+  document.querySelectorAll('[id^="etf-phase-"]').forEach(b => b.classList.remove('on'));
+  if (el) el.classList.add('on');
+  renderEtfMomentum();
+}
+
+function etfFiltered() {
+  // ETF 종목만 추출 (티커 목록 기준 OR ETF 플래그)
+  let data = US.data.filter(s =>
+    ETF_TICKERS.has(s.ticker) || s.is_etf || s.asset_type === 'etf'
+  );
+  // 필터 적용
+  if (etfFilters.has('acc')  && data.filter) data = data.filter(s => s.acc || s.acc2);
+  if (etfFilters.has('h52'))  data = data.filter(s => s.h52_new);
+  if (etfFilters.has('rsl'))  data = data.filter(s => s.rs_line_lead);
+  if (etfFilters.has('s2'))   data = data.filter(s => s.is_stage2);
+  if (etfFilters.has('rs70')) data = data.filter(s => (s.rs || 0) >= 70);
+  // Phase 필터
+  if (etfPhaseFilter !== 'all') {
+    data = data.filter(s => {
+      const p = calcPhase(s);
+      if (etfPhaseFilter === '4plus' || etfPhaseFilter === '4plus2') return p === '4plus';
+      if (etfPhaseFilter === '4' || etfPhaseFilter === '4s')          return p === '4';
+      if (etfPhaseFilter === '5' || etfPhaseFilter === '5s')          return p === '5';
+      if (etfPhaseFilter === '3')  return p === '3';
+      if (etfPhaseFilter === '2')  return p === '2';
+      if (etfPhaseFilter === '67' || etfPhaseFilter === '67s') return p === '67';
+      if (etfPhaseFilter === 's2') return s.is_stage2;
+      return true;
+    });
+  }
+  return data;
+}
+
+function etfSorted(d) {
+  const k = etfSortKey;
+  return [...d].sort((a, b) => {
+    if (k === 'rs')            return (b.rs || 0) - (a.rs || 0);
+    if (k === 'rs_now')        return (b.rs_now || 0) - (a.rs_now || 0);
+    if (k === 'rs_line_score') return (b.rs_line_score || 0) - (a.rs_line_score || 0);
+    if (k === 'w1')            return (b.w1 || 0) - (a.w1 || 0);
+    if (k === 'w3')            return (b.w3 || 0) - (a.w3 || 0);
+    if (k === 'gap')           return ((b.rs_now||0)-(b.rs||0)) - ((a.rs_now||0)-(a.rs||0));
+    return 0;
+  });
+}
+
+function etfRowHTML(s) {
+  const phase = calcPhase(s);
+  const rs = s.rs || 0, rsNow = s.rs_now || 0, gap = rsNow - rs;
+  const gapColor = gap > 0 ? '#1a8a4a' : gap < 0 ? '#c0392b' : '#aaa';
+
+  // Stage 뱃지
+  const dots = (s.pass_dots || []).filter(Boolean).length;
+  let stagePill = '';
+  if (s.is_stage2)  stagePill = '<span class="stage-pill sp-s2">S2</span>';
+  else if (dots>=4) stagePill = `<span class="stage-pill sp-s2e">S2초 ${dots}/7</span>`;
+  else              stagePill = `<span class="stage-pill sp-s1">${dots}/7</span>`;
+
+  // 패턴 칩
+  const pats = (s.patterns || []).slice(0, 2).map(pk => {
+    const pi = PAT_INFO[pk];
+    return pi ? `<span class="etf-pat-chip" style="background:${pi.bg};color:${pi.color}">${pi.icon} ${pk}</span>` : '';
+  }).join('');
+
+  // RS 컬러
+  const rsC = v => v >= 90 ? '#1a5c1a' : v >= 75 ? '#185FA5' : v >= 50 ? '#854F0B' : '#c0392b';
+
+  // RS Line 값들
+  const rsl  = (v) => v != null ? v.toFixed(3) : '—';
+  const rslC = (v, prev) => {
+    if (v == null || prev == null) return '#aaa';
+    return v > prev ? '#1a8a4a' : v < prev ? '#c0392b' : '#aaa';
+  };
+  const rl0 = s.rs_line_score != null ? s.rs_line_score.toFixed(3) : '—';
+  const rl1 = s.rs_line_1w    != null ? s.rs_line_1w.toFixed(3)    : '—';
+  const rl3 = s.rs_line_3w    != null ? s.rs_line_3w.toFixed(3)    : '—';
+  const rl6 = s.rs_line_6w    != null ? s.rs_line_6w.toFixed(3)    : '—';
+
+  // 수익률
+  const retHTML = v => v == null ? '<span style="color:#aaa">—</span>'
+    : `<span style="color:${v>0?'#1a8a4a':v<0?'#c0392b':'#aaa'};font-weight:600">${v>0?'+':''}${v}%</span>`;
+
+  // Phase 표시
+  const phaseMap = {
+    '4plus': {dot:'#1F5A09', label:'● 4+ 2d'},
+    '4':     {dot:'#2d7a2d', label:'● 4 2d'},
+    '5':     {dot:'#1a56db', label:'● 5 2d'},
+    '3':     {dot:'#7c3aed', label:'● 3 2d'},
+    '2':     {dot:'#aaa',    label:'○ 2'},
+    '67':    {dot:'#e6a817', label:'△ 6-7'},
+    '01':    {dot:'#ccc',    label:'✕ 0-1'},
+  };
+  const ph = phaseMap[phase] || {dot:'#ccc', label:'—'};
+
+  const _sd = safeStringify(s);
+  return `<div class="etf-row" onclick="openDetail('${s.ticker}',${_sd},'us')">
+    <span class="etf-col-ticker">${s.ticker}</span>
+    <span class="etf-col-name"><span class="co">${(s.name||'').slice(0,20)}</span><span class="cat">${s.sector||s.asset_type||''}</span></span>
+    <span style="font-size:10px;color:#888">${s.asset_type||s.category||''}</span>
+    <span>${pats}</span>
+    <span class="etf-col-rs" style="color:${rsC(rs)}">${rs||'—'}</span>
+    <span class="etf-col-rs" style="color:${rsC(rsNow)}">${rsNow||'—'}</span>
+    <span class="etf-col-rs" style="color:${gapColor}">${gap>0?'+':''}${gap}</span>
+    <span class="etf-col-stage">${stagePill}</span>
+    <span class="etf-col-rsl">${rl0}</span>
+    <span class="etf-col-rsl" style="color:${rslC(s.rs_line_1w,s.rs_line_score)}">${rl1}</span>
+    <span class="etf-col-rsl" style="color:${rslC(s.rs_line_3w,s.rs_line_1w)}">${rl3}</span>
+    <span class="etf-col-rsl" style="color:${rslC(s.rs_line_6w,s.rs_line_3w)}">${rl6}</span>
+    <span class="etf-col-ret">${retHTML(s.w1)}</span>
+    <span class="etf-col-ret">${retHTML(s.w3)}</span>
+    <span class="etf-col-ret">${retHTML(s.w6)}</span>
+    <span class="etf-col-ret">${retHTML(s.w10)}</span>
+    <span class="etf-col-sm">${s.acc2?'⚡⚡':s.acc?'⚡':'—'}</span>
+    <span class="etf-col-sm" style="color:#aaa">T</span>
+    <span class="etf-col-sm">${s.h52_new?'<span style="color:#185FA5;font-weight:700">H</span>':'—'}</span>
+    <span class="etf-col-sm">${s.rs_line_lead?'<span style="color:#185FA5;font-weight:700">H</span>':'—'}</span>
+    <span class="etf-col-rsl" style="color:#185FA5;font-weight:700">${s.rs_line_score!=null?Math.round(s.rs_line_score):'—'}</span>
+    <span class="etf-phase-cell"><span class="etf-phase-dot" style="background:${ph.dot}"></span>${ph.label}</span>
+  </div>`;
+}
+
+function renderEtfMomentum() {
+  const list = etfSorted(etfFiltered());
+  setText('etf-res-count', list.length);
+  const el = document.getElementById('etf-stock-list');
+  if (!el) return;
+  if (!list.length) {
+    el.innerHTML = '<div class="empty" style="min-height:200px">조건에 맞는 ETF가 없습니다.<br><span style="font-size:12px;color:#bbb">US JSON에 ETF 종목이 포함되어 있어야 합니다.</span></div>';
+    return;
+  }
+  el.innerHTML = list.map(etfRowHTML).join('');
+}
+
+function exportEtf() {
+  const list = etfSorted(etfFiltered());
+  const rows = [['Ticker','Name','RS','RS_Now','Stage2','W1','W3','W6','Sector']];
+  list.forEach(s => rows.push([s.ticker,s.name,s.rs,s.rs_now,s.is_stage2?1:0,s.w1,s.w3,s.w6,s.sector]));
+  const csv = rows.map(r=>r.map(v=>'"'+(v??'')+'"').join(',')).join('\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));
+  a.download = 'etf_export.csv'; a.click();
+}
+
+// ════════════════════════════════════════════════════════
+// 모바일 사이드바 토글 개선
+// ════════════════════════════════════════════════════════
+
+function toggleSidebar() {
+  const sb = document.getElementById('mp-sidebar');
+  const main = document.getElementById('main-content');
+  const toggle = document.getElementById('mp-toggle');
+  if (!sb) return;
+  const isMobile = window.innerWidth <= 768;
+  if (isMobile) {
+    sb.classList.toggle('mobile-open');
+    if (toggle) toggle.textContent = sb.classList.contains('mobile-open') ? '◀' : '▶';
+  } else {
+    sb.classList.toggle('collapsed');
+    if (main) main.classList.toggle('expanded');
+    if (toggle) toggle.textContent = sb.classList.contains('collapsed') ? '▶' : '◀';
+  }
+}
+
+// 모바일에서 사이드바 외부 클릭 시 닫기
+document.addEventListener('click', function(e) {
+  if (window.innerWidth > 768) return;
+  const sb = document.getElementById('mp-sidebar');
+  const toggle = document.getElementById('mp-toggle');
+  if (!sb || !sb.classList.contains('mobile-open')) return;
+  if (!sb.contains(e.target) && e.target !== toggle) {
+    sb.classList.remove('mobile-open');
+    const t = document.getElementById('mp-toggle');
+    if (t) t.textContent = '▶';
+  }
+});
 
 let sectorSortKey = 'rsline';
 
@@ -4732,11 +5138,12 @@ function renderSectorTab() {
   el.innerHTML = html || '<div class="empty">섹터 데이터가 없습니다.</div>';
 }
 
-// ingestUS 이후 섹터 탭도 갱신
+// ingestUS 이후 섹터 탭, ETF 탭도 갱신
 const _origIngestUS = ingestUS;
 ingestUS = function(raw) {
   _origIngestUS(raw);
   renderSectorTab();
+  renderEtfMomentum();
 };
 
 autoLoad();
