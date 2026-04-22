@@ -4,23 +4,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>추세추종 스크리너 · US & KR</title>
-<style>html{overflow-x:hidden}
-/* 메인 콘텐츠 마진 — 사이드바(200px fixed)와 충돌 방지 */
+<style>html{overflow-x:hidden;height:100%}
+/* ══ Grid 기반 레이아웃 (좌측 잘림 방지) ══
+   body = 2열 grid. 사이드바(200px)와 메인(1fr)이 진짜 형제 컬럼.
+   minmax(0,1fr)의 0은 grid 자식의 암묵적 min-content 기본값을 무효화해
+   메인 콘텐츠가 사이드바 영역으로 침범할 수 없게 만듦. */
+body{
+  display:grid;
+  grid-template-columns:200px minmax(0,1fr);
+  grid-template-rows:auto 1fr;
+  min-height:100vh;
+}
+.regime-banner{grid-column:1 / -1;grid-row:1}
+/* 사이드바: grid 1열, sticky로 스크롤 따라감 */
+.mp-sidebar{
+  grid-column:1;grid-row:1 / -1;
+  position:sticky;top:0;align-self:start;
+  height:100vh;width:200px;
+  /* 기존 position:fixed 효과는 sticky+height:100vh로 동일하게 재현 */
+}
+/* 메인: grid 2열. overflow-x:clip 은 hidden 과 시각적으로 동일하지만
+   scroll container를 만들지 않아 내부 sticky(top-sticky-wrap)가 window 기준으로 정상 작동. */
 .main-with-sidebar{
-  margin-left:200px;
-  width:calc(100% - 200px);
-  max-width:calc(100vw - 200px);
-  min-width:0;
-  overflow-x:hidden;
+  grid-column:2;grid-row:2;
+  min-width:0;max-width:100%;
+  overflow-x:clip;
   position:relative;
 }
-.main-with-sidebar.expanded{
-  margin-left:32px;
-  width:calc(100% - 32px);
-  max-width:calc(100vw - 32px);
-}
+.main-with-sidebar.expanded{/* collapsed 사이드바와 호환 유지 */}
 /* 탭 패널: 부모 너비 넘지 않게 */
-.top-panel{display:none;max-width:100%;overflow-x:hidden}
+.top-panel{display:none;max-width:100%;overflow-x:clip}
 .top-panel.on{display:block}
 
 
@@ -31,7 +44,9 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 *{box-sizing:border-box}
 
 /* ── 헤더 ── */
-.hdr{background:#fff;border-bottom:1px solid #e0e0d8;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:200}
+/* ══ 헤더 + 탭바 sticky 통합 ══ */
+.top-sticky-wrap{position:sticky;top:0;z-index:200;background:#fff}
+.hdr{background:#fff;border-bottom:1px solid #e0e0d8;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .hdr-left{display:flex;align-items:baseline;gap:10px}
 .hdr-title{font-size:16px;font-weight:700}
 .hdr-meta{font-size:12px;color:#999}
@@ -551,7 +566,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 
 /* ══ Market Pulse / Regime ══════════════════════════════ */
 .mp-sidebar{
-  position:fixed;left:0;top:0;bottom:0;width:200px;
+  /* Layout은 상단 Grid 블록에서 처리. 여기는 내부 스타일만. */
   background:#fff;border-right:1px solid #e0e0d8;
   z-index:150;overflow-y:auto;
   transition:transform .25s;
@@ -632,14 +647,19 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 
 /* ── 모바일 완전 수정 ── */
 @media(max-width:768px){
-  /* 사이드바: 완전 숨김, 토글로만 열기 */
-  .mp-sidebar{transform:translateX(-200px)}
+  /* 모바일: grid 1열로 변경, 사이드바는 fixed overlay */
+  body{grid-template-columns:1fr}
+  .mp-sidebar{
+    grid-column:1;grid-row:1 / -1;
+    position:fixed;left:0;top:0;width:200px;height:100vh;
+    transform:translateX(-200px);
+    transition:transform .25s;
+  }
   .mp-sidebar.mobile-open{transform:translateX(0) !important}
+  .main-with-sidebar{grid-column:1;grid-row:2}
   /* 토글 버튼: 모바일에서 더 작게 + 닫혀있을때 최소화 */
   .mp-toggle{right:-18px;width:18px;height:32px;font-size:8px;opacity:0.7}
   .mp-sidebar.mobile-open .mp-toggle{right:-22px;width:22px;height:36px;opacity:1}
-  /* 메인 영역: 사이드바 없으므로 0부터 */
-  
 
   /* 헤더 */
   .hdr{padding:8px 12px;flex-wrap:wrap;gap:6px}
@@ -1074,6 +1094,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 <div class="regime-banner" id="regime-banner"></div>
 
 <div class="main-with-sidebar" id="main-content">
+<div class="top-sticky-wrap">
 <div class="hdr">
   <div class="hdr-left">
     <div class="hdr-title">추세추종 스크리너 <span style="font-size:11px;color:#aaa;font-weight:400">US & KR</span></div>
@@ -1099,6 +1120,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
   <button class="top-tab" id="ttab-backtest"    onclick="switchTopTab('backtest',this)">📋 백테스트</button>
   <button class="top-tab" id="ttab-guide"       onclick="switchTopTab('guide',this)">📘 전략 가이드</button>
 </div>
+</div><!-- /top-sticky-wrap -->
 
 <!-- ══ TOP PANEL: Market Pulse ══ -->
 <div class="top-panel on" id="top-panel-marketpulse">
@@ -1129,8 +1151,8 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
     📅 <strong>휴장일 / 장 시작 전 데이터</strong> — 표시되는 데이터는 마지막 영업일 종가 기준입니다.
   </div>
 
-  <!-- Regime 경고 배너 -->
-  <div class="regime-banner" id="regime-banner"></div>
+  <!-- Regime 경고 배너 (Market Pulse 탭 내부 · 메인 배너는 body 레벨) -->
+  <div class="regime-banner" data-role="inner-banner"></div>
 
   <!-- Regime 큰 카드 -->
   <div style="padding:16px 20px 0">
@@ -8783,6 +8805,8 @@ function switchTopTab(tab, el) {
     };
     resetScrolls();
     requestAnimationFrame(() => { resetScrolls(); });
+    // 탭 전환 시 window 자체를 최상단으로 (헤더/탭바가 가려지는 문제 방지)
+    window.scrollTo({left:0, top:0, behavior:'instant'});
   }
 }
 
@@ -10445,8 +10469,10 @@ function toggleSidebar() {
   if (isMobile) {
     sb.classList.toggle('mobile-open');
   } else {
+    // Grid 레이아웃: body의 grid-template-columns 토글
     sb.classList.toggle('collapsed');
     if (main) main.classList.toggle('expanded');
+    document.body.classList.toggle('sidebar-collapsed');
   }
 }
 
