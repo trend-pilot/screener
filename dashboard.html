@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>추세추종 스크리너 · US & KR</title>
 <style>html{overflow-x:hidden}
+/* CSS 변수: fixed 헤더+탭바 실측 높이. JS가 ResizeObserver 로 동적 업데이트. */
+:root{--hdr-h:92px}
 /* ══ Grid 기반 레이아웃 ══
    body = 2열 grid. row 1: regime-banner, row 2: main.
    헤더+탭바(top-sticky-wrap)는 position:fixed 로 grid 컨텍스트 밖에 배치 →
@@ -35,7 +37,7 @@ body{
   min-width:0;max-width:100%;
   overflow-x:clip;
   position:relative;
-  padding-top:92px; /* 헤더(~52px) + 탭바(~40px) */
+  padding-top:var(--hdr-h); /* fixed top-sticky-wrap 실측 높이 */
 }
 .main-with-sidebar.expanded{/* 토글 호환 */}
 /* 탭 패널 */
@@ -663,7 +665,8 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
   .mp-sidebar.mobile-open{transform:translateX(0) !important}
   /* 모바일: top-sticky-wrap은 전체 너비 (사이드바는 overlay) */
   .top-sticky-wrap{left:0;right:0}
-  .main-with-sidebar{grid-column:1;grid-row:2;padding-top:80px}
+  #top-panel-guide.on .guide-sub-tabs{left:0;right:0}
+  .main-with-sidebar{grid-column:1;grid-row:2}
   /* 토글 버튼 */
   .mp-toggle{right:-18px;width:18px;height:32px;font-size:8px;opacity:0.7}
   .mp-sidebar.mobile-open .mp-toggle{right:-22px;width:22px;height:36px;opacity:1}
@@ -715,10 +718,21 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 /* ══ 전략 가이드 탭 ═══════════════════════════════════════ */
 .guide-wrap{padding:0;background:#fafaf8;min-height:60vh}
 .guide-sub-tabs{
-  display:flex;gap:6px;padding:12px 20px;background:#fff;
+  display:none; /* 기본 숨김 — guide 탭이 켜졌을 때만 fixed 로 표시 */
+  gap:6px;padding:12px 20px;background:#fff;
   border-bottom:1px solid #e0e0d8;flex-wrap:wrap;
-  position:sticky;top:0;z-index:10;
 }
+/* guide 탭이 on 일 때만 fixed 로 표시. fixed 헤더 바로 아래에 고정. */
+#top-panel-guide.on ~ * .guide-sub-tabs,
+#top-panel-guide.on .guide-sub-tabs{
+  display:flex;
+  position:fixed;
+  top:var(--hdr-h);
+  left:200px; right:0;
+  z-index:150;
+}
+/* 가이드 탭이 켜진 상태의 content 에는 서브탭바 높이만큼 padding-top */
+#top-panel-guide.on .guide-wrap{padding-top:60px}
 .guide-sub-btn{
   padding:7px 14px;font-size:12px;font-weight:600;border-radius:6px;
   cursor:pointer;border:1.5px solid #d5d5cc;background:#fff;color:#555;
@@ -794,7 +808,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
   flex-wrap:nowrap;
   gap:0;padding:6px 20px;background:#f8f8f4;border-bottom:2px solid #e0e0d8;
   font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.3px;
-  position:sticky;top:0;z-index:10;
+  position:sticky;top:var(--hdr-h);z-index:10;
 }
 .th-ticker{} .th-name{} .th-num{text-align:right} .th-stage{text-align:center}
 
@@ -10469,6 +10483,63 @@ function exportEtf() {
 // ════════════════════════════════════════════════════════
 // 모바일 사이드바 토글 개선
 // ════════════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════════════
+// 동적 헤더 높이 측정 (fixed top-sticky-wrap 의 실제 높이를 CSS --hdr-h 에 주입)
+// ════════════════════════════════════════════════════════
+(function setupHeaderHeightTracking() {
+  function updateHeight() {
+    const wrap = document.querySelector('.top-sticky-wrap');
+    if (!wrap) return;
+    // 여유분 4px 추가 (테두리/그림자 등 보정)
+    const h = (wrap.offsetHeight || 92) + 4;
+    document.documentElement.style.setProperty('--hdr-h', h + 'px');
+    // 디버그 오버레이 (?debug=1 쿼리에서만)
+    if (location.search.includes('debug=1')) {
+      let box = document.getElementById('__debug_hdr');
+      if (!box) {
+        box = document.createElement('div');
+        box.id = '__debug_hdr';
+        box.style.cssText='position:fixed;bottom:10px;right:10px;z-index:9999;background:#000;color:#0f0;padding:6px 10px;font:11px monospace;border-radius:4px;pointer-events:none';
+        document.body.appendChild(box);
+      }
+      box.textContent = `--hdr-h=${h}px (wrap.offsetHeight=${wrap.offsetHeight}) ${new Date().toLocaleTimeString()}`;
+    }
+  }
+  // 여러 타이밍에서 측정 (late-layout 대비)
+  function scheduleAll() {
+    updateHeight();
+    requestAnimationFrame(updateHeight);
+    setTimeout(updateHeight, 100);
+    setTimeout(updateHeight, 500);
+    setTimeout(updateHeight, 1500);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', scheduleAll);
+  } else {
+    scheduleAll();
+  }
+  window.addEventListener('load', scheduleAll);
+  window.addEventListener('resize', updateHeight, {passive:true});
+  // 탭 전환 시에도 재측정 (전환 후 줄바꿈이 바뀔 수 있음)
+  document.addEventListener('click', (e) => {
+    if (e.target.closest && e.target.closest('.top-tab,.hbtn')) {
+      setTimeout(updateHeight, 50);
+      setTimeout(updateHeight, 300);
+    }
+  }, true);
+  if (window.ResizeObserver) {
+    const setupObserver = () => {
+      const wrap = document.querySelector('.top-sticky-wrap');
+      if (wrap) new ResizeObserver(updateHeight).observe(wrap);
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupObserver);
+    } else {
+      setupObserver();
+    }
+  }
+})();
 
 function toggleSidebar() {
   const sb = document.getElementById('mp-sidebar');
