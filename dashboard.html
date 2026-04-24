@@ -343,6 +343,16 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 .sec-mega-metric{display:flex;justify-content:space-between;align-items:baseline;font-size:12px}
 .sec-mega-metric .k{color:#888;font-size:11px}
 .sec-mega-metric strong{font-weight:700;color:#1a1a1a;font-size:14px}
+/* Hero 메트릭 (RS Line 점수) - 샘플처럼 크게 강조 */
+.sec-mega-metric-hero{padding:10px 12px;background:#fff;border-radius:8px;border:1px solid #dde7f5;margin-bottom:6px;align-items:center}
+.sec-mega-metric-hero .k{font-size:12px;color:#1a56db;font-weight:700}
+/* 메가카드 클릭 영역 시각 힌트 */
+.sec-mega-card{cursor:pointer;transition:box-shadow .18s}
+.sec-mega-card:hover{box-shadow:0 4px 14px rgba(26,86,219,.18)}
+.sec-mega-card.sec-mega-expanded{box-shadow:0 0 0 3px #1a56db}
+.sec-mega-card.sec-mega-expanded .sec-ind-list{max-height:none !important}
+.sec-mega-footer{margin-top:10px;padding:8px 12px;text-align:center;background:#f0f5ff;border-radius:6px;font-size:11px;color:#1a56db;font-weight:600;cursor:pointer}
+.sec-mega-footer:hover{background:#dde7f5}
 .sec-mega-sub-header{font-size:13px;font-weight:700;color:#444;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #e0e0d8}
 .sec-mega-ind-filter{margin-bottom:8px}
 @media(max-width:900px){.sec-mega-hdr{grid-template-columns:1fr}.sec-mega-left{border-right:none;border-bottom:1px solid #e0e0d8}}
@@ -428,6 +438,17 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 .yf-tm-name{font-size:13px;font-weight:700;line-height:1.15;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;text-shadow:0 1px 2px rgba(0,0,0,.15)}
 .yf-tm-ret{font-size:16px;font-weight:800;margin-top:4px;text-shadow:0 1px 2px rgba(0,0,0,.2)}
 .yf-tm-wt{font-size:10px;opacity:.9;font-weight:600}
+/* 크기별 폰트 조정 (가독성) */
+.yf-tm-item.yf-tm-xl .yf-tm-name{font-size:16px}
+.yf-tm-item.yf-tm-xl .yf-tm-ret{font-size:20px}
+.yf-tm-item.yf-tm-lg .yf-tm-name{font-size:14px}
+.yf-tm-item.yf-tm-lg .yf-tm-ret{font-size:18px}
+.yf-tm-item.yf-tm-md .yf-tm-name{font-size:12px;-webkit-line-clamp:2}
+.yf-tm-item.yf-tm-md .yf-tm-ret{font-size:14px}
+.yf-tm-item.yf-tm-sm{padding:6px 8px;min-height:48px}
+.yf-tm-item.yf-tm-sm .yf-tm-name{font-size:10px;-webkit-line-clamp:1;line-height:1.1}
+.yf-tm-item.yf-tm-sm .yf-tm-ret{font-size:11px;margin-top:2px}
+.yf-tm-item.yf-tm-sm .yf-tm-wt{font-size:9px}
 .yf-tm-legend{display:flex;align-items:center;gap:3px;margin-top:10px;font-size:10px;color:#888}
 .yf-tm-legend .l{width:18px;height:10px;border-radius:2px}
 .yf-tm-legend span:first-child,.yf-tm-legend span:last-child{margin:0 4px;color:#888;font-weight:600}
@@ -3850,11 +3871,12 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
   <!-- 정렬 툴바 -->
   <div class="sec-sort-toolbar">
     <span class="sec-sort-lbl">섹터 정렬:</span>
-    <button class="sec-sort-btn on" id="sec-sort-rsline"  onclick="setSectorSort('rsline',this)">RS Line 점수 <span style="font-size:9px;background:#185FA5;color:#fff;padding:1px 5px;border-radius:3px;margin-left:3px">NEW</span></button>
-    <button class="sec-sort-btn" id="sec-sort-ibdrs"     onclick="setSectorSort('ibdrs',this)">● IBD RS 평균</button>
-    <button class="sec-sort-btn" id="sec-sort-rsnow"     onclick="setSectorSort('rsnow',this)">● RS now 평균</button>
-    <button class="sec-sort-btn" id="sec-sort-gap"       onclick="setSectorSort('gap',this)">● 갭 (now-IBD)</button>
-    <span style="margin-left:auto;font-size:11px;color:#aaa">RS Line 점수: 52주 백분위 위치 · 신뢰 지표</span>
+    <button class="sec-sort-btn on" id="sec-sort-weight"  onclick="setSectorSort('weight',this)">📊 시총 비중 <span style="font-size:9px;background:#0f9d58;color:#fff;padding:1px 5px;border-radius:3px;margin-left:3px">기본</span></button>
+    <button class="sec-sort-btn" id="sec-sort-rsline"     onclick="setSectorSort('rsline',this)">RS Line 점수</button>
+    <button class="sec-sort-btn" id="sec-sort-ibdrs"      onclick="setSectorSort('ibdrs',this)">● IBD RS 평균</button>
+    <button class="sec-sort-btn" id="sec-sort-rsnow"      onclick="setSectorSort('rsnow',this)">● RS now 평균</button>
+    <button class="sec-sort-btn" id="sec-sort-gap"        onclick="setSectorSort('gap',this)">● 갭 (now-IBD)</button>
+    <span style="margin-left:auto;font-size:11px;color:#aaa">시총 비중: 종목 수·시가총액 기준 · 샘플 기본</span>
   </div>
 
   <!-- 섹터 콘텐츠 영역 -->
@@ -10744,7 +10766,7 @@ document.addEventListener('click', function(e) {
   }
 });
 
-let sectorSortKey = 'rsline';
+let sectorSortKey = 'weight';
 
 function setSectorSort(key, el) {
   sectorSortKey = key;
@@ -10755,9 +10777,10 @@ function setSectorSort(key, el) {
 
 function sortSectors(sectors) {
   return [...sectors].sort((a,b) => {
-    if (sectorSortKey === 'ibdrs') return b.avg_rs      - a.avg_rs;
-    if (sectorSortKey === 'rsnow') return b.avg_rs_now  - a.avg_rs_now;
-    if (sectorSortKey === 'gap')   return b.gap         - a.gap;
+    if (sectorSortKey === 'weight') return (b.mktcap||0) - (a.mktcap||0) || b.count - a.count;
+    if (sectorSortKey === 'ibdrs')  return b.avg_rs      - a.avg_rs;
+    if (sectorSortKey === 'rsnow')  return b.avg_rs_now  - a.avg_rs_now;
+    if (sectorSortKey === 'gap')    return b.gap         - a.gap;
     return b.avg_rs_line - a.avg_rs_line;
   });
 }
@@ -10792,39 +10815,55 @@ function buildSectorsForTab(stocks) {
         else               sec = '❌ RS 35↓ 회피';
       }
     }
-    if (!secMap[sec]) secMap[sec] = { name:sec, count:0, rs:[], rs_now:[], allStocks:[], indMap:{} };
+    if (!secMap[sec]) secMap[sec] = { name:sec, count:0, rs:[], rs_now:[], allStocks:[], indMap:{}, mktcap:0, w1:[], w6:[] };
     secMap[sec].count++;
     secMap[sec].rs.push(s.rs || 0);
     secMap[sec].rs_now.push(s.rs_now || 0);
+    secMap[sec].mktcap += (s.mktcap || 0);
+    if (typeof s.w1 === 'number') secMap[sec].w1.push(s.w1);
+    if (typeof s.w6 === 'number') secMap[sec].w6.push(s.w6);
     secMap[sec].allStocks.push(s);
     // 세부 업종(Industry) 집계
     const ind = (s.industry || s.ind_grp || '').trim();
     if (ind && ind !== 'N/A' && ind !== 'None') {
-      if (!secMap[sec].indMap[ind]) secMap[sec].indMap[ind] = { name:ind, stocks:[], rs:[], rs_now:[] };
+      if (!secMap[sec].indMap[ind]) secMap[sec].indMap[ind] = { name:ind, stocks:[], rs:[], rs_now:[], mktcap:0 };
       secMap[sec].indMap[ind].stocks.push(s);
       secMap[sec].indMap[ind].rs.push(s.rs || 0);
       secMap[sec].indMap[ind].rs_now.push(s.rs_now || 0);
+      secMap[sec].indMap[ind].mktcap += (s.mktcap || 0);
     }
   });
 
   const avg = arr => arr.length ? Math.round(arr.reduce((a,b)=>a+b,0)/arr.length) : 0;
+  const avgF = arr => arr.length ? +(arr.reduce((a,b)=>a+b,0)/arr.length).toFixed(2) : 0;
   return Object.values(secMap).map(s => {
     const topByRS = [...s.allStocks].sort((a,b)=>(b.rs||0)-(a.rs||0)).slice(0,8);
-    // 세부 업종을 RS 평균 기준으로 정렬 + 각 업종 top 종목 추출
     const industries = Object.values(s.indMap).map(ind => ({
       name:       ind.name,
       count:      ind.stocks.length,
       avg_rs:     avg(ind.rs),
       avg_rs_now: avg(ind.rs_now),
+      mktcap:     ind.mktcap,
       top:        [...ind.stocks].sort((a,b)=>(b.rs||0)-(a.rs||0)).slice(0,5),
     })).sort((a,b) => b.avg_rs - a.avg_rs);
+    const avgRs = avg(s.rs);
+    const avgRsNow = avg(s.rs_now);
+    // 평균 Comp: RS, RS now, w6 기반 합성 점수 (0-100 정규화)
+    const avgW6 = avgF(s.w6);
+    // Comp = RS*0.4 + RSnow*0.4 + (w6 normalized)*0.2
+    const w6Norm = Math.max(0, Math.min(100, 50 + avgW6 * 2));
+    const avgComp = Math.round(avgRs * 0.4 + avgRsNow * 0.4 + w6Norm * 0.2);
     return {
       name:        s.name,
       count:       s.count,
-      avg_rs:      avg(s.rs),
-      avg_rs_now:  avg(s.rs_now),
-      avg_rs_line: avg(s.rs),
-      gap:         avg(s.rs_now) - avg(s.rs),
+      mktcap:      s.mktcap,
+      avg_rs:      avgRs,
+      avg_rs_now:  avgRsNow,
+      avg_rs_line: avgRs,
+      avg_comp:    avgComp,
+      avg_w1:      avgF(s.w1),
+      avg_w6:      avgW6,
+      gap:         avgRsNow - avgRs,
       max_rs:      Math.max(...s.rs, 0),
       top:         topByRS,
       industries:  industries,
@@ -10952,10 +10991,14 @@ function renderSectorTab() {
     `).join('');
 
     // 우측: 트리맵 (면적 = 비중, 색상 = 6주 수익률)
-    // squarified treemap을 근사: 간단히 flex-wrap 영역 분할
+    // squarified treemap 근사: flex 기반. 작은 타일은 최소 크기 보장 + 폰트 조정.
     const treemapItems = secAgg.map(s => {
-      const flexBasis = Math.max(s.weight, 3); // 최소 3% 보장
-      return `<div class="yf-tm-item" style="flex:${s.weight} 1 ${flexBasis}%;background:${w6Color(s.avg_w6)};" onclick="scrollToSector('${s.name.replace(/'/g,"\\'")}')">
+      const flexBasis = Math.max(s.weight, 4);
+      const sizeCls = s.weight >= 15 ? 'yf-tm-xl' : s.weight >= 8 ? 'yf-tm-lg' : s.weight >= 4 ? 'yf-tm-md' : 'yf-tm-sm';
+      const mcFmt = s.mktcap >= 1e12 ? (s.mktcap/1e12).toFixed(2)+'T'
+                  : s.mktcap >= 1e9  ? (s.mktcap/1e9).toFixed(1)+'B' : '—';
+      const tooltip = `${s.name}\n시총 비중: ${s.weight.toFixed(2)}%\n6주 수익률: ${s.avg_w6>0?'+':''}${s.avg_w6}%\nIBD RS 평균: ${s.avg_rs}\n종목 수: ${s.count}\n시가총액: ${mcFmt}`;
+      return `<div class="yf-tm-item ${sizeCls}" style="flex:${s.weight} 1 ${flexBasis}%;background:${w6Color(s.avg_w6)};" onclick="scrollToSector('${s.name.replace(/'/g,"\\'")}')" title="${tooltip}">
         <div class="yf-tm-name">${s.name}</div>
         <div class="yf-tm-ret">${s.avg_w6>0?'+':''}${s.avg_w6}%</div>
         <div class="yf-tm-wt">${s.weight.toFixed(1)}%</div>
@@ -11072,27 +11115,37 @@ function renderSectorTab() {
   // 1위 섹터는 크게 펼쳐진 메가 카드로
   const megaCard = (t) => {
     const barC = '#1a56db';
-    return `<div class="sec-mega-card">
+    // 시총 포매팅
+    const mcFmt = t.mktcap >= 1e12 ? (t.mktcap/1e12).toFixed(2)+'T'
+                : t.mktcap >= 1e9  ? (t.mktcap/1e9).toFixed(1)+'B'
+                : t.mktcap >= 1e6  ? (t.mktcap/1e6).toFixed(0)+'M' : '—';
+    return `<div class="sec-mega-card" onclick="expandMegaCard(this)">
       <div class="sec-mega-hdr">
         <div class="sec-mega-left">
           <div class="sec-mega-badge">🏆 RS 1위 · 최상위 강세 섹터</div>
           <div class="sec-mega-name">${t.name}</div>
           <div class="sec-mega-bar-bg"><div class="sec-mega-bar-fill" style="width:${Math.min(100,t.avg_rs)}%"></div></div>
           <div class="sec-mega-metrics">
-            <div class="sec-mega-metric"><span class="k">RS Line 점수</span><strong style="color:${barC};font-size:22px">${t.avg_rs_line}</strong></div>
+            <div class="sec-mega-metric sec-mega-metric-hero">
+              <span class="k">RS Line 점수</span>
+              <strong style="color:${barC};font-size:28px">${t.avg_rs_line}</strong>
+            </div>
             <div class="sec-mega-metric"><span class="k">IBD RS 평균</span><strong>${t.avg_rs}</strong></div>
             <div class="sec-mega-metric"><span class="k">RS now 평균</span><strong>${t.avg_rs_now}</strong></div>
+            <div class="sec-mega-metric"><span class="k">평균 Comp</span><strong style="color:#0F6E56">${t.avg_comp}</strong></div>
             <div class="sec-mega-metric"><span class="k">갭 (now-IBD)</span><strong style="color:${t.gap>0?'#1a8a4a':t.gap<0?'#c0392b':'#666'}">${t.gap>0?'+':''}${t.gap}</strong></div>
             <div class="sec-mega-metric"><span class="k">최고 RS</span><strong>${t.max_rs}</strong></div>
+            <div class="sec-mega-metric"><span class="k">시가총액</span><strong>${mcFmt}</strong></div>
             <div class="sec-mega-metric"><span class="k">세부 업종 · 종목 수</span><strong>${t.industries.length}개 · ${t.count}종목</strong></div>
           </div>
         </div>
         <div class="sec-mega-right">
           <div class="sec-mega-sub-header">📊 세부 업종 순위 (RS 평균 기준)</div>
-          <div class="sec-mega-ind-filter">
+          <div class="sec-mega-ind-filter" onclick="event.stopPropagation()">
             <input type="text" placeholder="🔍 업종 또는 종목 검색..." class="sec-ind-search" oninput="filterSectorIndustries(this,'sec-mega-ind-list')">
           </div>
           <div class="sec-ind-list" id="sec-mega-ind-list">${industryList(t.industries, 12)}</div>
+          <div class="sec-mega-footer">카드 클릭 → 전체 상세 보기 ▶</div>
         </div>
       </div>
     </div>`;
@@ -11169,6 +11222,22 @@ function filterSectorIndustries(input, listId) {
     const txt = row.textContent.toLowerCase();
     row.style.display = txt.includes(q) ? '' : 'none';
   });
+}
+
+// 메가 카드 클릭 시 전체 확장 (industry 리스트 높이 제한 해제)
+function expandMegaCard(cardEl) {
+  if (!cardEl) return;
+  const list = cardEl.querySelector('#sec-mega-ind-list');
+  const footer = cardEl.querySelector('.sec-mega-footer');
+  if (!list) return;
+  const isExpanded = cardEl.classList.toggle('sec-mega-expanded');
+  if (isExpanded) {
+    list.style.maxHeight = 'none';
+    if (footer) footer.textContent = '클릭 → 접기 ▲';
+  } else {
+    list.style.maxHeight = '';
+    if (footer) footer.textContent = '카드 클릭 → 전체 상세 보기 ▶';
+  }
 }
 
 // 상단 야후 스타일 막대/트리맵 클릭 시 해당 섹터 카드로 스크롤
