@@ -1335,8 +1335,10 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
   .top-panel.on{padding-top:24px !important}
   /* 백테스트는 KPI 카드라 더 큰 여백 */
   #top-panel-backtest.on{padding-top:32px !important}
-  /* 전략 가이드 - 메뉴띠가 헤더에 가리지 않도록 충분한 padding */
-  #top-panel-guide.on{padding-top:48px !important}
+  /* 전략 가이드 - 메뉴띠가 헤더에 가리지 않도록 충분한 padding
+     모바일 헤더는 타이틀+날짜버튼+탭바로 3줄 wrap 되므로 48px로 부족.
+     데스크탑과 동일하게 80px 로 통일하여 헤더 아래로 확실히 밀어냄. */
+  #top-panel-guide.on{padding-top:80px !important}
   
   /* ═══ 전략 가이드 - 모바일 폭 강제 해제 + 메뉴띠 살리기 ═══ */
   /* 가이드의 max-width:920px 컨테이너들을 모두 모바일 폭으로 강제 */
@@ -11232,7 +11234,7 @@ function exportEtf() {
         box.style.cssText='position:fixed;bottom:10px;right:10px;z-index:9999;background:#000;color:#0f0;padding:6px 10px;font:11px monospace;border-radius:4px;pointer-events:none';
         document.body.appendChild(box);
       }
-      box.textContent = `[v2026-04-27v] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
+      box.textContent = `[v2026-04-27w] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
     }
   }
   // 여러 타이밍에서 측정 (late-layout 대비)
