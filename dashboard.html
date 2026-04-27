@@ -1006,31 +1006,30 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
    sticky 가 제대로 동작하지 않음. fixed 로 전환해 viewport 기준 고정.
    모바일 (max-width:768px) 에서는 fixed 가 깨지므로 위쪽 미디어쿼리에서 relative로 강제. */
 @media (min-width:769px){
-  /* 전략 가이드 사이드 메뉴띠 - fixed 유지하되 컴팩트하게 (한 줄 가로 스크롤) */
+  /* 전략 가이드 사이드 메뉴띠 - 일반 흐름 (스크롤 시 위로 사라짐 - 사용자 피드백 반영) */
   #top-panel-guide.on .strat-sub-tabs{
-    position:fixed !important;
-    top:var(--hdr-h) !important;
-    left:200px !important;
-    right:0 !important;
-    max-width:none !important;
+    position:relative !important;
+    top:auto !important; left:auto !important; right:auto !important;
+    max-width:100% !important;
     width:auto !important;
-    margin:0 !important;
-    padding:6px 16px !important;
-    background:#fff !important;
-    border-bottom:2px solid #e0e0d8 !important;
-    box-shadow:0 2px 6px rgba(0,0,0,0.06);
-    z-index:150;
+    margin:0 0 16px 0 !important;
+    padding:8px 16px !important;
+    background:#fafaf8 !important;
+    border:1px solid #e0dfd8 !important;
+    border-radius:8px !important;
+    box-shadow:none !important;
+    z-index:auto !important;
     display:flex !important;
-    flex-wrap:nowrap !important;        /* 한 줄로 강제 */
-    overflow-x:auto !important;          /* 가로 스크롤 */
+    flex-wrap:nowrap !important;
+    overflow-x:auto !important;
     -webkit-overflow-scrolling:touch;
     gap:6px;
     align-items:center;
     white-space:nowrap;
   }
   #top-panel-guide.on .strat-sub-tabs > *{flex-shrink:0}
-  /* 컴팩트해진 메뉴띠 (한 줄) → 콘텐츠 padding-top 줄임 */
-  #top-panel-guide.on .guide-wrap .report-container{padding-top:60px}
+  /* 일반 흐름이라 padding-top 0 */
+  #top-panel-guide.on .guide-wrap .report-container{padding-top:0}
 }
 .guide-sub-btn{
   padding:7px 14px;font-size:12px;font-weight:600;border-radius:6px;
@@ -1332,8 +1331,8 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
   .top-panel.on{padding-top:24px !important}
   /* 백테스트는 KPI 카드라 더 큰 여백 */
   #top-panel-backtest.on{padding-top:32px !important}
-  /* 전략 가이드 */
-  #top-panel-guide.on{padding-top:24px !important}
+  /* 전략 가이드 - 메뉴띠가 헤더에 가리지 않도록 충분한 padding */
+  #top-panel-guide.on{padding-top:48px !important}
   
   /* ═══ 전략 가이드 - 모바일 폭 강제 해제 + 메뉴띠 살리기 ═══ */
   /* 가이드의 max-width:920px 컨테이너들을 모두 모바일 폭으로 강제 */
@@ -1384,24 +1383,38 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
     -webkit-overflow-scrolling:touch;
   }
 
-  /* 전략 가이드 사이드 박스 강제 해제 */
+  /* 전략 가이드 사이드 박스 강제 해제 + 모든 부모 가시화 */
+  #top-panel-guide.on,
+  #top-panel-guide.on .guide-wrap,
+  #top-panel-guide.on .guide-wrap .report-container,
+  #top-panel-guide.on .guide-wrap .report-container > div{
+    display:block !important;
+    visibility:visible !important;
+    opacity:1 !important;
+    overflow:visible !important;
+    height:auto !important;
+  }
   #top-panel-guide.on .strat-sub-tabs,
   .strat-sub-tabs{
     position:relative !important;
     top:auto !important; left:auto !important; right:auto !important; bottom:auto !important;
-    width:100% !important; max-width:100% !important; margin:0 !important;
-    padding:8px 12px !important;
+    width:100% !important; max-width:100% !important; margin:0 0 16px 0 !important;
+    padding:10px 12px !important;
     background:#fafaf8 !important;
-    border-bottom:1px solid #e0dfd8 !important;
+    border:2px solid #185FA5 !important;
+    border-radius:8px !important;
     box-shadow:none !important;
     overflow-x:auto !important;-webkit-overflow-scrolling:touch;
     flex-wrap:nowrap !important; white-space:nowrap;
     z-index:auto !important;
     box-sizing:border-box;
     display:flex !important;
+    visibility:visible !important;
+    opacity:1 !important;
     align-items:center;
     gap:6px;
-    min-height:48px;  /* 메뉴띠가 사라지지 않도록 최소 높이 */
+    min-height:50px;
+    height:auto !important;
   }
   #top-panel-guide.on .guide-wrap .report-container{padding-top:0 !important}
   
@@ -11215,7 +11228,7 @@ function exportEtf() {
         box.style.cssText='position:fixed;bottom:10px;right:10px;z-index:9999;background:#000;color:#0f0;padding:6px 10px;font:11px monospace;border-radius:4px;pointer-events:none';
         document.body.appendChild(box);
       }
-      box.textContent = `[v2026-04-27r] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
+      box.textContent = `[v2026-04-27s] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
     }
   }
   // 여러 타이밍에서 측정 (late-layout 대비)
