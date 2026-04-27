@@ -9777,14 +9777,15 @@ function ingestUS(raw) {
     const total = US.data.length;
     const withSector = US.data.filter(s => s.sector && s.sector.trim() && !/RS\s|회피|약세|양호|중립|강세|최상위/.test(s.sector)).length;
     const withMktCap = US.data.filter(s => s.mktcap && s.mktcap > 0).length;
+    const etfCount = US.data.filter(s => s.asset_type === 'ETF' || s.asset_type === 'etf').length;
     const samples = US.data.slice(0, 3).map(s => ({ticker: s.ticker, sector: s.sector || '(없음)', mktcap: s.mktcap || 0}));
     console.log('%c[대시보드 진단] JSON 로드 완료', 'color:#1a56db;font-weight:bold');
-    console.log(`   종목 수: ${total}`);
+    console.log(`   종목 수: ${total} (ETF ${etfCount}개 포함)`);
     console.log(`   GICS 섹터 있음: ${withSector} (${(withSector*100/Math.max(total,1)).toFixed(1)}%)`);
     console.log(`   시가총액 있음: ${withMktCap} (${(withMktCap*100/Math.max(total,1)).toFixed(1)}%)`);
     console.log(`   샘플 3개:`, samples);
 
-    // 화면 상단 토스트 배너 (5초 후 자동 사라짐)
+    // 화면 상단 토스트 배너 (8초 후 자동 사라짐)
     const pct = (withSector * 100 / Math.max(total, 1));
     const isGood = pct >= 30;
     const bg = isGood ? 'linear-gradient(135deg,#e8f5e9,#c8e6c9)' : 'linear-gradient(135deg,#fff3e0,#ffe0b2)';
@@ -9796,7 +9797,7 @@ function ingestUS(raw) {
     banner.id = '__data_toast';
     banner.style.cssText = `position:fixed;top:70px;right:16px;z-index:9999;background:${bg};border:2px solid ${border};border-radius:10px;padding:12px 16px;font-size:12px;max-width:340px;box-shadow:0 4px 16px rgba(0,0,0,.15);line-height:1.5;font-family:-apple-system,sans-serif;cursor:pointer`;
     banner.innerHTML = `
-      <div style="font-weight:700;color:${border};margin-bottom:4px">${icon} JSON 로드됨 · ${total}종목</div>
+      <div style="font-weight:700;color:${border};margin-bottom:4px">${icon} JSON 로드됨 · ${total}종목 ${etfCount > 0 ? `<span style="color:#1a56db">(ETF ${etfCount})</span>` : ''}</div>
       <div style="color:#333">GICS 섹터: <strong>${withSector}개 (${pct.toFixed(1)}%)</strong></div>
       <div style="color:#333">시가총액: <strong>${withMktCap}개</strong></div>
       <div style="color:#888;margin-top:4px;font-size:10px">샘플: ${samples.map(s => `${s.ticker}=${s.sector}`).join(', ')}</div>
@@ -9876,16 +9877,37 @@ async function autoLoad() {
   // 개선된 자동 로드: 모든 후보 경로를 fetch한 뒤 점수가 가장 높은 파일 선택
   // 점수 = (sector 채워진 비율 × 100) + (updated_at 최신순 보정)
   // 같은 폴더에 enrich 된 신규본 + output/ 폴더에 구본이 공존해도 신규본 자동 선택
+  // 점수 = sector% (가중치 1) + ETF 보너스 + 신선도 (1시간 이내 +50점)
   // ─────────────────────────────────────────────────────────
   const scoreUS = (raw) => {
     const stocks = raw.stocks || [];
     if (!stocks.length) return -1;
     const total = stocks.length;
     const withSec = stocks.filter(s => s.sector && s.sector.trim() && !/RS\s|회피|약세|양호|중립|강세|최상위/.test(s.sector)).length;
-    const sectorPct = withSec / total;                               // 0~1
+    const sectorPct = withSec / total;                                // 0~1
+    const sectorScore = sectorPct * 100;                              // 0~100
+
+    // ETF 보너스 - asset_type이 'ETF'인 종목 수만큼 가산 (최대 +30)
+    const etfCount = stocks.filter(s =>
+      s.asset_type === 'ETF' || s.asset_type === 'etf'
+    ).length;
+    const etfBonus = Math.min(30, etfCount * 0.5);                    // 60개 이상이면 +30
+
+    // 신선도: 1시간 이내면 +50, 1일 이내 +30, 1주 이내 +10
+    let freshnessBonus = 0;
     const updatedAt = raw.meta?.updated_at ? new Date(raw.meta.updated_at).getTime() : 0;
-    const recencyBoost = updatedAt > 0 ? (updatedAt / 1e13) : 0;     // 작은 가산점
-    return sectorPct * 100 + recencyBoost;
+    if (updatedAt > 0) {
+      const ageMs = Date.now() - updatedAt;
+      const ageHours = ageMs / (1000 * 60 * 60);
+      if (ageHours < 1)        freshnessBonus = 50;
+      else if (ageHours < 24)  freshnessBonus = 30;
+      else if (ageHours < 168) freshnessBonus = 10;
+    }
+
+    // 종목 수 보너스 - 더 많은 종목은 더 풍부한 데이터 (작은 가산점)
+    const sizeBonus = Math.min(20, stocks.length / 100);              // 2000개면 +20
+
+    return sectorScore + etfBonus + freshnessBonus + sizeBonus;
   };
 
   const fetchAll = async (paths) => {
@@ -9916,7 +9938,12 @@ async function autoLoad() {
     ranked.forEach((r, i) => {
       const stocks = r.json.stocks || [];
       const withSec = stocks.filter(s => s.sector && !/RS\s|회피|약세|양호|중립|강세|최상위/.test(s.sector)).length;
-      console.log(`   ${i === 0 ? '✅ 선택' : '   대기'}  ${r.path}  · ${stocks.length}종목 · GICS ${withSec}개 · score=${r.score.toFixed(1)}`);
+      const etfCount = stocks.filter(s => s.asset_type === 'ETF' || s.asset_type === 'etf').length;
+      const updatedAt = r.json.meta?.updated_at;
+      const ageStr = updatedAt
+        ? `${Math.round((Date.now() - new Date(updatedAt).getTime()) / 60000)}분 전`
+        : '?';
+      console.log(`   ${i === 0 ? '✅ 선택' : '   대기'}  ${r.path}  · ${stocks.length}종목 (ETF ${etfCount}) · GICS ${withSec}개 · ${ageStr} · score=${r.score.toFixed(1)}`);
     });
 
     const best = ranked[0];
@@ -9925,7 +9952,7 @@ async function autoLoad() {
     // 더 좋은 후보가 있는데 다른 경로에도 파일이 있는 경우 안내
     if (ranked.length > 1 && ranked[1].score > 0) {
       const better = best.path, ignored = ranked[1].path;
-      console.warn(`⚠ 다른 경로에도 파일 있음: ${ignored}\n   → 자동으로 ${better} 사용 중 (sector 비율이 더 높음)`);
+      console.warn(`⚠ 다른 경로에도 파일 있음: ${ignored}\n   → 자동으로 ${better} 사용 중 (점수가 더 높음)`);
     }
   }
 
@@ -10914,7 +10941,7 @@ function exportEtf() {
         box.style.cssText='position:fixed;bottom:10px;right:10px;z-index:9999;background:#000;color:#0f0;padding:6px 10px;font:11px monospace;border-radius:4px;pointer-events:none';
         document.body.appendChild(box);
       }
-      box.textContent = `[v2026-04-27e] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 48px) ${new Date().toLocaleTimeString()}`;
+      box.textContent = `[v2026-04-27f] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 48px) ${new Date().toLocaleTimeString()}`;
     }
   }
   // 여러 타이밍에서 측정 (late-layout 대비)
