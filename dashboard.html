@@ -1006,14 +1006,17 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
    sticky 가 제대로 동작하지 않음. fixed 로 전환해 viewport 기준 고정.
    모바일 (max-width:768px) 에서는 fixed 가 깨지므로 위쪽 미디어쿼리에서 relative로 강제. */
 @media (min-width:769px){
-  /* 전략 가이드 사이드 메뉴띠 - 일반 흐름 (스크롤 시 위로 사라짐 - 사용자 피드백 반영) */
+  /* 전략 가이드 - 사이드 메뉴띠가 헤더에 가리지 않도록 가이드 패널 자체에 큰 padding-top */
+  #top-panel-guide.on{padding-top:80px !important}
+  
+  /* 전략 가이드 사이드 메뉴띠 - 일반 흐름 (스크롤 시 위로 사라짐) */
   #top-panel-guide.on .strat-sub-tabs{
     position:relative !important;
     top:auto !important; left:auto !important; right:auto !important;
     max-width:100% !important;
     width:auto !important;
-    margin:16px 0 16px 0 !important;
-    padding:8px 16px !important;
+    margin:0 16px 16px 16px !important;
+    padding:10px 16px !important;
     background:#fafaf8 !important;
     border:1px solid #e0dfd8 !important;
     border-radius:8px !important;
@@ -1026,11 +1029,10 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
     gap:6px;
     align-items:center;
     white-space:nowrap;
+    min-height:50px;
   }
   #top-panel-guide.on .strat-sub-tabs > *{flex-shrink:0}
-  /* 가이드 탭 패널은 메뉴띠가 헤더에 가리지 않도록 추가 padding-top */
-  #top-panel-guide.on{padding-top:24px !important}
-  /* 일반 흐름이라 report-container padding-top 0 */
+  /* report-container padding-top 0 */
   #top-panel-guide.on .guide-wrap .report-container{padding-top:0}
 }
 .guide-sub-btn{
@@ -11230,7 +11232,7 @@ function exportEtf() {
         box.style.cssText='position:fixed;bottom:10px;right:10px;z-index:9999;background:#000;color:#0f0;padding:6px 10px;font:11px monospace;border-radius:4px;pointer-events:none';
         document.body.appendChild(box);
       }
-      box.textContent = `[v2026-04-27t] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
+      box.textContent = `[v2026-04-27v] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
     }
   }
   // 여러 타이밍에서 측정 (late-layout 대비)
