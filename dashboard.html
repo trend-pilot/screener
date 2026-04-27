@@ -1361,32 +1361,31 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
     max-width:100% !important;
     box-sizing:border-box;
   }
-  /* 메뉴띠 강제 가시화 + 좌우 가로 스크롤 활성화 */
+  /* 메뉴띠 - 모바일에선 가로 스크롤 대신 여러 줄 wrap (사용자가 한눈에 파악) */
   #top-panel-guide.on .strat-sub-tabs{
     display:flex !important;
     visibility:visible !important;
     opacity:1 !important;
     height:auto !important;
     min-height:48px !important;
-    overflow-x:auto !important;
+    overflow-x:visible !important;
     overflow-y:visible !important;
-    flex-wrap:nowrap !important;
-    white-space:nowrap !important;
-    padding:8px 12px !important;
+    flex-wrap:wrap !important;
+    white-space:normal !important;
+    padding:12px 14px !important;
     background:#fafaf8 !important;
     border:1px solid #e0dfd8 !important;
     border-radius:6px !important;
     margin:0 0 12px 0 !important;
-    -webkit-overflow-scrolling:touch;
+    gap:8px 6px !important;
   }
   #top-panel-guide.on .strat-sub-tabs > *{
     flex-shrink:0 !important;
     max-width:none !important;
   }
-  /* 가이드 탭 패널 자체에 가로 스크롤 활성화 */
+  /* 가이드 탭 패널 - 메뉴띠가 wrap 되므로 가로 스크롤 불필요 */
   #top-panel-guide{
-    overflow-x:auto !important;
-    -webkit-overflow-scrolling:touch;
+    overflow-x:visible !important;
   }
 
   /* 전략 가이드 사이드 박스 강제 해제 + 모든 부모 가시화 */
@@ -1405,20 +1404,20 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
     position:relative !important;
     top:auto !important; left:auto !important; right:auto !important; bottom:auto !important;
     width:100% !important; max-width:100% !important; margin:0 0 16px 0 !important;
-    padding:10px 12px !important;
+    padding:14px 14px !important;
     background:#fafaf8 !important;
-    border:2px solid #185FA5 !important;
+    border:1px solid #e0dfd8 !important;
     border-radius:8px !important;
     box-shadow:none !important;
-    overflow-x:auto !important;-webkit-overflow-scrolling:touch;
-    flex-wrap:nowrap !important; white-space:nowrap;
+    overflow-x:visible !important;
+    flex-wrap:wrap !important; white-space:normal !important;
     z-index:auto !important;
     box-sizing:border-box;
     display:flex !important;
     visibility:visible !important;
     opacity:1 !important;
     align-items:center;
-    gap:6px;
+    gap:8px 6px !important;
     min-height:50px;
     height:auto !important;
   }
@@ -11234,7 +11233,7 @@ function exportEtf() {
         box.style.cssText='position:fixed;bottom:10px;right:10px;z-index:9999;background:#000;color:#0f0;padding:6px 10px;font:11px monospace;border-radius:4px;pointer-events:none';
         document.body.appendChild(box);
       }
-      box.textContent = `[v2026-04-27w] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
+      box.textContent = `[v2026-04-27x] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
     }
   }
   // 여러 타이밍에서 측정 (late-layout 대비)
