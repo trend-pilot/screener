@@ -44,6 +44,8 @@ body{
 .top-panel{display:none;max-width:100%;overflow-x:clip}
 /* 모든 탭 헤더 아래 공통 안전 여백 — 어떤 탭이든 첫 콘텐츠가 헤더에 가리지 않도록 */
 .top-panel.on{display:block;padding-top:40px}
+/* 백테스트는 첫 콘텐츠가 KPI 카드 (자체 sticky 없음) → 추가 여백 */
+#top-panel-backtest.on{padding-top:64px}
 
 
 
@@ -201,6 +203,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 .scr-result-count{font-size:13px;color:#666;font-weight:600;white-space:nowrap}
 .scr-result-count strong{color:#1a1a1a;font-size:15px}
 .scr-phase-bar{background:#fff;padding:6px 20px 8px;border-bottom:1px solid #e0e0d8;display:flex;align-items:center;gap:5px;flex-wrap:wrap;max-width:100%}
+.scr-sticky-wrap{position:sticky;top:var(--hdr-h);z-index:50;background:#fff}
 .scr-tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:60px}
 .scr-tbl{width:100%;border-collapse:collapse;table-layout:fixed;min-width:1200px;background:#fff}
 .scr-tbl thead th{padding:8px 10px;text-align:left;font-size:10px;color:#999;font-weight:600;border-bottom:2px solid #e0e0d8;background:#f8f8f4;white-space:nowrap;cursor:pointer;user-select:none;overflow:hidden}
@@ -4036,6 +4039,9 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 <!-- ══ 스크리너 탭 패널 ══ -->
 <div class="top-panel" id="top-panel-screener">
 
+  <!-- Sticky 그룹: 메인 toolbar + Phase 필터 toolbar -->
+  <div class="scr-sticky-wrap">
+
   <!-- 상단 툴바 -->
   <div class="scr-toolbar">
     <span class="scr-result-count">Results: <strong id="scr-res-count">—</strong> ★ <span id="scr-star-count" style="color:#e6a817">0</span></span>
@@ -4090,6 +4096,8 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
     <span style="font-size:11px;color:#aaa;margin-left:auto">클릭 시 해당 Phase 만 필터링 · 재클릭 시 이전 상태로</span>
   </div>
 
+  </div><!-- /scr-sticky-wrap -->
+
   <!-- 테이블 -->
   <div class="scr-tbl-wrap" id="scr-tbl-wrap" style="scroll-behavior:auto">
     <table class="scr-tbl" id="scr-table">
@@ -4128,8 +4136,11 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 <!-- ══ 패턴 감지 탭 패널 ══ -->
 <div class="top-panel" id="top-panel-pattern">
 
+  <!-- Sticky 그룹: 패턴 버튼 toolbar + RS/Stage 필터 toolbar -->
+  <div class="pat-sticky-wrap" style="position:sticky;top:var(--hdr-h);z-index:50;background:#fff">
+
   <!-- 상단 툴바 -->
-  <div style="background:#fff;padding:8px 20px;border-bottom:1px solid #e0e0d8;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+  <div class="pat-toolbar" style="background:#fff;padding:8px 20px;border-bottom:1px solid #e0e0d8;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
     <span style="font-size:13px;font-weight:700;color:#1a1a1a">Results: <strong id="pat-top-count">—</strong></span>
     <span style="margin-left:4px;font-size:11px;color:#aaa">★ Watchlist: <span id="pat-watch-count">0</span></span>
     <div style="width:1px;height:20px;background:#e0e0d8;margin:0 6px"></div>
@@ -4153,7 +4164,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
   </div>
 
   <!-- RS / Stage / 신호 / 신뢰도 필터 -->
-  <div style="background:#fff;padding:6px 20px 8px;border-bottom:1px solid #e0e0d8;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+  <div class="pat-filter-bar" style="background:#fff;padding:6px 20px 8px;border-bottom:1px solid #e0e0d8;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
     <span class="row-lbl">RS:</span>
     <button class="sbtn on" id="pat-rs-all"  onclick="setPatRS('all',this)">전체</button>
     <button class="sbtn"    id="pat-rs-8090" onclick="setPatRS('8090',this)">80~90</button>
@@ -4174,8 +4185,10 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
     <button class="sbtn"    id="pat-trust-rsnow"  onclick="setPatSort('rsnow',this)">RS now순</button>
   </div>
 
+  </div><!-- /pat-sticky-wrap -->
+
   <!-- 패턴 카드 그리드 -->
-  <div id="pat-top-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:14px 20px 60px;background:#f5f5f0">
+  <div id="pat-top-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:20px 20px 60px;background:#f5f5f0">
     <div class="empty" style="grid-column:1/-1">📂 US JSON을 불러오면 패턴 감지 결과가 표시됩니다.</div>
   </div>
 
@@ -10585,27 +10598,42 @@ function exportScr() {
 
 // 주요 ETF 티커 목록 (섹터 ETF 필터링용)
 const ETF_TICKERS = new Set([
+  // 핵심 인덱스
   'QQQ','SPY','VOO','IWM','DIA','VTI',
+  // 미국 섹터 (Select Sector SPDR)
   'XLK','XLF','XLE','XLV','XLI','XLB','XLU','XLRE','XLC','XLY','XLP',
+  // 반도체 / 사이버보안
   'SMH','SOXX','HACK','CIBR',
+  // 바이오 / 게놈
   'XBI','IBB','ARKG',
-  'GLD','SLV','GDX','GDXJ',
+  // 금속 / 광업
+  'GLD','SLV','GDX','GDXJ','PALL','PPLT','PICK',
+  // 원자재 / 에너지
   'USO','UCO','XOP','OIH',
+  // 청정에너지 / 리튬 / 배터리
   'LIT','ICLN','TAN','QCLN','CNRG',
+  // ARK 시리즈
   'ARKK','ARKG','ARKW','ARKF','ARKQ',
+  // Magnificent 7 / 비트코인
   'MAGS','IBIT','BITO',
-  'EWJ','EWY','EWZ','EWG','EWU','EWC','EEM','VWO','ACWX',
-  'EWY','EWT','EWH','INDA',
-  'URA','URNM','COPX','REMX','PICK','LIT',
+  // 국가 ETF
+  'EWJ','EWY','EWZ','EWG','EWU','EWC','EWT','EWH','INDA',
+  // 이머징 / 글로벌
+  'EEM','VWO','ACWX',
+  // 우라늄 / 희토류 / 구리
+  'URA','URNM','COPX','REMX',
+  // 로봇 / AI
   'BOTZ','ROBO','AIQ',
-  'XBI','SPYG','SPYV','VUG','VTV',
+  // 채권
   'HYG','TLT','IEF','SHY','TIP','LQD',
+  // 리츠 / 부동산
   'VNQ','REM',
+  // 중국
   'FXI','KWEB','CQQQ',
-  'JETS','AWAY','PEJ',
-  'DRAM','MCHI','XNTK',
-  'SLV','PALL','PPLT',
-  'MOO','DBA','WOOD',
+  // 산업/테마
+  'JETS','AWAY','PEJ','DRAM','MCHI','XNTK','MOO','DBA','WOOD',
+  // 스타일 (성장/가치)
+  'SPYG','SPYV','VUG','VTV',
 ]);
 
 let etfSortKey   = 'rs_line_score';
@@ -10693,10 +10721,11 @@ function setEtfPhase(phase, el) {
 }
 
 function etfFiltered() {
-  // ETF 종목 필터링: 티커 목록 OR ETF 플래그 OR asset_type
+  // ETF 종목 필터링: 티커 목록 OR ETF 플래그 OR asset_type (대소문자 무관)
   let data = US.data.filter(s =>
     ETF_TICKERS.has(s.ticker) ||
     s.is_etf === true ||
+    s.asset_type === 'ETF' ||
     s.asset_type === 'etf' ||
     s.category === 'ETF' ||
     (s.name && (s.name.includes('ETF') || s.name.includes('Fund') || s.name.includes('Trust') || s.name.includes('iShares') || s.name.includes('Vanguard') || s.name.includes('SPDR') || s.name.includes('Invesco') || s.name.includes('ARK') || s.name.includes('Global X')))
@@ -10801,8 +10830,8 @@ function etfRowHTML(s) {
   const _sd = safeStringify(s);
   return `<div class="etf-row" onclick="openDetail('${s.ticker}',${_sd},'us')">
     <span class="etf-col-ticker">${s.ticker}</span>
-    <span class="etf-col-name"><span class="co">${(s.name||'').slice(0,20)}</span><span class="cat">${s.sector||s.asset_type||''}</span></span>
-    <span style="font-size:10px;color:#888">${s.asset_type||s.category||''}</span>
+    <span class="etf-col-name"><span class="co">${(s.name||'').slice(0,20)}</span><span class="cat">${s.asset_class||s.sector||s.asset_type||''}</span></span>
+    <span style="font-size:10px;color:#888">${s.asset_class||s.asset_type||s.category||''}</span>
     <span>${pats}</span>
     <span class="etf-col-rs" style="color:${rsC(rs)}">${rs||'—'}</span>
     <span class="etf-col-rs" style="color:${rsC(rsNow)}">${rsNow||'—'}</span>
@@ -10831,7 +10860,14 @@ function renderEtfMomentum() {
   const el = document.getElementById('etf-stock-list');
   if (!el) return;
   if (!list.length) {
-    el.innerHTML = '<div class="empty" style="min-height:200px">조건에 맞는 ETF가 없습니다.<br><span style="font-size:12px;color:#bbb">US JSON에 ETF 종목이 포함되어 있어야 합니다.</span></div>';
+    el.innerHTML = `<div class="empty" style="min-height:200px;padding:24px;text-align:left;font-size:13px;color:#666">
+      📂 <strong>screener_data.json에 ETF 종목이 없습니다.</strong><br><br>
+      <span style="font-size:12px;line-height:1.7">
+        ✓ 같은 폴더에 <code style="background:#f0f0ea;padding:2px 6px;border-radius:3px">etf_tickers.csv</code> 파일을 두고<br>
+        ✓ <code style="background:#f0f0ea;padding:2px 6px;border-radius:3px">screener.py</code>를 다시 실행하세요 (run_daily.bat 추천)<br>
+        ✓ 약 10~15분 후 84개 ETF가 RS Line 점수 + 패턴 감지와 함께 표시됩니다
+      </span>
+    </div>`;
   } else {
     el.innerHTML = list.map(etfRowHTML).join('');
   }
@@ -10866,8 +10902,8 @@ function exportEtf() {
   function updateHeight() {
     const wrap = document.querySelector('.top-sticky-wrap');
     if (!wrap) return;
-    // 여유분 32px 추가 (그림자/언더라인/콘텐츠 첫 줄 잘림 방지)
-    const h = (wrap.offsetHeight || 92) + 32;
+    // 여유분 48px 추가 (그림자/언더라인/콘텐츠 첫 줄 잘림 방지 — 32px로는 부족했음)
+    const h = (wrap.offsetHeight || 92) + 48;
     document.documentElement.style.setProperty('--hdr-h', h + 'px');
     // 디버그 오버레이 (?debug=1 쿼리에서만)
     if (location.search.includes('debug=1')) {
@@ -10878,7 +10914,7 @@ function exportEtf() {
         box.style.cssText='position:fixed;bottom:10px;right:10px;z-index:9999;background:#000;color:#0f0;padding:6px 10px;font:11px monospace;border-radius:4px;pointer-events:none';
         document.body.appendChild(box);
       }
-      box.textContent = `--hdr-h=${h}px (wrap.offsetHeight=${wrap.offsetHeight}) ${new Date().toLocaleTimeString()}`;
+      box.textContent = `[v2026-04-27e] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 48px) ${new Date().toLocaleTimeString()}`;
     }
   }
   // 여러 타이밍에서 측정 (late-layout 대비)
