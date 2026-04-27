@@ -14,7 +14,7 @@
 body{
   display:grid;
   grid-template-columns:200px minmax(0,1fr);
-  grid-template-rows:auto 1fr;
+  grid-template-rows:auto auto 1fr;
   min-height:100vh;
 }
 .regime-banner{grid-column:1 / -1;grid-row:1}
@@ -24,28 +24,31 @@ body{
   position:sticky;top:0;align-self:start;
   height:100vh;width:200px;
 }
-/* 헤더+탭바: grid 컨텍스트와 완전 독립된 fixed 요소.
-   좌측은 사이드바(200px) 뒤에서 시작, 우측 끝까지 확장. */
+/* 헤더+탭바: 일반 흐름 (스크롤 시 위로 올라가 사라짐 - 콘텐츠 영역 더 넓게 활용)
+   v2026-04-27q: fixed → static 변경 (사용자 피드백: "스크롤 시 가려서 불편")
+   사이드바 우측에 자리잡고, 스크롤하면 자연스럽게 위로 사라짐 */
 .top-sticky-wrap{
-  position:fixed;
-  top:0;left:200px;right:0;
-  z-index:200;background:#fff;
+  position:relative;
+  background:#fff;
+  z-index:200;
+  grid-column:2;
+  grid-row:2;
 }
-/* 메인: grid 2열. top-sticky-wrap 이 fixed 이므로 높이만큼 padding-top 확보. */
+/* 메인: grid 2열. top-sticky-wrap 이 일반 흐름이므로 padding-top 불필요 */
 .main-with-sidebar{
-  grid-column:2;grid-row:2;
+  grid-column:2;grid-row:3;
   min-width:0;max-width:100%;
   overflow-x:clip;
   position:relative;
-  padding-top:var(--hdr-h); /* fixed top-sticky-wrap 실측 높이 */
+  /* padding-top 제거 — 일반 흐름이라 콘텐츠가 자연스럽게 헤더 아래에 */
 }
 .main-with-sidebar.expanded{/* 토글 호환 */}
 /* 탭 패널 */
 .top-panel{display:none;max-width:100%;overflow-x:clip}
-/* 모든 탭 헤더 아래 공통 안전 여백 — 어떤 탭이든 첫 콘텐츠가 헤더에 가리지 않도록 */
-.top-panel.on{display:block;padding-top:40px}
-/* 백테스트는 첫 콘텐츠가 KPI 카드 (자체 sticky 없음) → 추가 여백 */
-#top-panel-backtest.on{padding-top:64px}
+/* 모든 탭 헤더 아래 공통 안전 여백 — v2026-04-27q부터 헤더 일반 흐름이라 작게 */
+.top-panel.on{display:block;padding-top:12px}
+/* 백테스트는 첫 콘텐츠가 KPI 카드 → 약간 더 */
+#top-panel-backtest.on{padding-top:20px}
 
 
 
@@ -203,7 +206,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 .scr-result-count{font-size:13px;color:#666;font-weight:600;white-space:nowrap}
 .scr-result-count strong{color:#1a1a1a;font-size:15px}
 .scr-phase-bar{background:#fff;padding:6px 20px 8px;border-bottom:1px solid #e0e0d8;display:flex;align-items:center;gap:5px;flex-wrap:wrap;max-width:100%}
-.scr-sticky-wrap{position:sticky;top:var(--hdr-h);z-index:50;background:#fff}
+.scr-sticky-wrap{position:sticky;top:0;z-index:50;background:#fff}
 .scr-tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:60px}
 .scr-tbl{width:100%;border-collapse:collapse;table-layout:fixed;min-width:1200px;background:#fff}
 .scr-tbl thead th{padding:8px 10px;text-align:left;font-size:10px;color:#999;font-weight:600;border-bottom:2px solid #e0e0d8;background:#f8f8f4;white-space:nowrap;cursor:pointer;user-select:none;overflow:hidden}
@@ -833,8 +836,8 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 
 /* ── 모바일 완전 수정 ── */
 @media(max-width:768px){
-  /* 모바일: grid 1열로 변경, 사이드바는 fixed overlay */
-  body{grid-template-columns:1fr;grid-template-rows:auto 1fr}
+  /* 모바일: grid 1열 + 3행 (regime / top-sticky / main) */
+  body{grid-template-columns:1fr;grid-template-rows:auto auto 1fr}
   .mp-sidebar{
     grid-column:1;grid-row:1 / -1;
     position:fixed;left:0;top:0;width:200px;height:100vh;
@@ -843,9 +846,9 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
     z-index:300;
   }
   .mp-sidebar.mobile-open{transform:translateX(0) !important}
-  /* 모바일: top-sticky-wrap은 전체 너비 (사이드바는 overlay) */
-  .top-sticky-wrap{left:0;right:0}
-  .main-with-sidebar{grid-column:1;grid-row:2}
+  /* 모바일: top-sticky-wrap은 전체 너비 (사이드바는 overlay), row 2 */
+  .top-sticky-wrap{grid-column:1;grid-row:2;left:0;right:0}
+  .main-with-sidebar{grid-column:1;grid-row:3}
   /* 토글 버튼 */
   .mp-toggle{right:-18px;width:18px;height:32px;font-size:8px;opacity:0.7}
   .mp-sidebar.mobile-open .mp-toggle{right:-22px;width:22px;height:36px;opacity:1}
@@ -856,9 +859,9 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
   .hdr-btns{gap:4px;flex-wrap:wrap}
   .hbtn{font-size:11px;padding:4px 8px}
 
-  /* 탭바 가로 스크롤 */
+  /* 탭바 가로 스크롤 + 손가락으로 탭하기 편한 크기 */
   .top-tabs{padding:0 8px;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .top-tab{font-size:12px;padding:8px 10px;white-space:nowrap;flex-shrink:0}
+  .top-tab{font-size:13.5px;padding:12px 14px;white-space:nowrap;flex-shrink:0;font-weight:600}
 
   /* 통계 바 */
   .stats{grid-template-columns:repeat(3,1fr) !important;gap:5px;padding:8px 10px}
@@ -993,7 +996,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 
 @media(max-width:480px){
   .stats{grid-template-columns:repeat(2,1fr) !important}
-  .top-tab{font-size:11px;padding:7px 8px}
+  .top-tab{font-size:12.5px;padding:10px 10px}
   .hdr-title{font-size:13px}
   .hdr-btns .hbtn:last-child{display:none}
 }
@@ -1007,16 +1010,16 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
    모바일 (max-width:768px) 에서는 fixed 가 깨지므로 위쪽 미디어쿼리에서 relative로 강제. */
 @media (min-width:769px){
   #top-panel-guide.on .strat-sub-tabs{
-    position:fixed !important;
-    top:var(--hdr-h) !important;
-    left:200px !important;
-    right:0 !important;
+    position:sticky !important;
+    top:0 !important;
+    left:auto !important;
+    right:auto !important;
     max-width:none !important;
     width:auto !important;
-    margin:0 !important;
+    margin:0 0 16px 0 !important;
     padding:8px 24px !important;
     background:#fff !important;
-    border-bottom:3px solid #1a56db !important; /* 파란 선: CSS 적용 확인용 */
+    border-bottom:3px solid #1a56db !important;
     box-shadow:0 2px 12px rgba(26,86,219,.15);
     z-index:150;
     display:flex !important;
@@ -1024,8 +1027,8 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
     gap:6px;
     align-items:center;
   }
-  /* 가이드 탭 콘텐츠는 fixed 서브탭 높이만큼 상단 여백 확보 */
-  #top-panel-guide.on .guide-wrap .report-container{padding-top:240px}
+  /* sticky라 padding-top 대폭 축소 (이전 240px → 0) */
+  #top-panel-guide.on .guide-wrap .report-container{padding-top:0}
 }
 .guide-sub-btn{
   padding:7px 14px;font-size:12px;font-weight:600;border-radius:6px;
@@ -1102,7 +1105,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
   flex-wrap:nowrap;
   gap:0;padding:6px 20px;background:#f8f8f4;border-bottom:2px solid #e0e0d8;
   font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.3px;
-  position:sticky;top:var(--hdr-h);z-index:10;
+  position:sticky;top:0;z-index:10;
 }
 .th-ticker{} .th-name{} .th-num{text-align:right} .th-stage{text-align:center}
 
@@ -1318,19 +1321,17 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
      걸 한 번 더 강제로 덮음
    ════════════════════════════════════════════════════════════ */
 @media (max-width:768px){
-  /* 메인 콘텐츠 상단 여백 강화 - 모바일 브라우저 viewport 변동 대비
-     (모바일 Chrome은 주소창 표시/숨김에 따라 fixed 헤더 위치가 미묘하게 바뀜) */
+  /* 메인 콘텐츠 상단 여백 - v2026-04-27q부터 헤더가 fixed가 아닌 일반 흐름이라
+     padding-top 거의 불필요. 작은 안전 여백만 */
   .main-with-sidebar{
-    padding-top:calc(var(--hdr-h) + 16px) !important;
+    padding-top:8px !important;
   }
-  /* 모든 탭 패널은 콘텐츠 시작점 안전 여백
-     모바일 Chrome 주소창 표시/숨김 + fixed 헤더 측정 오차 흡수
-     기존 56px → 80px 로 한 번 더 증가 (주소창 변동 흡수) */
-  .top-panel.on{padding-top:80px !important}
-  /* 백테스트는 KPI 카드라 더 큰 여백 */
-  #top-panel-backtest.on{padding-top:88px !important}
-  /* 전략 가이드 - 메뉴띠를 콘텐츠 위에 보이게 */
-  #top-panel-guide.on{padding-top:80px !important}
+  /* 모든 탭 패널은 콘텐츠 시작점 안전 여백 (sticky 없으니 작은 여백만) */
+  .top-panel.on{padding-top:16px !important}
+  /* 백테스트는 KPI 카드라 약간 더 */
+  #top-panel-backtest.on{padding-top:24px !important}
+  /* 전략 가이드 */
+  #top-panel-guide.on{padding-top:16px !important}
   
   /* ═══ 전략 가이드 - 모바일 폭 강제 해제 + 메뉴띠 살리기 ═══ */
   /* 가이드의 max-width:920px 컨테이너들을 모두 모바일 폭으로 강제 */
@@ -4406,7 +4407,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 <div class="top-panel" id="top-panel-pattern">
 
   <!-- Sticky 그룹: 패턴 버튼 toolbar + RS/Stage 필터 toolbar -->
-  <div class="pat-sticky-wrap" style="position:sticky;top:var(--hdr-h);z-index:50;background:#fff">
+  <div class="pat-sticky-wrap" style="position:sticky;top:0;z-index:50;background:#fff">
 
   <!-- 상단 툴바 -->
   <div class="pat-toolbar" style="background:#fff;padding:8px 20px;border-bottom:1px solid #e0e0d8;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
@@ -11212,7 +11213,7 @@ function exportEtf() {
         box.style.cssText='position:fixed;bottom:10px;right:10px;z-index:9999;background:#000;color:#0f0;padding:6px 10px;font:11px monospace;border-radius:4px;pointer-events:none';
         document.body.appendChild(box);
       }
-      box.textContent = `[v2026-04-27p] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
+      box.textContent = `[v2026-04-27q] --hdr-h=${h}px (헤더 일반 흐름) ${new Date().toLocaleTimeString()}`;
     }
   }
   // 여러 타이밍에서 측정 (late-layout 대비)
