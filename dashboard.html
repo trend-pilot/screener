@@ -1823,6 +1823,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
       <div class="ctrl-row">
         <span class="row-lbl">Phase</span>
         <button class="fbtn on" id="us-phase-all" onclick="setPhaseFilter('all',this)">전체</button>
+        <button class="fbtn" id="us-phase-up" onclick="setPhaseFilter('up',this)" style="background:#fff5e6;border-color:#c87800;color:#c87800;font-weight:800">🆕 NEW↑ 전환</button>
         <button class="fbtn" id="us-phase-4plus" onclick="setPhaseFilter('4plus',this)" style="background:#D1F2C4;border-color:#1F5A09;color:#1F5A09">🎯+ 4+최상위★</button>
         <button class="fbtn" id="us-phase-4" onclick="setPhaseFilter('4',this)" style="background:#eaf6ee;border-color:#1a8a4a;color:#1a8a4a">🎯 4돌파임박★</button>
         <button class="fbtn" id="us-phase-5" onclick="setPhaseFilter('5',this)">5분커다</button>
@@ -4093,6 +4094,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
       <div class="ctrl-row">
         <span class="row-lbl">Phase</span>
         <button class="fbtn on" id="kr-phase-all" onclick="setPhaseFilterKR('all',this,'kr')">전체</button>
+        <button class="fbtn" id="kr-phase-up" onclick="setPhaseFilterKR('up',this,'kr')" style="background:#fff5e6;border-color:#c87800;color:#c87800;font-weight:800">🆕 NEW↑ 전환</button>
         <button class="fbtn" id="kr-phase-4plus" onclick="setPhaseFilterKR('4plus',this,'kr')" style="background:#D1F2C4;border-color:#1F5A09;color:#1F5A09">🎯+ 4+최상위★</button>
         <button class="fbtn" id="kr-phase-4" onclick="setPhaseFilterKR('4',this,'kr')" style="background:#eaf6ee;border-color:#1a8a4a;color:#1a8a4a">🎯 4돌파임박★</button>
         <button class="fbtn" id="kr-phase-5" onclick="setPhaseFilterKR('5',this,'kr')">5분커다</button>
@@ -4179,6 +4181,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
       <div class="ctrl-row">
         <span class="row-lbl">Phase</span>
         <button class="fbtn on" id="kr2-phase-all" onclick="setPhaseFilterKR('all',this,'kr2')">전체</button>
+        <button class="fbtn" id="kr2-phase-up" onclick="setPhaseFilterKR('up',this,'kr2')" style="background:#fff5e6;border-color:#c87800;color:#c87800;font-weight:800">🆕 NEW↑ 전환</button>
         <button class="fbtn" id="kr2-phase-4plus" onclick="setPhaseFilterKR('4plus',this,'kr2')" style="background:#D1F2C4;border-color:#1F5A09;color:#1F5A09">🎯+ 4+최상위★</button>
         <button class="fbtn" id="kr2-phase-4" onclick="setPhaseFilterKR('4',this,'kr2')" style="background:#eaf6ee;border-color:#1a8a4a;color:#1a8a4a">🎯 4돌파임박★</button>
         <button class="fbtn" id="kr2-phase-5" onclick="setPhaseFilterKR('5',this,'kr2')">5분커다</button>
@@ -9547,7 +9550,7 @@ function applyPresetKR(preset, el, mkt) {
   if (preset === 's2_s1s2')      { add('s2early'); add('s1s2'); }
   if (preset === 'rsl')          { add('rsl'); }
   if (preset === 'phase4')       { setPhaseFilterKR('4',     document.getElementById(`${mkt}-phase-4`),     mkt); return; }
-  if (preset === 'phase_change') { setPhaseFilterKR('4plus', document.getElementById(`${mkt}-phase-4plus`), mkt); return; }
+  if (preset === 'phase_change') { setPhaseFilterKR('up',    document.getElementById(`${mkt}-phase-up`),    mkt); return; }
   if (preset === 'phase4plus')   { setPhaseFilterKR('4plus', document.getElementById(`${mkt}-phase-4plus`), mkt); return; }
   if (mkt === 'kr') renderKRMomentum();
   else              renderKR2Momentum();
@@ -9567,7 +9570,7 @@ function applyPreset(preset, el) {
   if (preset === 's2_s1s2')      { add('s2early'); add('s1s2'); }
   if (preset === 'rsl')          { add('rsl'); }
   if (preset === 'phase4')       { setPhaseFilter('4', document.getElementById('us-phase-4')); }
-  if (preset === 'phase_change') { setPhaseFilter('4plus', document.getElementById('us-phase-4plus')); }
+  if (preset === 'phase_change') { setPhaseFilter('up', document.getElementById('us-phase-up')); }
   if (preset === 'phase4plus')   { setPhaseFilter('4plus', document.getElementById('us-phase-4plus')); }
   renderUSMomentum();
 }
@@ -9721,7 +9724,8 @@ function usRowHTML(s) {
 
 function renderUSMomentum() {
   let list = usFiltered();
-  if (usPhaseFilter !== 'all') list = list.filter(s => calcPhase(s) === usPhaseFilter);
+  if (usPhaseFilter === 'up')      list = list.filter(s => s.phase_changed_up);
+  else if (usPhaseFilter !== 'all') list = list.filter(s => calcPhase(s) === usPhaseFilter);
   list = usSorted(list);
   setText('us-res-count', list.length);
   const el = document.getElementById('us-stock-list');
@@ -9840,7 +9844,11 @@ function krFiltered(mkt) {
     if (cf === 'mid'   && (cap < 1000  || cap >= 10000))           return false;
     if (cf === 'small' && cap >= 1000)                             return false;
     // Phase 필터
-    if (phaseFilter !== 'all' && calcPhase(s) !== phaseFilter)     return false;
+    if (phaseFilter === 'up') {
+      if (!s.phase_changed_up) return false;
+    } else if (phaseFilter !== 'all' && calcPhase(s) !== phaseFilter) {
+      return false;
+    }
     return true;
   });
 }
@@ -11477,7 +11485,7 @@ function exportEtf() {
         box.style.cssText='position:fixed;bottom:10px;right:10px;z-index:9999;background:#000;color:#0f0;padding:6px 10px;font:11px monospace;border-radius:4px;pointer-events:none';
         document.body.appendChild(box);
       }
-      box.textContent = `[v2026-04-28e] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
+      box.textContent = `[v2026-04-28f] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
     }
   }
   // 여러 타이밍에서 측정 (late-layout 대비)

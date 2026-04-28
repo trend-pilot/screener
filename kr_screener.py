@@ -24,6 +24,8 @@ from datetime import datetime, timedelta
 import pandas as pd
 import numpy as np
 
+from phase_history import annotate_and_persist  # v29-phaseB: Phase 전환 추적
+
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger(__name__)
 
@@ -1289,6 +1291,14 @@ def run_screening(max_stocks=9999, verbose=True):
     log.info("🏭 섹터 집계...")
     sectors = build_sector_analysis(results)
 
+    # 7.5 Phase 전환 추적 (v29-phaseB) ─────────────────────────────────
+    log.info("📜 Phase 전환 추적 (어제 vs 오늘)...")
+    today_iso = f"{today_str[:4]}-{today_str[4:6]}-{today_str[6:]}" if len(today_str) == 8 else today_str
+    phase_up_count, phase_first_day = annotate_and_persist(
+        results, "kr_phase_history.json", today_iso
+    )
+    log.info(f"   NEW↑ {phase_up_count}개 종목 (첫날={phase_first_day})")
+
     # 8. 요약 통계
     stage2_count   = sum(1 for s in results if s["is_stage2"])
     acc_count      = sum(1 for s in results if s["acc2"])
@@ -1315,6 +1325,8 @@ def run_screening(max_stocks=9999, verbose=True):
             "rsl_count":      rsl_count,
             "largecap_count": largecap_count,
             "megacap_count":  megacap_count,
+            "phase_up_count":  phase_up_count,
+            "phase_first_day": phase_first_day,
         },
         "summary": {
             "total_stocks":          len(results),
@@ -1323,6 +1335,8 @@ def run_screening(max_stocks=9999, verbose=True):
             "strong_sectors_count":  strong_sectors,
             "neutral_sectors_count": neutral_sectors,
             "weak_sectors_count":    weak_sectors,
+            "phase_up_count":        phase_up_count,
+            "phase_first_day":       phase_first_day,
         },
         "market": market_signal,
         "sectors":    sectors,
@@ -1343,6 +1357,7 @@ def run_screening(max_stocks=9999, verbose=True):
     log.info(f"   강세 섹터:  {strong_sectors}개")
     log.info(f"   평균 RS:   {avg_rs}")
     log.info(f"   시장 신호:  {market_signal['label']}")
+    log.info(f"   Phase 전환↑: {phase_up_count}개 (첫날={phase_first_day})")
     log.info("=" * 60)
     _print_sector_summary(sectors)
 

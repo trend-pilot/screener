@@ -20,6 +20,8 @@ import pandas as pd
 import numpy as np
 from dotenv import load_dotenv
 
+from phase_history import annotate_and_persist  # v11: Phase 전환 추적
+
 load_dotenv()
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger(__name__)
@@ -636,6 +638,14 @@ def main():
 
     results = rank_rs(results)
 
+    # ─── Phase 전환 추적 (v11) ──────────────────────────────────────────
+    log.info("📜 Phase 전환 추적 (어제 vs 오늘)...")
+    today_str = datetime.now().strftime("%Y-%m-%d")
+    phase_up_count, phase_first_day = annotate_and_persist(
+        results, "phase_history.json", today_str
+    )
+    log.info(f"   NEW↑ {phase_up_count}개 종목 (첫날={phase_first_day})")
+
     stage2_count   = sum(1 for s in results if s["is_stage2"])
     avg_rs         = round(float(np.mean([s["rs"] for s in results])),1)
     acc_count      = sum(1 for s in results if s["acc2"])
@@ -664,6 +674,8 @@ def main():
             "rs_line_count":  rs_line_count,
             "rs_line_high":   rs_line_high,
             "rs_line_benchmark": RS_LINE_BENCHMARK,
+            "phase_up_count":  phase_up_count,
+            "phase_first_day": phase_first_day,
             "test_mode":     TEST_MODE,
         },
         "market": market_signals,
@@ -689,6 +701,7 @@ def main():
     log.info(f"  종목: {len(results)} (주식 {stock_count} + ETF {etf_count}) | Stage2: {stage2_count} | RS평균: {avg_rs}")
     log.info(f"  패턴 감지: {pattern_count}개 종목에서 패턴 발견")
     log.info(f"  RS Line: {rs_line_count}개 계산됨 ({rs_line_high}개 52주 신고가)")
+    log.info(f"  Phase 전환↑: {phase_up_count}개 (첫날={phase_first_day})")
     log.info("="*60)
 
 
