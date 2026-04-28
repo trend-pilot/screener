@@ -4254,6 +4254,21 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 <!-- ══ 섹터 분석 탭 패널 ══ -->
 <div class="top-panel" id="top-panel-sector">
 
+  <!-- ═══ 시장 토글 (US / KOSPI / KOSDAQ) ═══ -->
+  <div class="market-tabs" style="border-bottom:2px solid #e0e0d8">
+    <div class="mkt-tab us on" id="sec-mkt-us" onclick="setSecMarket('us',this)">
+      🇺🇸 미국 주식 <span class="mkt-badge" id="sec-mkt-us-badge">—</span>
+    </div>
+    <div class="mkt-divider"></div>
+    <div class="mkt-tab kr" id="sec-mkt-kr" onclick="setSecMarket('kr',this)">
+      🇰🇷 KOSPI <span class="mkt-badge" id="sec-mkt-kr-badge">—</span>
+    </div>
+    <div class="mkt-divider"></div>
+    <div class="mkt-tab kr2" id="sec-mkt-kr2" onclick="setSecMarket('kr2',this)">
+      🇰🇷 KOSDAQ <span class="mkt-badge" id="sec-mkt-kr2-badge">—</span>
+    </div>
+  </div>
+
   <!-- 정렬 툴바 -->
   <div class="sec-sort-toolbar">
     <span class="sec-sort-lbl">섹터 정렬:</span>
@@ -4393,6 +4408,21 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 
 <!-- ══ 스크리너 탭 패널 ══ -->
 <div class="top-panel" id="top-panel-screener">
+
+  <!-- ═══ 시장 토글 (US / KOSPI / KOSDAQ) ═══ -->
+  <div class="market-tabs" style="border-bottom:2px solid #e0e0d8">
+    <div class="mkt-tab us on" id="scr-mkt-us" onclick="setScrMarket('us',this)">
+      🇺🇸 미국 주식 <span class="mkt-badge" id="scr-mkt-us-badge">—</span>
+    </div>
+    <div class="mkt-divider"></div>
+    <div class="mkt-tab kr" id="scr-mkt-kr" onclick="setScrMarket('kr',this)">
+      🇰🇷 KOSPI <span class="mkt-badge" id="scr-mkt-kr-badge">—</span>
+    </div>
+    <div class="mkt-divider"></div>
+    <div class="mkt-tab kr2" id="scr-mkt-kr2" onclick="setScrMarket('kr2',this)">
+      🇰🇷 KOSDAQ <span class="mkt-badge" id="scr-mkt-kr2-badge">—</span>
+    </div>
+  </div>
 
   <!-- Sticky 그룹: 메인 toolbar + Phase 필터 toolbar -->
   <div class="scr-sticky-wrap">
@@ -10394,6 +10424,10 @@ async function autoLoad() {
   }
 
   if (!US.data.length) setText('meta-date', 'JSON 불러오기 클릭');
+
+  // 스크리너 / 섹터 분석 시장 배지 업데이트
+  if (typeof updateScrMarketBadges === 'function') updateScrMarketBadges();
+  if (typeof updateSecMarketBadges === 'function') updateSecMarketBadges();
 }
 
 function doExport(mkt) {
@@ -10793,6 +10827,8 @@ function renderBacktest() {
 // ════════════════════════════════════════════════════════
 
 let scrSortKey   = 'rs';
+let scrMarket    = 'us';       // 'us' / 'kr' / 'kr2' — 시장 토글
+let secMarket    = 'us';       // 섹터 분석 탭 시장 토글
 let scrSortDesc  = true;
 let scrRsFilter  = 'all';      // 기본: 전체 (데이터에 맞게)
 let scrPhaseFilter = 'all';
@@ -10832,6 +10868,22 @@ function setScrSort(k, el) {
   renderScreener();
 }
 
+function setScrMarket(mkt, el) {
+  scrMarket = mkt;
+  // 토글 UI 업데이트
+  document.querySelectorAll('#top-panel-screener .market-tabs .mkt-tab').forEach(t => t.classList.remove('on'));
+  if (el) el.classList.add('on');
+  // 시장 변경 시 필터·정렬은 그대로 유지하고 데이터만 교체
+  renderScreener();
+}
+
+// 스크리너 시장 배지 업데이트 (종목 수 표시)
+function updateScrMarketBadges() {
+  setText('scr-mkt-us-badge',  (US.data  || []).length || '—');
+  setText('scr-mkt-kr-badge',  (KR.data  || []).length || '—');
+  setText('scr-mkt-kr2-badge', (KR2.data || []).length || '—');
+}
+
 function setScrRS(v, el) {
   scrRsFilter = v;
   document.querySelectorAll('[id^="scr-rs-"]').forEach(b => b.classList.remove('on'));
@@ -10856,8 +10908,13 @@ function toggleScrF(k, el) {
 }
 
 function scrFiltered() {
-  return US.data.filter(s => {
-    const rs = s.rs || 0;
+  // 선택된 시장의 데이터 사용 (us / kr / kr2)
+  const src = scrMarket === 'kr'  ? KR.data
+            : scrMarket === 'kr2' ? KR2.data
+            : US.data;
+  return src.filter(s => {
+    // KR은 rs_score를 메인으로 쓰지만 rs 필드도 동일값으로 통일됨 → s.rs 사용
+    const rs = s.rs || s.rs_score || 0;
     // RS 필터
     if (scrRsFilter === '8090' && (rs < 80 || rs > 90)) return false;
     if (scrRsFilter === '91'   && rs < 91)               return false;
@@ -10976,7 +11033,12 @@ function scrRowHTML(s) {
   // 점수 색상
   const scoreColor = score >= 80 ? '#1a5c1a' : score >= 60 ? '#185FA5' : score >= 40 ? '#854F0B' : '#aaa';
 
-  const price = s.price != null ? (s.price >= 1000 ? s.price.toLocaleString() : s.price.toFixed(2)) : '—';
+  const isKR = (s.market === 'KOSPI' || s.market === 'KOSDAQ');
+  const price = s.price != null
+    ? (isKR
+        ? Math.round(s.price).toLocaleString('ko-KR') + '원'
+        : (s.price >= 1000 ? s.price.toLocaleString() : s.price.toFixed(2)))
+    : '—';
   const _sd = safeStringify(s);
 
   return `<tr onclick="openDetail('${s.ticker}',${_sd},'us')">
@@ -11368,7 +11430,7 @@ function exportEtf() {
         box.style.cssText='position:fixed;bottom:10px;right:10px;z-index:9999;background:#000;color:#0f0;padding:6px 10px;font:11px monospace;border-radius:4px;pointer-events:none';
         document.body.appendChild(box);
       }
-      box.textContent = `[v2026-04-28a] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
+      box.textContent = `[v2026-04-28b] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
     }
   }
   // 여러 타이밍에서 측정 (late-layout 대비)
@@ -11440,6 +11502,19 @@ function setSectorSort(key, el) {
   document.querySelectorAll('.sec-sort-btn').forEach(b => b.classList.remove('on'));
   if (el) el.classList.add('on');
   renderSectorTab();
+}
+
+function setSecMarket(mkt, el) {
+  secMarket = mkt;
+  document.querySelectorAll('#top-panel-sector .market-tabs .mkt-tab').forEach(t => t.classList.remove('on'));
+  if (el) el.classList.add('on');
+  renderSectorTab();
+}
+
+function updateSecMarketBadges() {
+  setText('sec-mkt-us-badge',  (US.data  || []).length || '—');
+  setText('sec-mkt-kr-badge',  (KR.data  || []).length || '—');
+  setText('sec-mkt-kr2-badge', (KR2.data || []).length || '—');
 }
 
 function sortSectors(sectors) {
@@ -11542,9 +11617,13 @@ function buildSectorsForTab(stocks) {
 function renderSectorTab() {
   const el = document.getElementById('sec-panel-content');
   if (!el) return;
-  const stocks = US.data;
+  // 선택된 시장의 데이터 사용
+  const stocks = secMarket === 'kr'  ? KR.data
+               : secMarket === 'kr2' ? KR2.data
+               : US.data;
+  const mktLabel = secMarket === 'kr' ? 'KOSPI' : secMarket === 'kr2' ? 'KOSDAQ' : 'US';
   if (!stocks.length) {
-    el.innerHTML = '<div class="empty">\uD83D\uDCC2 US JSON\uC744 \uBD88\uB7EC\uC624\uBA74 \uC139\uD130 \uBD84\uC11D\uC774 \uD45C\uC2DC\uB429\uB2C8\uB2E4.</div>';
+    el.innerHTML = `<div class="empty">📂 ${mktLabel} 데이터를 불러오면 섹터 분석이 표시됩니다.</div>`;
     return;
   }
 
