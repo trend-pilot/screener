@@ -701,60 +701,118 @@ def _detect_kr_distribution_days(df, window_days=20, drop_pct=-0.2):
 
 
 def _calc_adr(start_date, end_date, days=20):
-    """ADR (Advance Decline Ratio) — KOSPI+KOSDAQ 통합 등락주선 비율 평균.
-    한국 표준 지표. value = 상승종목수 / 하락종목수 × 100
-      75~80% 미만: 🟢 매수 기회 (Rally 확률 ↑)
-      80~120%: 🟡 중립
-      120% 이상: 🔴 과매수 경고
-    pykrx 사용 (느림). 실패 시 None.
+    """ADR (Advance Decline Ratio) — KOSPI 200 + KOSDAQ 150 우량주의 등락주선 비율.
+
+    [Phase D-1a, v29-phaseD] yfinance 하이브리드 방식 (이전 pykrx 300번 호출 → 1번 batch):
+      (1) 구성종목 리스트: pykrx 1번 호출 (KOSPI200=1028, KOSDAQ150=2203)
+      (2) 가격 데이터:    yfinance batch 다운로드 1번 (.KS / .KQ 심볼)
+      (3) 종가 비교:      마지막 영업일 vs 직전 영업일 → 상승/하락 카운트
+
+    값 = 상승종목수 / 하락종목수 × 100
+    분류 (시장 폭 breadth 관점, dashboard signal 일관):
+      < 80%:   bearish (🔴 약세 — 시장 폭 부족, 반등 기회 가능성)
+      80~120%: neutral (🟡 중립)
+      > 120%:  bullish (🟢 강세 — 시장 폭 견고, 광범위 상승)
     """
+    # ── (1) 구성종목 리스트 (pykrx, 가벼운 1회 호출) ──
     if not PYKRX_OK:
-        return {"value": None, "label": "pykrx 미설치", "signal": "unknown", "days": days}
+        return {"value": None, "label": "pykrx 미설치 (구성종목 리스트 불가)",
+                "signal": "unknown", "days": days}
+
+    log.info("    [ADR] 구성종목 리스트 로드 (pykrx)...")
     try:
         from pykrx import stock as krx
-        # 최근 N 거래일 데이터
-        end_dt = end_date
-        start_dt = (datetime.strptime(end_date, "%Y%m%d") - timedelta(days=int(days*1.6))).strftime("%Y%m%d")
-        # KRX 등락주선
-        df = krx.get_market_ohlcv(start_dt, end_dt, "ALL")
-        if df is None or len(df) == 0:
-            return {"value": None, "label": "ADR 데이터 없음", "signal": "unknown", "days": days}
-        # 일별 상승/하락 계산은 너무 무거우니 — 간소화: 전일대비 등락률을 KRX API로 받기
-        # 대안: 최근 N일 평균 등락 비율 추정
-        # 여기서는 KOSPI 200 + KOSDAQ 150 우량주만으로 빠르게 추정
-        adr_values = []
-        ks_tickers = krx.get_index_portfolio_deposit_file("1028")[:200]  # KOSPI200
-        kq_tickers = krx.get_index_portfolio_deposit_file("2203")[:150]  # KOSDAQ150
-        all_tickers = list(set(ks_tickers + kq_tickers))[:300]
-        # 최근 N+1 영업일 가져와 비교
-        for ticker in all_tickers[:300]:
-            try:
-                df_t = krx.get_market_ohlcv(start_dt, end_dt, ticker)
-                if df_t is None or len(df_t) < 2: continue
-                # 일별 ADR 누적은 비싸니 마지막날 등락만
-                last  = float(df_t["종가"].iloc[-1])
-                prev  = float(df_t["종가"].iloc[-2])
-                adr_values.append(1 if last > prev else 0)
-            except Exception:
-                continue
-        if not adr_values:
-            return {"value": None, "label": "ADR 계산 실패", "signal": "unknown", "days": days}
-        up = sum(adr_values)
-        down = len(adr_values) - up
-        if down == 0:
-            value = 999.0
-        else:
-            value = round(up / down * 100, 1)
-        if value < 80:
-            signal, label = "green", "🟢 매수 기회 (반등 확률 ↑)"
-        elif value < 120:
-            signal, label = "yellow", "🟡 중립"
-        else:
-            signal, label = "red", "🔴 과매수 경고"
-        return {"value": value, "label": label, "signal": signal, "days": days, "up": up, "down": down}
+        ks_tickers = krx.get_index_portfolio_deposit_file("1028") or []  # KOSPI 200
+        kq_tickers = krx.get_index_portfolio_deposit_file("2203") or []  # KOSDAQ 150
     except Exception as e:
-        log.warning(f"  ADR 계산 실패: {e}")
-        return {"value": None, "label": "ADR 계산 실패", "signal": "unknown", "days": days}
+        log.warning(f"    [ADR] pykrx 구성종목 리스트 실패: {type(e).__name__}: {e}")
+        return {"value": None, "label": f"구성종목 리스트 실패: {type(e).__name__}",
+                "signal": "unknown", "days": days}
+
+    if not ks_tickers and not kq_tickers:
+        log.warning("    [ADR] 구성종목 리스트 비어있음")
+        return {"value": None, "label": "구성종목 0개", "signal": "unknown", "days": days}
+
+    # ── (2) yfinance 심볼로 변환 (.KS / .KQ) ──
+    yf_tickers = [f"{t}.KS" for t in ks_tickers] + [f"{t}.KQ" for t in kq_tickers]
+    yf_tickers = sorted(set(yf_tickers))[:350]   # 중복 제거 + 안전 상한
+    log.info(f"    [ADR] universe: {len(yf_tickers)}종목 (KS {len(ks_tickers)} + KQ {len(kq_tickers)})")
+
+    # ── (3) yfinance batch 다운로드 ──
+    try:
+        import yfinance as yf
+    except ImportError:
+        log.warning("    [ADR] yfinance 미설치")
+        return {"value": None, "label": "yfinance 미설치", "signal": "unknown", "days": days}
+
+    end_dt   = datetime.strptime(end_date, "%Y%m%d")
+    yf_start = (end_dt - timedelta(days=10)).strftime("%Y-%m-%d")  # 주말·휴일 여유
+    yf_end   = (end_dt + timedelta(days=1)).strftime("%Y-%m-%d")
+
+    log.info(f"    [ADR] yfinance batch 다운로드 ({yf_start} ~ {yf_end})...")
+    try:
+        df = yf.download(
+            tickers=yf_tickers,
+            start=yf_start, end=yf_end,
+            interval="1d", group_by="ticker",
+            auto_adjust=True, progress=False, threads=True,
+        )
+    except Exception as e:
+        log.warning(f"    [ADR] yfinance 다운로드 실패: {type(e).__name__}: {e}")
+        return {"value": None, "label": f"yfinance 실패: {type(e).__name__}",
+                "signal": "unknown", "days": days}
+
+    if df is None or df.empty:
+        log.warning("    [ADR] yfinance 빈 결과")
+        return {"value": None, "label": "yfinance 빈 결과", "signal": "unknown", "days": days}
+
+    # ── (4) 종가 비교: 마지막 영업일 vs 직전 영업일 ──
+    up, down, skipped = 0, 0, 0
+    # group_by='ticker' → multi-index columns. ticker가 columns 첫 레벨에 위치
+    try:
+        level0 = set(df.columns.get_level_values(0))
+    except Exception:
+        level0 = set()
+
+    for ticker in yf_tickers:
+        try:
+            if ticker not in level0:
+                skipped += 1; continue
+            close = df[ticker]["Close"].dropna()
+            if len(close) < 2:
+                skipped += 1; continue
+            last = float(close.iloc[-1])
+            prev = float(close.iloc[-2])
+            if last > prev:
+                up += 1
+            elif last < prev:
+                down += 1
+            # 보합(==)은 표준 ADR 정의에 따라 카운트 제외
+        except Exception:
+            skipped += 1
+            continue
+
+    if up + down == 0:
+        log.warning(f"    [ADR] 유효 데이터 0종목 (skipped={skipped})")
+        return {"value": None, "label": "ADR 데이터 없음 (전종목 skip)",
+                "signal": "unknown", "days": days, "skipped": skipped}
+
+    # ── (5) ADR 계산 + 시그널 분류 ──
+    value = 999.0 if down == 0 else round(up / down * 100, 1)
+
+    if value < 80:
+        signal, label = "bearish", "🔴 약세 (시장 폭 부족)"
+    elif value < 120:
+        signal, label = "neutral", "🟡 중립"
+    else:
+        signal, label = "bullish", "🟢 강세 (시장 폭 견고)"
+
+    log.info(f"    [ADR] up={up} / down={down} / skip={skipped} / total_universe={len(yf_tickers)} → ADR={value}%")
+    return {
+        "value": value, "label": label, "signal": signal, "days": days,
+        "up": up, "down": down, "skipped": skipped,
+        "total_universe": len(yf_tickers),
+    }
 
 
 def _calc_ma_matrix(stage_kospi, stage_kospi200, stage_kosdaq):
