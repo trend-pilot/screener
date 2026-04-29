@@ -883,6 +883,35 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
   padding:2px 8px;border-radius:99px;margin-left:6px
 }
 
+/* Step 3: ③ Distribution Day 게이지 (분배일 카운트) */
+.kr-dd-card{
+  border:1.5px solid #e0e0d8;border-radius:12px;padding:14px 16px;background:#fff;
+  display:flex;flex-direction:column;gap:10px
+}
+.kr-dd-card.dd-healthy{border-color:#a8d4b3;background:#f7fcf8}
+.kr-dd-card.dd-caution{border-color:#fde68a;background:#fffbe6}
+.kr-dd-card.dd-warning{border-color:#e6c89c;background:#fefaf3}
+.kr-dd-card.dd-danger{border-color:#e6b3b3;background:#fef7f7}
+.kr-dd-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.kr-dd-count-row{display:flex;align-items:baseline;gap:6px}
+.kr-dd-count{font-size:30px;font-weight:800;line-height:1}
+.kr-dd-count.dd-healthy{color:#1a8a4a}
+.kr-dd-count.dd-caution{color:#854F0B}
+.kr-dd-count.dd-warning{color:#B5500A}
+.kr-dd-count.dd-danger{color:#A32D2D}
+.kr-dd-of{font-size:12px;color:#888;font-weight:600}
+.kr-dd-status{font-size:12px;font-weight:700;color:#1a1a1a}
+.kr-dd-bars{display:grid;grid-template-columns:repeat(9,1fr);gap:4px;margin-top:2px}
+.kr-dd-bar{height:14px;border-radius:3px;background:#f0f0ea;transition:background .15s}
+.kr-dd-bar.filled.dd-healthy{background:#1a8a4a}
+.kr-dd-bar.filled.dd-caution{background:#FBBF24}
+.kr-dd-bar.filled.dd-warning{background:#B5500A}
+.kr-dd-bar.filled.dd-danger{background:#A32D2D}
+.kr-dd-meta{font-size:10.5px;color:#888;display:flex;align-items:center;gap:8px;flex-wrap:wrap;line-height:1.4}
+.kr-dd-thresh{display:flex;gap:6px;font-size:9.5px;color:#aaa;flex-wrap:wrap}
+.kr-dd-thresh-item{display:inline-flex;align-items:center;gap:3px}
+.kr-dd-thresh-dot{width:8px;height:8px;border-radius:2px;display:inline-block}
+
 @media(max-width:640px){
   .kr-index-grid{grid-template-columns:1fr}
   .kr-pulse-wrap{padding:0 12px}
@@ -1751,6 +1780,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
   <!-- ═══ KR Market Pulse 5지표 (Phase C) — KR 모드에서만 표시 ═══ -->
   <!-- Step 1: ① 지수 Stage 카드 3개 (KOSPI / KOSPI200 / KOSDAQ) -->
   <!-- Step 2: ② FTD 카운터 (Follow-Through Day) -->
+  <!-- Step 3: ③ Distribution Day 게이지 (분배일 카운트) -->
   <div id="mp-kr-pulse" class="kr-pulse-wrap" style="display:none">
     <div class="kr-pulse-section-title"><span>📊</span> 지수 Stage — KOSPI · KOSPI 200 · KOSDAQ</div>
     <div class="kr-index-grid" id="kr-index-grid">
@@ -1762,6 +1792,13 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
     </div>
     <div id="kr-ftd-wrap">
       <!-- JS renderKrFtd()에서 렌더 -->
+    </div>
+
+    <div class="kr-pulse-section-title">
+      <span>📉</span> Distribution Day — 분배일 카운트
+    </div>
+    <div id="kr-dd-wrap">
+      <!-- JS renderKrDistribution()에서 렌더 -->
     </div>
   </div>
 
@@ -11559,7 +11596,7 @@ function exportEtf() {
         box.style.cssText='position:fixed;bottom:10px;right:10px;z-index:9999;background:#000;color:#0f0;padding:6px 10px;font:11px monospace;border-radius:4px;pointer-events:none';
         document.body.appendChild(box);
       }
-      box.textContent = `[v2026-04-29a-step2] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
+      box.textContent = `[v2026-04-29a-step3] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
     }
   }
   // 여러 타이밍에서 측정 (late-layout 대비)
@@ -11733,6 +11770,63 @@ function renderKrFtd(pulse) {
   }
 }
 
+// Step 3: ③ Distribution Day 게이지 — kr_pulse.distribution 사용
+// 임계: 0~2 healthy / 3~4 caution / 5~6 warning / 7+ danger
+function ddSeverityClass(count) {
+  if (count <= 2) return 'dd-healthy';
+  if (count <= 4) return 'dd-caution';
+  if (count <= 6) return 'dd-warning';
+  return 'dd-danger';
+}
+function renderKrDistribution(pulse) {
+  const wrap = document.getElementById('kr-dd-wrap');
+  if (!wrap) return;
+  const dd = pulse && pulse.distribution;
+  if (!dd) {
+    wrap.innerHTML = '<div class="kr-dd-card"><div style="color:#bbb;font-size:11px">DD 데이터 없음 (kr_pulse.distribution 미수집)</div></div>';
+    return;
+  }
+  const count = (typeof dd.count === 'number') ? dd.count : 0;
+  const sev = ddSeverityClass(count);
+  const dates = Array.isArray(dd.dates) ? dd.dates : [];
+  const windowDays = dd.window_days || 20;
+  const status = dd.status_label || '';
+
+  // 9개 막대 (count만큼 채워짐, 7+는 9개 모두 채움)
+  const barCount = Math.min(Math.max(count, 0), 9);
+  const bars = Array.from({length: 9}, (_, i) => {
+    const filled = (i < barCount) ? `filled ${sev}` : '';
+    return `<div class="kr-dd-bar ${filled}"></div>`;
+  }).join('');
+
+  const tooltip = dates.length > 0 ? '발생일: ' + dates.join(', ') : 'DD 발생 없음';
+  const datesText = dates.length > 0
+    ? `· 발생일: ${dates.slice(0, 3).join(', ')}${dates.length > 3 ? ` 외 ${dates.length - 3}건` : ''}`
+    : '';
+
+  wrap.innerHTML = `
+    <div class="kr-dd-card ${sev}" title="${tooltip}">
+      <div class="kr-dd-header">
+        <div class="kr-dd-count-row">
+          <span class="kr-dd-count ${sev}">${count}</span>
+          <span class="kr-dd-of">/ 9개 (7+ Correction 임박)</span>
+        </div>
+        <span class="kr-dd-status">${status}</span>
+      </div>
+      <div class="kr-dd-bars">${bars}</div>
+      <div class="kr-dd-meta">
+        <span>최근 ${windowDays}일 윈도우 ${datesText}</span>
+      </div>
+      <div class="kr-dd-thresh">
+        <span class="kr-dd-thresh-item"><span class="kr-dd-thresh-dot" style="background:#1a8a4a"></span>0~2 Healthy</span>
+        <span class="kr-dd-thresh-item"><span class="kr-dd-thresh-dot" style="background:#FBBF24"></span>3~4 주의</span>
+        <span class="kr-dd-thresh-item"><span class="kr-dd-thresh-dot" style="background:#B5500A"></span>5~6 위험</span>
+        <span class="kr-dd-thresh-item"><span class="kr-dd-thresh-dot" style="background:#A32D2D"></span>7+ Correction</span>
+      </div>
+    </div>
+  `;
+}
+
 // mpMarket 에 따라 적절한 raw 데이터로 Market Pulse 업데이트
 function refreshMarketPulse() {
   const krPulseWrap = document.getElementById('mp-kr-pulse');
@@ -11753,6 +11847,7 @@ function refreshMarketPulse() {
     const pulse = (krRaw.market || {}).kr_pulse;
     renderKrIndexStages(pulse);
     renderKrFtd(pulse);
+    renderKrDistribution(pulse);
   } else {
     // US 데이터로 복원
     if (krPulseWrap) krPulseWrap.style.display = 'none';
