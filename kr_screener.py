@@ -700,11 +700,77 @@ def _detect_kr_distribution_days(df, window_days=20, drop_pct=-0.2):
     return {"count": count, "dates": dd_dates, "window_days": window_days, "status_label": status_label}
 
 
+def _get_index_components(cache_path="kr_index_cache.json"):
+    """KOSPI 200 + KOSDAQ 150 구성종목 리스트 (캐시 fallback 포함).
+
+    [Phase D-1 캐시 보강, v29-phaseD]
+    1. pykrx 시도 → 성공하면 캐시 저장 + 반환
+    2. pykrx 실패 시 캐시 사용 (만료된 것도 OK, 없는 것보다 나음)
+    3. 둘 다 실패면 빈 리스트 + source='unavailable'
+
+    구성종목은 분기당 한 번 정도만 변경되므로 캐시가 30일 만료되어도
+    ADR 정확도 영향 미미.
+
+    Returns:
+        (ks_tickers, kq_tickers, source)
+        source: 'pykrx_fresh' | 'cache_fresh' | 'cache_stale_<N>d' | 'unavailable'
+    """
+    # ── 1) pykrx 호출 시도 ──
+    if PYKRX_OK:
+        try:
+            from pykrx import stock as krx
+            ks = krx.get_index_portfolio_deposit_file("1028") or []
+            kq = krx.get_index_portfolio_deposit_file("2203") or []
+            ks = list(ks); kq = list(kq)
+            if ks or kq:
+                # 캐시 저장
+                fresh = {
+                    "saved_at":  datetime.now().strftime("%Y-%m-%d"),
+                    "kospi200":  ks,
+                    "kosdaq150": kq,
+                }
+                try:
+                    with open(cache_path, "w", encoding="utf-8") as f:
+                        json.dump(fresh, f, ensure_ascii=False)
+                    log.info(f"    [ADR] 구성종목 캐시 갱신: {cache_path} (KS {len(ks)} + KQ {len(kq)})")
+                except OSError as e:
+                    log.warning(f"    [ADR] 캐시 저장 실패: {e}")
+                return ks, kq, "pykrx_fresh"
+        except Exception as e:
+            log.warning(f"    [ADR] pykrx 구성종목 실패: {type(e).__name__}: {e}")
+
+    # ── 2) 캐시 fallback ──
+    if os.path.exists(cache_path):
+        try:
+            with open(cache_path, "r", encoding="utf-8") as f:
+                cached = json.load(f)
+            ks = list(cached.get("kospi200")  or [])
+            kq = list(cached.get("kosdaq150") or [])
+            if not ks and not kq:
+                log.warning("    [ADR] 캐시 비어있음")
+            else:
+                saved_at = cached.get("saved_at", "")
+                try:
+                    saved_dt = datetime.strptime(saved_at, "%Y-%m-%d")
+                    age_days = (datetime.now() - saved_dt).days
+                    source = "cache_fresh" if age_days <= 30 else f"cache_stale_{age_days}d"
+                    log.info(f"    [ADR] 캐시 사용: {saved_at} ({age_days}일 전, {source})")
+                except ValueError:
+                    source = "cache_unknown_age"
+                    log.info(f"    [ADR] 캐시 사용 (만료 미상): {saved_at}")
+                return ks, kq, source
+        except Exception as e:
+            log.warning(f"    [ADR] 캐시 로드 실패: {type(e).__name__}: {e}")
+
+    # ── 3) 둘 다 실패 ──
+    return [], [], "unavailable"
+
+
 def _calc_adr(start_date, end_date, days=20):
     """ADR (Advance Decline Ratio) — KOSPI 200 + KOSDAQ 150 우량주의 등락주선 비율.
 
     [Phase D-1a, v29-phaseD] yfinance 하이브리드 방식 (이전 pykrx 300번 호출 → 1번 batch):
-      (1) 구성종목 리스트: pykrx 1번 호출 (KOSPI200=1028, KOSDAQ150=2203)
+      (1) 구성종목 리스트: _get_index_components() (pykrx + 캐시 fallback)
       (2) 가격 데이터:    yfinance batch 다운로드 1번 (.KS / .KQ 심볼)
       (3) 종가 비교:      마지막 영업일 vs 직전 영업일 → 상승/하락 카운트
 
@@ -714,29 +780,18 @@ def _calc_adr(start_date, end_date, days=20):
       80~120%: neutral (🟡 중립)
       > 120%:  bullish (🟢 강세 — 시장 폭 견고, 광범위 상승)
     """
-    # ── (1) 구성종목 리스트 (pykrx, 가벼운 1회 호출) ──
-    if not PYKRX_OK:
-        return {"value": None, "label": "pykrx 미설치 (구성종목 리스트 불가)",
-                "signal": "unknown", "days": days}
-
-    log.info("    [ADR] 구성종목 리스트 로드 (pykrx)...")
-    try:
-        from pykrx import stock as krx
-        ks_tickers = krx.get_index_portfolio_deposit_file("1028") or []  # KOSPI 200
-        kq_tickers = krx.get_index_portfolio_deposit_file("2203") or []  # KOSDAQ 150
-    except Exception as e:
-        log.warning(f"    [ADR] pykrx 구성종목 리스트 실패: {type(e).__name__}: {e}")
-        return {"value": None, "label": f"구성종목 리스트 실패: {type(e).__name__}",
-                "signal": "unknown", "days": days}
+    # ── (1) 구성종목 리스트 (pykrx + 캐시 fallback) ──
+    log.info("    [ADR] 구성종목 리스트 로드...")
+    ks_tickers, kq_tickers, source = _get_index_components()
+    log.info(f"    [ADR] universe: KS {len(ks_tickers)} + KQ {len(kq_tickers)} (출처: {source})")
 
     if not ks_tickers and not kq_tickers:
-        log.warning("    [ADR] 구성종목 리스트 비어있음")
-        return {"value": None, "label": "구성종목 0개", "signal": "unknown", "days": days}
+        return {"value": None, "label": "구성종목 0개 (pykrx + 캐시 둘 다 실패)",
+                "signal": "unknown", "days": days, "source": source}
 
     # ── (2) yfinance 심볼로 변환 (.KS / .KQ) ──
     yf_tickers = [f"{t}.KS" for t in ks_tickers] + [f"{t}.KQ" for t in kq_tickers]
     yf_tickers = sorted(set(yf_tickers))[:350]   # 중복 제거 + 안전 상한
-    log.info(f"    [ADR] universe: {len(yf_tickers)}종목 (KS {len(ks_tickers)} + KQ {len(kq_tickers)})")
 
     # ── (3) yfinance batch 다운로드 ──
     try:
@@ -760,15 +815,15 @@ def _calc_adr(start_date, end_date, days=20):
     except Exception as e:
         log.warning(f"    [ADR] yfinance 다운로드 실패: {type(e).__name__}: {e}")
         return {"value": None, "label": f"yfinance 실패: {type(e).__name__}",
-                "signal": "unknown", "days": days}
+                "signal": "unknown", "days": days, "source": source}
 
     if df is None or df.empty:
         log.warning("    [ADR] yfinance 빈 결과")
-        return {"value": None, "label": "yfinance 빈 결과", "signal": "unknown", "days": days}
+        return {"value": None, "label": "yfinance 빈 결과", "signal": "unknown", "days": days,
+                "source": source}
 
     # ── (4) 종가 비교: 마지막 영업일 vs 직전 영업일 ──
     up, down, skipped = 0, 0, 0
-    # group_by='ticker' → multi-index columns. ticker가 columns 첫 레벨에 위치
     try:
         level0 = set(df.columns.get_level_values(0))
     except Exception:
@@ -795,7 +850,7 @@ def _calc_adr(start_date, end_date, days=20):
     if up + down == 0:
         log.warning(f"    [ADR] 유효 데이터 0종목 (skipped={skipped})")
         return {"value": None, "label": "ADR 데이터 없음 (전종목 skip)",
-                "signal": "unknown", "days": days, "skipped": skipped}
+                "signal": "unknown", "days": days, "skipped": skipped, "source": source}
 
     # ── (5) ADR 계산 + 시그널 분류 ──
     value = 999.0 if down == 0 else round(up / down * 100, 1)
@@ -812,6 +867,7 @@ def _calc_adr(start_date, end_date, days=20):
         "value": value, "label": label, "signal": signal, "days": days,
         "up": up, "down": down, "skipped": skipped,
         "total_universe": len(yf_tickers),
+        "source": source,
     }
 
 
@@ -834,35 +890,98 @@ def _calc_ma_matrix(stage_kospi, stage_kospi200, stage_kosdaq):
 
 
 def _fetch_supply_data():
-    """수급 펄스 — 신용잔고/외국인/기관. pykrx 사용. 실패 시 None.
-    Q3=A: 데이터 없으면 None 반환 → dashboard에서 '—' 표시.
+    """수급 펄스 — 외국인/기관 5일 누적 순매수 (KOSPI + KOSDAQ 합산).
+
+    [Phase D-2, v29-phaseD] 변경사항:
+      - 함수: get_market_trading_value_by_investor (합계 1행, 잘못 사용)
+            → get_market_trading_value_by_date (일자별 시계열, 정확)
+      - KOSPI만 → KOSPI + KOSDAQ 합산
+      - 컬럼명 자동 탐색 (외국인합계/외국인/외국인계 등 4~5개 후보)
+      - 단계별 [Supply] 로그 (어디서 실패했는지 명시)
+      - 단위: 원 → 억원 (/1e8)
+
+    신용잔고는 KRX 회원 인증 (KRX_ID/KRX_PW) 필요 → Phase E로 보류 (None 유지).
     """
     if not PYKRX_OK:
-        return {"credit_balance": None, "foreigner_5d": None, "institution_5d": None, "available": False}
+        log.warning("    [Supply] pykrx 미설치")
+        return {"credit_balance": None, "foreigner_5d": None, "institution_5d": None,
+                "available": False, "reason": "pykrx 미설치"}
+
+    log.info("    [Supply] 외국인/기관 5일 누적 순매수 계산 시작...")
     try:
         from pykrx import stock as krx
-        # 신용잔고: pykrx에는 직접 API가 없음 → 향후 KRX 정보데이터시스템 직접 호출 필요
-        # 외국인/기관 매매: 최근 5일 합계
-        end_str = latest_trading_day()
-        start_str = (datetime.strptime(end_str, "%Y%m%d") - timedelta(days=10)).strftime("%Y%m%d")
+    except ImportError:
+        return {"credit_balance": None, "foreigner_5d": None, "institution_5d": None,
+                "available": False, "reason": "pykrx import 실패"}
+
+    end_str = latest_trading_day()
+    # 영업일 5일 + 주말/휴일 여유 = 10일 lookback
+    start_str = (datetime.strptime(end_str, "%Y%m%d") - timedelta(days=10)).strftime("%Y%m%d")
+
+    # 컬럼명 후보 (pykrx 버전·KRX 응답 변경 대응)
+    foreigner_cols   = ["외국인합계", "외국인", "외국인계", "외국인전체"]
+    institution_cols = ["기관합계",   "기관",   "기관계",   "기관전체"]
+
+    def _extract_5d_eok(df, col_candidates, market_name, investor_name):
+        """DataFrame에서 컬럼 후보 매칭 → 마지막 5행 합계 반환 (억원)."""
+        if df is None or df.empty:
+            log.warning(f"    [Supply] {market_name} {investor_name}: DataFrame 빈 응답")
+            return None
+        for col in col_candidates:
+            if col in df.columns:
+                tail = df[col].tail(5)
+                try:
+                    total_won = float(tail.sum())
+                except (TypeError, ValueError) as e:
+                    log.warning(f"    [Supply] {market_name} {investor_name}: '{col}' sum 실패 ({e})")
+                    continue
+                eok = round(total_won / 1e8)
+                log.info(f"    [Supply] {market_name} {investor_name}: 컬럼='{col}', 5일 합계={eok:+,}억원")
+                return eok
+        # 컬럼 매칭 실패 — 디버그용으로 실제 컬럼 출력
+        cols_preview = list(df.columns)[:8]
+        log.warning(f"    [Supply] {market_name} {investor_name}: 컬럼 매칭 실패. 실제 컬럼={cols_preview}")
+        return None
+
+    foreigner_total   = 0
+    institution_total = 0
+    has_data          = False
+    failed_markets    = []
+
+    for market in ("KOSPI", "KOSDAQ"):
         try:
-            df_inv = krx.get_market_trading_value_by_investor(start_str, end_str, "KOSPI")
-            if df_inv is not None and len(df_inv) > 0:
-                # 외국인/기관 5일 누적
-                foreigner_5d = float(df_inv.get("외국인합계", df_inv.get("외국인", pd.Series([0]))).sum()) / 1e8  # 억원 단위
-                institution_5d = float(df_inv.get("기관합계", df_inv.get("기관", pd.Series([0]))).sum()) / 1e8
-                return {
-                    "credit_balance": None,    # v1: 미구현 — Q3=A로 — 표시
-                    "foreigner_5d":   round(foreigner_5d, 0),
-                    "institution_5d": round(institution_5d, 0),
-                    "available": True,
-                }
+            log.info(f"    [Supply] {market} 일자별 거래대금 조회 ({start_str}~{end_str})...")
+            df = krx.get_market_trading_value_by_date(start_str, end_str, market)
         except Exception as e:
-            log.warning(f"  수급 데이터 실패: {e}")
-        return {"credit_balance": None, "foreigner_5d": None, "institution_5d": None, "available": False}
-    except Exception as e:
-        log.warning(f"  수급 데이터 전체 실패: {e}")
-        return {"credit_balance": None, "foreigner_5d": None, "institution_5d": None, "available": False}
+            log.warning(f"    [Supply] {market} get_market_trading_value_by_date 실패: {type(e).__name__}: {e}")
+            failed_markets.append(market)
+            continue
+
+        f_eok = _extract_5d_eok(df, foreigner_cols,   market, "외국인")
+        i_eok = _extract_5d_eok(df, institution_cols, market, "기관")
+
+        if f_eok is not None:
+            foreigner_total += f_eok
+            has_data = True
+        if i_eok is not None:
+            institution_total += i_eok
+            has_data = True
+
+    if not has_data:
+        reason = f"{', '.join(failed_markets) or 'KOSPI+KOSDAQ'} 데이터 추출 실패"
+        log.warning(f"    [Supply] 합계 데이터 없음 ({reason})")
+        return {"credit_balance": None, "foreigner_5d": None, "institution_5d": None,
+                "available": False, "reason": reason}
+
+    log.info(f"    [Supply] ✅ 합계 → 외국인={foreigner_total:+,}억원, 기관={institution_total:+,}억원")
+
+    return {
+        "credit_balance":  None,   # KRX 회원 인증 필요 → Phase E
+        "credit_balance_note": "Phase E: KRX_ID/KRX_PW 인증 필요",
+        "foreigner_5d":    foreigner_total,
+        "institution_5d":  institution_total,
+        "available":       True,
+    }
 
 
 def _calc_kr_regime(stages, ftd, dd, adr, ma_matrix):
