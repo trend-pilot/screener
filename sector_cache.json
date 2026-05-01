@@ -11572,5 +11572,23 @@
     "industry": "Software - Infrastructure",
     "marketCap": 294803936,
     "fetched_at": "2026-04-28T03:11:43"
+  },
+  "SPEGU": {
+    "sector": "Financial Services",
+    "industry": "Shell Companies",
+    "marketCap": 0,
+    "fetched_at": "2026-05-01T00:38:38"
+  },
+  "AUGO": {
+    "sector": "Basic Materials",
+    "industry": "Gold",
+    "marketCap": 7102812160,
+    "fetched_at": "2026-05-01T00:38:38"
+  },
+  "MGRT": {
+    "sector": "Technology",
+    "industry": "Information Technology Services",
+    "marketCap": 1828749952,
+    "fetched_at": "2026-05-01T00:38:39"
   }
 }
