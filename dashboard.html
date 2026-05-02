@@ -10684,10 +10684,13 @@ async function autoLoad() {
   };
 
   const fetchAll = async (paths) => {
+    // [v29-phaseD-patch2] cache-busting: GitHub Pages CDN의 옛 JSON 캐시 우회
+    // 페이지 로드 시각을 timestamp로 추가 → CDN이 매번 새 URL로 인식 → 진짜 최신 JSON 받음
+    const cacheBust = '?t=' + Date.now();
     const results = [];
     for (const p of paths) {
       try {
-        const r = await fetch(p);
+        const r = await fetch(p + cacheBust);
         if (!r.ok) continue;
         const json = await r.json();
         results.push({ path: p, json });
@@ -11763,7 +11766,7 @@ function exportEtf() {
         box.style.cssText='position:fixed;bottom:10px;right:10px;z-index:9999;background:#000;color:#0f0;padding:6px 10px;font:11px monospace;border-radius:4px;pointer-events:none';
         document.body.appendChild(box);
       }
-      box.textContent = `[v2026-05-02-phaseD-autoFetch패치] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
+      box.textContent = `[v2026-05-02-phaseD-patch2-cacheBust] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
     }
   }
   // 여러 타이밍에서 측정 (late-layout 대비)
