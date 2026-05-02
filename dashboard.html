@@ -10620,6 +10620,11 @@ function ingestKR(raw) {
   renderKR2Momentum();
   renderKRSectors();
   renderKR2Sectors();
+  // [v29-phaseD-patch] ingestKR에서 KR Market Pulse 6컴포넌트도 자동 갱신
+  // 이 호출이 없으면 사용자가 🇰🇷 한국 시장 토글을 클릭해야만 6컴포넌트가 갱신됨
+  if (typeof refreshMarketPulse === 'function' && typeof mpMarket !== 'undefined' && mpMarket === 'kr') {
+    try { refreshMarketPulse(); } catch(e) { console.warn('[KR auto-refresh] refreshMarketPulse 실패:', e); }
+  }
 }
 
 // ════════════════════════════════════════════════════════
@@ -10733,7 +10738,13 @@ async function autoLoad() {
     // KR은 보통 한 파일이지만, 만약 여러 개면 종목 수 많은 걸 우선
     krResults.sort((a, b) => (b.json.all_stocks?.length || 0) - (a.json.all_stocks?.length || 0));
     ingestKR(krResults[0].json);
-    console.log(`%c[자동로드] KR: ${krResults[0].path}`, 'color:#1a56db;font-weight:bold');
+    // [v29-phaseD-patch] 디버그: 실제 fetch한 JSON의 생성 시각 명시
+    const krMeta = krResults[0].json?.meta || {};
+    const krGenAt = krMeta.generated_at || krMeta.analysis_date || '?';
+    const krStocks = (krResults[0].json?.all_stocks || []).length;
+    console.log(`%c[자동로드] KR: ${krResults[0].path}  · ${krStocks}종목 · generated_at=${krGenAt}`, 'color:#1a56db;font-weight:bold');
+  } else {
+    console.warn('%c[자동로드] KR: fetch 실패 (모든 경로 timeout/404)', 'color:#dc2626;font-weight:bold');
   }
 
   if (!US.data.length) setText('meta-date', 'JSON 불러오기 클릭');
@@ -10742,6 +10753,13 @@ async function autoLoad() {
   if (typeof updateScrMarketBadges === 'function') updateScrMarketBadges();
   if (typeof updateSecMarketBadges === 'function') updateSecMarketBadges();
   if (typeof updateMpMarketBadges  === 'function') updateMpMarketBadges();
+
+  // [v29-phaseD-patch] autoLoad 완료 후 Market Pulse 강제 갱신
+  // KR JSON이 자동 fetch됐을 때 6컴포넌트가 옛 값으로 보이는 버그 fix
+  // (mpMarket이 'us'든 'kr'이든 둘 다 경우 모두 정상 갱신되도록)
+  if (typeof refreshMarketPulse === 'function') {
+    try { refreshMarketPulse(); } catch(e) { console.warn('[autoLoad] Market Pulse 갱신 실패:', e); }
+  }
 }
 
 function doExport(mkt) {
@@ -11745,7 +11763,7 @@ function exportEtf() {
         box.style.cssText='position:fixed;bottom:10px;right:10px;z-index:9999;background:#000;color:#0f0;padding:6px 10px;font:11px monospace;border-radius:4px;pointer-events:none';
         document.body.appendChild(box);
       }
-      box.textContent = `[v2026-04-29a-step6-phaseC완성] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
+      box.textContent = `[v2026-05-02-phaseD-autoFetch패치] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
     }
   }
   // 여러 타이밍에서 측정 (late-layout 대비)
