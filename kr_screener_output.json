@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generated_at": "2026-05-04T12:34:51.094957",
-    "analysis_date": "20260504",
+    "generated_at": "2026-05-05T12:04:50.714012",
+    "analysis_date": "20260505",
     "market": "KR",
     "total_stocks": 1960,
     "stage2_count": 418,
@@ -36,10 +36,10 @@
         "kospi": {
           "stage": 2,
           "label": "Stage 2 — 상승 추세",
-          "close": 6598.87,
-          "ma21": 6089.25,
-          "ma50": 5825.99,
-          "ma200": 4373.34,
+          "close": 6936.99,
+          "ma21": 6170.34,
+          "ma50": 5851.18,
+          "ma200": 4392.45,
           "above_ma21": true,
           "above_ma50": true,
           "above_ma200": true
@@ -47,10 +47,10 @@
         "kospi200": {
           "stage": 2,
           "label": "Stage 2 — 상승 추세",
-          "close": 992.15,
-          "ma21": 913.81,
-          "ma50": 869.55,
-          "ma200": 627.48,
+          "close": 1049.66,
+          "ma21": 926.91,
+          "ma50": 873.74,
+          "ma200": 630.62,
           "above_ma21": true,
           "above_ma50": true,
           "above_ma200": true
@@ -58,10 +58,10 @@
         "kosdaq": {
           "stage": 2,
           "label": "Stage 2 — 상승 추세",
-          "close": 1192.35,
-          "ma21": 1139.92,
-          "ma50": 1137.16,
-          "ma200": 953.83,
+          "close": 1213.74,
+          "ma21": 1147.42,
+          "ma50": 1138.22,
+          "ma200": 955.98,
           "above_ma21": true,
           "above_ma50": true,
           "above_ma200": true
@@ -80,12 +80,12 @@
         "status_label": "🟢 Healthy Uptrend"
       },
       "adr": {
-        "value": 196.2,
+        "value": 185.2,
         "label": "🟢 강세 (시장 폭 견고)",
         "signal": "bullish",
         "days": 20,
-        "up": 51,
-        "down": 26,
+        "up": 50,
+        "down": 27,
         "skipped": 2,
         "total_universe": 80,
         "source": "hardcoded_tier0"
