@@ -11596,5 +11596,11 @@
     "industry": "Shell Companies",
     "marketCap": 352508480,
     "fetched_at": "2026-05-06T00:36:36"
+  },
+  "WTG": {
+    "sector": "Financial Services",
+    "industry": "Shell Companies",
+    "marketCap": 75263344,
+    "fetched_at": "2026-05-06T07:01:17"
   }
 }
