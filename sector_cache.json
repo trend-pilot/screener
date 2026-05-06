@@ -11590,5 +11590,11 @@
     "industry": "Information Technology Services",
     "marketCap": 1828749952,
     "fetched_at": "2026-05-01T00:38:39"
+  },
+  "KCHV": {
+    "sector": "Financial Services",
+    "industry": "Shell Companies",
+    "marketCap": 352508480,
+    "fetched_at": "2026-05-06T00:36:36"
   }
 }
