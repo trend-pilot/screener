@@ -4546,12 +4546,12 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
   <!-- 정렬 툴바 -->
   <div class="sec-sort-toolbar">
     <span class="sec-sort-lbl">섹터 정렬:</span>
-    <button class="sec-sort-btn on" id="sec-sort-weight"  onclick="setSectorSort('weight',this)">📊 시총 비중 <span style="font-size:9px;background:#0f9d58;color:#fff;padding:1px 5px;border-radius:3px;margin-left:3px">기본</span></button>
-    <button class="sec-sort-btn" id="sec-sort-rsline"     onclick="setSectorSort('rsline',this)">RS Line 점수</button>
+    <button class="sec-sort-btn" id="sec-sort-weight"  onclick="setSectorSort('weight',this)">📊 시총 비중</button>
+    <button class="sec-sort-btn on" id="sec-sort-rsline"     onclick="setSectorSort('rsline',this)">RS Line 점수 <span style="font-size:9px;background:#0f9d58;color:#fff;padding:1px 5px;border-radius:3px;margin-left:3px">기본</span></button>
     <button class="sec-sort-btn" id="sec-sort-ibdrs"      onclick="setSectorSort('ibdrs',this)">● IBD RS 평균</button>
     <button class="sec-sort-btn" id="sec-sort-rsnow"      onclick="setSectorSort('rsnow',this)">● RS now 평균</button>
     <button class="sec-sort-btn" id="sec-sort-gap"        onclick="setSectorSort('gap',this)">● 갭 (now-IBD)</button>
-    <span style="margin-left:auto;font-size:11px;color:#aaa">시총 비중: 종목 수·시가총액 기준 · 샘플 기본</span>
+    <span style="margin-left:auto;font-size:11px;color:#aaa">RS Line 점수: 가속도 기반 모멘텀 (momentum_score_v2)</span>
   </div>
 
   <!-- 섹터 콘텐츠 영역 -->
@@ -11831,7 +11831,7 @@ document.addEventListener('click', function(e) {
   }
 });
 
-let sectorSortKey = 'weight';
+let sectorSortKey = 'rsline';
 
 function setSectorSort(key, el) {
   sectorSortKey = key;
@@ -12608,7 +12608,7 @@ function renderSectorTab() {
           <input type="text" placeholder="🔍 업종 또는 종목 검색..." class="sec-ind-search" oninput="filterSectorIndustries(this,'${indExpId}')">
           <span class="sec-ind-hint">업종 클릭 → 종목 리스트 확장</span>
         </div>
-        <div class="sec-ind-header">📊 세부 업종 순위 (RS 평균 기준)</div>
+        <div class="sec-ind-header">📊 세부 업종 순위 (RS Line 점수 기준)</div>
         <div class="sec-ind-list">${industryList(s.industries)}</div>
       </div>
     </div>`;
@@ -12648,7 +12648,7 @@ function renderSectorTab() {
           </div>
         </div>
         <div class="sec-mega-right">
-          <div class="sec-mega-sub-header">📊 세부 업종 순위 (RS 평균 기준)</div>
+          <div class="sec-mega-sub-header">📊 세부 업종 순위 (RS Line 점수 기준)</div>
           <div class="sec-mega-ind-filter" onclick="event.stopPropagation()">
             <input type="text" placeholder="🔍 업종 또는 종목 검색..." class="sec-ind-search" oninput="filterSectorIndustries(this,'sec-mega-ind-list')">
           </div>
