@@ -10605,9 +10605,15 @@ function updateMarketPulse(raw, krRaw) {
     return `<div class="phase-row"><span class="phase-badge ${p.cls}">${p.label}</span><div class="phase-bar-wrap"><div class="phase-bar" style="width:${pct}%;background:${p.barColor}"></div></div><span class="phase-count">${cnt}</span></div>`;
   }).join('');
 
-  // v12 Phase 2: Daily Briefing ① 시장 환경 섹션 갱신
-  try { renderDailyBriefingMarket(regimeKey, regime, mkt, stocks, dt); }
-  catch(e) { console.warn('[Daily Briefing market] 렌더 실패:', e); }
+  // v12 Phase 2~4: Daily Briefing 섹션 갱신
+  try {
+    renderDailyBriefingMarket(regimeKey, regime, mkt, stocks, dt);
+    // v12 Phase 3+4: 섹터/산업 데이터는 한 번만 빌드해서 두 함수에 전달
+    const dbSectors = buildSectorsForTab(stocks);
+    renderDailyBriefingSector(dbSectors);
+    renderDailyBriefingIndustry(dbSectors);
+  }
+  catch(e) { console.warn('[Daily Briefing] 렌더 실패:', e); }
 }
 
 // ═══ v12 Phase 2: Daily Briefing ① 시장 환경 섹션 렌더링 ═══
@@ -10687,6 +10693,124 @@ function renderDailyBriefingMarket(regimeKey, regime, mkt, stocks, dt) {
     </div>
 
     ${dtStr ? `<div style="margin-top:10px;font-size:10px;color:#aaa;text-align:right">데이터 기준: ${dtStr}</div>` : ''}
+  `;
+}
+
+// ═══ v12 Phase 3: Daily Briefing ② 강세 섹터 ═══
+// 1위 메가 카드 + 강세/중립/약세 섹터 chip (RS Line 점수 기준 분류)
+function renderDailyBriefingSector(sectors) {
+  const body = document.getElementById('db-sector-body');
+  if (!body) return;
+  if (!sectors || sectors.length === 0) {
+    body.innerHTML = '<div class="db-placeholder">⏳ 데이터 로딩 중...</div>';
+    return;
+  }
+  // RS Line 점수 기준 정렬
+  const sorted = [...sectors].sort((a,b) => (b.avg_rs_line || 0) - (a.avg_rs_line || 0));
+  const STRONG_DB = 75, NEUTRAL_DB = 50;
+  const strong  = sorted.filter(s => (s.avg_rs_line || 0) >= STRONG_DB);
+  const neutral = sorted.filter(s => (s.avg_rs_line || 0) >= NEUTRAL_DB && (s.avg_rs_line || 0) < STRONG_DB);
+  const weak    = sorted.filter(s => (s.avg_rs_line || 0) < NEUTRAL_DB);
+  const top = sorted[0];
+
+  // 섹터 chip 렌더러
+  const chip = (s, c) => {
+    const score = Math.round(s.avg_rs_line || 0);
+    return `<span style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;background:${c.bg};color:${c.text};border:1px solid ${c.border};border-radius:99px;font-size:12px;font-weight:600;margin:2px">${s.name} <span style="font-weight:700">${score}</span></span>`;
+  };
+  const C_STRONG  = {bg:'#eaf6ee', text:'#1a5c1a', border:'#9ed4b0'};
+  const C_NEUTRAL = {bg:'#fff8e6', text:'#854F0B', border:'#e8c97f'};
+  const C_WEAK    = {bg:'#fff0f0', text:'#a13030', border:'#e8a0a0'};
+
+  body.innerHTML = `
+    <!-- 1위 메가 카드 -->
+    <div style="background:linear-gradient(135deg,#fafff7,#f0f9ed);border:1px solid #b6d8a3;border-radius:8px;padding:14px 16px;margin-bottom:14px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div style="flex:1;min-width:200px">
+          <div style="font-size:10px;color:#3B6D11;font-weight:700;letter-spacing:.5px;margin-bottom:4px">🏆 1위 섹터 · 최상위 강세</div>
+          <div style="font-size:20px;font-weight:700;color:#1a4a08">${top.name}</div>
+          <div style="font-size:11px;color:#73726c;margin-top:2px">${(top.industries || []).length}개 업종 · ${top.count}종목 · IBD RS ${Math.round(top.avg_rs || 0)}</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:10px;color:#888;font-weight:600">RS Line 점수</div>
+          <div style="font-size:32px;font-weight:700;color:#1a8a4a;line-height:1">${Math.round(top.avg_rs_line || 0)}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 강세 섹터 (1위 제외 나머지) -->
+    ${strong.length > 1 ? `
+      <div style="margin-bottom:10px">
+        <div style="font-size:11px;font-weight:700;color:#1a5c1a;margin-bottom:6px">🟢 강세 섹터 (RS Line ${STRONG_DB}+) · 진입 우선순위 — 총 ${strong.length}개</div>
+        <div>${strong.slice(1).map(s => chip(s, C_STRONG)).join('')}</div>
+      </div>` : (strong.length === 1 ? '<div style="font-size:11px;color:#888;margin-bottom:10px">🟢 강세 섹터 — 1위 외 추가 강세 섹터 없음</div>' : '')}
+
+    <!-- 중립 -->
+    ${neutral.length ? `
+      <div style="margin-bottom:10px">
+        <div style="font-size:11px;font-weight:700;color:#854F0B;margin-bottom:6px">🟡 중립 (RS Line ${NEUTRAL_DB}~${STRONG_DB-1}) · 관찰 대상 — ${neutral.length}개</div>
+        <div>${neutral.map(s => chip(s, C_NEUTRAL)).join('')}</div>
+      </div>` : ''}
+
+    <!-- 약세 -->
+    ${weak.length ? `
+      <div>
+        <div style="font-size:11px;font-weight:700;color:#a13030;margin-bottom:6px">🔴 약세 (RS Line ${NEUTRAL_DB} 미만) · 진입 회피 — ${weak.length}개</div>
+        <div>${weak.map(s => chip(s, C_WEAK)).join('')}</div>
+      </div>` : ''}
+  `;
+}
+
+// ═══ v12 Phase 4: Daily Briefing ③ 강세 산업 ═══
+// 모든 섹터의 산업 평탄화 → RS Line 점수 정렬 → 상위/하위 chip
+function renderDailyBriefingIndustry(sectors) {
+  const body = document.getElementById('db-industry-body');
+  if (!body) return;
+  if (!sectors || sectors.length === 0) {
+    body.innerHTML = '<div class="db-placeholder">⏳ 데이터 로딩 중...</div>';
+    return;
+  }
+  // 모든 산업 평탄화
+  const all = [];
+  sectors.forEach(sec => {
+    (sec.industries || []).forEach(ind => {
+      all.push({
+        ...ind,
+        sectorName: sec.name,
+        score: ind.avg_rs_line_score ?? ind.avg_rs ?? 0,
+      });
+    });
+  });
+  if (all.length === 0) {
+    body.innerHTML = '<div class="db-placeholder">⚠ 산업 데이터 없음<br><span style="font-size:11px;color:#aaa">(KR 시장은 industry 매핑이 별도 작업으로 예정 — 핸드오프 이슈 A 참조)</span></div>';
+    return;
+  }
+  // RS Line 점수 정렬
+  const sorted = [...all].sort((a,b) => b.score - a.score);
+  // 상위 8개 / 하위 5개
+  const strongTop = sorted.slice(0, Math.min(8, sorted.length));
+  const weakBottom = sorted.length > 13 ? sorted.slice(-5) : [];
+
+  const chip = (ind, c) => {
+    const score = Math.round(ind.score);
+    return `<span style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;background:${c.bg};color:${c.text};border:1px solid ${c.border};border-radius:99px;font-size:12px;font-weight:600;margin:2px" title="섹터: ${ind.sectorName} · ${ind.count}종목">${ind.name} <span style="font-weight:700">${score}</span><span style="font-size:9px;color:#aaa;font-weight:400">·${ind.count}</span></span>`;
+  };
+  const C_STRONG = {bg:'#eaf6ee', text:'#1a5c1a', border:'#9ed4b0'};
+  const C_WEAK   = {bg:'#fff0f0', text:'#a13030', border:'#e8a0a0'};
+
+  body.innerHTML = `
+    <div style="margin-bottom:${weakBottom.length ? '12px' : '0'}">
+      <div style="font-size:11px;font-weight:700;color:#1a5c1a;margin-bottom:6px">🟢 강세 산업 Top ${strongTop.length} · RS Line 점수 상위 (전체 ${sorted.length}개 중)</div>
+      <div>${strongTop.map(ind => chip(ind, C_STRONG)).join('')}</div>
+    </div>
+
+    ${weakBottom.length ? `
+      <div>
+        <div style="font-size:11px;font-weight:700;color:#a13030;margin-bottom:6px">🔴 약세 산업 (하위 ${weakBottom.length}개) · 진입 회피</div>
+        <div>${weakBottom.map(ind => chip(ind, C_WEAK)).join('')}</div>
+      </div>` : ''}
+
+    <div style="margin-top:10px;font-size:10px;color:#aaa;text-align:right">RS Line 점수 평균 기준 · 마우스 hover 시 소속 섹터 표시</div>
   `;
 }
 
