@@ -10605,13 +10605,15 @@ function updateMarketPulse(raw, krRaw) {
     return `<div class="phase-row"><span class="phase-badge ${p.cls}">${p.label}</span><div class="phase-bar-wrap"><div class="phase-bar" style="width:${pct}%;background:${p.barColor}"></div></div><span class="phase-count">${cnt}</span></div>`;
   }).join('');
 
-  // v12 Phase 2~4: Daily Briefing 섹션 갱신
+  // v12 Phase 2~5: Daily Briefing 섹션 갱신
   try {
     renderDailyBriefingMarket(regimeKey, regime, mkt, stocks, dt);
     // v12 Phase 3+4: 섹터/산업 데이터는 한 번만 빌드해서 두 함수에 전달
     const dbSectors = buildSectorsForTab(stocks);
     renderDailyBriefingSector(dbSectors);
     renderDailyBriefingIndustry(dbSectors);
+    // v12 Phase 5: ④ 진입 후보 — 단순 필터링 (Phase × RS Line 점수)
+    renderDailyBriefingCandidates(stocks);
   }
   catch(e) { console.warn('[Daily Briefing] 렌더 실패:', e); }
 }
@@ -10811,6 +10813,77 @@ function renderDailyBriefingIndustry(sectors) {
       </div>` : ''}
 
     <div style="margin-top:10px;font-size:10px;color:#aaa;text-align:right">RS Line 점수 평균 기준 · 마우스 hover 시 소속 섹터 표시</div>
+  `;
+}
+
+// ═══ v12 Phase 5: Daily Briefing ④ 진입 후보 ═══
+// 단순 필터링: Phase × RS Line 점수 조합
+function renderDailyBriefingCandidates(stocks) {
+  const body = document.getElementById('db-candidates-body');
+  if (!body) return;
+  if (!stocks || stocks.length === 0) {
+    body.innerHTML = '<div class="db-placeholder">⏳ 데이터 로딩 중...</div>';
+    return;
+  }
+  // 4 그룹 필터링
+  const score = s => (s.rs_line_score || 0);
+  const top    = stocks.filter(s => s.phase === '4plus' && score(s) >= 80);
+  const strong = stocks.filter(s => s.phase === '4'     && score(s) >= 65);
+  const newConv= stocks.filter(s => s.phase_changed_up && s.phase !== '4plus' && s.phase !== '4' && score(s) >= 50);
+  const mature = stocks.filter(s => s.phase === '3'     && score(s) >= 80);
+
+  const totalCount = top.length + strong.length + newConv.length + mature.length;
+
+  // 결과 0개 — 좁은 리더십 메시지
+  if (totalCount === 0) {
+    body.innerHTML = `
+      <div style="text-align:center;padding:24px 16px;color:#888;font-size:13px;background:#fafaf8;border-radius:6px;border:1px dashed #d3d1c7;line-height:1.7">
+        ⚠ 조건을 만족하는 진입 후보 없음<br>
+        <span style="font-size:11px;color:#aaa">현재 시장이 좁은 리더십 구간 — 가이드 임계값(RS Line 65+/80+)을 만족하는 종목 부족.<br>진입 신중, 워치리스트 확대 검토.</span>
+      </div>`;
+    return;
+  }
+
+  // 종목 chip — 클릭 시 추후 상세, 일단 hover로 정보
+  const chip = (s) => {
+    const sc = Math.round(score(s));
+    const phaseEmoji = s.phase === '4plus' ? '🎯+' : s.phase === '4' ? '🎯' : s.phase === '3' ? '🟢' : (s.phase_changed_up ? '🆕' : '');
+    const tooltip = [
+      s.name || s.ticker,
+      `IBD RS: ${s.rs ?? '—'}`,
+      `RS now: ${s.rs_now ?? '—'}`,
+      `Sector: ${s.sector || '—'}`,
+      `Phase: ${s.phase || '—'}`,
+    ].filter(Boolean).join(' · ');
+    return `<span style="display:inline-flex;align-items:center;gap:4px;padding:5px 11px;background:#fff;color:#1a1a1a;border:1px solid #e0e0d8;border-radius:99px;font-size:12px;font-weight:600;margin:2px" title="${tooltip}"><span style="font-size:10px;opacity:.85">${phaseEmoji}</span> ${s.ticker} <span style="color:#1a8a4a;font-weight:700">${sc}</span></span>`;
+  };
+
+  // 그룹 박스 렌더러 (RS Line 점수 내림차순, 최대 30개)
+  const renderGroup = (label, color, items) => {
+    if (!items.length) return '';
+    const sorted = [...items].sort((a,b) => score(b) - score(a)).slice(0, 30);
+    const trunc = items.length > 30 ? ` (Top 30 표시)` : '';
+    return `
+      <div style="margin-bottom:14px">
+        <div style="font-size:12px;font-weight:700;color:${color};margin-bottom:7px">
+          ${label} <span style="font-size:11px;color:#aaa;font-weight:400">— ${items.length}개${trunc}</span>
+        </div>
+        <div>${sorted.map(chip).join('')}</div>
+      </div>`;
+  };
+
+  body.innerHTML = `
+    <div style="font-size:12px;color:#666;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #f0efea">
+      총 <strong style="color:#1a4a08">${totalCount}개</strong> 후보 — Phase × RS Line 점수 조합 (정렬: RS Line 점수 내림차순)
+    </div>
+    ${renderGroup('🎯+ 최우선 (Phase 4+ · RS Line 80+)',     '#1a4a08', top)}
+    ${renderGroup('🎯 강력 (Phase 4 · RS Line 65+)',          '#185FA5', strong)}
+    ${renderGroup('🆕 오늘 전환↑ (Phase 상향 · RS Line 50+)', '#854F0B', newConv)}
+    ${renderGroup('🟢 베이스 성숙 (Phase 3 · RS Line 80+)',   '#3B6D11', mature)}
+
+    <div style="margin-top:8px;font-size:10px;color:#aaa;text-align:right">
+      ※ Phase × RS Line 점수 조합 기준 · chip hover 시 종목명·IBD RS·섹터 표시
+    </div>
   `;
 }
 
