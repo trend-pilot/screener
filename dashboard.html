@@ -115,6 +115,15 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
    --hdr-h 는 페이지가 측정한 fixed 헤더 실측 높이 (반응형 자동 대응). */
 #top-panel-sector .market-tabs{margin-top:var(--hdr-h,80px)}
 
+/* ═══ v12: Daily Briefing 탭 신규 (6 섹션 Top-Down 골격) ═══ */
+.db-section{background:#fff;border:1px solid #e0dfd8;border-radius:10px;margin-bottom:14px;overflow:hidden}
+.db-section-header{display:flex;align-items:center;gap:10px;padding:11px 16px;background:#fafaf8;border-bottom:1px solid #e0dfd8;flex-wrap:wrap}
+.db-section-num{font-size:18px;font-weight:700;color:#185FA5;min-width:24px;text-align:center}
+.db-section-title{font-size:15px;font-weight:700;color:#1a1a1a}
+.db-section-desc{font-size:11.5px;color:#73726c;margin-left:auto;font-weight:400}
+.db-section-body{padding:16px}
+.db-placeholder{text-align:center;color:#888;font-size:13px;line-height:1.6;padding:28px 16px;background:#fafaf8;border-radius:6px;border:1px dashed #d3d1c7}
+
 /* ── 통계 바 ── */
 .stats{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;padding:10px 20px;background:#fff;border-bottom:1px solid #e0e0d8}
 .sc{background:#f8f8f4;border-radius:8px;padding:10px 14px}
@@ -1830,6 +1839,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 
 <!-- ══ 통합 탭바 ══ -->
 <div class="top-tabs">
+  <button class="top-tab" id="ttab-briefing"    onclick="switchTopTab('briefing',this)">🌅 Daily Briefing</button>
   <button class="top-tab on" id="ttab-marketpulse" onclick="switchTopTab('marketpulse',this)">📊 Market Pulse</button>
   <button class="top-tab" id="ttab-sector"      onclick="switchTopTab('sector',this)">📈 섹터 분석</button>
   <button class="top-tab" id="ttab-etf"         onclick="switchTopTab('etf',this)">📊 섹터 ETF</button>
@@ -1844,6 +1854,91 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 <div class="main-with-sidebar" id="main-content">
 
 <!-- ══ TOP PANEL: Market Pulse ══ -->
+<!-- ══ Daily Briefing 탭 패널 (v12 신규 / 6 섹션 Top-Down) ══ -->
+<div class="top-panel" id="top-panel-briefing">
+  <div style="max-width:1200px;margin:0 auto;padding:20px 16px">
+
+    <!-- 헤더 -->
+    <div style="text-align:center;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid #e0dfd8">
+      <div style="font-size:24px;font-weight:700;color:#185FA5;margin-bottom:4px">🌅 Daily Briefing</div>
+      <div style="font-size:13px;color:#73726c">Top-Down 의사결정 흐름 — 시장 → 섹터 → 산업 → 진입 → 재검토</div>
+    </div>
+
+    <!-- ① 시장 환경 -->
+    <section class="db-section">
+      <div class="db-section-header">
+        <span class="db-section-num">①</span>
+        <span class="db-section-title">시장 환경</span>
+        <span class="db-section-desc">오늘 어떤 시장에서 뛸 것인가</span>
+      </div>
+      <div class="db-section-body" id="db-market-body">
+        <div class="db-placeholder">⏳ Phase 2에서 채워질 예정 — Market Regime · Breadth · 변동성 지수 · 권장 비중</div>
+      </div>
+    </section>
+
+    <!-- ② 강세 섹터 -->
+    <section class="db-section">
+      <div class="db-section-header">
+        <span class="db-section-num">②</span>
+        <span class="db-section-title">강세 섹터</span>
+        <span class="db-section-desc">어느 섹터에서 종목을 찾을 것인가</span>
+      </div>
+      <div class="db-section-body" id="db-sector-body">
+        <div class="db-placeholder">⏳ Phase 3에서 채워질 예정 — 1위 메가 카드 + 강세 섹터 리스트 (RS Line 점수 기반)</div>
+      </div>
+    </section>
+
+    <!-- ③ 강세 산업 -->
+    <section class="db-section">
+      <div class="db-section-header">
+        <span class="db-section-num">③</span>
+        <span class="db-section-title">강세 산업</span>
+        <span class="db-section-desc">섹터 안에서 어느 세부 업종이 뜨는가</span>
+      </div>
+      <div class="db-section-body" id="db-industry-body">
+        <div class="db-placeholder">⏳ Phase 4에서 채워질 예정 — 강세/약세 산업 chip + 대표 종목 chip (백분위 기반)</div>
+      </div>
+    </section>
+
+    <!-- ④ 진입 후보 -->
+    <section class="db-section">
+      <div class="db-section-header">
+        <span class="db-section-num">④</span>
+        <span class="db-section-title">진입 후보</span>
+        <span class="db-section-desc">오늘 매수를 고려할 종목</span>
+      </div>
+      <div class="db-section-body" id="db-candidates-body">
+        <div class="db-placeholder">⏳ Phase 5에서 채워질 예정 — 진입 후보 점수 (D/E/F/H 카테고리) + 종목 카드</div>
+      </div>
+    </section>
+
+    <!-- ⑤ 워치리스트 변동 -->
+    <section class="db-section">
+      <div class="db-section-header">
+        <span class="db-section-num">⑤</span>
+        <span class="db-section-title">워치리스트 변동</span>
+        <span class="db-section-desc">관심 종목 중 오늘 어떤 변화가</span>
+      </div>
+      <div class="db-section-body" id="db-watchlist-body">
+        <div class="db-placeholder">📋 워치리스트가 비어있습니다.<br><span style="font-size:11px;color:#aaa">현재 워치리스트 기능 미구현 — 별도 인프라 작업 (localStorage 기반) 후 활성화 예정</span></div>
+      </div>
+    </section>
+
+    <!-- ⑥ 보유 포지션 -->
+    <section class="db-section">
+      <div class="db-section-header">
+        <span class="db-section-num">⑥</span>
+        <span class="db-section-title">보유 포지션</span>
+        <span class="db-section-desc">보유 종목별 오늘의 액션</span>
+      </div>
+      <div class="db-section-body" id="db-positions-body">
+        <div class="db-placeholder">💼 등록된 보유 포지션이 없습니다.<br><span style="font-size:11px;color:#aaa">현재 포지션 입력 기능 미구현 — 별도 인프라 작업 (localStorage 기반) 후 활성화 예정</span></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
 <div class="top-panel on" id="top-panel-marketpulse">
 
   <!-- ═══ 시장 토글 (US / KOSPI) ═══ -->
