@@ -10613,8 +10613,8 @@ function updateMarketPulse(raw, krRaw) {
     //   → 가설 검증: Top 555 평균 63.0 vs IBD 샘플 59.5 (차이 3.5) · 9/11 섹터 ±10 이내 정합
     const DB_POOL_SIZE = 555;
     const stocksDB = [...stocks]
-      .filter(s => typeof s.market_cap === 'number' && s.market_cap > 0)
-      .sort((a,b) => b.market_cap - a.market_cap)
+      .filter(s => typeof s.mktcap === 'number' && s.mktcap > 0)
+      .sort((a,b) => b.mktcap - a.mktcap)
       .slice(0, DB_POOL_SIZE);
     const dbSectors = buildSectorsForTab(stocksDB);
     renderDailyBriefingSector(dbSectors);
@@ -12161,7 +12161,7 @@ function exportEtf() {
         box.style.cssText='position:fixed;bottom:10px;right:10px;z-index:9999;background:#000;color:#0f0;padding:6px 10px;font:11px monospace;border-radius:4px;pointer-events:none';
         document.body.appendChild(box);
       }
-      box.textContent = `[v2026-05-11-DB-pool555] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
+      box.textContent = `[v2026-05-11-DB-pool555-fix] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
     }
   }
   // 여러 타이밍에서 측정 (late-layout 대비)
