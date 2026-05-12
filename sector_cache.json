@@ -11608,5 +11608,17 @@
     "industry": "",
     "marketCap": 0,
     "fetched_at": "2026-05-09T06:30:20"
+  },
+  "GTERA": {
+    "sector": "Financial Services",
+    "industry": "Shell Companies",
+    "marketCap": 303583104,
+    "fetched_at": "2026-05-12T08:25:28"
+  },
+  "MCGA": {
+    "sector": "Financial Services",
+    "industry": "Shell Companies",
+    "marketCap": 240057152,
+    "fetched_at": "2026-05-12T08:25:28"
   }
 }
