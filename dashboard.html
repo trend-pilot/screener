@@ -5281,6 +5281,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
           <!-- ══════════ 🔍 Step 2: 종목 발굴·지표 ══════════ -->
           <span style="font-size:10px;color:#3B6D11;font-weight:700;padding:2px 8px;background:#F0F9ED;border-radius:99px;border:1px solid #3B6D11;margin-left:4px">🔍 Step 2 발굴</span>
           <button id="strat-sub-rsline" class="strat-sub-btn" onclick="showStrategySub('rsline')" style="padding:8px 16px;font-size:13px;font-weight:600;border-radius:6px;cursor:pointer;border:1.5px solid #3B6D11;background:#F0F9ED;color:#3B6D11">📈 RS Line 점수 가이드</button>
+          <button id="strat-sub-rsfields" class="strat-sub-btn" onclick="showStrategySub('rsfields')" style="padding:8px 16px;font-size:13px;font-weight:600;border-radius:6px;cursor:pointer;border:1.5px solid #1F5A09;background:#E8F5E9;color:#1F5A09">📐 RS 필드 정의</button>
           <button id="strat-sub-phase" class="strat-sub-btn" onclick="showStrategySub('phase')" style="padding:8px 16px;font-size:13px;font-weight:600;border-radius:6px;cursor:pointer;border:1.5px solid #0F6E56;background:#F0F9ED;color:#0F6E56">🎯 Phase & MTR 가이드</button>
           <button id="strat-sub-reco" class="strat-sub-btn" onclick="showStrategySub('reco')" style="padding:8px 16px;font-size:13px;font-weight:600;border-radius:6px;cursor:pointer;border:1.5px solid #185FA5;background:#E6F1FB;color:#185FA5">💡 추천 조합 7선 상세</button>
           <button id="strat-sub-patterns" class="strat-sub-btn" onclick="showStrategySub('patterns')" style="padding:8px 16px;font-size:13px;font-weight:500;border-radius:6px;cursor:pointer;border:1.5px solid #d3d1c7;background:#fff;color:#73726c">📈 차트 패턴 도감</button>
@@ -6785,6 +6786,211 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
           </div>
 
         </div>  <!-- /SUB rsline -->
+
+        <!-- =============================================================== -->
+        <!-- SUB NEW: 📐 RS 필드 정의 가이드 (v2026-06-01 백엔드 RS 정리 결과물) -->
+        <!-- =============================================================== -->
+        <div id="strat-content-rsfields" style="display:none;font-size:13px;line-height:1.75;color:#1a1a18">
+
+          <h1 style="font-size:22px;font-weight:600;margin:0 0 8px;color:#1F5A09">📐 RS 필드 정의 가이드</h1>
+          <p style="font-size:13px;color:#73726c;margin:0 0 18px">6개의 RS 관련 필드가 무엇을 측정하는지 · 왜 값이 다를 수 있는지 · 어떻게 함께 보는지</p>
+
+          <!-- 핵심 요약 박스 -->
+          <div style="background:linear-gradient(135deg,#fafff7,#f0f9ed);border:2px solid #b6d8a3;border-radius:10px;padding:14px 18px;margin-bottom:20px">
+            <div style="font-size:14px;font-weight:700;color:#1F5A09;margin-bottom:8px">🎯 핵심 1줄 요약</div>
+            <div style="font-size:13px;color:#1a4a08;line-height:1.7">
+              <b>ibd_rs</b>가 IBD 공식 RS Rating (12개월 가중) · <b>rs</b>는 3주 RS · <b>rs_now</b>는 1주 RS · <b>rs_line_score</b>는 종합 momentum 점수 — <b>각자 다른 시간 척도를 측정</b>하므로 값이 달라도 정상입니다.
+            </div>
+          </div>
+
+          <!-- 6개 필드 정의 표 -->
+          <h2 style="font-size:17px;font-weight:600;margin:18px 0 10px;color:#1a1a18">📊 6개 필드 정확한 정의</h2>
+          <div style="overflow-x:auto;margin-bottom:20px">
+            <table style="width:100%;border-collapse:collapse;font-size:12.5px;min-width:700px">
+              <thead>
+                <tr style="background:#1F5A09;color:#fff">
+                  <th style="padding:9px 10px;text-align:left;border:1px solid #1F5A09">필드명</th>
+                  <th style="padding:9px 10px;text-align:left;border:1px solid #1F5A09">측정 대상</th>
+                  <th style="padding:9px 10px;text-align:center;border:1px solid #1F5A09">기간</th>
+                  <th style="padding:9px 10px;text-align:center;border:1px solid #1F5A09">단위</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="background:#fafaf6">
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb"><b style="color:#3B6D11">ibd_rs</b> ⭐<br><span style="font-size:11px;color:#888">IBD 공식 RS</span></td>
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb">12개월 가중 수익률 percentile<br><span style="font-size:11px;color:#666">0~3M×40% + 3~6M×20% + 6~9M×20% + 9~12M×20%</span></td>
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb;text-align:center">1년 (장기)</td>
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb;text-align:center;font-family:monospace">0-100</td>
+                </tr>
+                <tr>
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb"><b style="color:#185FA5">ibd_raw</b><br><span style="font-size:11px;color:#888">위 raw 값</span></td>
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb">위 12개월 가중 raw 수익률 (절대값)</td>
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb;text-align:center">1년</td>
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb;text-align:center;font-family:monospace">% (절대값)</td>
+                </tr>
+                <tr style="background:#fafaf6">
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb"><b style="color:#a96e00">rs</b> ⚠️<br><span style="font-size:11px;color:#888">3주 RS</span></td>
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb">3주(15일) 변화율 percentile<br><span style="font-size:11px;color:#666">최근 15거래일 수익률 기준</span></td>
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb;text-align:center">15일 (단기)</td>
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb;text-align:center;font-family:monospace">0-100</td>
+                </tr>
+                <tr>
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb"><b style="color:#a96e00">rs_now</b> ⚠️<br><span style="font-size:11px;color:#888">1주 RS</span></td>
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb">1주(5일) 변화율 percentile<br><span style="font-size:11px;color:#666">최근 5거래일 수익률 기준</span></td>
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb;text-align:center">5일 (초단기)</td>
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb;text-align:center;font-family:monospace">0-100</td>
+                </tr>
+                <tr style="background:#fafaf6">
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb"><b style="color:#534AB7">rs_line_score</b><br><span style="font-size:11px;color:#888">종합 모멘텀</span></td>
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb">momentum_score_v2 (RS 절대강도 + RS Line 변화율 결합)<br><span style="font-size:11px;color:#666">rs_now + RS Line 1주/3주 변화율 가중 합</span></td>
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb;text-align:center">종합</td>
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb;text-align:center;font-family:monospace">0-100</td>
+                </tr>
+                <tr>
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb"><b style="color:#854F0B">rs_line_pct</b><br><span style="font-size:11px;color:#888">RS Line 52주 위치</span></td>
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb">RS Line(종가÷SPY) 자체의 52주 백분위<br><span style="font-size:11px;color:#666">현재 RS Line 값이 과거 52주 분포에서 어디 위치</span></td>
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb;text-align:center">52주</td>
+                  <td style="padding:9px 10px;border:1px solid #d8d6cb;text-align:center;font-family:monospace">0-100</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 자주 헷갈리는 케이스 -->
+          <h2 style="font-size:17px;font-weight:600;margin:24px 0 10px;color:#1a1a18">🔍 자주 헷갈리는 케이스 (실제 데이터)</h2>
+
+          <div style="background:#FFF8E1;border:1px solid #FFC107;border-radius:8px;padding:12px 16px;margin-bottom:12px">
+            <div style="font-size:13px;font-weight:700;color:#7a5400;margin-bottom:6px">📍 Case 1 — TER (Teradyne)</div>
+            <div style="font-size:12.5px;color:#444;line-height:1.7">
+              <code style="background:#fff;padding:2px 5px;border-radius:3px">rs=66</code> · 
+              <code style="background:#fff;padding:2px 5px;border-radius:3px">rs_now=66</code> · 
+              <code style="background:#fff;padding:2px 5px;border-radius:3px;color:#3B6D11;font-weight:700">ibd_rs=91</code> · 
+              <code style="background:#fff;padding:2px 5px;border-radius:3px">rs_line_pct=87</code><br>
+              <span style="color:#7a5400">→ <b>1년은 매우 강하지만 최근 3주는 평범</b>한 종목. 모두 정상 데이터 — 단기/장기 분리해서 보면 정보가 더 풍부해집니다.</span>
+            </div>
+          </div>
+
+          <div style="background:#FFEBEE;border:1px solid #EF5350;border-radius:8px;padding:12px 16px;margin-bottom:12px">
+            <div style="font-size:13px;font-weight:700;color:#a13030;margin-bottom:6px">📍 Case 2 — MGRT (장기 강세 → 단기 조정)</div>
+            <div style="font-size:12.5px;color:#444;line-height:1.7">
+              <code style="background:#fff;padding:2px 5px;border-radius:3px">rs=0</code> · 
+              <code style="background:#fff;padding:2px 5px;border-radius:3px;color:#3B6D11;font-weight:700">ibd_rs=99</code> · 
+              ibd_raw=+412% · w3=-42%<br>
+              <span style="color:#a13030">→ <b>1년 동안 +412% 폭등</b>했지만 <b>최근 3주는 -42% 조정</b>. 한 지표만 보면 정반대 해석. <b>두 지표 모두 정상</b>.</span>
+            </div>
+          </div>
+
+          <div style="background:#E8F5E9;border:1px solid #66BB6A;border-radius:8px;padding:12px 16px;margin-bottom:12px">
+            <div style="font-size:13px;font-weight:700;color:#1F5A09;margin-bottom:6px">📍 Case 3 — WGS (단기 급등 → 장기 약함)</div>
+            <div style="font-size:12.5px;color:#444;line-height:1.7">
+              <code style="background:#fff;padding:2px 5px;border-radius:3px;color:#3B6D11;font-weight:700">rs=95</code> · 
+              <code style="background:#fff;padding:2px 5px;border-radius:3px">ibd_rs=1</code> · 
+              ibd_raw=-18.51% · w3=+27.5%<br>
+              <span style="color:#1F5A09">→ <b>최근 3주 +27.5% 급등</b>했지만 <b>1년 누적 -18.51%</b>. 단기 폭발력 ↑ 그러나 장기 추세 ↓. <b>"눌림목 반등" vs "추세 전환" 구분 필요</b>.</span>
+            </div>
+          </div>
+
+          <!-- 실전 사용 가이드 -->
+          <h2 style="font-size:17px;font-weight:600;margin:24px 0 10px;color:#1a1a18">🎯 실전 사용 가이드 — 어느 RS를 언제 보나</h2>
+
+          <div style="background:#fff;border:1px solid #e0dfd8;border-radius:8px;padding:14px 18px;margin-bottom:12px">
+            <div style="font-size:14px;font-weight:700;color:#1F5A09;margin-bottom:10px">✅ 권장 사용 순서</div>
+            <ol style="margin:0 0 0 18px;padding:0;color:#1a1a18">
+              <li style="margin-bottom:8px"><b style="color:#3B6D11">1단계: ibd_rs ≥ 80</b> 필터 → "1년 동안 상위 20% 강세 종목"만 통과
+                <div style="font-size:11.5px;color:#73726c;margin-top:2px">기본 종목 풀 구성 · IBD 표준 — 절대 빼면 안 됨</div>
+              </li>
+              <li style="margin-bottom:8px"><b style="color:#a96e00">2단계: rs ≥ 70 또는 rs_now ≥ 70</b> 확인 → "최근에도 강함" 검증
+                <div style="font-size:11.5px;color:#73726c;margin-top:2px">단기 모멘텀 유지 여부 — 매수 타이밍 가까운지 확인</div>
+              </li>
+              <li style="margin-bottom:8px"><b style="color:#534AB7">3단계: rs_line_score ≥ 70</b> 추가 검증 → "RS Line이 가속 중"
+                <div style="font-size:11.5px;color:#73726c;margin-top:2px">상대 강도가 최근 더 빠르게 증가하는지 — 종합 점수</div>
+              </li>
+              <li><b style="color:#854F0B">4단계: rs_line_pct ≥ 80</b> 보너스 → "RS Line 자체가 52주 신고가 근처"
+                <div style="font-size:11.5px;color:#73726c;margin-top:2px">상대 강도 절대 위치 — 가장 강력한 종목 필터</div>
+              </li>
+            </ol>
+          </div>
+
+          <div style="background:#FFF3E0;border:1px solid #FB8C00;border-radius:8px;padding:14px 18px;margin-bottom:12px">
+            <div style="font-size:14px;font-weight:700;color:#854F0B;margin-bottom:8px">⚠️ 피해야 할 함정</div>
+            <ul style="margin:0 0 0 18px;padding:0;color:#444;font-size:12.5px;line-height:1.8">
+              <li><b>rs만 보고 매수</b> → 단기 급등 후 1년 추세는 약한 종목(WGS) 함정에 빠질 수 있음. <b>ibd_rs ≥ 70 동시 확인 필수</b>.</li>
+              <li><b>ibd_rs만 보고 매수</b> → 1년 강세였지만 최근 큰 조정 진행 중인 종목(MGRT) 잡을 수 있음. <b>rs ≥ 50 + Phase 확인</b>.</li>
+              <li><b>rs와 ibd_rs 값이 다르다고 버그라고 판단</b> → 사실 두 지표가 측정하는 시간 척도가 다른 것 (3주 vs 12개월). <b>둘 다 봐야 정보가 완성</b>.</li>
+              <li><b>rs_now와 rs_line_pct가 다르다고 버그라고 판단</b> → 측정 대상이 다름 (1주 변화율 vs RS Line 52주 위치). <b>각자 다른 정보 제공</b>.</li>
+            </ul>
+          </div>
+
+          <!-- 시각적 정리 다이어그램 -->
+          <h2 style="font-size:17px;font-weight:600;margin:24px 0 10px;color:#1a1a18">📐 시간 척도 한눈에 보기</h2>
+          <div style="background:#fff;border:1px solid #e0dfd8;border-radius:8px;padding:16px;margin-bottom:18px;overflow-x:auto">
+            <div style="display:flex;align-items:center;gap:0;min-width:600px;font-size:11.5px">
+              <div style="background:#a96e00;color:#fff;padding:8px 12px;border-radius:4px 0 0 4px;text-align:center;flex:1;min-width:80px">
+                <div style="font-weight:700">rs_now</div>
+                <div style="font-size:10px;opacity:0.9">1주 (5일)</div>
+              </div>
+              <div style="background:#c89030;color:#fff;padding:8px 12px;text-align:center;flex:1.5;min-width:100px">
+                <div style="font-weight:700">rs</div>
+                <div style="font-size:10px;opacity:0.9">3주 (15일)</div>
+              </div>
+              <div style="background:#534AB7;color:#fff;padding:8px 12px;text-align:center;flex:2;min-width:120px">
+                <div style="font-weight:700">rs_line_score</div>
+                <div style="font-size:10px;opacity:0.9">종합 (1주~3주 추세)</div>
+              </div>
+              <div style="background:#854F0B;color:#fff;padding:8px 12px;text-align:center;flex:5;min-width:120px">
+                <div style="font-weight:700">rs_line_pct</div>
+                <div style="font-size:10px;opacity:0.9">RS Line 52주 위치</div>
+              </div>
+              <div style="background:#3B6D11;color:#fff;padding:8px 12px;border-radius:0 4px 4px 0;text-align:center;flex:5;min-width:120px">
+                <div style="font-weight:700">ibd_rs ⭐</div>
+                <div style="font-size:10px;opacity:0.9">12개월 가중</div>
+              </div>
+            </div>
+            <div style="margin-top:12px;font-size:11.5px;color:#666;text-align:center">
+              ← 단기 (모멘텀)  ····················································  장기 (추세) →
+            </div>
+          </div>
+
+          <!-- 빠른 참조 카드 -->
+          <h2 style="font-size:17px;font-weight:600;margin:24px 0 10px;color:#1a1a18">📌 빠른 참조 — 어떤 RS를 봐야 하나?</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-bottom:16px">
+            <div style="background:#F0F9ED;border:1px solid #3B6D11;border-radius:8px;padding:12px">
+              <div style="font-size:13px;font-weight:700;color:#1F5A09;margin-bottom:4px">🎯 새 종목 발굴</div>
+              <div style="font-size:12px;color:#444">→ <b>ibd_rs ≥ 80</b><br>"1년 누적 상위 20% 강세" — IBD 기본</div>
+            </div>
+            <div style="background:#FFF4E6;border:1px solid #a96e00;border-radius:8px;padding:12px">
+              <div style="font-size:13px;font-weight:700;color:#854F0B;margin-bottom:4px">⚡ 매수 타이밍 확인</div>
+              <div style="font-size:12px;color:#444">→ <b>rs_now ≥ 70</b> + <b>acc=true</b><br>"최근 1주 가속" — 진입 직전 확인</div>
+            </div>
+            <div style="background:#F3F0FF;border:1px solid #534AB7;border-radius:8px;padding:12px">
+              <div style="font-size:13px;font-weight:700;color:#534AB7;margin-bottom:4px">📊 종합 모멘텀</div>
+              <div style="font-size:12px;color:#444">→ <b>rs_line_score ≥ 70</b><br>"RS Line 점수" — 종합 강도 평가</div>
+            </div>
+            <div style="background:#FFFBE6;border:1px solid #d4a017;border-radius:8px;padding:12px">
+              <div style="font-size:13px;font-weight:700;color:#7a5400;margin-bottom:4px">🏆 최강 종목</div>
+              <div style="font-size:12px;color:#444">→ <b>ibd_rs ≥ 90</b> + <b>rs_line_pct ≥ 90</b><br>장기·상대 둘 다 상위 10%</div>
+            </div>
+          </div>
+
+          <!-- 백엔드 계산 함수 참조 -->
+          <h2 style="font-size:17px;font-weight:600;margin:24px 0 10px;color:#1a1a18">🔧 백엔드 계산 함수 (참고)</h2>
+          <div style="background:#fafaf6;border:1px solid #e0dfd8;border-radius:8px;padding:12px 16px;margin-bottom:18px;font-family:'Courier New',monospace;font-size:11.5px;line-height:1.6;color:#444">
+            <div><b>screener.py · rank_rs():</b></div>
+            <div>&nbsp;&nbsp;rs     = w3 percentile (3주 변화율 백분위)</div>
+            <div>&nbsp;&nbsp;rs_now = w1 percentile (1주 변화율 백분위)</div>
+            <div>&nbsp;&nbsp;ibd_rs = ibd_raw percentile (12개월 가중 백분위)</div>
+            <div style="margin-top:8px"><b>screener.py · calc_rs_line():</b></div>
+            <div>&nbsp;&nbsp;rs_line_value = 종가 / SPY 종가 (RS Line raw 값)</div>
+            <div>&nbsp;&nbsp;rs_line_pct   = RS Line의 52주 백분위</div>
+            <div style="margin-top:8px"><b>screener.py · momentum_score_v2():</b></div>
+            <div>&nbsp;&nbsp;rs_line_score = rs_now(40점) + RS Line 1주변화(30점) + RS Line 3주변화(30점)</div>
+          </div>
+
+          <div style="background:#E6F1FB;border:1px solid #185FA5;border-radius:8px;padding:12px 16px;color:#0d3a66;font-size:12px;line-height:1.7">
+            💡 <b>참고:</b> 이 가이드는 2026-06-01 백엔드 RS 필드 분석 결과로 작성되었습니다. <b>screener.py 코드는 변경하지 않음</b> · 사용자 가이드만 강화한 버전입니다.
+          </div>
+
+        </div>  <!-- /SUB rsfields -->
 
         <!-- =============================================================== -->
         <!-- SUB NEW 3: Phase × Regime 의사결정 매트릭스 (v2.2+) -->
@@ -12920,7 +13126,7 @@ function exportEtf() {
         box.style.cssText='position:fixed;bottom:10px;right:10px;z-index:9999;background:#000;color:#0f0;padding:6px 10px;font:11px monospace;border-radius:4px;pointer-events:none';
         document.body.appendChild(box);
       }
-      box.textContent = `[v2026-06-01-v27-sector-gap-phase-counter] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
+      box.textContent = `[v2026-06-01-rs-fields-guide-added] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
     }
   }
   // 여러 타이밍에서 측정 (late-layout 대비)
@@ -14013,7 +14219,7 @@ window._resetPanelScroll = function() {
 var G={patDocInited:false};
 
 function showStrategySub(name){
-  ['strategy','pulse','phase','exposure','patterns','sell','fund','inst','base','mistakes','journal','short','workflow','rsline','matrix','faq','trouble','mobile','reco','btguide','files'].forEach(function(n){
+  ['strategy','pulse','phase','exposure','patterns','sell','fund','inst','base','mistakes','journal','short','workflow','rsline','rsfields','matrix','faq','trouble','mobile','reco','btguide','files'].forEach(function(n){
     var c=document.getElementById('strat-content-'+n);
     var b=document.getElementById('strat-sub-'+n);
     if(c)c.style.display=(n===name)?'block':'none';
@@ -14023,6 +14229,7 @@ function showStrategySub(name){
         if(n==='phase'){b.style.cssText='padding:8px 16px;font-size:13px;font-weight:600;border-radius:6px;cursor:pointer;border:1.5px solid #0F6E56;background:#0F6E56;color:#fff';}
         else if(n==='workflow'){b.style.cssText='padding:8px 16px;font-size:13px;font-weight:600;border-radius:6px;cursor:pointer;border:1.5px solid #A32D2D;background:#A32D2D;color:#fff';}
         else if(n==='rsline'){b.style.cssText='padding:8px 16px;font-size:13px;font-weight:600;border-radius:6px;cursor:pointer;border:1.5px solid #3B6D11;background:#3B6D11;color:#fff';}
+        else if(n==='rsfields'){b.style.cssText='padding:8px 16px;font-size:13px;font-weight:600;border-radius:6px;cursor:pointer;border:1.5px solid #1F5A09;background:#1F5A09;color:#fff';}
         else if(n==='matrix'){b.style.cssText='padding:8px 16px;font-size:13px;font-weight:600;border-radius:6px;cursor:pointer;border:1.5px solid #534AB7;background:#534AB7;color:#fff';}
         else if(n==='faq'){b.style.cssText='padding:8px 16px;font-size:13px;font-weight:600;border-radius:6px;cursor:pointer;border:1.5px solid #EF9F27;background:#EF9F27;color:#fff';}
         else if(n==='trouble'){b.style.cssText='padding:8px 16px;font-size:13px;font-weight:600;border-radius:6px;cursor:pointer;border:1.5px solid #73726c;background:#73726c;color:#fff';}
@@ -14037,6 +14244,7 @@ function showStrategySub(name){
         else if(n==='pulse'){b.style.cssText='padding:8px 16px;font-size:13px;font-weight:600;border-radius:6px;cursor:pointer;border:1.5px solid #185FA5;background:#E6F1FB;color:#185FA5';b.innerHTML='📊 Market Pulse 가이드';}
         else if(n==='workflow'){b.style.cssText='padding:8px 16px;font-size:13px;font-weight:600;border-radius:6px;cursor:pointer;border:1.5px solid #A32D2D;background:#FEF0F0;color:#A32D2D';b.innerHTML='⏰ 일일 워크플로우';}
         else if(n==='rsline'){b.style.cssText='padding:8px 16px;font-size:13px;font-weight:600;border-radius:6px;cursor:pointer;border:1.5px solid #3B6D11;background:#F0F9ED;color:#3B6D11';b.innerHTML='📈 RS Line 점수 가이드';}
+        else if(n==='rsfields'){b.style.cssText='padding:8px 16px;font-size:13px;font-weight:600;border-radius:6px;cursor:pointer;border:1.5px solid #1F5A09;background:#E8F5E9;color:#1F5A09';b.innerHTML='📐 RS 필드 정의';}
         else if(n==='matrix'){b.style.cssText='padding:8px 16px;font-size:13px;font-weight:600;border-radius:6px;cursor:pointer;border:1.5px solid #534AB7;background:#F3F0FF;color:#534AB7';b.innerHTML='🎯 Phase × Regime 매트릭스';}
         else if(n==='faq'){b.style.cssText='padding:8px 16px;font-size:13px;font-weight:600;border-radius:6px;cursor:pointer;border:1.5px solid #EF9F27;background:#FFF4E6;color:#854F0B';b.innerHTML='❓ 자주 묻는 질문';}
         else if(n==='trouble'){b.style.cssText='padding:8px 16px;font-size:13px;font-weight:600;border-radius:6px;cursor:pointer;border:1.5px solid #73726c;background:#f5f4ef;color:#1a1a18';b.innerHTML='🔧 트러블슈팅';}
