@@ -4836,11 +4836,14 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
         <div class="dp-ticker" id="dp-ticker">—</div>
         <div id="dp-badges" class="dp-badges"></div>
-        <button class="dp-watch-btn" id="dp-watch-btn" onclick="toggleWatchlistFromModal()" title="워치리스트에 추가/제거 (Ctrl+W)"><span class="star-icon">☆</span><span id="dp-watch-text">관심종목</span></button>
-        <button class="dp-pos-btn" id="dp-pos-btn" onclick="openPositionFormFromModal()" title="보유 포지션 추가/편집">📦 <span id="dp-pos-text">포지션</span></button>
       </div>
       <div class="dp-name" id="dp-name">—</div>
       <div class="dp-price-row"><span class="dp-price" id="dp-price">—</span><span class="dp-chg" id="dp-chg"></span></div>
+      <!-- [v2026-06-02 fix] 워치리스트 + 포지션 버튼을 별도 행으로 분리 (모달 좁아도 항상 보임) -->
+      <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
+        <button class="dp-watch-btn" id="dp-watch-btn" onclick="toggleWatchlistFromModal()" title="워치리스트에 추가/제거" style="margin-left:0"><span class="star-icon">☆</span><span id="dp-watch-text">관심종목</span></button>
+        <button class="dp-pos-btn" id="dp-pos-btn" onclick="openPositionFormFromModal()" title="보유 포지션 추가/편집" style="margin-left:0">📦 <span id="dp-pos-text">포지션</span></button>
+      </div>
     </div>
     <span class="dp-close" onclick="closeDetail()">✕</span>
   </div>
@@ -10580,12 +10583,14 @@ function usRowHTML(s) {
   const indTxt = (s.industry||s.ind_grp||s.sector_detail||'');
 
   const _sd = safeStringify(s);
-  const isWL = (US.watchlist||new Set()).has(s.ticker);
+  // [v2026-06-02 fix] 새 워치리스트 시스템 사용 (구 US.watchlist Set 대신 localStorage 기반)
+  const isWL = isInWatchlist(s.ticker);
 
   return `<tr class="mom-row" onclick="openDetail('${s.ticker}',${_sd},'us')">
     <td style="text-align:center;padding:4px 2px" onclick="event.stopPropagation()">
       <span style="cursor:pointer;font-size:15px;color:${isWL?'#e6a817':'#ddd'};transition:color .1s"
-        onclick="toggleWatchlist('${s.ticker}','us',this)">${isWL?'★':'☆'}</span>
+        data-watchlist-star="${s.ticker}"
+        onclick="toggleWatchlistAndSync('${s.ticker}',this)">${isWL?'★':'☆'}</span>
     </td>
     <td class="mom-ticker" style="color:#1a1a1a;font-weight:800">${s.ticker}</td>
     <td class="mom-name" title="${s.name||''}">${(s.name||'').slice(0,16)}</td>
@@ -12207,6 +12212,37 @@ function openDetailByTicker(ticker) {
   }
 }
 
+// [v2026-06-02 통합] 어디서든 별 클릭 시 호출 — 토글 + 페이지의 모든 같은 ticker 별 동기화
+window.toggleWatchlistAndSync = function(ticker, el) {
+  toggleWatchlist(ticker);
+  syncAllStars(ticker);
+};
+
+// 페이지 내 같은 ticker의 모든 별 표시 동기화
+window.syncAllStars = function(ticker) {
+  const isIn = isInWatchlist(ticker);
+  // 1. data-watchlist-star 속성을 가진 모든 별 (RS 모멘텀 + 스크리너 등 신규 표준)
+  document.querySelectorAll(`[data-watchlist-star="${ticker}"]`).forEach(el => {
+    el.textContent = isIn ? '★' : '☆';
+    // scr-star 클래스도 있으면 .on 동기화
+    if (el.classList.contains('scr-star')) {
+      el.classList.toggle('on', isIn);
+    }
+    // inline style 있으면 색상 동기화
+    if (el.style.color !== undefined) {
+      el.style.color = isIn ? '#e6a817' : '#ddd';
+    }
+  });
+  // 2. 모달의 ★ 버튼도 갱신 (열려있으면)
+  updateWatchlistModalButton(ticker);
+  // 3. 스크리너 별 카운트 동기화 (구 scrStars 시스템과 통합)
+  if (typeof scrStars !== 'undefined') {
+    if (isIn) scrStars.add(ticker); else scrStars.delete(ticker);
+    const cntEl = document.getElementById('scr-star-count');
+    if (cntEl) cntEl.textContent = scrStars.size;
+  }
+};
+
 // ════════════════════════════════════════════════════════
 // 13.6. 보유 포지션 (Phase 7 신규 활성화 / v2026-06-02)
 // ════════════════════════════════════════════════════════
@@ -13063,7 +13099,8 @@ function scrRowHTML(s) {
   const phase = calcPhase(s);
   const rs    = s.rs || 0, rsNow = s.rs_now || 0;
   const dots  = (s.pass_dots || []).filter(Boolean).length;
-  const isStarred = scrStars.has(s.ticker);
+  // [v2026-06-02 fix] 새 워치리스트 시스템과 통합 (구 scrStars Set 대신 localStorage 기반)
+  const isStarred = isInWatchlist(s.ticker);
 
   // Stage 뱃지
   const stageBadge = s.is_stage2
@@ -13117,7 +13154,7 @@ function scrRowHTML(s) {
   const _sd = safeStringify(s);
 
   return `<tr onclick="openDetail('${s.ticker}',${_sd},'us')">
-    <td><span class="scr-star${isStarred?' on':''}" onclick="event.stopPropagation();toggleScrStar('${s.ticker}',this)">${isStarred?'★':'☆'}</span></td>
+    <td><span class="scr-star${isStarred?' on':''}" data-watchlist-star="${s.ticker}" onclick="event.stopPropagation();toggleWatchlistAndSync('${s.ticker}',this)">${isStarred?'★':'☆'}</span></td>
     <td>
       <span class="scr-sym">${s.ticker}</span>
       <span class="scr-co">${(s.name||'').slice(0,20)}</span>
@@ -13505,7 +13542,7 @@ function exportEtf() {
         box.style.cssText='position:fixed;bottom:10px;right:10px;z-index:9999;background:#000;color:#0f0;padding:6px 10px;font:11px monospace;border-radius:4px;pointer-events:none';
         document.body.appendChild(box);
       }
-      box.textContent = `[v2026-06-02-positions-phase7-active] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
+      box.textContent = `[v2026-06-02-stars-unified-modal-fix] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
     }
   }
   // 여러 타이밍에서 측정 (late-layout 대비)
