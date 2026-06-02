@@ -1809,7 +1809,69 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 .tm-status.st-temp{background:#fffde7;color:#a16623}
 .tm-status.st-weak{background:#ffebee;color:#c62828}
 .tm-status.st-peak{background:#f3e5f5;color:#6a1b9a}
-/* ═══ [v2026-06-01 워치리스트 기능 활성화] ═══ */
+/* ═══ [v2026-06-02 보유 포지션 (Phase 7) 신규] ═══ */
+/* 모달 헤더 📦 포지션 추가 버튼 */
+.dp-pos-btn{display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border:1.5px solid #ddd;background:#fff;border-radius:99px;font-size:12px;font-weight:700;color:#888;cursor:pointer;transition:all .15s;margin-left:6px;user-select:none}
+.dp-pos-btn:hover{border-color:#1F5A09;color:#1F5A09;background:#fafff7}
+.dp-pos-btn.on{background:#e8f5e9;border-color:#1F5A09;color:#1F5A09}
+.dp-pos-btn.on:hover{background:#d8eddc}
+/* 포지션 추가 폼 (모달) */
+.pos-form-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9999;display:none;align-items:center;justify-content:center;padding:16px}
+.pos-form-overlay.on{display:flex}
+.pos-form-box{background:#fff;border-radius:12px;padding:20px;width:100%;max-width:420px;box-shadow:0 10px 40px rgba(0,0,0,.2);max-height:90vh;overflow-y:auto}
+.pos-form-title{font-size:18px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
+.pos-form-sub{font-size:12px;color:#73726c;margin-bottom:16px}
+.pos-form-row{margin-bottom:14px}
+.pos-form-lbl{font-size:12px;font-weight:600;color:#444;margin-bottom:5px;display:block}
+.pos-form-input{width:100%;padding:9px 11px;border:1.5px solid #ddd;border-radius:6px;font-size:14px;font-family:inherit;box-sizing:border-box}
+.pos-form-input:focus{outline:none;border-color:#1F5A09}
+.pos-form-hint{font-size:11px;color:#888;margin-top:3px}
+.pos-form-error{font-size:11px;color:#c62828;margin-top:3px;display:none}
+.pos-form-error.show{display:block}
+.pos-form-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:18px}
+.pos-form-btn{padding:8px 16px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid;font-family:inherit}
+.pos-form-btn.primary{background:#1F5A09;border-color:#1F5A09;color:#fff}
+.pos-form-btn.primary:hover{background:#163f06}
+.pos-form-btn.cancel{background:#fff;border-color:#ddd;color:#666}
+.pos-form-btn.cancel:hover{background:#f5f3eb}
+/* 포지션 카드 (Daily Briefing ⑥) */
+.pos-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-bottom:14px;padding:10px 12px;background:#fafaf6;border:1px solid #e0dfd8;border-radius:8px}
+.pos-summary-cell{text-align:center}
+.pos-summary-lbl{font-size:10px;color:#888;font-weight:600;margin-bottom:2px}
+.pos-summary-val{font-size:15px;font-weight:700}
+.pos-cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
+.pos-card{background:#fff;border:1px solid #e0dfd8;border-radius:8px;padding:12px;box-sizing:border-box;position:relative;transition:box-shadow .15s}
+.pos-card:hover{box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.pos-card.profit{border-left:3px solid #1F5A09}
+.pos-card.loss{border-left:3px solid #c62828}
+.pos-card.warn{border-left:3px solid #FB8C00;background:#FFF8E1}
+.pos-card.exit{border-left:3px solid #534AB7;background:#F3F0FF}
+.pos-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+.pos-card-tick{font-size:15px;font-weight:700;font-family:'Courier New',monospace;color:#1a1a1a;flex-shrink:0}
+.pos-card-name{font-size:11px;color:#73726c;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pos-card-delete{font-size:14px;color:#bbb;cursor:pointer;padding:0 4px;line-height:1;flex-shrink:0}
+.pos-card-delete:hover{color:#c62828}
+.pos-card-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px}
+.pos-card-metric{text-align:center;padding:6px;background:#fafaf6;border-radius:5px}
+.pos-card-metric-lbl{font-size:9px;color:#888;font-weight:600;margin-bottom:2px}
+.pos-card-metric-val{font-size:13px;font-weight:700}
+.pos-card-pnl{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;border-radius:6px;font-weight:700;font-size:14px}
+.pos-card-pnl.profit{background:#e8f5e9;color:#1F5A09}
+.pos-card-pnl.loss{background:#ffebee;color:#c62828}
+.pos-card-signals{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.pos-card-sig{font-size:10px;padding:2px 7px;border-radius:99px;font-weight:700}
+.pos-card-sig.danger{background:#c62828;color:#fff}
+.pos-card-sig.warn{background:#FB8C00;color:#fff}
+.pos-card-sig.exit{background:#534AB7;color:#fff}
+.pos-card-sig.hold{background:#e8f5e9;color:#1F5A09}
+.pos-empty{padding:32px 16px;text-align:center;font-size:13px;color:#888;background:#fafaf6;border:1px dashed #d0cdc0;border-radius:8px}
+.pos-empty b{display:block;font-size:14px;color:#666;margin-bottom:4px}
+@media (max-width:768px){
+  .pos-form-box{padding:16px}
+  .pos-card-metrics{grid-template-columns:repeat(3,1fr);gap:4px}
+  .pos-card-metric{padding:5px 3px}
+  .pos-card-metric-val{font-size:12px}
+}
 /* [v2026-06-01 fix] 전략 가이드 서브탭 크기 키우기 (인라인 스타일 덮어쓰기) */
 #top-panel-guide .strat-sub-btn{
   padding:11px 20px !important;
@@ -2088,10 +2150,13 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
       <div class="db-section-header">
         <span class="db-section-num">⑥</span>
         <span class="db-section-title">보유 포지션</span>
-        <span class="db-section-desc">보유 종목별 오늘의 액션</span>
+        <span class="db-section-desc">매수가 대비 손익 + IBD 손절/익절 시그널 (localStorage 기반)</span>
       </div>
       <div class="db-section-body" id="db-positions-body">
-        <div class="db-placeholder">💼 등록된 보유 포지션이 없습니다.<br><span style="font-size:11px;color:#aaa">현재 포지션 입력 기능 미구현 — 별도 인프라 작업 (localStorage 기반) 후 활성화 예정</span></div>
+        <div class="pos-empty">
+          <b>💼 등록된 보유 포지션이 없습니다</b>
+          종목 상세 모달에서 <b>📦 포지션</b> 버튼으로 추가하세요.
+        </div>
       </div>
     </section>
 
@@ -4731,6 +4796,40 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 
 <!-- ══ 종목 상세 슬라이드 패널 ══ -->
 <div class="detail-overlay" id="detail-overlay" onclick="closeDetail()"></div>
+
+<!-- ══ 보유 포지션 추가/편집 폼 (v2026-06-02 신규) ══ -->
+<div class="pos-form-overlay" id="pos-form-overlay" onclick="if(event.target===this)closePositionForm()">
+  <div class="pos-form-box">
+    <div class="pos-form-title" id="pos-form-title">📦 포지션 추가</div>
+    <div class="pos-form-sub" id="pos-form-sub">매수가와 수량을 입력하면 손익과 시그널이 자동 계산됩니다.</div>
+    <input type="hidden" id="pos-form-ticker">
+    <input type="hidden" id="pos-form-market">
+    <div class="pos-form-row">
+      <label class="pos-form-lbl" for="pos-form-tick-display">종목</label>
+      <input type="text" id="pos-form-tick-display" class="pos-form-input" readonly style="background:#fafaf6;font-weight:700;font-family:'Courier New',monospace">
+    </div>
+    <div class="pos-form-row">
+      <label class="pos-form-lbl" for="pos-form-qty">수량 (주)</label>
+      <input type="number" id="pos-form-qty" class="pos-form-input" placeholder="예: 10" min="0" step="any">
+      <div class="pos-form-hint">소수점 가능 (예: 1.5주)</div>
+      <div class="pos-form-error" id="pos-form-qty-err">수량을 양수로 입력해주세요.</div>
+    </div>
+    <div class="pos-form-row">
+      <label class="pos-form-lbl" for="pos-form-price">평균 매수가 (<span id="pos-form-cur">$</span>)</label>
+      <input type="number" id="pos-form-price" class="pos-form-input" placeholder="예: 150.50" min="0" step="any">
+      <div class="pos-form-hint" id="pos-form-price-hint">현재가: <b id="pos-form-curprice">—</b> · 매수가 입력 시 7% 손절 / 20% 익절 자동 계산</div>
+      <div class="pos-form-error" id="pos-form-price-err">매수가를 양수로 입력해주세요.</div>
+    </div>
+    <div class="pos-form-row">
+      <label class="pos-form-lbl" for="pos-form-note">메모 (선택)</label>
+      <input type="text" id="pos-form-note" class="pos-form-input" placeholder="예: VCP 돌파 매수">
+    </div>
+    <div class="pos-form-actions">
+      <button class="pos-form-btn cancel" onclick="closePositionForm()">취소</button>
+      <button class="pos-form-btn primary" onclick="savePositionForm()" id="pos-form-save">저장</button>
+    </div>
+  </div>
+</div>
 <div class="detail-panel" id="detail-panel">
   <div class="dp-header">
     <div style="flex:1;min-width:0">
@@ -4738,6 +4837,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
         <div class="dp-ticker" id="dp-ticker">—</div>
         <div id="dp-badges" class="dp-badges"></div>
         <button class="dp-watch-btn" id="dp-watch-btn" onclick="toggleWatchlistFromModal()" title="워치리스트에 추가/제거 (Ctrl+W)"><span class="star-icon">☆</span><span id="dp-watch-text">관심종목</span></button>
+        <button class="dp-pos-btn" id="dp-pos-btn" onclick="openPositionFormFromModal()" title="보유 포지션 추가/편집">📦 <span id="dp-pos-text">포지션</span></button>
       </div>
       <div class="dp-name" id="dp-name">—</div>
       <div class="dp-price-row"><span class="dp-price" id="dp-price">—</span><span class="dp-chg" id="dp-chg"></span></div>
@@ -11778,6 +11878,8 @@ function ingestUS(raw) {
   renderUSSectors();
   // [v2026-06-01] 워치리스트 사이드바 갱신 (RS Line 점수 / Phase 정보 표시)
   try { renderWatchlistSidebar(); } catch(e) { console.warn('[워치리스트] 갱신 실패:', e); }
+  // [v2026-06-02] 보유 포지션 섹션 갱신 (현재가 + 손익 계산)
+  try { renderPositionsSection(); } catch(e) { console.warn('[포지션] 갱신 실패:', e); }
 }
 
 function ingestKR(raw) {
@@ -12106,6 +12208,281 @@ function openDetailByTicker(ticker) {
 }
 
 // ════════════════════════════════════════════════════════
+// 13.6. 보유 포지션 (Phase 7 신규 활성화 / v2026-06-02)
+// ════════════════════════════════════════════════════════
+const POSITIONS_KEY = 'trendpilot_positions';
+
+function getPositions() {
+  try {
+    const raw = localStorage.getItem(POSITIONS_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch(e) { return []; }
+}
+
+function setPositions(arr) {
+  try {
+    localStorage.setItem(POSITIONS_KEY, JSON.stringify(arr));
+  } catch(e) { console.warn('[포지션] 저장 실패:', e); }
+}
+
+function findPosition(ticker) {
+  return getPositions().find(p => p.ticker === ticker) || null;
+}
+
+// 종목 데이터 조회 (US/KR/KR2 통합)
+function findStockData(ticker) {
+  const allStocks = (typeof US !== 'undefined' && US.data) ? US.data : [];
+  const krStocks  = (typeof KR !== 'undefined' && KR.data) ? KR.data : [];
+  const kr2Stocks = (typeof KR2 !== 'undefined' && KR2.data) ? KR2.data : [];
+  return [...allStocks, ...krStocks, ...kr2Stocks].find(s => s && s.ticker === ticker) || null;
+}
+
+// 모달의 📦 버튼에서 호출 — 폼 열기
+function openPositionFormFromModal() {
+  const tickerEl = document.getElementById('dp-ticker');
+  if (!tickerEl) return;
+  const ticker = (tickerEl.textContent || '').trim();
+  if (!ticker || ticker === '—') return;
+  openPositionForm(ticker);
+}
+
+// 폼 열기 (기존 포지션 있으면 편집 모드)
+function openPositionForm(ticker) {
+  const overlay = document.getElementById('pos-form-overlay');
+  if (!overlay) return;
+  const existing = findPosition(ticker);
+  const stock = findStockData(ticker);
+  const isKR = stock && (stock.market === 'KOSPI' || stock.market === 'KOSDAQ');
+  const curSymbol = isKR ? '₩' : '$';
+  document.getElementById('pos-form-ticker').value = ticker;
+  document.getElementById('pos-form-market').value = stock ? (stock.market || 'US') : 'US';
+  document.getElementById('pos-form-tick-display').value = ticker + (stock ? ` · ${stock.name || ''}` : '');
+  document.getElementById('pos-form-cur').textContent = curSymbol;
+  // 현재가 표시
+  const curprice = stock && typeof stock.price === 'number' ? stock.price : null;
+  const curEl = document.getElementById('pos-form-curprice');
+  if (curEl) curEl.textContent = curprice !== null ? `${curSymbol}${curprice.toLocaleString()}` : '데이터 없음';
+  // 기존 포지션 값 채우기 또는 비우기
+  if (existing) {
+    document.getElementById('pos-form-title').textContent = '📦 포지션 편집';
+    document.getElementById('pos-form-sub').textContent = '수량/매수가를 수정하거나 메모를 추가할 수 있어요.';
+    document.getElementById('pos-form-qty').value = existing.qty;
+    document.getElementById('pos-form-price').value = existing.avgPrice;
+    document.getElementById('pos-form-note').value = existing.note || '';
+  } else {
+    document.getElementById('pos-form-title').textContent = '📦 포지션 추가';
+    document.getElementById('pos-form-sub').textContent = '매수가와 수량을 입력하면 손익과 시그널이 자동 계산됩니다.';
+    document.getElementById('pos-form-qty').value = '';
+    document.getElementById('pos-form-price').value = curprice !== null ? curprice : '';  // 기본값: 현재가
+    document.getElementById('pos-form-note').value = '';
+  }
+  // 에러 메시지 숨김
+  document.getElementById('pos-form-qty-err').classList.remove('show');
+  document.getElementById('pos-form-price-err').classList.remove('show');
+  overlay.classList.add('on');
+  setTimeout(() => document.getElementById('pos-form-qty').focus(), 50);
+}
+
+function closePositionForm() {
+  const overlay = document.getElementById('pos-form-overlay');
+  if (overlay) overlay.classList.remove('on');
+}
+
+function savePositionForm() {
+  const ticker = document.getElementById('pos-form-ticker').value;
+  const market = document.getElementById('pos-form-market').value;
+  const qty = parseFloat(document.getElementById('pos-form-qty').value);
+  const price = parseFloat(document.getElementById('pos-form-price').value);
+  const note = (document.getElementById('pos-form-note').value || '').trim();
+  // 검증
+  let valid = true;
+  if (!qty || qty <= 0 || isNaN(qty)) {
+    document.getElementById('pos-form-qty-err').classList.add('show');
+    valid = false;
+  } else {
+    document.getElementById('pos-form-qty-err').classList.remove('show');
+  }
+  if (!price || price <= 0 || isNaN(price)) {
+    document.getElementById('pos-form-price-err').classList.add('show');
+    valid = false;
+  } else {
+    document.getElementById('pos-form-price-err').classList.remove('show');
+  }
+  if (!valid) return;
+  // 저장 (기존 있으면 덮어쓰기, 없으면 추가)
+  const positions = getPositions();
+  const idx = positions.findIndex(p => p.ticker === ticker);
+  const stock = findStockData(ticker);
+  const data = {
+    ticker, market,
+    name: stock ? (stock.name || '') : '',
+    qty, avgPrice: price, note,
+    addedAt: (idx >= 0 ? positions[idx].addedAt : new Date().toISOString()),
+    updatedAt: new Date().toISOString(),
+  };
+  if (idx >= 0) {
+    positions[idx] = data;
+  } else {
+    positions.push(data);
+  }
+  setPositions(positions);
+  closePositionForm();
+  renderPositionsSection();
+  updatePositionModalButton(ticker);
+}
+
+function removePosition(ticker) {
+  if (!confirm(`${ticker} 포지션을 제거할까요?`)) return;
+  const positions = getPositions().filter(p => p.ticker !== ticker);
+  setPositions(positions);
+  renderPositionsSection();
+  updatePositionModalButton(ticker);
+}
+
+// 모달의 📦 버튼 상태 갱신
+function updatePositionModalButton(ticker) {
+  const btn = document.getElementById('dp-pos-btn');
+  if (!btn) return;
+  const tickerEl = document.getElementById('dp-ticker');
+  const curTicker = tickerEl ? (tickerEl.textContent || '').trim() : '';
+  const target = ticker || curTicker;
+  if (ticker && curTicker !== ticker) return;
+  if (!target || target === '—') {
+    btn.classList.remove('on');
+    return;
+  }
+  const has = !!findPosition(target);
+  if (has) {
+    btn.classList.add('on');
+  } else {
+    btn.classList.remove('on');
+  }
+  const txt = document.getElementById('dp-pos-text');
+  if (txt) txt.textContent = has ? '포지션 ✓' : '포지션';
+}
+
+// IBD 시그널 계산 (-7% 손절 / +20~25% 익절)
+function calcPositionSignals(pnlPct, stock) {
+  const sigs = [];
+  if (pnlPct <= -7) {
+    sigs.push({ type: 'danger', text: '🚨 손절 (-7%↓)' });
+  } else if (pnlPct <= -5) {
+    sigs.push({ type: 'warn', text: '⚠️ 손절 임박' });
+  }
+  if (pnlPct >= 20 && pnlPct < 25) {
+    sigs.push({ type: 'exit', text: '💎 부분 익절 권장 (+20%)' });
+  } else if (pnlPct >= 25) {
+    sigs.push({ type: 'exit', text: '💎 익절 구간 (+25%↑)' });
+  }
+  // Phase 기반 시그널
+  if (stock) {
+    const phase = stock.phase || '';
+    if (phase === '67' || phase === '01') {
+      sigs.push({ type: 'danger', text: `Phase ${phase} (위험)` });
+    } else if (phase === '4plus' || phase === '4' || phase === '5') {
+      if (sigs.length === 0) sigs.push({ type: 'hold', text: '✓ 보유 권장' });
+    }
+  }
+  return sigs;
+}
+
+// Daily Briefing ⑥ 보유 포지션 섹션 렌더링
+function renderPositionsSection() {
+  const body = document.getElementById('db-positions-body');
+  if (!body) return;
+  const positions = getPositions();
+  if (positions.length === 0) {
+    body.innerHTML = `
+      <div class="pos-empty">
+        <b>💼 등록된 보유 포지션이 없습니다</b>
+        종목 상세 모달에서 <b>📦 포지션</b> 버튼으로 추가하세요.
+      </div>`;
+    return;
+  }
+  // 각 포지션의 현재가 + 손익 계산
+  let totalCost = 0, totalCur = 0, profitCount = 0, lossCount = 0;
+  const cards = positions.map(p => {
+    const stock = findStockData(p.ticker);
+    const isKR = p.market === 'KOSPI' || p.market === 'KOSDAQ';
+    const curSymbol = isKR ? '₩' : '$';
+    const cost = p.qty * p.avgPrice;
+    const cur = stock && typeof stock.price === 'number' ? stock.price * p.qty : null;
+    const pnl = cur !== null ? cur - cost : null;
+    const pnlPct = cur !== null && cost > 0 ? (pnl / cost) * 100 : null;
+    totalCost += cost;
+    if (cur !== null) totalCur += cur;
+    if (pnlPct !== null) {
+      if (pnlPct >= 0) profitCount++; else lossCount++;
+    }
+    const signals = pnlPct !== null ? calcPositionSignals(pnlPct, stock) : [];
+    const cardClass = signals.some(s => s.type === 'danger') ? 'warn' :
+                      signals.some(s => s.type === 'exit') ? 'exit' :
+                      pnlPct !== null && pnlPct >= 0 ? 'profit' : 'loss';
+    const pnlSign = pnlPct !== null && pnlPct >= 0 ? '+' : '';
+    return `
+      <div class="pos-card ${cardClass}">
+        <div class="pos-card-head">
+          <span class="pos-card-tick" onclick="openDetailByTicker('${p.ticker}')" style="cursor:pointer" title="종목 상세 보기">${p.ticker}</span>
+          <span class="pos-card-name">${p.name || ''}</span>
+          <span class="pos-card-delete" onclick="event.stopPropagation();removePosition('${p.ticker}')" title="포지션 제거">✕</span>
+        </div>
+        <div class="pos-card-metrics">
+          <div class="pos-card-metric">
+            <div class="pos-card-metric-lbl">수량</div>
+            <div class="pos-card-metric-val">${p.qty}</div>
+          </div>
+          <div class="pos-card-metric">
+            <div class="pos-card-metric-lbl">매수가</div>
+            <div class="pos-card-metric-val">${curSymbol}${p.avgPrice.toLocaleString()}</div>
+          </div>
+          <div class="pos-card-metric">
+            <div class="pos-card-metric-lbl">현재가</div>
+            <div class="pos-card-metric-val">${stock ? curSymbol + stock.price.toLocaleString() : '—'}</div>
+          </div>
+        </div>
+        ${pnlPct !== null ? `
+        <div class="pos-card-pnl ${pnlPct >= 0 ? 'profit' : 'loss'}">
+          <span>손익</span>
+          <span>${pnlSign}${curSymbol}${Math.abs(pnl).toLocaleString(undefined, {maximumFractionDigits:2})} (${pnlSign}${pnlPct.toFixed(2)}%)</span>
+        </div>` : `
+        <div class="pos-card-pnl loss" style="background:#fafaf6;color:#888">
+          <span>손익</span>
+          <span>현재가 데이터 없음</span>
+        </div>`}
+        ${signals.length ? `
+        <div class="pos-card-signals">
+          ${signals.map(s => `<span class="pos-card-sig ${s.type}">${s.text}</span>`).join('')}
+        </div>` : ''}
+        ${p.note ? `<div style="font-size:11px;color:#666;margin-top:6px;padding:5px 8px;background:#fafaf6;border-radius:4px;border-left:2px solid #ddd">📝 ${p.note}</div>` : ''}
+      </div>`;
+  }).join('');
+  const totalPnl = totalCur - totalCost;
+  const totalPnlPct = totalCost > 0 ? (totalPnl / totalCost * 100) : 0;
+  const pnlColor = totalPnl >= 0 ? '#1F5A09' : '#c62828';
+  const pnlSign = totalPnl >= 0 ? '+' : '';
+  body.innerHTML = `
+    <div class="pos-summary">
+      <div class="pos-summary-cell">
+        <div class="pos-summary-lbl">보유 종목</div>
+        <div class="pos-summary-val" style="color:#185FA5">${positions.length}</div>
+      </div>
+      <div class="pos-summary-cell">
+        <div class="pos-summary-lbl">📈 수익</div>
+        <div class="pos-summary-val" style="color:#1F5A09">${profitCount}</div>
+      </div>
+      <div class="pos-summary-cell">
+        <div class="pos-summary-lbl">📉 손실</div>
+        <div class="pos-summary-val" style="color:#c62828">${lossCount}</div>
+      </div>
+      <div class="pos-summary-cell">
+        <div class="pos-summary-lbl">총 손익</div>
+        <div class="pos-summary-val" style="color:${pnlColor}">${pnlSign}${totalPnlPct.toFixed(2)}%</div>
+      </div>
+    </div>
+    <div class="pos-cards-grid">${cards}</div>`;
+}
+
+// ════════════════════════════════════════════════════════
 // 14. 종목 상세 패널
 // ════════════════════════════════════════════════════════
 
@@ -12131,6 +12508,8 @@ function openDetail(ticker, s, mkt) {
   if (badgeEl) badgeEl.innerHTML = badges.join('');
   // [v2026-06-01] 모달 열 때 ★ 워치리스트 버튼 상태 갱신
   updateWatchlistModalButton(ticker);
+  // [v2026-06-02] 모달 열 때 📦 포지션 버튼 상태 갱신
+  updatePositionModalButton(ticker);
   const rs = s.rs || s.rs_score || 0;
   const rsEl = document.getElementById('dp-rs');
   if (rsEl) { rsEl.textContent = rs; rsEl.className = 'dp-item-val '+(rs>=90?'green':rs>=75?'blue':rs>=50?'amber':'red'); }
@@ -13126,7 +13505,7 @@ function exportEtf() {
         box.style.cssText='position:fixed;bottom:10px;right:10px;z-index:9999;background:#000;color:#0f0;padding:6px 10px;font:11px monospace;border-radius:4px;pointer-events:none';
         document.body.appendChild(box);
       }
-      box.textContent = `[v2026-06-01-rs-fields-guide-added] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
+      box.textContent = `[v2026-06-02-positions-phase7-active] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
     }
   }
   // 여러 타이밍에서 측정 (late-layout 대비)
@@ -13148,9 +13527,11 @@ function exportEtf() {
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       try { renderWatchlistSidebar(); } catch(e) { console.warn('[워치리스트] 초기 렌더 실패:', e); }
+      try { renderPositionsSection(); } catch(e) { console.warn('[포지션] 초기 렌더 실패:', e); }
     });
   } else {
     try { renderWatchlistSidebar(); } catch(e) { console.warn('[워치리스트] 초기 렌더 실패:', e); }
+    try { renderPositionsSection(); } catch(e) { console.warn('[포지션] 초기 렌더 실패:', e); }
   }
   // 탭 전환 시에도 재측정 (전환 후 줄바꿈이 바뀔 수 있음)
   document.addEventListener('click', (e) => {
