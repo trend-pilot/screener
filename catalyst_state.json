@@ -1,61 +1,91 @@
 {
 "_date": "2026-06-12",
 "_fired_names": [
-"Aerospace & Defense",
-"Communication Equipment",
-"Electronic Components",
+"Coking Coal",
 "Gold",
+"Household & Personal Products",
+"Marine Shipping",
+"Oil & Gas Equipment & Services",
 "Other Industrial Metals & Mining",
 "Semiconductor Equipment & Materials",
-"Semiconductors",
-"Utilities - Renewable"
+"Utilities - Independent Power Producers"
 ],
 "Semiconductor Equipment & Materials": {
+"consecutive_days": 2,
+"first_fired": "2026-06-12",
+"last_avg_pct": 4.29,
+"ever_fired": true
+},
+"Utilities - Independent Power Producers": {
 "consecutive_days": 1,
 "first_fired": "2026-06-12",
-"last_avg_pct": 10.29,
+"last_avg_pct": 3.75,
+"ever_fired": true
+},
+"Gold": {
+"consecutive_days": 2,
+"first_fired": "2026-06-12",
+"last_avg_pct": 3.66,
+"ever_fired": true
+},
+"Household & Personal Products": {
+"consecutive_days": 1,
+"first_fired": "2026-06-12",
+"last_avg_pct": 3.42,
+"ever_fired": true
+},
+"Marine Shipping": {
+"consecutive_days": 1,
+"first_fired": "2026-06-12",
+"last_avg_pct": 3.25,
+"ever_fired": true
+},
+"Oil & Gas Equipment & Services": {
+"consecutive_days": 1,
+"first_fired": "2026-06-12",
+"last_avg_pct": 2.98,
+"ever_fired": true
+},
+"Other Industrial Metals & Mining": {
+"consecutive_days": 2,
+"first_fired": "2026-06-12",
+"last_avg_pct": 2.69,
+"ever_fired": true
+},
+"Coking Coal": {
+"consecutive_days": 1,
+"first_fired": "2026-06-12",
+"last_avg_pct": 2.6,
 "ever_fired": true
 },
 "Aerospace & Defense": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-12",
 "last_avg_pct": 7.88,
 "ever_fired": true
 },
-"Other Industrial Metals & Mining": {
-"consecutive_days": 1,
-"first_fired": "2026-06-12",
-"last_avg_pct": 7.73,
-"ever_fired": true
-},
 "Semiconductors": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-12",
 "last_avg_pct": 7.22,
 "ever_fired": true
 },
 "Utilities - Renewable": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-12",
 "last_avg_pct": 7.2,
 "ever_fired": true
 },
 "Communication Equipment": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-12",
 "last_avg_pct": 7.13,
 "ever_fired": true
 },
 "Electronic Components": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-12",
 "last_avg_pct": 7.04,
-"ever_fired": true
-},
-"Gold": {
-"consecutive_days": 1,
-"first_fired": "2026-06-12",
-"last_avg_pct": 6.86,
 "ever_fired": true
 }
 }
