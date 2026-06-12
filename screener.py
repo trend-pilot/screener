@@ -462,6 +462,7 @@ def process_symbol(ticker, name, asset_type="STOCK", asset_class=""):
             return round((latest/float(close.iloc[-n-1])-1)*100,1)
 
         w1,w3,w6 = pct(5),pct(15),pct(30)
+        d1 = pct(1)   # [catalyst] 일간 등락률 (전략실 테마 발화 트리거)
 
         c1 = latest > ma150_now
         c2 = latest > ma200_now
@@ -511,6 +512,7 @@ def process_symbol(ticker, name, asset_type="STOCK", asset_class=""):
             "low_52w":   round(low_52w,2),
             "h52_pct":   h52_pct,
             "w1":w1,"w3":w3,"w6":w6,
+            "pct": d1,   # [catalyst] 일간 등락률
             "rs":0,"rs_now":0,"ibd_rs":0,
             "ibd_raw":   round(ibd_raw, 2),
             "is_stage2": False,
