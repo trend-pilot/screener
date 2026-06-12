@@ -16,14 +16,14 @@ jobs:
       contents: write
 
     steps:
-      - name: 📂 리포 체크아웃
+      - name: 📁 리포 체크아웃
         uses: actions/checkout@v4
 
       - name: 🐍 Python 3.11 설치
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          
+
 
       - name: 📦 패키지 설치
         run: |
@@ -33,8 +33,15 @@ jobs:
       - name: 🔍 Screener 실행 (US 1900+ 종목)
         run: python screener.py
 
-      - name: 🏷️ 섹터 정보 보강 (GICS 매칭)
+      - name: 🎨 섹터 정보 보강 (GICS 매칭)
         run: python enrich_sectors.py
+
+      # ─── [추가] 전략실 테마 카탈리스트 주입 ───
+      # enrich 다음 / 업로드 앞에 위치해야 함:
+      #   screener_data.json 에 industry 가 채워진 뒤 catalyst 를 계산하고,
+      #   그 결과(catalyst 키)가 github_upload.py 업로드에 포함되도록.
+      - name: 🎯 전략실 카탈리스트 주입 (catalyst)
+        run: python make_catalyst.py
 
       - name: ☁️ GitHub 업로드 (dashboard.html + screener_data.json + phase_history.json)
         env:
@@ -43,20 +50,21 @@ jobs:
           GITHUB_REPO: screener
         run: python github_upload.py
 
-      - name: 💾 섹터 캐시 commit (다음 실행 빠르게)
+      - name: 💾 캐시/상태 commit (sector_cache + catalyst_state)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           # phase_history는 github_upload.py가 이미 GitHub API로 푸시했으므로
           # 로컬 working tree에서 제거 → git pull --rebase 시 conflict 회피
           rm -f phase_history.json kr_phase_history.json
-          if [ -f sector_cache.json ]; then
-            git add sector_cache.json
-            if git diff --staged --quiet; then
-              echo "캐시 변경 없음"
-            else
-              git commit -m "🤖 sector_cache 업데이트 [auto]"
-              git pull --rebase --autostash || true
-              git push
-            fi
+          # sector_cache + catalyst_state(D+N 누적) 각각 스테이징 (없어도 무시)
+          git add sector_cache.json 2>/dev/null || true
+          git add catalyst_state.json 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "변경 없음"
+          else
+            git commit -m "🎨 sector_cache + 🎯 catalyst_state [auto]"
+            git pull --rebase --autostash || true
+            git push
           fi
+
