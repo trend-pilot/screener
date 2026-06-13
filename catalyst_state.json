@@ -1,5 +1,5 @@
 {
-"_date": "2026-06-12",
+"_date": "2026-06-13",
 "_fired_names": [
 "Coking Coal",
 "Gold",
@@ -11,51 +11,51 @@
 "Utilities - Independent Power Producers"
 ],
 "Semiconductor Equipment & Materials": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-06-12",
 "last_avg_pct": 4.29,
 "ever_fired": true
 },
 "Utilities - Independent Power Producers": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-06-12",
 "last_avg_pct": 3.75,
 "ever_fired": true
 },
 "Gold": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-06-12",
 "last_avg_pct": 3.66,
 "ever_fired": true
 },
+"Marine Shipping": {
+"consecutive_days": 2,
+"first_fired": "2026-06-12",
+"last_avg_pct": 3.57,
+"ever_fired": true
+},
 "Household & Personal Products": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-06-12",
 "last_avg_pct": 3.42,
 "ever_fired": true
 },
-"Marine Shipping": {
-"consecutive_days": 1,
+"Coking Coal": {
+"consecutive_days": 2,
 "first_fired": "2026-06-12",
-"last_avg_pct": 3.25,
+"last_avg_pct": 3.2,
 "ever_fired": true
 },
 "Oil & Gas Equipment & Services": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-06-12",
 "last_avg_pct": 2.98,
 "ever_fired": true
 },
 "Other Industrial Metals & Mining": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-06-12",
 "last_avg_pct": 2.69,
-"ever_fired": true
-},
-"Coking Coal": {
-"consecutive_days": 1,
-"first_fired": "2026-06-12",
-"last_avg_pct": 2.6,
 "ever_fired": true
 },
 "Aerospace & Defense": {
