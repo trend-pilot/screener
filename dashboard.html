@@ -2102,6 +2102,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
   <button class="top-tab" id="ttab-sector"      onclick="switchTopTab('sector',this)">📈 섹터 분석</button>
   <button class="top-tab" id="ttab-etf"         onclick="switchTopTab('etf',this)">📊 섹터 ETF</button>
   <button class="top-tab" id="ttab-themeanalysis" onclick="switchTopTab('themeanalysis',this)">🎯 테마 분석</button>
+  <button class="top-tab" id="ttab-strategyroom" onclick="switchTopTab('strategyroom',this)">🏛 전략실</button>
   <button class="top-tab" id="ttab-screener"    onclick="switchTopTab('screener',this)">🔍 스크리너</button>
   <button class="top-tab" id="ttab-rsmomentum"  onclick="switchTopTab('rsmomentum',this)">⚡ RS 모멘텀</button>
   <button class="top-tab" id="ttab-pattern"     onclick="switchTopTab('pattern',this)">🎯 패턴 감지</button>
@@ -2222,6 +2223,17 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
       </div>
     </section>
 
+  </div>
+</div>
+
+<!-- 전략실 탭 패널 [v2026-06-13 Phase6] -->
+<div class="top-panel" id="top-panel-strategyroom">
+  <div style="max-width:1100px;margin:0 auto;padding:20px 16px">
+    <div style="margin-bottom:16px">
+      <div style="font-size:20px;font-weight:800;color:#1a1a18;display:flex;align-items:center;gap:8px;flex-wrap:wrap">🏛 전략실 <span style="font-size:12px;font-weight:600;color:#0F6E56;background:#E0F5F2;padding:2px 10px;border-radius:99px">오늘의 발화 테마 (Catalyst)</span></div>
+      <div style="font-size:12px;color:#73726c;margin-top:4px">그날 강하게 발화한 업종 테마 + 대장주 + 연속 발화일(★★★ D+N). 자금이 어디로 몰리는지 한눈에.</div>
+    </div>
+    <div id="strategyroom-body"><div style="text-align:center;padding:30px;color:#aaa">⏳ 로딩 중...</div></div>
   </div>
 </div>
 
@@ -10402,6 +10414,9 @@ function switchTopTab(tab, el) {
         try { renderThemeAnalysisTab(window._lastSectorsData); } catch(e) { console.warn('[테마 분석] 탭 진입 시 렌더 실패:', e); }
       }
     }
+    if (tab === 'strategyroom') {
+      try { renderStrategyRoom(); } catch(e) { console.warn('[전략실] 탭 진입 렌더 실패:', e); }
+    }
     // 스크롤 위치 초기화 (간단 버전)
     const resetScrolls = () => {
       panel.scrollLeft = 0;
@@ -11977,10 +11992,70 @@ function updateSizing(regimeKeyOverride) {
 // 12. 데이터 수신 (ingest)
 // ════════════════════════════════════════════════════════
 
+function srStars(n){ let s=''; for(let i=0;i<3;i++) s += (i<n)?'\u2605':'\u2606'; return s; }
+function renderStrategyRoom() {
+  const body = document.getElementById('strategyroom-body');
+  if (!body) return;
+  const cat = (typeof US !== 'undefined' && US.catalyst) ? US.catalyst : null;
+  if (!cat || !Array.isArray(cat.clusters) || cat.clusters.length === 0) {
+    body.innerHTML = '<div style="text-align:center;padding:40px 20px;color:#888;background:#fafaf8;border:1px dashed #d3d1c7;border-radius:10px;line-height:1.8"><div style="font-size:32px;margin-bottom:8px">\U0001F3DB</div><div style="font-size:15px;font-weight:600;color:#555;margin-bottom:6px">\uC544\uC9C1 Catalyst \uB370\uC774\uD130\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4</div><div style="font-size:12px;color:#999">\uC2A4\uD06C\uB9AC\uB108 \uD30C\uC774\uD504\uB77C\uC778\uC5D0 make_catalyst.py \uB2E8\uACC4\uAC00 \uC2E4\uD589\uB418\uBA74 \uADF8\uB0A0 \uBC1C\uD654\uD55C \uC5C5\uC885 \uD14C\uB9C8\uAC00 \uC5EC\uAE30\uC5D0 \uD45C\uC2DC\uB429\uB2C8\uB2E4.</div></div>';
+    return;
+  }
+  const fmtPct = v => ((Number(v)||0)>=0?'+':'') + (Number(v)||0).toFixed(2) + '%';
+  const cb = cat.cluster_by === 'sector' ? '\uC139\uD130' : '\uC5C5\uC885';
+  let html = '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #ece9e0"><div style="font-size:12.5px;color:#555">\uBC1C\uD654 <b>' + (cat.all_fired_count||cat.clusters.length) + '\uAC1C</b> \u00B7 \uAE30\uC900: ' + cb + ' \u00B7 ' + (cat.data_date||'') + '</div><div style="font-size:11px;color:#aaa">\u2605\u2605\u2605 = \uC5F0\uC18D 3\uC77C+ \uBA54\uC778 \uD14C\uB9C8 \u00B7 \uD074\uB9AD \uC2DC \uCC28\uD2B8</div></div>';
+  if (Array.isArray(cat.holdings_fired) && cat.holdings_fired.length) {
+    html += '<div style="background:#FFF8E1;border:1px solid #f5c518;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:12.5px;color:#7a5a00">\U0001F4E6 \uBCF4\uC720 \uC885\uBAA9\uC774 \uD3EC\uD568\uB41C \uBC1C\uD654 \uD14C\uB9C8: <b>' + cat.holdings_fired.join(', ') + '</b> \u2014 \uCD94\uC138 \uC810\uAC80 \uAE30\uD68C</div>';
+  }
+  html += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px">';
+  cat.clusters.forEach(function(c) {
+    const stars = c.sustain_status === 'elevation' ? 3 : ((c.consecutive_days||0) >= 2 ? 2 : 1);
+    const accent = stars>=3 ? '#1a4a08' : (stars===2 ? '#854F0B' : '#185FA5');
+    const badges = [];
+    if (c.is_first_ever) badges.push(['\U0001F195 \uC2E0\uADDC \uD14C\uB9C8','#185FA5','#E6F1FB']);
+    else if (c.is_refire) badges.push(['\U0001F504 \uC7AC\uBC1C\uD654','#854F0B','#FFF4E6']);
+    if (c.cascade) badges.push(['\U0001F30A \uAD11\uBC94\uC704 \uC0C1\uC2B9','#1a8a4a','#E8F5E9']);
+    if (c.single_stock) badges.push(['\u26A1 \uB2E8\uB3C5 \uC2A4\uD30C\uC774\uD06C','#9a6a00','#FFF8E1']);
+    if (c.decelerating) badges.push(['\U0001F4C9 \uB454\uD654','#A32D2D','#FDF5F5']);
+    const badgeHtml = badges.map(b=>'<span style="font-size:10px;font-weight:600;color:'+b[1]+';background:'+b[2]+';border-radius:4px;padding:2px 6px">'+b[0]+'</span>').join(' ');
+    const members = (c.members||[]).map(function(m){
+      const col = (m.pct||0)>=0 ? '#1a8a4a' : '#A32D2D';
+      const hold = m.holding ? '\U0001F4E6 ' : '';
+      return '<span onclick="openDetailByTicker(\''+m.symbol+'\')" style="display:inline-flex;align-items:center;gap:3px;background:#f5f4ef;border:1px solid #e7e4da;border-radius:5px;padding:2px 7px;font-size:11px;cursor:pointer;margin:2px 3px 0 0">'+hold+'<b>'+m.symbol+'</b> <span style="color:'+col+'">'+fmtPct(m.pct)+'</span></span>';
+    }).join('');
+    let catText = '';
+    const cinfo = cat.catalysts && cat.catalysts[c.cluster];
+    if (cinfo && cinfo.ok && cinfo.text) {
+      catText = '<div style="font-size:11.5px;color:#555;background:#fafaf8;border-left:3px solid '+accent+';border-radius:4px;padding:6px 10px;margin-top:8px;line-height:1.6">\U0001F4A1 '+cinfo.text+'</div>';
+    }
+    html += '<div style="background:#fff;border:1px solid #e0e0d8;border-left:4px solid '+accent+';border-radius:10px;padding:13px 15px">'
+      + '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px">'
+      + '<div style="min-width:0"><div style="font-size:15px;font-weight:800;color:#1a1a1a;line-height:1.2">'+c.cluster+'</div>'
+      + '<div style="font-size:10.5px;color:#999;margin-top:1px">'+(c.sector||'')+' \u00B7 '+c.n+'\uC885\uBAA9 \uC911 '+c.up_count+' \uC0C1\uC2B9</div></div>'
+      + '<div style="text-align:right;flex-shrink:0"><div style="font-size:15px;color:#f5c518;letter-spacing:1px">'+srStars(stars)+'</div>'
+      + '<div style="font-size:10px;color:#999;margin-top:1px">'+(c.sustain_label||'')+'</div></div></div>'
+      + '<div style="display:flex;align-items:baseline;gap:10px;margin:6px 0;flex-wrap:wrap">'
+      + '<div style="font-size:13px;font-weight:700;color:'+((c.avg_pct||0)>=0?'#1a8a4a':'#A32D2D')+'">\uD3C9\uADE0 '+fmtPct(c.avg_pct)+'</div>'
+      + '<div style="font-size:11.5px;color:#666">\uB300\uC7A5 <span onclick="openDetailByTicker(\''+c.lead+'\')" style="font-weight:700;color:#185FA5;cursor:pointer">'+c.lead+'</span> '+fmtPct(c.lead_pct)+' \u00B7 RS '+(c.lead_rs==null?'\u2014':c.lead_rs)+'</div></div>'
+      + (badgeHtml ? '<div style="display:flex;flex-wrap:wrap;gap:4px;margin:6px 0">'+badgeHtml+'</div>' : '')
+      + '<div style="margin-top:4px">'+members+'</div>'
+      + catText
+      + '</div>';
+  });
+  html += '</div>';
+  if (Array.isArray(cat.faded_clusters) && cat.faded_clusters.length) {
+    html += '<div style="margin-top:16px;padding:10px 14px;background:#fafaf8;border:1px dashed #d3d1c7;border-radius:8px;font-size:12px;color:#888">\U0001F4A4 \uC5B4\uC81C \uBC1C\uD654\uD588\uC73C\uB098 \uC624\uB298 \uC2DD\uC740 \uD14C\uB9C8: '+cat.faded_clusters.join(', ')+'</div>';
+  }
+  html += '<div style="margin-top:12px;font-size:10px;color:#aaa;text-align:right">\u203B '+(cat.note||'')+'</div>';
+  body.innerHTML = html;
+}
+
 function ingestUS(raw) {
   US.data   = raw.stocks || [];
   US.market = raw.market || {};
   US.sectors = buildUSSectors(US.data);
+  US.catalyst = raw.catalyst || null;
+  try { renderStrategyRoom(); } catch(e) { console.warn('[전략실] 렌더 실패:', e); }
   // ───────── 진단 로그 (F12 콘솔에서 확인) ─────────
   try {
     const total = US.data.length;
@@ -13794,7 +13869,7 @@ function exportEtf() {
         box.style.cssText='position:fixed;bottom:10px;right:10px;z-index:9999;background:#000;color:#0f0;padding:6px 10px;font:11px monospace;border-radius:4px;pointer-events:none';
         document.body.appendChild(box);
       }
-      box.textContent = `[v2026-06-12-phase123-ibd-style] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
+      box.textContent = `[v2026-06-13-phase6-strategyroom] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
     }
   }
   // 여러 타이밍에서 측정 (late-layout 대비)
