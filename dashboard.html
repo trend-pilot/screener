@@ -1943,13 +1943,13 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 .wl-clear-btn{margin:6px 12px 2px;padding:4px 8px;font-size:10px;background:#fff;border:1px dashed #c66;color:#c66;border-radius:4px;cursor:pointer;width:calc(100% - 24px)}
 .wl-clear-btn:hover{background:#fff5f5;border-style:solid}
 
-/* [v2026-06-13 fix] 전략 가이드 서브메뉴: sticky 해제 — 헤더에 가려지던 첫 줄(워크플로우·투자전략) 노출 */
+/* [v2026-06-13 fix2] 전략 가이드 서브메뉴: 데스크탑 relative 강제 규칙을 이겨 sticky 고정 — 첫 줄 가림 해결 */
 #top-panel-guide.on .strat-sub-tabs,
 #top-panel-guide .strat-sub-tabs{
-  position: relative !important;
-  top: auto !important;
-  z-index: 1 !important;
-  scroll-margin-top: calc(var(--hdr-h, 140px) + 8px) !important;
+  position: sticky !important;
+  top: var(--hdr-h, 140px) !important;
+  z-index: 95 !important;
+  margin-top: 0 !important;
 }
 </style>
 </head>
