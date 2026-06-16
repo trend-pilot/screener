@@ -1,59 +1,89 @@
 {
-"_date": "2026-06-15",
+"_date": "2026-06-16",
 "_fired_names": [
-"Computer Hardware",
+"Consulting Services",
 "Gold",
-"Packaging & Containers",
-"Semiconductor Equipment & Materials",
-"Semiconductors",
-"Travel Services",
+"Insurance - Property & Casualty",
+"Medical Distribution",
+"Other Precious Metals & Mining",
+"Residential Construction",
 "Uranium",
 "Utilities - Independent Power Producers"
 ],
 "Uranium": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-06-15",
-"last_avg_pct": 7.95,
+"last_avg_pct": 5.35,
 "ever_fired": true
 },
-"Gold": {
-"consecutive_days": 5,
-"first_fired": "2026-06-12",
-"last_avg_pct": 6.3,
+"Other Precious Metals & Mining": {
+"consecutive_days": 1,
+"first_fired": "2026-06-16",
+"last_avg_pct": 4.3,
 "ever_fired": true
 },
 "Utilities - Independent Power Producers": {
-"consecutive_days": 4,
+"consecutive_days": 5,
 "first_fired": "2026-06-12",
-"last_avg_pct": 5.25,
+"last_avg_pct": 3.75,
+"ever_fired": true
+},
+"Insurance - Property & Casualty": {
+"consecutive_days": 1,
+"first_fired": "2026-06-16",
+"last_avg_pct": 3.57,
+"ever_fired": true
+},
+"Gold": {
+"consecutive_days": 6,
+"first_fired": "2026-06-12",
+"last_avg_pct": 2.84,
+"ever_fired": true
+},
+"Consulting Services": {
+"consecutive_days": 1,
+"first_fired": "2026-06-16",
+"last_avg_pct": 2.53,
+"ever_fired": true
+},
+"Residential Construction": {
+"consecutive_days": 1,
+"first_fired": "2026-06-16",
+"last_avg_pct": 2.23,
+"ever_fired": true
+},
+"Medical Distribution": {
+"consecutive_days": 1,
+"first_fired": "2026-06-16",
+"last_avg_pct": 2.2,
 "ever_fired": true
 },
 "Packaging & Containers": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-15",
 "last_avg_pct": 4.98,
 "ever_fired": true
 },
 "Semiconductor Equipment & Materials": {
-"consecutive_days": 5,
+"consecutive_days": 0,
 "first_fired": "2026-06-12",
 "last_avg_pct": 4.85,
 "ever_fired": true
 },
 "Computer Hardware": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-15",
 "last_avg_pct": 4.03,
 "ever_fired": true
 },
 "Semiconductors": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-15",
 "last_avg_pct": 3.96,
 "ever_fired": true
 },
 "Travel Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-15",
 "last_avg_pct": 3.87,
 "ever_fired": true
