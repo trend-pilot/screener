@@ -1,59 +1,107 @@
 {
-"_date": "2026-06-16",
+"_date": "2026-06-17",
 "_fired_names": [
-"Consulting Services",
-"Gold",
-"Insurance - Property & Casualty",
-"Medical Distribution",
-"Other Precious Metals & Mining",
-"Residential Construction",
-"Uranium",
-"Utilities - Independent Power Producers"
+"Airports & Air Services",
+"Biotechnology",
+"Coking Coal",
+"Other Industrial Metals & Mining",
+"Pollution & Treatment Controls",
+"Semiconductor Equipment & Materials",
+"Specialty Industrial Machinery",
+"Staffing & Employment Services"
 ],
+"Biotechnology": {
+"consecutive_days": 1,
+"first_fired": "2026-06-17",
+"last_avg_pct": 2.99,
+"ever_fired": true
+},
+"Pollution & Treatment Controls": {
+"consecutive_days": 1,
+"first_fired": "2026-06-17",
+"last_avg_pct": 2.92,
+"ever_fired": true
+},
+"Coking Coal": {
+"consecutive_days": 1,
+"first_fired": "2026-06-17",
+"last_avg_pct": 2.35,
+"ever_fired": true
+},
+"Staffing & Employment Services": {
+"consecutive_days": 1,
+"first_fired": "2026-06-17",
+"last_avg_pct": 2.2,
+"ever_fired": true
+},
+"Airports & Air Services": {
+"consecutive_days": 1,
+"first_fired": "2026-06-17",
+"last_avg_pct": 1.75,
+"ever_fired": true
+},
+"Semiconductor Equipment & Materials": {
+"consecutive_days": 1,
+"first_fired": "2026-06-17",
+"last_avg_pct": 1.49,
+"ever_fired": true
+},
+"Specialty Industrial Machinery": {
+"consecutive_days": 1,
+"first_fired": "2026-06-17",
+"last_avg_pct": 1.36,
+"ever_fired": true
+},
+"Other Industrial Metals & Mining": {
+"consecutive_days": 1,
+"first_fired": "2026-06-17",
+"last_avg_pct": 1.28,
+"ever_fired": true
+},
 "Uranium": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-06-15",
 "last_avg_pct": 5.35,
 "ever_fired": true
 },
 "Other Precious Metals & Mining": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-16",
 "last_avg_pct": 4.3,
 "ever_fired": true
 },
 "Utilities - Independent Power Producers": {
-"consecutive_days": 5,
+"consecutive_days": 0,
 "first_fired": "2026-06-12",
 "last_avg_pct": 3.75,
 "ever_fired": true
 },
 "Insurance - Property & Casualty": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-16",
 "last_avg_pct": 3.57,
 "ever_fired": true
 },
 "Gold": {
-"consecutive_days": 6,
+"consecutive_days": 0,
 "first_fired": "2026-06-12",
 "last_avg_pct": 2.84,
 "ever_fired": true
 },
 "Consulting Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-16",
 "last_avg_pct": 2.53,
 "ever_fired": true
 },
 "Residential Construction": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-16",
 "last_avg_pct": 2.23,
 "ever_fired": true
 },
 "Medical Distribution": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-16",
 "last_avg_pct": 2.2,
 "ever_fired": true
@@ -62,12 +110,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-15",
 "last_avg_pct": 4.98,
-"ever_fired": true
-},
-"Semiconductor Equipment & Materials": {
-"consecutive_days": 0,
-"first_fired": "2026-06-12",
-"last_avg_pct": 4.85,
 "ever_fired": true
 },
 "Computer Hardware": {
@@ -100,22 +142,10 @@
 "last_avg_pct": 3.42,
 "ever_fired": true
 },
-"Coking Coal": {
-"consecutive_days": 0,
-"first_fired": "2026-06-12",
-"last_avg_pct": 3.2,
-"ever_fired": true
-},
 "Oil & Gas Equipment & Services": {
 "consecutive_days": 0,
 "first_fired": "2026-06-12",
 "last_avg_pct": 2.98,
-"ever_fired": true
-},
-"Other Industrial Metals & Mining": {
-"consecutive_days": 0,
-"first_fired": "2026-06-12",
-"last_avg_pct": 2.69,
 "ever_fired": true
 },
 "Aerospace & Defense": {
