@@ -1,67 +1,91 @@
 {
-"_date": "2026-06-18",
+"_date": "2026-06-19",
 "_fired_names": [
-"Electrical Equipment & Parts",
-"Financial Conglomerates",
+"Biotechnology",
+"Computer Hardware",
 "Household & Personal Products",
-"Rental & Leasing Services",
 "Semiconductor Equipment & Materials",
 "Semiconductors",
-"Utilities - Independent Power Producers",
-"Utilities - Renewable"
+"Shell Companies",
+"Software - Application",
+"Software - Infrastructure"
 ],
-"Semiconductors": {
-"consecutive_days": 1,
-"first_fired": "2026-06-18",
-"last_avg_pct": 6.48,
+"Semiconductor Equipment & Materials": {
+"consecutive_days": 3,
+"first_fired": "2026-06-17",
+"last_avg_pct": 6.11,
 "ever_fired": true
 },
-"Semiconductor Equipment & Materials": {
+"Semiconductors": {
 "consecutive_days": 2,
-"first_fired": "2026-06-17",
-"last_avg_pct": 6.1,
+"first_fired": "2026-06-18",
+"last_avg_pct": NaN,
+"ever_fired": true
+},
+"Household & Personal Products": {
+"consecutive_days": 2,
+"first_fired": "2026-06-18",
+"last_avg_pct": NaN,
+"ever_fired": true
+},
+"Software - Infrastructure": {
+"consecutive_days": 1,
+"first_fired": "2026-06-19",
+"last_avg_pct": NaN,
+"ever_fired": true
+},
+"Biotechnology": {
+"consecutive_days": 1,
+"first_fired": "2026-06-19",
+"last_avg_pct": NaN,
+"ever_fired": true
+},
+"Shell Companies": {
+"consecutive_days": 1,
+"first_fired": "2026-06-19",
+"last_avg_pct": NaN,
+"ever_fired": true
+},
+"Computer Hardware": {
+"consecutive_days": 1,
+"first_fired": "2026-06-19",
+"last_avg_pct": 4.34,
+"ever_fired": true
+},
+"Software - Application": {
+"consecutive_days": 1,
+"first_fired": "2026-06-19",
+"last_avg_pct": NaN,
 "ever_fired": true
 },
 "Electrical Equipment & Parts": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-18",
 "last_avg_pct": 5.18,
 "ever_fired": true
 },
 "Utilities - Renewable": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-18",
 "last_avg_pct": 5.13,
 "ever_fired": true
 },
 "Financial Conglomerates": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-18",
 "last_avg_pct": 4.78,
 "ever_fired": true
 },
-"Household & Personal Products": {
-"consecutive_days": 1,
-"first_fired": "2026-06-18",
-"last_avg_pct": 4.62,
-"ever_fired": true
-},
 "Rental & Leasing Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-18",
 "last_avg_pct": 4.6,
 "ever_fired": true
 },
 "Utilities - Independent Power Producers": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-18",
 "last_avg_pct": 4.55,
-"ever_fired": true
-},
-"Biotechnology": {
-"consecutive_days": 0,
-"first_fired": "2026-06-17",
-"last_avg_pct": 2.99,
 "ever_fired": true
 },
 "Pollution & Treatment Controls": {
@@ -146,12 +170,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-15",
 "last_avg_pct": 4.98,
-"ever_fired": true
-},
-"Computer Hardware": {
-"consecutive_days": 0,
-"first_fired": "2026-06-15",
-"last_avg_pct": 4.03,
 "ever_fired": true
 },
 "Travel Services": {
