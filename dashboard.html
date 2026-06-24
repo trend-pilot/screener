@@ -12507,6 +12507,25 @@ async function autoLoad() {
   }
 
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // 🏛 전략실: strategy_room.json fetch → window.__STRATEGY_ROOM
+  //   strategy_room_v1.py 엔진이 매일 생성하여 repo 에 commit → Pages 가 서빙.
+  //   파일이 있으면 실데이터로 렌더, 없으면 renderStrategyPortfolio 가
+  //   window.__SR_SAMPLE(시연용 샘플)로 자동 폴백한다.
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  const srPaths = ['./strategy_room.json', './output/strategy_room.json', '../strategy_room.json'];
+  const srResults = await fetchAll(srPaths);
+  if (srResults.length > 0) {
+    // 여러 경로에 있으면 data_date 최신 우선
+    srResults.sort((a, b) => String(b.json.data_date || '').localeCompare(String(a.json.data_date || '')));
+    window.__STRATEGY_ROOM = srResults[0].json;
+    const sr = window.__STRATEGY_ROOM;
+    console.log(`%c[자동로드] 🏛 전략실: ${srResults[0].path} · ${sr.data_date} · NAV ${sr.nav} · 보유 ${(sr.holdings||[]).length} · 신호 ${(sr.signals||[]).length}`, 'color:#7a5a00;font-weight:bold');
+    try { if (typeof renderStrategyPortfolio === 'function') renderStrategyPortfolio(); } catch(e) { console.warn('[전략실] 실데이터 렌더 실패:', e); }
+  } else {
+    console.warn('%c[자동로드] 🏛 전략실: strategy_room.json 없음 → 샘플 데이터 표시 (엔진 첫 실행 전이면 정상)', 'color:#b08a3a');
+  }
+
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // KR: 기존 로직 유지 (sector_kr 비율로 평가)
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   const krPaths = ['./kr_screener_output.json','../kr_screener_output.json'];
@@ -14115,7 +14134,7 @@ function exportEtf() {
         box.style.cssText='position:fixed;bottom:10px;right:10px;z-index:9999;background:#000;color:#0f0;padding:6px 10px;font:11px monospace;border-radius:4px;pointer-events:none';
         document.body.appendChild(box);
       }
-      box.textContent = `[v2026-06-24-strategyroom-full] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
+      box.textContent = `[v2026-06-24-strategyroom-connected] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
     }
   }
   // 여러 타이밍에서 측정 (late-layout 대비)
