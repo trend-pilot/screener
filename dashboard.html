@@ -2239,8 +2239,15 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 <div class="top-panel" id="top-panel-strategyroom">
   <div style="max-width:1100px;margin:0 auto;padding:20px 16px">
     <div style="margin-bottom:16px">
-      <div style="font-size:20px;font-weight:800;color:#1a1a18;display:flex;align-items:center;gap:8px;flex-wrap:wrap">🏛 전략실 <span style="font-size:12px;font-weight:600;color:#0F6E56;background:#E0F5F2;padding:2px 10px;border-radius:99px">오늘의 발화 테마 (Catalyst)</span></div>
-      <div style="font-size:12px;color:#73726c;margin-top:4px">그날 강하게 발화한 업종 테마 + 대장주 + 연속 발화일(★★★ D+N). 자금이 어디로 몰리는지 한눈에.</div>
+      <div style="font-size:20px;font-weight:800;color:#1a1a18;display:flex;align-items:center;gap:8px;flex-wrap:wrap">🏛 전략실 <span style="font-size:12px;font-weight:600;color:#185FA5;background:#E6F1FB;padding:2px 10px;border-radius:99px">페이퍼 트레이딩</span></div>
+      <div style="font-size:12px;color:#73726c;margin-top:4px">IBD/O&#39;Neil 정통 돌파 매매 자동 페이퍼 트레이딩 — 손절 짧게 · winner 끝까지. (자동매매 1차 관문)</div>
+    </div>
+    <!-- 포트폴리오 현황 -->
+    <div id="strategyroom-portfolio"><div style="text-align:center;padding:30px;color:#aaa">⏳ 포트폴리오 로딩 중...</div></div>
+    <!-- 발화 테마 (보조 — G1 근거) -->
+    <div style="margin:26px 0 12px;padding-top:16px;border-top:1px solid #ece9e0">
+      <div style="font-size:15px;font-weight:700;color:#1a1a18">🔥 오늘의 발화 테마 (Catalyst)</div>
+      <div style="font-size:11.5px;color:#999;margin-top:2px">자금이 몰리는 리딩 테마 — 종목 선택의 G1 근거</div>
     </div>
     <div id="strategyroom-body"><div style="text-align:center;padding:30px;color:#aaa">⏳ 로딩 중...</div></div>
   </div>
@@ -10425,6 +10432,7 @@ function switchTopTab(tab, el) {
     }
     if (tab === 'strategyroom') {
       try { renderStrategyRoom(); } catch(e) { console.warn('[전략실] 탭 진입 렌더 실패:', e); }
+      try { renderStrategyPortfolio(); } catch(e) { console.warn('[전략실 포트폴리오] 탭 진입 렌더 실패:', e); }
     }
     // 스크롤 위치 초기화 (간단 버전)
     const resetScrolls = () => {
@@ -12001,6 +12009,140 @@ function updateSizing(regimeKeyOverride) {
 // 12. 데이터 수신 (ingest)
 // ════════════════════════════════════════════════════════
 
+// [v2026-06-24 전략실] 페이퍼 트레이딩 포트폴리오 현황 (명세 §2·§4·§5 기준)
+function _srData(){
+  if (typeof window.__STRATEGY_ROOM === 'object' && window.__STRATEGY_ROOM) return window.__STRATEGY_ROOM;
+  if (typeof window.__PORTFOLIO === 'object' && window.__PORTFOLIO) return window.__PORTFOLIO;
+  return null;
+}
+function _g(o, keys, dflt){ for (var i=0;i<keys.length;i++){ if (o && o[keys[i]] != null) return o[keys[i]]; } return dflt; }
+function _num(v){ var n = Number(v); return isFinite(n) ? n : null; }
+function _pct(v){ if (v==null) return '—'; return (v>=0?'+':'') + Number(v).toFixed(1) + '%'; }
+function _px(v){ if (v==null) return '—'; v=Number(v); return v>=1 ? '$'+v.toFixed(2) : '$'+v.toFixed(4); }
+// max_gain → Lock tier (명세 §2-A 래칫 사다리)
+function _lockTier(mg){
+  if (mg==null) return ['—','#bbb',''];
+  if (mg>=500) return ['L7','#1a4a08','+400%'];
+  if (mg>=400) return ['L6','#1a4a08','+350%'];
+  if (mg>=300) return ['L5','#1a4a08','+250%'];
+  if (mg>=200) return ['L4','#1a6a08','+150%'];
+  if (mg>=100) return ['L3','#1a8a4a','+70%'];
+  if (mg>=50)  return ['L2','#3B6D11','+25%'];
+  if (mg>=25)  return ['L1','#185FA5','+10%'];
+  if (mg>=15)  return ['BE','#854F0B','0%'];
+  return ['Hard','#A32D2D','-7%'];
+}
+function renderStrategyPortfolio(){
+  var body = document.getElementById('strategyroom-portfolio');
+  if (!body) return;
+  var d = _srData();
+  if (!d) {
+    body.innerHTML = '<div style="text-align:center;padding:36px 20px;color:#888;background:#fafaf8;border:1px dashed #d3d1c7;border-radius:10px;line-height:1.8">'
+      + '<div style="font-size:30px;margin-bottom:6px">\U0001F4BC</div>'
+      + '<div style="font-size:15px;font-weight:600;color:#555;margin-bottom:6px">\uD3EC\uD2B8\uD3F4\uB9AC\uC624 \uB370\uC774\uD130\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4</div>'
+      + '<div style="font-size:12px;color:#999">enhance_snapshot.py \uAC00 <code style="background:#fff;padding:1px 5px;border-radius:3px">window.__STRATEGY_ROOM</code> \uC744 \uC778\uB77C\uC778 \uC8FC\uC785\uD558\uBA74<br>strategy_room.py \uD398\uC774\uD37C \uD2B8\uB808\uC774\uB529 \uD3EC\uD2B8\uD3F4\uB9AC\uC624(\uBCF4\uC720\u00B7NAV\u00B7\uC190\uC775)\uAC00 \uC5EC\uAE30 \uD45C\uC2DC\uB429\uB2C8\uB2E4.</div></div>';
+    return;
+  }
+  var holdings = _g(d, ['holdings','holding','positions'], []) || [];
+  var navHist = _g(d, ['nav_history','navHistory'], []) || [];
+  var closed  = _g(d, ['closed_trades','closed','trades'], []) || [];
+  var nav = _num(_g(d, ['nav','NAV'], null));
+  if (nav==null && navHist.length) nav = _num(_g(navHist[navHist.length-1], ['nav','NAV','value'], null));
+  var ret = (nav!=null) ? (nav-1.0)*100 : null;
+
+  // 미실현/실현 합산
+  var unreal = 0, holdVal = 0;
+  holdings.forEach(function(h){
+    var cur = _num(_g(h,['current_px','last_px','price','cur_px'],null));
+    var sh  = _num(_g(h,['shares','qty'],null));
+    var ev  = _num(_g(h,['entry_value','cost_value'],null));
+    if (cur!=null && sh!=null){ holdVal += cur*sh; if (ev!=null) unreal += (cur*sh - ev); }
+  });
+  var realized = 0;
+  closed.forEach(function(c){
+    var r = _num(_g(c,['realized','pnl','exit_value'],null));
+    var ev = _num(_g(c,['entry_value'],null));
+    if (_g(c,['exit_value'],null)!=null && ev!=null) realized += (_num(_g(c,['exit_value'],0))-ev);
+    else if (r!=null) realized += r;
+  });
+  var cash = _num(_g(d,['cash'],null));
+  if (cash==null && nav!=null) cash = nav - holdVal;
+  var cashPct = (nav!=null && cash!=null && nav>0) ? (cash/nav*100) : null;
+  var runners = holdings.filter(function(h){ return _g(h,['runner','is_runner','runner_tier'],null) ? true : false; }).length;
+
+  // 요약 카드
+  var sumCard = function(label, val, color){ return '<div style="flex:1;min-width:120px;background:#fff;border:1px solid #e0e0d8;border-radius:8px;padding:10px 14px"><div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.3px">'+label+'</div><div style="font-size:17px;font-weight:800;color:'+(color||'#1a1a1a')+';margin-top:2px">'+val+'</div></div>'; };
+  var html = '<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px">'
+    + sumCard('NAV', (nav!=null? nav.toFixed(3):'—') + (ret!=null? ' <span style="font-size:12px;color:'+(ret>=0?'#1a8a4a':'#A32D2D')+'">('+_pct(ret)+')</span>':''), '#1a1a1a')
+    + sumCard('\uBCF4\uC720', holdings.length + ' / 12' + (runners? ' <span style="font-size:11px;color:#854F0B">+\uB7F0\uB108 '+runners+'</span>':''), '#185FA5')
+    + sumCard('\uD604\uAE08 \uBE44\uC911', cashPct!=null? cashPct.toFixed(1)+'%':'—', '#73726c')
+    + sumCard('\uC2E4\uD604\uC190\uC775', realized? _pct(realized*100):'—', realized>=0?'#1a8a4a':'#A32D2D')
+    + sumCard('\uBBF8\uC2E4\uD604', unreal? _pct(unreal*100):'—', unreal>=0?'#1a8a4a':'#A32D2D')
+    + '</div>';
+
+  if (!holdings.length){
+    html += '<div style="text-align:center;padding:24px;color:#999;background:#fafaf8;border-radius:8px;font-size:13px">\uD604\uC7AC \uBCF4\uC720 \uC885\uBAA9 \uC5C6\uC74C \u2014 \uC2E0\uADDC \uC9C4\uC785 \uB300\uAE30 \uC911</div>';
+    body.innerHTML = html;
+    return;
+  }
+
+  // 보유 정렬: 손익 내림차순
+  holdings = holdings.slice().sort(function(a,b){ return (_num(_g(b,['pnl_pct','gain_pct','pnl'],-999))||-999) - (_num(_g(a,['pnl_pct','gain_pct','pnl'],-999))||-999); });
+
+  var rows = holdings.map(function(h){
+    var tk = _g(h,['ticker','symbol'],'?');
+    var entry = _num(_g(h,['entry_px','entry_price'],null));
+    var avg   = _num(_g(h,['avg_cost_px','avg_cost','avg_px'],null));
+    var cur   = _num(_g(h,['current_px','last_px','price','cur_px'],null));
+    var pnl   = _num(_g(h,['pnl_pct','gain_pct','pnl'],null));
+    var mg    = _num(_g(h,['max_gain_pct','max_gain','hwm_pct'],null));
+    var stop  = _num(_g(h,['current_stop','stop','stop_px'],null));
+    var dayin = _g(h,['days_in','days_held','days_in_pos'],null);
+    var lt = _lockTier(mg);
+    var stopPct = (stop!=null && entry!=null && entry>0) ? ((stop/entry-1)*100) : null;
+    // 상태 배지
+    var badges = '';
+    var rt = _g(h,['runner_tier'],null);
+    if (_g(h,['runner','is_runner'],null) || rt){ badges += '<span style="font-size:9px;font-weight:700;color:#854F0B;background:#FFF4E6;border-radius:4px;padding:1px 5px;margin-right:3px">\U0001F3C3 \uB7F0\uB108'+(rt?(' T'+rt):'')+'</span>'; }
+    if (_g(h,['oneill_8w_active','oneill_active','eightweek'],null)){ badges += '<span style="font-size:9px;font-weight:700;color:#185FA5;background:#E6F1FB;border-radius:4px;padding:1px 5px;margin-right:3px">\u23F3 8\uC8FC\uB8F0</span>'; }
+    if (_g(h,['switch_in'],null)){ badges += '<span style="font-size:9px;font-weight:700;color:#534AB7;background:#F3F0FF;border-radius:4px;padding:1px 5px;margin-right:3px">\U0001F504 \uC2A4\uC704\uCE58in</span>'; }
+    var pnlCol = (pnl!=null && pnl>=0) ? '#1a8a4a' : '#A32D2D';
+    return '<tr style="border-bottom:1px solid #f0efea">'
+      + '<td style="padding:8px 10px"><span onclick="openDetailByTicker(\''+tk+'\')" style="font-weight:800;color:#185FA5;cursor:pointer">'+tk+'</span>'+(badges?'<div style="margin-top:3px">'+badges+'</div>':'')+'</td>'
+      + '<td style="padding:8px 10px;text-align:right;color:#666">'+_px(entry)+'</td>'
+      + '<td style="padding:8px 10px;text-align:right;color:#666">'+_px(avg)+'</td>'
+      + '<td style="padding:8px 10px;text-align:right;font-weight:600">'+_px(cur)+'</td>'
+      + '<td style="padding:8px 10px;text-align:right;font-weight:800;color:'+pnlCol+'">'+_pct(pnl)+'</td>'
+      + '<td style="padding:8px 10px;text-align:right;color:#888">'+(mg!=null?_pct(mg):'—')+'</td>'
+      + '<td style="padding:8px 10px;text-align:right;color:#A32D2D">'+_px(stop)+(stopPct!=null?'<div style="font-size:9px;color:#bbb">'+_pct(stopPct)+'</div>':'')+'</td>'
+      + '<td style="padding:8px 10px;text-align:center"><span style="font-size:10px;font-weight:700;color:'+lt[1]+';background:#f5f4ef;border-radius:4px;padding:2px 6px">'+lt[0]+'</span>'+(lt[2]?'<div style="font-size:9px;color:#bbb;margin-top:1px">'+lt[2]+'</div>':'')+'</td>'
+      + '<td style="padding:8px 10px;text-align:right;color:#999">'+(dayin!=null?dayin:'—')+'</td>'
+      + '</tr>';
+  }).join('');
+
+  html += '<div style="overflow-x:auto;border:1px solid #e0e0d8;border-radius:10px">'
+    + '<table style="width:100%;border-collapse:collapse;font-size:12px;min-width:680px">'
+    + '<thead><tr style="background:#f8f8f4;color:#888;font-size:10px;text-transform:uppercase">'
+    + '<th style="padding:8px 10px;text-align:left">\uC885\uBAA9</th>'
+    + '<th style="padding:8px 10px;text-align:right">\uC9C4\uC785\uAC00</th>'
+    + '<th style="padding:8px 10px;text-align:right">\uD3C9\uB2E8</th>'
+    + '<th style="padding:8px 10px;text-align:right">\uD604\uC7AC\uAC00</th>'
+    + '<th style="padding:8px 10px;text-align:right">\uC190\uC775</th>'
+    + '<th style="padding:8px 10px;text-align:right">\uCD5C\uACE0(HWM)</th>'
+    + '<th style="padding:8px 10px;text-align:right">\uC2A4\uD0D1</th>'
+    + '<th style="padding:8px 10px;text-align:center">Lock</th>'
+    + '<th style="padding:8px 10px;text-align:right">\uBCF4\uC720\uC77C</th>'
+    + '</tr></thead><tbody>' + rows + '</tbody></table></div>';
+
+  // closed 요약
+  if (closed.length){
+    var wins = closed.filter(function(c){ var r=_num(_g(c,['realized','pnl'],null)); if(r==null){var ev=_num(_g(c,['entry_value'],null)),xv=_num(_g(c,['exit_value'],null)); r=(ev!=null&&xv!=null)?xv-ev:null;} return r!=null&&r>0; }).length;
+    var wr = closed.length? (wins/closed.length*100).toFixed(0):'—';
+    html += '<div style="margin-top:10px;font-size:11px;color:#888;text-align:right">\uCCAD\uC0B0 '+closed.length+'\uAC74 \u00B7 \uC2B9\uB960 '+wr+'% \u00B7 \uC2E4\uD604\uC190\uC775 '+(realized?_pct(realized*100):'—')+'</div>';
+  }
+  html += '<div style="margin-top:8px;font-size:10px;color:#aaa;text-align:right">\u203B \uBA85\uC138 \u00A76 \u2014 \uAC1C\uBC1C\uBAA8\uB4DC(\uB8F0 \uD29C\uB2DD \uC911) \u00B7 \uC131\uACFC\uB294 forward OOS \uB204\uC801 \uD6C4 \uD310\uB2E8</div>';
+  body.innerHTML = html;
+}
 function srStars(n){ let s=''; for(let i=0;i<3;i++) s += (i<n)?'\u2605':'\u2606'; return s; }
 function renderStrategyRoom() {
   const body = document.getElementById('strategyroom-body');
@@ -12065,6 +12207,7 @@ function ingestUS(raw) {
   US.sectors = buildUSSectors(US.data);
   US.catalyst = raw.catalyst || null;
   try { renderStrategyRoom(); } catch(e) { console.warn('[전략실] 렌더 실패:', e); }
+  try { renderStrategyPortfolio(); } catch(e) { console.warn('[전략실 포트폴리오] 렌더 실패:', e); }
   // ───────── 진단 로그 (F12 콘솔에서 확인) ─────────
   try {
     const total = US.data.length;
@@ -13878,7 +14021,7 @@ function exportEtf() {
         box.style.cssText='position:fixed;bottom:10px;right:10px;z-index:9999;background:#000;color:#0f0;padding:6px 10px;font:11px monospace;border-radius:4px;pointer-events:none';
         document.body.appendChild(box);
       }
-      box.textContent = `[v2026-06-13-phase6-strategyroom] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
+      box.textContent = `[v2026-06-24-strategyroom-portfolio] --hdr-h=${h}px (실측 wrap=${wrap.offsetHeight}px + 여유 ${padding}px ${isMobile?'M':'D'}) ${new Date().toLocaleTimeString()}`;
     }
   }
   // 여러 타이밍에서 측정 (late-layout 대비)
