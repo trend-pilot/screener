@@ -1,59 +1,107 @@
 {
 "_date": "2026-06-24",
 "_fired_names": [
-"Advertising Agencies",
-"Beverages - Wineries & Distilleries",
-"Consulting Services",
-"Electronic Gaming & Multimedia",
-"Insurance Brokers",
-"REIT - Industrial",
-"Staffing & Employment Services",
-"Telecom Services"
+"Airlines",
+"Diagnostics & Research",
+"Furnishings, Fixtures & Appliances",
+"Household & Personal Products",
+"Recreational Vehicles",
+"Residential Construction",
+"Restaurants",
+"Travel Services"
 ],
+"Diagnostics & Research": {
+"consecutive_days": 1,
+"first_fired": "2026-06-24",
+"last_avg_pct": 7.42,
+"ever_fired": true
+},
+"Travel Services": {
+"consecutive_days": 1,
+"first_fired": "2026-06-24",
+"last_avg_pct": 5.8,
+"ever_fired": true
+},
+"Residential Construction": {
+"consecutive_days": 1,
+"first_fired": "2026-06-24",
+"last_avg_pct": 5.57,
+"ever_fired": true
+},
+"Restaurants": {
+"consecutive_days": 1,
+"first_fired": "2026-06-24",
+"last_avg_pct": 4.86,
+"ever_fired": true
+},
+"Household & Personal Products": {
+"consecutive_days": 1,
+"first_fired": "2026-06-24",
+"last_avg_pct": 4.47,
+"ever_fired": true
+},
+"Airlines": {
+"consecutive_days": 1,
+"first_fired": "2026-06-24",
+"last_avg_pct": 4.41,
+"ever_fired": true
+},
+"Furnishings, Fixtures & Appliances": {
+"consecutive_days": 1,
+"first_fired": "2026-06-24",
+"last_avg_pct": 4.3,
+"ever_fired": true
+},
+"Recreational Vehicles": {
+"consecutive_days": 1,
+"first_fired": "2026-06-24",
+"last_avg_pct": 4.25,
+"ever_fired": true
+},
 "Consulting Services": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-06-23",
 "last_avg_pct": 4.1,
 "ever_fired": true
 },
 "Staffing & Employment Services": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-06-23",
 "last_avg_pct": 3.53,
 "ever_fired": true
 },
 "Advertising Agencies": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-06-23",
 "last_avg_pct": 3.31,
 "ever_fired": true
 },
 "Beverages - Wineries & Distilleries": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-06-23",
 "last_avg_pct": 3.05,
 "ever_fired": true
 },
 "Electronic Gaming & Multimedia": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-06-23",
 "last_avg_pct": 2.46,
 "ever_fired": true
 },
 "Telecom Services": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-06-23",
 "last_avg_pct": 2.4,
 "ever_fired": true
 },
 "REIT - Industrial": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-06-23",
 "last_avg_pct": 2.4,
 "ever_fired": true
 },
 "Insurance Brokers": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-06-22",
 "last_avg_pct": 2.37,
 "ever_fired": true
@@ -122,12 +170,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-20",
 "last_avg_pct": 4.78,
-"ever_fired": true
-},
-"Household & Personal Products": {
-"consecutive_days": 0,
-"first_fired": "2026-06-18",
-"last_avg_pct": 4.62,
 "ever_fired": true
 },
 "Rental & Leasing Services": {
@@ -214,12 +256,6 @@
 "last_avg_pct": 2.84,
 "ever_fired": true
 },
-"Residential Construction": {
-"consecutive_days": 0,
-"first_fired": "2026-06-16",
-"last_avg_pct": 2.23,
-"ever_fired": true
-},
 "Medical Distribution": {
 "consecutive_days": 0,
 "first_fired": "2026-06-16",
@@ -230,12 +266,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-15",
 "last_avg_pct": 4.98,
-"ever_fired": true
-},
-"Travel Services": {
-"consecutive_days": 0,
-"first_fired": "2026-06-15",
-"last_avg_pct": 3.87,
 "ever_fired": true
 },
 "Oil & Gas Equipment & Services": {
