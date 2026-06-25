@@ -1,59 +1,95 @@
 {
-"_date": "2026-06-24",
+"_date": "2026-06-25",
 "_fired_names": [
-"Airlines",
+"Aluminum",
 "Diagnostics & Research",
+"Farm & Heavy Construction Machinery",
 "Furnishings, Fixtures & Appliances",
-"Household & Personal Products",
-"Recreational Vehicles",
-"Residential Construction",
-"Restaurants",
-"Travel Services"
+"Oil & Gas Equipment & Services",
+"Scientific & Technical Instruments",
+"Semiconductor Equipment & Materials",
+"Steel"
 ],
-"Diagnostics & Research": {
+"Semiconductor Equipment & Materials": {
 "consecutive_days": 1,
+"first_fired": "2026-06-25",
+"last_avg_pct": 5.28,
+"ever_fired": true
+},
+"Furnishings, Fixtures & Appliances": {
+"consecutive_days": 2,
 "first_fired": "2026-06-24",
-"last_avg_pct": 7.42,
+"last_avg_pct": 5.23,
+"ever_fired": true
+},
+"Farm & Heavy Construction Machinery": {
+"consecutive_days": 1,
+"first_fired": "2026-06-25",
+"last_avg_pct": 4.54,
+"ever_fired": true
+},
+"Oil & Gas Equipment & Services": {
+"consecutive_days": 1,
+"first_fired": "2026-06-25",
+"last_avg_pct": 3.88,
+"ever_fired": true
+},
+"Steel": {
+"consecutive_days": 1,
+"first_fired": "2026-06-25",
+"last_avg_pct": 3.67,
+"ever_fired": true
+},
+"Aluminum": {
+"consecutive_days": 1,
+"first_fired": "2026-06-25",
+"last_avg_pct": 3.6,
+"ever_fired": true
+},
+"Diagnostics & Research": {
+"consecutive_days": 2,
+"first_fired": "2026-06-24",
+"last_avg_pct": 3.58,
+"ever_fired": true
+},
+"Scientific & Technical Instruments": {
+"consecutive_days": 1,
+"first_fired": "2026-06-25",
+"last_avg_pct": 3.39,
 "ever_fired": true
 },
 "Travel Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-24",
 "last_avg_pct": 5.8,
 "ever_fired": true
 },
 "Residential Construction": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-24",
 "last_avg_pct": 5.57,
 "ever_fired": true
 },
 "Restaurants": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-24",
 "last_avg_pct": 4.86,
 "ever_fired": true
 },
 "Household & Personal Products": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-24",
 "last_avg_pct": 4.47,
 "ever_fired": true
 },
 "Airlines": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-24",
 "last_avg_pct": 4.41,
 "ever_fired": true
 },
-"Furnishings, Fixtures & Appliances": {
-"consecutive_days": 1,
-"first_fired": "2026-06-24",
-"last_avg_pct": 4.3,
-"ever_fired": true
-},
 "Recreational Vehicles": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-24",
 "last_avg_pct": 4.25,
 "ever_fired": true
@@ -146,12 +182,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-22",
 "last_avg_pct": 1.58,
-"ever_fired": true
-},
-"Semiconductor Equipment & Materials": {
-"consecutive_days": 0,
-"first_fired": "2026-06-17",
-"last_avg_pct": 6.11,
 "ever_fired": true
 },
 "Electrical Equipment & Parts": {
@@ -266,12 +296,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-15",
 "last_avg_pct": 4.98,
-"ever_fired": true
-},
-"Oil & Gas Equipment & Services": {
-"consecutive_days": 0,
-"first_fired": "2026-06-12",
-"last_avg_pct": 2.98,
 "ever_fired": true
 },
 "Aerospace & Defense": {
