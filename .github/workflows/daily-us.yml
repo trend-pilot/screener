@@ -43,6 +43,17 @@ jobs:
       - name: 🎯 전략실 카탈리스트 주입 (catalyst)
         run: python make_catalyst.py
 
+      # ─── [추가] 전략실 forward 페이퍼 트레이딩 엔진 ───
+      # make_catalyst 다음(catalyst 키가 채워진 뒤) / 업로드 앞에 위치.
+      #   screener_data.json 을 읽어 5게이트 진입·보유관리·청산·NAV 를 누적해
+      #   strategy_room.json 을 생성한다.
+      #   strategy_room.json 은 아래 commit 단계에서 repo 에 저장되어
+      #   (1) GitHub Pages 가 대시보드 옆에서 서빙하고,
+      #   (2) 다음날 checkout 시 복원되어 forward 상태가 누적된다.
+      #   (stdlib 만 사용 — 추가 패키지 불필요)
+      - name: 🏛 전략실 엔진 (strategy_room)
+        run: python strategy_room_v1.py output/screener_data.json strategy_room.json
+
       - name: ☁️ GitHub 업로드 (dashboard.html + screener_data.json + phase_history.json)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -50,21 +61,21 @@ jobs:
           GITHUB_REPO: screener
         run: python github_upload.py
 
-      - name: 💾 캐시/상태 commit (sector_cache + catalyst_state)
+      - name: 💾 캐시/상태 commit (sector_cache + catalyst_state + strategy_room)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           # phase_history는 github_upload.py가 이미 GitHub API로 푸시했으므로
           # 로컬 working tree에서 제거 → git pull --rebase 시 conflict 회피
           rm -f phase_history.json kr_phase_history.json
-          # sector_cache + catalyst_state(D+N 누적) 각각 스테이징 (없어도 무시)
+          # sector_cache + catalyst_state(D+N 누적) + strategy_room(forward 누적) 스테이징 (없어도 무시)
           git add sector_cache.json 2>/dev/null || true
           git add catalyst_state.json 2>/dev/null || true
+          git add strategy_room.json 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "변경 없음"
           else
-            git commit -m "🎨 sector_cache + 🎯 catalyst_state [auto]"
+            git commit -m "🎨 sector_cache + 🎯 catalyst_state + 🏛 strategy_room [auto]"
             git pull --rebase --autostash || true
             git push
           fi
-
