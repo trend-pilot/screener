@@ -1,5 +1,5 @@
 {
-"_date": "2026-06-25",
+"_date": "2026-06-26",
 "_fired_names": [
 "Aluminum",
 "Diagnostics & Research",
@@ -11,49 +11,49 @@
 "Steel"
 ],
 "Semiconductor Equipment & Materials": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-06-25",
 "last_avg_pct": 5.28,
 "ever_fired": true
 },
 "Furnishings, Fixtures & Appliances": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-06-24",
 "last_avg_pct": 5.23,
 "ever_fired": true
 },
 "Farm & Heavy Construction Machinery": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-06-25",
 "last_avg_pct": 4.54,
 "ever_fired": true
 },
 "Oil & Gas Equipment & Services": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-06-25",
 "last_avg_pct": 3.88,
 "ever_fired": true
 },
 "Steel": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-06-25",
 "last_avg_pct": 3.67,
 "ever_fired": true
 },
 "Aluminum": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-06-25",
 "last_avg_pct": 3.6,
 "ever_fired": true
 },
 "Diagnostics & Research": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-06-24",
 "last_avg_pct": 3.58,
 "ever_fired": true
 },
 "Scientific & Technical Instruments": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-06-25",
 "last_avg_pct": 3.39,
 "ever_fired": true
