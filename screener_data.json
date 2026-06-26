@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updated_at": "2026-06-26T08:35:36.594503",
+    "updated_at": "2026-06-26T09:39:08.128813",
     "total": 1949,
     "stock_count": 1866,
     "etf_count": 83,
@@ -13,7 +13,7 @@
     "rs_line_count": 1949,
     "rs_line_high": 343,
     "rs_line_benchmark": "SPY",
-    "phase_up_count": 3,
+    "phase_up_count": 0,
     "phase_first_day": false,
     "test_mode": false
   },
@@ -36,7 +36,7 @@
     "overall_label": "🟢 강세장 (Bullish)",
     "invest_pct": "80~100%",
     "avg": 52.3,
-    "updated_at": "2026-06-26T08:14:36.297248"
+    "updated_at": "2026-06-26T09:18:46.354916"
   },
   "stocks": [
     {
@@ -68785,8 +68785,8 @@
         }
       },
       "phase": "4",
-      "phase_yesterday": "3",
-      "phase_changed_up": true,
+      "phase_yesterday": "4",
+      "phase_changed_up": false,
       "sector": "Financial Services",
       "industry": "Shell Companies"
     },
@@ -118030,8 +118030,8 @@
         }
       },
       "phase": "3",
-      "phase_yesterday": "2",
-      "phase_changed_up": true,
+      "phase_yesterday": "3",
+      "phase_changed_up": false,
       "sector": "Healthcare",
       "industry": "Biotechnology"
     },
@@ -119335,8 +119335,8 @@
         }
       },
       "phase": "3",
-      "phase_yesterday": null,
-      "phase_changed_up": null,
+      "phase_yesterday": "3",
+      "phase_changed_up": false,
       "sector": "Financial Services",
       "industry": "Shell Companies"
     },
@@ -134234,7 +134234,7 @@
         }
       },
       "phase": "2",
-      "phase_yesterday": "3",
+      "phase_yesterday": "2",
       "phase_changed_up": false,
       "sector": "Financial Services",
       "industry": "Shell Companies"
@@ -138742,8 +138742,8 @@
         }
       },
       "phase": "2",
-      "phase_yesterday": null,
-      "phase_changed_up": null,
+      "phase_yesterday": "2",
+      "phase_changed_up": false,
       "sector": "Financial Services",
       "industry": "Shell Companies"
     },
@@ -146317,7 +146317,7 @@
         }
       },
       "phase": "2",
-      "phase_yesterday": "3",
+      "phase_yesterday": "2",
       "phase_changed_up": false,
       "sector": "Financial Services",
       "industry": "Shell Companies"
@@ -148048,8 +148048,8 @@
         }
       },
       "phase": "2",
-      "phase_yesterday": "01",
-      "phase_changed_up": true,
+      "phase_yesterday": "2",
+      "phase_changed_up": false,
       "sector": "",
       "industry": ""
     },
@@ -163724,7 +163724,7 @@
       "ma150": 94.73,
       "ma200": 93.32,
       "high_52w": 118.98,
-      "low_52w": 77.55,
+      "low_52w": 77.56,
       "h52_pct": -9.2,
       "w1": 0.1,
       "w3": -0.8,
@@ -181238,7 +181238,7 @@
       "rs_line_1w": 1.0,
       "rs_line_3w": 1.0,
       "rs_line_6w": 1.0,
-      "rs_line_pct": 6,
+      "rs_line_pct": 12,
       "rs_line_high": false,
       "rs_line_score": 20,
       "pattern_count": 1,
@@ -203279,8 +203279,8 @@
         }
       },
       "phase": "01",
-      "phase_yesterday": null,
-      "phase_changed_up": null,
+      "phase_yesterday": "01",
+      "phase_changed_up": false,
       "sector": "Technology",
       "industry": "Information Technology Services"
     },
@@ -255745,7 +255745,7 @@
         }
       },
       "phase": "01",
-      "phase_yesterday": "3",
+      "phase_yesterday": "01",
       "phase_changed_up": false,
       "sector": "",
       "industry": ""
@@ -256111,8 +256111,8 @@
         }
       },
       "phase": "01",
-      "phase_yesterday": null,
-      "phase_changed_up": null,
+      "phase_yesterday": "01",
+      "phase_changed_up": false,
       "sector": "",
       "industry": ""
     },
@@ -257112,7 +257112,7 @@
   ],
   "catalyst": {
     "schema_version": 1,
-    "generated_at": "2026-06-26T08:36:10",
+    "generated_at": "2026-06-26T09:39:40",
     "data_date": "2026-06-26",
     "prev_date": null,
     "thresholds": {
@@ -257174,9 +257174,9 @@
           "days_to_earnings": null
         },
         "sector": "Technology",
-        "consecutive_days": 2,
-        "sustain_label": "★★ D+1",
-        "sustain_status": "building",
+        "consecutive_days": 3,
+        "sustain_label": "★★★ D+2",
+        "sustain_status": "elevation",
         "first_fired": "2026-06-25",
         "is_first_ever": false,
         "is_refire": false,
@@ -257220,8 +257220,8 @@
           "days_to_earnings": null
         },
         "sector": "Consumer Cyclical",
-        "consecutive_days": 3,
-        "sustain_label": "★★★ D+2",
+        "consecutive_days": 4,
+        "sustain_label": "★★★ D+3",
         "sustain_status": "elevation",
         "first_fired": "2026-06-24",
         "is_first_ever": false,
@@ -257278,9 +257278,9 @@
           "days_to_earnings": null
         },
         "sector": "Industrials",
-        "consecutive_days": 2,
-        "sustain_label": "★★ D+1",
-        "sustain_status": "building",
+        "consecutive_days": 3,
+        "sustain_label": "★★★ D+2",
+        "sustain_status": "elevation",
         "first_fired": "2026-06-25",
         "is_first_ever": false,
         "is_refire": false,
@@ -257336,9 +257336,9 @@
           "days_to_earnings": null
         },
         "sector": "Energy",
-        "consecutive_days": 2,
-        "sustain_label": "★★ D+1",
-        "sustain_status": "building",
+        "consecutive_days": 3,
+        "sustain_label": "★★★ D+2",
+        "sustain_status": "elevation",
         "first_fired": "2026-06-25",
         "is_first_ever": false,
         "is_refire": false,
@@ -257382,9 +257382,9 @@
           "days_to_earnings": null
         },
         "sector": "Basic Materials",
-        "consecutive_days": 2,
-        "sustain_label": "★★ D+1",
-        "sustain_status": "building",
+        "consecutive_days": 3,
+        "sustain_label": "★★★ D+2",
+        "sustain_status": "elevation",
         "first_fired": "2026-06-25",
         "is_first_ever": false,
         "is_refire": false,
@@ -257422,9 +257422,9 @@
           "days_to_earnings": null
         },
         "sector": "Basic Materials",
-        "consecutive_days": 2,
-        "sustain_label": "★★ D+1",
-        "sustain_status": "building",
+        "consecutive_days": 3,
+        "sustain_label": "★★★ D+2",
+        "sustain_status": "elevation",
         "first_fired": "2026-06-25",
         "is_first_ever": false,
         "is_refire": false,
@@ -257480,8 +257480,8 @@
           "days_to_earnings": null
         },
         "sector": "Healthcare",
-        "consecutive_days": 3,
-        "sustain_label": "★★★ D+2",
+        "consecutive_days": 4,
+        "sustain_label": "★★★ D+3",
         "sustain_status": "elevation",
         "first_fired": "2026-06-24",
         "is_first_ever": false,
@@ -257538,9 +257538,9 @@
           "days_to_earnings": null
         },
         "sector": "Technology",
-        "consecutive_days": 2,
-        "sustain_label": "★★ D+1",
-        "sustain_status": "building",
+        "consecutive_days": 3,
+        "sustain_label": "★★★ D+2",
+        "sustain_status": "elevation",
         "first_fired": "2026-06-25",
         "is_first_ever": false,
         "is_refire": false,
