@@ -2,104 +2,59 @@
   "data_date": "2026-06-26",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v1)",
-  "nav": 0.9995,
-  "ret_pct": -0.05,
-  "unreal_pct": -0.05,
+  "nav": 0.9226,
+  "ret_pct": -7.74,
+  "unreal_pct": 0.65,
   "cap": 12,
   "runner_cap": 5,
-  "core_count": 12,
+  "core_count": 11,
   "runner_count": 0,
   "regime": "🟢 Uptrend",
   "signals": [
     {
-      "ticker": "CDNA",
-      "industry": "Diagnostics & Research",
-      "pattern": "RS Line 선행",
-      "signal_close": 27.85,
-      "pivot": 28.42,
-      "dist": -2.0,
-      "score": 93.97
-    },
-    {
-      "ticker": "NTRA",
-      "industry": "Diagnostics & Research",
-      "pattern": "RS Line 선행",
-      "signal_close": 260.74,
-      "pivot": 271.47,
-      "dist": -4.0,
-      "score": 90.48
-    },
-    {
-      "ticker": "NEO",
-      "industry": "Diagnostics & Research",
-      "pattern": "어센딩베이스",
-      "signal_close": 13.73,
-      "pivot": 13.88,
-      "dist": -1.1,
-      "score": 89.57
-    },
-    {
-      "ticker": "PSNL",
-      "industry": "Diagnostics & Research",
-      "pattern": "하이타이트플래그",
-      "signal_close": 12.59,
-      "pivot": 12.87,
-      "dist": -2.2,
-      "score": 88.82
-    },
-    {
-      "ticker": "ADPT",
-      "industry": "Diagnostics & Research",
+      "ticker": "DGICB",
+      "industry": "Insurance - Property & Casualty",
       "pattern": "거래량돌파",
-      "signal_close": 20.25,
-      "pivot": 20.76,
-      "dist": -2.5,
-      "score": 88.32
+      "signal_close": 24.0,
+      "pivot": 24.0,
+      "dist": 0.0,
+      "score": 89.75
     },
     {
-      "ticker": "VCYT",
-      "industry": "Diagnostics & Research",
+      "ticker": "UFCS",
+      "industry": "Insurance - Property & Casualty",
+      "pattern": "거래량돌파",
+      "signal_close": 52.55,
+      "pivot": 53.17,
+      "dist": -1.2,
+      "score": 81.3
+    },
+    {
+      "ticker": "CINF",
+      "industry": "Insurance - Property & Casualty",
+      "pattern": "거래량돌파",
+      "signal_close": 184.08,
+      "pivot": 185.2,
+      "dist": -0.6,
+      "score": 78.58
+    },
+    {
+      "ticker": "SIGI",
+      "industry": "Insurance - Property & Casualty",
       "pattern": "컵앤핸들",
-      "signal_close": 58.55,
-      "pivot": 60.28,
-      "dist": -2.9,
-      "score": 87.83
+      "signal_close": 96.3,
+      "pivot": 97.32,
+      "dist": -1.0,
+      "score": 69.11
     },
     {
-      "ticker": "TWST",
-      "industry": "Diagnostics & Research",
-      "pattern": "어센딩베이스",
-      "signal_close": 96.65,
-      "pivot": 98.4,
-      "dist": -1.8,
-      "score": 85.72
-    },
-    {
-      "ticker": "TER",
-      "industry": "Semiconductor Equipment & Materials",
-      "pattern": "어센딩베이스",
-      "signal_close": 471.96,
-      "pivot": 472.37,
-      "dist": -0.1,
-      "score": 85.31
-    },
-    {
-      "ticker": "ACMR",
-      "industry": "Semiconductor Equipment & Materials",
-      "pattern": "어센딩베이스",
-      "signal_close": 106.86,
-      "pivot": 111.41,
-      "dist": -4.1,
-      "score": 83.91
-    },
-    {
-      "ticker": "MKSI",
-      "industry": "Scientific & Technical Instruments",
-      "pattern": "어센딩베이스",
-      "signal_close": 410.31,
-      "pivot": 421.58,
-      "dist": -2.7,
-      "score": 83.69
+      "ticker": "CROX",
+      "industry": "Footwear & Accessories",
+      "pattern": "컵앤핸들",
+      "signal_close": 127.76,
+      "pivot": 129.79,
+      "dist": -1.6,
+      "score": 59.65
     }
   ],
   "gates": [
@@ -110,14 +65,14 @@
     "G2 Pattern"
   ],
   "benchmarks": {
-    "strat": -0.05,
+    "strat": -7.74,
     "spy": null,
     "qqq": null,
     "tqqq": null
   },
   "risk": {
     "days": 1,
-    "ret": -0.05,
+    "ret": -7.74,
     "sharpe": null,
     "sortino": null,
     "vol": null,
@@ -129,49 +84,40 @@
     "alpha_qqq": null
   },
   "trades": {
-    "n": 0,
-    "winrate": null,
-    "payoff": null,
-    "pf": null,
-    "avg_win": null,
-    "avg_loss": null,
-    "expectancy": null,
-    "best": null,
-    "worst": null
+    "n": 1,
+    "winrate": 0.0,
+    "payoff": 0.0,
+    "pf": 0.0,
+    "avg_win": 0,
+    "avg_loss": -7.4,
+    "expectancy": -7.44,
+    "best": -7.4,
+    "worst": -7.4
   },
   "nav_history": [
     {
       "date": "2026-06-26",
-      "nav": 0.9995,
-      "chg": -0.05
+      "nav": 0.9226,
+      "chg": -7.7
     }
   ],
   "holdings": [
+    {
+      "ticker": "ADPT",
+      "entry": "2026-06-26",
+      "days": 0,
+      "cd": "",
+      "entry_px": 20.25,
+      "cur": 20.96,
+      "runner": false
+    },
     {
       "ticker": "CDNA",
       "entry": "2026-06-26",
       "days": 0,
       "cd": "",
       "entry_px": 27.85,
-      "cur": 27.85,
-      "runner": false
-    },
-    {
-      "ticker": "NTRA",
-      "entry": "2026-06-26",
-      "days": 0,
-      "cd": "",
-      "entry_px": 260.74,
-      "cur": 260.74,
-      "runner": false
-    },
-    {
-      "ticker": "NEO",
-      "entry": "2026-06-26",
-      "days": 0,
-      "cd": "",
-      "entry_px": 13.73,
-      "cur": 13.73,
+      "cur": 28.82,
       "runner": false
     },
     {
@@ -180,16 +126,7 @@
       "days": 0,
       "cd": "",
       "entry_px": 12.59,
-      "cur": 12.59,
-      "runner": false
-    },
-    {
-      "ticker": "ADPT",
-      "entry": "2026-06-26",
-      "days": 0,
-      "cd": "",
-      "entry_px": 20.25,
-      "cur": 20.25,
+      "cur": 13.02,
       "runner": false
     },
     {
@@ -198,7 +135,7 @@
       "days": 0,
       "cd": "",
       "entry_px": 58.55,
-      "cur": 58.55,
+      "cur": 60.49,
       "runner": false
     },
     {
@@ -207,34 +144,16 @@
       "days": 0,
       "cd": "",
       "entry_px": 96.65,
-      "cur": 96.65,
+      "cur": 99.84,
       "runner": false
     },
     {
-      "ticker": "TER",
+      "ticker": "NEO",
       "entry": "2026-06-26",
       "days": 0,
       "cd": "",
-      "entry_px": 471.96,
-      "cur": 471.96,
-      "runner": false
-    },
-    {
-      "ticker": "ACMR",
-      "entry": "2026-06-26",
-      "days": 0,
-      "cd": "",
-      "entry_px": 106.86,
-      "cur": 106.86,
-      "runner": false
-    },
-    {
-      "ticker": "MKSI",
-      "entry": "2026-06-26",
-      "days": 0,
-      "cd": "",
-      "entry_px": 410.31,
-      "cur": 410.31,
+      "entry_px": 13.73,
+      "cur": 14.17,
       "runner": false
     },
     {
@@ -243,7 +162,34 @@
       "days": 0,
       "cd": "",
       "entry_px": 35.51,
-      "cur": 35.51,
+      "cur": 35.74,
+      "runner": false
+    },
+    {
+      "ticker": "NTRA",
+      "entry": "2026-06-26",
+      "days": 0,
+      "cd": "",
+      "entry_px": 260.74,
+      "cur": 261.91,
+      "runner": false
+    },
+    {
+      "ticker": "ACMR",
+      "entry": "2026-06-26",
+      "days": 0,
+      "cd": "",
+      "entry_px": 106.86,
+      "cur": 104.5,
+      "runner": false
+    },
+    {
+      "ticker": "MKSI",
+      "entry": "2026-06-26",
+      "days": 0,
+      "cd": "",
+      "entry_px": 410.31,
+      "cur": 388.61,
       "runner": false
     },
     {
@@ -252,19 +198,36 @@
       "days": 0,
       "cd": "",
       "entry_px": 668.0,
-      "cur": 668.0,
+      "cur": 626.84,
       "runner": false
     }
   ],
   "closed_summary": {
-    "n": 0,
-    "winrate": null,
-    "avg": null,
-    "best": null,
-    "worst": null,
-    "categories": []
+    "n": 1,
+    "winrate": 0.0,
+    "avg": -7.44,
+    "best": -7.4,
+    "worst": -7.4,
+    "categories": [
+      [
+        "손절",
+        1,
+        "#A32D2D",
+        "#FDECEC"
+      ]
+    ]
   },
-  "closed": [],
+  "closed": [
+    {
+      "ticker": "TER",
+      "entry": "2026-06-26",
+      "exit": "2026-06-26",
+      "days": 0,
+      "entry_px": 471.96,
+      "exit_px": 436.86,
+      "cat": "손절"
+    }
+  ],
   "_holdings": [
     {
       "ticker": "CDNA",
@@ -273,8 +236,8 @@
       "avg_cost_px": 27.85,
       "shares": 0.002992220227408737,
       "entry_value": 0.08337499999999999,
-      "cur": 27.85,
-      "max_gain_pct": 0.0,
+      "cur": 28.82,
+      "max_gain_pct": 3.4829443447037756,
       "days_in": 0,
       "current_stop": 25.9005,
       "runner": false,
@@ -287,8 +250,8 @@
       "avg_cost_px": 260.74,
       "shares": 0.0003196031806908542,
       "entry_value": 0.08337499999999999,
-      "cur": 260.74,
-      "max_gain_pct": 0.0,
+      "cur": 261.91,
+      "max_gain_pct": 0.44872286568995445,
       "days_in": 0,
       "current_stop": 242.4882,
       "runner": false,
@@ -301,8 +264,8 @@
       "avg_cost_px": 13.73,
       "shares": 0.006069434328720562,
       "entry_value": 0.08337499999999999,
-      "cur": 13.73,
-      "max_gain_pct": 0.0,
+      "cur": 14.17,
+      "max_gain_pct": 3.2046613255644507,
       "days_in": 0,
       "current_stop": 12.7689,
       "runner": false,
@@ -315,8 +278,8 @@
       "avg_cost_px": 12.59,
       "shares": 0.006619009796134498,
       "entry_value": 0.08337499999999999,
-      "cur": 12.59,
-      "max_gain_pct": 0.0,
+      "cur": 13.02,
+      "max_gain_pct": 3.415409054805396,
       "days_in": 0,
       "current_stop": 11.708699999999999,
       "runner": false,
@@ -329,8 +292,8 @@
       "avg_cost_px": 20.25,
       "shares": 0.004115226337448559,
       "entry_value": 0.08337499999999999,
-      "cur": 20.25,
-      "max_gain_pct": 0.0,
+      "cur": 20.96,
+      "max_gain_pct": 3.506172839506183,
       "days_in": 0,
       "current_stop": 18.8325,
       "runner": false,
@@ -343,8 +306,8 @@
       "avg_cost_px": 58.55,
       "shares": 0.0014232849416453174,
       "entry_value": 0.08337499999999999,
-      "cur": 58.55,
-      "max_gain_pct": 0.0,
+      "cur": 60.49,
+      "max_gain_pct": 3.31340734415031,
       "days_in": 0,
       "current_stop": 54.451499999999996,
       "runner": false,
@@ -357,24 +320,10 @@
       "avg_cost_px": 96.65,
       "shares": 0.0008622176237282289,
       "entry_value": 0.08337499999999999,
-      "cur": 96.65,
-      "max_gain_pct": 0.0,
+      "cur": 99.84,
+      "max_gain_pct": 3.300569063631653,
       "days_in": 0,
       "current_stop": 89.8845,
-      "runner": false,
-      "oneill_8w_active": false
-    },
-    {
-      "ticker": "TER",
-      "entry_date": "2026-06-26",
-      "entry_px": 471.96,
-      "avg_cost_px": 471.96,
-      "shares": 0.00017656863576009265,
-      "entry_value": 0.08337499999999999,
-      "cur": 471.96,
-      "max_gain_pct": 0.0,
-      "days_in": 0,
-      "current_stop": 438.92279999999994,
       "runner": false,
       "oneill_8w_active": false
     },
@@ -385,7 +334,7 @@
       "avg_cost_px": 106.86,
       "shares": 0.0007798365462599039,
       "entry_value": 0.08337499999999999,
-      "cur": 106.86,
+      "cur": 104.5,
       "max_gain_pct": 0.0,
       "days_in": 0,
       "current_stop": 99.37979999999999,
@@ -399,7 +348,7 @@
       "avg_cost_px": 410.31,
       "shares": 0.00020309847026232198,
       "entry_value": 0.08337499999999999,
-      "cur": 410.31,
+      "cur": 388.61,
       "max_gain_pct": 0.0,
       "days_in": 0,
       "current_stop": 381.5883,
@@ -413,8 +362,8 @@
       "avg_cost_px": 35.51,
       "shares": 0.0023467567821271003,
       "entry_value": 0.08337499999999999,
-      "cur": 35.51,
-      "max_gain_pct": 0.0,
+      "cur": 35.74,
+      "max_gain_pct": 0.6477048718670941,
       "days_in": 0,
       "current_stop": 33.0243,
       "runner": false,
@@ -427,7 +376,7 @@
       "avg_cost_px": 668.0,
       "shares": 0.00012406437125748538,
       "entry_value": 0.08291643750000023,
-      "cur": 668.0,
+      "cur": 626.84,
       "max_gain_pct": 0.0,
       "days_in": 0,
       "current_stop": 621.24,
@@ -435,7 +384,19 @@
       "oneill_8w_active": false
     }
   ],
-  "_closed": [],
+  "_closed": [
+    {
+      "ticker": "TER",
+      "entry": "2026-06-26",
+      "exit": "2026-06-26",
+      "days": 0,
+      "entry_px": 471.96,
+      "exit_px": 436.86,
+      "shares": 0.00017656863576009265,
+      "realized": -0.0062777936689549785,
+      "cat": "손절"
+    }
+  ],
   "_cash": -4.1437499999991134e-05,
   "_entries_recent": [
     "2026-06-26",
