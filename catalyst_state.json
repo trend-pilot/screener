@@ -1,59 +1,52 @@
 {
-"_date": "2026-06-26",
+"_date": "2026-06-27",
 "_fired_names": [
-"Broadcasting",
-"Footwear & Accessories",
-"Gambling",
-"Insurance - Property & Casualty",
-"Insurance Brokers",
-"Medical Distribution",
-"Other Precious Metals & Mining",
-"Staffing & Employment Services"
+"Insurance - Property & Casualty"
 ],
+"Insurance - Property & Casualty": {
+"consecutive_days": 2,
+"first_fired": "2026-06-26",
+"last_avg_pct": NaN,
+"ever_fired": true
+},
 "Other Precious Metals & Mining": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-26",
 "last_avg_pct": 8.2,
 "ever_fired": true
 },
 "Medical Distribution": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-26",
 "last_avg_pct": 7.45,
 "ever_fired": true
 },
 "Gambling": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-26",
 "last_avg_pct": 6.87,
 "ever_fired": true
 },
 "Broadcasting": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-26",
 "last_avg_pct": 6.78,
 "ever_fired": true
 },
 "Insurance Brokers": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-26",
 "last_avg_pct": 5.88,
 "ever_fired": true
 },
-"Insurance - Property & Casualty": {
-"consecutive_days": 1,
-"first_fired": "2026-06-26",
-"last_avg_pct": 5.33,
-"ever_fired": true
-},
 "Footwear & Accessories": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-26",
 "last_avg_pct": 4.98,
 "ever_fired": true
 },
 "Staffing & Employment Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-26",
 "last_avg_pct": 4.97,
 "ever_fired": true
