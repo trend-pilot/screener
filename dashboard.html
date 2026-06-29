@@ -11266,9 +11266,11 @@ function renderDailyBriefingMarket(regimeKey, regime, mkt, stocks, dt) {
   const sp = idx.sp500 || idx.gspc || {};
   const nd = idx.nasdaq || idx.ixic || {};
   const ru = idx.russell || idx.rut || {};
-  const spChg = sp.chg_pct ?? sp.change_pct;
-  const ndChg = nd.chg_pct ?? nd.change_pct;
-  const ruChg = ru.chg_pct ?? ru.change_pct;
+  // [지수카드 패치] market.indices 가 없으면 종목 풀의 SPY/QQQ/IWM ETF 일일 등락률(pct)로 폴백
+  const _etfPct = (tk) => { const e = stocks.find(s => s.ticker === tk); return (e && typeof e.pct === 'number') ? e.pct : null; };
+  const spChg = (sp.chg_pct ?? sp.change_pct) ?? _etfPct('SPY');
+  const ndChg = (nd.chg_pct ?? nd.change_pct) ?? _etfPct('QQQ');
+  const ruChg = (ru.chg_pct ?? ru.change_pct) ?? _etfPct('IWM');
   const dd = mkt?.distribution || {};
   const spDD = dd.sp_count ?? dd.sp500_count;
   const ndDD = dd.nasdaq_count;
@@ -11299,41 +11301,31 @@ function renderDailyBriefingMarket(regimeKey, regime, mkt, stocks, dt) {
   };
 
   body.innerHTML = `
-    <!-- Regime 큰 카드 + 권장 비중 -->
-    <div style="background:linear-gradient(135deg,${regime.bg || '#fafaf8'},#fff);border:2px solid ${regime.dot};border-radius:10px;padding:16px 20px;margin-bottom:14px">
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px">
-        <div style="flex:1;min-width:180px">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-            <span style="display:inline-block;width:18px;height:18px;border-radius:50%;background:${regime.dot};box-shadow:0 0 8px ${regime.dot}40"></span>
-            <span style="font-size:20px;font-weight:700;color:#1a1a1a">${cleanLabel}</span>
+    <!-- ① Regime 카드 — 참고본 레이아웃: 좌(상태·권장비중·전략) / 우(지수 3카드) / 하단(DD·Breadth) -->
+    <div style="background:linear-gradient(135deg,${regime.bg || '#fafaf8'},#fff);border:2px solid ${regime.dot};border-radius:10px;padding:16px 20px">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px">
+        <div style="flex:1;min-width:220px">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+            <span style="display:inline-block;width:13px;height:13px;border-radius:50%;background:${regime.dot};box-shadow:0 0 8px ${regime.dot}55"></span>
+            <span style="display:inline-block;width:13px;height:13px;border-radius:50%;background:${regime.dot}"></span>
+            <span style="font-size:20px;font-weight:700;color:${regime.dot}">${cleanLabel}</span>
           </div>
-          <div style="font-size:12px;color:#666;line-height:1.6"><b>전략:</b> ${regime.action || '—'}</div>
+          <div style="font-size:13px;color:#444;margin-bottom:8px"><b>권장 비중:</b> <b style="color:${regime.dot}">${regime.invest || '—'}</b></div>
+          <div style="font-size:12.5px;color:#555;line-height:1.6"><b>전략:</b> ${regime.action || '—'}${regime.sub ? ' — ' + regime.sub : ''}</div>
         </div>
-        <div style="text-align:right;padding-right:4px">
-          <div style="font-size:10px;color:#888;font-weight:600;letter-spacing:.5px">권장 투자 비중</div>
-          <div style="font-size:28px;font-weight:800;color:${regime.dot};line-height:1.1">${regime.invest || '—'}</div>
-        </div>
+        ${(spChg != null || ndChg != null || ruChg != null) ? `
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          ${idxCard('S&P 500', spChg)}
+          ${idxCard('NASDAQ', ndChg)}
+          ${idxCard('Russell', ruChg)}
+        </div>` : ''}
       </div>
-      ${(spChg != null || ndChg != null || ruChg != null) ? `
-      <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
-        ${idxCard('S&P 500', spChg)}
-        ${idxCard('NASDAQ', ndChg)}
-        ${idxCard('Russell', ruChg)}
-      </div>` : ''}
-      ${(spDD != null || ndDD != null || breadthAvg != null) ? `
-      <div style="margin-top:12px;padding-top:10px;border-top:1px dashed #d3d1c7;display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:#666">
+      <div style="margin-top:12px;padding-top:10px;border-top:1px dashed ${regime.dot}55;display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:#666;align-items:center">
         ${spDD != null ? `<span><b>S&P DD:</b> <b style="color:${spDD>=5?'#A32D2D':'#1a1a1a'}">${spDD}</b></span>` : ''}
         ${ndDD != null ? `<span><b>NASDAQ DD:</b> <b style="color:${ndDD>=5?'#A32D2D':'#1a1a1a'}">${ndDD}</b></span>` : ''}
         ${breadthAvg != null ? `<span><b>Breadth (50MA 위):</b> <b style="color:${breadthAvg>=55?'#1F5A09':breadthAvg>=40?'#854F0B':'#A32D2D'}">${breadthAvg}%</b></span>` : ''}
         <span style="margin-left:auto"><a onclick="switchTopTab('marketpulse',document.getElementById('ttab-marketpulse'))" style="color:#185FA5;cursor:pointer;text-decoration:underline">전체 마켓펄스 보기 →</a></span>
-      </div>` : ''}
-    </div>
-
-    <!-- 종목 통계 한 줄 -->
-    <div style="background:#fafaf8;border:1px solid #f0efea;border-radius:7px;padding:10px 14px;display:flex;justify-content:space-around;flex-wrap:wrap;gap:10px;font-size:12px">
-      <span><b style="color:#888">총 종목:</b> <b style="font-size:14px">${total.toLocaleString()}</b></span>
-      <span><b style="color:#888">Stage 2:</b> <b style="color:#1F5A09;font-size:14px">${stage2.toLocaleString()}</b> <span style="color:#aaa">(${total>0?Math.round(stage2/total*100):0}%)</span></span>
-      <span><b style="color:#888">가속 중:</b> <b style="color:#185FA5;font-size:14px">${acc.toLocaleString()}</b> <span style="color:#aaa">(${total>0?Math.round(acc/total*100):0}%)</span></span>
+      </div>
     </div>
   `;
 
@@ -11919,10 +11911,11 @@ function renderDailyBriefingCandidates(stocks) {
 
   // [섹터 강세 반영 패치] 추천 후보를 '섹터 강세'와 결합한다.
   //   기존: Phase × RS Line 점수만 봐서, 섹터가 빠지는 중인 테크 종목도 그대로 추천됨.
-  //   변경: 섹터 분석 탭과 동일한 RS≥70 풀로 섹터 RS Line 평균을 구해 강세/중립/약세를
-  //         판정 → (a) 정렬 시 강세 섹터 종목을 끌어올리고 (b) chip 에 섹터 강세 점 표시.
+  //   변경: 섹터 분석 탭과 동일한 RS≥80 선별 풀(참고 대시보드 동일)로 섹터 RS Line 평균을
+  //         구해 강세/중립/약세를 판정 → (a) 정렬 시 강세 섹터 종목을 끌어올리고
+  //         (b) chip 에 섹터 강세 점 표시.
   //   → 참고 대시보드처럼 '강세 섹터 리더' 가 상단에 오고, 약세 섹터 종목은 시각적으로 구분.
-  const _pool = stocks.filter(s => typeof s.rs === 'number' && s.rs >= 70);
+  const _pool = stocks.filter(s => typeof s.rs === 'number' && s.rs >= 80);
   const _secMap = {};
   _pool.forEach(s => {
     const sec = (s.sector || 'Other').trim() || 'Other';
@@ -11936,6 +11929,7 @@ function renderDailyBriefingCandidates(stocks) {
   const secInfo = (s) => {
     const sec = (s.sector || 'Other').trim() || 'Other';
     const sc = _secScore[sec] ?? 0;
+    if (sec === 'Other') return { bonus: 0, dot: '⚪', label: '미분류', sc };  // GICS 미분류 → 중립 취급
     if (sc >= 75) return { bonus: 15,  dot: '🟢', label: '강세섹터', sc };
     if (sc >= 50) return { bonus: 0,   dot: '🟡', label: '중립섹터', sc };
     return { bonus: -20, dot: '🔴', label: '약세섹터', sc };
@@ -14816,10 +14810,15 @@ function renderSectorTab() {
 
   // [섹터 강세 정합 패치 ①] 전체 종목으로 집계하면 섹터 평균이 희석되어
   //   75(강세) 임계값에 어떤 섹터도 도달하지 못한다(=강세 섹터 미표시 → 로테이션 못 잡음).
-  //   Daily Briefing(RS≥70 풀)·참고 대시보드(RS≥80 풀)와 동일하게 'RS 70+ 품질 풀'로 집계.
+  //   Daily Briefing(RS≥70 풀)·참고 대시보드(RS≥80 풀)와 동일하게 'RS 80+ 선별 풀'로 집계.
   //   → 헬스케어처럼 실제 강세인 섹터가 정상적으로 부각된다. (풀이 비면 전체로 폴백)
-  const secPool = stocks.filter(s => typeof s.rs === 'number' && s.rs >= 70);
+  const secPool = stocks.filter(s => typeof s.rs === 'number' && s.rs >= 80);
   let sectors = sortSectors(buildSectorsForTab(secPool.length ? secPool : stocks));
+  // [선별 풀 패치] GICS 미분류 'Other'·RS구간 폴백 버킷은 섹터 순위/강세 판정에서 제외.
+  //   RS≥80 선별 풀에선 소수의 미분류 종목이 RS Line 상위를 차지해 1위(메가카드)를
+  //   가로채는 문제가 있어, 실제 GICS 섹터만 순위에 둔다. (남는 게 없으면 원본 유지)
+  const _rankedSecs = sectors.filter(s => s.name !== 'Other' && !/RS\s|회피|약세|양호|중립|강세|최상위/.test(s.name));
+  if (_rankedSecs.length) sectors = _rankedSecs;
 
   // [섹터 강세 정합 패치 ②] 강세/중립/약세 분류 기준을 avg_rs(후행 IBD RS) →
   //   avg_rs_line(RS Line 점수)으로 변경. 참고 대시보드·Daily Briefing 과 동일 기준.
