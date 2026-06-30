@@ -11020,7 +11020,7 @@ function updateMarketPulse(raw, krRaw) {
     card.className = 'regime-card ' + regime.cls;
     const regimeDot = document.getElementById('regime-dot');
     if (regimeDot) regimeDot.style.background = regime.dot;
-    setText('regime-label', regime.label.replace(/^[🟢🟡🟠🔴◆♦⬥]\s*/,'').replace(/◆/g,''));
+    setText('regime-label', regime.label.replace(/^[🟢🟡🟠🔴◆◇◈♦⬥]\s*/,'').replace(/[◆◇◈]/g,''));
     setText('regime-invest', regime.invest);
     setText('regime-sub', regime.sub);
   }
@@ -11028,7 +11028,7 @@ function updateMarketPulse(raw, krRaw) {
   // ── 탭 내 큰 카드
   const bigDot = document.getElementById('mp-big-dot');
   if (bigDot) bigDot.style.background = regime.dot;
-  setText('mp-big-label', regime.label.replace(/^[🟢🟡🟠🔴◆♦⬥]\s*/,'').replace(/◆/g,''));
+  setText('mp-big-label', regime.label.replace(/^[🟢🟡🟠🔴◆◇◈♦⬥]\s*/,'').replace(/[◆◇◈]/g,''));
   setText('mp-big-desc', regime.action);
   setText('mp-big-invest', regime.invest);
 
@@ -11281,7 +11281,7 @@ function renderDailyBriefingMarket(regimeKey, regime, mkt, stocks, dt) {
   const breadthAvg = (ndfi != null && s5fi != null) ? Math.round((ndfi + s5fi) / 2) : (s5fi ?? ndfi);
 
   // 라벨 정리
-  const cleanLabel = regime.label.replace(/^[🟢🟡🟠🔴◆♦⬥]\s*/,'').replace(/◆/g,'');
+  const cleanLabel = regime.label.replace(/^[🟢🟡🟠🔴◆◇◈♦⬥]\s*/,'').replace(/[◆◇◈]/g,'');
 
   // ① 헤더 desc 갱신
   const descEl = document.getElementById('db-market-regime-label');
@@ -11343,10 +11343,16 @@ function renderDailyBriefingBreadth(stocks, mkt, regime) {
   }
   const total = stocks.length;
 
-  // SETUP 카드용 (pass_dots 8개 통과)
-  const pass8 = stocks.filter(s => (s.pass_dots || s.tt_pass || 0) >= 8).length;
-  const pass8pct = total > 0 ? Math.round(pass8 / total * 100) : 0;
-  const watch7plus = stocks.filter(s => (s.pass_dots || s.tt_pass || 0) >= 7).length;
+  // SETUP 카드용 — [버그수정] pass_dots 는 배열([1,1,1,...])이므로 합산해 통과 개수로 변환.
+  //   (기존 코드는 배열을 숫자처럼 >=8 비교 → 항상 0 이었음)
+  //   네 트렌드템플릿 조건 수는 pass_dots 길이로 자동 감지(현재 7개). 전조건 통과=N/N, 워치=N-1+/N.
+  const _passCount = (s) => Array.isArray(s.pass_dots)
+    ? s.pass_dots.reduce((a, b) => a + (b ? 1 : 0), 0)
+    : (typeof s.pass_dots === 'number' ? s.pass_dots : (s.tt_pass || 0));
+  const _maxCond = (() => { const a = stocks.find(s => Array.isArray(s.pass_dots)); return a ? a.pass_dots.length : 8; })();
+  const passAll = stocks.filter(s => _passCount(s) >= _maxCond).length;
+  const passAllPct = total > 0 ? Math.round(passAll / total * 1000) / 10 : 0;
+  const watchNear = stocks.filter(s => _passCount(s) >= _maxCond - 1).length;
 
   // STRENGTH 카드용
   const rs90 = stocks.filter(s => (s.ibd_rs ?? s.rs ?? 0) >= 90).length;
@@ -11387,7 +11393,7 @@ function renderDailyBriefingBreadth(stocks, mkt, regime) {
     <div style="background:#F0F9ED;border:1px solid #b6d8a3;border-radius:8px;padding:12px 16px;margin-bottom:12px">
       <div style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:#1F5A09">
         <span style="width:10px;height:10px;border-radius:50%;background:#3B6D11"></span>
-        ${regime?.label?.replace(/^[🟢🟡🟠🔴◆♦⬥]\s*/,'') || '정상 매매'}
+        ${regime?.label?.replace(/^[🟢🟡🟠🔴◆◇◈♦⬥]\s*/,'') || '정상 매매'}
       </div>
       <div style="font-size:11.5px;color:#1a4a08;margin-top:4px">진입 가능. 전반적 환경 검토 — 추격 매수 자제, Stage 3 종목 점검</div>
       <div style="margin-top:8px;font-size:10.5px;color:#666">
@@ -11396,9 +11402,9 @@ function renderDailyBriefingBreadth(stocks, mkt, regime) {
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px">
-      ${card('SETUP', '8/8 통과 종목', pass8.toLocaleString() + '개', '추세템플 완전', dotsHTML(['g','g']), '#F0F9ED', '#b6d8a3')}
-      ${card('SETUP', '8/8 통과 비율', pass8pct + '%', '전체 풀 대비', dotsHTML([pass8pct>=30?'g':pass8pct>=20?'y':'r']), '#FFF8DC', '#e0d490')}
-      ${card('SETUP', '7+/8 워치리스트', watch7plus.toLocaleString() + '개', '7개 이상 통과', dotsHTML(['g','g']), '#F0F9ED', '#b6d8a3')}
+      ${card('SETUP', `${_maxCond}/${_maxCond} 통과 종목`, passAll.toLocaleString() + '개', '추세템플 완전', dotsHTML(['g','g']), '#F0F9ED', '#b6d8a3')}
+      ${card('SETUP', `${_maxCond}/${_maxCond} 통과 비율`, passAllPct + '%', '전체 풀 대비', dotsHTML([passAllPct>=30?'g':passAllPct>=20?'y':'r']), '#FFF8DC', '#e0d490')}
+      ${card('SETUP', `${_maxCond-1}+/${_maxCond} 워치리스트`, watchNear.toLocaleString() + '개', `${_maxCond-1}개 이상 통과`, dotsHTML(['g','g']), '#F0F9ED', '#b6d8a3')}
       ${card('STRENGTH', 'RS 90+ 종목', rs90.toLocaleString() + '개', '최상위 강세', dotsHTML(['g','g']), '#F0F9ED', '#b6d8a3')}
       ${card('STRENGTH', 'RS 80~89 (스토킹)', rs80_89.toLocaleString() + '개', '진입 후보군', dotsHTML(['g','g']), '#F0F9ED', '#b6d8a3')}
       ${card('STRENGTH', 'RS 평균', rsAvg, '시스템 평균', dotsHTML(['g']), '#F0F9ED', '#b6d8a3')}
@@ -11426,92 +11432,78 @@ function renderDailyBriefingSector(sectors) {
     body.innerHTML = '<div class="db-placeholder">⏳ 데이터 로딩 중...</div>';
     return;
   }
-  // RS Line 점수 기준 정렬
-  const sorted = [...sectors].sort((a,b) => (b.avg_rs_line || 0) - (a.avg_rs_line || 0));
-  // 가이드 기준: 강세 75+ / 중립 50-74 / 약세 <50 (이미지 3 명시)
-  // (rs_line_score = momentum_score_v2 = RS 절대강도(40) + 1주변화(25) + 1~3주변화(20) + 가속(20))
-  const STRONG_DB = 75, NEUTRAL_DB = 50;
-  const strong  = sorted.filter(s => (s.avg_rs_line || 0) >= STRONG_DB);
-  const neutral = sorted.filter(s => (s.avg_rs_line || 0) >= NEUTRAL_DB && (s.avg_rs_line || 0) < STRONG_DB);
-  const weak    = sorted.filter(s => (s.avg_rs_line || 0) < NEUTRAL_DB);
-  const top = sorted[0];
+  // RS Line 점수 기준 정렬 + GICS 미분류('Other')·RS구간 폴백 버킷 제외 (참고본과 동일)
+  let _s2 = sectors.filter(s => s.name !== 'Other' && !/RS\s|회피|약세|양호|중립|강세|최상위/.test(s.name));
+  if (!_s2.length) _s2 = sectors;
+  const sorted = [..._s2].sort((a,b) => (b.avg_rs_line || 0) - (a.avg_rs_line || 0));
+  // [참고본 ⑤ 레이아웃] 강세 ≥65 / 약세 <35 / 그 사이(35~64) = 양호 폴드
+  const STRONG_DB = 65, WEAK_DB = 35;
+  const strong = sorted.filter(s => (s.avg_rs_line || 0) >= STRONG_DB);
+  const weak   = sorted.filter(s => (s.avg_rs_line || 0) <  WEAK_DB);
+  const mid    = sorted.filter(s => { const v = s.avg_rs_line || 0; return v >= WEAK_DB && v < STRONG_DB; });
 
-  // 섹터 chip 렌더러
-  const chip = (s, c) => {
-    const score = Math.round(s.avg_rs_line || 0);
-    return `<span style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;background:${c.bg};color:${c.text};border:1px solid ${c.border};border-radius:99px;font-size:12px;font-weight:600;margin:2px">${s.name} <span style="font-weight:700">${score}</span></span>`;
-  };
-  const C_STRONG  = {bg:'#eaf6ee', text:'#1a5c1a', border:'#9ed4b0'};
-  const C_NEUTRAL = {bg:'#fff8e6', text:'#854F0B', border:'#e8c97f'};
-  const C_WEAK    = {bg:'#fff0f0', text:'#a13030', border:'#e8a0a0'};
-
-  // [v2026-06-01] 1위 섹터의 모든 산업 phase_counts 합산
-  const top1PhaseCounts = {};
-  (top.industries || []).forEach(ind => {
-    Object.entries(ind.phase_counts || {}).forEach(([k, v]) => {
-      top1PhaseCounts[k] = (top1PhaseCounts[k] || 0) + v;
+  // 섹터별 Phase 카운터 (🆕 오늘 상향 / 🚀 리더 Phase4+·4·5 / 🎯+ 최상위 Phase4+)
+  // [가드] 전일 phase 가 전부 동일('01' 등)하면 = phase_history 결측 → NEW↑ 신뢰 불가 → 🆕 숨김.
+  const _allDbStocks = sectors.flatMap(s => s.allStocks || []);
+  const _puRatio = _allDbStocks.length ? _allDbStocks.filter(s => s.phase_changed_up).length / _allDbStocks.length : 0;
+  const _phaseHistOK = _puRatio > 0 && _puRatio < 0.9;
+  const counters = (s) => {
+    let nNew = 0, nLead = 0, nTop = 0;
+    (s.allStocks || []).forEach(st => {
+      if (st.phase_changed_up) nNew++;
+      if (st.phase === '4plus' || st.phase === '4' || st.phase === '5') nLead++;
+      if (st.phase === '4plus') nTop++;
     });
-  });
-  const phaseOrder = [
-    ['4plus', '🟢 4+', '#1F5A09', '#D1F2C4', '최상위'],
-    ['4',     '🟢 4',  '#1a8a4a', '#eaf6ee', '돌파임박'],
-    ['5',     '🟢 5',  '#3B6D11', '#F0F9ED', '본격리더'],
-    ['3',     '🔵 3',  '#185FA5', '#E6F1FB', '베이스성숙'],
-    ['2',     '🟠 2',  '#a96e00', '#FAEEDA', '바닥매집'],
-    ['67',    '🔴 67', '#a13030', '#FFEBEB', '주변회피'],
-    ['01',    '🔴 01', '#854F0B', '#FFF4E6', '반등의심'],
-  ];
-  const phaseRowHTML = phaseOrder
-    .filter(([k]) => top1PhaseCounts[k] > 0)
-    .map(([k, lbl, color, bg, name]) => `<span style="display:inline-flex;align-items:center;gap:3px;padding:3px 8px;background:${bg};color:${color};border-radius:99px;font-size:11px;font-weight:700" title="${name} (Phase ${k})">${lbl} <b>${top1PhaseCounts[k]}</b></span>`)
-    .join('');
+    return { nNew, nLead, nTop };
+  };
+
+  // 강세/약세 섹터 행
+  const secRow = (s, accent) => {
+    const rl = Math.round(s.avg_rs_line || 0);
+    const ibd = (s.avg_rs != null) ? Math.round(s.avg_rs) : '—';
+    const c = counters(s);
+    const ctr = [];
+    if (c.nNew && _phaseHistOK)  ctr.push(`<span title="오늘 Phase 상향">🆕${c.nNew}</span>`);
+    if (c.nLead) ctr.push(`<span title="리더 (Phase 4+/4/5)">🚀${c.nLead}</span>`);
+    if (c.nTop)  ctr.push(`<span title="최상위 (Phase 4+)">🎯+${c.nTop}</span>`);
+    return `
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 4px;border-bottom:1px dotted #e0ddd2">
+        <div style="min-width:0">
+          <div style="font-size:13px;font-weight:600;color:${accent};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${s.name} <span style="font-size:11px;font-weight:400;color:#999">(${s.count}개)</span></div>
+          ${ctr.length ? `<div style="font-size:10.5px;color:#73726c;margin-top:3px;display:flex;gap:8px">${ctr.join('')}</div>` : ''}
+        </div>
+        <div style="text-align:right;white-space:nowrap;flex-shrink:0">
+          <span style="font-size:10px;color:#999">RS Line</span> <span style="font-size:15px;font-weight:700;color:${accent}">${rl}</span>
+          <span style="font-size:10px;color:#aaa"> · IBD ${ibd}</span>
+        </div>
+      </div>`;
+  };
+
+  const poolCount = sorted.reduce((sum, s) => sum + (s.count || 0), 0);
+  const midNote = mid.length
+    ? `<div style="font-size:11px;color:#73726c;padding:8px 4px 2px">+ 양호 섹터 (${WEAK_DB}~${STRONG_DB-1}) ${mid.length}건 — ${mid.map(s => `${s.name} ${Math.round(s.avg_rs_line||0)}`).join(' · ')}</div>`
+    : '';
 
   body.innerHTML = `
-    <!-- 풀 안내 (v2026-05-11: IBD early bird 정합) -->
     <div style="font-size:10px;color:#888;margin-bottom:8px;text-align:right;padding-right:2px">
-      📊 RS Rating 70+ 종목 기준 (${sorted.reduce((sum,s) => sum + (s.count||0), 0)}개) · IBD 표준 사전 필터 "시장 평균 이상"
+      📊 RS Rating 70+ 종목 기준 (${poolCount.toLocaleString()}개) · 1위 ${strong.length ? `${strong[0].name} RS Line ${Math.round(strong[0].avg_rs_line||0)}` : '—'}
     </div>
-    <!-- 1위 메가 카드 -->
-    <div style="background:linear-gradient(135deg,#fafff7,#f0f9ed);border:1px solid #b6d8a3;border-radius:8px;padding:14px 16px;margin-bottom:14px">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
-        <div style="flex:1;min-width:200px">
-          <div style="font-size:10px;color:#3B6D11;font-weight:700;letter-spacing:.5px;margin-bottom:4px">🏆 1위 섹터 · 최상위 강세</div>
-          <div style="font-size:20px;font-weight:700;color:#1a4a08">${top.name}</div>
-          <div style="font-size:11px;color:#73726c;margin-top:2px">${(top.industries || []).length}개 업종 · ${top.count}종목 · IBD RS ${Math.round(top.avg_rs || 0)}</div>
-        </div>
-        <div style="text-align:right">
-          <div style="font-size:10px;color:#888;font-weight:600">RS Line 점수</div>
-          <div style="font-size:32px;font-weight:700;color:#1a8a4a;line-height:1">${Math.round(top.avg_rs_line || 0)}</div>
-        </div>
+    <div style="background:#FFFBEF;border:1px solid #efe6c8;border-radius:8px;padding:9px 12px;margin-bottom:12px;font-size:11px;color:#7a6a3a;line-height:1.55">
+      💡 <b>RS Line 점수 기반 분류</b>: 섹터 ETF 대비 종목 RS Line 평균. 강세 ${STRONG_DB}+ · 양호 ${WEAK_DB}~${STRONG_DB-1} · 약세 ${WEAK_DB} 미만. 큰 섹터는 평균이 안정적, 작은 섹터는 전체 평균에 묶임.${!_phaseHistOK ? `<br><span style="color:#a86b2a">⚠ 전일 phase 데이터 결측(phase_yesterday 동일) → 🆕(오늘 상향) 카운터 숨김. phase_history 정상화 시 자동 표시.</span>` : ''}
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <!-- 강세 컬럼 -->
+      <div style="border:1px solid #cfe6c0;border-radius:10px;padding:10px 14px;background:#fbfdf8">
+        <div style="font-size:13px;font-weight:700;color:#1a5c1a;margin-bottom:4px">🟢 강세 섹터 — RS Line ≥ ${STRONG_DB} <span style="font-size:11px;font-weight:500;color:#888">(${strong.length})</span></div>
+        ${strong.length ? strong.map(s => secRow(s, '#1a5c1a')).join('') : '<div style="font-size:12px;color:#888;padding:10px 0">강세 섹터 없음</div>'}
+        ${midNote}
       </div>
-      ${phaseRowHTML ? `
-      <!-- [v2026-06-01] Phase 트렌드 카운터 -->
-      <div style="margin-top:12px;padding-top:10px;border-top:1px dashed #b6d8a3">
-        <div style="font-size:10px;color:#73726c;font-weight:600;margin-bottom:6px">📊 Phase 트렌드 분포 (${top.count}종목)</div>
-        <div style="display:flex;gap:4px;flex-wrap:wrap">${phaseRowHTML}</div>
-      </div>` : ''}
+      <!-- 약세 컬럼 -->
+      <div style="border:1px solid #e8c9c9;border-radius:10px;padding:10px 14px;background:#fffafa">
+        <div style="font-size:13px;font-weight:700;color:#a13030;margin-bottom:4px">🔴 약세 섹터 — RS Line < ${WEAK_DB} <span style="font-size:11px;font-weight:500;color:#888">(${weak.length})</span></div>
+        ${weak.length ? weak.map(s => secRow(s, '#a13030')).join('') : '<div style="font-size:12px;color:#888;padding:10px 0">약세 섹터 없음 — 시장 전반 양호</div>'}
+      </div>
     </div>
-
-    <!-- 강세 섹터 (1위 제외 나머지) -->
-    ${strong.length > 1 ? `
-      <div style="margin-bottom:10px">
-        <div style="font-size:11px;font-weight:700;color:#1a5c1a;margin-bottom:6px">🟢 강세 섹터 (RS Line ${STRONG_DB}+) · 진입 우선순위 — 총 ${strong.length}개</div>
-        <div>${strong.slice(1).map(s => chip(s, C_STRONG)).join('')}</div>
-      </div>` : (strong.length === 1 ? '<div style="font-size:11px;color:#888;margin-bottom:10px">🟢 강세 섹터 — 1위 외 추가 강세 섹터 없음</div>' : '')}
-
-    <!-- 중립 -->
-    ${neutral.length ? `
-      <div style="margin-bottom:10px">
-        <div style="font-size:11px;font-weight:700;color:#854F0B;margin-bottom:6px">🟡 중립 (RS Line ${NEUTRAL_DB}~${STRONG_DB-1}) · 관찰 대상 — ${neutral.length}개</div>
-        <div>${neutral.map(s => chip(s, C_NEUTRAL)).join('')}</div>
-      </div>` : ''}
-
-    <!-- 약세 -->
-    ${weak.length ? `
-      <div>
-        <div style="font-size:11px;font-weight:700;color:#a13030;margin-bottom:6px">🔴 약세 (RS Line ${NEUTRAL_DB} 미만) · 진입 회피 — ${weak.length}개</div>
-        <div>${weak.map(s => chip(s, C_WEAK)).join('')}</div>
-      </div>` : ''}
   `;
 }
 
