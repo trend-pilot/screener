@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-06-29",
+  "data_date": "2026-06-30",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v1)",
   "nav": NaN,
@@ -12,31 +12,94 @@
   "regime": "🟢 Uptrend",
   "signals": [
     {
+      "ticker": "UCTT",
+      "industry": "Semiconductor Equipment & Materials",
+      "pattern": "어센딩베이스",
+      "signal_close": 142.59,
+      "pivot": 144.22,
+      "dist": -1.1,
+      "score": 91.0
+    },
+    {
       "ticker": "OUST",
       "industry": "Electronic Components",
       "pattern": "어센딩베이스",
-      "signal_close": 54.07,
-      "pivot": 54.49,
-      "dist": -0.8,
-      "score": 84.1
+      "signal_close": 62.52,
+      "pivot": 63.79,
+      "dist": -2.0,
+      "score": 89.57
     },
     {
-      "ticker": "DGII",
-      "industry": "Communication Equipment",
+      "ticker": "MXL",
+      "industry": "Semiconductors",
+      "pattern": "파워플레이",
+      "signal_close": 128.03,
+      "pivot": 128.3,
+      "dist": -0.2,
+      "score": 88.25
+    },
+    {
+      "ticker": "KLAC",
+      "industry": "Semiconductor Equipment & Materials",
+      "pattern": "VCP",
+      "signal_close": 301.71,
+      "pivot": 307.37,
+      "dist": -1.8,
+      "score": 87.25
+    },
+    {
+      "ticker": "ALAB",
+      "industry": "Semiconductors",
       "pattern": "어센딩베이스",
-      "signal_close": 73.23,
-      "pivot": 73.55,
-      "dist": -0.4,
-      "score": 70.19
+      "signal_close": 483.02,
+      "pivot": 499.48,
+      "dist": -3.3,
+      "score": 86.75
     },
     {
-      "ticker": "FLEX",
+      "ticker": "COHU",
+      "industry": "Semiconductor Equipment & Materials",
+      "pattern": "어센딩베이스",
+      "signal_close": 73.91,
+      "pivot": 74.6,
+      "dist": -0.9,
+      "score": 86.55
+    },
+    {
+      "ticker": "TER",
+      "industry": "Semiconductor Equipment & Materials",
+      "pattern": "어센딩베이스",
+      "signal_close": 483.84,
+      "pivot": 487.91,
+      "dist": -0.8,
+      "score": 85.95
+    },
+    {
+      "ticker": "VICR",
       "industry": "Electronic Components",
-      "pattern": "컵앤핸들",
-      "signal_close": 159.56,
-      "pivot": 166.86,
-      "dist": -4.4,
-      "score": 57.22
+      "pattern": "어센딩베이스",
+      "signal_close": 379.78,
+      "pivot": 382.54,
+      "dist": -0.7,
+      "score": 85.38
+    },
+    {
+      "ticker": "FORM",
+      "industry": "Semiconductor Equipment & Materials",
+      "pattern": "거래량돌파",
+      "signal_close": 159.93,
+      "pivot": 160.27,
+      "dist": -0.2,
+      "score": 83.5
+    },
+    {
+      "ticker": "BELFB",
+      "industry": "Electronic Components",
+      "pattern": "VCP",
+      "signal_close": 333.04,
+      "pivot": 335.29,
+      "dist": -0.7,
+      "score": 81.28
     }
   ],
   "gates": [
@@ -53,7 +116,7 @@
     "tqqq": null
   },
   "risk": {
-    "days": 4,
+    "days": 5,
     "ret": NaN,
     "sharpe": NaN,
     "sortino": NaN,
@@ -66,15 +129,15 @@
     "alpha_qqq": null
   },
   "trades": {
-    "n": 1,
+    "n": 2,
     "winrate": 0.0,
     "payoff": 0.0,
     "pf": 0.0,
     "avg_win": 0,
-    "avg_loss": -7.4,
-    "expectancy": -7.44,
+    "avg_loss": -8.3,
+    "expectancy": -8.34,
     "best": -7.4,
-    "worst": -7.4
+    "worst": -9.2
   },
   "nav_history": [
     {
@@ -96,6 +159,11 @@
       "date": "2026-06-29",
       "nav": NaN,
       "chg": NaN
+    },
+    {
+      "date": "2026-06-30",
+      "nav": NaN,
+      "chg": NaN
     }
   ],
   "holdings": [
@@ -105,79 +173,7 @@
       "days": 2,
       "cd": "",
       "entry_px": 106.86,
-      "cur": 118.88,
-      "runner": false
-    },
-    {
-      "ticker": "PSNL",
-      "entry": "2026-06-26",
-      "days": 2,
-      "cd": "",
-      "entry_px": 12.59,
-      "cur": 13.75,
-      "runner": false
-    },
-    {
-      "ticker": "ADPT",
-      "entry": "2026-06-26",
-      "days": 2,
-      "cd": "",
-      "entry_px": 20.25,
-      "cur": 21.4,
-      "runner": false
-    },
-    {
-      "ticker": "CDNA",
-      "entry": "2026-06-26",
-      "days": 2,
-      "cd": "",
-      "entry_px": 27.85,
-      "cur": 29.28,
-      "runner": false
-    },
-    {
-      "ticker": "NTRA",
-      "entry": "2026-06-26",
-      "days": 2,
-      "cd": "",
-      "entry_px": 260.74,
-      "cur": 272.31,
-      "runner": false
-    },
-    {
-      "ticker": "AMAT",
-      "entry": "2026-06-26",
-      "days": 2,
-      "cd": "",
-      "entry_px": 668.0,
-      "cur": 694.64,
-      "runner": false
-    },
-    {
-      "ticker": "NEO",
-      "entry": "2026-06-26",
-      "days": 2,
-      "cd": "",
-      "entry_px": 13.73,
-      "cur": 14.25,
-      "runner": false
-    },
-    {
-      "ticker": "VCYT",
-      "entry": "2026-06-26",
-      "days": 2,
-      "cd": "",
-      "entry_px": 58.55,
-      "cur": 60.19,
-      "runner": false
-    },
-    {
-      "ticker": "TWST",
-      "entry": "2026-06-26",
-      "days": 2,
-      "cd": "",
-      "entry_px": 96.65,
-      "cur": 98.36,
+      "cur": 126.89,
       "runner": false
     },
     {
@@ -186,7 +182,70 @@
       "days": 2,
       "cd": "",
       "entry_px": 410.31,
-      "cur": 416.0,
+      "cur": 444.8,
+      "runner": false
+    },
+    {
+      "ticker": "AMAT",
+      "entry": "2026-06-26",
+      "days": 2,
+      "cd": "",
+      "entry_px": 668.0,
+      "cur": 723.0,
+      "runner": false
+    },
+    {
+      "ticker": "TWST",
+      "entry": "2026-06-26",
+      "days": 2,
+      "cd": "",
+      "entry_px": 96.65,
+      "cur": 102.88,
+      "runner": false
+    },
+    {
+      "ticker": "PSNL",
+      "entry": "2026-06-26",
+      "days": 2,
+      "cd": "",
+      "entry_px": 12.59,
+      "cur": 13.4,
+      "runner": false
+    },
+    {
+      "ticker": "NEO",
+      "entry": "2026-06-26",
+      "days": 2,
+      "cd": "",
+      "entry_px": 13.73,
+      "cur": 14.59,
+      "runner": false
+    },
+    {
+      "ticker": "ADPT",
+      "entry": "2026-06-26",
+      "days": 2,
+      "cd": "",
+      "entry_px": 20.25,
+      "cur": 21.45,
+      "runner": false
+    },
+    {
+      "ticker": "NTRA",
+      "entry": "2026-06-26",
+      "days": 2,
+      "cd": "",
+      "entry_px": 260.74,
+      "cur": 271.45,
+      "runner": false
+    },
+    {
+      "ticker": "CDNA",
+      "entry": "2026-06-26",
+      "days": 2,
+      "cd": "",
+      "entry_px": 27.85,
+      "cur": 28.5,
       "runner": false
     },
     {
@@ -195,35 +254,53 @@
       "days": 2,
       "cd": "",
       "entry_px": 35.51,
-      "cur": 35.68,
+      "cur": 35.84,
       "runner": false
     },
     {
-      "ticker": "DGICB",
-      "entry": "2026-06-27",
-      "days": 1,
+      "ticker": "VCYT",
+      "entry": "2026-06-26",
+      "days": 2,
       "cd": "",
-      "entry_px": 24.0,
-      "cur": 23.6,
+      "entry_px": 58.55,
+      "cur": 58.73,
+      "runner": false
+    },
+    {
+      "ticker": "UCTT",
+      "entry": "2026-06-30",
+      "days": 0,
+      "cd": "",
+      "entry_px": 142.59,
+      "cur": 142.59,
       "runner": false
     }
   ],
   "closed_summary": {
-    "n": 1,
+    "n": 2,
     "winrate": 0.0,
-    "avg": -7.44,
+    "avg": -8.34,
     "best": -7.4,
-    "worst": -7.4,
+    "worst": -9.2,
     "categories": [
       [
         "손절",
-        1,
+        2,
         "#A32D2D",
         "#FDECEC"
       ]
     ]
   },
   "closed": [
+    {
+      "ticker": "DGICB",
+      "entry": "2026-06-27",
+      "exit": "2026-06-30",
+      "days": 2,
+      "entry_px": 24.0,
+      "exit_px": 21.78,
+      "cat": "손절"
+    },
     {
       "ticker": "TER",
       "entry": "2026-06-26",
@@ -242,7 +319,7 @@
       "avg_cost_px": 27.85,
       "shares": 0.002992220227408737,
       "entry_value": 0.08337499999999999,
-      "cur": 29.28,
+      "cur": 28.5,
       "max_gain_pct": 5.134649910233402,
       "days_in": 2,
       "current_stop": 25.9005,
@@ -256,7 +333,7 @@
       "avg_cost_px": 260.74,
       "shares": 0.0003196031806908542,
       "entry_value": 0.08337499999999999,
-      "cur": 272.31,
+      "cur": 271.45,
       "max_gain_pct": 4.437370560711806,
       "days_in": 2,
       "current_stop": 242.4882,
@@ -270,8 +347,8 @@
       "avg_cost_px": 13.73,
       "shares": 0.006069434328720562,
       "entry_value": 0.08337499999999999,
-      "cur": 14.25,
-      "max_gain_pct": 3.7873270211216337,
+      "cur": 14.59,
+      "max_gain_pct": 6.263656227239611,
       "days_in": 2,
       "current_stop": 12.7689,
       "runner": false,
@@ -284,7 +361,7 @@
       "avg_cost_px": 12.59,
       "shares": 0.006619009796134498,
       "entry_value": 0.08337499999999999,
-      "cur": 13.75,
+      "cur": 13.4,
       "max_gain_pct": 9.213661636219218,
       "days_in": 2,
       "current_stop": 11.708699999999999,
@@ -298,8 +375,8 @@
       "avg_cost_px": 20.25,
       "shares": 0.004115226337448559,
       "entry_value": 0.08337499999999999,
-      "cur": 21.4,
-      "max_gain_pct": 5.679012345679002,
+      "cur": 21.45,
+      "max_gain_pct": 5.925925925925912,
       "days_in": 2,
       "current_stop": 18.8325,
       "runner": false,
@@ -312,7 +389,7 @@
       "avg_cost_px": 58.55,
       "shares": 0.0014232849416453174,
       "entry_value": 0.08337499999999999,
-      "cur": 60.19,
+      "cur": 58.73,
       "max_gain_pct": 3.31340734415031,
       "days_in": 2,
       "current_stop": 54.451499999999996,
@@ -326,8 +403,8 @@
       "avg_cost_px": 96.65,
       "shares": 0.0008622176237282289,
       "entry_value": 0.08337499999999999,
-      "cur": 98.36,
-      "max_gain_pct": 3.300569063631653,
+      "cur": 102.88,
+      "max_gain_pct": 6.445938954992236,
       "days_in": 2,
       "current_stop": 89.8845,
       "runner": false,
@@ -340,10 +417,10 @@
       "avg_cost_px": 106.86,
       "shares": 0.0007798365462599039,
       "entry_value": 0.08337499999999999,
-      "cur": 118.88,
-      "max_gain_pct": 11.248362343252861,
+      "cur": 126.89,
+      "max_gain_pct": 18.74415122590305,
       "days_in": 2,
-      "current_stop": 99.37979999999999,
+      "current_stop": 106.86,
       "runner": false,
       "oneill_8w_active": false
     },
@@ -354,8 +431,8 @@
       "avg_cost_px": 410.31,
       "shares": 0.00020309847026232198,
       "entry_value": 0.08337499999999999,
-      "cur": 416.0,
-      "max_gain_pct": 1.3867563549511353,
+      "cur": 444.8,
+      "max_gain_pct": 8.405839487216982,
       "days_in": 2,
       "current_stop": 381.5883,
       "runner": false,
@@ -368,8 +445,8 @@
       "avg_cost_px": 35.51,
       "shares": 0.0023467567821271003,
       "entry_value": 0.08337499999999999,
-      "cur": 35.68,
-      "max_gain_pct": 0.6477048718670941,
+      "cur": 35.84,
+      "max_gain_pct": 0.9293156857223428,
       "days_in": 2,
       "current_stop": 33.0243,
       "runner": false,
@@ -382,24 +459,24 @@
       "avg_cost_px": 668.0,
       "shares": 0.00012406437125748538,
       "entry_value": 0.08291643750000023,
-      "cur": 694.64,
-      "max_gain_pct": 3.9880239520958094,
+      "cur": 723.0,
+      "max_gain_pct": 8.233532934131738,
       "days_in": 2,
       "current_stop": 621.24,
       "runner": false,
       "oneill_8w_active": false
     },
     {
-      "ticker": "DGICB",
-      "entry_date": "2026-06-27",
-      "entry_px": 24.0,
-      "avg_cost_px": 24.0,
+      "ticker": "UCTT",
+      "entry_date": "2026-06-30",
+      "entry_px": 142.59,
+      "avg_cost_px": 142.59,
       "shares": NaN,
       "entry_value": NaN,
-      "cur": 23.6,
+      "cur": 142.59,
       "max_gain_pct": 0.0,
-      "days_in": 1,
-      "current_stop": 22.32,
+      "days_in": 0,
+      "current_stop": 132.6087,
       "runner": false,
       "oneill_8w_active": false
     }
@@ -414,6 +491,17 @@
       "exit_px": 436.86,
       "shares": 0.00017656863576009265,
       "realized": -0.0062777936689549785,
+      "cat": "손절"
+    },
+    {
+      "ticker": "DGICB",
+      "entry": "2026-06-27",
+      "exit": "2026-06-30",
+      "days": 2,
+      "entry_px": 24.0,
+      "exit_px": 21.78,
+      "shares": NaN,
+      "realized": NaN,
       "cat": "손절"
     }
   ],
@@ -431,6 +519,7 @@
     "2026-06-26",
     "2026-06-26",
     "2026-06-26",
-    "2026-06-27"
+    "2026-06-27",
+    "2026-06-30"
   ]
 }
