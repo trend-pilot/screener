@@ -11020,7 +11020,7 @@ function updateMarketPulse(raw, krRaw) {
     card.className = 'regime-card ' + regime.cls;
     const regimeDot = document.getElementById('regime-dot');
     if (regimeDot) regimeDot.style.background = regime.dot;
-    setText('regime-label', regime.label.replace(/^[🟢🟡🟠🔴◆◇◈♦⬥]\s*/,'').replace(/[◆◇◈]/g,''));
+    setText('regime-label', regime.label.replace(/^[^A-Za-z가-힣]+/u,'').replace(/[◆◇◈]/g,''));
     setText('regime-invest', regime.invest);
     setText('regime-sub', regime.sub);
   }
@@ -11028,7 +11028,7 @@ function updateMarketPulse(raw, krRaw) {
   // ── 탭 내 큰 카드
   const bigDot = document.getElementById('mp-big-dot');
   if (bigDot) bigDot.style.background = regime.dot;
-  setText('mp-big-label', regime.label.replace(/^[🟢🟡🟠🔴◆◇◈♦⬥]\s*/,'').replace(/[◆◇◈]/g,''));
+  setText('mp-big-label', regime.label.replace(/^[^A-Za-z가-힣]+/u,'').replace(/[◆◇◈]/g,''));
   setText('mp-big-desc', regime.action);
   setText('mp-big-invest', regime.invest);
 
@@ -11281,7 +11281,7 @@ function renderDailyBriefingMarket(regimeKey, regime, mkt, stocks, dt) {
   const breadthAvg = (ndfi != null && s5fi != null) ? Math.round((ndfi + s5fi) / 2) : (s5fi ?? ndfi);
 
   // 라벨 정리
-  const cleanLabel = regime.label.replace(/^[🟢🟡🟠🔴◆◇◈♦⬥]\s*/,'').replace(/[◆◇◈]/g,'');
+  const cleanLabel = regime.label.replace(/^[^A-Za-z가-힣]+/u,'').replace(/[◆◇◈]/g,'');
 
   // ① 헤더 desc 갱신
   const descEl = document.getElementById('db-market-regime-label');
@@ -11393,7 +11393,7 @@ function renderDailyBriefingBreadth(stocks, mkt, regime) {
     <div style="background:#F0F9ED;border:1px solid #b6d8a3;border-radius:8px;padding:12px 16px;margin-bottom:12px">
       <div style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:#1F5A09">
         <span style="width:10px;height:10px;border-radius:50%;background:#3B6D11"></span>
-        ${regime?.label?.replace(/^[🟢🟡🟠🔴◆◇◈♦⬥]\s*/,'') || '정상 매매'}
+        ${regime?.label?.replace(/^[^A-Za-z가-힣]+/u,'') || '정상 매매'}
       </div>
       <div style="font-size:11.5px;color:#1a4a08;margin-top:4px">진입 가능. 전반적 환경 검토 — 추격 매수 자제, Stage 3 종목 점검</div>
       <div style="margin-top:8px;font-size:10.5px;color:#666">
@@ -11579,7 +11579,12 @@ function renderDailyBriefingIndustry(sectors) {
     return items.length ? items.join('') : '<span style="font-size:10px;color:#bbb">Phase 데이터 없음</span>';
   };
 
-  // ── 개별 산업 카드 렌더 ──
+  // phase-history 유효성 (🆕 신뢰도) — 전일 phase 결측이면 🆕 숨김
+  const _allIndStocks = all.flatMap(ind => ind.allStocks || []);
+  const _puR = _allIndStocks.length ? _allIndStocks.filter(s => s.phase_changed_up).length / _allIndStocks.length : 0;
+  const _phaseOK = _puR > 0 && _puR < 0.9;
+
+  // ── 개별 산업 카드 렌더 (참고본 ⑥ 행 스타일) ──
   const renderCard = (ind, rank, isWeak) => {
     const score = Math.round(ind.score);
     const ibdRs = Math.round(ind.avg_rs || 0);
@@ -11620,81 +11625,51 @@ function renderDailyBriefingIndustry(sectors) {
       statusClass = 'st-temp';
     }
     // [v2026-06-01 C단계] 종목 리스트 — 처음 15개 + 나머지는 토글로 펼침
-    const VISIBLE = 15;
-    const allShown = (ind.allStocks || []);
-    const firstBatch = allShown.slice(0, VISIBLE);
-    const hiddenBatch = allShown.slice(VISIBLE);
-    const hiddenCount = hiddenBatch.length;
+    // 멤버 종목(RS Line 상위 6) + Phase 카운터 (🆕 가드 / 🚀 리더 / 🎯+ 최상위 / ⚠ 하향)
+    const accent = isWeak ? '#c62828' : (score >= 70 ? '#1a8a4a' : score >= 50 ? '#185FA5' : '#a96e00');
+    const nTop  = (ind.phase_counts && ind.phase_counts['4plus']) || 0;
+    const nLead = ind.leader_count || 0;
+    const nNew  = ind.new_count || 0;
+    const nWarn = ind.warn_count || 0;
+    const ctr = [];
+    if (nNew && _phaseOK) ctr.push(`<span title="오늘 신규 진입">🆕${nNew}</span>`);
+    if (nLead) ctr.push(`<span title="리더 (Phase 4+/4/5)">🚀${nLead}</span>`);
+    if (nTop)  ctr.push(`<span title="최상위 (Phase 4+)">🎯+${nTop}</span>`);
+    if (nWarn) ctr.push(`<span title="하향 경고" style="color:#a86b2a">⚠${nWarn}</span>`);
+    const members = [...(ind.allStocks || [])].sort((a,b) => (b.rs_line_score||0)-(a.rs_line_score||0)).slice(0, 6);
+    const moreCount = (ind.allStocks || []).length - members.length;
     return `
-    <div class="tm-card ${isWeak ? 'tm-card-weak' : ''}">
-      <div class="tm-card-head">
-        <div class="tm-card-head-l">
-          <span class="tm-rank">#${rank}</span>
-          <span class="tm-auto">AUTO</span>
-          ${isLeading ? `<span class="tm-leading" title="LEADING — RS Line 점수 65+ & 종목 3개+ 동시 충족 (강한 산업)">✓ LEADING</span>` : ''}
-          ${ind.inStrongSector ? `<span class="tm-strong-sec" title="강세 섹터(${Math.round(ind.sectorRsLine)}) 소속 — 종목 수 적어도 우대 노출">🌟</span>` : ''}
-          <span class="tm-ind-name">📊 ${ind.name}</span>
+    <div style="border:1px solid #d8e4cf;border-left:3px solid ${accent};border-radius:9px;padding:11px 14px;margin-bottom:8px;background:${isWeak?'#fff7f7':'#fcfdfb'}">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+        <div style="min-width:0">
+          <div style="font-size:10.5px;color:#8a8a82;margin-bottom:1px">#${rank} · ${ind.sectorName}${ind.inStrongSector ? ' <span title="강세 섹터 소속">🌟</span>' : ''}</div>
+          <div style="font-size:14px;font-weight:700;color:#1a3a10">${ind.name} <span style="font-size:11px;font-weight:400;color:#999">(${ind.count}개)</span></div>
         </div>
-        <div class="tm-card-head-r">
-          <span class="tm-score" style="color:${barColor}">${score}</span>
-          <div class="tm-metric-row">
-            <span title="가속률 (acc=true 종목 비율)">🔥 ${accRatio}</span>
-            <span title="신고가율 (h52_new 종목 비율)">📈 ${h52Ratio}</span>
-            <span title="1주 평균 변화율" style="color:${w1Color}">📊 ${w1Str}</span>
-          </div>
+        <div style="text-align:right;white-space:nowrap;flex-shrink:0">
+          <div style="font-size:9px;color:#8a8a82;font-weight:600">종합</div>
+          <div style="font-size:22px;font-weight:800;color:${accent};line-height:1">${score}</div>
+          <div style="font-size:9.5px;color:#999;margin-top:1px">IBD ${ibdRs} · ${ind.count}종목</div>
         </div>
       </div>
-      <div class="tm-score-bar"><div class="tm-score-bar-fill" style="width:${Math.min(100,score)}%;background:${barColor}"></div></div>
-      <!-- 추세 지속성 + 상태 라벨 -->
-      <div class="tm-trend">
-        <span>📈 추세 지속성</span>
-        <span class="tm-trend-stat">L ${ind.leader_count}/${ind.count} (${ind.count?Math.round(ind.leader_count/ind.count*100):0}%)</span>
-        <span class="tm-trend-stat">방향 ${w1 >= 0.5 ? '↗' : w1 <= -0.5 ? '↘' : '→'} (${w1Str})</span>
-        <span class="tm-status ${statusClass}" style="margin-left:auto">${statusLabel}</span>
-      </div>
-      <!-- 메트릭 2x2 그리드 -->
-      <div class="tm-metric-grid">
-        <div class="tm-metric-cell"><div class="tm-metric-lbl">IBD RS</div><div class="tm-metric-val ${ibdRs>=80?'green':ibdRs>=60?'blue':ibdRs>=40?'amber':'red'}">${ibdRs}</div></div>
-        <div class="tm-metric-cell"><div class="tm-metric-lbl">Comp</div><div class="tm-metric-val ${comp>=80?'green':comp>=60?'blue':comp>=40?'amber':'red'}">${comp}</div></div>
-        <div class="tm-metric-cell"><div class="tm-metric-lbl">종목</div><div class="tm-metric-val">${ind.count}개</div></div>
-        <div class="tm-metric-cell"><div class="tm-metric-lbl">가속</div><div class="tm-metric-val ${acc2Ratio>=20?'green':acc2Ratio>=10?'blue':''}">${acc2Ratio}%</div></div>
-      </div>
-      <!-- Phase 분포 줄 -->
-      <div class="tm-phase-row">${phaseRow(ind.phase_counts || {})}</div>
-      <!-- 배지 줄 (🆕 신규 / ⚠️ 하향) -->
-      ${(ind.new_count > 0 || ind.warn_count > 0) ? `
-      <div class="tm-badge-row">
-        ${ind.new_count > 0 ? `<span class="tm-badge-new">🆕 ${ind.new_count}</span>` : ''}
-        ${ind.warn_count > 0 ? `<span class="tm-badge-warn">⚠️ ${ind.warn_count}</span>` : ''}
-      </div>` : ''}
-      <!-- 구성 종목 리스트 (15개 + 토글로 펼침) -->
-      <div class="tm-stocks-head">구성 종목 (${ind.count}) · 숫자 = RS Line 점수, 클릭 시 상세</div>
-      <div class="tm-stocks">
-        ${firstBatch.map(stockChip).join('')}
-        ${hiddenCount > 0 ? `<span class="tm-more-btn" onclick="this.parentElement.classList.toggle('expanded')">+${hiddenCount}개 더보기</span><span class="tm-stocks-hidden">${hiddenBatch.map(stockChip).join('')}</span>` : ''}
-      </div>
-      <!-- 분류 카운트 -->
-      <div class="tm-class-row">
-        <span class="tm-class-pill tm-cls-L">L · ${ind.leader_count}</span>
-        <span class="tm-class-pill tm-cls-F">F · ${ind.follower_count}</span>
-        <span class="tm-class-pill tm-cls-Lg">Lg · ${ind.laggard_count}</span>
-        <span class="tm-sector-tag">섹터: ${ind.sectorName}</span>
+      ${ctr.length ? `<div style="display:flex;gap:10px;font-size:11px;color:#5a6a4a;margin:7px 0 5px">${ctr.join('')}</div>` : '<div style="height:5px"></div>'}
+      <div class="tm-stocks" style="display:flex;flex-wrap:wrap;gap:4px">
+        ${members.map(stockChip).join('')}
+        ${moreCount > 0 ? `<span style="font-size:11px;color:#aaa;align-self:center">+${moreCount}</span>` : ''}
       </div>
     </div>`;
   };
 
+  // [품질 보정] RS Line 단독 정렬은 1~2종목 니치 산업(100점)이 상위를 독식한다.
+  //   참고본의 테마 종합점수(브레드스 가중)를 근사하기 위해 3종목+ 산업을 우선 노출.
+  const ranked = sorted.filter(ind => (ind.count || 0) >= 3);
+  const topList = (ranked.length >= 8 ? ranked : sorted).slice(0, 8);
+
   body.innerHTML = `
     <div style="font-size:11px;color:#888;margin-bottom:8px;text-align:right">
-      📊 RS Rating 70+ 풀 · 산업당 2종목+ 표시 (강세 섹터 75+는 1종목+ 우대) · 전체 ${all.length}개 중 ${sorted.length}개 분석
+      📊 RS Rating 70+ 풀 · RS Line 점수 정렬 (테마 종합점수 백필 없음 → RS Line 폴백, 3종목+ 우선) · 전체 ${all.length}개 중 ${sorted.length}개 분석
     </div>
-    <div class="tm-cards-grid">
-      ${strongTop.map((ind, i) => renderCard(ind, i+1, false)).join('')}
-    </div>
-    ${weakBottom.length ? `
-      <div style="margin-top:18px;font-size:12px;font-weight:700;color:#a13030;border-bottom:1px solid #f5cccc;padding-bottom:6px;margin-bottom:10px">🔴 약세 산업 (하위 ${weakBottom.length}개) · 진입 회피</div>
-      <div class="tm-cards-grid">
-        ${weakBottom.map((ind, i) => renderCard(ind, sorted.length - weakBottom.length + i + 1, true)).join('')}
-      </div>` : ''}
+    <div style="font-size:13px;font-weight:700;color:#b5521a;margin-bottom:10px">🔥 강세 세부 업종 Top ${topList.length}</div>
+    ${topList.map((ind, i) => renderCard(ind, i+1, false)).join('')}
   `;
 }
 
