@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-06-30",
+  "data_date": "2026-07-01",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v1)",
   "nav": NaN,
@@ -12,94 +12,22 @@
   "regime": "🟢 Uptrend",
   "signals": [
     {
-      "ticker": "UCTT",
-      "industry": "Semiconductor Equipment & Materials",
-      "pattern": "어센딩베이스",
-      "signal_close": 142.59,
-      "pivot": 144.22,
-      "dist": -1.1,
-      "score": 91.0
-    },
-    {
-      "ticker": "OUST",
-      "industry": "Electronic Components",
-      "pattern": "어센딩베이스",
-      "signal_close": 62.52,
-      "pivot": 63.79,
-      "dist": -2.0,
-      "score": 89.57
-    },
-    {
-      "ticker": "MXL",
-      "industry": "Semiconductors",
-      "pattern": "파워플레이",
-      "signal_close": 128.03,
-      "pivot": 128.3,
-      "dist": -0.2,
-      "score": 88.25
-    },
-    {
-      "ticker": "KLAC",
-      "industry": "Semiconductor Equipment & Materials",
+      "ticker": "ZD",
+      "industry": "Advertising Agencies",
       "pattern": "VCP",
-      "signal_close": 301.71,
-      "pivot": 307.37,
-      "dist": -1.8,
-      "score": 87.25
+      "signal_close": 51.97,
+      "pivot": 53.43,
+      "dist": -2.7,
+      "score": 77.96
     },
     {
-      "ticker": "ALAB",
-      "industry": "Semiconductors",
-      "pattern": "어센딩베이스",
-      "signal_close": 483.02,
-      "pivot": 499.48,
-      "dist": -3.3,
-      "score": 86.75
-    },
-    {
-      "ticker": "COHU",
-      "industry": "Semiconductor Equipment & Materials",
-      "pattern": "어센딩베이스",
-      "signal_close": 73.91,
-      "pivot": 74.6,
-      "dist": -0.9,
-      "score": 86.55
-    },
-    {
-      "ticker": "TER",
-      "industry": "Semiconductor Equipment & Materials",
-      "pattern": "어센딩베이스",
-      "signal_close": 483.84,
-      "pivot": 487.91,
-      "dist": -0.8,
-      "score": 85.95
-    },
-    {
-      "ticker": "VICR",
-      "industry": "Electronic Components",
-      "pattern": "어센딩베이스",
-      "signal_close": 379.78,
-      "pivot": 382.54,
-      "dist": -0.7,
-      "score": 85.38
-    },
-    {
-      "ticker": "FORM",
-      "industry": "Semiconductor Equipment & Materials",
-      "pattern": "거래량돌파",
-      "signal_close": 159.93,
-      "pivot": 160.27,
-      "dist": -0.2,
-      "score": 83.5
-    },
-    {
-      "ticker": "BELFB",
-      "industry": "Electronic Components",
-      "pattern": "VCP",
-      "signal_close": 333.04,
-      "pivot": 335.29,
-      "dist": -0.7,
-      "score": 81.28
+      "ticker": "STGW",
+      "industry": "Advertising Agencies",
+      "pattern": "컵앤핸들",
+      "signal_close": 7.58,
+      "pivot": 7.73,
+      "dist": -1.9,
+      "score": 74.45
     }
   ],
   "gates": [
@@ -116,7 +44,7 @@
     "tqqq": null
   },
   "risk": {
-    "days": 5,
+    "days": 6,
     "ret": NaN,
     "sharpe": NaN,
     "sortino": NaN,
@@ -129,13 +57,13 @@
     "alpha_qqq": null
   },
   "trades": {
-    "n": 2,
+    "n": 3,
     "winrate": 0.0,
     "payoff": 0.0,
     "pf": 0.0,
     "avg_win": 0,
-    "avg_loss": -8.3,
-    "expectancy": -8.34,
+    "avg_loss": -8.6,
+    "expectancy": -8.6,
     "best": -7.4,
     "worst": -9.2
   },
@@ -164,134 +92,148 @@
       "date": "2026-06-30",
       "nav": NaN,
       "chg": NaN
+    },
+    {
+      "date": "2026-07-01",
+      "nav": NaN,
+      "chg": NaN
     }
   ],
   "holdings": [
     {
+      "ticker": "ADPT",
+      "entry": "2026-06-26",
+      "days": 3,
+      "cd": "",
+      "entry_px": 20.25,
+      "cur": 22.37,
+      "runner": false
+    },
+    {
       "ticker": "ACMR",
       "entry": "2026-06-26",
-      "days": 2,
+      "days": 3,
       "cd": "",
       "entry_px": 106.86,
-      "cur": 126.89,
-      "runner": false
-    },
-    {
-      "ticker": "MKSI",
-      "entry": "2026-06-26",
-      "days": 2,
-      "cd": "",
-      "entry_px": 410.31,
-      "cur": 444.8,
-      "runner": false
-    },
-    {
-      "ticker": "AMAT",
-      "entry": "2026-06-26",
-      "days": 2,
-      "cd": "",
-      "entry_px": 668.0,
-      "cur": 723.0,
-      "runner": false
-    },
-    {
-      "ticker": "TWST",
-      "entry": "2026-06-26",
-      "days": 2,
-      "cd": "",
-      "entry_px": 96.65,
-      "cur": 102.88,
+      "cur": 117.16,
       "runner": false
     },
     {
       "ticker": "PSNL",
       "entry": "2026-06-26",
-      "days": 2,
+      "days": 3,
       "cd": "",
       "entry_px": 12.59,
-      "cur": 13.4,
+      "cur": 13.79,
       "runner": false
     },
     {
       "ticker": "NEO",
       "entry": "2026-06-26",
-      "days": 2,
+      "days": 3,
       "cd": "",
       "entry_px": 13.73,
-      "cur": 14.59,
-      "runner": false
-    },
-    {
-      "ticker": "ADPT",
-      "entry": "2026-06-26",
-      "days": 2,
-      "cd": "",
-      "entry_px": 20.25,
-      "cur": 21.45,
+      "cur": 14.97,
       "runner": false
     },
     {
       "ticker": "NTRA",
       "entry": "2026-06-26",
-      "days": 2,
+      "days": 3,
       "cd": "",
       "entry_px": 260.74,
-      "cur": 271.45,
+      "cur": 276.27,
+      "runner": false
+    },
+    {
+      "ticker": "TWST",
+      "entry": "2026-06-26",
+      "days": 3,
+      "cd": "",
+      "entry_px": 96.65,
+      "cur": 102.25,
       "runner": false
     },
     {
       "ticker": "CDNA",
       "entry": "2026-06-26",
-      "days": 2,
+      "days": 3,
       "cd": "",
       "entry_px": 27.85,
-      "cur": 28.5,
-      "runner": false
-    },
-    {
-      "ticker": "TILE",
-      "entry": "2026-06-26",
-      "days": 2,
-      "cd": "",
-      "entry_px": 35.51,
-      "cur": 35.84,
+      "cur": 29.25,
       "runner": false
     },
     {
       "ticker": "VCYT",
       "entry": "2026-06-26",
-      "days": 2,
+      "days": 3,
       "cd": "",
       "entry_px": 58.55,
-      "cur": 58.73,
+      "cur": 59.85,
       "runner": false
     },
     {
-      "ticker": "UCTT",
-      "entry": "2026-06-30",
+      "ticker": "TILE",
+      "entry": "2026-06-26",
+      "days": 3,
+      "cd": "",
+      "entry_px": 35.51,
+      "cur": 35.94,
+      "runner": false
+    },
+    {
+      "ticker": "MKSI",
+      "entry": "2026-06-26",
+      "days": 3,
+      "cd": "",
+      "entry_px": 410.31,
+      "cur": 411.05,
+      "runner": false
+    },
+    {
+      "ticker": "ZD",
+      "entry": "2026-07-01",
       "days": 0,
       "cd": "",
-      "entry_px": 142.59,
-      "cur": 142.59,
+      "entry_px": 51.97,
+      "cur": 51.97,
+      "runner": false
+    },
+    {
+      "ticker": "AMAT",
+      "entry": "2026-06-26",
+      "days": 3,
+      "cd": "",
+      "entry_px": 668.0,
+      "cur": 650.91,
       "runner": false
     }
   ],
   "closed_summary": {
-    "n": 2,
+    "n": 3,
     "winrate": 0.0,
-    "avg": -8.34,
+    "avg": -8.6,
     "best": -7.4,
     "worst": -9.2,
     "categories": [
       [
         "손절",
-        2,
+        3,
         "#A32D2D",
         "#FDECEC"
       ]
     ]
   },
   "closed": [
+    {
+      "ticker": "UCTT",
+      "entry": "2026-06-30",
+      "exit": "2026-07-01",
+      "days": 0,
+      "entry_px": 142.59,
+      "exit_px": 129.59,
+      "cat": "손절"
+    },
     {
       "ticker": "DGICB",
       "entry": "2026-06-27",
@@ -319,9 +261,9 @@
       "avg_cost_px": 27.85,
       "shares": 0.002992220227408737,
       "entry_value": 0.08337499999999999,
-      "cur": 28.5,
+      "cur": 29.25,
       "max_gain_pct": 5.134649910233402,
-      "days_in": 2,
+      "days_in": 3,
       "current_stop": 25.9005,
       "runner": false,
       "oneill_8w_active": false
@@ -333,9 +275,9 @@
       "avg_cost_px": 260.74,
       "shares": 0.0003196031806908542,
       "entry_value": 0.08337499999999999,
-      "cur": 271.45,
-      "max_gain_pct": 4.437370560711806,
-      "days_in": 2,
+      "cur": 276.27,
+      "max_gain_pct": 5.956124875354751,
+      "days_in": 3,
       "current_stop": 242.4882,
       "runner": false,
       "oneill_8w_active": false
@@ -347,9 +289,9 @@
       "avg_cost_px": 13.73,
       "shares": 0.006069434328720562,
       "entry_value": 0.08337499999999999,
-      "cur": 14.59,
-      "max_gain_pct": 6.263656227239611,
-      "days_in": 2,
+      "cur": 14.97,
+      "max_gain_pct": 9.03131828113619,
+      "days_in": 3,
       "current_stop": 12.7689,
       "runner": false,
       "oneill_8w_active": false
@@ -361,9 +303,9 @@
       "avg_cost_px": 12.59,
       "shares": 0.006619009796134498,
       "entry_value": 0.08337499999999999,
-      "cur": 13.4,
-      "max_gain_pct": 9.213661636219218,
-      "days_in": 2,
+      "cur": 13.79,
+      "max_gain_pct": 9.531374106433677,
+      "days_in": 3,
       "current_stop": 11.708699999999999,
       "runner": false,
       "oneill_8w_active": false
@@ -375,9 +317,9 @@
       "avg_cost_px": 20.25,
       "shares": 0.004115226337448559,
       "entry_value": 0.08337499999999999,
-      "cur": 21.45,
-      "max_gain_pct": 5.925925925925912,
-      "days_in": 2,
+      "cur": 22.37,
+      "max_gain_pct": 10.469135802469133,
+      "days_in": 3,
       "current_stop": 18.8325,
       "runner": false,
       "oneill_8w_active": false
@@ -389,9 +331,9 @@
       "avg_cost_px": 58.55,
       "shares": 0.0014232849416453174,
       "entry_value": 0.08337499999999999,
-      "cur": 58.73,
+      "cur": 59.85,
       "max_gain_pct": 3.31340734415031,
-      "days_in": 2,
+      "days_in": 3,
       "current_stop": 54.451499999999996,
       "runner": false,
       "oneill_8w_active": false
@@ -403,9 +345,9 @@
       "avg_cost_px": 96.65,
       "shares": 0.0008622176237282289,
       "entry_value": 0.08337499999999999,
-      "cur": 102.88,
+      "cur": 102.25,
       "max_gain_pct": 6.445938954992236,
-      "days_in": 2,
+      "days_in": 3,
       "current_stop": 89.8845,
       "runner": false,
       "oneill_8w_active": false
@@ -417,9 +359,9 @@
       "avg_cost_px": 106.86,
       "shares": 0.0007798365462599039,
       "entry_value": 0.08337499999999999,
-      "cur": 126.89,
+      "cur": 117.16,
       "max_gain_pct": 18.74415122590305,
-      "days_in": 2,
+      "days_in": 3,
       "current_stop": 106.86,
       "runner": false,
       "oneill_8w_active": false
@@ -431,9 +373,9 @@
       "avg_cost_px": 410.31,
       "shares": 0.00020309847026232198,
       "entry_value": 0.08337499999999999,
-      "cur": 444.8,
+      "cur": 411.05,
       "max_gain_pct": 8.405839487216982,
-      "days_in": 2,
+      "days_in": 3,
       "current_stop": 381.5883,
       "runner": false,
       "oneill_8w_active": false
@@ -445,9 +387,9 @@
       "avg_cost_px": 35.51,
       "shares": 0.0023467567821271003,
       "entry_value": 0.08337499999999999,
-      "cur": 35.84,
-      "max_gain_pct": 0.9293156857223428,
-      "days_in": 2,
+      "cur": 35.94,
+      "max_gain_pct": 1.2109264995775915,
+      "days_in": 3,
       "current_stop": 33.0243,
       "runner": false,
       "oneill_8w_active": false
@@ -459,24 +401,24 @@
       "avg_cost_px": 668.0,
       "shares": 0.00012406437125748538,
       "entry_value": 0.08291643750000023,
-      "cur": 723.0,
+      "cur": 650.91,
       "max_gain_pct": 8.233532934131738,
-      "days_in": 2,
+      "days_in": 3,
       "current_stop": 621.24,
       "runner": false,
       "oneill_8w_active": false
     },
     {
-      "ticker": "UCTT",
-      "entry_date": "2026-06-30",
-      "entry_px": 142.59,
-      "avg_cost_px": 142.59,
+      "ticker": "ZD",
+      "entry_date": "2026-07-01",
+      "entry_px": 51.97,
+      "avg_cost_px": 51.97,
       "shares": NaN,
       "entry_value": NaN,
-      "cur": 142.59,
+      "cur": 51.97,
       "max_gain_pct": 0.0,
       "days_in": 0,
-      "current_stop": 132.6087,
+      "current_stop": 48.3321,
       "runner": false,
       "oneill_8w_active": false
     }
@@ -503,6 +445,17 @@
       "shares": NaN,
       "realized": NaN,
       "cat": "손절"
+    },
+    {
+      "ticker": "UCTT",
+      "entry": "2026-06-30",
+      "exit": "2026-07-01",
+      "days": 0,
+      "entry_px": 142.59,
+      "exit_px": 129.59,
+      "shares": NaN,
+      "realized": NaN,
+      "cat": "손절"
     }
   ],
   "_cash": NaN,
@@ -520,6 +473,7 @@
     "2026-06-26",
     "2026-06-26",
     "2026-06-27",
-    "2026-06-30"
+    "2026-06-30",
+    "2026-07-01"
   ]
 }

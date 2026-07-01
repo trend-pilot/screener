@@ -1,59 +1,101 @@
 {
-"_date": "2026-06-30",
+"_date": "2026-07-01",
 "_fired_names": [
-"Aerospace & Defense",
-"Electronic Components",
-"Oil & Gas Refining & Marketing",
-"Other Industrial Metals & Mining",
-"Semiconductor Equipment & Materials",
-"Semiconductors",
-"Staffing & Employment Services",
-"Waste Management"
+"Advertising Agencies",
+"Auto & Truck Dealerships",
+"Broadcasting",
+"Financial Conglomerates",
+"Financial Data & Stock Exchanges",
+"Insurance Brokers",
+"Security & Protection Services",
+"Staffing & Employment Services"
 ],
+"Staffing & Employment Services": {
+"consecutive_days": 4,
+"first_fired": "2026-06-28",
+"last_avg_pct": 6.63,
+"ever_fired": true
+},
+"Broadcasting": {
+"consecutive_days": 1,
+"first_fired": "2026-07-01",
+"last_avg_pct": 5.38,
+"ever_fired": true
+},
+"Auto & Truck Dealerships": {
+"consecutive_days": 1,
+"first_fired": "2026-07-01",
+"last_avg_pct": 5.28,
+"ever_fired": true
+},
+"Security & Protection Services": {
+"consecutive_days": 1,
+"first_fired": "2026-07-01",
+"last_avg_pct": 4.75,
+"ever_fired": true
+},
+"Financial Data & Stock Exchanges": {
+"consecutive_days": 1,
+"first_fired": "2026-07-01",
+"last_avg_pct": 4.46,
+"ever_fired": true
+},
+"Insurance Brokers": {
+"consecutive_days": 1,
+"first_fired": "2026-07-01",
+"last_avg_pct": 3.72,
+"ever_fired": true
+},
+"Advertising Agencies": {
+"consecutive_days": 1,
+"first_fired": "2026-07-01",
+"last_avg_pct": 3.61,
+"ever_fired": true
+},
+"Financial Conglomerates": {
+"consecutive_days": 1,
+"first_fired": "2026-07-01",
+"last_avg_pct": 3.52,
+"ever_fired": true
+},
 "Semiconductor Equipment & Materials": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-06-29",
 "last_avg_pct": 6.79,
 "ever_fired": true
 },
-"Staffing & Employment Services": {
-"consecutive_days": 3,
-"first_fired": "2026-06-28",
-"last_avg_pct": 5.5,
-"ever_fired": true
-},
 "Electronic Components": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-06-29",
 "last_avg_pct": 4.87,
 "ever_fired": true
 },
 "Semiconductors": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-30",
 "last_avg_pct": 4.66,
 "ever_fired": true
 },
 "Waste Management": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-30",
 "last_avg_pct": 4.25,
 "ever_fired": true
 },
 "Oil & Gas Refining & Marketing": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-30",
 "last_avg_pct": 4.0,
 "ever_fired": true
 },
 "Aerospace & Defense": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-06-29",
 "last_avg_pct": 3.63,
 "ever_fired": true
 },
 "Other Industrial Metals & Mining": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-06-30",
 "last_avg_pct": 3.58,
 "ever_fired": true
@@ -76,12 +118,6 @@
 "last_avg_pct": 3.83,
 "ever_fired": true
 },
-"Advertising Agencies": {
-"consecutive_days": 0,
-"first_fired": "2026-06-28",
-"last_avg_pct": 3.11,
-"ever_fired": true
-},
 "Other Precious Metals & Mining": {
 "consecutive_days": 0,
 "first_fired": "2026-06-28",
@@ -100,22 +136,10 @@
 "last_avg_pct": 6.87,
 "ever_fired": true
 },
-"Broadcasting": {
-"consecutive_days": 0,
-"first_fired": "2026-06-28",
-"last_avg_pct": 6.78,
-"ever_fired": true
-},
 "Footwear & Accessories": {
 "consecutive_days": 0,
 "first_fired": "2026-06-28",
 "last_avg_pct": 4.98,
-"ever_fired": true
-},
-"Insurance Brokers": {
-"consecutive_days": 0,
-"first_fired": "2026-06-28",
-"last_avg_pct": 4.92,
 "ever_fired": true
 },
 "Insurance - Property & Casualty": {
@@ -266,12 +290,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-20",
 "last_avg_pct": 5.13,
-"ever_fired": true
-},
-"Financial Conglomerates": {
-"consecutive_days": 0,
-"first_fired": "2026-06-20",
-"last_avg_pct": 4.78,
 "ever_fired": true
 },
 "Rental & Leasing Services": {
