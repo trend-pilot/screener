@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-07-01",
+  "data_date": "2026-07-02",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v1)",
   "nav": NaN,
@@ -12,22 +12,94 @@
   "regime": "🟢 Uptrend",
   "signals": [
     {
-      "ticker": "ZD",
-      "industry": "Advertising Agencies",
-      "pattern": "VCP",
-      "signal_close": 51.97,
-      "pivot": 53.43,
-      "dist": -2.7,
-      "score": 77.96
+      "ticker": "MRNA",
+      "industry": "Biotechnology",
+      "pattern": "이중바닥",
+      "signal_close": 79.76,
+      "pivot": 81.4,
+      "dist": -2.0,
+      "score": 96.25
     },
     {
-      "ticker": "STGW",
-      "industry": "Advertising Agencies",
-      "pattern": "컵앤핸들",
-      "signal_close": 7.58,
-      "pivot": 7.73,
-      "dist": -1.9,
-      "score": 74.45
+      "ticker": "DSGN",
+      "industry": "Biotechnology",
+      "pattern": "RS Line 선행",
+      "signal_close": 15.64,
+      "pivot": 17.25,
+      "dist": -9.3,
+      "score": 92.65
+    },
+    {
+      "ticker": "SLS",
+      "industry": "Biotechnology",
+      "pattern": "어센딩베이스",
+      "signal_close": 14.98,
+      "pivot": 15.88,
+      "dist": -5.7,
+      "score": 91.25
+    },
+    {
+      "ticker": "MGTX",
+      "industry": "Biotechnology",
+      "pattern": "거래량돌파",
+      "signal_close": 13.92,
+      "pivot": 13.94,
+      "dist": -0.1,
+      "score": 90.25
+    },
+    {
+      "ticker": "ACRS",
+      "industry": "Biotechnology",
+      "pattern": "RS Line 선행",
+      "signal_close": 5.56,
+      "pivot": 5.69,
+      "dist": -2.3,
+      "score": 89.95
+    },
+    {
+      "ticker": "TECX",
+      "industry": "Biotechnology",
+      "pattern": "어센딩베이스",
+      "signal_close": 37.93,
+      "pivot": 38.12,
+      "dist": -0.5,
+      "score": 89.75
+    },
+    {
+      "ticker": "ABVX",
+      "industry": "Biotechnology",
+      "pattern": "어닝갭업",
+      "signal_close": 144.65,
+      "pivot": 148.83,
+      "dist": -2.8,
+      "score": 89.57
+    },
+    {
+      "ticker": "CLDX",
+      "industry": "Biotechnology",
+      "pattern": "RS Line 선행",
+      "signal_close": 38.37,
+      "pivot": 39.16,
+      "dist": -2.0,
+      "score": 88.97
+    },
+    {
+      "ticker": "ABCL",
+      "industry": "Biotechnology",
+      "pattern": "어센딩베이스",
+      "signal_close": 8.11,
+      "pivot": 8.42,
+      "dist": -3.7,
+      "score": 88.82
+    },
+    {
+      "ticker": "DRTS",
+      "industry": "Biotechnology",
+      "pattern": "파워플레이",
+      "signal_close": 13.23,
+      "pivot": 13.23,
+      "dist": 0.0,
+      "score": 85.9
     }
   ],
   "gates": [
@@ -44,7 +116,7 @@
     "tqqq": null
   },
   "risk": {
-    "days": 6,
+    "days": 7,
     "ret": NaN,
     "sharpe": NaN,
     "sortino": NaN,
@@ -57,15 +129,15 @@
     "alpha_qqq": null
   },
   "trades": {
-    "n": 3,
+    "n": 6,
     "winrate": 0.0,
     "payoff": 0.0,
     "pf": 0.0,
     "avg_win": 0,
-    "avg_loss": -8.6,
-    "expectancy": -8.6,
+    "avg_loss": -9.2,
+    "expectancy": -9.16,
     "best": -7.4,
-    "worst": -9.2
+    "worst": -10.9
   },
   "nav_history": [
     {
@@ -97,97 +169,66 @@
       "date": "2026-07-01",
       "nav": NaN,
       "chg": NaN
+    },
+    {
+      "date": "2026-07-02",
+      "nav": NaN,
+      "chg": NaN
     }
   ],
   "holdings": [
     {
-      "ticker": "ADPT",
+      "ticker": "NEO",
       "entry": "2026-06-26",
-      "days": 3,
+      "days": 4,
       "cd": "",
-      "entry_px": 20.25,
-      "cur": 22.37,
-      "runner": false
-    },
-    {
-      "ticker": "ACMR",
-      "entry": "2026-06-26",
-      "days": 3,
-      "cd": "",
-      "entry_px": 106.86,
-      "cur": 117.16,
+      "entry_px": 13.73,
+      "cur": 15.16,
       "runner": false
     },
     {
       "ticker": "PSNL",
       "entry": "2026-06-26",
-      "days": 3,
+      "days": 4,
       "cd": "",
       "entry_px": 12.59,
-      "cur": 13.79,
-      "runner": false
-    },
-    {
-      "ticker": "NEO",
-      "entry": "2026-06-26",
-      "days": 3,
-      "cd": "",
-      "entry_px": 13.73,
-      "cur": 14.97,
+      "cur": 13.62,
       "runner": false
     },
     {
       "ticker": "NTRA",
       "entry": "2026-06-26",
-      "days": 3,
+      "days": 4,
       "cd": "",
       "entry_px": 260.74,
-      "cur": 276.27,
-      "runner": false
-    },
-    {
-      "ticker": "TWST",
-      "entry": "2026-06-26",
-      "days": 3,
-      "cd": "",
-      "entry_px": 96.65,
-      "cur": 102.25,
+      "cur": 279.32,
       "runner": false
     },
     {
       "ticker": "CDNA",
       "entry": "2026-06-26",
-      "days": 3,
+      "days": 4,
       "cd": "",
       "entry_px": 27.85,
-      "cur": 29.25,
+      "cur": 29.19,
       "runner": false
     },
     {
-      "ticker": "VCYT",
+      "ticker": "ADPT",
       "entry": "2026-06-26",
-      "days": 3,
+      "days": 4,
       "cd": "",
-      "entry_px": 58.55,
-      "cur": 59.85,
+      "entry_px": 20.25,
+      "cur": 21.19,
       "runner": false
     },
     {
-      "ticker": "TILE",
+      "ticker": "TWST",
       "entry": "2026-06-26",
-      "days": 3,
+      "days": 4,
       "cd": "",
-      "entry_px": 35.51,
-      "cur": 35.94,
-      "runner": false
-    },
-    {
-      "ticker": "MKSI",
-      "entry": "2026-06-26",
-      "days": 3,
-      "cd": "",
-      "entry_px": 410.31,
-      "cur": 411.05,
+      "entry_px": 96.65,
+      "cur": 99.24,
       "runner": false
     },
     {
@@ -196,35 +237,104 @@
       "days": 0,
       "cd": "",
       "entry_px": 51.97,
-      "cur": 51.97,
+      "cur": 52.43,
       "runner": false
     },
     {
-      "ticker": "AMAT",
+      "ticker": "TILE",
       "entry": "2026-06-26",
-      "days": 3,
+      "days": 4,
       "cd": "",
-      "entry_px": 668.0,
-      "cur": 650.91,
+      "entry_px": 35.51,
+      "cur": 35.67,
+      "runner": false
+    },
+    {
+      "ticker": "MRNA",
+      "entry": "2026-07-02",
+      "days": 0,
+      "cd": "",
+      "entry_px": 79.76,
+      "cur": 79.76,
+      "runner": false
+    },
+    {
+      "ticker": "DSGN",
+      "entry": "2026-07-02",
+      "days": 0,
+      "cd": "",
+      "entry_px": 15.64,
+      "cur": 15.64,
+      "runner": false
+    },
+    {
+      "ticker": "SLS",
+      "entry": "2026-07-02",
+      "days": 0,
+      "cd": "",
+      "entry_px": 14.98,
+      "cur": 14.98,
+      "runner": false
+    },
+    {
+      "ticker": "VCYT",
+      "entry": "2026-06-26",
+      "days": 4,
+      "cd": "",
+      "entry_px": 58.55,
+      "cur": 57.08,
       "runner": false
     }
   ],
   "closed_summary": {
-    "n": 3,
+    "n": 6,
     "winrate": 0.0,
-    "avg": -8.6,
+    "avg": -9.16,
     "best": -7.4,
-    "worst": -9.2,
+    "worst": -10.9,
     "categories": [
       [
         "손절",
-        3,
+        5,
         "#A32D2D",
         "#FDECEC"
+      ],
+      [
+        "BE 청산",
+        1,
+        "#185FA5",
+        "#E6F1FB"
       ]
     ]
   },
   "closed": [
+    {
+      "ticker": "AMAT",
+      "entry": "2026-06-26",
+      "exit": "2026-07-02",
+      "days": 4,
+      "entry_px": 668.0,
+      "exit_px": 603.04,
+      "cat": "손절"
+    },
+    {
+      "ticker": "MKSI",
+      "entry": "2026-06-26",
+      "exit": "2026-07-02",
+      "days": 4,
+      "entry_px": 410.31,
+      "exit_px": 365.56,
+      "cat": "손절"
+    },
+    {
+      "ticker": "ACMR",
+      "entry": "2026-06-26",
+      "exit": "2026-07-02",
+      "days": 4,
+      "entry_px": 106.86,
+      "exit_px": 97.77,
+      "cat": "BE 청산"
+    },
     {
       "ticker": "UCTT",
       "entry": "2026-06-30",
@@ -261,9 +371,9 @@
       "avg_cost_px": 27.85,
       "shares": 0.002992220227408737,
       "entry_value": 0.08337499999999999,
-      "cur": 29.25,
+      "cur": 29.19,
       "max_gain_pct": 5.134649910233402,
-      "days_in": 3,
+      "days_in": 4,
       "current_stop": 25.9005,
       "runner": false,
       "oneill_8w_active": false
@@ -275,9 +385,9 @@
       "avg_cost_px": 260.74,
       "shares": 0.0003196031806908542,
       "entry_value": 0.08337499999999999,
-      "cur": 276.27,
-      "max_gain_pct": 5.956124875354751,
-      "days_in": 3,
+      "cur": 279.32,
+      "max_gain_pct": 7.125872516683285,
+      "days_in": 4,
       "current_stop": 242.4882,
       "runner": false,
       "oneill_8w_active": false
@@ -289,9 +399,9 @@
       "avg_cost_px": 13.73,
       "shares": 0.006069434328720562,
       "entry_value": 0.08337499999999999,
-      "cur": 14.97,
-      "max_gain_pct": 9.03131828113619,
-      "days_in": 3,
+      "cur": 15.16,
+      "max_gain_pct": 10.415149308084493,
+      "days_in": 4,
       "current_stop": 12.7689,
       "runner": false,
       "oneill_8w_active": false
@@ -303,9 +413,9 @@
       "avg_cost_px": 12.59,
       "shares": 0.006619009796134498,
       "entry_value": 0.08337499999999999,
-      "cur": 13.79,
+      "cur": 13.62,
       "max_gain_pct": 9.531374106433677,
-      "days_in": 3,
+      "days_in": 4,
       "current_stop": 11.708699999999999,
       "runner": false,
       "oneill_8w_active": false
@@ -317,9 +427,9 @@
       "avg_cost_px": 20.25,
       "shares": 0.004115226337448559,
       "entry_value": 0.08337499999999999,
-      "cur": 22.37,
+      "cur": 21.19,
       "max_gain_pct": 10.469135802469133,
-      "days_in": 3,
+      "days_in": 4,
       "current_stop": 18.8325,
       "runner": false,
       "oneill_8w_active": false
@@ -331,9 +441,9 @@
       "avg_cost_px": 58.55,
       "shares": 0.0014232849416453174,
       "entry_value": 0.08337499999999999,
-      "cur": 59.85,
+      "cur": 57.08,
       "max_gain_pct": 3.31340734415031,
-      "days_in": 3,
+      "days_in": 4,
       "current_stop": 54.451499999999996,
       "runner": false,
       "oneill_8w_active": false
@@ -345,38 +455,10 @@
       "avg_cost_px": 96.65,
       "shares": 0.0008622176237282289,
       "entry_value": 0.08337499999999999,
-      "cur": 102.25,
+      "cur": 99.24,
       "max_gain_pct": 6.445938954992236,
-      "days_in": 3,
+      "days_in": 4,
       "current_stop": 89.8845,
-      "runner": false,
-      "oneill_8w_active": false
-    },
-    {
-      "ticker": "ACMR",
-      "entry_date": "2026-06-26",
-      "entry_px": 106.86,
-      "avg_cost_px": 106.86,
-      "shares": 0.0007798365462599039,
-      "entry_value": 0.08337499999999999,
-      "cur": 117.16,
-      "max_gain_pct": 18.74415122590305,
-      "days_in": 3,
-      "current_stop": 106.86,
-      "runner": false,
-      "oneill_8w_active": false
-    },
-    {
-      "ticker": "MKSI",
-      "entry_date": "2026-06-26",
-      "entry_px": 410.31,
-      "avg_cost_px": 410.31,
-      "shares": 0.00020309847026232198,
-      "entry_value": 0.08337499999999999,
-      "cur": 411.05,
-      "max_gain_pct": 8.405839487216982,
-      "days_in": 3,
-      "current_stop": 381.5883,
       "runner": false,
       "oneill_8w_active": false
     },
@@ -387,24 +469,10 @@
       "avg_cost_px": 35.51,
       "shares": 0.0023467567821271003,
       "entry_value": 0.08337499999999999,
-      "cur": 35.94,
+      "cur": 35.67,
       "max_gain_pct": 1.2109264995775915,
-      "days_in": 3,
+      "days_in": 4,
       "current_stop": 33.0243,
-      "runner": false,
-      "oneill_8w_active": false
-    },
-    {
-      "ticker": "AMAT",
-      "entry_date": "2026-06-26",
-      "entry_px": 668.0,
-      "avg_cost_px": 668.0,
-      "shares": 0.00012406437125748538,
-      "entry_value": 0.08291643750000023,
-      "cur": 650.91,
-      "max_gain_pct": 8.233532934131738,
-      "days_in": 3,
-      "current_stop": 621.24,
       "runner": false,
       "oneill_8w_active": false
     },
@@ -415,10 +483,52 @@
       "avg_cost_px": 51.97,
       "shares": NaN,
       "entry_value": NaN,
-      "cur": 51.97,
-      "max_gain_pct": 0.0,
+      "cur": 52.43,
+      "max_gain_pct": 0.8851260342505274,
       "days_in": 0,
       "current_stop": 48.3321,
+      "runner": false,
+      "oneill_8w_active": false
+    },
+    {
+      "ticker": "MRNA",
+      "entry_date": "2026-07-02",
+      "entry_px": 79.76,
+      "avg_cost_px": 79.76,
+      "shares": NaN,
+      "entry_value": NaN,
+      "cur": 79.76,
+      "max_gain_pct": 0.0,
+      "days_in": 0,
+      "current_stop": 74.1768,
+      "runner": false,
+      "oneill_8w_active": false
+    },
+    {
+      "ticker": "DSGN",
+      "entry_date": "2026-07-02",
+      "entry_px": 15.64,
+      "avg_cost_px": 15.64,
+      "shares": NaN,
+      "entry_value": NaN,
+      "cur": 15.64,
+      "max_gain_pct": 0.0,
+      "days_in": 0,
+      "current_stop": 14.5452,
+      "runner": false,
+      "oneill_8w_active": false
+    },
+    {
+      "ticker": "SLS",
+      "entry_date": "2026-07-02",
+      "entry_px": 14.98,
+      "avg_cost_px": 14.98,
+      "shares": NaN,
+      "entry_value": NaN,
+      "cur": 14.98,
+      "max_gain_pct": 0.0,
+      "days_in": 0,
+      "current_stop": 13.9314,
       "runner": false,
       "oneill_8w_active": false
     }
@@ -456,6 +566,39 @@
       "shares": NaN,
       "realized": NaN,
       "cat": "손절"
+    },
+    {
+      "ticker": "ACMR",
+      "entry": "2026-06-26",
+      "exit": "2026-07-02",
+      "days": 4,
+      "entry_px": 106.86,
+      "exit_px": 97.77,
+      "shares": 0.0007798365462599039,
+      "realized": -0.007168503181733107,
+      "cat": "BE 청산"
+    },
+    {
+      "ticker": "MKSI",
+      "entry": "2026-06-26",
+      "exit": "2026-07-02",
+      "days": 4,
+      "entry_px": 410.31,
+      "exit_px": 365.56,
+      "shares": 0.00020309847026232198,
+      "realized": -0.009167445549300116,
+      "cat": "손절"
+    },
+    {
+      "ticker": "AMAT",
+      "entry": "2026-06-26",
+      "exit": "2026-07-02",
+      "days": 4,
+      "entry_px": 668.0,
+      "exit_px": 603.04,
+      "shares": 0.00012406437125748538,
+      "realized": -0.008138066946107803,
+      "cat": "손절"
     }
   ],
   "_cash": NaN,
@@ -474,6 +617,9 @@
     "2026-06-26",
     "2026-06-27",
     "2026-06-30",
-    "2026-07-01"
+    "2026-07-01",
+    "2026-07-02",
+    "2026-07-02",
+    "2026-07-02"
   ]
 }

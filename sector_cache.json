@@ -6,10 +6,11 @@
     "fetched_at": "2026-06-30T23:10:52"
   },
   "LFMDP": {
-    "sector": "Healthcare",
-    "industry": "Health Information Services",
+    "sector": "",
+    "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:40:55"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:43"
   },
   "ABTC": {
     "sector": "Financial Services",
@@ -32,8 +33,8 @@
   "AMAT": {
     "sector": "Technology",
     "industry": "Semiconductor Equipment & Materials",
-    "marketCap": 363768414208,
-    "fetched_at": "2026-06-01T23:41:33"
+    "marketCap": 478789271552,
+    "fetched_at": "2026-07-02T22:57:18"
   },
   "CORT": {
     "sector": "Healthcare",
@@ -44,14 +45,14 @@
   "SSII": {
     "sector": "Healthcare",
     "industry": "Medical Devices",
-    "marketCap": 788518272,
-    "fetched_at": "2026-06-01T23:40:13"
+    "marketCap": 756497216,
+    "fetched_at": "2026-07-02T22:57:03"
   },
   "AZTA": {
     "sector": "Healthcare",
     "industry": "Medical Instruments & Supplies",
-    "marketCap": 1068892160,
-    "fetched_at": "2026-06-01T23:40:14"
+    "marketCap": 1191038080,
+    "fetched_at": "2026-07-02T22:57:41"
   },
   "MSTR": {
     "sector": "Technology",
@@ -81,7 +82,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:45"
+    "fetched_at": "2026-07-02T22:57:54"
   },
   "SBGI": {
     "sector": "Communication Services",
@@ -110,8 +111,8 @@
   "CVCO": {
     "sector": "Consumer Cyclical",
     "industry": "Residential Construction",
-    "marketCap": 4110083584,
-    "fetched_at": "2026-06-01T23:41:21"
+    "marketCap": 4614729728,
+    "fetched_at": "2026-07-02T22:58:06"
   },
   "FTAIN": {
     "sector": "Industrials",
@@ -123,31 +124,31 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:11"
+    "fetched_at": "2026-07-02T22:57:39"
   },
   "GENVR": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:14"
+    "fetched_at": "2026-07-02T22:57:08"
   },
   "GDS": {
     "sector": "Technology",
     "industry": "Information Technology Services",
-    "marketCap": 7115408896,
-    "fetched_at": "2026-06-01T23:40:30"
+    "marketCap": 5975260672,
+    "fetched_at": "2026-07-02T22:58:33"
   },
   "BPOPM": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:53"
+    "fetched_at": "2026-07-02T22:56:44"
   },
   "NAMSW": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:07"
+    "fetched_at": "2026-07-02T22:58:12"
   },
   "VSAT": {
     "sector": "Technology",
@@ -158,8 +159,8 @@
   "MNKD": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 1090594176,
-    "fetched_at": "2026-06-01T23:42:10"
+    "marketCap": 1396454784,
+    "fetched_at": "2026-07-02T22:57:54"
   },
   "BEAG": {
     "sector": "Financial Services",
@@ -171,7 +172,7 @@
     "sector": "Financial Services",
     "industry": "Shell Companies",
     "marketCap": 171999984,
-    "fetched_at": "2026-06-01T23:41:56"
+    "fetched_at": "2026-07-02T22:57:20"
   },
   "ANAB": {
     "sector": "Healthcare",
@@ -216,10 +217,11 @@
     "fetched_at": "2026-06-29T22:58:40"
   },
   "CGNX": {
-    "sector": "Technology",
-    "industry": "Scientific & Technical Instruments",
-    "marketCap": 10757353472,
-    "fetched_at": "2026-06-01T23:41:46"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:46"
   },
   "ALHC": {
     "sector": "Healthcare",
@@ -255,13 +257,13 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:39"
+    "fetched_at": "2026-07-02T22:56:41"
   },
   "OYSER": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:18"
+    "fetched_at": "2026-07-02T22:58:23"
   },
   "RDNT": {
     "sector": "Healthcare",
@@ -284,8 +286,8 @@
   "ASST": {
     "sector": "Financial Services",
     "industry": "Asset Management",
-    "marketCap": 1303229568,
-    "fetched_at": "2026-06-01T23:41:01"
+    "marketCap": 1069355008,
+    "fetched_at": "2026-07-02T22:57:39"
   },
   "TYGO": {
     "sector": "Technology",
@@ -320,14 +322,14 @@
   "MQ": {
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "marketCap": 1844531840,
-    "fetched_at": "2026-06-01T23:42:19"
+    "marketCap": 1845591936,
+    "fetched_at": "2026-07-02T22:57:30"
   },
   "COPX": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:15"
+    "fetched_at": "2026-07-02T22:58:00"
   },
   "MVST": {
     "sector": "Consumer Cyclical",
@@ -339,7 +341,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:58"
+    "fetched_at": "2026-07-02T22:58:29"
   },
   "CRVS": {
     "sector": "Healthcare",
@@ -357,7 +359,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:34"
+    "fetched_at": "2026-07-02T22:57:52"
   },
   "AACBU": {
     "sector": "Financial Services",
@@ -368,8 +370,8 @@
   "CCBG": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 762551808,
-    "fetched_at": "2026-06-01T23:42:17"
+    "marketCap": 848742912,
+    "fetched_at": "2026-07-02T22:57:25"
   },
   "NTGR": {
     "sector": "Technology",
@@ -381,7 +383,7 @@
     "sector": "Real Estate",
     "industry": "REIT - Healthcare Facilities",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:39:26"
+    "fetched_at": "2026-07-02T22:57:49"
   },
   "PTGX": {
     "sector": "Healthcare",
@@ -416,8 +418,8 @@
   "FOSL": {
     "sector": "Consumer Cyclical",
     "industry": "Footwear & Accessories",
-    "marketCap": 244089616,
-    "fetched_at": "2026-06-01T23:42:05"
+    "marketCap": 249999776,
+    "fetched_at": "2026-07-02T22:57:53"
   },
   "FVN": {
     "sector": "Financial Services",
@@ -434,8 +436,8 @@
   "ATAI": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 1774563456,
-    "fetched_at": "2026-06-01T23:39:43"
+    "marketCap": 1910785152,
+    "fetched_at": "2026-07-02T22:58:30"
   },
   "ENVX": {
     "sector": "Industrials",
@@ -458,8 +460,8 @@
   "HAFC": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 886146816,
-    "fetched_at": "2026-06-01T23:39:23"
+    "marketCap": 967111552,
+    "fetched_at": "2026-07-02T22:58:26"
   },
   "PLTK": {
     "sector": "Communication Services",
@@ -498,10 +500,11 @@
     "fetched_at": "2026-06-28T22:56:37"
   },
   "IPX": {
-    "sector": "Basic Materials",
-    "industry": "Other Industrial Metals & Mining",
-    "marketCap": 1512634880,
-    "fetched_at": "2026-06-01T23:41:53"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:56"
   },
   "IMXI": {
     "sector": "Technology",
@@ -518,8 +521,8 @@
   "ACIC": {
     "sector": "Financial Services",
     "industry": "Insurance - Property & Casualty",
-    "marketCap": 507903200,
-    "fetched_at": "2026-06-01T23:40:28"
+    "marketCap": 559275136,
+    "fetched_at": "2026-07-02T22:58:17"
   },
   "ADSE": {
     "sector": "Industrials",
@@ -542,26 +545,27 @@
   "FULT": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 4076879360,
-    "fetched_at": "2026-06-01T23:41:31"
+    "marketCap": 4608230912,
+    "fetched_at": "2026-07-02T22:57:02"
   },
   "AGNCL": {
-    "sector": "Real Estate",
-    "industry": "REIT - Mortgage",
+    "sector": "",
+    "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:41:11"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:42"
   },
   "GAINZ": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:23"
+    "fetched_at": "2026-07-02T22:57:53"
   },
   "VTV": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:01"
+    "fetched_at": "2026-07-02T22:57:05"
   },
   "ABVX": {
     "sector": "Healthcare",
@@ -572,20 +576,20 @@
   "EWTX": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 4331694080,
-    "fetched_at": "2026-06-01T23:39:59"
+    "marketCap": 4256379648,
+    "fetched_at": "2026-07-02T22:57:16"
   },
   "REGN": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 62972608512,
-    "fetched_at": "2026-06-01T23:39:12"
+    "marketCap": 68593037312,
+    "fetched_at": "2026-07-02T22:58:39"
   },
   "ELE": {
     "sector": "Basic Materials",
     "industry": "Other Precious Metals & Mining",
-    "marketCap": 1114470272,
-    "fetched_at": "2026-06-01T23:41:42"
+    "marketCap": 1101593728,
+    "fetched_at": "2026-07-02T22:58:36"
   },
   "TRST": {
     "sector": "Financial Services",
@@ -597,13 +601,14 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:57"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:48"
   },
   "BOTZ": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:38"
+    "fetched_at": "2026-07-02T22:57:38"
   },
   "DVLT": {
     "sector": "Technology",
@@ -633,13 +638,14 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:24"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:59"
   },
   "ACWX": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:15"
+    "fetched_at": "2026-07-02T22:57:50"
   },
   "TECX": {
     "sector": "Healthcare",
@@ -668,14 +674,15 @@
   "COCO": {
     "sector": "Consumer Defensive",
     "industry": "Beverages - Non-Alcoholic",
-    "marketCap": 4283448320,
-    "fetched_at": "2026-06-01T23:39:21"
+    "marketCap": 3778572800,
+    "fetched_at": "2026-07-02T22:58:18"
   },
   "OCUL": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 1955315968,
-    "fetched_at": "2026-06-01T23:42:10"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:56"
   },
   "STKL": {
     "sector": "Consumer Defensive",
@@ -692,14 +699,14 @@
   "LYFT": {
     "sector": "Technology",
     "industry": "Software - Application",
-    "marketCap": 5642082304,
-    "fetched_at": "2026-06-01T23:41:11"
+    "marketCap": 5835720192,
+    "fetched_at": "2026-07-02T22:57:39"
   },
   "FANG": {
     "sector": "Energy",
     "industry": "Oil & Gas E&P",
-    "marketCap": 55989788672,
-    "fetched_at": "2026-06-01T23:41:05"
+    "marketCap": 48397139968,
+    "fetched_at": "2026-07-02T22:57:43"
   },
   "OMDA": {
     "sector": "Healthcare",
@@ -710,8 +717,8 @@
   "IPCX": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
-    "marketCap": 355764768,
-    "fetched_at": "2026-06-01T23:39:25"
+    "marketCap": 356799008,
+    "fetched_at": "2026-07-02T22:58:24"
   },
   "PLPC": {
     "sector": "Industrials",
@@ -738,16 +745,17 @@
     "fetched_at": "2026-06-29T22:58:25"
   },
   "BWIN": {
-    "sector": "Financial Services",
-    "industry": "Insurance Brokers",
-    "marketCap": 1968322176,
-    "fetched_at": "2026-06-01T23:40:33"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:50"
   },
   "CDRO": {
     "sector": "Consumer Cyclical",
     "industry": "Gambling",
-    "marketCap": 424574176,
-    "fetched_at": "2026-06-01T23:39:19"
+    "marketCap": 434692416,
+    "fetched_at": "2026-07-02T22:57:44"
   },
   "CHPG": {
     "sector": "Financial Services",
@@ -764,8 +772,8 @@
   "MNRO": {
     "sector": "Consumer Cyclical",
     "industry": "Auto Parts",
-    "marketCap": 471396672,
-    "fetched_at": "2026-06-01T23:40:37"
+    "marketCap": 516734816,
+    "fetched_at": "2026-07-02T22:57:56"
   },
   "OFIX": {
     "sector": "Healthcare",
@@ -776,8 +784,8 @@
   "UFPI": {
     "sector": "Basic Materials",
     "industry": "Lumber & Wood Production",
-    "marketCap": 4487919104,
-    "fetched_at": "2026-06-01T23:41:31"
+    "marketCap": 5037472256,
+    "fetched_at": "2026-07-02T22:57:41"
   },
   "ANDE": {
     "sector": "Consumer Defensive",
@@ -789,13 +797,14 @@
     "sector": "Financial Services",
     "industry": "Shell Companies",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:39:08"
+    "fetched_at": "2026-07-02T22:57:16"
   },
   "BGC": {
-    "sector": "Financial Services",
-    "industry": "Capital Markets",
-    "marketCap": 5006141952,
-    "fetched_at": "2026-06-01T23:42:13"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:47"
   },
   "MGEE": {
     "sector": "Utilities",
@@ -812,14 +821,14 @@
   "PRCH": {
     "sector": "Financial Services",
     "industry": "Insurance - Property & Casualty",
-    "marketCap": 1206718080,
-    "fetched_at": "2026-06-01T23:39:48"
+    "marketCap": 1661835648,
+    "fetched_at": "2026-07-02T22:57:35"
   },
   "PCTTU": {
     "sector": "Industrials",
     "industry": "Pollution & Treatment Controls",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:40:46"
+    "fetched_at": "2026-07-02T22:58:21"
   },
   "KOPN": {
     "sector": "Technology",
@@ -831,7 +840,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:04"
+    "fetched_at": "2026-07-02T22:57:37"
   },
   "MPB": {
     "sector": "Financial Services",
@@ -842,8 +851,8 @@
   "WILC": {
     "sector": "Consumer Defensive",
     "industry": "Food Distribution",
-    "marketCap": 496876096,
-    "fetched_at": "2026-06-01T23:42:12"
+    "marketCap": 463222592,
+    "fetched_at": "2026-07-02T22:57:17"
   },
   "TACO": {
     "sector": "Financial Services",
@@ -864,10 +873,11 @@
     "fetched_at": "2026-06-29T22:58:55"
   },
   "ASTH": {
-    "sector": "Healthcare",
-    "industry": "Medical Care Facilities",
-    "marketCap": 1872269696,
-    "fetched_at": "2026-06-01T23:42:00"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:53"
   },
   "GDEV": {
     "sector": "Communication Services",
@@ -888,10 +898,11 @@
     "fetched_at": "2026-06-30T23:12:21"
   },
   "HDL": {
-    "sector": "Consumer Cyclical",
-    "industry": "Restaurants",
-    "marketCap": 788416320,
-    "fetched_at": "2026-06-01T23:41:52"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:42"
   },
   "LSCC": {
     "sector": "Technology",
@@ -902,14 +913,14 @@
   "BNTC": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 371713920,
-    "fetched_at": "2026-06-01T23:42:05"
+    "marketCap": 454164320,
+    "fetched_at": "2026-07-02T22:58:34"
   },
   "ADUS": {
     "sector": "Healthcare",
     "industry": "Medical Care Facilities",
-    "marketCap": 1669564160,
-    "fetched_at": "2026-06-01T23:40:00"
+    "marketCap": 1962974464,
+    "fetched_at": "2026-07-02T22:58:30"
   },
   "BLMN": {
     "sector": "Consumer Cyclical",
@@ -920,8 +931,8 @@
   "MMSI": {
     "sector": "Healthcare",
     "industry": "Medical Instruments & Supplies",
-    "marketCap": 3701583872,
-    "fetched_at": "2026-06-01T23:39:26"
+    "marketCap": 4240863488,
+    "fetched_at": "2026-07-02T22:57:23"
   },
   "FFIC": {
     "sector": "Financial Services",
@@ -932,8 +943,8 @@
   "RTAC": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
-    "marketCap": 398903424,
-    "fetched_at": "2026-06-01T23:39:40"
+    "marketCap": 401957216,
+    "fetched_at": "2026-07-02T22:58:35"
   },
   "AQST": {
     "sector": "Healthcare",
@@ -942,16 +953,18 @@
     "fetched_at": "2026-06-29T22:58:47"
   },
   "CHRS": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 242172352,
-    "fetched_at": "2026-06-01T23:41:43"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:58"
   },
   "EWZ": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:46"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:41"
   },
   "EWBC": {
     "sector": "Financial Services",
@@ -996,10 +1009,11 @@
     "fetched_at": "2026-06-30T23:11:38"
   },
   "SSYS": {
-    "sector": "Technology",
-    "industry": "Computer Hardware",
-    "marketCap": 928041600,
-    "fetched_at": "2026-06-01T23:40:50"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:52"
   },
   "ACGLN": {
     "sector": "Financial Services",
@@ -1023,7 +1037,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:23"
+    "fetched_at": "2026-07-02T22:57:54"
   },
   "GEN": {
     "sector": "Technology",
@@ -1064,8 +1078,8 @@
   "BANR": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 2136243968,
-    "fetched_at": "2026-06-01T23:41:15"
+    "marketCap": 2282766336,
+    "fetched_at": "2026-07-02T22:58:22"
   },
   "SRAD": {
     "sector": "Technology",
@@ -1088,8 +1102,8 @@
   "FTRE": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 1490655360,
-    "fetched_at": "2026-06-01T23:39:15"
+    "marketCap": 1634424192,
+    "fetched_at": "2026-07-02T22:57:50"
   },
   "FBRX": {
     "sector": "Healthcare",
@@ -1124,20 +1138,20 @@
   "QNST": {
     "sector": "Communication Services",
     "industry": "Advertising Agencies",
-    "marketCap": 724386048,
-    "fetched_at": "2026-06-01T23:42:00"
+    "marketCap": 908785728,
+    "fetched_at": "2026-07-02T22:58:04"
   },
   "ETOR": {
     "sector": "Financial Services",
     "industry": "Capital Markets",
-    "marketCap": 3313893632,
-    "fetched_at": "2026-06-01T23:41:37"
+    "marketCap": 3218461440,
+    "fetched_at": "2026-07-02T22:57:57"
   },
   "EMPD": {
     "sector": "Consumer Cyclical",
     "industry": "Auto Manufacturers",
-    "marketCap": 119186872,
-    "fetched_at": "2026-06-01T23:41:00"
+    "marketCap": 111597144,
+    "fetched_at": "2026-07-02T22:57:31"
   },
   "ASMB": {
     "sector": "Healthcare",
@@ -1220,20 +1234,20 @@
   "FISV": {
     "sector": "",
     "industry": "",
-    "marketCap": 27051974656,
-    "fetched_at": "2026-07-01T23:12:24"
+    "marketCap": 27905181696,
+    "fetched_at": "2026-07-02T22:58:15"
   },
   "XLE": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:29"
+    "fetched_at": "2026-07-02T22:57:34"
   },
   "NCNO": {
     "sector": "Technology",
     "industry": "Software - Application",
-    "marketCap": 1883215360,
-    "fetched_at": "2026-06-01T23:42:05"
+    "marketCap": 1944564864,
+    "fetched_at": "2026-07-02T22:56:58"
   },
   "SHOO": {
     "sector": "Consumer Cyclical",
@@ -1262,14 +1276,14 @@
   "INTC": {
     "sector": "Technology",
     "industry": "Semiconductors",
-    "marketCap": 549492588544,
-    "fetched_at": "2026-06-01T23:41:33"
+    "marketCap": 604879060992,
+    "fetched_at": "2026-07-02T22:57:18"
   },
   "LQD": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:14"
+    "fetched_at": "2026-07-02T22:57:30"
   },
   "ZD": {
     "sector": "Communication Services",
@@ -1328,8 +1342,8 @@
   "WBTN": {
     "sector": "Communication Services",
     "industry": "Internet Content & Information",
-    "marketCap": 1698548352,
-    "fetched_at": "2026-06-01T23:42:18"
+    "marketCap": 1574132352,
+    "fetched_at": "2026-07-02T22:56:58"
   },
   "JKHY": {
     "sector": "Technology",
@@ -1344,10 +1358,11 @@
     "fetched_at": "2026-06-30T23:11:01"
   },
   "PAYS": {
-    "sector": "Technology",
-    "industry": "Software - Infrastructure",
-    "marketCap": 433269728,
-    "fetched_at": "2026-06-01T23:41:36"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:59"
   },
   "PSMT": {
     "sector": "Consumer Defensive",
@@ -1364,8 +1379,8 @@
   "CARG": {
     "sector": "Consumer Cyclical",
     "industry": "Auto & Truck Dealerships",
-    "marketCap": 2681262336,
-    "fetched_at": "2026-06-01T23:40:32"
+    "marketCap": 3268380416,
+    "fetched_at": "2026-07-02T22:57:45"
   },
   "LXEO": {
     "sector": "Healthcare",
@@ -1418,8 +1433,8 @@
   "KRNT": {
     "sector": "Industrials",
     "industry": "Specialty Industrial Machinery",
-    "marketCap": 760910592,
-    "fetched_at": "2026-06-01T23:39:41"
+    "marketCap": 723374784,
+    "fetched_at": "2026-07-02T22:57:04"
   },
   "LOKV": {
     "sector": "Financial Services",
@@ -1448,8 +1463,8 @@
   "NXT": {
     "sector": "Technology",
     "industry": "Solar",
-    "marketCap": 22069622784,
-    "fetched_at": "2026-06-01T23:39:11"
+    "marketCap": 17172362240,
+    "fetched_at": "2026-07-02T22:57:56"
   },
   "BVS": {
     "sector": "Healthcare",
@@ -1460,8 +1475,8 @@
   "AGIO": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 1665204992,
-    "fetched_at": "2026-06-01T23:40:36"
+    "marketCap": 2234943232,
+    "fetched_at": "2026-07-02T22:58:36"
   },
   "REAL": {
     "sector": "Consumer Cyclical",
@@ -1488,10 +1503,11 @@
     "fetched_at": "2026-07-01T23:12:33"
   },
   "GAIN": {
-    "sector": "Financial Services",
-    "industry": "Asset Management",
-    "marketCap": 633169280,
-    "fetched_at": "2026-06-01T23:40:17"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:43"
   },
   "RUSHA": {
     "sector": "Consumer Cyclical",
@@ -1500,16 +1516,17 @@
     "fetched_at": "2026-06-30T23:11:27"
   },
   "TRVI": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 1980616960,
-    "fetched_at": "2026-06-01T23:41:47"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:56"
   },
   "AIOT": {
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "marketCap": 527198816,
-    "fetched_at": "2026-06-01T23:40:12"
+    "marketCap": 586370432,
+    "fetched_at": "2026-07-02T22:57:54"
   },
   "CECO": {
     "sector": "Industrials",
@@ -1532,8 +1549,8 @@
   "XNCR": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 874870912,
-    "fetched_at": "2026-06-01T23:39:17"
+    "marketCap": 1112124032,
+    "fetched_at": "2026-07-02T22:58:32"
   },
   "FTNT": {
     "sector": "Technology",
@@ -1542,10 +1559,11 @@
     "fetched_at": "2026-06-30T23:12:59"
   },
   "CRCT": {
-    "sector": "Technology",
-    "industry": "Computer Hardware",
-    "marketCap": 921454976,
-    "fetched_at": "2026-06-01T23:39:51"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:47"
   },
   "ADMA": {
     "sector": "Healthcare",
@@ -1560,10 +1578,11 @@
     "fetched_at": "2026-06-28T22:56:27"
   },
   "SHBI": {
-    "sector": "Financial Services",
-    "industry": "Banks - Regional",
-    "marketCap": 682166464,
-    "fetched_at": "2026-06-01T23:41:23"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:54"
   },
   "CINF": {
     "sector": "Financial Services",
@@ -1574,8 +1593,8 @@
   "RCKT": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 329764512,
-    "fetched_at": "2026-06-01T23:41:10"
+    "marketCap": 419303232,
+    "fetched_at": "2026-07-02T22:58:24"
   },
   "MLAB": {
     "sector": "Technology",
@@ -1584,10 +1603,11 @@
     "fetched_at": "2026-06-30T23:12:23"
   },
   "SFNC": {
-    "sector": "Financial Services",
-    "industry": "Banks - Regional",
-    "marketCap": 3053601536,
-    "fetched_at": "2026-06-01T23:40:54"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:51"
   },
   "AMRN": {
     "sector": "Healthcare",
@@ -1608,10 +1628,11 @@
     "fetched_at": "2026-06-30T23:11:31"
   },
   "LSAK": {
-    "sector": "Technology",
-    "industry": "Software - Infrastructure",
-    "marketCap": 415820672,
-    "fetched_at": "2026-06-01T23:41:22"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:58"
   },
   "BRKR": {
     "sector": "Healthcare",
@@ -1629,13 +1650,14 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:23"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:46"
   },
   "OUST": {
     "sector": "Technology",
     "industry": "Electronic Components",
-    "marketCap": 2860825600,
-    "fetched_at": "2026-06-01T23:41:14"
+    "marketCap": 3173459712,
+    "fetched_at": "2026-07-02T22:58:25"
   },
   "GBDC": {
     "sector": "Financial Services",
@@ -1658,14 +1680,15 @@
   "ODD": {
     "sector": "Consumer Defensive",
     "industry": "Household & Personal Products",
-    "marketCap": 802995392,
-    "fetched_at": "2026-06-01T23:41:54"
+    "marketCap": 825629440,
+    "fetched_at": "2026-07-02T22:58:30"
   },
   "AMPL": {
-    "sector": "Technology",
-    "industry": "Software - Application",
-    "marketCap": 1164396928,
-    "fetched_at": "2026-06-01T23:39:57"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:47"
   },
   "MLAC": {
     "sector": "",
@@ -1688,20 +1711,21 @@
   "PGEN": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 1468825216,
-    "fetched_at": "2026-06-01T23:41:03"
+    "marketCap": 2010721920,
+    "fetched_at": "2026-07-02T22:56:41"
   },
   "ADEA": {
     "sector": "Technology",
     "industry": "Software - Application",
-    "marketCap": 3155504384,
-    "fetched_at": "2026-06-01T23:39:17"
+    "marketCap": 3219474688,
+    "fetched_at": "2026-07-02T22:57:53"
   },
   "CTSH": {
-    "sector": "Technology",
-    "industry": "Information Technology Services",
-    "marketCap": 27036680192,
-    "fetched_at": "2026-06-01T23:40:07"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:44"
   },
   "ISSC": {
     "sector": "Industrials",
@@ -1718,8 +1742,8 @@
   "LBRDK": {
     "sector": "Communication Services",
     "industry": "Telecom Services",
-    "marketCap": 4798563840,
-    "fetched_at": "2026-06-01T23:41:16"
+    "marketCap": 0,
+    "fetched_at": "2026-07-02T22:57:48"
   },
   "NEXM": {
     "sector": "Basic Materials",
@@ -1770,10 +1794,11 @@
     "fetched_at": "2026-06-29T22:58:57"
   },
   "ORRF": {
-    "sector": "Financial Services",
-    "industry": "Banks - Regional",
-    "marketCap": 721271168,
-    "fetched_at": "2026-06-01T23:41:53"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:43"
   },
   "BSRR": {
     "sector": "Financial Services",
@@ -1785,13 +1810,14 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:25"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:54"
   },
   "NVMI": {
     "sector": "Technology",
     "industry": "Semiconductor Equipment & Materials",
-    "marketCap": 15324844032,
-    "fetched_at": "2026-06-01T23:41:55"
+    "marketCap": 14953348096,
+    "fetched_at": "2026-07-02T22:57:48"
   },
   "OPEN": {
     "sector": "Real Estate",
@@ -1808,8 +1834,8 @@
   "RAAQ": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
-    "marketCap": 268410000,
-    "fetched_at": "2026-06-01T23:39:50"
+    "marketCap": 308660000,
+    "fetched_at": "2026-07-02T22:58:11"
   },
   "BHFAN": {
     "sector": "Financial Services",
@@ -1827,19 +1853,22 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:35"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:47"
   },
   "NEXT": {
-    "sector": "Energy",
-    "industry": "Oil & Gas Equipment & Services",
-    "marketCap": 2194141952,
-    "fetched_at": "2026-06-01T23:40:35"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:57"
   },
   "AMBA": {
-    "sector": "Technology",
-    "industry": "Semiconductor Equipment & Materials",
-    "marketCap": 3318998528,
-    "fetched_at": "2026-06-01T23:39:31"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:42"
   },
   "CCLDO": {
     "sector": "Healthcare",
@@ -1857,7 +1886,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:07"
+    "fetched_at": "2026-07-02T22:57:47"
   },
   "AMAL": {
     "sector": "Financial Services",
@@ -1874,8 +1903,8 @@
   "CZNC": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 370873344,
-    "fetched_at": "2026-06-01T23:39:22"
+    "marketCap": 423368928,
+    "fetched_at": "2026-07-02T22:58:27"
   },
   "KMDA": {
     "sector": "Healthcare",
@@ -1910,8 +1939,8 @@
   "MSBI": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 569862208,
-    "fetched_at": "2026-06-01T23:40:59"
+    "marketCap": 629149440,
+    "fetched_at": "2026-07-02T22:57:09"
   },
   "ARTNA": {
     "sector": "Utilities",
@@ -1946,8 +1975,8 @@
   "SCVL": {
     "sector": "Consumer Cyclical",
     "industry": "Apparel Retail",
-    "marketCap": 479598976,
-    "fetched_at": "2026-06-01T23:40:25"
+    "marketCap": 473247296,
+    "fetched_at": "2026-07-02T22:57:12"
   },
   "SNDK": {
     "sector": "Technology",
@@ -1959,7 +1988,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:42"
+    "fetched_at": "2026-07-02T22:58:40"
   },
   "VACHU": {
     "sector": "Financial Services",
@@ -1976,8 +2005,8 @@
   "RSVR": {
     "sector": "Communication Services",
     "industry": "Entertainment",
-    "marketCap": 672402240,
-    "fetched_at": "2026-06-01T23:39:46"
+    "marketCap": 671306112,
+    "fetched_at": "2026-07-02T22:57:51"
   },
   "PTCT": {
     "sector": "Healthcare",
@@ -2006,8 +2035,8 @@
   "PRTA": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 502067552,
-    "fetched_at": "2026-06-01T23:40:25"
+    "marketCap": 507302848,
+    "fetched_at": "2026-07-02T22:56:48"
   },
   "HIFS": {
     "sector": "Financial Services",
@@ -2025,7 +2054,8 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:50"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:56"
   },
   "AAPG": {
     "sector": "Healthcare",
@@ -2066,8 +2096,8 @@
   "BBCP": {
     "sector": "Industrials",
     "industry": "Engineering & Construction",
-    "marketCap": 390951296,
-    "fetched_at": "2026-06-01T23:42:09"
+    "marketCap": 559870848,
+    "fetched_at": "2026-07-02T22:57:44"
   },
   "IMSR": {
     "sector": "Utilities",
@@ -2078,8 +2108,8 @@
   "WTBA": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 401692896,
-    "fetched_at": "2026-06-01T23:41:51"
+    "marketCap": 461291232,
+    "fetched_at": "2026-07-02T22:57:12"
   },
   "LITE": {
     "sector": "Technology",
@@ -2108,8 +2138,8 @@
   "GRPN": {
     "sector": "Communication Services",
     "industry": "Internet Content & Information",
-    "marketCap": 718277056,
-    "fetched_at": "2026-06-01T23:41:32"
+    "marketCap": 971630208,
+    "fetched_at": "2026-07-02T22:58:41"
   },
   "NTAP": {
     "sector": "Technology",
@@ -2120,8 +2150,8 @@
   "AVBH": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 335885408,
-    "fetched_at": "2026-06-01T23:41:29"
+    "marketCap": 361082304,
+    "fetched_at": "2026-07-02T22:58:17"
   },
   "NATH": {
     "sector": "Consumer Cyclical",
@@ -2138,8 +2168,8 @@
   "RMNI": {
     "sector": "Technology",
     "industry": "Software - Application",
-    "marketCap": 395231200,
-    "fetched_at": "2026-06-01T23:41:52"
+    "marketCap": 420222400,
+    "fetched_at": "2026-07-02T22:56:56"
   },
   "ANGO": {
     "sector": "Healthcare",
@@ -2154,10 +2184,11 @@
     "fetched_at": "2026-07-01T23:11:32"
   },
   "MDGL": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 11095075840,
-    "fetched_at": "2026-06-01T23:40:58"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:58"
   },
   "GCT": {
     "sector": "Technology",
@@ -2180,20 +2211,20 @@
   "GSHD": {
     "sector": "Financial Services",
     "industry": "Insurance Brokers",
-    "marketCap": 1304962048,
-    "fetched_at": "2026-06-01T23:40:30"
+    "marketCap": 1876083072,
+    "fetched_at": "2026-07-02T22:58:20"
   },
   "SPY": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:41"
+    "fetched_at": "2026-07-02T22:57:06"
   },
   "VSTM": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 368190560,
-    "fetched_at": "2026-06-01T23:40:10"
+    "marketCap": 395431392,
+    "fetched_at": "2026-07-02T22:57:45"
   },
   "ETHM": {
     "sector": "Financial Services",
@@ -2240,14 +2271,15 @@
   "GNTX": {
     "sector": "Consumer Cyclical",
     "industry": "Auto Parts",
-    "marketCap": 5127880192,
-    "fetched_at": "2026-06-01T23:40:45"
+    "marketCap": 5219449856,
+    "fetched_at": "2026-07-02T22:56:43"
   },
   "OLPX": {
-    "sector": "Consumer Cyclical",
-    "industry": "Specialty Retail",
-    "marketCap": 1377839744,
-    "fetched_at": "2026-06-01T23:39:09"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:52"
   },
   "GRAB": {
     "sector": "Technology",
@@ -2298,10 +2330,11 @@
     "fetched_at": "2026-06-29T22:59:28"
   },
   "LPBB": {
-    "sector": "Financial Services",
-    "industry": "Shell Companies",
-    "marketCap": 307337472,
-    "fetched_at": "2026-06-01T23:42:14"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:55"
   },
   "STRO": {
     "sector": "Healthcare",
@@ -2318,26 +2351,26 @@
   "MLKN": {
     "sector": "Consumer Cyclical",
     "industry": "Furnishings, Fixtures & Appliances",
-    "marketCap": 1051603456,
-    "fetched_at": "2026-06-01T23:40:18"
+    "marketCap": 1464586880,
+    "fetched_at": "2026-07-02T22:58:04"
   },
   "LBTYA": {
     "sector": "Communication Services",
     "industry": "Telecom Services",
-    "marketCap": 4104503040,
-    "fetched_at": "2026-06-01T23:39:41"
+    "marketCap": 3820501248,
+    "fetched_at": "2026-07-02T22:58:10"
   },
   "GMAB": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 15624621056,
-    "fetched_at": "2026-06-01T23:40:42"
+    "marketCap": 17506381824,
+    "fetched_at": "2026-07-02T22:56:56"
   },
   "AGNCO": {
     "sector": "Real Estate",
     "industry": "REIT - Mortgage",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:41:17"
+    "fetched_at": "2026-07-02T22:57:54"
   },
   "CCEP": {
     "sector": "Consumer Defensive",
@@ -2366,8 +2399,8 @@
   "STRA": {
     "sector": "Consumer Defensive",
     "industry": "Education & Training Services",
-    "marketCap": 1804565760,
-    "fetched_at": "2026-06-01T23:41:01"
+    "marketCap": 1840707200,
+    "fetched_at": "2026-07-02T22:57:49"
   },
   "STX": {
     "sector": "Technology",
@@ -2402,8 +2435,8 @@
   "SSNC": {
     "sector": "Technology",
     "industry": "Software - Application",
-    "marketCap": 16636815360,
-    "fetched_at": "2026-06-01T23:40:13"
+    "marketCap": 15779444736,
+    "fetched_at": "2026-07-02T22:58:30"
   },
   "BANF": {
     "sector": "Financial Services",
@@ -2414,8 +2447,8 @@
   "SBCF": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 2890173952,
-    "fetched_at": "2026-06-01T23:42:15"
+    "marketCap": 3236372224,
+    "fetched_at": "2026-07-02T22:58:20"
   },
   "WOOF": {
     "sector": "Consumer Cyclical",
@@ -2426,14 +2459,14 @@
   "PRCT": {
     "sector": "Healthcare",
     "industry": "Medical Devices",
-    "marketCap": 1585758976,
-    "fetched_at": "2026-06-01T23:39:46"
+    "marketCap": 1197003392,
+    "fetched_at": "2026-07-02T22:57:55"
   },
   "TALK": {
     "sector": "Healthcare",
     "industry": "Health Information Services",
-    "marketCap": 876090688,
-    "fetched_at": "2026-06-01T23:42:18"
+    "marketCap": 871065280,
+    "fetched_at": "2026-07-02T22:58:40"
   },
   "VRRM": {
     "sector": "Technology",
@@ -2444,8 +2477,8 @@
   "SOHU": {
     "sector": "Communication Services",
     "industry": "Electronic Gaming & Multimedia",
-    "marketCap": 415503808,
-    "fetched_at": "2026-06-01T23:41:43"
+    "marketCap": 372510304,
+    "fetched_at": "2026-07-02T22:57:41"
   },
   "MBINN": {
     "sector": "Financial Services",
@@ -2466,16 +2499,17 @@
     "fetched_at": "2026-06-30T23:10:49"
   },
   "ESLT": {
-    "sector": "Industrials",
-    "industry": "Aerospace & Defense",
-    "marketCap": 40154906624,
-    "fetched_at": "2026-06-01T23:39:29"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:58"
   },
   "KARO": {
     "sector": "Technology",
     "industry": "Software - Application",
-    "marketCap": 1556404480,
-    "fetched_at": "2026-06-01T23:41:38"
+    "marketCap": 1664222080,
+    "fetched_at": "2026-07-02T22:58:09"
   },
   "PCT": {
     "sector": "Industrials",
@@ -2492,8 +2526,8 @@
   "NDAQ": {
     "sector": "Financial Services",
     "industry": "Financial Data & Stock Exchanges",
-    "marketCap": 52487839744,
-    "fetched_at": "2026-06-01T23:41:14"
+    "marketCap": 47878684672,
+    "fetched_at": "2026-07-02T22:57:35"
   },
   "MTCH": {
     "sector": "Communication Services",
@@ -2502,16 +2536,18 @@
     "fetched_at": "2026-06-30T23:11:49"
   },
   "NUTX": {
-    "sector": "Healthcare",
-    "industry": "Medical Care Facilities",
-    "marketCap": 880949056,
-    "fetched_at": "2026-06-01T23:40:44"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:41"
   },
   "INSM": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 22982262784,
-    "fetched_at": "2026-06-01T23:39:51"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:54"
   },
   "ARGX": {
     "sector": "Healthcare",
@@ -2522,14 +2558,14 @@
   "KSPI": {
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "marketCap": 17134757888,
-    "fetched_at": "2026-06-01T23:39:22"
+    "marketCap": 17068249088,
+    "fetched_at": "2026-07-02T22:58:25"
   },
   "DAAQ": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
-    "marketCap": 237509504,
-    "fetched_at": "2026-06-01T23:40:15"
+    "marketCap": 239163200,
+    "fetched_at": "2026-07-02T22:57:00"
   },
   "FWONA": {
     "sector": "Communication Services",
@@ -2538,10 +2574,11 @@
     "fetched_at": "2026-06-30T23:13:26"
   },
   "MEOH": {
-    "sector": "Basic Materials",
-    "industry": "Chemicals",
-    "marketCap": 4731598336,
-    "fetched_at": "2026-06-01T23:39:49"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:46"
   },
   "AVBP": {
     "sector": "Healthcare",
@@ -2577,19 +2614,20 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:51"
+    "fetched_at": "2026-07-02T22:58:13"
   },
   "FITB": {
-    "sector": "Financial Services",
-    "industry": "Banks - Regional",
-    "marketCap": 44010491904,
-    "fetched_at": "2026-06-01T23:40:55"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:43"
   },
   "MCGAU": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:40:25"
+    "fetched_at": "2026-07-02T22:58:06"
   },
   "SLRC": {
     "sector": "Financial Services",
@@ -2604,10 +2642,11 @@
     "fetched_at": "2026-06-30T23:13:09"
   },
   "TLX": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 3191279872,
-    "fetched_at": "2026-06-01T23:39:54"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:57"
   },
   "KEEL": {
     "sector": "Technology",
@@ -2618,26 +2657,28 @@
   "MAKO": {
     "sector": "Basic Materials",
     "industry": "Gold",
-    "marketCap": 744299520,
-    "fetched_at": "2026-06-01T23:40:21"
+    "marketCap": 669869568,
+    "fetched_at": "2026-07-02T22:58:14"
   },
   "DRS": {
-    "sector": "Industrials",
-    "industry": "Aerospace & Defense",
-    "marketCap": 12793909248,
-    "fetched_at": "2026-06-01T23:41:01"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:53"
   },
   "SWKHL": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:51"
+    "fetched_at": "2026-07-02T22:57:36"
   },
   "BZAI": {
-    "sector": "Technology",
-    "industry": "Software - Application",
-    "marketCap": 268945984,
-    "fetched_at": "2026-06-01T23:39:30"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:48"
   },
   "FRBA": {
     "sector": "Financial Services",
@@ -2672,8 +2713,8 @@
   "COKE": {
     "sector": "Consumer Defensive",
     "industry": "Beverages - Non-Alcoholic",
-    "marketCap": 11457712128,
-    "fetched_at": "2026-06-01T23:41:03"
+    "marketCap": 13021973504,
+    "fetched_at": "2026-07-02T22:57:22"
   },
   "NBBK": {
     "sector": "Financial Services",
@@ -2684,14 +2725,14 @@
   "RXT": {
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "marketCap": 1475397248,
-    "fetched_at": "2026-06-01T23:39:28"
+    "marketCap": 1425552640,
+    "fetched_at": "2026-07-02T22:58:19"
   },
   "CLSK": {
     "sector": "Financial Services",
     "industry": "Capital Markets",
-    "marketCap": 4826807808,
-    "fetched_at": "2026-06-01T23:40:20"
+    "marketCap": 3238400512,
+    "fetched_at": "2026-07-02T22:57:52"
   },
   "ROP": {
     "sector": "Technology",
@@ -2714,8 +2755,8 @@
   "TROW": {
     "sector": "Financial Services",
     "industry": "Asset Management",
-    "marketCap": 22266585088,
-    "fetched_at": "2026-06-01T23:42:13"
+    "marketCap": 25401307136,
+    "fetched_at": "2026-07-02T22:56:55"
   },
   "RR": {
     "sector": "Industrials",
@@ -2727,7 +2768,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:00"
+    "fetched_at": "2026-07-02T22:57:21"
   },
   "OSPN": {
     "sector": "Technology",
@@ -2739,13 +2780,13 @@
     "sector": "Real Estate",
     "industry": "Real Estate Services",
     "marketCap": 1073469056,
-    "fetched_at": "2026-06-01T23:41:35"
+    "fetched_at": "2026-07-02T22:57:20"
   },
   "CLPT": {
     "sector": "Healthcare",
     "industry": "Medical Devices",
-    "marketCap": 379068096,
-    "fetched_at": "2026-06-01T23:40:41"
+    "marketCap": 561404608,
+    "fetched_at": "2026-07-02T22:58:38"
   },
   "BPYPO": {
     "sector": "Real Estate",
@@ -2763,7 +2804,8 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:02"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:41"
   },
   "WTFC": {
     "sector": "Financial Services",
@@ -2772,16 +2814,17 @@
     "fetched_at": "2026-06-28T22:56:09"
   },
   "EOSE": {
-    "sector": "Industrials",
-    "industry": "Electrical Equipment & Parts",
-    "marketCap": 3045440768,
-    "fetched_at": "2026-06-01T23:39:36"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:52"
   },
   "GECCH": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:22"
+    "fetched_at": "2026-07-02T22:58:19"
   },
   "METC": {
     "sector": "Basic Materials",
@@ -2793,13 +2836,13 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:16"
+    "fetched_at": "2026-07-02T22:58:12"
   },
   "URNM": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:46"
+    "fetched_at": "2026-07-02T22:56:55"
   },
   "DOCU": {
     "sector": "Technology",
@@ -2814,10 +2857,11 @@
     "fetched_at": "2026-06-30T23:12:38"
   },
   "YB": {
-    "sector": "Technology",
-    "industry": "Software - Application",
-    "marketCap": 688438144,
-    "fetched_at": "2026-06-01T23:39:47"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:51"
   },
   "CRSR": {
     "sector": "Technology",
@@ -2838,10 +2882,11 @@
     "fetched_at": "2026-06-30T23:10:55"
   },
   "DDOG": {
-    "sector": "Technology",
-    "industry": "Software - Application",
-    "marketCap": 98775392256,
-    "fetched_at": "2026-06-01T23:40:53"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:51"
   },
   "POLE": {
     "sector": "Financial Services",
@@ -2859,7 +2904,8 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:53"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:59"
   },
   "QCOM": {
     "sector": "Technology",
@@ -2870,14 +2916,15 @@
   "UNIT": {
     "sector": "Real Estate",
     "industry": "REIT - Specialty",
-    "marketCap": 2702538240,
-    "fetched_at": "2026-06-01T23:39:08"
+    "marketCap": 2610268160,
+    "fetched_at": "2026-07-02T22:58:14"
   },
   "FULC": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 427785920,
-    "fetched_at": "2026-06-01T23:41:35"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:47"
   },
   "HOOD": {
     "sector": "Financial Services",
@@ -2894,14 +2941,14 @@
   "PCAP": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
-    "marketCap": 389920384,
-    "fetched_at": "2026-06-01T23:39:58"
+    "marketCap": 390868672,
+    "fetched_at": "2026-07-02T22:57:06"
   },
   "ARHS": {
     "sector": "Consumer Cyclical",
     "industry": "Specialty Retail",
-    "marketCap": 935579840,
-    "fetched_at": "2026-06-01T23:41:31"
+    "marketCap": 1220075392,
+    "fetched_at": "2026-07-02T22:58:18"
   },
   "ROKU": {
     "sector": "Communication Services",
@@ -2928,10 +2975,11 @@
     "fetched_at": "2026-07-01T23:12:38"
   },
   "NOEM": {
-    "sector": "Financial Services",
-    "industry": "Shell Companies",
-    "marketCap": 99787656,
-    "fetched_at": "2026-06-01T23:42:03"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:56"
   },
   "CHTR": {
     "sector": "Communication Services",
@@ -2940,16 +2988,18 @@
     "fetched_at": "2026-06-28T22:56:32"
   },
   "BWB": {
-    "sector": "Financial Services",
-    "industry": "Banks - Regional",
-    "marketCap": 521419008,
-    "fetched_at": "2026-06-01T23:39:55"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:49"
   },
   "NHICU": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:25"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:49"
   },
   "VNMEU": {
     "sector": "Financial Services",
@@ -2960,14 +3010,14 @@
   "WULF": {
     "sector": "Financial Services",
     "industry": "Capital Markets",
-    "marketCap": 12715367424,
-    "fetched_at": "2026-06-01T23:39:40"
+    "marketCap": 10495381504,
+    "fetched_at": "2026-07-02T22:57:03"
   },
   "MOO": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:24"
+    "fetched_at": "2026-07-02T22:58:15"
   },
   "ROOT": {
     "sector": "Financial Services",
@@ -2982,22 +3032,24 @@
     "fetched_at": "2026-06-30T23:13:18"
   },
   "XNET": {
-    "sector": "Technology",
-    "industry": "Software - Infrastructure",
-    "marketCap": 380649632,
-    "fetched_at": "2026-06-01T23:39:10"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:59"
   },
   "APLD": {
     "sector": "Technology",
     "industry": "Information Technology Services",
-    "marketCap": 13699790848,
-    "fetched_at": "2026-06-01T23:41:45"
+    "marketCap": 9447541760,
+    "fetched_at": "2026-07-02T22:56:43"
   },
   "DIA": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:19"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:56"
   },
   "BATRK": {
     "sector": "Communication Services",
@@ -3015,13 +3067,13 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:54"
+    "fetched_at": "2026-07-02T22:58:28"
   },
   "GRVY": {
     "sector": "Communication Services",
     "industry": "Electronic Gaming & Multimedia",
-    "marketCap": 461059520,
-    "fetched_at": "2026-06-01T23:39:24"
+    "marketCap": 455708864,
+    "fetched_at": "2026-07-02T22:57:50"
   },
   "ARM": {
     "sector": "Technology",
@@ -3069,13 +3121,15 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:15"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:44"
   },
   "VLYPN": {
-    "sector": "Financial Services",
-    "industry": "Banks - Regional",
+    "sector": "",
+    "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:41:47"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:53"
   },
   "TXRH": {
     "sector": "Consumer Cyclical",
@@ -3086,8 +3140,8 @@
   "SFST": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 541402752,
-    "fetched_at": "2026-06-01T23:41:46"
+    "marketCap": 578561536,
+    "fetched_at": "2026-07-02T22:58:34"
   },
   "VC": {
     "sector": "Consumer Cyclical",
@@ -3104,8 +3158,8 @@
   "IRD": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 335349600,
-    "fetched_at": "2026-06-01T23:39:44"
+    "marketCap": 349253472,
+    "fetched_at": "2026-07-02T22:58:04"
   },
   "ADSK": {
     "sector": "Technology",
@@ -3114,16 +3168,17 @@
     "fetched_at": "2026-06-29T22:58:05"
   },
   "CHSCO": {
-    "sector": "Consumer Defensive",
-    "industry": "Farm Products",
+    "sector": "",
+    "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:41:06"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:46"
   },
   "SAIA": {
     "sector": "Industrials",
     "industry": "Trucking",
-    "marketCap": 12827978752,
-    "fetched_at": "2026-06-01T23:40:56"
+    "marketCap": 11084754944,
+    "fetched_at": "2026-07-02T22:58:29"
   },
   "MITK": {
     "sector": "Technology",
@@ -3134,20 +3189,22 @@
   "NAGE": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 287516000,
-    "fetched_at": "2026-06-01T23:40:54"
+    "marketCap": 273180064,
+    "fetched_at": "2026-07-02T22:57:30"
   },
   "GDX": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:23"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:56"
   },
   "NRIM": {
-    "sector": "Financial Services",
-    "industry": "Banks - Regional",
-    "marketCap": 534764192,
-    "fetched_at": "2026-06-01T23:39:27"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:45"
   },
   "OLED": {
     "sector": "Technology",
@@ -3158,8 +3215,8 @@
   "RBB": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 403074112,
-    "fetched_at": "2026-06-01T23:40:12"
+    "marketCap": 459470624,
+    "fetched_at": "2026-07-02T22:58:18"
   },
   "ENTG": {
     "sector": "Technology",
@@ -3177,43 +3234,45 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:18"
+    "fetched_at": "2026-07-02T22:58:19"
   },
   "PNTG": {
     "sector": "Healthcare",
     "industry": "Medical Care Facilities",
-    "marketCap": 1112561792,
-    "fetched_at": "2026-06-01T23:41:52"
+    "marketCap": 1339246336,
+    "fetched_at": "2026-07-02T22:57:07"
   },
   "XLRE": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:13"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:57"
   },
   "CHMG": {
-    "sector": "Financial Services",
-    "industry": "Banks - Regional",
-    "marketCap": 331121632,
-    "fetched_at": "2026-06-01T23:39:48"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:49"
   },
   "KWEB": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:24"
+    "fetched_at": "2026-07-02T22:57:59"
   },
   "STBA": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 1595215232,
-    "fetched_at": "2026-06-01T23:41:27"
+    "marketCap": 1767544576,
+    "fetched_at": "2026-07-02T22:58:26"
   },
   "VCEL": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 1676059264,
-    "fetched_at": "2026-06-01T23:39:38"
+    "marketCap": 2399185408,
+    "fetched_at": "2026-07-02T22:58:32"
   },
   "ALLT": {
     "sector": "Technology",
@@ -3224,8 +3283,8 @@
   "PEP": {
     "sector": "Consumer Defensive",
     "industry": "Beverages - Non-Alcoholic",
-    "marketCap": 193449492480,
-    "fetched_at": "2026-06-01T23:40:19"
+    "marketCap": 197140217856,
+    "fetched_at": "2026-07-02T22:57:09"
   },
   "ARCB": {
     "sector": "Industrials",
@@ -3264,10 +3323,11 @@
     "fetched_at": "2026-06-30T23:10:50"
   },
   "AXG": {
-    "sector": "Financial Services",
-    "industry": "Capital Markets",
-    "marketCap": 657559296,
-    "fetched_at": "2026-06-01T23:39:30"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:45"
   },
   "STTK": {
     "sector": "Healthcare",
@@ -3278,14 +3338,15 @@
   "GDRX": {
     "sector": "Healthcare",
     "industry": "Health Information Services",
-    "marketCap": 1043120064,
-    "fetched_at": "2026-06-01T23:39:31"
+    "marketCap": 1032959808,
+    "fetched_at": "2026-07-02T22:58:12"
   },
   "PLMK": {
-    "sector": "Financial Services",
-    "industry": "Shell Companies",
-    "marketCap": 258429056,
-    "fetched_at": "2026-06-01T23:40:34"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:56"
   },
   "ILPT": {
     "sector": "Real Estate",
@@ -3296,8 +3357,8 @@
   "MAT": {
     "sector": "Consumer Cyclical",
     "industry": "Leisure",
-    "marketCap": 4317855232,
-    "fetched_at": "2026-06-01T23:39:20"
+    "marketCap": 3876190464,
+    "fetched_at": "2026-07-02T22:58:35"
   },
   "DKNG": {
     "sector": "Consumer Cyclical",
@@ -3306,16 +3367,17 @@
     "fetched_at": "2026-06-29T22:58:57"
   },
   "TH": {
-    "sector": "Industrials",
-    "industry": "Specialty Business Services",
-    "marketCap": 1709882368,
-    "fetched_at": "2026-06-01T23:42:03"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:59:00"
   },
   "AVXL": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 276161856,
-    "fetched_at": "2026-06-01T23:41:34"
+    "marketCap": 255774064,
+    "fetched_at": "2026-07-02T22:58:28"
   },
   "RKLB": {
     "sector": "Industrials",
@@ -3330,10 +3392,11 @@
     "fetched_at": "2026-06-29T22:58:00"
   },
   "PLAY": {
-    "sector": "Communication Services",
-    "industry": "Entertainment",
-    "marketCap": 443969568,
-    "fetched_at": "2026-06-01T23:40:51"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:42"
   },
   "BHFAP": {
     "sector": "Financial Services",
@@ -3348,22 +3411,25 @@
     "fetched_at": "2026-06-29T22:58:00"
   },
   "HALO": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 8082289664,
-    "fetched_at": "2026-06-01T23:40:40"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:48"
   },
   "ASML": {
-    "sector": "Technology",
-    "industry": "Semiconductor Equipment & Materials",
-    "marketCap": 627679625216,
-    "fetched_at": "2026-06-01T23:40:37"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:57"
   },
   "CMCSA": {
-    "sector": "Communication Services",
-    "industry": "Telecom Services",
-    "marketCap": 89484320768,
-    "fetched_at": "2026-06-01T23:39:20"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:46"
   },
   "SAIL": {
     "sector": "Technology",
@@ -3374,8 +3440,8 @@
   "HBCP": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 502398912,
-    "fetched_at": "2026-06-01T23:41:40"
+    "marketCap": 543651200,
+    "fetched_at": "2026-07-02T22:57:06"
   },
   "BELFB": {
     "sector": "Technology",
@@ -3429,7 +3495,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:30"
+    "fetched_at": "2026-07-02T22:57:43"
   },
   "NBIX": {
     "sector": "Healthcare",
@@ -3444,10 +3510,11 @@
     "fetched_at": "2026-06-29T22:58:46"
   },
   "SLDB": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 707852672,
-    "fetched_at": "2026-06-01T23:40:22"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:44"
   },
   "TRIP": {
     "sector": "Consumer Cyclical",
@@ -3525,7 +3592,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:45"
+    "fetched_at": "2026-07-02T22:57:38"
   },
   "FMNB": {
     "sector": "Financial Services",
@@ -3536,20 +3603,21 @@
   "KVAC": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
-    "marketCap": 67179552,
-    "fetched_at": "2026-06-01T23:40:39"
+    "marketCap": 68280856,
+    "fetched_at": "2026-07-02T22:57:34"
   },
   "BITO": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:13"
+    "fetched_at": "2026-07-02T22:56:56"
   },
   "EEM": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:36"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:51"
   },
   "WIX": {
     "sector": "Technology",
@@ -3566,8 +3634,8 @@
   "WRLD": {
     "sector": "Financial Services",
     "industry": "Credit Services",
-    "marketCap": 754695040,
-    "fetched_at": "2026-06-01T23:39:18"
+    "marketCap": 965094336,
+    "fetched_at": "2026-07-02T22:57:14"
   },
   "DFTX": {
     "sector": "Healthcare",
@@ -3578,8 +3646,8 @@
   "PSKY": {
     "sector": "Communication Services",
     "industry": "Entertainment",
-    "marketCap": 12288520192,
-    "fetched_at": "2026-06-01T23:41:26"
+    "marketCap": 11628209152,
+    "fetched_at": "2026-07-02T22:58:01"
   },
   "OCGN": {
     "sector": "Healthcare",
@@ -3608,14 +3676,14 @@
   "BIOA": {
     "sector": "Healthcare",
     "industry": "Drug Manufacturers - Specialty & Generic",
-    "marketCap": 764587072,
-    "fetched_at": "2026-06-01T23:39:37"
+    "marketCap": 1115763712,
+    "fetched_at": "2026-07-02T22:56:47"
   },
   "STRT": {
     "sector": "Consumer Cyclical",
     "industry": "Auto Parts",
-    "marketCap": 329832608,
-    "fetched_at": "2026-06-01T23:40:15"
+    "marketCap": 325277696,
+    "fetched_at": "2026-07-02T22:58:19"
   },
   "DLTR": {
     "sector": "Consumer Defensive",
@@ -3638,8 +3706,8 @@
   "TRMB": {
     "sector": "Technology",
     "industry": "Scientific & Technical Instruments",
-    "marketCap": 13555435520,
-    "fetched_at": "2026-06-01T23:39:41"
+    "marketCap": 12364234752,
+    "fetched_at": "2026-07-02T22:57:40"
   },
   "SUPN": {
     "sector": "Healthcare",
@@ -3668,8 +3736,8 @@
   "DORM": {
     "sector": "Consumer Cyclical",
     "industry": "Auto Parts",
-    "marketCap": 3666916864,
-    "fetched_at": "2026-06-01T23:39:33"
+    "marketCap": 4113365504,
+    "fetched_at": "2026-07-02T22:57:10"
   },
   "TRON": {
     "sector": "Consumer Cyclical",
@@ -3692,8 +3760,8 @@
   "CAMT": {
     "sector": "Technology",
     "industry": "Semiconductor Equipment & Materials",
-    "marketCap": 7509393408,
-    "fetched_at": "2026-06-01T23:39:54"
+    "marketCap": 6648553984,
+    "fetched_at": "2026-07-02T22:57:43"
   },
   "WAY": {
     "sector": "Healthcare",
@@ -3708,10 +3776,11 @@
     "fetched_at": "2026-06-30T23:12:51"
   },
   "CLYM": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 675703680,
-    "fetched_at": "2026-06-01T23:41:26"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:52"
   },
   "SKYT": {
     "sector": "Technology",
@@ -3722,14 +3791,14 @@
   "ASND": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 13518646272,
-    "fetched_at": "2026-06-01T23:41:24"
+    "marketCap": 18005231616,
+    "fetched_at": "2026-07-02T22:56:59"
   },
   "SATL": {
     "sector": "Industrials",
     "industry": "Aerospace & Defense",
-    "marketCap": 1285276288,
-    "fetched_at": "2026-06-01T23:41:19"
+    "marketCap": 804965440,
+    "fetched_at": "2026-07-02T22:57:04"
   },
   "CVLT": {
     "sector": "Technology",
@@ -3740,50 +3809,51 @@
   "AFJK": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
-    "marketCap": 126653280,
-    "fetched_at": "2026-06-01T23:40:49"
+    "marketCap": 85490960,
+    "fetched_at": "2026-07-02T22:57:42"
   },
   "HAS": {
-    "sector": "Consumer Cyclical",
-    "industry": "Leisure",
-    "marketCap": 12036613120,
-    "fetched_at": "2026-06-01T23:41:08"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:52"
   },
   "CADL": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 623529728,
-    "fetched_at": "2026-06-01T23:41:45"
+    "marketCap": 720246464,
+    "fetched_at": "2026-07-02T22:58:07"
   },
   "ECPG": {
     "sector": "Financial Services",
     "industry": "Credit Services",
-    "marketCap": 1684358656,
-    "fetched_at": "2026-06-01T23:40:23"
+    "marketCap": 1942715776,
+    "fetched_at": "2026-07-02T22:57:44"
   },
   "OSW": {
     "sector": "Consumer Cyclical",
     "industry": "Leisure",
-    "marketCap": 2416053248,
-    "fetched_at": "2026-06-01T23:41:39"
+    "marketCap": 2911445760,
+    "fetched_at": "2026-07-02T22:58:14"
   },
   "SVRA": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 1055375168,
-    "fetched_at": "2026-06-01T23:41:49"
+    "marketCap": 1274647296,
+    "fetched_at": "2026-07-02T22:57:33"
   },
   "QQQX": {
     "sector": "Financial Services",
     "industry": "Asset Management",
-    "marketCap": 1543414656,
-    "fetched_at": "2026-06-01T23:39:35"
+    "marketCap": 1468709632,
+    "fetched_at": "2026-07-02T22:58:31"
   },
   "NKTR": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 2157575936,
-    "fetched_at": "2026-06-01T23:42:13"
+    "marketCap": 2400159744,
+    "fetched_at": "2026-07-02T22:57:40"
   },
   "AEIS": {
     "sector": "Industrials",
@@ -3804,16 +3874,17 @@
     "fetched_at": "2026-06-29T22:58:46"
   },
   "TDAC": {
-    "sector": "Financial Services",
-    "industry": "Shell Companies",
-    "marketCap": 235507824,
-    "fetched_at": "2026-06-01T23:41:05"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:55"
   },
   "BAYA": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
-    "marketCap": 33407162,
-    "fetched_at": "2026-06-01T23:41:26"
+    "marketCap": 32859504,
+    "fetched_at": "2026-07-02T22:56:44"
   },
   "GLXY": {
     "sector": "Financial Services",
@@ -3843,7 +3914,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:02"
+    "fetched_at": "2026-07-02T22:57:48"
   },
   "IMCR": {
     "sector": "Healthcare",
@@ -3855,7 +3926,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:36"
+    "fetched_at": "2026-07-02T22:57:51"
   },
   "FOXF": {
     "sector": "Consumer Cyclical",
@@ -3920,8 +3991,8 @@
   "NTES": {
     "sector": "Communication Services",
     "industry": "Electronic Gaming & Multimedia",
-    "marketCap": 78980988928,
-    "fetched_at": "2026-06-01T23:41:32"
+    "marketCap": 81524629504,
+    "fetched_at": "2026-07-02T22:57:20"
   },
   "NDSN": {
     "sector": "Industrials",
@@ -3951,13 +4022,13 @@
     "sector": "Financial Services",
     "industry": "Financial Conglomerates",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:39:52"
+    "fetched_at": "2026-07-02T22:57:15"
   },
   "DOO": {
     "sector": "Consumer Cyclical",
     "industry": "Recreational Vehicles",
-    "marketCap": 4289299200,
-    "fetched_at": "2026-06-01T23:40:39"
+    "marketCap": 4244191488,
+    "fetched_at": "2026-07-02T22:57:00"
   },
   "ONDS": {
     "sector": "Technology",
@@ -3966,10 +4037,11 @@
     "fetched_at": "2026-06-30T23:11:40"
   },
   "WTW": {
-    "sector": "Financial Services",
-    "industry": "Insurance Brokers",
-    "marketCap": 24276908032,
-    "fetched_at": "2026-06-01T23:39:48"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:55"
   },
   "BLBD": {
     "sector": "Industrials",
@@ -3978,10 +4050,11 @@
     "fetched_at": "2026-07-01T23:11:48"
   },
   "ABNB": {
-    "sector": "Consumer Cyclical",
-    "industry": "Travel Services",
-    "marketCap": 81826521088,
-    "fetched_at": "2026-06-01T23:41:00"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:59"
   },
   "NPCE": {
     "sector": "Healthcare",
@@ -3998,8 +4071,8 @@
   "DASH": {
     "sector": "Consumer Cyclical",
     "industry": "Internet Retail",
-    "marketCap": 71797727232,
-    "fetched_at": "2026-06-01T23:40:28"
+    "marketCap": 83662348288,
+    "fetched_at": "2026-07-02T22:57:12"
   },
   "TTGT": {
     "sector": "Technology",
@@ -4017,13 +4090,14 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:39"
+    "fetched_at": "2026-07-02T22:57:46"
   },
   "INDB": {
-    "sector": "Financial Services",
-    "industry": "Banks - Regional",
-    "marketCap": 3741772544,
-    "fetched_at": "2026-06-01T23:39:40"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:45"
   },
   "MARA": {
     "sector": "Financial Services",
@@ -4034,8 +4108,8 @@
   "BSVN": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 419612352,
-    "fetched_at": "2026-06-01T23:42:11"
+    "marketCap": 472063872,
+    "fetched_at": "2026-07-02T22:57:13"
   },
   "KTOS": {
     "sector": "Industrials",
@@ -4058,14 +4132,14 @@
   "SKBL": {
     "sector": "Industrials",
     "industry": "Engineering & Construction",
-    "marketCap": 81266896,
-    "fetched_at": "2026-06-01T23:42:18"
+    "marketCap": 81762424,
+    "fetched_at": "2026-07-02T22:58:22"
   },
   "BULL": {
     "sector": "Technology",
     "industry": "Software - Application",
-    "marketCap": 3510003200,
-    "fetched_at": "2026-06-01T23:40:51"
+    "marketCap": 3813139712,
+    "fetched_at": "2026-07-02T22:57:50"
   },
   "POOL": {
     "sector": "Industrials",
@@ -4076,8 +4150,8 @@
   "AVAV": {
     "sector": "Industrials",
     "industry": "Aerospace & Defense",
-    "marketCap": 10327989248,
-    "fetched_at": "2026-06-01T23:40:05"
+    "marketCap": 9660567552,
+    "fetched_at": "2026-07-02T22:56:58"
   },
   "DAAQU": {
     "sector": "Financial Services",
@@ -4098,16 +4172,17 @@
     "fetched_at": "2026-06-28T22:56:44"
   },
   "USAR": {
-    "sector": "Basic Materials",
-    "industry": "Other Industrial Metals & Mining",
-    "marketCap": 6563930624,
-    "fetched_at": "2026-06-01T23:41:38"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:58"
   },
   "XP": {
     "sector": "Financial Services",
     "industry": "Capital Markets",
-    "marketCap": 8576845824,
-    "fetched_at": "2026-06-01T23:40:06"
+    "marketCap": 8349507584,
+    "fetched_at": "2026-07-02T22:56:45"
   },
   "GBLI": {
     "sector": "Financial Services",
@@ -4122,10 +4197,11 @@
     "fetched_at": "2026-06-30T23:12:27"
   },
   "CDW": {
-    "sector": "Technology",
-    "industry": "Information Technology Services",
-    "marketCap": 18010681344,
-    "fetched_at": "2026-06-01T23:40:01"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:55"
   },
   "TSLA": {
     "sector": "Consumer Cyclical",
@@ -4134,16 +4210,17 @@
     "fetched_at": "2026-06-28T22:56:03"
   },
   "GSM": {
-    "sector": "Basic Materials",
-    "industry": "Other Industrial Metals & Mining",
-    "marketCap": 822186240,
-    "fetched_at": "2026-06-01T23:39:25"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:59:00"
   },
   "CBLL": {
     "sector": "Healthcare",
     "industry": "Medical Devices",
-    "marketCap": 668170944,
-    "fetched_at": "2026-06-01T23:39:55"
+    "marketCap": 741779776,
+    "fetched_at": "2026-07-02T22:57:04"
   },
   "CERS": {
     "sector": "Healthcare",
@@ -4172,14 +4249,15 @@
   "LOCO": {
     "sector": "Consumer Cyclical",
     "industry": "Restaurants",
-    "marketCap": 449215648,
-    "fetched_at": "2026-06-01T23:40:18"
+    "marketCap": 507994368,
+    "fetched_at": "2026-07-02T22:58:34"
   },
   "CBNK": {
-    "sector": "Financial Services",
-    "industry": "Banks - Regional",
-    "marketCap": 515191168,
-    "fetched_at": "2026-06-01T23:40:26"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:55"
   },
   "YHNA": {
     "sector": "Financial Services",
@@ -4190,14 +4268,14 @@
   "TLS": {
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "marketCap": 392052480,
-    "fetched_at": "2026-06-01T23:41:28"
+    "marketCap": 366613984,
+    "fetched_at": "2026-07-02T22:57:46"
   },
   "QQQ": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:39"
+    "fetched_at": "2026-07-02T22:58:18"
   },
   "EFSCP": {
     "sector": "Financial Services",
@@ -4232,8 +4310,8 @@
   "OKTA": {
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "marketCap": 24511678464,
-    "fetched_at": "2026-06-01T23:41:39"
+    "marketCap": 24579835904,
+    "fetched_at": "2026-07-02T22:58:13"
   },
   "ALTO": {
     "sector": "Basic Materials",
@@ -4242,10 +4320,11 @@
     "fetched_at": "2026-06-30T23:13:00"
   },
   "ACTG": {
-    "sector": "Industrials",
-    "industry": "Business Equipment & Supplies",
-    "marketCap": 447207712,
-    "fetched_at": "2026-06-01T23:40:08"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:54"
   },
   "RBBN": {
     "sector": "Technology",
@@ -4287,7 +4366,8 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:41"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:50"
   },
   "WEN": {
     "sector": "Consumer Cyclical",
@@ -4304,20 +4384,21 @@
   "SBRA": {
     "sector": "Real Estate",
     "industry": "REIT - Healthcare Facilities",
-    "marketCap": 4804220928,
-    "fetched_at": "2026-06-01T23:41:37"
+    "marketCap": 5084152320,
+    "fetched_at": "2026-07-02T22:57:31"
   },
   "SSSSL": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:24"
+    "fetched_at": "2026-07-02T22:57:25"
   },
   "WGS": {
-    "sector": "Healthcare",
-    "industry": "Diagnostics & Research",
-    "marketCap": 1543777408,
-    "fetched_at": "2026-06-01T23:39:47"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:46"
   },
   "UNTY": {
     "sector": "Financial Services",
@@ -4334,8 +4415,8 @@
   "FRPT": {
     "sector": "Consumer Defensive",
     "industry": "Packaged Foods",
-    "marketCap": 2428636672,
-    "fetched_at": "2026-06-01T23:39:52"
+    "marketCap": 2770670592,
+    "fetched_at": "2026-07-02T22:58:12"
   },
   "HPK": {
     "sector": "Energy",
@@ -4352,14 +4433,15 @@
   "SAFT": {
     "sector": "Financial Services",
     "industry": "Insurance - Property & Casualty",
-    "marketCap": 1015946816,
-    "fetched_at": "2026-06-01T23:40:43"
+    "marketCap": 1137525632,
+    "fetched_at": "2026-07-02T22:57:18"
   },
   "SHEN": {
-    "sector": "Communication Services",
-    "industry": "Telecom Services",
-    "marketCap": 895663232,
-    "fetched_at": "2026-06-01T23:42:11"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:48"
   },
   "CORZ": {
     "sector": "Technology",
@@ -4371,7 +4453,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:57"
+    "fetched_at": "2026-07-02T22:56:46"
   },
   "LAMR": {
     "sector": "Real Estate",
@@ -4392,28 +4474,30 @@
     "fetched_at": "2026-06-29T22:58:25"
   },
   "IVVD": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 359421120,
-    "fetched_at": "2026-06-01T23:40:37"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:59"
   },
   "FIBK": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 3373772288,
-    "fetched_at": "2026-06-01T23:42:04"
+    "marketCap": 3803143936,
+    "fetched_at": "2026-07-02T22:58:00"
   },
   "TSAT": {
-    "sector": "Technology",
-    "industry": "Communication Equipment",
-    "marketCap": 2554027264,
-    "fetched_at": "2026-06-01T23:39:34"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:47"
   },
   "DNTH": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 4889894400,
-    "fetched_at": "2026-06-01T23:40:24"
+    "marketCap": 5157212160,
+    "fetched_at": "2026-07-02T22:57:04"
   },
   "ALLO": {
     "sector": "Healthcare",
@@ -4437,25 +4521,26 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:14"
+    "fetched_at": "2026-07-02T22:58:03"
   },
   "NTRSO": {
-    "sector": "Financial Services",
-    "industry": "Asset Management",
+    "sector": "",
+    "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:39:52"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:48"
   },
   "DJTWW": {
     "sector": "",
     "industry": "",
-    "marketCap": 1104866048,
-    "fetched_at": "2026-07-01T23:11:13"
+    "marketCap": 1143218176,
+    "fetched_at": "2026-07-02T22:56:56"
   },
   "MORN": {
     "sector": "Financial Services",
     "industry": "Financial Data & Stock Exchanges",
-    "marketCap": 7446646272,
-    "fetched_at": "2026-06-01T23:39:55"
+    "marketCap": 6310369280,
+    "fetched_at": "2026-07-02T22:58:38"
   },
   "STOK": {
     "sector": "Healthcare",
@@ -4494,10 +4579,11 @@
     "fetched_at": "2026-06-29T22:59:24"
   },
   "GGAL": {
-    "sector": "Financial Services",
-    "industry": "Banks - Regional",
-    "marketCap": 8669238272,
-    "fetched_at": "2026-06-01T23:40:09"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:50"
   },
   "GBFH": {
     "sector": "Financial Services",
@@ -4514,8 +4600,8 @@
   "VACH": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
-    "marketCap": 303916224,
-    "fetched_at": "2026-06-01T23:40:36"
+    "marketCap": 541252416,
+    "fetched_at": "2026-07-02T22:56:45"
   },
   "ALKT": {
     "sector": "Technology",
@@ -4524,10 +4610,11 @@
     "fetched_at": "2026-06-30T23:12:12"
   },
   "LBTYK": {
-    "sector": "Communication Services",
-    "industry": "Telecom Services",
-    "marketCap": 3982787840,
-    "fetched_at": "2026-06-01T23:41:14"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:55"
   },
   "TOWN": {
     "sector": "Financial Services",
@@ -4562,8 +4649,8 @@
   "TSEM": {
     "sector": "Technology",
     "industry": "Semiconductors",
-    "marketCap": 30048299008,
-    "fetched_at": "2026-06-01T23:39:20"
+    "marketCap": 26064545792,
+    "fetched_at": "2026-07-02T22:58:13"
   },
   "GHRS": {
     "sector": "Healthcare",
@@ -4574,26 +4661,26 @@
   "CENT": {
     "sector": "Consumer Defensive",
     "industry": "Packaged Foods",
-    "marketCap": 2420237824,
-    "fetched_at": "2026-06-01T23:41:46"
+    "marketCap": 2749985792,
+    "fetched_at": "2026-07-02T22:58:03"
   },
   "ALNY": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 39470321664,
-    "fetched_at": "2026-06-01T23:40:17"
+    "marketCap": 41760063488,
+    "fetched_at": "2026-07-02T22:58:21"
   },
   "FISI": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 703393984,
-    "fetched_at": "2026-06-01T23:39:59"
+    "marketCap": 768162176,
+    "fetched_at": "2026-07-02T22:57:10"
   },
   "BFST": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 913675968,
-    "fetched_at": "2026-06-01T23:40:43"
+    "marketCap": 1001252928,
+    "fetched_at": "2026-07-02T22:58:24"
   },
   "CSX": {
     "sector": "Industrials",
@@ -4608,28 +4695,29 @@
     "fetched_at": "2026-06-30T23:12:40"
   },
   "APOG": {
-    "sector": "Industrials",
-    "industry": "Building Products & Equipment",
-    "marketCap": 821373120,
-    "fetched_at": "2026-06-01T23:40:54"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:53"
   },
   "MBUU": {
     "sector": "Consumer Cyclical",
     "industry": "Recreational Vehicles",
-    "marketCap": 550033472,
-    "fetched_at": "2026-06-01T23:40:36"
+    "marketCap": 492300576,
+    "fetched_at": "2026-07-02T22:56:48"
   },
   "FBNC": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 2399360256,
-    "fetched_at": "2026-06-01T23:39:49"
+    "marketCap": 2639751168,
+    "fetched_at": "2026-07-02T22:58:21"
   },
   "CGC": {
     "sector": "Healthcare",
     "industry": "Drug Manufacturers - Specialty & Generic",
-    "marketCap": 485006976,
-    "fetched_at": "2026-06-01T23:39:28"
+    "marketCap": 448416352,
+    "fetched_at": "2026-07-02T22:57:51"
   },
   "TRMK": {
     "sector": "Financial Services",
@@ -4653,19 +4741,21 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:24"
+    "fetched_at": "2026-07-02T22:56:41"
   },
   "OXLCP": {
-    "sector": "Financial Services",
-    "industry": "Asset Management",
+    "sector": "",
+    "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:40:05"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:51"
   },
   "WINA": {
-    "sector": "Consumer Cyclical",
-    "industry": "Specialty Retail",
-    "marketCap": 1361375360,
-    "fetched_at": "2026-06-01T23:42:14"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:58"
   },
   "FOXA": {
     "sector": "Communication Services",
@@ -4707,7 +4797,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:18"
+    "fetched_at": "2026-07-02T22:57:47"
   },
   "AUR": {
     "sector": "Consumer Cyclical",
@@ -4724,8 +4814,8 @@
   "ATRC": {
     "sector": "Healthcare",
     "industry": "Medical Instruments & Supplies",
-    "marketCap": 1340972800,
-    "fetched_at": "2026-06-01T23:41:08"
+    "marketCap": 1609876480,
+    "fetched_at": "2026-07-02T22:57:02"
   },
   "POWWP": {
     "sector": "Industrials",
@@ -4742,20 +4832,20 @@
   "ACIU": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 250363008,
-    "fetched_at": "2026-06-01T23:41:07"
+    "marketCap": 255451680,
+    "fetched_at": "2026-07-02T22:57:37"
   },
   "AVR": {
     "sector": "Healthcare",
     "industry": "Medical Instruments & Supplies",
-    "marketCap": 885814080,
-    "fetched_at": "2026-06-01T23:39:56"
+    "marketCap": 996784128,
+    "fetched_at": "2026-07-02T22:58:32"
   },
   "GYRE": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 563734528,
-    "fetched_at": "2026-06-01T23:40:48"
+    "marketCap": 818328192,
+    "fetched_at": "2026-07-02T22:58:37"
   },
   "ACDC": {
     "sector": "Energy",
@@ -4764,10 +4854,11 @@
     "fetched_at": "2026-06-30T23:11:22"
   },
   "CRON": {
-    "sector": "Healthcare",
-    "industry": "Drug Manufacturers - Specialty & Generic",
-    "marketCap": 1053726976,
-    "fetched_at": "2026-06-01T23:41:34"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:46"
   },
   "VRSK": {
     "sector": "Industrials",
@@ -4820,8 +4911,8 @@
   "RDWR": {
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "marketCap": 1333594112,
-    "fetched_at": "2026-06-01T23:39:19"
+    "marketCap": 1249429120,
+    "fetched_at": "2026-07-02T22:56:41"
   },
   "CLDX": {
     "sector": "Healthcare",
@@ -4874,8 +4965,8 @@
   "RGC": {
     "sector": "Healthcare",
     "industry": "Drug Manufacturers - Specialty & Generic",
-    "marketCap": 11951796224,
-    "fetched_at": "2026-06-01T23:40:07"
+    "marketCap": 3149894144,
+    "fetched_at": "2026-07-02T22:58:36"
   },
   "EXPO": {
     "sector": "Industrials",
@@ -4916,20 +5007,20 @@
   "CSTL": {
     "sector": "Healthcare",
     "industry": "Diagnostics & Research",
-    "marketCap": 636019072,
-    "fetched_at": "2026-06-01T23:39:50"
+    "marketCap": 731255168,
+    "fetched_at": "2026-07-02T22:58:02"
   },
   "APPN": {
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "marketCap": 2038654592,
-    "fetched_at": "2026-06-01T23:39:38"
+    "marketCap": 1791255680,
+    "fetched_at": "2026-07-02T22:57:23"
   },
   "DGICA": {
     "sector": "Financial Services",
     "industry": "Insurance - Property & Casualty",
-    "marketCap": 626879296,
-    "fetched_at": "2026-06-01T23:42:08"
+    "marketCap": 714686912,
+    "fetched_at": "2026-07-02T22:58:39"
   },
   "OYSE": {
     "sector": "Financial Services",
@@ -4940,8 +5031,8 @@
   "CROX": {
     "sector": "Consumer Cyclical",
     "industry": "Footwear & Accessories",
-    "marketCap": 5926981120,
-    "fetched_at": "2026-06-01T23:41:07"
+    "marketCap": 6225119232,
+    "fetched_at": "2026-07-02T22:56:44"
   },
   "RTACU": {
     "sector": "Financial Services",
@@ -4952,14 +5043,14 @@
   "IMNM": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 2353343232,
-    "fetched_at": "2026-06-01T23:41:30"
+    "marketCap": 2673841920,
+    "fetched_at": "2026-07-02T22:57:07"
   },
   "IPSC": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 425637344,
-    "fetched_at": "2026-06-01T23:40:16"
+    "marketCap": 438262208,
+    "fetched_at": "2026-07-02T22:57:11"
   },
   "VTRS": {
     "sector": "Healthcare",
@@ -4976,8 +5067,8 @@
   "VNET": {
     "sector": "Technology",
     "industry": "Information Technology Services",
-    "marketCap": 3017731584,
-    "fetched_at": "2026-06-01T23:39:10"
+    "marketCap": 2254757888,
+    "fetched_at": "2026-07-02T22:58:40"
   },
   "PUBM": {
     "sector": "Technology",
@@ -5024,8 +5115,8 @@
   "OSIS": {
     "sector": "Technology",
     "industry": "Electronic Components",
-    "marketCap": 3516954112,
-    "fetched_at": "2026-06-01T23:39:38"
+    "marketCap": 3655245568,
+    "fetched_at": "2026-07-02T22:58:00"
   },
   "IEP": {
     "sector": "Energy",
@@ -5085,13 +5176,14 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:33"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:46"
   },
   "VTI": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:18"
+    "fetched_at": "2026-07-02T22:57:42"
   },
   "DSGR": {
     "sector": "Industrials",
@@ -5102,14 +5194,14 @@
   "ACIW": {
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "marketCap": 4577820160,
-    "fetched_at": "2026-06-01T23:40:58"
+    "marketCap": 5579187200,
+    "fetched_at": "2026-07-02T22:58:03"
   },
   "TBPH": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 821754880,
-    "fetched_at": "2026-06-01T23:40:06"
+    "marketCap": 877452416,
+    "fetched_at": "2026-07-02T22:57:51"
   },
   "NEOG": {
     "sector": "Healthcare",
@@ -5138,14 +5230,14 @@
   "CERT": {
     "sector": "Healthcare",
     "industry": "Health Information Services",
-    "marketCap": 952055360,
-    "fetched_at": "2026-06-01T23:41:42"
+    "marketCap": 1084285312,
+    "fetched_at": "2026-07-02T22:57:11"
   },
   "HSTM": {
     "sector": "Healthcare",
     "industry": "Health Information Services",
-    "marketCap": 747616640,
-    "fetched_at": "2026-06-01T23:40:42"
+    "marketCap": 830003456,
+    "fetched_at": "2026-07-02T22:58:00"
   },
   "MRLN": {
     "sector": "Industrials",
@@ -5156,14 +5248,14 @@
   "TACH": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
-    "marketCap": 359835008,
-    "fetched_at": "2026-06-01T23:39:46"
+    "marketCap": 360180000,
+    "fetched_at": "2026-07-02T22:57:33"
   },
   "ICLN": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:24"
+    "fetched_at": "2026-07-02T22:58:06"
   },
   "MAMA": {
     "sector": "Consumer Defensive",
@@ -5172,10 +5264,11 @@
     "fetched_at": "2026-06-29T22:58:34"
   },
   "VIAV": {
-    "sector": "Technology",
-    "industry": "Communication Equipment",
-    "marketCap": 11715101696,
-    "fetched_at": "2026-06-01T23:41:02"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:53"
   },
   "MFIC": {
     "sector": "Financial Services",
@@ -5204,26 +5297,27 @@
   "IHRT": {
     "sector": "Communication Services",
     "industry": "Broadcasting",
-    "marketCap": 656757120,
-    "fetched_at": "2026-06-01T23:40:05"
+    "marketCap": 662047552,
+    "fetched_at": "2026-07-02T22:56:59"
   },
   "MAGS": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:16"
+    "fetched_at": "2026-07-02T22:58:02"
   },
   "BMRN": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 10636441600,
-    "fetched_at": "2026-06-01T23:40:58"
+    "marketCap": 11401848832,
+    "fetched_at": "2026-07-02T22:56:46"
   },
   "HACK": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:56"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:51"
   },
   "TCPC": {
     "sector": "Financial Services",
@@ -5265,7 +5359,7 @@
     "sector": "Financial Services",
     "industry": "Banks - Regional",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:40:23"
+    "fetched_at": "2026-07-02T22:58:32"
   },
   "ACGLO": {
     "sector": "Financial Services",
@@ -5294,8 +5388,8 @@
   "AAON": {
     "sector": "Industrials",
     "industry": "Building Products & Equipment",
-    "marketCap": 11357878272,
-    "fetched_at": "2026-06-01T23:39:16"
+    "marketCap": 8815338496,
+    "fetched_at": "2026-07-02T22:57:07"
   },
   "SBC": {
     "sector": "Industrials",
@@ -5310,10 +5404,11 @@
     "fetched_at": "2026-06-28T22:56:22"
   },
   "AVO": {
-    "sector": "Consumer Defensive",
-    "industry": "Food Distribution",
-    "marketCap": 962431488,
-    "fetched_at": "2026-06-01T23:41:25"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:59:00"
   },
   "FELE": {
     "sector": "Industrials",
@@ -5331,7 +5426,8 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:10"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:43"
   },
   "BCAX": {
     "sector": "Healthcare",
@@ -5354,8 +5450,8 @@
   "GILT": {
     "sector": "Technology",
     "industry": "Communication Equipment",
-    "marketCap": 1219610496,
-    "fetched_at": "2026-06-01T23:39:44"
+    "marketCap": 972065792,
+    "fetched_at": "2026-07-02T22:57:05"
   },
   "GLPI": {
     "sector": "Real Estate",
@@ -5366,8 +5462,8 @@
   "CCOI": {
     "sector": "Communication Services",
     "industry": "Telecom Services",
-    "marketCap": 885873920,
-    "fetched_at": "2026-06-01T23:39:16"
+    "marketCap": 650508864,
+    "fetched_at": "2026-07-02T22:57:53"
   },
   "WSC": {
     "sector": "Industrials",
@@ -5421,13 +5517,13 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:32"
+    "fetched_at": "2026-07-02T22:57:55"
   },
   "ZS": {
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "marketCap": 25179791360,
-    "fetched_at": "2026-06-01T23:41:51"
+    "marketCap": 23824664576,
+    "fetched_at": "2026-07-02T22:57:42"
   },
   "JJSF": {
     "sector": "Consumer Defensive",
@@ -5444,8 +5540,8 @@
   "RXST": {
     "sector": "Healthcare",
     "industry": "Medical Devices",
-    "marketCap": 216918224,
-    "fetched_at": "2026-06-01T23:41:09"
+    "marketCap": 232234976,
+    "fetched_at": "2026-07-02T22:58:20"
   },
   "HUT": {
     "sector": "Financial Services",
@@ -5460,10 +5556,11 @@
     "fetched_at": "2026-06-30T23:11:19"
   },
   "ZG": {
-    "sector": "Communication Services",
-    "industry": "Internet Content & Information",
-    "marketCap": 8337537536,
-    "fetched_at": "2026-06-01T23:40:35"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:57"
   },
   "APLS": {
     "sector": "Healthcare",
@@ -5480,8 +5577,8 @@
   "NWSA": {
     "sector": "Communication Services",
     "industry": "Entertainment",
-    "marketCap": 14618467328,
-    "fetched_at": "2026-06-01T23:40:28"
+    "marketCap": 14485846016,
+    "fetched_at": "2026-07-02T22:57:15"
   },
   "REGCO": {
     "sector": "Real Estate",
@@ -5499,7 +5596,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:26"
+    "fetched_at": "2026-07-02T22:57:22"
   },
   "KDP": {
     "sector": "Consumer Defensive",
@@ -5526,22 +5623,23 @@
     "fetched_at": "2026-06-28T22:57:00"
   },
   "CZR": {
-    "sector": "Consumer Cyclical",
-    "industry": "Resorts & Casinos",
-    "marketCap": 5937667584,
-    "fetched_at": "2026-06-01T23:42:13"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:52"
   },
   "XLK": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:37"
+    "fetched_at": "2026-07-02T22:56:48"
   },
   "CELH": {
     "sector": "Consumer Defensive",
     "industry": "Beverages - Non-Alcoholic",
-    "marketCap": 7894173696,
-    "fetched_at": "2026-06-01T23:40:52"
+    "marketCap": 8477033984,
+    "fetched_at": "2026-07-02T22:56:41"
   },
   "JOUT": {
     "sector": "Consumer Cyclical",
@@ -5558,20 +5656,21 @@
   "XEL": {
     "sector": "Utilities",
     "industry": "Utilities - Regulated Electric",
-    "marketCap": 47700439040,
-    "fetched_at": "2026-06-01T23:39:27"
+    "marketCap": 51165134848,
+    "fetched_at": "2026-07-02T22:58:16"
   },
   "LCCC": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
-    "marketCap": 92612000,
-    "fetched_at": "2026-06-01T23:40:43"
+    "marketCap": 92834624,
+    "fetched_at": "2026-07-02T22:58:39"
   },
   "RILYZ": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:43"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:46"
   },
   "VOD": {
     "sector": "Communication Services",
@@ -5592,10 +5691,11 @@
     "fetched_at": "2026-06-30T23:13:20"
   },
   "RILYP": {
-    "sector": "Financial Services",
-    "industry": "Financial Conglomerates",
+    "sector": "",
+    "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:40:14"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:43"
   },
   "CPB": {
     "sector": "Consumer Defensive",
@@ -5604,22 +5704,23 @@
     "fetched_at": "2026-06-29T22:59:34"
   },
   "NFBK": {
-    "sector": "Financial Services",
-    "industry": "Banks - Regional",
-    "marketCap": 592213504,
-    "fetched_at": "2026-06-01T23:41:16"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:58"
   },
   "SLMBP": {
     "sector": "Financial Services",
     "industry": "Credit Services",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:39:53"
+    "fetched_at": "2026-07-02T22:57:14"
   },
   "PNRG": {
     "sector": "Energy",
     "industry": "Oil & Gas E&P",
-    "marketCap": 294961408,
-    "fetched_at": "2026-06-01T23:41:26"
+    "marketCap": 280399392,
+    "fetched_at": "2026-07-02T22:57:09"
   },
   "DXPE": {
     "sector": "Industrials",
@@ -5634,10 +5735,11 @@
     "fetched_at": "2026-06-30T23:12:22"
   },
   "SWKS": {
-    "sector": "Technology",
-    "industry": "Semiconductors",
-    "marketCap": 11354145792,
-    "fetched_at": "2026-06-01T23:40:35"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:45"
   },
   "NWBI": {
     "sector": "Financial Services",
@@ -5652,10 +5754,11 @@
     "fetched_at": "2026-06-30T23:13:13"
   },
   "ABSI": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 1016500992,
-    "fetched_at": "2026-06-01T23:41:29"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:54"
   },
   "APEI": {
     "sector": "Consumer Defensive",
@@ -5676,16 +5779,18 @@
     "fetched_at": "2026-06-29T22:58:08"
   },
   "MU": {
-    "sector": "Technology",
-    "industry": "Semiconductors",
-    "marketCap": 1167768551424,
-    "fetched_at": "2026-06-01T23:39:45"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:43"
   },
   "EWC": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:20"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:44"
   },
   "CAN": {
     "sector": "Technology",
@@ -5708,8 +5813,8 @@
   "NWPX": {
     "sector": "Basic Materials",
     "industry": "Steel",
-    "marketCap": 1140347136,
-    "fetched_at": "2026-06-01T23:42:04"
+    "marketCap": 1319499136,
+    "fetched_at": "2026-07-02T22:57:45"
   },
   "HOPE": {
     "sector": "Financial Services",
@@ -5732,8 +5837,8 @@
   "TYRA": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 1807304832,
-    "fetched_at": "2026-06-01T23:40:50"
+    "marketCap": 1820983040,
+    "fetched_at": "2026-07-02T22:57:49"
   },
   "ONBPO": {
     "sector": "Financial Services",
@@ -5762,8 +5867,8 @@
   "ADTN": {
     "sector": "Technology",
     "industry": "Communication Equipment",
-    "marketCap": 1447436032,
-    "fetched_at": "2026-06-01T23:40:55"
+    "marketCap": 1029485824,
+    "fetched_at": "2026-07-02T22:57:07"
   },
   "LQDA": {
     "sector": "Healthcare",
@@ -5798,8 +5903,8 @@
   "PFIS": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 581031552,
-    "fetched_at": "2026-06-01T23:41:28"
+    "marketCap": 671930368,
+    "fetched_at": "2026-07-02T22:57:44"
   },
   "SOUN": {
     "sector": "Technology",
@@ -5810,8 +5915,8 @@
   "ACRS": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 606140416,
-    "fetched_at": "2026-06-01T23:40:00"
+    "marketCap": 776530048,
+    "fetched_at": "2026-07-02T22:58:09"
   },
   "IBKR": {
     "sector": "Financial Services",
@@ -5828,8 +5933,8 @@
   "QUBT": {
     "sector": "Technology",
     "industry": "Computer Hardware",
-    "marketCap": 2794378752,
-    "fetched_at": "2026-06-01T23:39:27"
+    "marketCap": 2041091712,
+    "fetched_at": "2026-07-02T22:58:34"
   },
   "ADV": {
     "sector": "Communication Services",
@@ -5853,7 +5958,8 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:29"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:44"
   },
   "FULTP": {
     "sector": "Financial Services",
@@ -5876,8 +5982,9 @@
   "FACT": {
     "sector": "",
     "industry": "",
-    "marketCap": 258537104,
-    "fetched_at": "2026-07-01T23:11:42"
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:47"
   },
   "VNOM": {
     "sector": "Energy",
@@ -5910,16 +6017,17 @@
     "fetched_at": "2026-06-29T22:58:08"
   },
   "BUSEP": {
-    "sector": "Financial Services",
-    "industry": "Banks - Regional",
+    "sector": "",
+    "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:39:19"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:44"
   },
   "CEG": {
     "sector": "Utilities",
     "industry": "Utilities - Independent Power Producers",
-    "marketCap": 95968198656,
-    "fetched_at": "2026-06-01T23:40:29"
+    "marketCap": 85436653568,
+    "fetched_at": "2026-07-02T22:57:24"
   },
   "CTAS": {
     "sector": "Industrials",
@@ -5928,10 +6036,11 @@
     "fetched_at": "2026-06-28T22:56:48"
   },
   "LAB": {
-    "sector": "Healthcare",
-    "industry": "Medical Devices",
-    "marketCap": 448923328,
-    "fetched_at": "2026-06-01T23:39:14"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:54"
   },
   "RCKY": {
     "sector": "Consumer Cyclical",
@@ -5952,10 +6061,11 @@
     "fetched_at": "2026-06-29T22:59:04"
   },
   "IESC": {
-    "sector": "Industrials",
-    "industry": "Engineering & Construction",
-    "marketCap": 13497038848,
-    "fetched_at": "2026-06-01T23:41:20"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:41"
   },
   "BIDU": {
     "sector": "Communication Services",
@@ -5966,20 +6076,21 @@
   "HROW": {
     "sector": "Healthcare",
     "industry": "Drug Manufacturers - Specialty & Generic",
-    "marketCap": 1271453952,
-    "fetched_at": "2026-06-01T23:40:39"
+    "marketCap": 1593138176,
+    "fetched_at": "2026-07-02T22:57:02"
   },
   "MDLZ": {
-    "sector": "Consumer Defensive",
-    "industry": "Confectioners",
-    "marketCap": 78366818304,
-    "fetched_at": "2026-06-01T23:42:03"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:47"
   },
   "VINP": {
     "sector": "Financial Services",
     "industry": "Asset Management",
-    "marketCap": 661417344,
-    "fetched_at": "2026-06-01T23:40:41"
+    "marketCap": 649269760,
+    "fetched_at": "2026-07-02T22:57:05"
   },
   "FWRG": {
     "sector": "Consumer Cyclical",
@@ -5994,10 +6105,11 @@
     "fetched_at": "2026-07-01T23:11:27"
   },
   "SRZN": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 286892256,
-    "fetched_at": "2026-06-01T23:40:40"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:53"
   },
   "PHAT": {
     "sector": "Healthcare",
@@ -6015,7 +6127,7 @@
     "sector": "Financial Services",
     "industry": "Banks - Regional",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:40:14"
+    "fetched_at": "2026-07-02T22:57:44"
   },
   "SHIP": {
     "sector": "Industrials",
@@ -6026,8 +6138,8 @@
   "SGRY": {
     "sector": "Healthcare",
     "industry": "Medical Care Facilities",
-    "marketCap": 1729019520,
-    "fetched_at": "2026-06-01T23:39:56"
+    "marketCap": 2253479936,
+    "fetched_at": "2026-07-02T22:57:46"
   },
   "URGN": {
     "sector": "Healthcare",
@@ -6038,14 +6150,14 @@
   "MLYS": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 2566515968,
-    "fetched_at": "2026-06-01T23:40:27"
+    "marketCap": 2441108480,
+    "fetched_at": "2026-07-02T22:56:44"
   },
   "PCB": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 345619072,
-    "fetched_at": "2026-06-01T23:41:27"
+    "marketCap": 405831968,
+    "fetched_at": "2026-07-02T22:58:01"
   },
   "TATT": {
     "sector": "Industrials",
@@ -6098,8 +6210,8 @@
   "WWD": {
     "sector": "Industrials",
     "industry": "Aerospace & Defense",
-    "marketCap": 20363038720,
-    "fetched_at": "2026-06-01T23:41:11"
+    "marketCap": 24906825728,
+    "fetched_at": "2026-07-02T22:57:05"
   },
   "LILAK": {
     "sector": "Communication Services",
@@ -6114,22 +6226,24 @@
     "fetched_at": "2026-07-01T23:11:23"
   },
   "UAL": {
-    "sector": "Industrials",
-    "industry": "Airlines",
-    "marketCap": 36273913856,
-    "fetched_at": "2026-06-01T23:42:07"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:56"
   },
   "XLV": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:58"
+    "fetched_at": "2026-07-02T22:57:59"
   },
   "LKQ": {
-    "sector": "Consumer Cyclical",
-    "industry": "Auto Parts",
-    "marketCap": 6642396672,
-    "fetched_at": "2026-06-01T23:40:31"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:59:00"
   },
   "NMRA": {
     "sector": "Healthcare",
@@ -6141,7 +6255,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:31"
+    "fetched_at": "2026-07-02T22:57:40"
   },
   "MCRI": {
     "sector": "Consumer Cyclical",
@@ -6176,14 +6290,14 @@
   "SRPT": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 1859197312,
-    "fetched_at": "2026-06-01T23:41:55"
+    "marketCap": 2035509632,
+    "fetched_at": "2026-07-02T22:58:17"
   },
   "ADP": {
     "sector": "Technology",
     "industry": "Software - Application",
-    "marketCap": 93433888768,
-    "fetched_at": "2026-06-01T23:42:11"
+    "marketCap": 96843620352,
+    "fetched_at": "2026-07-02T22:57:36"
   },
   "OMAB": {
     "sector": "Industrials",
@@ -6192,10 +6306,11 @@
     "fetched_at": "2026-06-28T22:57:02"
   },
   "FER": {
-    "sector": "Industrials",
-    "industry": "Engineering & Construction",
-    "marketCap": 47712329728,
-    "fetched_at": "2026-06-01T23:40:01"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:42"
   },
   "DCTH": {
     "sector": "Healthcare",
@@ -6210,10 +6325,11 @@
     "fetched_at": "2026-06-28T22:56:04"
   },
   "NGNE": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 435184384,
-    "fetched_at": "2026-06-01T23:39:11"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:49"
   },
   "TRIN": {
     "sector": "Financial Services",
@@ -6230,8 +6346,8 @@
   "DMAC": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 314678752,
-    "fetched_at": "2026-06-01T23:42:17"
+    "marketCap": 410591072,
+    "fetched_at": "2026-07-02T22:58:11"
   },
   "AXGN": {
     "sector": "Healthcare",
@@ -6246,10 +6362,11 @@
     "fetched_at": "2026-06-29T22:59:02"
   },
   "TIGR": {
-    "sector": "Financial Services",
-    "industry": "Capital Markets",
-    "marketCap": 922954432,
-    "fetched_at": "2026-06-01T23:41:23"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:55"
   },
   "CYTK": {
     "sector": "Healthcare",
@@ -6260,20 +6377,20 @@
   "IQ": {
     "sector": "Communication Services",
     "industry": "Entertainment",
-    "marketCap": 1129078912,
-    "fetched_at": "2026-06-01T23:41:18"
+    "marketCap": 974674944,
+    "fetched_at": "2026-07-02T22:57:09"
   },
   "NXPI": {
     "sector": "Technology",
     "industry": "Semiconductors",
-    "marketCap": 78614446080,
-    "fetched_at": "2026-06-01T23:40:06"
+    "marketCap": 69015486464,
+    "fetched_at": "2026-07-02T22:58:23"
   },
   "PAA": {
     "sector": "Energy",
     "industry": "Oil & Gas Midstream",
-    "marketCap": 16177842176,
-    "fetched_at": "2026-06-01T23:41:35"
+    "marketCap": 15881519104,
+    "fetched_at": "2026-07-02T22:57:29"
   },
   "ATRO": {
     "sector": "Industrials",
@@ -6288,10 +6405,11 @@
     "fetched_at": "2026-06-30T23:13:17"
   },
   "Z": {
-    "sector": "Communication Services",
-    "industry": "Internet Content & Information",
-    "marketCap": 8294065664,
-    "fetched_at": "2026-06-01T23:40:17"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:45"
   },
   "ICHR": {
     "sector": "Technology",
@@ -6306,16 +6424,18 @@
     "fetched_at": "2026-06-30T23:11:06"
   },
   "KFII": {
-    "sector": "Financial Services",
-    "industry": "Shell Companies",
-    "marketCap": 413366304,
-    "fetched_at": "2026-06-01T23:41:59"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:43"
   },
   "IREN": {
-    "sector": "Financial Services",
-    "industry": "Capital Markets",
-    "marketCap": 23347550208,
-    "fetched_at": "2026-06-01T23:39:57"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:44"
   },
   "PRVA": {
     "sector": "Healthcare",
@@ -6354,10 +6474,11 @@
     "fetched_at": "2026-06-29T22:58:24"
   },
   "EXPE": {
-    "sector": "Consumer Cyclical",
-    "industry": "Travel Services",
-    "marketCap": 27409442816,
-    "fetched_at": "2026-06-01T23:39:52"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:48"
   },
   "IOVA": {
     "sector": "Healthcare",
@@ -6380,8 +6501,8 @@
   "FUFU": {
     "sector": "Financial Services",
     "industry": "Capital Markets",
-    "marketCap": 346639488,
-    "fetched_at": "2026-06-01T23:42:17"
+    "marketCap": 231648496,
+    "fetched_at": "2026-07-02T22:58:14"
   },
   "KELYB": {
     "sector": "Industrials",
@@ -6408,10 +6529,11 @@
     "fetched_at": "2026-06-30T23:11:18"
   },
   "ABAT": {
-    "sector": "Industrials",
-    "industry": "Waste Management",
-    "marketCap": 488363584,
-    "fetched_at": "2026-06-01T23:40:45"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:54"
   },
   "HCSG": {
     "sector": "Healthcare",
@@ -6438,10 +6560,11 @@
     "fetched_at": "2026-06-30T23:12:45"
   },
   "BATRA": {
-    "sector": "Communication Services",
-    "industry": "Entertainment",
-    "marketCap": 3415016960,
-    "fetched_at": "2026-06-01T23:41:56"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:53"
   },
   "IRDM": {
     "sector": "Communication Services",
@@ -6452,8 +6575,8 @@
   "ADPT": {
     "sector": "Healthcare",
     "industry": "Diagnostics & Research",
-    "marketCap": 2437475840,
-    "fetched_at": "2026-06-01T23:41:23"
+    "marketCap": 3391340544,
+    "fetched_at": "2026-07-02T22:58:24"
   },
   "RZLV": {
     "sector": "Technology",
@@ -6464,20 +6587,20 @@
   "ONB": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 9029536768,
-    "fetched_at": "2026-06-01T23:40:08"
+    "marketCap": 10045698048,
+    "fetched_at": "2026-07-02T22:57:43"
   },
   "CGO": {
     "sector": "Financial Services",
     "industry": "Asset Management",
-    "marketCap": 137975200,
-    "fetched_at": "2026-06-01T23:40:09"
+    "marketCap": 133651200,
+    "fetched_at": "2026-07-02T22:57:32"
   },
   "PRTH": {
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "marketCap": 541073472,
-    "fetched_at": "2026-06-01T23:41:19"
+    "marketCap": 591310080,
+    "fetched_at": "2026-07-02T22:58:01"
   },
   "FSLR": {
     "sector": "Technology",
@@ -6488,8 +6611,8 @@
   "KALV": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 1434309504,
-    "fetched_at": "2026-06-01T23:40:19"
+    "marketCap": 1437504000,
+    "fetched_at": "2026-07-02T22:57:58"
   },
   "GCBC": {
     "sector": "Financial Services",
@@ -6506,14 +6629,15 @@
   "NNNN": {
     "sector": "Healthcare",
     "industry": "Medical Instruments & Supplies",
-    "marketCap": 1324197504,
-    "fetched_at": "2026-06-01T23:42:07"
+    "marketCap": 557418240,
+    "fetched_at": "2026-07-02T22:57:11"
   },
   "ARVN": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 553591872,
-    "fetched_at": "2026-06-01T23:40:03"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:57"
   },
   "NB": {
     "sector": "Basic Materials",
@@ -6525,13 +6649,14 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:26"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:54"
   },
   "CFFN": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 956580032,
-    "fetched_at": "2026-06-01T23:41:30"
+    "marketCap": 1051118464,
+    "fetched_at": "2026-07-02T22:56:44"
   },
   "FCNCA": {
     "sector": "Financial Services",
@@ -6540,10 +6665,11 @@
     "fetched_at": "2026-06-29T22:58:50"
   },
   "STRK": {
-    "sector": "Technology",
-    "industry": "Software - Application",
+    "sector": "",
+    "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:39:45"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:50"
   },
   "WAFD": {
     "sector": "Financial Services",
@@ -6552,10 +6678,11 @@
     "fetched_at": "2026-06-30T23:12:46"
   },
   "VRDN": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 1872853376,
-    "fetched_at": "2026-06-01T23:41:46"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:41"
   },
   "REG": {
     "sector": "Real Estate",
@@ -6573,7 +6700,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:00"
+    "fetched_at": "2026-07-02T22:57:48"
   },
   "IRTC": {
     "sector": "Healthcare",
@@ -6582,16 +6709,18 @@
     "fetched_at": "2026-06-29T22:58:38"
   },
   "ATLCP": {
-    "sector": "Financial Services",
-    "industry": "Credit Services",
+    "sector": "",
+    "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:41:04"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:58"
   },
   "BPYPN": {
-    "sector": "Real Estate",
-    "industry": "Real Estate Services",
+    "sector": "",
+    "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:41:13"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:41"
   },
   "CCIIU": {
     "sector": "Financial Services",
@@ -6600,16 +6729,17 @@
     "fetched_at": "2026-07-01T23:12:37"
   },
   "INCY": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 19097176064,
-    "fetched_at": "2026-06-01T23:40:56"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:53"
   },
   "TACOU": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:42:19"
+    "fetched_at": "2026-07-02T22:57:49"
   },
   "UCTT": {
     "sector": "Technology",
@@ -6626,8 +6756,8 @@
   "EGBN": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 813013120,
-    "fetched_at": "2026-06-01T23:39:42"
+    "marketCap": 841374080,
+    "fetched_at": "2026-07-02T22:56:58"
   },
   "OACC": {
     "sector": "Financial Services",
@@ -6650,14 +6780,14 @@
   "LRMR": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 364629120,
-    "fetched_at": "2026-06-01T23:40:59"
+    "marketCap": 338658368,
+    "fetched_at": "2026-07-02T22:58:16"
   },
   "JSM": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:36"
+    "fetched_at": "2026-07-02T22:57:34"
   },
   "ALMS": {
     "sector": "Healthcare",
@@ -6668,14 +6798,14 @@
   "MMYT": {
     "sector": "Consumer Cyclical",
     "industry": "Travel Services",
-    "marketCap": 4489115648,
-    "fetched_at": "2026-06-01T23:39:24"
+    "marketCap": 5527911424,
+    "fetched_at": "2026-07-02T22:58:08"
   },
   "PTEN": {
     "sector": "Energy",
     "industry": "Oil & Gas Drilling",
-    "marketCap": 4376991744,
-    "fetched_at": "2026-06-01T23:39:43"
+    "marketCap": 3287489024,
+    "fetched_at": "2026-07-02T22:56:42"
   },
   "EPRX": {
     "sector": "Healthcare",
@@ -6684,10 +6814,11 @@
     "fetched_at": "2026-06-29T22:58:28"
   },
   "PLMKU": {
-    "sector": "Financial Services",
-    "industry": "Shell Companies",
+    "sector": "",
+    "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:41:36"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:49"
   },
   "NOVT": {
     "sector": "Technology",
@@ -6728,8 +6859,8 @@
   "OPTX": {
     "sector": "Technology",
     "industry": "Electronic Components",
-    "marketCap": 436633920,
-    "fetched_at": "2026-06-01T23:39:18"
+    "marketCap": 438043680,
+    "fetched_at": "2026-07-02T22:57:52"
   },
   "CHYM": {
     "sector": "Technology",
@@ -6740,8 +6871,8 @@
   "STAA": {
     "sector": "Healthcare",
     "industry": "Medical Instruments & Supplies",
-    "marketCap": 1471250048,
-    "fetched_at": "2026-06-01T23:39:12"
+    "marketCap": 1383622400,
+    "fetched_at": "2026-07-02T22:57:40"
   },
   "ASTE": {
     "sector": "Industrials",
@@ -6759,13 +6890,13 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:08"
+    "fetched_at": "2026-07-02T22:58:23"
   },
   "CATY": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 3787504384,
-    "fetched_at": "2026-06-01T23:41:44"
+    "marketCap": 4176980480,
+    "fetched_at": "2026-07-02T22:56:55"
   },
   "NPAC": {
     "sector": "Financial Services",
@@ -6777,13 +6908,14 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:47"
+    "fetched_at": "2026-07-02T22:56:57"
   },
   "ADAMH": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:35"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:56"
   },
   "SMMT": {
     "sector": "Healthcare",
@@ -6798,16 +6930,17 @@
     "fetched_at": "2026-06-30T23:13:21"
   },
   "OFLX": {
-    "sector": "Industrials",
-    "industry": "Specialty Industrial Machinery",
-    "marketCap": 301820224,
-    "fetched_at": "2026-06-01T23:39:15"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:51"
   },
   "POWL": {
     "sector": "Industrials",
     "industry": "Electrical Equipment & Parts",
-    "marketCap": 10496686080,
-    "fetched_at": "2026-06-01T23:39:42"
+    "marketCap": 8974208000,
+    "fetched_at": "2026-07-02T22:57:24"
   },
   "HNST": {
     "sector": "Consumer Defensive",
@@ -6825,7 +6958,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:46"
+    "fetched_at": "2026-07-02T22:57:32"
   },
   "LNTH": {
     "sector": "Healthcare",
@@ -6837,7 +6970,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:43"
+    "fetched_at": "2026-07-02T22:58:21"
   },
   "SLN": {
     "sector": "Healthcare",
@@ -6908,14 +7041,14 @@
   "IPEX": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
-    "marketCap": 124810248,
-    "fetched_at": "2026-06-01T23:42:10"
+    "marketCap": 125048440,
+    "fetched_at": "2026-07-02T22:58:27"
   },
   "AFYA": {
     "sector": "Consumer Defensive",
     "industry": "Education & Training Services",
-    "marketCap": 1292444416,
-    "fetched_at": "2026-06-01T23:41:12"
+    "marketCap": 1396481664,
+    "fetched_at": "2026-07-02T22:58:05"
   },
   "SRTA": {
     "sector": "Healthcare",
@@ -6957,7 +7090,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:29"
+    "fetched_at": "2026-07-02T22:58:09"
   },
   "GPAT": {
     "sector": "Financial Services",
@@ -6975,7 +7108,7 @@
     "sector": "Financial Services",
     "industry": "Shell Companies",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:39:10"
+    "fetched_at": "2026-07-02T22:57:58"
   },
   "COST": {
     "sector": "Consumer Defensive",
@@ -7004,8 +7137,8 @@
   "NTRA": {
     "sector": "Healthcare",
     "industry": "Diagnostics & Research",
-    "marketCap": 31336955904,
-    "fetched_at": "2026-06-01T23:41:58"
+    "marketCap": 40002920448,
+    "fetched_at": "2026-07-02T22:58:17"
   },
   "SDHIU": {
     "sector": "Financial Services",
@@ -7022,8 +7155,8 @@
   "PTLO": {
     "sector": "Consumer Cyclical",
     "industry": "Restaurants",
-    "marketCap": 301828608,
-    "fetched_at": "2026-06-01T23:42:07"
+    "marketCap": 360457184,
+    "fetched_at": "2026-07-02T22:57:18"
   },
   "MCHP": {
     "sector": "Technology",
@@ -7040,14 +7173,14 @@
   "ALM": {
     "sector": "Basic Materials",
     "industry": "Other Industrial Metals & Mining",
-    "marketCap": 5405282304,
-    "fetched_at": "2026-06-01T23:39:37"
+    "marketCap": 4457584640,
+    "fetched_at": "2026-07-02T22:56:45"
   },
   "SMH": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:50"
+    "fetched_at": "2026-07-02T22:58:04"
   },
   "EOLS": {
     "sector": "Healthcare",
@@ -7064,8 +7197,8 @@
   "AKBA": {
     "sector": "Healthcare",
     "industry": "Drug Manufacturers - Specialty & Generic",
-    "marketCap": 273623392,
-    "fetched_at": "2026-06-01T23:42:01"
+    "marketCap": 332640224,
+    "fetched_at": "2026-07-02T22:57:45"
   },
   "INBX": {
     "sector": "Healthcare",
@@ -7106,8 +7239,8 @@
   "KMB": {
     "sector": "Consumer Defensive",
     "industry": "Household & Personal Products",
-    "marketCap": 32513556480,
-    "fetched_at": "2026-06-01T23:41:20"
+    "marketCap": 38080196608,
+    "fetched_at": "2026-07-02T22:57:58"
   },
   "FTAI": {
     "sector": "Industrials",
@@ -7173,7 +7306,8 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:52"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:52"
   },
   "HELE": {
     "sector": "Consumer Defensive",
@@ -7233,7 +7367,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:44"
+    "fetched_at": "2026-07-02T22:58:39"
   },
   "PAGP": {
     "sector": "Energy",
@@ -7263,7 +7397,8 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:28"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:49"
   },
   "EU": {
     "sector": "Energy",
@@ -7352,8 +7487,8 @@
   "TTD": {
     "sector": "Communication Services",
     "industry": "Advertising Agencies",
-    "marketCap": 10915915776,
-    "fetched_at": "2026-06-01T23:40:50"
+    "marketCap": 8979069952,
+    "fetched_at": "2026-07-02T22:58:25"
   },
   "PDD": {
     "sector": "Consumer Cyclical",
@@ -7364,8 +7499,8 @@
   "CG": {
     "sector": "Financial Services",
     "industry": "Asset Management",
-    "marketCap": 16234846208,
-    "fetched_at": "2026-06-01T23:40:19"
+    "marketCap": 15417705472,
+    "fetched_at": "2026-07-02T22:57:03"
   },
   "PHVS": {
     "sector": "Healthcare",
@@ -7386,22 +7521,23 @@
     "fetched_at": "2026-06-30T23:11:20"
   },
   "STNE": {
-    "sector": "Technology",
-    "industry": "Software - Infrastructure",
-    "marketCap": 2843337728,
-    "fetched_at": "2026-06-01T23:40:57"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:47"
   },
   "PRAX": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 9343850496,
-    "fetched_at": "2026-06-01T23:40:18"
+    "marketCap": 8879946752,
+    "fetched_at": "2026-07-02T22:57:47"
   },
   "INV": {
     "sector": "Financial Services",
     "industry": "Asset Management",
-    "marketCap": 490401120,
-    "fetched_at": "2026-06-01T23:39:29"
+    "marketCap": 405095712,
+    "fetched_at": "2026-07-02T22:57:02"
   },
   "PAHC": {
     "sector": "Healthcare",
@@ -7424,8 +7560,8 @@
   "FFIV": {
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "marketCap": 22320582656,
-    "fetched_at": "2026-06-01T23:41:48"
+    "marketCap": 23026952192,
+    "fetched_at": "2026-07-02T22:58:33"
   },
   "RMR": {
     "sector": "Real Estate",
@@ -7437,7 +7573,8 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:14"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:44"
   },
   "IPAR": {
     "sector": "Consumer Defensive",
@@ -7470,10 +7607,11 @@
     "fetched_at": "2026-06-30T23:11:39"
   },
   "CAC": {
-    "sector": "Financial Services",
-    "industry": "Banks - Regional",
-    "marketCap": 828481024,
-    "fetched_at": "2026-06-01T23:40:32"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:48"
   },
   "ZM": {
     "sector": "Technology",
@@ -7550,8 +7688,8 @@
   "CRDO": {
     "sector": "Technology",
     "industry": "Semiconductors",
-    "marketCap": 41704132608,
-    "fetched_at": "2026-06-01T23:39:23"
+    "marketCap": 45110870016,
+    "fetched_at": "2026-07-02T22:57:24"
   },
   "NTCT": {
     "sector": "Technology",
@@ -7560,16 +7698,17 @@
     "fetched_at": "2026-06-29T22:59:34"
   },
   "AVTX": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 827907776,
-    "fetched_at": "2026-06-01T23:39:54"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:52"
   },
   "OZK": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 5202845696,
-    "fetched_at": "2026-06-01T23:39:23"
+    "marketCap": 5440826880,
+    "fetched_at": "2026-07-02T22:57:37"
   },
   "RDAG": {
     "sector": "Financial Services",
@@ -7590,16 +7729,17 @@
     "fetched_at": "2026-06-30T23:13:24"
   },
   "CRTO": {
-    "sector": "Communication Services",
-    "industry": "Advertising Agencies",
-    "marketCap": 960172992,
-    "fetched_at": "2026-06-01T23:39:21"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:59:00"
   },
   "FSHP": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
-    "marketCap": 55330944,
-    "fetched_at": "2026-06-01T23:40:08"
+    "marketCap": 56336044,
+    "fetched_at": "2026-07-02T22:57:23"
   },
   "LMB": {
     "sector": "Industrials",
@@ -7620,10 +7760,11 @@
     "fetched_at": "2026-06-29T22:59:03"
   },
   "IBRX": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 7582842368,
-    "fetched_at": "2026-06-01T23:40:00"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:52"
   },
   "CRMD": {
     "sector": "Healthcare",
@@ -7646,8 +7787,8 @@
   "ITRI": {
     "sector": "Technology",
     "industry": "Scientific & Technical Instruments",
-    "marketCap": 3759533312,
-    "fetched_at": "2026-06-01T23:40:21"
+    "marketCap": 3773721856,
+    "fetched_at": "2026-07-02T22:58:04"
   },
   "SVCC": {
     "sector": "Financial Services",
@@ -7658,8 +7799,8 @@
   "VRTX": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 111268298752,
-    "fetched_at": "2026-06-01T23:42:18"
+    "marketCap": 134019407872,
+    "fetched_at": "2026-07-02T22:58:11"
   },
   "CVBF": {
     "sector": "Financial Services",
@@ -7676,14 +7817,15 @@
   "FLNC": {
     "sector": "Utilities",
     "industry": "Utilities - Renewable",
-    "marketCap": 5004035072,
-    "fetched_at": "2026-06-01T23:41:37"
+    "marketCap": 3133281792,
+    "fetched_at": "2026-07-02T22:58:28"
   },
   "GOGO": {
-    "sector": "Communication Services",
-    "industry": "Telecom Services",
-    "marketCap": 588287552,
-    "fetched_at": "2026-06-01T23:40:52"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:47"
   },
   "BILI": {
     "sector": "Communication Services",
@@ -7707,7 +7849,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:39"
+    "fetched_at": "2026-07-02T22:57:11"
   },
   "CRSP": {
     "sector": "Healthcare",
@@ -7728,16 +7870,17 @@
     "fetched_at": "2026-06-29T22:58:31"
   },
   "USLM": {
-    "sector": "Basic Materials",
-    "industry": "Building Materials",
-    "marketCap": 3190018304,
-    "fetched_at": "2026-06-01T23:39:21"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:49"
   },
   "KLIC": {
     "sector": "Technology",
     "industry": "Semiconductor Equipment & Materials",
-    "marketCap": 5408079360,
-    "fetched_at": "2026-06-01T23:40:38"
+    "marketCap": 6349548032,
+    "fetched_at": "2026-07-02T22:57:17"
   },
   "PENG": {
     "sector": "Technology",
@@ -7746,16 +7889,17 @@
     "fetched_at": "2026-06-30T23:12:28"
   },
   "KRT": {
-    "sector": "Consumer Cyclical",
-    "industry": "Packaging & Containers",
-    "marketCap": 548803008,
-    "fetched_at": "2026-06-01T23:40:15"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:44"
   },
   "LKFN": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 1475382656,
-    "fetched_at": "2026-06-01T23:41:06"
+    "marketCap": 1554607744,
+    "fetched_at": "2026-07-02T22:58:21"
   },
   "WFRD": {
     "sector": "Energy",
@@ -7772,26 +7916,26 @@
   "MGNI": {
     "sector": "Communication Services",
     "industry": "Advertising Agencies",
-    "marketCap": 2202646784,
-    "fetched_at": "2026-06-01T23:42:16"
+    "marketCap": 2918721792,
+    "fetched_at": "2026-07-02T22:57:30"
   },
   "SCHL": {
     "sector": "Communication Services",
     "industry": "Publishing",
-    "marketCap": 789285824,
-    "fetched_at": "2026-06-01T23:39:26"
+    "marketCap": 856459072,
+    "fetched_at": "2026-07-02T22:57:10"
   },
   "VITL": {
     "sector": "Consumer Defensive",
     "industry": "Farm Products",
-    "marketCap": 431483936,
-    "fetched_at": "2026-06-01T23:39:31"
+    "marketCap": 546746304,
+    "fetched_at": "2026-07-02T22:58:02"
   },
   "SDHI": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
-    "marketCap": 361966816,
-    "fetched_at": "2026-06-01T23:40:42"
+    "marketCap": 363011968,
+    "fetched_at": "2026-07-02T22:57:01"
   },
   "RELY": {
     "sector": "Technology",
@@ -7842,10 +7986,11 @@
     "fetched_at": "2026-06-30T23:11:34"
   },
   "GTERU": {
-    "sector": "Financial Services",
-    "industry": "Shell Companies",
+    "sector": "",
+    "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:40:51"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:42"
   },
   "GERN": {
     "sector": "Healthcare",
@@ -7869,7 +8014,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:46"
+    "fetched_at": "2026-07-02T22:56:43"
   },
   "GO": {
     "sector": "Consumer Defensive",
@@ -7881,13 +8026,13 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:44"
+    "fetched_at": "2026-07-02T22:57:11"
   },
   "CDZIP": {
     "sector": "Utilities",
     "industry": "Utilities - Regulated Water",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:39:22"
+    "fetched_at": "2026-07-02T22:57:29"
   },
   "TTMI": {
     "sector": "Technology",
@@ -7904,8 +8049,8 @@
   "CBSH": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 7500234752,
-    "fetched_at": "2026-06-01T23:42:02"
+    "marketCap": 8459447808,
+    "fetched_at": "2026-07-02T22:58:11"
   },
   "CLMB": {
     "sector": "Technology",
@@ -7934,14 +8079,14 @@
   "ROST": {
     "sector": "Consumer Cyclical",
     "industry": "Apparel Retail",
-    "marketCap": 72474304512,
-    "fetched_at": "2026-06-01T23:39:50"
+    "marketCap": 68464304128,
+    "fetched_at": "2026-07-02T22:57:10"
   },
   "ASO": {
     "sector": "Consumer Cyclical",
     "industry": "Specialty Retail",
-    "marketCap": 3392482816,
-    "fetched_at": "2026-06-01T23:39:57"
+    "marketCap": 2966958848,
+    "fetched_at": "2026-07-02T22:57:33"
   },
   "SLS": {
     "sector": "Healthcare",
@@ -7950,28 +8095,30 @@
     "fetched_at": "2026-06-30T23:12:04"
   },
   "TRI": {
-    "sector": "Industrials",
-    "industry": "Specialty Business Services",
-    "marketCap": 41017188352,
-    "fetched_at": "2026-06-01T23:40:09"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:51"
   },
   "IIIV": {
-    "sector": "Technology",
-    "industry": "Software - Infrastructure",
-    "marketCap": 587958336,
-    "fetched_at": "2026-06-01T23:40:30"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:54"
   },
   "KLAC": {
     "sector": "Technology",
     "industry": "Semiconductor Equipment & Materials",
-    "marketCap": 253422616576,
-    "fetched_at": "2026-06-01T23:40:49"
+    "marketCap": 307693125632,
+    "fetched_at": "2026-07-02T22:57:16"
   },
   "ECX": {
     "sector": "Consumer Cyclical",
     "industry": "Auto Parts",
-    "marketCap": 457271968,
-    "fetched_at": "2026-06-01T23:41:09"
+    "marketCap": 476324960,
+    "fetched_at": "2026-07-02T22:58:13"
   },
   "MGPI": {
     "sector": "Consumer Defensive",
@@ -7983,7 +8130,8 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:47"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:58"
   },
   "BCAL": {
     "sector": "Financial Services",
@@ -8024,20 +8172,21 @@
   "CCNE": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 893611008,
-    "fetched_at": "2026-06-01T23:41:44"
+    "marketCap": 998201344,
+    "fetched_at": "2026-07-02T22:57:18"
   },
   "EWT": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:00"
+    "fetched_at": "2026-07-02T22:58:02"
   },
   "FCFS": {
-    "sector": "Financial Services",
-    "industry": "Credit Services",
-    "marketCap": 9370529792,
-    "fetched_at": "2026-06-01T23:42:02"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:49"
   },
   "TMC": {
     "sector": "Basic Materials",
@@ -8058,10 +8207,11 @@
     "fetched_at": "2026-06-28T22:56:07"
   },
   "AMSF": {
-    "sector": "Financial Services",
-    "industry": "Insurance - Specialty",
-    "marketCap": 569342848,
-    "fetched_at": "2026-06-01T23:39:14"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:49"
   },
   "TDUP": {
     "sector": "Consumer Cyclical",
@@ -8078,26 +8228,28 @@
   "NNDM": {
     "sector": "Technology",
     "industry": "Computer Hardware",
-    "marketCap": 357746688,
-    "fetched_at": "2026-06-01T23:41:18"
+    "marketCap": 305014048,
+    "fetched_at": "2026-07-02T22:58:14"
   },
   "GABC": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 1622402816,
-    "fetched_at": "2026-06-01T23:41:21"
+    "marketCap": 1788061440,
+    "fetched_at": "2026-07-02T22:57:03"
   },
   "BWFG": {
-    "sector": "Financial Services",
-    "industry": "Banks - Regional",
-    "marketCap": 413010720,
-    "fetched_at": "2026-06-01T23:40:27"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:46"
   },
   "GOODO": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:22"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:57"
   },
   "ALGT": {
     "sector": "Industrials",
@@ -8115,13 +8267,13 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:32"
+    "fetched_at": "2026-07-02T22:57:21"
   },
   "ORGO": {
     "sector": "Healthcare",
     "industry": "Drug Manufacturers - Specialty & Generic",
     "marketCap": 303671904,
-    "fetched_at": "2026-06-01T23:41:05"
+    "fetched_at": "2026-07-02T22:58:07"
   },
   "CGCTU": {
     "sector": "Financial Services",
@@ -8132,14 +8284,15 @@
   "UYSC": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
-    "marketCap": 81944320,
-    "fetched_at": "2026-06-01T23:41:52"
+    "marketCap": 82020904,
+    "fetched_at": "2026-07-02T22:58:28"
   },
   "GAINI": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:27"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:54"
   },
   "RIGL": {
     "sector": "Healthcare",
@@ -8151,13 +8304,14 @@
     "sector": "Healthcare",
     "industry": "Biotechnology",
     "marketCap": 1862327296,
-    "fetched_at": "2026-06-01T23:40:20"
+    "fetched_at": "2026-07-02T22:58:37"
   },
   "SHMD": {
-    "sector": "Industrials",
-    "industry": "Specialty Industrial Machinery",
-    "marketCap": 383797728,
-    "fetched_at": "2026-06-01T23:40:09"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:55"
   },
   "MYRG": {
     "sector": "Industrials",
@@ -8223,25 +8377,26 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:19"
+    "fetched_at": "2026-07-02T22:58:16"
   },
   "TTEK": {
     "sector": "Industrials",
     "industry": "Engineering & Construction",
-    "marketCap": 7344548864,
-    "fetched_at": "2026-06-01T23:41:32"
+    "marketCap": 7759788544,
+    "fetched_at": "2026-07-02T22:57:01"
   },
   "CLNE": {
     "sector": "Energy",
     "industry": "Oil & Gas Refining & Marketing",
     "marketCap": 451460512,
-    "fetched_at": "2026-06-01T23:41:03"
+    "fetched_at": "2026-07-02T22:56:58"
   },
   "MFI": {
-    "sector": "Technology",
-    "industry": "Software - Application",
-    "marketCap": 506749888,
-    "fetched_at": "2026-06-01T23:40:24"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:45"
   },
   "EYPT": {
     "sector": "Healthcare",
@@ -8252,8 +8407,8 @@
   "MGTX": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 907573312,
-    "fetched_at": "2026-06-01T23:40:43"
+    "marketCap": 1289124480,
+    "fetched_at": "2026-07-02T22:58:28"
   },
   "NMIH": {
     "sector": "Financial Services",
@@ -8264,8 +8419,8 @@
   "CCRN": {
     "sector": "Healthcare",
     "industry": "Medical Care Facilities",
-    "marketCap": 405896992,
-    "fetched_at": "2026-06-01T23:39:13"
+    "marketCap": 426445568,
+    "fetched_at": "2026-07-02T22:57:58"
   },
   "PWP": {
     "sector": "Financial Services",
@@ -8289,7 +8444,7 @@
     "sector": "Financial Services",
     "industry": "Insurance - Life",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:39:09"
+    "fetched_at": "2026-07-02T22:58:07"
   },
   "PODD": {
     "sector": "Healthcare",
@@ -8300,8 +8455,8 @@
   "UROY": {
     "sector": "Energy",
     "industry": "Uranium",
-    "marketCap": 517471552,
-    "fetched_at": "2026-06-01T23:39:56"
+    "marketCap": 411924960,
+    "fetched_at": "2026-07-02T22:57:59"
   },
   "DSP": {
     "sector": "Technology",
@@ -8312,8 +8467,8 @@
   "CGON": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 5224232448,
-    "fetched_at": "2026-06-01T23:41:22"
+    "marketCap": 6205925888,
+    "fetched_at": "2026-07-02T22:58:34"
   },
   "TROO": {
     "sector": "Financial Services",
@@ -8331,7 +8486,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:09"
+    "fetched_at": "2026-07-02T22:57:39"
   },
   "HSPT": {
     "sector": "Financial Services",
@@ -8426,8 +8581,8 @@
   "MXL": {
     "sector": "Technology",
     "industry": "Semiconductors",
-    "marketCap": 7721548288,
-    "fetched_at": "2026-06-01T23:41:53"
+    "marketCap": 8338520064,
+    "fetched_at": "2026-07-02T22:57:52"
   },
   "NATR": {
     "sector": "Consumer Defensive",
@@ -8450,8 +8605,8 @@
   "HWKN": {
     "sector": "Basic Materials",
     "industry": "Specialty Chemicals",
-    "marketCap": 3295084800,
-    "fetched_at": "2026-06-01T23:41:41"
+    "marketCap": 2895327488,
+    "fetched_at": "2026-07-02T22:58:01"
   },
   "STRZ": {
     "sector": "Communication Services",
@@ -8504,8 +8659,8 @@
   "NN": {
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "marketCap": 2719188224,
-    "fetched_at": "2026-06-01T23:41:04"
+    "marketCap": 2221193472,
+    "fetched_at": "2026-07-02T22:58:23"
   },
   "IAC": {
     "sector": "Communication Services",
@@ -8534,14 +8689,15 @@
   "TBBK": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 2268660736,
-    "fetched_at": "2026-06-01T23:39:39"
+    "marketCap": 2660024320,
+    "fetched_at": "2026-07-02T22:58:35"
   },
   "CLOV": {
-    "sector": "Healthcare",
-    "industry": "Healthcare Plans",
-    "marketCap": 2064602624,
-    "fetched_at": "2026-06-01T23:39:28"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:42"
   },
   "UTHR": {
     "sector": "Healthcare",
@@ -8553,7 +8709,8 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:17"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:52"
   },
   "CTMX": {
     "sector": "Healthcare",
@@ -8562,10 +8719,11 @@
     "fetched_at": "2026-06-30T23:12:04"
   },
   "KNSA": {
-    "sector": "Healthcare",
-    "industry": "Drug Manufacturers - Specialty & Generic",
-    "marketCap": 3726108160,
-    "fetched_at": "2026-06-01T23:40:47"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:50"
   },
   "CLBT": {
     "sector": "Technology",
@@ -8576,8 +8734,8 @@
   "PYPL": {
     "sector": "Financial Services",
     "industry": "Credit Services",
-    "marketCap": 39862345728,
-    "fetched_at": "2026-06-01T23:41:57"
+    "marketCap": 40109338624,
+    "fetched_at": "2026-07-02T22:58:31"
   },
   "AROW": {
     "sector": "Financial Services",
@@ -8600,8 +8758,8 @@
   "SRCE": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 1755344256,
-    "fetched_at": "2026-06-01T23:41:24"
+    "marketCap": 1975815296,
+    "fetched_at": "2026-07-02T22:58:03"
   },
   "MCW": {
     "sector": "Consumer Cyclical",
@@ -8619,7 +8777,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:42"
+    "fetched_at": "2026-07-02T22:58:31"
   },
   "BLFS": {
     "sector": "Healthcare",
@@ -8636,8 +8794,8 @@
   "ARLP": {
     "sector": "Energy",
     "industry": "Thermal Coal",
-    "marketCap": 3256354048,
-    "fetched_at": "2026-06-01T23:39:34"
+    "marketCap": 3063365888,
+    "fetched_at": "2026-07-02T22:57:36"
   },
   "PCAR": {
     "sector": "Industrials",
@@ -8646,22 +8804,24 @@
     "fetched_at": "2026-06-29T22:58:32"
   },
   "SENEB": {
-    "sector": "Consumer Defensive",
-    "industry": "Packaged Foods",
-    "marketCap": 987226816,
-    "fetched_at": "2026-06-01T23:40:53"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:42"
   },
   "EBAY": {
-    "sector": "Consumer Cyclical",
-    "industry": "Internet Retail",
-    "marketCap": 48995397632,
-    "fetched_at": "2026-06-01T23:40:04"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:48"
   },
   "MACI": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
-    "marketCap": 234378384,
-    "fetched_at": "2026-06-01T23:41:02"
+    "marketCap": 235243248,
+    "fetched_at": "2026-07-02T22:57:24"
   },
   "IDCC": {
     "sector": "Technology",
@@ -8678,32 +8838,33 @@
   "SITM": {
     "sector": "Technology",
     "industry": "Semiconductors",
-    "marketCap": 17554155520,
-    "fetched_at": "2026-06-01T23:39:36"
+    "marketCap": 15881914368,
+    "fetched_at": "2026-07-02T22:57:36"
   },
   "VBNK": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 575473856,
-    "fetched_at": "2026-06-01T23:41:50"
+    "marketCap": 705085760,
+    "fetched_at": "2026-07-02T22:58:38"
   },
   "PDFS": {
-    "sector": "Technology",
-    "industry": "Software - Application",
-    "marketCap": 2146976640,
-    "fetched_at": "2026-06-01T23:41:33"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:50"
   },
   "DGICB": {
     "sector": "Financial Services",
     "industry": "Insurance - Property & Casualty",
-    "marketCap": 682083200,
-    "fetched_at": "2026-06-01T23:40:19"
+    "marketCap": 874370688,
+    "fetched_at": "2026-07-02T22:56:42"
   },
   "OXLCZ": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:36"
+    "fetched_at": "2026-07-02T22:58:33"
   },
   "CBIO": {
     "sector": "Healthcare",
@@ -8750,8 +8911,8 @@
   "CNOB": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 1492059648,
-    "fetched_at": "2026-06-01T23:41:42"
+    "marketCap": 1635381888,
+    "fetched_at": "2026-07-02T22:57:41"
   },
   "TLRY": {
     "sector": "Healthcare",
@@ -8781,7 +8942,8 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:16"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:47"
   },
   "STLD": {
     "sector": "Basic Materials",
@@ -8792,8 +8954,8 @@
   "COGT": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 5947915264,
-    "fetched_at": "2026-06-01T23:39:32"
+    "marketCap": 6610882560,
+    "fetched_at": "2026-07-02T22:58:22"
   },
   "AXON": {
     "sector": "Industrials",
@@ -8808,10 +8970,11 @@
     "fetched_at": "2026-06-30T23:11:18"
   },
   "AAOI": {
-    "sector": "Technology",
-    "industry": "Communication Equipment",
-    "marketCap": 14898674688,
-    "fetched_at": "2026-06-01T23:41:08"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:41"
   },
   "HCKT": {
     "sector": "Technology",
@@ -8822,8 +8985,8 @@
   "AMGN": {
     "sector": "Healthcare",
     "industry": "Drug Manufacturers - General",
-    "marketCap": 177634197504,
-    "fetched_at": "2026-06-01T23:40:31"
+    "marketCap": 201931849728,
+    "fetched_at": "2026-07-02T22:56:48"
   },
   "FOX": {
     "sector": "Communication Services",
@@ -8832,10 +8995,11 @@
     "fetched_at": "2026-06-30T23:12:17"
   },
   "GASS": {
-    "sector": "Industrials",
-    "industry": "Marine Shipping",
-    "marketCap": 347686208,
-    "fetched_at": "2026-06-01T23:40:56"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:51"
   },
   "FWDI": {
     "sector": "Consumer Cyclical",
@@ -8859,7 +9023,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:11"
+    "fetched_at": "2026-07-02T22:58:36"
   },
   "MRCY": {
     "sector": "Industrials",
@@ -8876,14 +9040,14 @@
   "DJT": {
     "sector": "Communication Services",
     "industry": "Internet Content & Information",
-    "marketCap": 2622752768,
-    "fetched_at": "2026-06-01T23:41:17"
+    "marketCap": 2365185536,
+    "fetched_at": "2026-07-02T22:57:31"
   },
   "ESEA": {
     "sector": "Industrials",
     "industry": "Marine Shipping",
-    "marketCap": 466746528,
-    "fetched_at": "2026-06-01T23:41:48"
+    "marketCap": 468336160,
+    "fetched_at": "2026-07-02T22:58:31"
   },
   "AKAM": {
     "sector": "Technology",
@@ -8900,14 +9064,14 @@
   "FRME": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 2491288832,
-    "fetched_at": "2026-06-01T23:42:09"
+    "marketCap": 2737707776,
+    "fetched_at": "2026-07-02T22:57:21"
   },
   "CGABL": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:30"
+    "fetched_at": "2026-07-02T22:57:38"
   },
   "TREE": {
     "sector": "Financial Services",
@@ -8925,13 +9089,13 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:28"
+    "fetched_at": "2026-07-02T22:57:35"
   },
   "CCEC": {
     "sector": "Industrials",
     "industry": "Marine Shipping",
-    "marketCap": 1388620544,
-    "fetched_at": "2026-06-01T23:40:23"
+    "marketCap": 1298450432,
+    "fetched_at": "2026-07-02T22:58:00"
   },
   "LNKB": {
     "sector": "Financial Services",
@@ -8946,10 +9110,11 @@
     "fetched_at": "2026-06-28T22:56:43"
   },
   "ALDF": {
-    "sector": "Financial Services",
-    "industry": "Shell Companies",
-    "marketCap": 318992544,
-    "fetched_at": "2026-06-01T23:39:24"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:53"
   },
   "CIGI": {
     "sector": "Real Estate",
@@ -8960,8 +9125,8 @@
   "SGML": {
     "sector": "Basic Materials",
     "industry": "Other Industrial Metals & Mining",
-    "marketCap": 1822552704,
-    "fetched_at": "2026-06-01T23:40:42"
+    "marketCap": 1377274496,
+    "fetched_at": "2026-07-02T22:57:22"
   },
   "WYNN": {
     "sector": "Consumer Cyclical",
@@ -8978,8 +9143,8 @@
   "AAPL": {
     "sector": "Technology",
     "industry": "Consumer Electronics",
-    "marketCap": 4498883870720,
-    "fetched_at": "2026-06-01T23:39:45"
+    "marketCap": 4532958920704,
+    "fetched_at": "2026-07-02T22:56:57"
   },
   "CCC": {
     "sector": "Technology",
@@ -9012,10 +9177,11 @@
     "fetched_at": "2026-06-29T22:58:33"
   },
   "RPD": {
-    "sector": "Technology",
-    "industry": "Software - Infrastructure",
-    "marketCap": 584099584,
-    "fetched_at": "2026-06-01T23:39:25"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:57"
   },
   "HBANP": {
     "sector": "Financial Services",
@@ -9051,19 +9217,21 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:37"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:45"
   },
   "USO": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:50"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:45"
   },
   "URA": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:10"
+    "fetched_at": "2026-07-02T22:56:56"
   },
   "DCBO": {
     "sector": "Technology",
@@ -9086,14 +9254,14 @@
   "NWFL": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 326938784,
-    "fetched_at": "2026-06-01T23:41:06"
+    "marketCap": 350898336,
+    "fetched_at": "2026-07-02T22:57:55"
   },
   "SFIX": {
     "sector": "Consumer Cyclical",
     "industry": "Apparel Retail",
-    "marketCap": 492846304,
-    "fetched_at": "2026-06-01T23:39:35"
+    "marketCap": 512355264,
+    "fetched_at": "2026-07-02T22:58:07"
   },
   "AMD": {
     "sector": "Technology",
@@ -9122,8 +9290,8 @@
   "EFSC": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 2183440896,
-    "fetched_at": "2026-06-01T23:41:41"
+    "marketCap": 2407345920,
+    "fetched_at": "2026-07-02T22:57:06"
   },
   "KRNY": {
     "sector": "Financial Services",
@@ -9150,10 +9318,11 @@
     "fetched_at": "2026-06-29T22:57:54"
   },
   "VRSN": {
-    "sector": "Technology",
-    "industry": "Software - Infrastructure",
-    "marketCap": 26989688832,
-    "fetched_at": "2026-06-01T23:41:50"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:58"
   },
   "ENLT": {
     "sector": "Utilities",
@@ -9188,8 +9357,8 @@
   "LQDT": {
     "sector": "Consumer Cyclical",
     "industry": "Internet Retail",
-    "marketCap": 1154329216,
-    "fetched_at": "2026-06-01T23:41:21"
+    "marketCap": 1196112128,
+    "fetched_at": "2026-07-02T22:57:19"
   },
   "INTR": {
     "sector": "Financial Services",
@@ -9225,13 +9394,13 @@
     "sector": "Financial Services",
     "industry": "Shell Companies",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:41:04"
+    "fetched_at": "2026-07-02T22:57:29"
   },
   "GDXJ": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:33"
+    "fetched_at": "2026-07-02T22:58:10"
   },
   "DRUG": {
     "sector": "Healthcare",
@@ -9248,8 +9417,8 @@
   "NICE": {
     "sector": "Technology",
     "industry": "Software - Application",
-    "marketCap": 5812154880,
-    "fetched_at": "2026-06-01T23:40:14"
+    "marketCap": 5668691968,
+    "fetched_at": "2026-07-02T22:58:23"
   },
   "BELFA": {
     "sector": "Technology",
@@ -9282,10 +9451,11 @@
     "fetched_at": "2026-06-29T22:58:54"
   },
   "STRF": {
-    "sector": "Technology",
-    "industry": "Software - Application",
+    "sector": "",
+    "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:40:04"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:53"
   },
   "DSGX": {
     "sector": "Technology",
@@ -9332,14 +9502,14 @@
   "RLMD": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 718498048,
-    "fetched_at": "2026-06-01T23:42:12"
+    "marketCap": 659320512,
+    "fetched_at": "2026-07-02T22:58:05"
   },
   "CHW": {
     "sector": "Financial Services",
     "industry": "Asset Management",
-    "marketCap": 580527296,
-    "fetched_at": "2026-06-01T23:42:06"
+    "marketCap": 559452032,
+    "fetched_at": "2026-07-02T22:58:16"
   },
   "OCSL": {
     "sector": "Financial Services",
@@ -9356,8 +9526,8 @@
   "MVBF": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 337695392,
-    "fetched_at": "2026-06-01T23:41:40"
+    "marketCap": 377915584,
+    "fetched_at": "2026-07-02T22:58:15"
   },
   "HNRG": {
     "sector": "Utilities",
@@ -9375,7 +9545,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:20"
+    "fetched_at": "2026-07-02T22:57:34"
   },
   "TWST": {
     "sector": "Healthcare",
@@ -9392,8 +9562,8 @@
   "WB": {
     "sector": "Communication Services",
     "industry": "Internet Content & Information",
-    "marketCap": 1962923776,
-    "fetched_at": "2026-06-01T23:41:44"
+    "marketCap": 1808150144,
+    "fetched_at": "2026-07-02T22:57:16"
   },
   "MCFT": {
     "sector": "Consumer Cyclical",
@@ -9422,8 +9592,8 @@
   "ATNI": {
     "sector": "Communication Services",
     "industry": "Telecom Services",
-    "marketCap": 434970528,
-    "fetched_at": "2026-06-01T23:41:29"
+    "marketCap": 381598944,
+    "fetched_at": "2026-07-02T22:57:23"
   },
   "CHA": {
     "sector": "Consumer Cyclical",
@@ -9446,14 +9616,14 @@
   "AVT": {
     "sector": "Technology",
     "industry": "Electronics & Computer Distribution",
-    "marketCap": 7131993600,
-    "fetched_at": "2026-06-01T23:42:16"
+    "marketCap": 6740739072,
+    "fetched_at": "2026-07-02T22:56:59"
   },
   "GTM": {
     "sector": "Technology",
     "industry": "Software - Application",
-    "marketCap": 1125822976,
-    "fetched_at": "2026-06-01T23:40:17"
+    "marketCap": 881206976,
+    "fetched_at": "2026-07-02T22:57:08"
   },
   "SBUX": {
     "sector": "Consumer Cyclical",
@@ -9465,7 +9635,8 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:06"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:42"
   },
   "PCVX": {
     "sector": "Healthcare",
@@ -9494,14 +9665,14 @@
   "AGNC": {
     "sector": "Real Estate",
     "industry": "REIT - Mortgage",
-    "marketCap": 11743314944,
-    "fetched_at": "2026-06-01T23:40:59"
+    "marketCap": 12627221504,
+    "fetched_at": "2026-07-02T22:56:47"
   },
   "AVIR": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 350518688,
-    "fetched_at": "2026-06-01T23:41:38"
+    "marketCap": 398534944,
+    "fetched_at": "2026-07-02T22:57:56"
   },
   "ATEX": {
     "sector": "Communication Services",
@@ -9518,8 +9689,8 @@
   "MTSI": {
     "sector": "Technology",
     "industry": "Semiconductors",
-    "marketCap": 26992683008,
-    "fetched_at": "2026-06-01T23:40:11"
+    "marketCap": 24587077632,
+    "fetched_at": "2026-07-02T22:57:19"
   },
   "MDB": {
     "sector": "Technology",
@@ -9531,7 +9702,8 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:31"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:59"
   },
   "AGNCN": {
     "sector": "Real Estate",
@@ -9554,8 +9726,8 @@
   "SSP": {
     "sector": "Communication Services",
     "industry": "Broadcasting",
-    "marketCap": 314900448,
-    "fetched_at": "2026-06-01T23:40:22"
+    "marketCap": 285607360,
+    "fetched_at": "2026-07-02T22:58:15"
   },
   "NAMS": {
     "sector": "Healthcare",
@@ -9594,10 +9766,11 @@
     "fetched_at": "2026-06-30T23:10:45"
   },
   "ADI": {
-    "sector": "Technology",
-    "industry": "Semiconductors",
-    "marketCap": 196145086464,
-    "fetched_at": "2026-06-01T23:41:13"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:49"
   },
   "NVDA": {
     "sector": "Technology",
@@ -9614,8 +9787,8 @@
   "JAZZ": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 14596489216,
-    "fetched_at": "2026-06-01T23:39:07"
+    "marketCap": 15294208000,
+    "fetched_at": "2026-07-02T22:58:10"
   },
   "MRNA": {
     "sector": "Healthcare",
@@ -9630,10 +9803,11 @@
     "fetched_at": "2026-06-30T23:11:50"
   },
   "XPEL": {
-    "sector": "Consumer Cyclical",
-    "industry": "Auto Parts",
-    "marketCap": 1229219840,
-    "fetched_at": "2026-06-01T23:39:53"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:54"
   },
   "SIGIP": {
     "sector": "Financial Services",
@@ -9662,14 +9836,14 @@
   "KRUS": {
     "sector": "Consumer Cyclical",
     "industry": "Restaurants",
-    "marketCap": 631689856,
-    "fetched_at": "2026-06-01T23:39:35"
+    "marketCap": 699839488,
+    "fetched_at": "2026-07-02T22:58:41"
   },
   "XLF": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:15"
+    "fetched_at": "2026-07-02T22:57:38"
   },
   "IOSP": {
     "sector": "Basic Materials",
@@ -9684,10 +9858,11 @@
     "fetched_at": "2026-06-30T23:10:48"
   },
   "TASK": {
-    "sector": "Technology",
-    "industry": "Information Technology Services",
-    "marketCap": 604416192,
-    "fetched_at": "2026-06-01T23:39:24"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:48"
   },
   "SIFY": {
     "sector": "Communication Services",
@@ -9698,8 +9873,8 @@
   "NBTB": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 2366985472,
-    "fetched_at": "2026-06-01T23:40:44"
+    "marketCap": 2604672512,
+    "fetched_at": "2026-07-02T22:58:09"
   },
   "BCML": {
     "sector": "Financial Services",
@@ -9741,13 +9916,14 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:17"
+    "fetched_at": "2026-07-02T22:58:05"
   },
   "ULH": {
-    "sector": "Industrials",
-    "industry": "Trucking",
-    "marketCap": 427189024,
-    "fetched_at": "2026-06-01T23:40:52"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:44"
   },
   "CARE": {
     "sector": "Financial Services",
@@ -9782,14 +9958,14 @@
   "AMPH": {
     "sector": "Healthcare",
     "industry": "Drug Manufacturers - Specialty & Generic",
-    "marketCap": 812191616,
-    "fetched_at": "2026-06-01T23:42:10"
+    "marketCap": 865984896,
+    "fetched_at": "2026-07-02T22:57:22"
   },
   "IONS": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 12457491456,
-    "fetched_at": "2026-06-01T23:40:41"
+    "marketCap": 13518478336,
+    "fetched_at": "2026-07-02T22:58:08"
   },
   "GLSI": {
     "sector": "Healthcare",
@@ -9800,8 +9976,8 @@
   "PATK": {
     "sector": "Consumer Cyclical",
     "industry": "Recreational Vehicles",
-    "marketCap": 2967626752,
-    "fetched_at": "2026-06-01T23:41:56"
+    "marketCap": 2819326208,
+    "fetched_at": "2026-07-02T22:57:55"
   },
   "NCMI": {
     "sector": "Communication Services",
@@ -9816,10 +9992,11 @@
     "fetched_at": "2026-06-30T23:12:23"
   },
   "NBN": {
-    "sector": "Financial Services",
-    "industry": "Banks - Regional",
-    "marketCap": 1040845120,
-    "fetched_at": "2026-06-01T23:41:48"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:43"
   },
   "MEDP": {
     "sector": "Healthcare",
@@ -9855,7 +10032,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:26"
+    "fetched_at": "2026-07-02T22:57:35"
   },
   "ALCO": {
     "sector": "Consumer Defensive",
@@ -9864,10 +10041,11 @@
     "fetched_at": "2026-06-30T23:11:21"
   },
   "REAX": {
-    "sector": "Real Estate",
-    "industry": "Real Estate Services",
-    "marketCap": 390591520,
-    "fetched_at": "2026-06-01T23:41:02"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:55"
   },
   "LEGN": {
     "sector": "Healthcare",
@@ -9888,10 +10066,11 @@
     "fetched_at": "2026-06-29T22:58:23"
   },
   "ANIP": {
-    "sector": "Healthcare",
-    "industry": "Drug Manufacturers - Specialty & Generic",
-    "marketCap": 1743972480,
-    "fetched_at": "2026-06-01T23:42:05"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:42"
   },
   "CLLS": {
     "sector": "Healthcare",
@@ -9927,19 +10106,20 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:07"
+    "fetched_at": "2026-07-02T22:57:57"
   },
   "RDAC": {
-    "sector": "Financial Services",
-    "industry": "Shell Companies",
-    "marketCap": 49393552,
-    "fetched_at": "2026-06-01T23:42:01"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:51"
   },
   "WBD": {
     "sector": "Communication Services",
     "industry": "Entertainment",
-    "marketCap": 68319477760,
-    "fetched_at": "2026-06-01T23:41:17"
+    "marketCap": 66388979712,
+    "fetched_at": "2026-07-02T22:57:01"
   },
   "ROCK": {
     "sector": "Industrials",
@@ -9972,10 +10152,11 @@
     "fetched_at": "2026-06-29T22:58:24"
   },
   "EBC": {
-    "sector": "Financial Services",
-    "industry": "Banks - Regional",
-    "marketCap": 4183510272,
-    "fetched_at": "2026-06-01T23:41:40"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:49"
   },
   "SIMO": {
     "sector": "Technology",
@@ -10002,10 +10183,11 @@
     "fetched_at": "2026-06-30T23:12:40"
   },
   "HLNE": {
-    "sector": "Financial Services",
-    "industry": "Asset Management",
-    "marketCap": 4909189632,
-    "fetched_at": "2026-06-01T23:41:16"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:51"
   },
   "WENNU": {
     "sector": "Financial Services",
@@ -10050,16 +10232,18 @@
     "fetched_at": "2026-06-29T22:58:18"
   },
   "FAST": {
-    "sector": "Industrials",
-    "industry": "Industrial Distribution",
-    "marketCap": 50502066176,
-    "fetched_at": "2026-06-01T23:40:46"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:57"
   },
   "NEWTH": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:30"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:57"
   },
   "MKSI": {
     "sector": "Technology",
@@ -10104,10 +10288,11 @@
     "fetched_at": "2026-06-30T23:13:11"
   },
   "HTZ": {
-    "sector": "Industrials",
-    "industry": "Rental & Leasing Services",
-    "marketCap": 1632502528,
-    "fetched_at": "2026-06-01T23:42:15"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:59:00"
   },
   "MIRM": {
     "sector": "Healthcare",
@@ -10155,14 +10340,14 @@
   "UXIN": {
     "sector": "Consumer Cyclical",
     "industry": "Auto & Truck Dealerships",
-    "marketCap": 505954592,
-    "fetched_at": "2026-06-01T23:40:16"
+    "marketCap": 358567808,
+    "fetched_at": "2026-07-02T22:57:08"
   },
   "XBI": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:25"
+    "fetched_at": "2026-07-02T22:57:15"
   },
   "CMPX": {
     "sector": "Healthcare",
@@ -10174,7 +10359,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:27"
+    "fetched_at": "2026-07-02T22:58:25"
   },
   "AEBI": {
     "sector": "Industrials",
@@ -10197,8 +10382,8 @@
   "QSEA": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
-    "marketCap": 119689848,
-    "fetched_at": "2026-06-01T23:40:55"
+    "marketCap": 120032152,
+    "fetched_at": "2026-07-02T22:57:57"
   },
   "JOYY": {
     "sector": "Communication Services",
@@ -10213,10 +10398,11 @@
     "fetched_at": "2026-06-29T22:58:20"
   },
   "VOR": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 789488192,
-    "fetched_at": "2026-06-01T23:41:43"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:50"
   },
   "TCBIO": {
     "sector": "Financial Services",
@@ -10237,16 +10423,18 @@
     "fetched_at": "2026-07-01T23:12:44"
   },
   "BTSGU": {
-    "sector": "Healthcare",
-    "industry": "Health Information Services",
+    "sector": "",
+    "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:40:32"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:43"
   },
   "GLD": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:10"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:58"
   },
   "OPAL": {
     "sector": "Utilities",
@@ -10263,8 +10451,8 @@
   "MCBS": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 929445184,
-    "fetched_at": "2026-06-01T23:39:07"
+    "marketCap": 1039069824,
+    "fetched_at": "2026-07-02T22:58:26"
   },
   "AIP": {
     "sector": "Technology",
@@ -10305,8 +10493,8 @@
   "VFS": {
     "sector": "Consumer Cyclical",
     "industry": "Auto Manufacturers",
-    "marketCap": 8118190592,
-    "fetched_at": "2026-06-01T23:40:29"
+    "marketCap": 7182375936,
+    "fetched_at": "2026-07-02T22:58:27"
   },
   "CART": {
     "sector": "Consumer Cyclical",
@@ -10318,7 +10506,8 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:13"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:44"
   },
   "AXTI": {
     "sector": "Technology",
@@ -10329,8 +10518,8 @@
   "SFD": {
     "sector": "Consumer Defensive",
     "industry": "Packaged Foods",
-    "marketCap": 10242212864,
-    "fetched_at": "2026-06-01T23:40:33"
+    "marketCap": 9671670784,
+    "fetched_at": "2026-07-02T22:57:15"
   },
   "KALU": {
     "sector": "Basic Materials",
@@ -10339,10 +10528,11 @@
     "fetched_at": "2026-06-30T23:11:49"
   },
   "BWMN": {
-    "sector": "Industrials",
-    "industry": "Engineering & Construction",
-    "marketCap": 556045632,
-    "fetched_at": "2026-06-01T23:41:21"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:57"
   },
   "LYTS": {
     "sector": "Technology",
@@ -10377,8 +10567,8 @@
   "SION": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 1846648448,
-    "fetched_at": "2026-06-01T23:40:10"
+    "marketCap": 1986162944,
+    "fetched_at": "2026-07-02T22:57:57"
   },
   "LINC": {
     "sector": "Consumer Defensive",
@@ -10389,8 +10579,8 @@
   "NNE": {
     "sector": "Industrials",
     "industry": "Specialty Industrial Machinery",
-    "marketCap": 1548019712,
-    "fetched_at": "2026-06-01T23:40:26"
+    "marketCap": 1044001216,
+    "fetched_at": "2026-07-02T22:57:13"
   },
   "WSBF": {
     "sector": "Financial Services",
@@ -10401,8 +10591,8 @@
   "OPRA": {
     "sector": "Communication Services",
     "industry": "Internet Content & Information",
-    "marketCap": 1729267712,
-    "fetched_at": "2026-06-01T23:40:04"
+    "marketCap": 1782104064,
+    "fetched_at": "2026-07-02T22:57:13"
   },
   "AUPH": {
     "sector": "Healthcare",
@@ -10420,7 +10610,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:26"
+    "fetched_at": "2026-07-02T22:58:29"
   },
   "GLIBK": {
     "sector": "Communication Services",
@@ -10473,8 +10663,8 @@
   "OTTR": {
     "sector": "Industrials",
     "industry": "Conglomerates",
-    "marketCap": 3510714880,
-    "fetched_at": "2026-06-01T23:40:52"
+    "marketCap": 3836931584,
+    "fetched_at": "2026-07-02T22:58:22"
   },
   "CASY": {
     "sector": "Consumer Cyclical",
@@ -10498,13 +10688,13 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:29"
+    "fetched_at": "2026-07-02T22:57:32"
   },
   "BEAM": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 3203658752,
-    "fetched_at": "2026-06-01T23:40:53"
+    "marketCap": 3579168000,
+    "fetched_at": "2026-07-02T22:58:33"
   },
   "PACB": {
     "sector": "Healthcare",
@@ -10593,8 +10783,8 @@
   "SHLS": {
     "sector": "Technology",
     "industry": "Solar",
-    "marketCap": 2043460864,
-    "fetched_at": "2026-06-01T23:41:28"
+    "marketCap": 1669329664,
+    "fetched_at": "2026-07-02T22:57:14"
   },
   "FRSH": {
     "sector": "Technology",
@@ -10618,7 +10808,8 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:05"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:52"
   },
   "NBTX": {
     "sector": "Healthcare",
@@ -10633,10 +10824,11 @@
     "fetched_at": "2026-06-28T22:55:55"
   },
   "CHRD": {
-    "sector": "Energy",
-    "industry": "Oil & Gas E&P",
-    "marketCap": 7769287168,
-    "fetched_at": "2026-06-01T23:41:49"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:55"
   },
   "WSFS": {
     "sector": "Financial Services",
@@ -10654,7 +10846,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:40"
+    "fetched_at": "2026-07-02T22:58:05"
   },
   "JD": {
     "sector": "Consumer Cyclical",
@@ -10677,14 +10869,14 @@
   "DNUT": {
     "sector": "Consumer Defensive",
     "industry": "Grocery Stores",
-    "marketCap": 608571968,
-    "fetched_at": "2026-06-01T23:41:24"
+    "marketCap": 605123968,
+    "fetched_at": "2026-07-02T22:57:17"
   },
   "APPF": {
     "sector": "Technology",
     "industry": "Software - Application",
-    "marketCap": 6339784704,
-    "fetched_at": "2026-06-01T23:42:01"
+    "marketCap": 6042772992,
+    "fetched_at": "2026-07-02T22:58:07"
   },
   "ANSC": {
     "sector": "Financial Services",
@@ -10695,8 +10887,8 @@
   "FROG": {
     "sector": "Technology",
     "industry": "Software - Application",
-    "marketCap": 10696082432,
-    "fetched_at": "2026-06-01T23:41:12"
+    "marketCap": 11483361280,
+    "fetched_at": "2026-07-02T22:56:47"
   },
   "AENT": {
     "sector": "Communication Services",
@@ -10731,8 +10923,8 @@
   "WRD": {
     "sector": "Technology",
     "industry": "Software - Application",
-    "marketCap": 2586915328,
-    "fetched_at": "2026-06-01T23:41:41"
+    "marketCap": 1817244032,
+    "fetched_at": "2026-07-02T22:56:57"
   },
   "NMRK": {
     "sector": "Real Estate",
@@ -10749,8 +10941,8 @@
   "CACC": {
     "sector": "Financial Services",
     "industry": "Credit Services",
-    "marketCap": 5875055616,
-    "fetched_at": "2026-06-01T23:40:49"
+    "marketCap": 6873521664,
+    "fetched_at": "2026-07-02T22:56:55"
   },
   "IMRX": {
     "sector": "Healthcare",
@@ -10798,13 +10990,15 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:29"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:58"
   },
   "XLB": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:54"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:51"
   },
   "CSGS": {
     "sector": "Technology",
@@ -10813,10 +11007,11 @@
     "fetched_at": "2026-06-01T23:40:03"
   },
   "CAPR": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 1652226304,
-    "fetched_at": "2026-06-01T23:39:53"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:48"
   },
   "CRNX": {
     "sector": "Healthcare",
@@ -10831,10 +11026,11 @@
     "fetched_at": "2026-06-29T22:59:10"
   },
   "NSIT": {
-    "sector": "Technology",
-    "industry": "Electronics & Computer Distribution",
-    "marketCap": 3557115136,
-    "fetched_at": "2026-06-01T23:41:22"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:50"
   },
   "QRVO": {
     "sector": "Technology",
@@ -10845,8 +11041,8 @@
   "WSBK": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 114159864,
-    "fetched_at": "2026-06-01T23:40:02"
+    "marketCap": 118102592,
+    "fetched_at": "2026-07-02T22:58:37"
   },
   "UFCS": {
     "sector": "Financial Services",
@@ -10858,7 +11054,8 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:32"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:48"
   },
   "PTON": {
     "sector": "Consumer Cyclical",
@@ -10912,55 +11109,57 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:37"
+    "fetched_at": "2026-07-02T22:57:12"
   },
   "CRUS": {
     "sector": "Technology",
     "industry": "Semiconductors",
-    "marketCap": 8484268032,
-    "fetched_at": "2026-06-01T23:39:09"
+    "marketCap": 7378206208,
+    "fetched_at": "2026-07-02T22:57:17"
   },
   "SHC": {
-    "sector": "Healthcare",
-    "industry": "Diagnostics & Research",
-    "marketCap": 4431495168,
-    "fetched_at": "2026-06-01T23:41:58"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:45"
   },
   "NECB": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 335198368,
-    "fetched_at": "2026-06-01T23:40:11"
+    "marketCap": 381957376,
+    "fetched_at": "2026-07-02T22:57:01"
   },
   "RGTI": {
     "sector": "Technology",
     "industry": "Computer Hardware",
-    "marketCap": 8519381504,
-    "fetched_at": "2026-06-01T23:40:22"
+    "marketCap": 5963234816,
+    "fetched_at": "2026-07-02T22:57:13"
   },
   "SEIC": {
     "sector": "Financial Services",
     "industry": "Asset Management",
-    "marketCap": 10622509056,
-    "fetched_at": "2026-06-01T23:41:30"
+    "marketCap": 10996557824,
+    "fetched_at": "2026-07-02T22:58:06"
   },
   "NTWO": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
-    "marketCap": 257321728,
-    "fetched_at": "2026-06-01T23:42:00"
+    "marketCap": 259009872,
+    "fetched_at": "2026-07-02T22:57:14"
   },
   "ACGL": {
-    "sector": "Financial Services",
-    "industry": "Insurance - Diversified",
-    "marketCap": 31004831744,
-    "fetched_at": "2026-06-01T23:40:24"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:50"
   },
   "CWBC": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 648507520,
-    "fetched_at": "2026-06-01T23:42:09"
+    "marketCap": 731809536,
+    "fetched_at": "2026-07-02T22:57:30"
   },
   "FWONK": {
     "sector": "Communication Services",
@@ -10971,8 +11170,8 @@
   "WDAY": {
     "sector": "Technology",
     "industry": "Software - Application",
-    "marketCap": 38831636480,
-    "fetched_at": "2026-06-01T23:39:37"
+    "marketCap": 33440206848,
+    "fetched_at": "2026-07-02T22:57:20"
   },
   "SBET": {
     "sector": "Financial Services",
@@ -10983,14 +11182,14 @@
   "ASTS": {
     "sector": "Technology",
     "industry": "Communication Equipment",
-    "marketCap": 41005363200,
-    "fetched_at": "2026-06-01T23:40:21"
+    "marketCap": 33041043456,
+    "fetched_at": "2026-07-02T22:58:20"
   },
   "FERA": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
-    "marketCap": 324860704,
-    "fetched_at": "2026-06-01T23:40:47"
+    "marketCap": 326424000,
+    "fetched_at": "2026-07-02T22:57:08"
   },
   "PLXS": {
     "sector": "Technology",
@@ -11043,8 +11242,8 @@
   "RANG": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
-    "marketCap": 170157872,
-    "fetched_at": "2026-06-01T23:41:25"
+    "marketCap": 23106236,
+    "fetched_at": "2026-07-02T22:57:42"
   },
   "AMWD": {
     "sector": "Consumer Cyclical",
@@ -11055,8 +11254,8 @@
   "LGND": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 4605034496,
-    "fetched_at": "2026-06-01T23:41:36"
+    "marketCap": 6404120576,
+    "fetched_at": "2026-07-02T22:56:59"
   },
   "RFAI": {
     "sector": "Financial Services",
@@ -11091,14 +11290,14 @@
   "AUTL": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 489703648,
-    "fetched_at": "2026-06-01T23:40:38"
+    "marketCap": 420506400,
+    "fetched_at": "2026-07-02T22:57:32"
   },
   "MBX": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 1458864512,
-    "fetched_at": "2026-06-01T23:40:07"
+    "marketCap": 2751137536,
+    "fetched_at": "2026-07-02T22:58:26"
   },
   "SYBT": {
     "sector": "Financial Services",
@@ -11122,13 +11321,15 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:49"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:55"
   },
   "AMZN": {
-    "sector": "Consumer Cyclical",
-    "industry": "Internet Retail",
-    "marketCap": 2810402570240,
-    "fetched_at": "2026-06-01T23:40:26"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:59"
   },
   "SNEX": {
     "sector": "Financial Services",
@@ -11140,7 +11341,8 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:19"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:46"
   },
   "APPS": {
     "sector": "Technology",
@@ -11164,7 +11366,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:36"
+    "fetched_at": "2026-07-02T22:57:47"
   },
   "TILE": {
     "sector": "Consumer Cyclical",
@@ -11193,8 +11395,8 @@
   "CHI": {
     "sector": "Financial Services",
     "industry": "Asset Management",
-    "marketCap": 1032239744,
-    "fetched_at": "2026-06-01T23:39:46"
+    "marketCap": 1054837632,
+    "fetched_at": "2026-07-02T22:57:56"
   },
   "TSBK": {
     "sector": "Financial Services",
@@ -11218,7 +11420,7 @@
     "sector": "Real Estate",
     "industry": "REIT - Mortgage",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:39:12"
+    "fetched_at": "2026-07-02T22:58:27"
   },
   "BWBBP": {
     "sector": "Financial Services",
@@ -11230,7 +11432,7 @@
     "sector": "Healthcare",
     "industry": "Biotechnology",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:39:58"
+    "fetched_at": "2026-07-02T22:57:21"
   },
   "NWE": {
     "sector": "Utilities",
@@ -11254,7 +11456,7 @@
     "sector": "Financial Services",
     "industry": "Shell Companies",
     "marketCap": 389203136,
-    "fetched_at": "2026-06-01T23:41:20"
+    "fetched_at": "2026-07-02T22:58:35"
   },
   "FCBC": {
     "sector": "Financial Services",
@@ -11283,8 +11485,8 @@
   "CEPO": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
-    "marketCap": 270809984,
-    "fetched_at": "2026-06-01T23:41:54"
+    "marketCap": 269024992,
+    "fetched_at": "2026-07-02T22:57:33"
   },
   "LYEL": {
     "sector": "Healthcare",
@@ -11323,10 +11525,11 @@
     "fetched_at": "2026-06-29T22:58:47"
   },
   "DBX": {
-    "sector": "Technology",
-    "industry": "Software - Infrastructure",
-    "marketCap": 6744721920,
-    "fetched_at": "2026-06-01T23:39:59"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:50"
   },
   "OXLCN": {
     "sector": "Financial Services",
@@ -11338,7 +11541,7 @@
     "sector": "Financial Services",
     "industry": "Banks - Regional",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:41:14"
+    "fetched_at": "2026-07-02T22:57:00"
   },
   "GRFS": {
     "sector": "Healthcare",
@@ -11353,16 +11556,17 @@
     "fetched_at": "2026-06-30T23:13:01"
   },
   "SZZL": {
-    "sector": "Financial Services",
-    "industry": "Shell Companies",
-    "marketCap": 323297344,
-    "fetched_at": "2026-06-01T23:41:06"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:59"
   },
   "LCCCU": {
     "sector": "Financial Services",
     "industry": "Shell Companies",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:39:34"
+    "fetched_at": "2026-07-02T22:57:59"
   },
   "FCEL": {
     "sector": "Industrials",
@@ -11373,8 +11577,8 @@
   "FRST": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 358451904,
-    "fetched_at": "2026-06-01T23:39:58"
+    "marketCap": 393579776,
+    "fetched_at": "2026-07-02T22:57:57"
   },
   "TVAI": {
     "sector": "Financial Services",
@@ -11389,10 +11593,11 @@
     "fetched_at": "2026-06-29T22:58:34"
   },
   "BRZE": {
-    "sector": "Technology",
-    "industry": "Software - Application",
-    "marketCap": 3184097536,
-    "fetched_at": "2026-06-01T23:41:19"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:45"
   },
   "WVE": {
     "sector": "Healthcare",
@@ -11409,8 +11614,8 @@
   "HQY": {
     "sector": "Healthcare",
     "industry": "Health Information Services",
-    "marketCap": 7598392320,
-    "fetched_at": "2026-06-01T23:41:55"
+    "marketCap": 7968121856,
+    "fetched_at": "2026-07-02T22:57:37"
   },
   "GOOG": {
     "sector": "Communication Services",
@@ -11455,10 +11660,11 @@
     "fetched_at": "2026-06-29T22:58:25"
   },
   "SRRK": {
-    "sector": "Healthcare",
-    "industry": "Biotechnology",
-    "marketCap": 5678664704,
-    "fetched_at": "2026-06-01T23:41:49"
+    "sector": "",
+    "industry": "",
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:50"
   },
   "LECO": {
     "sector": "Industrials",
@@ -11493,8 +11699,8 @@
   "OSBC": {
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "marketCap": 1083680000,
-    "fetched_at": "2026-06-01T23:39:33"
+    "marketCap": 1194774016,
+    "fetched_at": "2026-07-02T22:57:20"
   },
   "RYAAY": {
     "sector": "Industrials",
@@ -11511,8 +11717,8 @@
   "LSTR": {
     "sector": "Industrials",
     "industry": "Integrated Freight & Logistics",
-    "marketCap": 7240279552,
-    "fetched_at": "2026-06-01T23:42:08"
+    "marketCap": 7064192512,
+    "fetched_at": "2026-07-02T22:58:10"
   },
   "ORLY": {
     "sector": "Consumer Cyclical",
@@ -11536,7 +11742,8 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:28"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:59"
   },
   "ADAMM": {
     "sector": "Real Estate",
@@ -11553,14 +11760,15 @@
   "ZNTL": {
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "marketCap": 283321696,
-    "fetched_at": "2026-06-01T23:41:48"
+    "marketCap": 317491136,
+    "fetched_at": "2026-07-02T22:58:29"
   },
   "NHIC": {
     "sector": "",
     "industry": "",
-    "marketCap": 301807520,
-    "fetched_at": "2026-07-01T23:11:59"
+    "marketCap": 0,
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:53"
   },
   "LOT": {
     "sector": "Consumer Cyclical",
@@ -11578,7 +11786,7 @@
     "sector": "Financial Services",
     "industry": "Shell Companies",
     "marketCap": 0,
-    "fetched_at": "2026-06-01T23:39:16"
+    "fetched_at": "2026-07-02T22:56:49"
   },
   "AUGO": {
     "sector": "Basic Materials",
@@ -11589,8 +11797,8 @@
   "MGRT": {
     "sector": "Technology",
     "industry": "Information Technology Services",
-    "marketCap": 1100000000,
-    "fetched_at": "2026-06-01T23:40:30"
+    "marketCap": 1125849984,
+    "fetched_at": "2026-07-02T22:57:19"
   },
   "KCHV": {
     "sector": "Financial Services",
@@ -11608,7 +11816,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:44"
+    "fetched_at": "2026-07-02T22:58:40"
   },
   "GTERA": {
     "sector": "Financial Services",
@@ -11650,7 +11858,8 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:20"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:45"
   },
   "BACC": {
     "sector": "Financial Services",
@@ -11662,19 +11871,22 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:21"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:56"
   },
   "TMUSI": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:21"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:43"
   },
   "TMUSZ": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:01"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:42"
   },
   "FLY": {
     "sector": "Industrials",
@@ -11716,7 +11928,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:06"
+    "fetched_at": "2026-07-02T22:56:43"
   },
   "HVMCU": {
     "sector": "Financial Services",
@@ -11782,13 +11994,13 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:40"
+    "fetched_at": "2026-07-02T22:57:36"
   },
   "CCIIW": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:11:16"
+    "fetched_at": "2026-07-02T22:57:00"
   },
   "YDES": {
     "sector": "Healthcare",
@@ -11890,7 +12102,8 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-07-01T23:12:22"
+    "error": "Too Many Requests. Rate limited. Try after a while.",
+    "fetched_at": "2026-07-02T22:58:59"
   },
   "LGN": {
     "sector": "Industrials",

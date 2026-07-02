@@ -1,59 +1,101 @@
 {
-"_date": "2026-07-01",
+"_date": "2026-07-02",
 "_fired_names": [
-"Advertising Agencies",
-"Auto & Truck Dealerships",
-"Broadcasting",
-"Financial Conglomerates",
-"Financial Data & Stock Exchanges",
+"Biotechnology",
+"Consulting Services",
+"Consumer Electronics",
+"Drug Manufacturers - General",
+"Education & Training Services",
+"Gold",
 "Insurance Brokers",
-"Security & Protection Services",
-"Staffing & Employment Services"
+"Medical Instruments & Supplies"
 ],
+"Gold": {
+"consecutive_days": 1,
+"first_fired": "2026-07-02",
+"last_avg_pct": 4.32,
+"ever_fired": true
+},
+"Consumer Electronics": {
+"consecutive_days": 1,
+"first_fired": "2026-07-02",
+"last_avg_pct": 3.2,
+"ever_fired": true
+},
+"Biotechnology": {
+"consecutive_days": 1,
+"first_fired": "2026-07-02",
+"last_avg_pct": 2.66,
+"ever_fired": true
+},
+"Insurance Brokers": {
+"consecutive_days": 2,
+"first_fired": "2026-07-01",
+"last_avg_pct": 2.6,
+"ever_fired": true
+},
+"Drug Manufacturers - General": {
+"consecutive_days": 1,
+"first_fired": "2026-07-02",
+"last_avg_pct": 2.48,
+"ever_fired": true
+},
+"Medical Instruments & Supplies": {
+"consecutive_days": 1,
+"first_fired": "2026-07-02",
+"last_avg_pct": 2.43,
+"ever_fired": true
+},
+"Consulting Services": {
+"consecutive_days": 1,
+"first_fired": "2026-07-02",
+"last_avg_pct": 2.18,
+"ever_fired": true
+},
+"Education & Training Services": {
+"consecutive_days": 1,
+"first_fired": "2026-07-02",
+"last_avg_pct": 1.97,
+"ever_fired": true
+},
 "Staffing & Employment Services": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-06-28",
 "last_avg_pct": 6.63,
 "ever_fired": true
 },
 "Broadcasting": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-01",
 "last_avg_pct": 5.38,
 "ever_fired": true
 },
 "Auto & Truck Dealerships": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-01",
 "last_avg_pct": 5.28,
 "ever_fired": true
 },
 "Security & Protection Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-01",
 "last_avg_pct": 4.75,
 "ever_fired": true
 },
 "Financial Data & Stock Exchanges": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-01",
 "last_avg_pct": 4.46,
 "ever_fired": true
 },
-"Insurance Brokers": {
-"consecutive_days": 1,
-"first_fired": "2026-07-01",
-"last_avg_pct": 3.72,
-"ever_fired": true
-},
 "Advertising Agencies": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-01",
 "last_avg_pct": 3.61,
 "ever_fired": true
 },
 "Financial Conglomerates": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-01",
 "last_avg_pct": 3.52,
 "ever_fired": true
@@ -226,12 +268,6 @@
 "last_avg_pct": 4.25,
 "ever_fired": true
 },
-"Consulting Services": {
-"consecutive_days": 0,
-"first_fired": "2026-06-23",
-"last_avg_pct": 4.1,
-"ever_fired": true
-},
 "Beverages - Wineries & Distilleries": {
 "consecutive_days": 0,
 "first_fired": "2026-06-23",
@@ -256,22 +292,10 @@
 "last_avg_pct": 2.4,
 "ever_fired": true
 },
-"Biotechnology": {
-"consecutive_days": 0,
-"first_fired": "2026-06-22",
-"last_avg_pct": 2.98,
-"ever_fired": true
-},
 "Oil & Gas E&P": {
 "consecutive_days": 0,
 "first_fired": "2026-06-22",
 "last_avg_pct": 2.53,
-"ever_fired": true
-},
-"Education & Training Services": {
-"consecutive_days": 0,
-"first_fired": "2026-06-22",
-"last_avg_pct": 1.64,
 "ever_fired": true
 },
 "Marine Shipping": {
@@ -350,12 +374,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-15",
 "last_avg_pct": 5.35,
-"ever_fired": true
-},
-"Gold": {
-"consecutive_days": 0,
-"first_fired": "2026-06-12",
-"last_avg_pct": 2.84,
 "ever_fired": true
 },
 "Packaging & Containers": {
