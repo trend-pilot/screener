@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-07-02",
+  "data_date": "2026-07-03",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v1)",
   "nav": NaN,
@@ -12,31 +12,13 @@
   "regime": "🟢 Uptrend",
   "signals": [
     {
-      "ticker": "MRNA",
+      "ticker": "SLDB",
       "industry": "Biotechnology",
       "pattern": "이중바닥",
-      "signal_close": 79.76,
-      "pivot": 81.4,
-      "dist": -2.0,
-      "score": 96.25
-    },
-    {
-      "ticker": "DSGN",
-      "industry": "Biotechnology",
-      "pattern": "RS Line 선행",
-      "signal_close": 15.64,
-      "pivot": 17.25,
-      "dist": -9.3,
-      "score": 92.65
-    },
-    {
-      "ticker": "SLS",
-      "industry": "Biotechnology",
-      "pattern": "어센딩베이스",
-      "signal_close": 14.98,
-      "pivot": 15.88,
-      "dist": -5.7,
-      "score": 91.25
+      "signal_close": 10.84,
+      "pivot": 10.88,
+      "dist": -0.3,
+      "score": 90.75
     },
     {
       "ticker": "MGTX",
@@ -100,6 +82,24 @@
       "pivot": 13.23,
       "dist": 0.0,
       "score": 85.9
+    },
+    {
+      "ticker": "NGNE",
+      "industry": "Biotechnology",
+      "pattern": "어센딩베이스",
+      "signal_close": 35.34,
+      "pivot": 37.27,
+      "dist": -5.2,
+      "score": 81.15
+    },
+    {
+      "ticker": "VCEL",
+      "industry": "Biotechnology",
+      "pattern": "파워플레이",
+      "signal_close": 46.98,
+      "pivot": 47.06,
+      "dist": -0.2,
+      "score": 80.56
     }
   ],
   "gates": [
@@ -116,7 +116,7 @@
     "tqqq": null
   },
   "risk": {
-    "days": 7,
+    "days": 8,
     "ret": NaN,
     "sharpe": NaN,
     "sortino": NaN,
@@ -174,13 +174,18 @@
       "date": "2026-07-02",
       "nav": NaN,
       "chg": NaN
+    },
+    {
+      "date": "2026-07-03",
+      "nav": NaN,
+      "chg": NaN
     }
   ],
   "holdings": [
     {
       "ticker": "NEO",
       "entry": "2026-06-26",
-      "days": 4,
+      "days": 5,
       "cd": "",
       "entry_px": 13.73,
       "cur": 15.16,
@@ -189,7 +194,7 @@
     {
       "ticker": "PSNL",
       "entry": "2026-06-26",
-      "days": 4,
+      "days": 5,
       "cd": "",
       "entry_px": 12.59,
       "cur": 13.62,
@@ -198,7 +203,7 @@
     {
       "ticker": "NTRA",
       "entry": "2026-06-26",
-      "days": 4,
+      "days": 5,
       "cd": "",
       "entry_px": 260.74,
       "cur": 279.32,
@@ -207,7 +212,7 @@
     {
       "ticker": "CDNA",
       "entry": "2026-06-26",
-      "days": 4,
+      "days": 5,
       "cd": "",
       "entry_px": 27.85,
       "cur": 29.19,
@@ -216,7 +221,7 @@
     {
       "ticker": "ADPT",
       "entry": "2026-06-26",
-      "days": 4,
+      "days": 5,
       "cd": "",
       "entry_px": 20.25,
       "cur": 21.19,
@@ -225,7 +230,7 @@
     {
       "ticker": "TWST",
       "entry": "2026-06-26",
-      "days": 4,
+      "days": 5,
       "cd": "",
       "entry_px": 96.65,
       "cur": 99.24,
@@ -234,7 +239,7 @@
     {
       "ticker": "ZD",
       "entry": "2026-07-01",
-      "days": 0,
+      "days": 1,
       "cd": "",
       "entry_px": 51.97,
       "cur": 52.43,
@@ -243,7 +248,7 @@
     {
       "ticker": "TILE",
       "entry": "2026-06-26",
-      "days": 4,
+      "days": 5,
       "cd": "",
       "entry_px": 35.51,
       "cur": 35.67,
@@ -279,7 +284,7 @@
     {
       "ticker": "VCYT",
       "entry": "2026-06-26",
-      "days": 4,
+      "days": 5,
       "cd": "",
       "entry_px": 58.55,
       "cur": 57.08,
@@ -373,7 +378,7 @@
       "entry_value": 0.08337499999999999,
       "cur": 29.19,
       "max_gain_pct": 5.134649910233402,
-      "days_in": 4,
+      "days_in": 5,
       "current_stop": 25.9005,
       "runner": false,
       "oneill_8w_active": false
@@ -387,7 +392,7 @@
       "entry_value": 0.08337499999999999,
       "cur": 279.32,
       "max_gain_pct": 7.125872516683285,
-      "days_in": 4,
+      "days_in": 5,
       "current_stop": 242.4882,
       "runner": false,
       "oneill_8w_active": false
@@ -401,7 +406,7 @@
       "entry_value": 0.08337499999999999,
       "cur": 15.16,
       "max_gain_pct": 10.415149308084493,
-      "days_in": 4,
+      "days_in": 5,
       "current_stop": 12.7689,
       "runner": false,
       "oneill_8w_active": false
@@ -415,7 +420,7 @@
       "entry_value": 0.08337499999999999,
       "cur": 13.62,
       "max_gain_pct": 9.531374106433677,
-      "days_in": 4,
+      "days_in": 5,
       "current_stop": 11.708699999999999,
       "runner": false,
       "oneill_8w_active": false
@@ -429,7 +434,7 @@
       "entry_value": 0.08337499999999999,
       "cur": 21.19,
       "max_gain_pct": 10.469135802469133,
-      "days_in": 4,
+      "days_in": 5,
       "current_stop": 18.8325,
       "runner": false,
       "oneill_8w_active": false
@@ -443,7 +448,7 @@
       "entry_value": 0.08337499999999999,
       "cur": 57.08,
       "max_gain_pct": 3.31340734415031,
-      "days_in": 4,
+      "days_in": 5,
       "current_stop": 54.451499999999996,
       "runner": false,
       "oneill_8w_active": false
@@ -457,7 +462,7 @@
       "entry_value": 0.08337499999999999,
       "cur": 99.24,
       "max_gain_pct": 6.445938954992236,
-      "days_in": 4,
+      "days_in": 5,
       "current_stop": 89.8845,
       "runner": false,
       "oneill_8w_active": false
@@ -471,7 +476,7 @@
       "entry_value": 0.08337499999999999,
       "cur": 35.67,
       "max_gain_pct": 1.2109264995775915,
-      "days_in": 4,
+      "days_in": 5,
       "current_stop": 33.0243,
       "runner": false,
       "oneill_8w_active": false
@@ -485,7 +490,7 @@
       "entry_value": NaN,
       "cur": 52.43,
       "max_gain_pct": 0.8851260342505274,
-      "days_in": 0,
+      "days_in": 1,
       "current_stop": 48.3321,
       "runner": false,
       "oneill_8w_active": false

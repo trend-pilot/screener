@@ -1,59 +1,65 @@
 {
-"_date": "2026-07-02",
+"_date": "2026-07-03",
 "_fired_names": [
 "Biotechnology",
 "Consulting Services",
 "Consumer Electronics",
 "Drug Manufacturers - General",
-"Education & Training Services",
 "Gold",
 "Insurance Brokers",
-"Medical Instruments & Supplies"
+"Medical Instruments & Supplies",
+"Waste Management"
 ],
 "Gold": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-07-02",
-"last_avg_pct": 4.32,
+"last_avg_pct": 4.36,
+"ever_fired": true
+},
+"Insurance Brokers": {
+"consecutive_days": 3,
+"first_fired": "2026-07-01",
+"last_avg_pct": 3.35,
 "ever_fired": true
 },
 "Consumer Electronics": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-07-02",
 "last_avg_pct": 3.2,
 "ever_fired": true
 },
 "Biotechnology": {
-"consecutive_days": 1,
-"first_fired": "2026-07-02",
-"last_avg_pct": 2.66,
-"ever_fired": true
-},
-"Insurance Brokers": {
 "consecutive_days": 2,
-"first_fired": "2026-07-01",
-"last_avg_pct": 2.6,
+"first_fired": "2026-07-02",
+"last_avg_pct": 2.73,
 "ever_fired": true
 },
 "Drug Manufacturers - General": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-07-02",
-"last_avg_pct": 2.48,
+"last_avg_pct": 2.72,
 "ever_fired": true
 },
 "Medical Instruments & Supplies": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-07-02",
 "last_avg_pct": 2.43,
 "ever_fired": true
 },
 "Consulting Services": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-07-02",
 "last_avg_pct": 2.18,
 "ever_fired": true
 },
-"Education & Training Services": {
+"Waste Management": {
 "consecutive_days": 1,
+"first_fired": "2026-07-03",
+"last_avg_pct": 2.0,
+"ever_fired": true
+},
+"Education & Training Services": {
+"consecutive_days": 0,
 "first_fired": "2026-07-02",
 "last_avg_pct": 1.97,
 "ever_fired": true
@@ -116,12 +122,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-30",
 "last_avg_pct": 4.66,
-"ever_fired": true
-},
-"Waste Management": {
-"consecutive_days": 0,
-"first_fired": "2026-06-30",
-"last_avg_pct": 4.25,
 "ever_fired": true
 },
 "Oil & Gas Refining & Marketing": {
