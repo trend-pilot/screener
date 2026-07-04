@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-07-03",
+  "data_date": "2026-07-04",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v1)",
   "nav": NaN,
@@ -48,13 +48,13 @@
       "score": 89.75
     },
     {
-      "ticker": "ABVX",
+      "ticker": "ABCL",
       "industry": "Biotechnology",
-      "pattern": "어닝갭업",
-      "signal_close": 144.65,
-      "pivot": 148.83,
-      "dist": -2.8,
-      "score": 89.57
+      "pattern": "어센딩베이스",
+      "signal_close": 8.11,
+      "pivot": 8.42,
+      "dist": -3.7,
+      "score": 89.32
     },
     {
       "ticker": "CLDX",
@@ -64,15 +64,6 @@
       "pivot": 39.16,
       "dist": -2.0,
       "score": 88.97
-    },
-    {
-      "ticker": "ABCL",
-      "industry": "Biotechnology",
-      "pattern": "어센딩베이스",
-      "signal_close": 8.11,
-      "pivot": 8.42,
-      "dist": -3.7,
-      "score": 88.82
     },
     {
       "ticker": "DRTS",
@@ -90,7 +81,7 @@
       "signal_close": 35.34,
       "pivot": 37.27,
       "dist": -5.2,
-      "score": 81.15
+      "score": 81.4
     },
     {
       "ticker": "VCEL",
@@ -100,6 +91,15 @@
       "pivot": 47.06,
       "dist": -0.2,
       "score": 80.56
+    },
+    {
+      "ticker": "VRTX",
+      "industry": "Biotechnology",
+      "pattern": "파워플레이",
+      "signal_close": 528.04,
+      "pivot": 529.14,
+      "dist": -0.2,
+      "score": 78.57
     }
   ],
   "gates": [
@@ -116,7 +116,7 @@
     "tqqq": null
   },
   "risk": {
-    "days": 8,
+    "days": 9,
     "ret": NaN,
     "sharpe": NaN,
     "sortino": NaN,
@@ -179,6 +179,11 @@
       "date": "2026-07-03",
       "nav": NaN,
       "chg": NaN
+    },
+    {
+      "date": "2026-07-04",
+      "nav": NaN,
+      "chg": NaN
     }
   ],
   "holdings": [
@@ -239,7 +244,7 @@
     {
       "ticker": "ZD",
       "entry": "2026-07-01",
-      "days": 1,
+      "days": 2,
       "cd": "",
       "entry_px": 51.97,
       "cur": 52.43,
@@ -257,7 +262,7 @@
     {
       "ticker": "MRNA",
       "entry": "2026-07-02",
-      "days": 0,
+      "days": 1,
       "cd": "",
       "entry_px": 79.76,
       "cur": 79.76,
@@ -266,7 +271,7 @@
     {
       "ticker": "DSGN",
       "entry": "2026-07-02",
-      "days": 0,
+      "days": 1,
       "cd": "",
       "entry_px": 15.64,
       "cur": 15.64,
@@ -275,7 +280,7 @@
     {
       "ticker": "SLS",
       "entry": "2026-07-02",
-      "days": 0,
+      "days": 1,
       "cd": "",
       "entry_px": 14.98,
       "cur": 14.98,
@@ -490,7 +495,7 @@
       "entry_value": NaN,
       "cur": 52.43,
       "max_gain_pct": 0.8851260342505274,
-      "days_in": 1,
+      "days_in": 2,
       "current_stop": 48.3321,
       "runner": false,
       "oneill_8w_active": false
@@ -504,7 +509,7 @@
       "entry_value": NaN,
       "cur": 79.76,
       "max_gain_pct": 0.0,
-      "days_in": 0,
+      "days_in": 1,
       "current_stop": 74.1768,
       "runner": false,
       "oneill_8w_active": false
@@ -518,7 +523,7 @@
       "entry_value": NaN,
       "cur": 15.64,
       "max_gain_pct": 0.0,
-      "days_in": 0,
+      "days_in": 1,
       "current_stop": 14.5452,
       "runner": false,
       "oneill_8w_active": false
@@ -532,7 +537,7 @@
       "entry_value": NaN,
       "cur": 14.98,
       "max_gain_pct": 0.0,
-      "days_in": 0,
+      "days_in": 1,
       "current_stop": 13.9314,
       "runner": false,
       "oneill_8w_active": false
