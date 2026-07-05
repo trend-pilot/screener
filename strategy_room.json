@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-07-04",
+  "data_date": "2026-07-05",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v1)",
   "nav": NaN,
@@ -54,7 +54,7 @@
       "signal_close": 8.11,
       "pivot": 8.42,
       "dist": -3.7,
-      "score": 89.32
+      "score": 89.07
     },
     {
       "ticker": "CLDX",
@@ -116,7 +116,7 @@
     "tqqq": null
   },
   "risk": {
-    "days": 9,
+    "days": 10,
     "ret": NaN,
     "sharpe": NaN,
     "sortino": NaN,
@@ -184,13 +184,18 @@
       "date": "2026-07-04",
       "nav": NaN,
       "chg": NaN
+    },
+    {
+      "date": "2026-07-05",
+      "nav": NaN,
+      "chg": NaN
     }
   ],
   "holdings": [
     {
       "ticker": "NEO",
       "entry": "2026-06-26",
-      "days": 5,
+      "days": 6,
       "cd": "",
       "entry_px": 13.73,
       "cur": 15.16,
@@ -199,7 +204,7 @@
     {
       "ticker": "PSNL",
       "entry": "2026-06-26",
-      "days": 5,
+      "days": 6,
       "cd": "",
       "entry_px": 12.59,
       "cur": 13.62,
@@ -208,7 +213,7 @@
     {
       "ticker": "NTRA",
       "entry": "2026-06-26",
-      "days": 5,
+      "days": 6,
       "cd": "",
       "entry_px": 260.74,
       "cur": 279.32,
@@ -217,7 +222,7 @@
     {
       "ticker": "CDNA",
       "entry": "2026-06-26",
-      "days": 5,
+      "days": 6,
       "cd": "",
       "entry_px": 27.85,
       "cur": 29.19,
@@ -226,7 +231,7 @@
     {
       "ticker": "ADPT",
       "entry": "2026-06-26",
-      "days": 5,
+      "days": 6,
       "cd": "",
       "entry_px": 20.25,
       "cur": 21.19,
@@ -235,7 +240,7 @@
     {
       "ticker": "TWST",
       "entry": "2026-06-26",
-      "days": 5,
+      "days": 6,
       "cd": "",
       "entry_px": 96.65,
       "cur": 99.24,
@@ -253,7 +258,7 @@
     {
       "ticker": "TILE",
       "entry": "2026-06-26",
-      "days": 5,
+      "days": 6,
       "cd": "",
       "entry_px": 35.51,
       "cur": 35.67,
@@ -262,7 +267,7 @@
     {
       "ticker": "MRNA",
       "entry": "2026-07-02",
-      "days": 1,
+      "days": 2,
       "cd": "",
       "entry_px": 79.76,
       "cur": 79.76,
@@ -271,7 +276,7 @@
     {
       "ticker": "DSGN",
       "entry": "2026-07-02",
-      "days": 1,
+      "days": 2,
       "cd": "",
       "entry_px": 15.64,
       "cur": 15.64,
@@ -280,7 +285,7 @@
     {
       "ticker": "SLS",
       "entry": "2026-07-02",
-      "days": 1,
+      "days": 2,
       "cd": "",
       "entry_px": 14.98,
       "cur": 14.98,
@@ -289,7 +294,7 @@
     {
       "ticker": "VCYT",
       "entry": "2026-06-26",
-      "days": 5,
+      "days": 6,
       "cd": "",
       "entry_px": 58.55,
       "cur": 57.08,
@@ -383,7 +388,7 @@
       "entry_value": 0.08337499999999999,
       "cur": 29.19,
       "max_gain_pct": 5.134649910233402,
-      "days_in": 5,
+      "days_in": 6,
       "current_stop": 25.9005,
       "runner": false,
       "oneill_8w_active": false
@@ -397,7 +402,7 @@
       "entry_value": 0.08337499999999999,
       "cur": 279.32,
       "max_gain_pct": 7.125872516683285,
-      "days_in": 5,
+      "days_in": 6,
       "current_stop": 242.4882,
       "runner": false,
       "oneill_8w_active": false
@@ -411,7 +416,7 @@
       "entry_value": 0.08337499999999999,
       "cur": 15.16,
       "max_gain_pct": 10.415149308084493,
-      "days_in": 5,
+      "days_in": 6,
       "current_stop": 12.7689,
       "runner": false,
       "oneill_8w_active": false
@@ -425,7 +430,7 @@
       "entry_value": 0.08337499999999999,
       "cur": 13.62,
       "max_gain_pct": 9.531374106433677,
-      "days_in": 5,
+      "days_in": 6,
       "current_stop": 11.708699999999999,
       "runner": false,
       "oneill_8w_active": false
@@ -439,7 +444,7 @@
       "entry_value": 0.08337499999999999,
       "cur": 21.19,
       "max_gain_pct": 10.469135802469133,
-      "days_in": 5,
+      "days_in": 6,
       "current_stop": 18.8325,
       "runner": false,
       "oneill_8w_active": false
@@ -453,7 +458,7 @@
       "entry_value": 0.08337499999999999,
       "cur": 57.08,
       "max_gain_pct": 3.31340734415031,
-      "days_in": 5,
+      "days_in": 6,
       "current_stop": 54.451499999999996,
       "runner": false,
       "oneill_8w_active": false
@@ -467,7 +472,7 @@
       "entry_value": 0.08337499999999999,
       "cur": 99.24,
       "max_gain_pct": 6.445938954992236,
-      "days_in": 5,
+      "days_in": 6,
       "current_stop": 89.8845,
       "runner": false,
       "oneill_8w_active": false
@@ -481,7 +486,7 @@
       "entry_value": 0.08337499999999999,
       "cur": 35.67,
       "max_gain_pct": 1.2109264995775915,
-      "days_in": 5,
+      "days_in": 6,
       "current_stop": 33.0243,
       "runner": false,
       "oneill_8w_active": false
@@ -509,7 +514,7 @@
       "entry_value": NaN,
       "cur": 79.76,
       "max_gain_pct": 0.0,
-      "days_in": 1,
+      "days_in": 2,
       "current_stop": 74.1768,
       "runner": false,
       "oneill_8w_active": false
@@ -523,7 +528,7 @@
       "entry_value": NaN,
       "cur": 15.64,
       "max_gain_pct": 0.0,
-      "days_in": 1,
+      "days_in": 2,
       "current_stop": 14.5452,
       "runner": false,
       "oneill_8w_active": false
@@ -537,7 +542,7 @@
       "entry_value": NaN,
       "cur": 14.98,
       "max_gain_pct": 0.0,
-      "days_in": 1,
+      "days_in": 2,
       "current_stop": 13.9314,
       "runner": false,
       "oneill_8w_active": false
