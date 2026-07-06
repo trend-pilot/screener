@@ -1,59 +1,107 @@
 {
-"_date": "2026-07-05",
+"_date": "2026-07-06",
 "_fired_names": [
-"Biotechnology",
-"Consulting Services",
-"Consumer Electronics",
-"Drug Manufacturers - General",
-"Gold",
-"Insurance Brokers",
-"Medical Instruments & Supplies",
-"Waste Management"
+"Advertising Agencies",
+"Aluminum",
+"Auto Manufacturers",
+"Capital Markets",
+"Marine Shipping",
+"Security & Protection Services",
+"Semiconductors",
+"Solar"
 ],
+"Aluminum": {
+"consecutive_days": 1,
+"first_fired": "2026-07-06",
+"last_avg_pct": 4.1,
+"ever_fired": true
+},
+"Solar": {
+"consecutive_days": 1,
+"first_fired": "2026-07-06",
+"last_avg_pct": 3.64,
+"ever_fired": true
+},
+"Advertising Agencies": {
+"consecutive_days": 1,
+"first_fired": "2026-07-06",
+"last_avg_pct": 3.32,
+"ever_fired": true
+},
+"Marine Shipping": {
+"consecutive_days": 1,
+"first_fired": "2026-07-06",
+"last_avg_pct": 3.3,
+"ever_fired": true
+},
+"Capital Markets": {
+"consecutive_days": 1,
+"first_fired": "2026-07-06",
+"last_avg_pct": 3.26,
+"ever_fired": true
+},
+"Semiconductors": {
+"consecutive_days": 1,
+"first_fired": "2026-07-06",
+"last_avg_pct": 3.02,
+"ever_fired": true
+},
+"Security & Protection Services": {
+"consecutive_days": 1,
+"first_fired": "2026-07-06",
+"last_avg_pct": 2.95,
+"ever_fired": true
+},
+"Auto Manufacturers": {
+"consecutive_days": 1,
+"first_fired": "2026-07-06",
+"last_avg_pct": 2.9,
+"ever_fired": true
+},
 "Gold": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-07-02",
 "last_avg_pct": 4.36,
 "ever_fired": true
 },
 "Insurance Brokers": {
-"consecutive_days": 5,
+"consecutive_days": 0,
 "first_fired": "2026-07-01",
 "last_avg_pct": 3.35,
 "ever_fired": true
 },
 "Consumer Electronics": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-07-02",
 "last_avg_pct": 3.2,
 "ever_fired": true
 },
 "Drug Manufacturers - General": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-07-02",
 "last_avg_pct": 2.72,
 "ever_fired": true
 },
 "Biotechnology": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-07-02",
 "last_avg_pct": 2.71,
 "ever_fired": true
 },
 "Medical Instruments & Supplies": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-07-02",
 "last_avg_pct": 2.43,
 "ever_fired": true
 },
 "Consulting Services": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-07-02",
 "last_avg_pct": 2.18,
 "ever_fired": true
 },
 "Waste Management": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-07-03",
 "last_avg_pct": 2.0,
 "ever_fired": true
@@ -82,22 +130,10 @@
 "last_avg_pct": 5.28,
 "ever_fired": true
 },
-"Security & Protection Services": {
-"consecutive_days": 0,
-"first_fired": "2026-07-01",
-"last_avg_pct": 4.75,
-"ever_fired": true
-},
 "Financial Data & Stock Exchanges": {
 "consecutive_days": 0,
 "first_fired": "2026-07-01",
 "last_avg_pct": 4.46,
-"ever_fired": true
-},
-"Advertising Agencies": {
-"consecutive_days": 0,
-"first_fired": "2026-07-01",
-"last_avg_pct": 3.61,
 "ever_fired": true
 },
 "Financial Conglomerates": {
@@ -116,12 +152,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-29",
 "last_avg_pct": 4.87,
-"ever_fired": true
-},
-"Semiconductors": {
-"consecutive_days": 0,
-"first_fired": "2026-06-30",
-"last_avg_pct": 4.66,
 "ever_fired": true
 },
 "Oil & Gas Refining & Marketing": {
@@ -146,12 +176,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-29",
 "last_avg_pct": 6.29,
-"ever_fired": true
-},
-"Auto Manufacturers": {
-"consecutive_days": 0,
-"first_fired": "2026-06-29",
-"last_avg_pct": 4.0,
 "ever_fired": true
 },
 "Computer Hardware": {
@@ -212,12 +236,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-25",
 "last_avg_pct": 3.67,
-"ever_fired": true
-},
-"Aluminum": {
-"consecutive_days": 0,
-"first_fired": "2026-06-25",
-"last_avg_pct": 3.6,
 "ever_fired": true
 },
 "Diagnostics & Research": {
@@ -296,12 +314,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-22",
 "last_avg_pct": 2.53,
-"ever_fired": true
-},
-"Marine Shipping": {
-"consecutive_days": 0,
-"first_fired": "2026-06-22",
-"last_avg_pct": 1.58,
 "ever_fired": true
 },
 "Electrical Equipment & Parts": {

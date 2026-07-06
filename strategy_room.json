@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-07-05",
+  "data_date": "2026-07-06",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v1)",
   "nav": NaN,
@@ -12,94 +12,49 @@
   "regime": "🟢 Uptrend",
   "signals": [
     {
-      "ticker": "SLDB",
-      "industry": "Biotechnology",
-      "pattern": "이중바닥",
-      "signal_close": 10.84,
-      "pivot": 10.88,
-      "dist": -0.3,
-      "score": 90.75
-    },
-    {
-      "ticker": "MGTX",
-      "industry": "Biotechnology",
-      "pattern": "거래량돌파",
-      "signal_close": 13.92,
-      "pivot": 13.94,
-      "dist": -0.1,
-      "score": 90.25
-    },
-    {
-      "ticker": "ACRS",
-      "industry": "Biotechnology",
-      "pattern": "RS Line 선행",
-      "signal_close": 5.56,
-      "pivot": 5.69,
-      "dist": -2.3,
-      "score": 89.95
-    },
-    {
-      "ticker": "TECX",
-      "industry": "Biotechnology",
+      "ticker": "IMOS",
+      "industry": "Semiconductors",
       "pattern": "어센딩베이스",
-      "signal_close": 37.93,
-      "pivot": 38.12,
-      "dist": -0.5,
-      "score": 89.75
+      "signal_close": 72.53,
+      "pivot": 73.97,
+      "dist": -1.9,
+      "score": 86.75
     },
     {
-      "ticker": "ABCL",
-      "industry": "Biotechnology",
-      "pattern": "어센딩베이스",
-      "signal_close": 8.11,
-      "pivot": 8.42,
-      "dist": -3.7,
-      "score": 89.07
+      "ticker": "STGW",
+      "industry": "Advertising Agencies",
+      "pattern": "컵앤핸들",
+      "signal_close": 7.58,
+      "pivot": 7.73,
+      "dist": -1.9,
+      "score": 75.14
     },
     {
-      "ticker": "CLDX",
-      "industry": "Biotechnology",
-      "pattern": "RS Line 선행",
-      "signal_close": 38.37,
-      "pivot": 39.16,
-      "dist": -2.0,
-      "score": 88.97
+      "ticker": "AMD",
+      "industry": "Semiconductors",
+      "pattern": "컵앤핸들",
+      "signal_close": 552.05,
+      "pivot": 584.73,
+      "dist": -5.6,
+      "score": 71.92
     },
     {
-      "ticker": "DRTS",
-      "industry": "Biotechnology",
-      "pattern": "파워플레이",
-      "signal_close": 13.23,
-      "pivot": 13.23,
-      "dist": 0.0,
-      "score": 85.9
+      "ticker": "IBKR",
+      "industry": "Capital Markets",
+      "pattern": "컵앤핸들",
+      "signal_close": 95.99,
+      "pivot": 97.84,
+      "dist": -1.9,
+      "score": 69.66
     },
     {
-      "ticker": "NGNE",
-      "industry": "Biotechnology",
-      "pattern": "어센딩베이스",
-      "signal_close": 35.34,
-      "pivot": 37.27,
-      "dist": -5.2,
-      "score": 81.4
-    },
-    {
-      "ticker": "VCEL",
-      "industry": "Biotechnology",
-      "pattern": "파워플레이",
-      "signal_close": 46.98,
-      "pivot": 47.06,
-      "dist": -0.2,
-      "score": 80.56
-    },
-    {
-      "ticker": "VRTX",
-      "industry": "Biotechnology",
-      "pattern": "파워플레이",
-      "signal_close": 528.04,
-      "pivot": 529.14,
-      "dist": -0.2,
-      "score": 78.57
+      "ticker": "MRX",
+      "industry": "Capital Markets",
+      "pattern": "컵앤핸들",
+      "signal_close": 66.34,
+      "pivot": 67.35,
+      "dist": -1.5,
+      "score": 62.31
     }
   ],
   "gates": [
@@ -116,7 +71,7 @@
     "tqqq": null
   },
   "risk": {
-    "days": 10,
+    "days": 11,
     "ret": NaN,
     "sharpe": NaN,
     "sortino": NaN,
@@ -189,79 +144,75 @@
       "date": "2026-07-05",
       "nav": NaN,
       "chg": NaN
+    },
+    {
+      "date": "2026-07-06",
+      "nav": NaN,
+      "chg": NaN
     }
   ],
   "holdings": [
     {
+      "ticker": "PSNL",
+      "entry": "2026-06-26",
+      "days": 7,
+      "cd": "",
+      "entry_px": 12.59,
+      "cur": 14.34,
+      "runner": false
+    },
+    {
       "ticker": "NEO",
       "entry": "2026-06-26",
-      "days": 6,
+      "days": 7,
       "cd": "",
       "entry_px": 13.73,
       "cur": 15.16,
       "runner": false
     },
     {
-      "ticker": "PSNL",
-      "entry": "2026-06-26",
-      "days": 6,
-      "cd": "",
-      "entry_px": 12.59,
-      "cur": 13.62,
-      "runner": false
-    },
-    {
       "ticker": "NTRA",
       "entry": "2026-06-26",
-      "days": 6,
+      "days": 7,
       "cd": "",
       "entry_px": 260.74,
-      "cur": 279.32,
-      "runner": false
-    },
-    {
-      "ticker": "CDNA",
-      "entry": "2026-06-26",
-      "days": 6,
-      "cd": "",
-      "entry_px": 27.85,
-      "cur": 29.19,
+      "cur": 283.8,
       "runner": false
     },
     {
       "ticker": "ADPT",
       "entry": "2026-06-26",
-      "days": 6,
+      "days": 7,
       "cd": "",
       "entry_px": 20.25,
-      "cur": 21.19,
+      "cur": 21.5,
       "runner": false
     },
     {
-      "ticker": "TWST",
+      "ticker": "CDNA",
       "entry": "2026-06-26",
-      "days": 6,
+      "days": 7,
       "cd": "",
-      "entry_px": 96.65,
-      "cur": 99.24,
+      "entry_px": 27.85,
+      "cur": 29.06,
       "runner": false
     },
     {
       "ticker": "ZD",
       "entry": "2026-07-01",
-      "days": 2,
+      "days": 3,
       "cd": "",
       "entry_px": 51.97,
-      "cur": 52.43,
+      "cur": 53.78,
       "runner": false
     },
     {
-      "ticker": "TILE",
+      "ticker": "TWST",
       "entry": "2026-06-26",
-      "days": 6,
+      "days": 7,
       "cd": "",
-      "entry_px": 35.51,
-      "cur": 35.67,
+      "entry_px": 96.65,
+      "cur": 99.93,
       "runner": false
     },
     {
@@ -270,7 +221,25 @@
       "days": 2,
       "cd": "",
       "entry_px": 79.76,
-      "cur": 79.76,
+      "cur": 81.8,
+      "runner": false
+    },
+    {
+      "ticker": "VCYT",
+      "entry": "2026-06-26",
+      "days": 7,
+      "cd": "",
+      "entry_px": 58.55,
+      "cur": 57.99,
+      "runner": false
+    },
+    {
+      "ticker": "TILE",
+      "entry": "2026-06-26",
+      "days": 7,
+      "cd": "",
+      "entry_px": 35.51,
+      "cur": 34.81,
       "runner": false
     },
     {
@@ -279,7 +248,7 @@
       "days": 2,
       "cd": "",
       "entry_px": 15.64,
-      "cur": 15.64,
+      "cur": 14.85,
       "runner": false
     },
     {
@@ -288,16 +257,7 @@
       "days": 2,
       "cd": "",
       "entry_px": 14.98,
-      "cur": 14.98,
-      "runner": false
-    },
-    {
-      "ticker": "VCYT",
-      "entry": "2026-06-26",
-      "days": 6,
-      "cd": "",
-      "entry_px": 58.55,
-      "cur": 57.08,
+      "cur": 13.94,
       "runner": false
     }
   ],
@@ -386,9 +346,9 @@
       "avg_cost_px": 27.85,
       "shares": 0.002992220227408737,
       "entry_value": 0.08337499999999999,
-      "cur": 29.19,
+      "cur": 29.06,
       "max_gain_pct": 5.134649910233402,
-      "days_in": 6,
+      "days_in": 7,
       "current_stop": 25.9005,
       "runner": false,
       "oneill_8w_active": false
@@ -400,9 +360,9 @@
       "avg_cost_px": 260.74,
       "shares": 0.0003196031806908542,
       "entry_value": 0.08337499999999999,
-      "cur": 279.32,
-      "max_gain_pct": 7.125872516683285,
-      "days_in": 6,
+      "cur": 283.8,
+      "max_gain_pct": 8.844059216077316,
+      "days_in": 7,
       "current_stop": 242.4882,
       "runner": false,
       "oneill_8w_active": false
@@ -416,7 +376,7 @@
       "entry_value": 0.08337499999999999,
       "cur": 15.16,
       "max_gain_pct": 10.415149308084493,
-      "days_in": 6,
+      "days_in": 7,
       "current_stop": 12.7689,
       "runner": false,
       "oneill_8w_active": false
@@ -428,9 +388,9 @@
       "avg_cost_px": 12.59,
       "shares": 0.006619009796134498,
       "entry_value": 0.08337499999999999,
-      "cur": 13.62,
-      "max_gain_pct": 9.531374106433677,
-      "days_in": 6,
+      "cur": 14.34,
+      "max_gain_pct": 13.89992057188245,
+      "days_in": 7,
       "current_stop": 11.708699999999999,
       "runner": false,
       "oneill_8w_active": false
@@ -442,9 +402,9 @@
       "avg_cost_px": 20.25,
       "shares": 0.004115226337448559,
       "entry_value": 0.08337499999999999,
-      "cur": 21.19,
+      "cur": 21.5,
       "max_gain_pct": 10.469135802469133,
-      "days_in": 6,
+      "days_in": 7,
       "current_stop": 18.8325,
       "runner": false,
       "oneill_8w_active": false
@@ -456,9 +416,9 @@
       "avg_cost_px": 58.55,
       "shares": 0.0014232849416453174,
       "entry_value": 0.08337499999999999,
-      "cur": 57.08,
+      "cur": 57.99,
       "max_gain_pct": 3.31340734415031,
-      "days_in": 6,
+      "days_in": 7,
       "current_stop": 54.451499999999996,
       "runner": false,
       "oneill_8w_active": false
@@ -470,9 +430,9 @@
       "avg_cost_px": 96.65,
       "shares": 0.0008622176237282289,
       "entry_value": 0.08337499999999999,
-      "cur": 99.24,
+      "cur": 99.93,
       "max_gain_pct": 6.445938954992236,
-      "days_in": 6,
+      "days_in": 7,
       "current_stop": 89.8845,
       "runner": false,
       "oneill_8w_active": false
@@ -484,9 +444,9 @@
       "avg_cost_px": 35.51,
       "shares": 0.0023467567821271003,
       "entry_value": 0.08337499999999999,
-      "cur": 35.67,
+      "cur": 34.81,
       "max_gain_pct": 1.2109264995775915,
-      "days_in": 6,
+      "days_in": 7,
       "current_stop": 33.0243,
       "runner": false,
       "oneill_8w_active": false
@@ -498,9 +458,9 @@
       "avg_cost_px": 51.97,
       "shares": NaN,
       "entry_value": NaN,
-      "cur": 52.43,
-      "max_gain_pct": 0.8851260342505274,
-      "days_in": 2,
+      "cur": 53.78,
+      "max_gain_pct": 3.4827785260727495,
+      "days_in": 3,
       "current_stop": 48.3321,
       "runner": false,
       "oneill_8w_active": false
@@ -512,8 +472,8 @@
       "avg_cost_px": 79.76,
       "shares": NaN,
       "entry_value": NaN,
-      "cur": 79.76,
-      "max_gain_pct": 0.0,
+      "cur": 81.8,
+      "max_gain_pct": 2.5576730190571606,
       "days_in": 2,
       "current_stop": 74.1768,
       "runner": false,
@@ -526,7 +486,7 @@
       "avg_cost_px": 15.64,
       "shares": NaN,
       "entry_value": NaN,
-      "cur": 15.64,
+      "cur": 14.85,
       "max_gain_pct": 0.0,
       "days_in": 2,
       "current_stop": 14.5452,
@@ -540,7 +500,7 @@
       "avg_cost_px": 14.98,
       "shares": NaN,
       "entry_value": NaN,
-      "cur": 14.98,
+      "cur": 13.94,
       "max_gain_pct": 0.0,
       "days_in": 2,
       "current_stop": 13.9314,
