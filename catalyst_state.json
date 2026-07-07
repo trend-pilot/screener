@@ -1,59 +1,107 @@
 {
-"_date": "2026-07-06",
+"_date": "2026-07-07",
 "_fired_names": [
-"Advertising Agencies",
-"Aluminum",
-"Auto Manufacturers",
-"Capital Markets",
-"Marine Shipping",
-"Security & Protection Services",
-"Semiconductors",
-"Solar"
+"Biotechnology",
+"Consulting Services",
+"Consumer Electronics",
+"Financial Data & Stock Exchanges",
+"Insurance Brokers",
+"Oil & Gas E&P",
+"Oil & Gas Midstream",
+"Staffing & Employment Services"
 ],
-"Aluminum": {
+"Oil & Gas E&P": {
 "consecutive_days": 1,
+"first_fired": "2026-07-07",
+"last_avg_pct": 3.04,
+"ever_fired": true
+},
+"Staffing & Employment Services": {
+"consecutive_days": 1,
+"first_fired": "2026-07-07",
+"last_avg_pct": 2.7,
+"ever_fired": true
+},
+"Consulting Services": {
+"consecutive_days": 1,
+"first_fired": "2026-07-07",
+"last_avg_pct": 2.38,
+"ever_fired": true
+},
+"Biotechnology": {
+"consecutive_days": 1,
+"first_fired": "2026-07-07",
+"last_avg_pct": 2.31,
+"ever_fired": true
+},
+"Insurance Brokers": {
+"consecutive_days": 1,
+"first_fired": "2026-07-07",
+"last_avg_pct": 1.97,
+"ever_fired": true
+},
+"Consumer Electronics": {
+"consecutive_days": 1,
+"first_fired": "2026-07-07",
+"last_avg_pct": 1.55,
+"ever_fired": true
+},
+"Oil & Gas Midstream": {
+"consecutive_days": 1,
+"first_fired": "2026-07-07",
+"last_avg_pct": 1.5,
+"ever_fired": true
+},
+"Financial Data & Stock Exchanges": {
+"consecutive_days": 1,
+"first_fired": "2026-07-07",
+"last_avg_pct": 1.44,
+"ever_fired": true
+},
+"Aluminum": {
+"consecutive_days": 0,
 "first_fired": "2026-07-06",
 "last_avg_pct": 4.1,
 "ever_fired": true
 },
 "Solar": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-06",
 "last_avg_pct": 3.64,
 "ever_fired": true
 },
 "Advertising Agencies": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-06",
 "last_avg_pct": 3.32,
 "ever_fired": true
 },
 "Marine Shipping": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-06",
 "last_avg_pct": 3.3,
 "ever_fired": true
 },
 "Capital Markets": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-06",
 "last_avg_pct": 3.26,
 "ever_fired": true
 },
 "Semiconductors": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-06",
 "last_avg_pct": 3.02,
 "ever_fired": true
 },
 "Security & Protection Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-06",
 "last_avg_pct": 2.95,
 "ever_fired": true
 },
 "Auto Manufacturers": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-06",
 "last_avg_pct": 2.9,
 "ever_fired": true
@@ -64,40 +112,16 @@
 "last_avg_pct": 4.36,
 "ever_fired": true
 },
-"Insurance Brokers": {
-"consecutive_days": 0,
-"first_fired": "2026-07-01",
-"last_avg_pct": 3.35,
-"ever_fired": true
-},
-"Consumer Electronics": {
-"consecutive_days": 0,
-"first_fired": "2026-07-02",
-"last_avg_pct": 3.2,
-"ever_fired": true
-},
 "Drug Manufacturers - General": {
 "consecutive_days": 0,
 "first_fired": "2026-07-02",
 "last_avg_pct": 2.72,
 "ever_fired": true
 },
-"Biotechnology": {
-"consecutive_days": 0,
-"first_fired": "2026-07-02",
-"last_avg_pct": 2.71,
-"ever_fired": true
-},
 "Medical Instruments & Supplies": {
 "consecutive_days": 0,
 "first_fired": "2026-07-02",
 "last_avg_pct": 2.43,
-"ever_fired": true
-},
-"Consulting Services": {
-"consecutive_days": 0,
-"first_fired": "2026-07-02",
-"last_avg_pct": 2.18,
 "ever_fired": true
 },
 "Waste Management": {
@@ -112,12 +136,6 @@
 "last_avg_pct": 1.97,
 "ever_fired": true
 },
-"Staffing & Employment Services": {
-"consecutive_days": 0,
-"first_fired": "2026-06-28",
-"last_avg_pct": 6.63,
-"ever_fired": true
-},
 "Broadcasting": {
 "consecutive_days": 0,
 "first_fired": "2026-07-01",
@@ -128,12 +146,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-01",
 "last_avg_pct": 5.28,
-"ever_fired": true
-},
-"Financial Data & Stock Exchanges": {
-"consecutive_days": 0,
-"first_fired": "2026-07-01",
-"last_avg_pct": 4.46,
 "ever_fired": true
 },
 "Financial Conglomerates": {
@@ -308,12 +320,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-23",
 "last_avg_pct": 2.4,
-"ever_fired": true
-},
-"Oil & Gas E&P": {
-"consecutive_days": 0,
-"first_fired": "2026-06-22",
-"last_avg_pct": 2.53,
 "ever_fired": true
 },
 "Electrical Equipment & Parts": {
