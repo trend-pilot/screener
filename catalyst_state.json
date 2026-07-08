@@ -1,59 +1,101 @@
 {
-"_date": "2026-07-07",
+"_date": "2026-07-08",
 "_fired_names": [
-"Biotechnology",
-"Consulting Services",
-"Consumer Electronics",
-"Financial Data & Stock Exchanges",
-"Insurance Brokers",
+"Chemicals",
+"Computer Hardware",
+"Information Technology Services",
 "Oil & Gas E&P",
-"Oil & Gas Midstream",
-"Staffing & Employment Services"
+"Oil & Gas Equipment & Services",
+"Oil & Gas Refining & Marketing",
+"Semiconductor Equipment & Materials",
+"Semiconductors"
 ],
-"Oil & Gas E&P": {
+"Computer Hardware": {
 "consecutive_days": 1,
+"first_fired": "2026-07-08",
+"last_avg_pct": 4.57,
+"ever_fired": true
+},
+"Oil & Gas E&P": {
+"consecutive_days": 2,
 "first_fired": "2026-07-07",
-"last_avg_pct": 3.04,
+"last_avg_pct": 4.06,
+"ever_fired": true
+},
+"Oil & Gas Equipment & Services": {
+"consecutive_days": 1,
+"first_fired": "2026-07-08",
+"last_avg_pct": 3.26,
+"ever_fired": true
+},
+"Semiconductor Equipment & Materials": {
+"consecutive_days": 1,
+"first_fired": "2026-07-08",
+"last_avg_pct": 3.17,
+"ever_fired": true
+},
+"Chemicals": {
+"consecutive_days": 1,
+"first_fired": "2026-07-08",
+"last_avg_pct": 3.1,
+"ever_fired": true
+},
+"Oil & Gas Refining & Marketing": {
+"consecutive_days": 1,
+"first_fired": "2026-07-08",
+"last_avg_pct": 2.65,
+"ever_fired": true
+},
+"Semiconductors": {
+"consecutive_days": 1,
+"first_fired": "2026-07-08",
+"last_avg_pct": 2.12,
+"ever_fired": true
+},
+"Information Technology Services": {
+"consecutive_days": 1,
+"first_fired": "2026-07-08",
+"last_avg_pct": 1.98,
 "ever_fired": true
 },
 "Staffing & Employment Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-07",
 "last_avg_pct": 2.7,
 "ever_fired": true
 },
 "Consulting Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-07",
 "last_avg_pct": 2.38,
 "ever_fired": true
 },
 "Biotechnology": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-07",
 "last_avg_pct": 2.31,
 "ever_fired": true
 },
 "Insurance Brokers": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-07",
 "last_avg_pct": 1.97,
 "ever_fired": true
 },
 "Consumer Electronics": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-07",
 "last_avg_pct": 1.55,
 "ever_fired": true
 },
 "Oil & Gas Midstream": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-07",
 "last_avg_pct": 1.5,
 "ever_fired": true
 },
 "Financial Data & Stock Exchanges": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-07",
 "last_avg_pct": 1.44,
 "ever_fired": true
@@ -86,12 +128,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-06",
 "last_avg_pct": 3.26,
-"ever_fired": true
-},
-"Semiconductors": {
-"consecutive_days": 0,
-"first_fired": "2026-07-06",
-"last_avg_pct": 3.02,
 "ever_fired": true
 },
 "Security & Protection Services": {
@@ -154,22 +190,10 @@
 "last_avg_pct": 3.52,
 "ever_fired": true
 },
-"Semiconductor Equipment & Materials": {
-"consecutive_days": 0,
-"first_fired": "2026-06-29",
-"last_avg_pct": 6.79,
-"ever_fired": true
-},
 "Electronic Components": {
 "consecutive_days": 0,
 "first_fired": "2026-06-29",
 "last_avg_pct": 4.87,
-"ever_fired": true
-},
-"Oil & Gas Refining & Marketing": {
-"consecutive_days": 0,
-"first_fired": "2026-06-30",
-"last_avg_pct": 4.0,
 "ever_fired": true
 },
 "Aerospace & Defense": {
@@ -188,12 +212,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-29",
 "last_avg_pct": 6.29,
-"ever_fired": true
-},
-"Computer Hardware": {
-"consecutive_days": 0,
-"first_fired": "2026-06-29",
-"last_avg_pct": 3.83,
 "ever_fired": true
 },
 "Other Precious Metals & Mining": {
@@ -236,12 +254,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-25",
 "last_avg_pct": 4.54,
-"ever_fired": true
-},
-"Oil & Gas Equipment & Services": {
-"consecutive_days": 0,
-"first_fired": "2026-06-25",
-"last_avg_pct": 3.88,
 "ever_fired": true
 },
 "Steel": {
