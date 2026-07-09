@@ -1,59 +1,95 @@
 {
-"_date": "2026-07-08",
+"_date": "2026-07-09",
 "_fired_names": [
-"Chemicals",
-"Computer Hardware",
-"Information Technology Services",
-"Oil & Gas E&P",
-"Oil & Gas Equipment & Services",
-"Oil & Gas Refining & Marketing",
+"Diagnostics & Research",
+"Electronics & Computer Distribution",
+"Gold",
+"Other Precious Metals & Mining",
+"Rental & Leasing Services",
 "Semiconductor Equipment & Materials",
-"Semiconductors"
+"Semiconductors",
+"Utilities - Independent Power Producers"
 ],
-"Computer Hardware": {
+"Semiconductor Equipment & Materials": {
+"consecutive_days": 2,
+"first_fired": "2026-07-08",
+"last_avg_pct": 5.6,
+"ever_fired": true
+},
+"Semiconductors": {
+"consecutive_days": 2,
+"first_fired": "2026-07-08",
+"last_avg_pct": 4.58,
+"ever_fired": true
+},
+"Gold": {
 "consecutive_days": 1,
+"first_fired": "2026-07-09",
+"last_avg_pct": 4.34,
+"ever_fired": true
+},
+"Rental & Leasing Services": {
+"consecutive_days": 1,
+"first_fired": "2026-07-09",
+"last_avg_pct": 4.0,
+"ever_fired": true
+},
+"Electronics & Computer Distribution": {
+"consecutive_days": 1,
+"first_fired": "2026-07-09",
+"last_avg_pct": 3.68,
+"ever_fired": true
+},
+"Diagnostics & Research": {
+"consecutive_days": 1,
+"first_fired": "2026-07-09",
+"last_avg_pct": 3.65,
+"ever_fired": true
+},
+"Other Precious Metals & Mining": {
+"consecutive_days": 1,
+"first_fired": "2026-07-09",
+"last_avg_pct": 3.3,
+"ever_fired": true
+},
+"Utilities - Independent Power Producers": {
+"consecutive_days": 1,
+"first_fired": "2026-07-09",
+"last_avg_pct": 3.27,
+"ever_fired": true
+},
+"Computer Hardware": {
+"consecutive_days": 0,
 "first_fired": "2026-07-08",
 "last_avg_pct": 4.57,
 "ever_fired": true
 },
 "Oil & Gas E&P": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-07-07",
 "last_avg_pct": 4.06,
 "ever_fired": true
 },
 "Oil & Gas Equipment & Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-08",
 "last_avg_pct": 3.26,
 "ever_fired": true
 },
-"Semiconductor Equipment & Materials": {
-"consecutive_days": 1,
-"first_fired": "2026-07-08",
-"last_avg_pct": 3.17,
-"ever_fired": true
-},
 "Chemicals": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-08",
 "last_avg_pct": 3.1,
 "ever_fired": true
 },
 "Oil & Gas Refining & Marketing": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-08",
 "last_avg_pct": 2.65,
 "ever_fired": true
 },
-"Semiconductors": {
-"consecutive_days": 1,
-"first_fired": "2026-07-08",
-"last_avg_pct": 2.12,
-"ever_fired": true
-},
 "Information Technology Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-08",
 "last_avg_pct": 1.98,
 "ever_fired": true
@@ -142,12 +178,6 @@
 "last_avg_pct": 2.9,
 "ever_fired": true
 },
-"Gold": {
-"consecutive_days": 0,
-"first_fired": "2026-07-02",
-"last_avg_pct": 4.36,
-"ever_fired": true
-},
 "Drug Manufacturers - General": {
 "consecutive_days": 0,
 "first_fired": "2026-07-02",
@@ -214,12 +244,6 @@
 "last_avg_pct": 6.29,
 "ever_fired": true
 },
-"Other Precious Metals & Mining": {
-"consecutive_days": 0,
-"first_fired": "2026-06-28",
-"last_avg_pct": 8.2,
-"ever_fired": true
-},
 "Medical Distribution": {
 "consecutive_days": 0,
 "first_fired": "2026-06-28",
@@ -260,12 +284,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-25",
 "last_avg_pct": 3.67,
-"ever_fired": true
-},
-"Diagnostics & Research": {
-"consecutive_days": 0,
-"first_fired": "2026-06-24",
-"last_avg_pct": 3.58,
 "ever_fired": true
 },
 "Scientific & Technical Instruments": {
@@ -344,18 +362,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-20",
 "last_avg_pct": 5.13,
-"ever_fired": true
-},
-"Rental & Leasing Services": {
-"consecutive_days": 0,
-"first_fired": "2026-06-20",
-"last_avg_pct": 4.6,
-"ever_fired": true
-},
-"Utilities - Independent Power Producers": {
-"consecutive_days": 0,
-"first_fired": "2026-06-20",
-"last_avg_pct": 4.55,
 "ever_fired": true
 },
 "Software - Infrastructure": {
