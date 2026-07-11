@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-07-10",
+  "data_date": "2026-07-11",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v1)",
   "nav": NaN,
@@ -35,7 +35,7 @@
     "tqqq": null
   },
   "risk": {
-    "days": 15,
+    "days": 16,
     "ret": NaN,
     "sharpe": NaN,
     "sortino": NaN,
@@ -133,6 +133,11 @@
       "date": "2026-07-10",
       "nav": NaN,
       "chg": NaN
+    },
+    {
+      "date": "2026-07-11",
+      "nav": NaN,
+      "chg": NaN
     }
   ],
   "holdings": [
@@ -148,7 +153,7 @@
     {
       "ticker": "IMOS",
       "entry": "2026-07-08",
-      "days": 1,
+      "days": 2,
       "cd": "",
       "entry_px": 68.07,
       "cur": 75.79,
@@ -193,7 +198,7 @@
     {
       "ticker": "CNXN",
       "entry": "2026-07-09",
-      "days": 0,
+      "days": 1,
       "cd": "",
       "entry_px": 76.37,
       "cur": 77.25,
@@ -202,7 +207,7 @@
     {
       "ticker": "ZD",
       "entry": "2026-07-01",
-      "days": 6,
+      "days": 7,
       "cd": "",
       "entry_px": 51.97,
       "cur": 52.18,
@@ -229,7 +234,7 @@
     {
       "ticker": "CEVA",
       "entry": "2026-07-09",
-      "days": 0,
+      "days": 1,
       "cd": "",
       "entry_px": 46.81,
       "cur": 45.54,
@@ -238,7 +243,7 @@
     {
       "ticker": "DSGN",
       "entry": "2026-07-02",
-      "days": 5,
+      "days": 6,
       "cd": "",
       "entry_px": 15.64,
       "cur": 15.19,
@@ -452,7 +457,7 @@
       "entry_value": NaN,
       "cur": 52.18,
       "max_gain_pct": 3.4827785260727495,
-      "days_in": 6,
+      "days_in": 7,
       "current_stop": 48.3321,
       "runner": false,
       "oneill_8w_active": false
@@ -466,7 +471,7 @@
       "entry_value": NaN,
       "cur": 15.19,
       "max_gain_pct": 0.0,
-      "days_in": 5,
+      "days_in": 6,
       "current_stop": 14.5452,
       "runner": false,
       "oneill_8w_active": false
@@ -494,7 +499,7 @@
       "entry_value": NaN,
       "cur": 75.79,
       "max_gain_pct": 11.341266343469968,
-      "days_in": 1,
+      "days_in": 2,
       "current_stop": 63.30509999999999,
       "runner": false,
       "oneill_8w_active": false
@@ -508,7 +513,7 @@
       "entry_value": NaN,
       "cur": 77.25,
       "max_gain_pct": 1.1522849286369041,
-      "days_in": 0,
+      "days_in": 1,
       "current_stop": 71.0241,
       "runner": false,
       "oneill_8w_active": false
@@ -522,7 +527,7 @@
       "entry_value": NaN,
       "cur": 45.54,
       "max_gain_pct": 0.0,
-      "days_in": 0,
+      "days_in": 1,
       "current_stop": 43.5333,
       "runner": false,
       "oneill_8w_active": false
