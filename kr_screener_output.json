@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-11T08:51:03.947144",
+    "generated_at": "2026-07-12T09:15:25.184604",
     "analysis_date": "20260710",
     "market": "KR",
     "total_stocks": 1689,
@@ -10,7 +10,7 @@
     "rsl_count": 4,
     "largecap_count": 301,
     "megacap_count": 69,
-    "phase_up_count": 14,
+    "phase_up_count": 0,
     "phase_first_day": false
   },
   "summary": {
@@ -20,7 +20,7 @@
     "strong_sectors_count": 4,
     "neutral_sectors_count": 5,
     "weak_sectors_count": 1,
-    "phase_up_count": 14,
+    "phase_up_count": 0,
     "phase_first_day": false
   },
   "market": {
@@ -45,15 +45,15 @@
           "above_ma200": true
         },
         "kospi200": {
-          "stage": 4,
-          "label": "Stage 4 — 하락 추세 (매수 금지)",
-          "close": NaN,
-          "ma21": NaN,
-          "ma50": NaN,
-          "ma200": NaN,
+          "stage": 2,
+          "label": "Stage 2 초기 — 추세 전환 중",
+          "close": 1196.69,
+          "ma21": 1332.82,
+          "ma50": 1259.71,
+          "ma200": 825.96,
           "above_ma21": false,
           "above_ma50": false,
-          "above_ma200": false
+          "above_ma200": true
         },
         "kosdaq": {
           "stage": 4,
@@ -107,7 +107,7 @@
           "kospi200": [
             false,
             false,
-            false
+            true
           ],
           "kosdaq": [
             false,
@@ -115,8 +115,8 @@
             false
           ]
         },
-        "score": 1,
-        "label": "1/9 Correction",
+        "score": 2,
+        "label": "2/9 Correction",
         "max": 9
       },
       "supply": {
@@ -33186,8 +33186,8 @@
       "mktcap": 98499.0,
       "sector_detail": "Others",
       "phase": "5",
-      "phase_yesterday": "3",
-      "phase_changed_up": true
+      "phase_yesterday": "5",
+      "phase_changed_up": false
     },
     {
       "ticker": "0126Z0",
@@ -33571,8 +33571,8 @@
       "mktcap": 814.1,
       "sector_detail": "Others",
       "phase": "2",
-      "phase_yesterday": "67",
-      "phase_changed_up": true
+      "phase_yesterday": "2",
+      "phase_changed_up": false
     },
     {
       "ticker": "009180",
@@ -34231,7 +34231,7 @@
       "mktcap": 1811.6,
       "sector_detail": "Others",
       "phase": "2",
-      "phase_yesterday": "3",
+      "phase_yesterday": "2",
       "phase_changed_up": false
     },
     {
@@ -35166,7 +35166,7 @@
       "mktcap": 16122.0,
       "sector_detail": "Others",
       "phase": "3",
-      "phase_yesterday": "4",
+      "phase_yesterday": "3",
       "phase_changed_up": false
     },
     {
@@ -36266,7 +36266,7 @@
       "mktcap": 8571.6,
       "sector_detail": "Others",
       "phase": "2",
-      "phase_yesterday": "3",
+      "phase_yesterday": "2",
       "phase_changed_up": false
     },
     {
@@ -46221,8 +46221,8 @@
       "mktcap": 89928.8,
       "sector_detail": "Others",
       "phase": "3",
-      "phase_yesterday": "2",
-      "phase_changed_up": true
+      "phase_yesterday": "3",
+      "phase_changed_up": false
     },
     {
       "ticker": "047050",
@@ -50676,8 +50676,8 @@
       "mktcap": 570.6,
       "sector_detail": "Others",
       "phase": "3",
-      "phase_yesterday": "2",
-      "phase_changed_up": true
+      "phase_yesterday": "3",
+      "phase_changed_up": false
     },
     {
       "ticker": "331380",
@@ -53151,7 +53151,7 @@
       "mktcap": 2706.5,
       "sector_detail": "Others",
       "phase": "2",
-      "phase_yesterday": "3",
+      "phase_yesterday": "2",
       "phase_changed_up": false
     },
     {
@@ -61401,8 +61401,8 @@
       "mktcap": 2213.6,
       "sector_detail": "Others",
       "phase": "67",
-      "phase_yesterday": "01",
-      "phase_changed_up": true
+      "phase_yesterday": "67",
+      "phase_changed_up": false
     },
     {
       "ticker": "051370",
@@ -64481,8 +64481,8 @@
       "mktcap": 1078.6,
       "sector_detail": "Others",
       "phase": "2",
-      "phase_yesterday": "01",
-      "phase_changed_up": true
+      "phase_yesterday": "2",
+      "phase_changed_up": false
     },
     {
       "ticker": "096350",
@@ -65416,8 +65416,8 @@
       "mktcap": 836.0,
       "sector_detail": "Others",
       "phase": "67",
-      "phase_yesterday": "01",
-      "phase_changed_up": true
+      "phase_yesterday": "67",
+      "phase_changed_up": false
     },
     {
       "ticker": "049480",
@@ -65801,8 +65801,8 @@
       "mktcap": 2385.6,
       "sector_detail": "Others",
       "phase": "67",
-      "phase_yesterday": "01",
-      "phase_changed_up": true
+      "phase_yesterday": "67",
+      "phase_changed_up": false
     },
     {
       "ticker": "000680",
@@ -66021,8 +66021,8 @@
       "mktcap": 4004.9,
       "sector_detail": "Others",
       "phase": "67",
-      "phase_yesterday": "01",
-      "phase_changed_up": true
+      "phase_yesterday": "67",
+      "phase_changed_up": false
     },
     {
       "ticker": "377450",
@@ -66186,8 +66186,8 @@
       "mktcap": 807.5,
       "sector_detail": "Others",
       "phase": "67",
-      "phase_yesterday": "01",
-      "phase_changed_up": true
+      "phase_yesterday": "67",
+      "phase_changed_up": false
     },
     {
       "ticker": "067570",
@@ -66296,8 +66296,8 @@
       "mktcap": 718.0,
       "sector_detail": "Others",
       "phase": "67",
-      "phase_yesterday": "01",
-      "phase_changed_up": true
+      "phase_yesterday": "67",
+      "phase_changed_up": false
     },
     {
       "ticker": "041930",
@@ -66351,8 +66351,8 @@
       "mktcap": 693.1,
       "sector_detail": "Others",
       "phase": "67",
-      "phase_yesterday": "01",
-      "phase_changed_up": true
+      "phase_yesterday": "67",
+      "phase_changed_up": false
     },
     {
       "ticker": "373200",
@@ -66406,8 +66406,8 @@
       "mktcap": 641.1,
       "sector_detail": "Others",
       "phase": "67",
-      "phase_yesterday": "01",
-      "phase_changed_up": true
+      "phase_yesterday": "67",
+      "phase_changed_up": false
     },
     {
       "ticker": "014190",
@@ -66461,8 +66461,8 @@
       "mktcap": 424.7,
       "sector_detail": "Others",
       "phase": "67",
-      "phase_yesterday": "01",
-      "phase_changed_up": true
+      "phase_yesterday": "67",
+      "phase_changed_up": false
     },
     {
       "ticker": "004990",
@@ -66736,7 +66736,7 @@
       "mktcap": 1441.3,
       "sector_detail": "Others",
       "phase": "01",
-      "phase_yesterday": "67",
+      "phase_yesterday": "01",
       "phase_changed_up": false
     },
     {
@@ -67396,7 +67396,7 @@
       "mktcap": 361.9,
       "sector_detail": "Others",
       "phase": "01",
-      "phase_yesterday": "67",
+      "phase_yesterday": "01",
       "phase_changed_up": false
     },
     {
@@ -67451,7 +67451,7 @@
       "mktcap": 346.6,
       "sector_detail": "Others",
       "phase": "01",
-      "phase_yesterday": "67",
+      "phase_yesterday": "01",
       "phase_changed_up": false
     },
     {
@@ -67561,7 +67561,7 @@
       "mktcap": 1819.6,
       "sector_detail": "Others",
       "phase": "01",
-      "phase_yesterday": "67",
+      "phase_yesterday": "01",
       "phase_changed_up": false
     },
     {
@@ -68111,7 +68111,7 @@
       "mktcap": 872.7,
       "sector_detail": "Others",
       "phase": "01",
-      "phase_yesterday": "67",
+      "phase_yesterday": "01",
       "phase_changed_up": false
     },
     {
@@ -69046,7 +69046,7 @@
       "mktcap": 841.8,
       "sector_detail": "Others",
       "phase": "01",
-      "phase_yesterday": "67",
+      "phase_yesterday": "01",
       "phase_changed_up": false
     },
     {
@@ -70641,7 +70641,7 @@
       "mktcap": 577.0,
       "sector_detail": "Others",
       "phase": "01",
-      "phase_yesterday": "2",
+      "phase_yesterday": "01",
       "phase_changed_up": false
     },
     {
@@ -70971,7 +70971,7 @@
       "mktcap": 671.2,
       "sector_detail": "Others",
       "phase": "01",
-      "phase_yesterday": "67",
+      "phase_yesterday": "01",
       "phase_changed_up": false
     },
     {
@@ -71191,7 +71191,7 @@
       "mktcap": 324.4,
       "sector_detail": "Others",
       "phase": "01",
-      "phase_yesterday": "67",
+      "phase_yesterday": "01",
       "phase_changed_up": false
     },
     {
@@ -71411,7 +71411,7 @@
       "mktcap": 1923.8,
       "sector_detail": "Others",
       "phase": "01",
-      "phase_yesterday": "67",
+      "phase_yesterday": "01",
       "phase_changed_up": false
     },
     {
@@ -74931,7 +74931,7 @@
       "mktcap": 156593.8,
       "sector_detail": "Services",
       "phase": "01",
-      "phase_yesterday": "67",
+      "phase_yesterday": "01",
       "phase_changed_up": false
     },
     {
