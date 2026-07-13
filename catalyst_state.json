@@ -1,59 +1,101 @@
 {
-"_date": "2026-07-12",
+"_date": "2026-07-13",
 "_fired_names": [
-"Coking Coal",
-"Discount Stores",
-"Footwear & Accessories",
-"Marine Shipping",
+"Consulting Services",
+"Consumer Electronics",
+"Healthcare Plans",
+"Oil & Gas E&P",
+"Oil & Gas Refining & Marketing",
+"Specialty Business Services",
 "Staffing & Employment Services",
-"Travel Services",
-"Uranium",
-"Utilities - Regulated Water"
+"Utilities - Independent Power Producers"
 ],
+"Consulting Services": {
+"consecutive_days": 1,
+"first_fired": "2026-07-13",
+"last_avg_pct": 4.47,
+"ever_fired": true
+},
+"Healthcare Plans": {
+"consecutive_days": 1,
+"first_fired": "2026-07-13",
+"last_avg_pct": 3.33,
+"ever_fired": true
+},
+"Oil & Gas Refining & Marketing": {
+"consecutive_days": 1,
+"first_fired": "2026-07-13",
+"last_avg_pct": 3.2,
+"ever_fired": true
+},
+"Staffing & Employment Services": {
+"consecutive_days": 4,
+"first_fired": "2026-07-10",
+"last_avg_pct": 3.1,
+"ever_fired": true
+},
+"Oil & Gas E&P": {
+"consecutive_days": 1,
+"first_fired": "2026-07-13",
+"last_avg_pct": 3.03,
+"ever_fired": true
+},
+"Utilities - Independent Power Producers": {
+"consecutive_days": 1,
+"first_fired": "2026-07-13",
+"last_avg_pct": 2.43,
+"ever_fired": true
+},
+"Consumer Electronics": {
+"consecutive_days": 1,
+"first_fired": "2026-07-13",
+"last_avg_pct": 2.15,
+"ever_fired": true
+},
+"Specialty Business Services": {
+"consecutive_days": 1,
+"first_fired": "2026-07-13",
+"last_avg_pct": 1.96,
+"ever_fired": true
+},
 "Coking Coal": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-07-10",
 "last_avg_pct": 4.8,
 "ever_fired": true
 },
 "Footwear & Accessories": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-07-10",
 "last_avg_pct": 2.87,
 "ever_fired": true
 },
 "Marine Shipping": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-07-10",
 "last_avg_pct": 2.47,
 "ever_fired": true
 },
 "Discount Stores": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-07-10",
 "last_avg_pct": 2.28,
 "ever_fired": true
 },
 "Travel Services": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-07-10",
 "last_avg_pct": 2.09,
 "ever_fired": true
 },
-"Staffing & Employment Services": {
-"consecutive_days": 3,
-"first_fired": "2026-07-10",
-"last_avg_pct": 2.0,
-"ever_fired": true
-},
 "Utilities - Regulated Water": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-07-10",
 "last_avg_pct": 1.94,
 "ever_fired": true
 },
 "Uranium": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-07-10",
 "last_avg_pct": 1.9,
 "ever_fired": true
@@ -100,22 +142,10 @@
 "last_avg_pct": 3.3,
 "ever_fired": true
 },
-"Utilities - Independent Power Producers": {
-"consecutive_days": 0,
-"first_fired": "2026-07-09",
-"last_avg_pct": 3.27,
-"ever_fired": true
-},
 "Computer Hardware": {
 "consecutive_days": 0,
 "first_fired": "2026-07-08",
 "last_avg_pct": 4.57,
-"ever_fired": true
-},
-"Oil & Gas E&P": {
-"consecutive_days": 0,
-"first_fired": "2026-07-07",
-"last_avg_pct": 4.06,
 "ever_fired": true
 },
 "Oil & Gas Equipment & Services": {
@@ -130,22 +160,10 @@
 "last_avg_pct": 3.1,
 "ever_fired": true
 },
-"Oil & Gas Refining & Marketing": {
-"consecutive_days": 0,
-"first_fired": "2026-07-08",
-"last_avg_pct": 2.65,
-"ever_fired": true
-},
 "Information Technology Services": {
 "consecutive_days": 0,
 "first_fired": "2026-07-08",
 "last_avg_pct": 1.98,
-"ever_fired": true
-},
-"Consulting Services": {
-"consecutive_days": 0,
-"first_fired": "2026-07-07",
-"last_avg_pct": 2.38,
 "ever_fired": true
 },
 "Biotechnology": {
@@ -158,12 +176,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-07",
 "last_avg_pct": 1.97,
-"ever_fired": true
-},
-"Consumer Electronics": {
-"consecutive_days": 0,
-"first_fired": "2026-07-07",
-"last_avg_pct": 1.55,
 "ever_fired": true
 },
 "Oil & Gas Midstream": {
