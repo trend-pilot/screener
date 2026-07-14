@@ -1,59 +1,101 @@
 {
-"_date": "2026-07-13",
+"_date": "2026-07-14",
 "_fired_names": [
-"Consulting Services",
-"Consumer Electronics",
+"Engineering & Construction",
+"Gold",
 "Healthcare Plans",
-"Oil & Gas E&P",
-"Oil & Gas Refining & Marketing",
-"Specialty Business Services",
-"Staffing & Employment Services",
-"Utilities - Independent Power Producers"
+"Other Industrial Metals & Mining",
+"Semiconductor Equipment & Materials",
+"Solar",
+"Uranium",
+"Utilities - Renewable"
 ],
-"Consulting Services": {
+"Semiconductor Equipment & Materials": {
 "consecutive_days": 1,
+"first_fired": "2026-07-14",
+"last_avg_pct": 4.86,
+"ever_fired": true
+},
+"Solar": {
+"consecutive_days": 1,
+"first_fired": "2026-07-14",
+"last_avg_pct": 4.6,
+"ever_fired": true
+},
+"Other Industrial Metals & Mining": {
+"consecutive_days": 1,
+"first_fired": "2026-07-14",
+"last_avg_pct": 4.49,
+"ever_fired": true
+},
+"Utilities - Renewable": {
+"consecutive_days": 1,
+"first_fired": "2026-07-14",
+"last_avg_pct": 4.2,
+"ever_fired": true
+},
+"Healthcare Plans": {
+"consecutive_days": 2,
+"first_fired": "2026-07-13",
+"last_avg_pct": 3.57,
+"ever_fired": true
+},
+"Gold": {
+"consecutive_days": 1,
+"first_fired": "2026-07-14",
+"last_avg_pct": 3.04,
+"ever_fired": true
+},
+"Uranium": {
+"consecutive_days": 1,
+"first_fired": "2026-07-14",
+"last_avg_pct": 2.75,
+"ever_fired": true
+},
+"Engineering & Construction": {
+"consecutive_days": 1,
+"first_fired": "2026-07-14",
+"last_avg_pct": 2.72,
+"ever_fired": true
+},
+"Consulting Services": {
+"consecutive_days": 0,
 "first_fired": "2026-07-13",
 "last_avg_pct": 4.47,
 "ever_fired": true
 },
-"Healthcare Plans": {
-"consecutive_days": 1,
-"first_fired": "2026-07-13",
-"last_avg_pct": 3.33,
-"ever_fired": true
-},
 "Oil & Gas Refining & Marketing": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-13",
 "last_avg_pct": 3.2,
 "ever_fired": true
 },
 "Staffing & Employment Services": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-07-10",
 "last_avg_pct": 3.1,
 "ever_fired": true
 },
 "Oil & Gas E&P": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-13",
 "last_avg_pct": 3.03,
 "ever_fired": true
 },
 "Utilities - Independent Power Producers": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-13",
 "last_avg_pct": 2.43,
 "ever_fired": true
 },
 "Consumer Electronics": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-13",
 "last_avg_pct": 2.15,
 "ever_fired": true
 },
 "Specialty Business Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-13",
 "last_avg_pct": 1.96,
 "ever_fired": true
@@ -94,28 +136,10 @@
 "last_avg_pct": 1.94,
 "ever_fired": true
 },
-"Uranium": {
-"consecutive_days": 0,
-"first_fired": "2026-07-10",
-"last_avg_pct": 1.9,
-"ever_fired": true
-},
-"Semiconductor Equipment & Materials": {
-"consecutive_days": 0,
-"first_fired": "2026-07-08",
-"last_avg_pct": 5.6,
-"ever_fired": true
-},
 "Semiconductors": {
 "consecutive_days": 0,
 "first_fired": "2026-07-08",
 "last_avg_pct": 4.58,
-"ever_fired": true
-},
-"Gold": {
-"consecutive_days": 0,
-"first_fired": "2026-07-09",
-"last_avg_pct": 4.34,
 "ever_fired": true
 },
 "Rental & Leasing Services": {
@@ -196,12 +220,6 @@
 "last_avg_pct": 4.1,
 "ever_fired": true
 },
-"Solar": {
-"consecutive_days": 0,
-"first_fired": "2026-07-06",
-"last_avg_pct": 3.64,
-"ever_fired": true
-},
 "Advertising Agencies": {
 "consecutive_days": 0,
 "first_fired": "2026-07-06",
@@ -278,12 +296,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-29",
 "last_avg_pct": 3.63,
-"ever_fired": true
-},
-"Other Industrial Metals & Mining": {
-"consecutive_days": 0,
-"first_fired": "2026-06-30",
-"last_avg_pct": 3.58,
 "ever_fired": true
 },
 "Communication Equipment": {
@@ -392,12 +404,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-20",
 "last_avg_pct": 5.18,
-"ever_fired": true
-},
-"Utilities - Renewable": {
-"consecutive_days": 0,
-"first_fired": "2026-06-20",
-"last_avg_pct": 5.13,
 "ever_fired": true
 },
 "Software - Infrastructure": {

@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-07-13",
+  "data_date": "2026-07-14",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v1)",
   "nav": NaN,
@@ -10,17 +10,7 @@
   "core_count": 11,
   "runner_count": 0,
   "regime": "🟢 Uptrend",
-  "signals": [
-    {
-      "ticker": "CMPR",
-      "industry": "Specialty Business Services",
-      "pattern": "컵앤핸들",
-      "signal_close": 99.9,
-      "pivot": 106.13,
-      "dist": -5.9,
-      "score": 79.54
-    }
-  ],
+  "signals": [],
   "gates": [
     "G3 Trigger",
     "G4 Guard",
@@ -35,7 +25,7 @@
     "tqqq": null
   },
   "risk": {
-    "days": 18,
+    "days": 19,
     "ret": NaN,
     "sharpe": NaN,
     "sortino": NaN,
@@ -148,6 +138,11 @@
       "date": "2026-07-13",
       "nav": NaN,
       "chg": NaN
+    },
+    {
+      "date": "2026-07-14",
+      "nav": NaN,
+      "chg": NaN
     }
   ],
   "holdings": [
@@ -157,16 +152,7 @@
       "days": 12,
       "cd": "",
       "entry_px": 12.59,
-      "cur": 15.04,
-      "runner": false
-    },
-    {
-      "ticker": "NTRA",
-      "entry": "2026-06-26",
-      "days": 12,
-      "cd": "",
-      "entry_px": 260.74,
-      "cur": 272.89,
+      "cur": 15.03,
       "runner": false
     },
     {
@@ -175,7 +161,16 @@
       "days": 12,
       "cd": "",
       "entry_px": 20.25,
-      "cur": 21.02,
+      "cur": 21.43,
+      "runner": false
+    },
+    {
+      "ticker": "NTRA",
+      "entry": "2026-06-26",
+      "days": 12,
+      "cd": "",
+      "entry_px": 260.74,
+      "cur": 272.66,
       "runner": false
     },
     {
@@ -184,16 +179,7 @@
       "days": 12,
       "cd": "",
       "entry_px": 27.85,
-      "cur": 28.76,
-      "runner": false
-    },
-    {
-      "ticker": "CNXN",
-      "entry": "2026-07-09",
-      "days": 2,
-      "cd": "",
-      "entry_px": 76.37,
-      "cur": 78.49,
+      "cur": 28.93,
       "runner": false
     },
     {
@@ -202,16 +188,25 @@
       "days": 12,
       "cd": "",
       "entry_px": 13.73,
-      "cur": 14.11,
+      "cur": 14.23,
       "runner": false
     },
     {
-      "ticker": "IMOS",
-      "entry": "2026-07-08",
+      "ticker": "CNXN",
+      "entry": "2026-07-09",
       "days": 3,
       "cd": "",
-      "entry_px": 68.07,
-      "cur": 69.14,
+      "entry_px": 76.37,
+      "cur": 77.59,
+      "runner": false
+    },
+    {
+      "ticker": "ZD",
+      "entry": "2026-07-01",
+      "days": 9,
+      "cd": "",
+      "entry_px": 51.97,
+      "cur": 51.94,
       "runner": false
     },
     {
@@ -220,16 +215,7 @@
       "days": 0,
       "cd": "",
       "entry_px": 99.9,
-      "cur": 99.9,
-      "runner": false
-    },
-    {
-      "ticker": "ZD",
-      "entry": "2026-07-01",
-      "days": 8,
-      "cd": "",
-      "entry_px": 51.97,
-      "cur": 51.87,
+      "cur": 98.52,
       "runner": false
     },
     {
@@ -238,16 +224,25 @@
       "days": 12,
       "cd": "",
       "entry_px": 58.55,
-      "cur": 57.48,
+      "cur": 56.62,
       "runner": false
     },
     {
       "ticker": "ACRS",
       "entry": "2026-07-07",
-      "days": 4,
+      "days": 5,
       "cd": "",
       "entry_px": 5.62,
-      "cur": 5.5,
+      "cur": 5.43,
+      "runner": false
+    },
+    {
+      "ticker": "IMOS",
+      "entry": "2026-07-08",
+      "days": 4,
+      "cd": "",
+      "entry_px": 68.07,
+      "cur": 64.47,
       "runner": false
     }
   ],
@@ -390,7 +385,7 @@
       "avg_cost_px": 27.85,
       "shares": 0.002992220227408737,
       "entry_value": 0.08337499999999999,
-      "cur": 28.76,
+      "cur": 28.93,
       "max_gain_pct": 5.134649910233402,
       "days_in": 12,
       "current_stop": 25.9005,
@@ -404,7 +399,7 @@
       "avg_cost_px": 260.74,
       "shares": 0.0003196031806908542,
       "entry_value": 0.08337499999999999,
-      "cur": 272.89,
+      "cur": 272.66,
       "max_gain_pct": 8.844059216077316,
       "days_in": 12,
       "current_stop": 242.4882,
@@ -418,7 +413,7 @@
       "avg_cost_px": 13.73,
       "shares": 0.006069434328720562,
       "entry_value": 0.08337499999999999,
-      "cur": 14.11,
+      "cur": 14.23,
       "max_gain_pct": 10.415149308084493,
       "days_in": 12,
       "current_stop": 12.7689,
@@ -432,7 +427,7 @@
       "avg_cost_px": 12.59,
       "shares": 0.006619009796134498,
       "entry_value": 0.08337499999999999,
-      "cur": 15.04,
+      "cur": 15.03,
       "max_gain_pct": 19.459888800635426,
       "days_in": 12,
       "current_stop": 12.59,
@@ -446,7 +441,7 @@
       "avg_cost_px": 20.25,
       "shares": 0.004115226337448559,
       "entry_value": 0.08337499999999999,
-      "cur": 21.02,
+      "cur": 21.43,
       "max_gain_pct": 10.469135802469133,
       "days_in": 12,
       "current_stop": 18.8325,
@@ -460,7 +455,7 @@
       "avg_cost_px": 58.55,
       "shares": 0.0014232849416453174,
       "entry_value": 0.08337499999999999,
-      "cur": 57.48,
+      "cur": 56.62,
       "max_gain_pct": 3.31340734415031,
       "days_in": 12,
       "current_stop": 54.451499999999996,
@@ -474,9 +469,9 @@
       "avg_cost_px": 51.97,
       "shares": NaN,
       "entry_value": NaN,
-      "cur": 51.87,
+      "cur": 51.94,
       "max_gain_pct": 3.4827785260727495,
-      "days_in": 8,
+      "days_in": 9,
       "current_stop": 48.3321,
       "runner": false,
       "oneill_8w_active": false
@@ -488,9 +483,9 @@
       "avg_cost_px": 5.62,
       "shares": NaN,
       "entry_value": NaN,
-      "cur": 5.5,
+      "cur": 5.43,
       "max_gain_pct": 1.6014234875444844,
-      "days_in": 4,
+      "days_in": 5,
       "current_stop": 5.2265999999999995,
       "runner": false,
       "oneill_8w_active": false
@@ -502,9 +497,9 @@
       "avg_cost_px": 68.07,
       "shares": NaN,
       "entry_value": NaN,
-      "cur": 69.14,
+      "cur": 64.47,
       "max_gain_pct": 11.341266343469968,
-      "days_in": 3,
+      "days_in": 4,
       "current_stop": 63.30509999999999,
       "runner": false,
       "oneill_8w_active": false
@@ -516,9 +511,9 @@
       "avg_cost_px": 76.37,
       "shares": NaN,
       "entry_value": NaN,
-      "cur": 78.49,
+      "cur": 77.59,
       "max_gain_pct": 2.7759591462616084,
-      "days_in": 2,
+      "days_in": 3,
       "current_stop": 71.0241,
       "runner": false,
       "oneill_8w_active": false
@@ -530,7 +525,7 @@
       "avg_cost_px": 99.9,
       "shares": NaN,
       "entry_value": NaN,
-      "cur": 99.9,
+      "cur": 98.52,
       "max_gain_pct": 0.0,
       "days_in": 0,
       "current_stop": 92.907,
