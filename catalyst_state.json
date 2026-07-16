@@ -1,59 +1,107 @@
 {
-"_date": "2026-07-15",
+"_date": "2026-07-16",
 "_fired_names": [
-"Apparel Retail",
-"Broadcasting",
-"Conglomerates",
-"Consulting Services",
-"Electrical Equipment & Parts",
-"Lodging",
-"Real Estate Services",
-"Recreational Vehicles"
+"Beverages - Wineries & Distilleries",
+"Industrial Distribution",
+"Insurance Brokers",
+"Integrated Freight & Logistics",
+"Specialty Business Services",
+"Staffing & Employment Services",
+"Tools & Accessories",
+"Trucking"
 ],
-"Broadcasting": {
+"Trucking": {
 "consecutive_days": 1,
+"first_fired": "2026-07-16",
+"last_avg_pct": 5.71,
+"ever_fired": true
+},
+"Industrial Distribution": {
+"consecutive_days": 1,
+"first_fired": "2026-07-16",
+"last_avg_pct": 4.92,
+"ever_fired": true
+},
+"Insurance Brokers": {
+"consecutive_days": 1,
+"first_fired": "2026-07-16",
+"last_avg_pct": 4.77,
+"ever_fired": true
+},
+"Integrated Freight & Logistics": {
+"consecutive_days": 1,
+"first_fired": "2026-07-16",
+"last_avg_pct": 4.77,
+"ever_fired": true
+},
+"Staffing & Employment Services": {
+"consecutive_days": 1,
+"first_fired": "2026-07-16",
+"last_avg_pct": 3.7,
+"ever_fired": true
+},
+"Beverages - Wineries & Distilleries": {
+"consecutive_days": 1,
+"first_fired": "2026-07-16",
+"last_avg_pct": 3.3,
+"ever_fired": true
+},
+"Tools & Accessories": {
+"consecutive_days": 1,
+"first_fired": "2026-07-16",
+"last_avg_pct": 3.3,
+"ever_fired": true
+},
+"Specialty Business Services": {
+"consecutive_days": 1,
+"first_fired": "2026-07-16",
+"last_avg_pct": 3.2,
+"ever_fired": true
+},
+"Broadcasting": {
+"consecutive_days": 0,
 "first_fired": "2026-07-15",
 "last_avg_pct": 5.57,
 "ever_fired": true
 },
 "Electrical Equipment & Parts": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-15",
 "last_avg_pct": 3.66,
 "ever_fired": true
 },
 "Lodging": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-15",
 "last_avg_pct": 3.23,
 "ever_fired": true
 },
 "Real Estate Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-15",
 "last_avg_pct": 2.9,
 "ever_fired": true
 },
 "Conglomerates": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-15",
 "last_avg_pct": 2.8,
 "ever_fired": true
 },
 "Consulting Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-15",
 "last_avg_pct": 2.77,
 "ever_fired": true
 },
 "Recreational Vehicles": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-15",
 "last_avg_pct": 2.7,
 "ever_fired": true
 },
 "Apparel Retail": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-15",
 "last_avg_pct": 2.61,
 "ever_fired": true
@@ -112,12 +160,6 @@
 "last_avg_pct": 3.2,
 "ever_fired": true
 },
-"Staffing & Employment Services": {
-"consecutive_days": 0,
-"first_fired": "2026-07-10",
-"last_avg_pct": 3.1,
-"ever_fired": true
-},
 "Oil & Gas E&P": {
 "consecutive_days": 0,
 "first_fired": "2026-07-13",
@@ -134,12 +176,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-13",
 "last_avg_pct": 2.15,
-"ever_fired": true
-},
-"Specialty Business Services": {
-"consecutive_days": 0,
-"first_fired": "2026-07-13",
-"last_avg_pct": 1.96,
 "ever_fired": true
 },
 "Coking Coal": {
@@ -236,12 +272,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-07",
 "last_avg_pct": 2.31,
-"ever_fired": true
-},
-"Insurance Brokers": {
-"consecutive_days": 0,
-"first_fired": "2026-07-07",
-"last_avg_pct": 1.97,
 "ever_fired": true
 },
 "Oil & Gas Midstream": {
@@ -404,12 +434,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-24",
 "last_avg_pct": 4.41,
-"ever_fired": true
-},
-"Beverages - Wineries & Distilleries": {
-"consecutive_days": 0,
-"first_fired": "2026-06-23",
-"last_avg_pct": 3.05,
 "ever_fired": true
 },
 "Electronic Gaming & Multimedia": {

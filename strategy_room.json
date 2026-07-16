@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-07-15",
+  "data_date": "2026-07-16",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v1)",
   "nav": NaN,
@@ -8,26 +8,71 @@
   "cap": 12,
   "runner_cap": 5,
   "core_count": 12,
-  "runner_count": 0,
+  "runner_count": 1,
   "regime": "🟢 Uptrend",
   "signals": [
     {
-      "ticker": "ELVA",
-      "industry": "Electrical Equipment & Parts",
-      "pattern": "RS Line 선행",
-      "signal_close": 11.76,
-      "pivot": 12.78,
-      "dist": -8.0,
-      "score": 94.25
+      "ticker": "FA",
+      "industry": "Specialty Business Services",
+      "pattern": "어센딩베이스",
+      "signal_close": 22.31,
+      "pivot": 22.5,
+      "dist": -0.9,
+      "score": 85.88
     },
     {
-      "ticker": "CTRN",
-      "industry": "Apparel Retail",
-      "pattern": "어센딩베이스",
-      "signal_close": 63.61,
-      "pivot": 66.38,
-      "dist": -4.2,
-      "score": 80.98
+      "ticker": "ODFL",
+      "industry": "Trucking",
+      "pattern": "컵앤핸들",
+      "signal_close": 237.15,
+      "pivot": 252.03,
+      "dist": -5.9,
+      "score": 81.12
+    },
+    {
+      "ticker": "JBHT",
+      "industry": "Integrated Freight & Logistics",
+      "pattern": "VCP",
+      "signal_close": 298.41,
+      "pivot": 299.76,
+      "dist": -0.5,
+      "score": 76.1
+    },
+    {
+      "ticker": "CASS",
+      "industry": "Specialty Business Services",
+      "pattern": "파워플레이",
+      "signal_close": 54.21,
+      "pivot": 54.44,
+      "dist": -0.4,
+      "score": 74.55
+    },
+    {
+      "ticker": "CYRX",
+      "industry": "Integrated Freight & Logistics",
+      "pattern": "컵앤핸들",
+      "signal_close": 16.49,
+      "pivot": 16.83,
+      "dist": -2.0,
+      "score": 71.59
+    },
+    {
+      "ticker": "XMTR",
+      "industry": "Industrial Distribution",
+      "pattern": "VCP",
+      "signal_close": 96.42,
+      "pivot": 99.88,
+      "dist": -3.5,
+      "score": 65.2
+    },
+    {
+      "ticker": "MRTN",
+      "industry": "Trucking",
+      "pattern": "컵앤핸들",
+      "signal_close": 17.79,
+      "pivot": 18.42,
+      "dist": -3.4,
+      "score": 64.03
     }
   ],
   "gates": [
@@ -44,7 +89,7 @@
     "tqqq": null
   },
   "risk": {
-    "days": 20,
+    "days": 21,
     "ret": NaN,
     "sharpe": NaN,
     "sortino": NaN,
@@ -57,15 +102,15 @@
     "alpha_qqq": null
   },
   "trades": {
-    "n": 12,
+    "n": 13,
     "winrate": 0.0,
     "payoff": 0.0,
     "pf": 0.0,
     "avg_win": 0,
-    "avg_loss": -9.1,
-    "expectancy": -9.13,
+    "avg_loss": -9.9,
+    "expectancy": -9.88,
     "best": -7.4,
-    "worst": -11.4
+    "worst": -18.9
   },
   "nav_history": [
     {
@@ -167,70 +212,57 @@
       "date": "2026-07-15",
       "nav": NaN,
       "chg": NaN
+    },
+    {
+      "date": "2026-07-16",
+      "nav": NaN,
+      "chg": NaN
     }
   ],
   "holdings": [
     {
+      "ticker": "CDNA",
+      "entry": "2026-06-26",
+      "days": 14,
+      "cd": "∞",
+      "entry_px": 27.85,
+      "cur": 40.34,
+      "runner": true
+    },
+    {
       "ticker": "PSNL",
       "entry": "2026-06-26",
-      "days": 13,
+      "days": 14,
       "cd": "",
       "entry_px": 12.59,
-      "cur": 15.79,
+      "cur": 15.58,
       "runner": false
     },
     {
       "ticker": "ADPT",
       "entry": "2026-06-26",
-      "days": 13,
+      "days": 14,
       "cd": "",
       "entry_px": 20.25,
-      "cur": 22.9,
-      "runner": false
-    },
-    {
-      "ticker": "CDNA",
-      "entry": "2026-06-26",
-      "days": 13,
-      "cd": "",
-      "entry_px": 27.85,
-      "cur": 29.75,
-      "runner": false
-    },
-    {
-      "ticker": "NTRA",
-      "entry": "2026-06-26",
-      "days": 13,
-      "cd": "",
-      "entry_px": 260.74,
-      "cur": 277.37,
+      "cur": 22.1,
       "runner": false
     },
     {
       "ticker": "NEO",
       "entry": "2026-06-26",
-      "days": 13,
+      "days": 14,
       "cd": "",
       "entry_px": 13.73,
-      "cur": 14.5,
+      "cur": 14.84,
       "runner": false
     },
     {
       "ticker": "CMPR",
       "entry": "2026-07-13",
-      "days": 1,
+      "days": 2,
       "cd": "",
       "entry_px": 99.9,
-      "cur": 103.0,
-      "runner": false
-    },
-    {
-      "ticker": "VCYT",
-      "entry": "2026-06-26",
-      "days": 13,
-      "cd": "",
-      "entry_px": 58.55,
-      "cur": 59.51,
+      "cur": 105.31,
       "runner": false
     },
     {
@@ -239,7 +271,16 @@
       "days": 5,
       "cd": "",
       "entry_px": 68.07,
-      "cur": 68.64,
+      "cur": 71.13,
+      "runner": false
+    },
+    {
+      "ticker": "NTRA",
+      "entry": "2026-06-26",
+      "days": 14,
+      "cd": "",
+      "entry_px": 260.74,
+      "cur": 269.83,
       "runner": false
     },
     {
@@ -248,47 +289,65 @@
       "days": 10,
       "cd": "",
       "entry_px": 51.97,
-      "cur": 52.1,
-      "runner": false
-    },
-    {
-      "ticker": "ELVA",
-      "entry": "2026-07-15",
-      "days": 0,
-      "cd": "",
-      "entry_px": 11.76,
-      "cur": 11.76,
-      "runner": false
-    },
-    {
-      "ticker": "ACRS",
-      "entry": "2026-07-07",
-      "days": 5,
-      "cd": "",
-      "entry_px": 5.62,
-      "cur": 5.6,
+      "cur": 53.62,
       "runner": false
     },
     {
       "ticker": "CNXN",
       "entry": "2026-07-09",
-      "days": 4,
+      "days": 5,
       "cd": "",
       "entry_px": 76.37,
-      "cur": 76.06,
+      "cur": 78.34,
+      "runner": false
+    },
+    {
+      "ticker": "VCYT",
+      "entry": "2026-06-26",
+      "days": 14,
+      "cd": "",
+      "entry_px": 58.55,
+      "cur": 59.22,
+      "runner": false
+    },
+    {
+      "ticker": "FA",
+      "entry": "2026-07-16",
+      "days": 0,
+      "cd": "",
+      "entry_px": 22.31,
+      "cur": 22.31,
+      "runner": false
+    },
+    {
+      "ticker": "ODFL",
+      "entry": "2026-07-16",
+      "days": 0,
+      "cd": "",
+      "entry_px": 237.15,
+      "cur": 237.15,
+      "runner": false
+    },
+    {
+      "ticker": "ACRS",
+      "entry": "2026-07-07",
+      "days": 6,
+      "cd": "",
+      "entry_px": 5.62,
+      "cur": 5.36,
       "runner": false
     }
   ],
   "closed_summary": {
-    "n": 12,
+    "n": 13,
     "winrate": 0.0,
-    "avg": -9.13,
+    "avg": -9.88,
     "best": -7.4,
-    "worst": -11.4,
+    "worst": -18.9,
     "categories": [
       [
         "손절",
-        11,
+        12,
         "#A32D2D",
         "#FDECEC"
       ],
@@ -301,6 +360,15 @@
     ]
   },
   "closed": [
+    {
+      "ticker": "ELVA",
+      "entry": "2026-07-15",
+      "exit": "2026-07-16",
+      "days": 0,
+      "entry_px": 11.76,
+      "exit_px": 9.54,
+      "cat": "손절"
+    },
     {
       "ticker": "CEVA",
       "entry": "2026-07-09",
@@ -418,12 +486,14 @@
       "avg_cost_px": 27.85,
       "shares": 0.002992220227408737,
       "entry_value": 0.08337499999999999,
-      "cur": 29.75,
-      "max_gain_pct": 6.822262118491906,
-      "days_in": 13,
-      "current_stop": 25.9005,
-      "runner": false,
-      "oneill_8w_active": false
+      "cur": 40.34,
+      "max_gain_pct": 44.84739676840217,
+      "days_in": 14,
+      "current_stop": 30.635000000000005,
+      "runner": true,
+      "oneill_8w_active": true,
+      "runner_tier": 2,
+      "oneill_trigger_date": "2026-07-16"
     },
     {
       "ticker": "NTRA",
@@ -432,9 +502,9 @@
       "avg_cost_px": 260.74,
       "shares": 0.0003196031806908542,
       "entry_value": 0.08337499999999999,
-      "cur": 277.37,
+      "cur": 269.83,
       "max_gain_pct": 8.844059216077316,
-      "days_in": 13,
+      "days_in": 14,
       "current_stop": 242.4882,
       "runner": false,
       "oneill_8w_active": false
@@ -446,9 +516,9 @@
       "avg_cost_px": 13.73,
       "shares": 0.006069434328720562,
       "entry_value": 0.08337499999999999,
-      "cur": 14.5,
+      "cur": 14.84,
       "max_gain_pct": 10.415149308084493,
-      "days_in": 13,
+      "days_in": 14,
       "current_stop": 12.7689,
       "runner": false,
       "oneill_8w_active": false
@@ -460,9 +530,9 @@
       "avg_cost_px": 12.59,
       "shares": 0.006619009796134498,
       "entry_value": 0.08337499999999999,
-      "cur": 15.79,
+      "cur": 15.58,
       "max_gain_pct": 25.41699761715648,
-      "days_in": 13,
+      "days_in": 14,
       "current_stop": 13.849,
       "runner": false,
       "oneill_8w_active": true,
@@ -475,9 +545,9 @@
       "avg_cost_px": 20.25,
       "shares": 0.004115226337448559,
       "entry_value": 0.08337499999999999,
-      "cur": 22.9,
+      "cur": 22.1,
       "max_gain_pct": 13.086419753086421,
-      "days_in": 13,
+      "days_in": 14,
       "current_stop": 18.8325,
       "runner": false,
       "oneill_8w_active": false
@@ -489,9 +559,9 @@
       "avg_cost_px": 58.55,
       "shares": 0.0014232849416453174,
       "entry_value": 0.08337499999999999,
-      "cur": 59.51,
+      "cur": 59.22,
       "max_gain_pct": 3.31340734415031,
-      "days_in": 13,
+      "days_in": 14,
       "current_stop": 54.451499999999996,
       "runner": false,
       "oneill_8w_active": false
@@ -503,7 +573,7 @@
       "avg_cost_px": 51.97,
       "shares": NaN,
       "entry_value": NaN,
-      "cur": 52.1,
+      "cur": 53.62,
       "max_gain_pct": 3.4827785260727495,
       "days_in": 10,
       "current_stop": 48.3321,
@@ -517,9 +587,9 @@
       "avg_cost_px": 5.62,
       "shares": NaN,
       "entry_value": NaN,
-      "cur": 5.6,
+      "cur": 5.36,
       "max_gain_pct": 1.6014234875444844,
-      "days_in": 5,
+      "days_in": 6,
       "current_stop": 5.2265999999999995,
       "runner": false,
       "oneill_8w_active": false
@@ -531,7 +601,7 @@
       "avg_cost_px": 68.07,
       "shares": NaN,
       "entry_value": NaN,
-      "cur": 68.64,
+      "cur": 71.13,
       "max_gain_pct": 11.341266343469968,
       "days_in": 5,
       "current_stop": 63.30509999999999,
@@ -545,9 +615,9 @@
       "avg_cost_px": 76.37,
       "shares": NaN,
       "entry_value": NaN,
-      "cur": 76.06,
+      "cur": 78.34,
       "max_gain_pct": 2.7759591462616084,
-      "days_in": 4,
+      "days_in": 5,
       "current_stop": 71.0241,
       "runner": false,
       "oneill_8w_active": false
@@ -559,24 +629,38 @@
       "avg_cost_px": 99.9,
       "shares": NaN,
       "entry_value": NaN,
-      "cur": 103.0,
-      "max_gain_pct": 3.1031031031030887,
-      "days_in": 1,
+      "cur": 105.31,
+      "max_gain_pct": 5.415415415415414,
+      "days_in": 2,
       "current_stop": 92.907,
       "runner": false,
       "oneill_8w_active": false
     },
     {
-      "ticker": "ELVA",
-      "entry_date": "2026-07-15",
-      "entry_px": 11.76,
-      "avg_cost_px": 11.76,
+      "ticker": "FA",
+      "entry_date": "2026-07-16",
+      "entry_px": 22.31,
+      "avg_cost_px": 22.31,
       "shares": NaN,
       "entry_value": NaN,
-      "cur": 11.76,
+      "cur": 22.31,
       "max_gain_pct": 0.0,
       "days_in": 0,
-      "current_stop": 10.9368,
+      "current_stop": 20.748299999999997,
+      "runner": false,
+      "oneill_8w_active": false
+    },
+    {
+      "ticker": "ODFL",
+      "entry_date": "2026-07-16",
+      "entry_px": 237.15,
+      "avg_cost_px": 237.15,
+      "shares": NaN,
+      "entry_value": NaN,
+      "cur": 237.15,
+      "max_gain_pct": 0.0,
+      "days_in": 0,
+      "current_stop": 220.5495,
       "runner": false,
       "oneill_8w_active": false
     }
@@ -713,6 +797,17 @@
       "shares": NaN,
       "realized": NaN,
       "cat": "손절"
+    },
+    {
+      "ticker": "ELVA",
+      "entry": "2026-07-15",
+      "exit": "2026-07-16",
+      "days": 0,
+      "entry_px": 11.76,
+      "exit_px": 9.54,
+      "shares": NaN,
+      "realized": NaN,
+      "cat": "손절"
     }
   ],
   "_cash": NaN,
@@ -740,6 +835,8 @@
     "2026-07-09",
     "2026-07-09",
     "2026-07-13",
-    "2026-07-15"
+    "2026-07-15",
+    "2026-07-16",
+    "2026-07-16"
   ]
 }
