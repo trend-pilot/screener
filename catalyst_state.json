@@ -1,59 +1,107 @@
 {
-"_date": "2026-07-16",
+"_date": "2026-07-17",
 "_fired_names": [
-"Beverages - Wineries & Distilleries",
-"Industrial Distribution",
-"Insurance Brokers",
-"Integrated Freight & Logistics",
-"Specialty Business Services",
-"Staffing & Employment Services",
-"Tools & Accessories",
-"Trucking"
+"Chemicals",
+"Communication Equipment",
+"Consumer Electronics",
+"Healthcare Plans",
+"Oil & Gas E&P",
+"Other Precious Metals & Mining",
+"REIT - Hotel & Motel",
+"Uranium"
 ],
-"Trucking": {
+"Chemicals": {
 "consecutive_days": 1,
+"first_fired": "2026-07-17",
+"last_avg_pct": 4.33,
+"ever_fired": true
+},
+"Other Precious Metals & Mining": {
+"consecutive_days": 1,
+"first_fired": "2026-07-17",
+"last_avg_pct": 3.67,
+"ever_fired": true
+},
+"Consumer Electronics": {
+"consecutive_days": 1,
+"first_fired": "2026-07-17",
+"last_avg_pct": 3.0,
+"ever_fired": true
+},
+"Healthcare Plans": {
+"consecutive_days": 1,
+"first_fired": "2026-07-17",
+"last_avg_pct": 2.67,
+"ever_fired": true
+},
+"Uranium": {
+"consecutive_days": 1,
+"first_fired": "2026-07-17",
+"last_avg_pct": 2.6,
+"ever_fired": true
+},
+"Communication Equipment": {
+"consecutive_days": 1,
+"first_fired": "2026-07-17",
+"last_avg_pct": 1.72,
+"ever_fired": true
+},
+"REIT - Hotel & Motel": {
+"consecutive_days": 1,
+"first_fired": "2026-07-17",
+"last_avg_pct": 1.65,
+"ever_fired": true
+},
+"Oil & Gas E&P": {
+"consecutive_days": 1,
+"first_fired": "2026-07-17",
+"last_avg_pct": 1.51,
+"ever_fired": true
+},
+"Trucking": {
+"consecutive_days": 0,
 "first_fired": "2026-07-16",
 "last_avg_pct": 5.71,
 "ever_fired": true
 },
 "Industrial Distribution": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-16",
 "last_avg_pct": 4.92,
 "ever_fired": true
 },
 "Insurance Brokers": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-16",
 "last_avg_pct": 4.77,
 "ever_fired": true
 },
 "Integrated Freight & Logistics": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-16",
 "last_avg_pct": 4.77,
 "ever_fired": true
 },
 "Staffing & Employment Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-16",
 "last_avg_pct": 3.7,
 "ever_fired": true
 },
 "Beverages - Wineries & Distilleries": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-16",
 "last_avg_pct": 3.3,
 "ever_fired": true
 },
 "Tools & Accessories": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-16",
 "last_avg_pct": 3.3,
 "ever_fired": true
 },
 "Specialty Business Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-16",
 "last_avg_pct": 3.2,
 "ever_fired": true
@@ -130,22 +178,10 @@
 "last_avg_pct": 4.2,
 "ever_fired": true
 },
-"Healthcare Plans": {
-"consecutive_days": 0,
-"first_fired": "2026-07-13",
-"last_avg_pct": 3.57,
-"ever_fired": true
-},
 "Gold": {
 "consecutive_days": 0,
 "first_fired": "2026-07-14",
 "last_avg_pct": 3.04,
-"ever_fired": true
-},
-"Uranium": {
-"consecutive_days": 0,
-"first_fired": "2026-07-14",
-"last_avg_pct": 2.75,
 "ever_fired": true
 },
 "Engineering & Construction": {
@@ -160,22 +196,10 @@
 "last_avg_pct": 3.2,
 "ever_fired": true
 },
-"Oil & Gas E&P": {
-"consecutive_days": 0,
-"first_fired": "2026-07-13",
-"last_avg_pct": 3.03,
-"ever_fired": true
-},
 "Utilities - Independent Power Producers": {
 "consecutive_days": 0,
 "first_fired": "2026-07-13",
 "last_avg_pct": 2.43,
-"ever_fired": true
-},
-"Consumer Electronics": {
-"consecutive_days": 0,
-"first_fired": "2026-07-13",
-"last_avg_pct": 2.15,
 "ever_fired": true
 },
 "Coking Coal": {
@@ -238,12 +262,6 @@
 "last_avg_pct": 3.65,
 "ever_fired": true
 },
-"Other Precious Metals & Mining": {
-"consecutive_days": 0,
-"first_fired": "2026-07-09",
-"last_avg_pct": 3.3,
-"ever_fired": true
-},
 "Computer Hardware": {
 "consecutive_days": 0,
 "first_fired": "2026-07-08",
@@ -254,12 +272,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-08",
 "last_avg_pct": 3.26,
-"ever_fired": true
-},
-"Chemicals": {
-"consecutive_days": 0,
-"first_fired": "2026-07-08",
-"last_avg_pct": 3.1,
 "ever_fired": true
 },
 "Information Technology Services": {
@@ -362,12 +374,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-29",
 "last_avg_pct": 3.63,
-"ever_fired": true
-},
-"Communication Equipment": {
-"consecutive_days": 0,
-"first_fired": "2026-06-29",
-"last_avg_pct": 6.29,
 "ever_fired": true
 },
 "Medical Distribution": {
