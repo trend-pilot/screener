@@ -12024,7 +12024,14 @@ function renderDailyBriefingCandidates(stocks) {
     const _conf = (s) => {
       const pts = []; let tot = 0;
       const add = (t,p) => { pts.push([t,p]); tot += p; };
-      if (s.phase_changed_up) add('🚀 신선 진입 (오늘 Phase 상향)', 25);
+      // 신선도: 전환 후 경과일수(days_since_phase_change)가 있으면 차등, 없으면 당일 플래그만
+      const dsc = (typeof s.days_since_phase_change === 'number') ? s.days_since_phase_change : null;
+      if (dsc !== null && dsc >= 0 && dsc <= 10) {
+        const fp = dsc === 0 ? 25 : dsc <= 2 ? 22 : dsc <= 5 ? 18 : 12;
+        add(`🚀 신선 진입 (Phase ${s.phase}, ${dsc + 1}일째 — 페이크아웃 1차 통과)`, fp);
+      } else if (s.phase_changed_up) {
+        add('🚀 신선 진입 (오늘 Phase 상향)', 25);
+      }
       const rl = s.rs_line_score || 0;
       if (rl >= 60 && rl < 80) add(`📈 RS Line ${rl} (early breakout ⭐)`, 12);
       else if (rl >= 80) add(`📈 RS Line ${rl} (진행 중)`, 7);
