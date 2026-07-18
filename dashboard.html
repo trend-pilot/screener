@@ -11952,7 +11952,148 @@ function renderDailyBriefingCandidates(stocks) {
       </div>`;
   };
 
+  // ═══ ⑧-a 오늘 발화 테마 대장주 (catalyst.clusters) ═══
+  const _cat = (typeof US !== 'undefined' && US.catalyst) ? US.catalyst : null;
+  const _byTk = {}; stocks.forEach(s => { _byTk[s.ticker] = s; });
+  const _fmtP = v => ((Number(v)||0)>=0?'+':'') + (Number(v)||0).toFixed(2) + '%';
+  const _themeScore = c => {
+    const q = c.lead_rs || 0;                       // 대장주 RS (품질)
+    const breadth = c.n ? c.up_count / c.n : 0;      // 동반 비율
+    const base = q * 0.45 + breadth * 25 + (c.cascade ? 12 : 0) + Math.min(15, c.avg_pct || 0);
+    return Math.round(q < 30 ? base * 0.5 : base);   // 저품질(RS<30) 대장주는 강하게 감점
+  };
+  let themeLeaderSection = '';
+  if (_cat && Array.isArray(_cat.clusters) && _cat.clusters.length) {
+    const _cls = [..._cat.clusters].map(c => ({...c, _sc: _themeScore(c)})).sort((a,b) => b._sc - a._sc).slice(0, 6);
+    const _phaseTag = ph => ph==='4plus'?'P4+':ph==='4'?'P4':ph==='5'?'P5':ph==='3'?'P3':ph==='2'?'P2':(ph||'—');
+    const _tcard = c => {
+      const stars = c.sustain_status === 'elevation' ? '★★★' : ((c.consecutive_days||0) >= 2 ? '★★' : '★');
+      const accent = c._sc >= 55 ? '#1a4a08' : (c._sc >= 40 ? '#854F0B' : '#185FA5');
+      const ls = _byTk[c.lead];
+      const badges = [];
+      if (c.is_first_ever) badges.push(['🆕 신규','#185FA5','#E6F1FB']);
+      else if (c.is_refire) badges.push(['↻ 재발화','#854F0B','#FFF4E6']);
+      if (c.cascade) badges.push(['🌊 광범위','#1a8a4a','#E8F5E9']);
+      if (c.decelerating) badges.push(['📉 둔화','#A32D2D','#FDF5F5']);
+      const badgeHtml = badges.map(b=>`<span style="font-size:9.5px;font-weight:600;color:${b[1]};background:${b[2]};border-radius:4px;padding:1px 6px">${b[0]}</span>`).join(' ');
+      const members = (c.members||[]).slice(0,6).map(m => {
+        const col = (m.pct||0)>=0 ? '#1a8a4a' : '#A32D2D';
+        return `<span onclick="openDetailByTicker('${m.symbol}')" style="display:inline-flex;gap:3px;background:#f5f4ef;border:1px solid #e7e4da;border-radius:5px;padding:2px 6px;font-size:10.5px;cursor:pointer;margin:2px 3px 0 0"><b>${m.symbol}</b> <span style="color:${col}">${_fmtP(m.pct)}</span>${m.rs!=null?` <span style="color:#999">R${m.rs}</span>`:''}</span>`;
+      }).join('');
+      const er = c.lead_earnings || {};
+      const erText = (er.days_to_earnings!=null) ? `실적 D${er.days_to_earnings>=0?'-':'+'}${Math.abs(er.days_to_earnings)}${er.earnings_surprise!=null?` · 서프라이즈 ${_fmtP(er.earnings_surprise)}`:''}` : '';
+      return `
+      <div style="background:#fff;border:1px solid #e0e0d8;border-left:4px solid ${accent};border-radius:10px;padding:12px 14px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+          <div style="min-width:0">
+            <div style="display:flex;align-items:center;gap:7px"><span style="font-size:16px;font-weight:800;color:${accent}">${c._sc}</span><span style="font-size:13.5px;font-weight:700;color:#1a1a1a">${c.cluster}</span></div>
+            <div style="font-size:10.5px;color:#999;margin-top:1px">${c.sector||''} · ${c.n}종목 중 ${c.up_count} 상승</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0"><div style="font-size:13px;color:#f5c518;letter-spacing:1px">${stars}</div><div style="font-size:9.5px;color:#999">${c.sustain_label||''}</div></div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:8px;margin:7px 0 5px;flex-wrap:wrap">
+          <span style="font-size:11.5px;color:#666">대장 <span onclick="openDetailByTicker('${c.lead}')" style="font-weight:700;color:#185FA5;cursor:pointer">${c.lead}</span> <span style="color:${(c.lead_pct||0)>=0?'#1a8a4a':'#A32D2D'};font-weight:600">${_fmtP(c.lead_pct)}</span> · RS ${c.lead_rs==null?'—':c.lead_rs}</span>
+          ${ls ? `<span style="font-size:10.5px;color:#888">${_phaseTag(ls.phase)}${ls.is_stage2?' · Stage2':''}</span>` : ''}
+        </div>
+        ${badgeHtml ? `<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:5px">${badgeHtml}</div>` : ''}
+        <div style="font-size:11px;color:#555;margin-bottom:3px">동반상승 <b>${c.up_count}/${c.n}</b>${c.cascade?' · cascade(과반 동반)':''} · 평균 <b style="color:${(c.avg_pct||0)>=0?'#1a8a4a':'#A32D2D'}">${_fmtP(c.avg_pct)}</b></div>
+        <div>${members}</div>
+        ${erText ? `<div style="font-size:10.5px;color:#8a7a3a;margin-top:5px">📅 ${erText}</div>` : ''}
+      </div>`;
+    };
+    themeLeaderSection = `
+      <div style="font-size:13px;font-weight:700;color:#b5521a;margin-bottom:4px">🔥 오늘 발화 테마 대장주</div>
+      <div style="font-size:10.5px;color:#999;margin-bottom:10px">${_cat.data_date||''} 발화 · 동반상승/cascade 기반 · 점수 = 발화 강도(평균%·동반비율·cascade 가중, 테마 종합점수 백필 없음 → 폴백)</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:11px;margin-bottom:20px">${_cls.map(_tcard).join('')}</div>`;
+  }
+
+  // ═══ ⑧-b 셋업 기반 진입 후보 카드 (참고본 공식) ═══
+  //   정렬 = 테마 종합점수 × 0.4 + 추세초기강세 × 0.6
+  //   확신도(calcEntryScore) = 신선진입+25 / RS Line early+12·진행중+7 / 패턴+10 / 산업강도+10 / AD매집+10
+  const _hasNewFields = stocks.some(s => typeof s.early_strength === 'number');
+  let setupCardSection = '';
+  if (_hasNewFields) {
+    // 산업별 강도 (테마 종합점수 폴백 = 산업 평균 RS Line)
+    const _indMap = {};
+    _pool.forEach(s => { const k = s.industry || '—'; (_indMap[k] = _indMap[k] || []).push(s.rs_line_score || 0); });
+    const _indScore = {};
+    Object.keys(_indMap).forEach(k => { const a = _indMap[k]; if (a.length >= 2) _indScore[k] = a.reduce((x,y)=>x+y,0)/a.length; });
+    const _iv = Object.values(_indScore).sort((a,b)=>b-a);
+    const _top20 = _iv.length ? _iv[Math.floor(_iv.length*0.2)] : 999;
+
+    const _conf = (s) => {
+      const pts = []; let tot = 0;
+      const add = (t,p) => { pts.push([t,p]); tot += p; };
+      if (s.phase_changed_up) add('🚀 신선 진입 (오늘 Phase 상향)', 25);
+      const rl = s.rs_line_score || 0;
+      if (rl >= 60 && rl < 80) add(`📈 RS Line ${rl} (early breakout ⭐)`, 12);
+      else if (rl >= 80) add(`📈 RS Line ${rl} (진행 중)`, 7);
+      if ((s.pattern_count || 0) > 0) add(`📊 패턴 ${s.pattern_count}종${s.best_pattern ? ` (최고 ${s.best_pattern})` : ''}`, 10);
+      const isc = _indScore[s.industry] || 0;
+      if (isc >= _top20) add(`🔥 산업 강도 ${Math.round(isc)} (${s.industry} · 상위 20%)`, 10);
+      if ((s.ad || 0) >= 70) add(`💪 AD ${s.ad} ${s.ad_grade} (기관 매집)`, 10);
+      if (s.is_stage2) add('✅ Stage 2 (추세 확립)', 8);
+      return { tot, pts };
+    };
+
+    const _cands = _pool.map(s => {
+      const theme = _indScore[s.industry] || 0;
+      const es = s.early_strength || 0;
+      const c = _conf(s);
+      return { s, theme, es, sort: Math.round((theme*0.4 + es*0.6)*10)/10, conf: c.tot, pts: c.pts };
+    }).filter(x => x.es > 0).sort((a,b) => b.sort - a.sort);
+
+    const _stars = c => c >= 60 ? ['★★★★★ 매우 높음','#b5521a','#FFF3E0']
+                    : c >= 45 ? ['★★★★ 높음','#1a7a3a','#E8F5E9']
+                    : c >= 30 ? ['★★★ 보통','#185FA5','#E6F1FB']
+                              : ['★★ 참고','#8a8a82','#f5f4ef'];
+    const _phTag = p => ({'4plus':'🟢 4+','4':'🟢 4','5':'🟢 5','3':'🔵 3','2':'🟠 2','67':'🔴 67','01':'🔴 01'})[p] || (p||'—');
+
+    const _scard = (x, rank) => {
+      const s = x.s, [starTxt, starC, starBg] = _stars(x.conf);
+      const adC = (s.ad||0) >= 70 ? '#1a7a3a' : (s.ad||0) >= 50 ? '#185FA5' : '#a96e00';
+      return `
+      <div style="border:1px solid #dfe6d8;border-radius:10px;padding:12px 14px;background:#fff">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+          <div style="min-width:0">
+            <div style="font-size:15px;font-weight:800;color:#1a3a10">${rank<=3?['🥇','🥈','🥉'][rank-1]+' ':''}<span onclick="openDetailByTicker('${s.ticker}')" style="cursor:pointer;color:#185FA5">${s.ticker}</span></div>
+            <div style="font-size:10.5px;color:#888;margin-top:1px">${s.sector||'—'} · ${s.industry||'—'}</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0">
+            <div style="font-size:10.5px;font-weight:700;color:${starC};background:${starBg};border-radius:5px;padding:2px 7px;white-space:nowrap">${starTxt}</div>
+            <div style="font-size:10px;color:#999;margin-top:2px">확신도 <b style="color:${starC}">${x.conf}</b>점</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;font-size:10.5px;color:#555;margin:8px 0 6px">
+          <span>Phase <b>${_phTag(s.phase)}</b></span>
+          <span>RS <b>${s.rs ?? '—'}</b></span>
+          <span>AD <b style="color:${adC}">${s.ad ?? '—'}</b> ${s.ad_grade||''}</span>
+          ${s.is_stage2 ? '<span style="color:#1a7a3a;font-weight:600">Stage 2</span>' : ''}
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;font-size:10px;color:#73726c;padding-bottom:6px;border-bottom:1px dotted #e0ddd2">
+          <span>정렬 <b>${x.sort}</b></span>
+          <span>🎯 추세초기강세 <b>${x.es}</b></span>
+          <span>🏭 테마 <b>${Math.round(x.theme*10)/10}</b></span>
+        </div>
+        <div style="font-size:10.5px;font-weight:700;color:#1a5c1a;margin:7px 0 4px">✓ 진입 근거</div>
+        <div style="font-size:11px;color:#555;line-height:1.7">
+          ${x.pts.length ? x.pts.map(p => `<div>• ${p[0]} <span style="color:#1a8a4a;font-weight:600">(+${p[1]})</span></div>`).join('') : '<div style="color:#aaa">— 가점 항목 없음</div>'}
+        </div>
+      </div>`;
+    };
+
+    const _showN = 6;
+    setupCardSection = `
+      <div style="font-size:13px;font-weight:700;color:#1a4a08;margin-bottom:3px">🎯 셋업 기반 진입 후보</div>
+      <div style="font-size:10.5px;color:#999;margin-bottom:10px">정렬 = 테마 종합점수×0.4 + 추세초기강세×0.6 · 확신도(calcEntryScore)는 별도 표시(정렬 키 아님) · 상위 ${_showN}개 카드</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:11px;margin-bottom:18px">
+        ${_cands.slice(0, _showN).map((x,i) => _scard(x, i+1)).join('')}
+      </div>`;
+  }
+
   body.innerHTML = `
+    ${themeLeaderSection}
+    ${setupCardSection}
     <div style="font-size:12px;color:#666;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #f0efea">
       총 <strong style="color:#1a4a08">${totalCount}개</strong> 후보 — Phase × RS Line 점수 + <strong>섹터 강세</strong> 결합 (강세 섹터 리더 우선)
       ${strongSecs.length ? `<div style="margin-top:5px;font-size:11px;color:#1a5c1a">🟢 강세 섹터: ${strongSecs.map(s => `${s} <b>${_secScore[s]}</b>`).join(' · ')}</div>` : ''}
