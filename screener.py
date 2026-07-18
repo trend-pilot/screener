@@ -21,6 +21,7 @@ import numpy as np
 from dotenv import load_dotenv
 
 from phase_history import annotate_and_persist  # v11: Phase 전환 추적
+from ad_early_strength import compute_ad_rating, compute_early_strength  # AD·추세초기강세 (참고본 ⑧)
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -499,6 +500,14 @@ def process_symbol(ticker, name, asset_type="STOCK", asset_class=""):
                    ibd_ret(189, 126) * 0.2 +
                    ibd_ret(252, 189) * 0.2)
 
+        # ─── AD (축적/분산 레이팅) — OHLCV 기반 (참고본 ⑧ 셋업 카드용) ───
+        try:
+            ad_score, ad_grade = compute_ad_rating(
+                high.values, low.values, close.values, volume.values)
+        except Exception as e:
+            log.debug(f"{ticker} AD 계산 오류: {e}")
+            ad_score, ad_grade = None, None
+
         return {
             "ticker":    ticker, "market":"US", "name":name,
             "asset_type":  asset_type,    # "STOCK" or "ETF"
@@ -515,6 +524,9 @@ def process_symbol(ticker, name, asset_type="STOCK", asset_class=""):
             "pct": d1,   # [catalyst] 일간 등락률
             "rs":0,"rs_now":0,"ibd_rs":0,
             "ibd_raw":   round(ibd_raw, 2),
+            "ad":        ad_score,    # AD 점수 0~100 (없으면 None)
+            "ad_grade":  ad_grade,    # A+/A/B/C/D/E
+            "early_strength": None,   # 추세초기강세 — main()에서 phase 채운 뒤 계산
             "is_stage2": False,
             "_base": all([c1,c2,c3,c4,c5,c6]),
             "acc":bool(acc),"acc2":bool(acc2),
@@ -647,6 +659,10 @@ def main():
         results, "phase_history.json", today_str
     )
     log.info(f"   NEW↑ {phase_up_count}개 종목 (첫날={phase_first_day})")
+
+    # ─── 추세초기강세 (rs_line_score·phase·phase_changed_up 채워진 뒤 계산) ───
+    for s in results:
+        s["early_strength"] = compute_early_strength(s)
 
     stage2_count   = sum(1 for s in results if s["is_stage2"])
     avg_rs         = round(float(np.mean([s["rs"] for s in results])),1)
