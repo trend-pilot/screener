@@ -1,5 +1,5 @@
 {
-"_date": "2026-07-18",
+"_date": "2026-07-19",
 "_fired_names": [
 "Chemicals",
 "Communication Equipment",
@@ -11,49 +11,49 @@
 "Uranium"
 ],
 "Chemicals": {
-"consecutive_days": 4,
+"consecutive_days": 5,
 "first_fired": "2026-07-17",
 "last_avg_pct": 4.33,
 "ever_fired": true
 },
 "Other Precious Metals & Mining": {
-"consecutive_days": 4,
+"consecutive_days": 5,
 "first_fired": "2026-07-17",
 "last_avg_pct": 3.65,
 "ever_fired": true
 },
 "Consumer Electronics": {
-"consecutive_days": 4,
+"consecutive_days": 5,
 "first_fired": "2026-07-17",
 "last_avg_pct": 3.0,
 "ever_fired": true
 },
 "Healthcare Plans": {
-"consecutive_days": 4,
+"consecutive_days": 5,
 "first_fired": "2026-07-17",
 "last_avg_pct": 2.67,
 "ever_fired": true
 },
 "Uranium": {
-"consecutive_days": 4,
+"consecutive_days": 5,
 "first_fired": "2026-07-17",
 "last_avg_pct": 2.6,
 "ever_fired": true
 },
 "Communication Equipment": {
-"consecutive_days": 4,
+"consecutive_days": 5,
 "first_fired": "2026-07-17",
 "last_avg_pct": 1.72,
 "ever_fired": true
 },
 "REIT - Hotel & Motel": {
-"consecutive_days": 4,
+"consecutive_days": 5,
 "first_fired": "2026-07-17",
 "last_avg_pct": 1.65,
 "ever_fired": true
 },
 "Oil & Gas E&P": {
-"consecutive_days": 4,
+"consecutive_days": 5,
 "first_fired": "2026-07-17",
 "last_avg_pct": 1.51,
 "ever_fired": true
