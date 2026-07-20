@@ -26,10 +26,12 @@ from typing import List, Optional, Sequence
 
 # ── 탐지 파라미터 ─────────────────────────────────────────────────────
 MIN_BASE_WEEKS = 5        # 오닐 최소 베이스 길이
-MAX_BASE_WEEKS = 65       # 과도하게 긴 구간은 베이스로 보지 않음
+MAX_BASE_WEEKS = 40       # 이보다 길면 베이스가 아니라 장기 하락/횡보로 본다.
+#   (65주였을 때 DK 의 2024년 하락 구간 전체가 '52주 베이스' 하나로 잡혀
+#    앞쪽 실제 베이스 2개를 삼켰다. 그리드 서치 결과 40주가 최적)
 PIVOT_OFFSET = 0.10       # 실측: pivot = left_high + $0.10
 FLAT_MAX_DEPTH = 20.0     # Flat Base 상한 (실측 19.9%)
-MAX_BASE_DEPTH = 60.0     # 이보다 깊으면 베이스가 아니라 추세 붕괴
+MAX_BASE_DEPTH = 55.0     # 이보다 깊으면 베이스가 아니라 추세 붕괴 (그리드 서치 최적)
 RESET_DECLINE = 20.0      # 직전 고점 대비 이 이상 하락 → 베이스 카운트 리셋
 ADVANCE_MIN = 20.0        # 직전 돌파 대비 이 이상 상승 → 카운트 전진
 
@@ -169,6 +171,12 @@ def detect_bases(dates, h, l, c) -> List[Base]:
 
         end_i = brk_i if brk_i is not None else n - 1
         if end_i - left_i < MIN_BASE_WEEKS:
+            i += 1
+            continue
+        # [버그 수정] 돌파 없이 최대 길이를 넘겨 루프를 빠져나온 구간은
+        #   베이스가 아니다. 이를 '형성 중'으로 기록하면 len_w 가 오늘까지
+        #   늘어나 NBTX 에서 "102주 베이스" 같은 값이 나왔다.
+        if brk_i is None and (end_i - left_i) > MAX_BASE_WEEKS:
             i += 1
             continue
 

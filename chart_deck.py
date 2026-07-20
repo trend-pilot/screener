@@ -259,7 +259,7 @@ def _one(it: Dict) -> str:
         label = f'{b["stage"]} · {b["type"]}'
         sub = f'{b["len_w"]}주 · −{b["depth"]}% · P {b["pivot"]}'
         wbox = max(len(label), len(sub)) * 6.6 + 22
-        ly = place(lx - wbox / 2, ly, wbox, 34)
+        ly = min(place(lx - wbox / 2, ly, wbox, 34), H - 70)   # 차트 밖으로 밀리지 않게
         parts.append(
             f'<g><rect x="{lx-wbox/2:.1f}" y="{ly:.1f}" width="{wbox:.1f}" height="34" rx="7" '
             f'fill="#fff" stroke="{TOK["arc"]}" stroke-width="1.2"/>'
@@ -439,7 +439,7 @@ def _one(it: Dict) -> str:
     return f"""<section class="wrap">
 <div class="eyebrow">BASE COUNT CHART · MARKETSURGE-STYLE · DAILY</div>
 <div class="hd">
-  <div><div class="code">{_e(meta.get("symbol"))}</div>
+  <div><div class="code">{_e(str(meta.get("symbol") or "").upper())}</div>
   <div class="sub">US · 일봉 · 로그 스케일 · {_e(d0)} ~ {_e(dates[-1])}</div></div>
   <div><div class="px">{last:,.2f}</div>
   <div class="chg {'pos' if chg>=0 else 'neg'}">{chg:+.2f} ({chgp:+.2f}%)</div>
