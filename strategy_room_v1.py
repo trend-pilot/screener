@@ -24,7 +24,8 @@ strategy_room_v1.py — 전략실 forward 페이퍼 트레이딩 엔진 (v1)
 출력:  strategy_room.json  (대시보드 window.__STRATEGY_ROOM 이 그대로 읽음)
 """
 
-import json, os, sys, math
+import json
+import math, os, sys, math
 from datetime import date, datetime
 
 # ─── 파라미터 (명세 §5) ───────────────────────────────────────────────
@@ -49,6 +50,42 @@ REGIME = {
     "yellow": {"label":"🟡 Under Pressure",  "max_exp":0.50, "entries":2},
     "red":    {"label":"🔴 Correction",      "max_exp":0.25, "entries":0},
 }
+
+
+
+# ─────────────────────────────────────────────────────────────────────
+# NaN 방어 (v1.1)
+#   [왜] 파이썬에서 float('nan') 은 truthy 라, 가격이 NaN 인 종목을 보유하면
+#        `if s.get("price")` 를 통과해 px=NaN → NAV 전체가 NaN 으로 오염된다.
+#        NaN 은 표준 JSON 이 아니라 브라우저 JSON.parse() 가 파싱을 거부하고,
+#        대시보드는 조용히 '샘플 데이터'로 폴백해 옛 날짜를 표시하게 된다.
+# ─────────────────────────────────────────────────────────────────────
+def _num(v, default=None):
+    """유한 실수만 반환. NaN/Inf/None/문자열 → default"""
+    try:
+        f = float(v)
+    except (TypeError, ValueError):
+        return default
+    return f if math.isfinite(f) else default
+
+
+def _ev(h):
+    """진입 원가 — 없거나 비정상이면 shares×entry_px 로 대체 (NaN 방어)"""
+    v = _num(h.get("entry_value"))
+    if v is None:
+        v = (_num(h.get("shares"), 0.0) or 0.0) * (_num(h.get("entry_px"), 0.0) or 0.0)
+    return v
+
+
+def _sanitize(obj):
+    """NaN/Inf → None 재귀 치환 (JSON 유효성 보장)"""
+    if isinstance(obj, float):
+        return None if not math.isfinite(obj) else obj
+    if isinstance(obj, dict):
+        return {k: _sanitize(v) for k, v in obj.items()}
+    if isinstance(obj, (list, tuple)):
+        return [_sanitize(v) for v in obj]
+    return obj
 
 
 def _bdays(d1, d2):
@@ -139,7 +176,10 @@ def run(screener_path, state_path):
     survivors = []
     for h in holdings:
         s = stocks.get(h["ticker"])
-        px = float(s["price"]) if s and s.get("price") else h.get("cur", h["entry_px"])
+        # [NaN 방어] 가격이 NaN/None/0 이면 직전 종가(cur) → 진입가 순으로 폴백
+        px = _num(s.get("price")) if s else None
+        if px is None or px <= 0:
+            px = _num(h.get("cur"), None) or _num(h.get("entry_px"), 0.0)
         h["cur"] = px
         gain = (px/h["entry_px"] - 1)*100
         h["max_gain_pct"] = max(h.get("max_gain_pct", 0), gain)
@@ -174,7 +214,7 @@ def run(screener_path, state_path):
             closed.append({
                 "ticker": h["ticker"], "entry": h["entry_date"], "exit": data_date,
                 "days": h["days_in"], "entry_px": round(h["entry_px"],2), "exit_px": round(px,2),
-                "shares": h["shares"], "realized": (px*h["shares"]*(1-cost) - h["entry_value"]),
+                "shares": h["shares"], "realized": (px*(_num(h.get("shares"),0.0) or 0.0)*(1-cost) - _ev(h)),
                 "cat": exit_cause,
             })
         else:
@@ -224,7 +264,9 @@ def run(screener_path, state_path):
         if entered >= week_quota or slots <= 0: continue
         alloc = min(target_per, cash, max_new_cash)
         if alloc < nav_pre*0.005: continue  # 먼지 가드
-        px = float(s["price"])
+        px = _num(s.get("price"))
+        if px is None or px <= 0:
+            continue   # 가격 이상 종목은 진입 스킵
         shares = alloc/px
         holdings.append({
             "ticker": t, "entry_date": data_date, "entry_px": px, "avg_cost_px": px,
@@ -256,7 +298,7 @@ def run(screener_path, state_path):
     out["_entries_recent"] = state.get("entries_recent", [])[-30:]
 
     with open(state_path, "w", encoding="utf-8") as f:
-        json.dump(out, f, ensure_ascii=False, indent=2)
+        json.dump(_sanitize(out), f, ensure_ascii=False, indent=2, allow_nan=False)
 
     print(f"[strategy_room] {data_date} | NAV {nav:.4f} ({chg:+.2f}%) | 보유 {len(holdings)} | 신규 {entered} | 청산누적 {len(closed)} | 레짐 {reg['label']}")
     return out
@@ -267,7 +309,8 @@ def build_output(data_date, nav, holdings, closed, nav_history, signals, cash, r
     runners = [h for h in holdings if h.get("runner")]
     core = [h for h in holdings if not h.get("runner")]
     hold_val = sum(h["cur"]*h["shares"] for h in holdings)
-    unreal = sum((h["cur"]*h["shares"] - h["entry_value"]) for h in holdings)
+    unreal = sum(((_num(h.get("cur"),0.0) or 0.0)*(_num(h.get("shares"),0.0) or 0.0) - _ev(h))
+                 for h in holdings)
     unreal_pct = unreal/nav*100 if nav else 0
     ret_pct = (nav-1.0)*100
 
