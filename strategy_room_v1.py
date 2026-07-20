@@ -165,6 +165,42 @@ def run(screener_path, state_path):
             # [fix] 현금 잔고 복원 — 빠지면 매 실행마다 cash가 initial_capital(1.0)로
             # 리셋되어 NAV가 매번 한 슬롯(≈1/cap=+8.33%)만큼 튀는 회계 버그가 생김.
             state["_cash"] = prev.get("_cash", RULES["initial_capital"])
+
+            # ── [자가치유] 과거 실행에서 NaN 이 섞여 저장된 상태를 자동 복구 ──
+            #   NaN 이 하나라도 남으면 NAV 전체가 NaN 이 되고, 표준 JSON 이 아니라
+            #   대시보드가 파싱에 실패해 '샘플 데이터'로 조용히 폴백한다.
+            bad_cash = _num(state["_cash"]) is None
+            if bad_cash:
+                print(f"[state] ⚠ _cash 손상(NaN) — 재계산합니다")
+
+            clean, dropped = [], []
+            for h in state["holdings"]:
+                sh, epx = _num(h.get("shares")), _num(h.get("entry_px"))
+                if sh is None or epx is None or sh <= 0 or epx <= 0:
+                    dropped.append(h.get("ticker"))
+                    continue
+                cur = _num(h.get("cur"))
+                if cur is None or cur <= 0:
+                    h["cur"] = epx
+                if _num(h.get("entry_value")) is None:
+                    h["entry_value"] = round(sh * epx, 6)
+                for f2 in ("max_gain_pct", "current_stop", "days_in"):
+                    if f2 in h and _num(h.get(f2)) is None:
+                        h[f2] = 0
+                clean.append(h)
+            if dropped:
+                print(f"[state] ⚠ 평가 불가 보유 제거(NaN shares/entry_px): {dropped}")
+            state["holdings"] = clean
+
+            # NaN 이 섞인 NAV 이력은 신뢰할 수 없으므로 유한값만 유지
+            nh_all = state["nav_history"]
+            state["nav_history"] = [r for r in nh_all if _num(r.get("nav")) is not None]
+            if len(state["nav_history"]) != len(nh_all):
+                print(f"[state] ⚠ NAV 이력 정리: {len(nh_all)} → {len(state['nav_history'])}건")
+
+            if bad_cash:
+                # 완전투자 가정(현금 0)으로 재출발 — 보유 평가액이 곧 NAV
+                state["_cash"] = 0.0
         except Exception as e:
             print(f"[state] 로드 실패({e}) — 빈 상태로 시작")
 
