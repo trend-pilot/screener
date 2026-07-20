@@ -351,8 +351,23 @@ def _one(it: Dict) -> str:
         parts.append(f'<text x="{(X(a)+X(b2))/2:.1f}" y="{ty-19:.1f}" text-anchor="middle" '
                      f'font-size="9.5" font-weight="700" fill="#7c5cd6">{tb["weeks"]}주T</text>')
 
-    # ── VCP 축소 표기 ───────────────────────────────────────────────
+    # ── VCP 축소 지그재그 (참고본: 주황 선으로 수축 구간을 연결) ─────
     vcp = it.get("vcp")
+    zz = it.get("vcp_points") or []
+    if len(zz) >= 3:
+        pz = []
+        for pt in zz:
+            k = idx.get(pt.get("d"))
+            if k is not None:
+                pz.append(f"{X(k):.1f},{Y(pt['p']):.1f}")
+        if len(pz) >= 3:
+            parts.append(f'<polyline points="{" ".join(pz)}" fill="none" '
+                         f'stroke="{TOK["amber"]}" stroke-width="2" opacity=".9"/>')
+            for pt in zz:
+                k = idx.get(pt.get("d"))
+                if k is not None:
+                    parts.append(f'<circle cx="{X(k):.1f}" cy="{Y(pt["p"]):.1f}" r="3" '
+                                 f'fill="{TOK["amber"]}"/>')
     if vcp:
         parts.append(f'<g><rect x="{PAD_L+14}" y="40" width="176" height="24" rx="6" '
                      f'fill="{TOK["amberBg"]}" stroke="#e6d3a8"/>'
