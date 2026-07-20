@@ -11570,9 +11570,14 @@ function renderDailyBriefingSector(sectors) {
   const sorted = [..._s2].sort((a,b) => (b.avg_rs_line || 0) - (a.avg_rs_line || 0));
   // [참고본 ⑤ 레이아웃] 강세 ≥65 / 약세 <35 / 그 사이(35~64) = 양호 폴드
   const STRONG_DB = 65, WEAK_DB = 35;
-  const strong = sorted.filter(s => (s.avg_rs_line || 0) >= STRONG_DB);
-  const weak   = sorted.filter(s => (s.avg_rs_line || 0) <  WEAK_DB);
-  const mid    = sorted.filter(s => { const v = s.avg_rs_line || 0; return v >= WEAK_DB && v < STRONG_DB; });
+  // [가이드 사양] 5종목 미만 섹터는 '⚪ 소규모 섹터 (참고용)' 로 하단 분리 —
+  //   베이즈 보정을 해도 표본이 너무 작으면 순위 신뢰도가 낮기 때문.
+  const MIN_N = 5;
+  const _big   = sorted.filter(s => (s.count || 0) >= MIN_N);
+  const _small = sorted.filter(s => (s.count || 0) <  MIN_N);
+  const strong = _big.filter(s => (s.avg_rs_line || 0) >= STRONG_DB);
+  const weak   = _big.filter(s => (s.avg_rs_line || 0) <  WEAK_DB);
+  const mid    = _big.filter(s => { const v = s.avg_rs_line || 0; return v >= WEAK_DB && v < STRONG_DB; });
 
   // 섹터별 Phase 카운터 (🆕 오늘 상향 / 🚀 리더 Phase4+·4·5 / 🎯+ 최상위 Phase4+)
   // [가드] 전일 phase 가 전부 동일('01' 등)하면 = phase_history 결측 → NEW↑ 신뢰 불가 → 🆕 숨김.
@@ -11640,6 +11645,14 @@ function renderDailyBriefingSector(sectors) {
         ${weak.length ? weak.map(s => secRow(s, '#a13030')).join('') : '<div style="font-size:12px;color:#888;padding:10px 0">약세 섹터 없음 — 시장 전반 양호</div>'}
       </div>
     </div>
+    ${_small.length ? `
+    <div style="margin-top:12px;border:1px dashed #d8d5ca;border-radius:9px;padding:9px 13px;background:#fafaf7">
+      <div style="font-size:11.5px;font-weight:700;color:#8a8a82;margin-bottom:4px">⚪ 소규모 섹터 (참고용) — ${MIN_N}종목 미만 <span style="font-weight:400">(${_small.length})</span></div>
+      <div style="font-size:11px;color:#73726c;line-height:1.7">
+        ${_small.map(s => `<span title="원점수 ${s._raw_rs_line ?? s.avg_rs_line} · n=${s.count}">${s.name} <b>${Math.round(s.avg_rs_line||0)}</b> <span style="color:#aaa">(${s.count}개)</span></span>`).join(' · ')}
+      </div>
+      <div style="font-size:10px;color:#aaa;margin-top:4px">표본이 작아 순위 신뢰도가 낮아 강세/약세 판정에서 제외됩니다.</div>
+    </div>` : ''}
   `;
 }
 
@@ -11658,15 +11671,22 @@ function renderDailyBriefingIndustry(sectors) {
   sectors.forEach(sec => {
     if ((sec.avg_rs_line || 0) >= 75) strongSectorNames.add(sec.name);
   });
+  // ⑥도 테마 분석 탭과 동일한 '테마 종합점수'로 정렬 (참고본: 두 화면 동일 기준)
+  const _flat6 = [];
+  sectors.forEach(sec => (sec.industries || []).forEach(ind => _flat6.push(ind)));
+  const _gm6 = themeGlobalMeanRSL(_flat6);
   const all = [];
   sectors.forEach(sec => {
     (sec.industries || []).forEach(ind => {
+      const comp = themeComposite(ind, _gm6);
       all.push({
         ...ind,
         sectorName: sec.name,
         sectorRsLine: sec.avg_rs_line || 0,
         inStrongSector: strongSectorNames.has(sec.name),
-        score: ind.avg_rs_line_score ?? ind.avg_rs ?? 0,
+        score: comp,
+        raw_rsl: Math.round(ind.avg_rs_line_score ?? ind.avg_rs ?? 0),
+        strength: themeStrength(comp, ind),
       });
     });
   });
@@ -11784,7 +11804,7 @@ function renderDailyBriefingIndustry(sectors) {
         <div style="text-align:right;white-space:nowrap;flex-shrink:0">
           <div style="font-size:9px;color:#8a8a82;font-weight:600">종합</div>
           <div style="font-size:22px;font-weight:800;color:${accent};line-height:1">${score}</div>
-          <div style="font-size:9.5px;color:#999;margin-top:1px">IBD ${ibdRs} · ${ind.count}종목</div>
+          <div style="font-size:9.5px;color:#999;margin-top:1px">강도 ${ind.strength != null ? (ind.strength>0?"+":"")+ind.strength : "—"} · RS Line ${ind.raw_rsl ?? "—"} · IBD ${ibdRs}</div>
         </div>
       </div>
       ${ctr.length ? `<div style="display:flex;gap:10px;font-size:11px;color:#5a6a4a;margin:7px 0 5px">${ctr.join('')}</div>` : '<div style="height:5px"></div>'}
@@ -11802,7 +11822,7 @@ function renderDailyBriefingIndustry(sectors) {
 
   body.innerHTML = `
     <div style="font-size:11px;color:#888;margin-bottom:8px;text-align:right">
-      📊 RS Rating 70+ 풀 · RS Line 점수 정렬 (테마 종합점수 백필 없음 → RS Line 폴백, 3종목+ 우선) · 전체 ${all.length}개 중 ${sorted.length}개 분석
+      📊 RS Rating 70+ 풀 · <b>테마 종합점수</b> 정렬 (베이즈 RSL+소표본보정 · Phase·신고가 · Δ1주 · 지속성) · 강도=종합점수+오늘 신호−역행 · 3종목+ 우선 · 전체 ${all.length}개 중 ${sorted.length}개
     </div>
     <div style="font-size:13px;font-weight:700;color:#b5521a;margin-bottom:10px">🔥 강세 세부 업종 Top ${topList.length}</div>
     ${topList.map((ind, i) => renderCard(ind, i+1, false)).join('')}
@@ -11831,6 +11851,48 @@ window.setThemeFilter = function(filter, btn) {
   if (window._lastSectorsData) renderThemeAnalysisTab(window._lastSectorsData);
 };
 
+// ═══ 테마 종합점수 / 강도 (참고 대시보드 정의) ═══
+//   종합점수 = 베이즈 RSL(소표본 축소보정) + Phase·신고가 + Δ1주 + 지속성
+//   강도(보조) = 종합점수 + 오늘의 신선 신호(🆕🚀🎯+)·가속 − 역행(⚠)
+//   * 산업별 테마 composite 백필이 없으므로 RS Line 베이즈를 기반으로 재현한다.
+const THEME_SHRINK_K = 8;
+function themeGlobalMeanRSL(list) {
+  let sum = 0, n = 0;
+  (list || []).forEach(i => {
+    const c = i.count || 0;
+    const v = (i.avg_rs_line_score ?? i.avg_rs ?? 0);
+    sum += v * c; n += c;
+  });
+  return n ? sum / n : 0;
+}
+function themeComposite(ind, gm) {
+  const n = ind.count || 0;
+  const rsl = (ind.avg_rs_line_score ?? ind.avg_rs ?? 0);
+  // 1) 베이즈 RSL — 소표본은 전체 평균으로 수축
+  const base = (n * rsl + THEME_SHRINK_K * gm) / (n + THEME_SHRINK_K);
+  // 2) Phase 품질 (리더 비중) + 신고가 비율
+  const leadRatio = n ? (ind.leader_count || 0) / n : 0;
+  const pc = ind.phase_counts || {};
+  const topRatio = n ? ((pc['4plus'] || 0) + (pc['4'] || 0)) / n : 0;
+  const phaseBonus = leadRatio * 8 + topRatio * 7;              // 최대 15
+  const h52Bonus = ((ind.h52_ratio || 0) / 100) * 6;             // 최대 6
+  // 3) Δ1주 (모멘텀 방향)
+  const d1w = Math.max(-6, Math.min(6, (ind.avg_w1 || 0) * 1.2));
+  // 4) 지속성 (가속 종목 비중)
+  const persist = ((ind.acc_ratio || 0) / 100) * 5;              // 최대 5
+  const v = base + phaseBonus + h52Bonus + d1w + persist;
+  return Math.round(Math.max(0, Math.min(100, v)) * 10) / 10;   // 0~100
+}
+function themeStrength(comp, ind) {
+  // 참고본 표기와 동일하게 '오늘 신호 델타(+N)'를 반환한다 (종합점수와 별도 지표).
+  const n = ind.count || 1;
+  const pc = ind.phase_counts || {};
+  const fresh = ((ind.new_count || 0) / n) * 25;                     // 🆕 신규 진입 비중
+  const lead  = (((pc['4plus'] || 0) * 2 + (pc['4'] || 0)) / n) * 20; // 🚀🎯+ 리더 비중
+  const accel = ((ind.acc2_ratio || 0) / 100) * 12;                   // 가속
+  const back  = ((ind.warn_count || 0) / n) * 20;                     // ⚠ 역행
+  return Math.round((fresh + lead + accel - back) * 10) / 10;
+}
 function renderThemeAnalysisTab(sectors) {
   // sectors 인자가 없으면 캐시된 데이터 사용
   if (!sectors && window._lastSectorsData) sectors = window._lastSectorsData;
@@ -11846,15 +11908,21 @@ function renderThemeAnalysisTab(sectors) {
   const strongSectorNames = new Set();
   sectors.forEach(sec => { if ((sec.avg_rs_line || 0) >= 75) strongSectorNames.add(sec.name); });
   // 평탄화
+  const _flat = [];
+  sectors.forEach(sec => (sec.industries || []).forEach(ind => _flat.push(ind)));
+  const _gm = themeGlobalMeanRSL(_flat);
   const all = [];
   sectors.forEach(sec => {
     (sec.industries || []).forEach(ind => {
+      const comp = themeComposite(ind, _gm);
       all.push({
         ...ind,
         sectorName: sec.name,
         sectorRsLine: sec.avg_rs_line || 0,
         inStrongSector: strongSectorNames.has(sec.name),
-        score: ind.avg_rs_line_score ?? ind.avg_rs ?? 0,
+        score: comp,                                  // 테마 종합점수 (정렬 기준)
+        raw_rsl: Math.round(ind.avg_rs_line_score ?? ind.avg_rs ?? 0),
+        strength: themeStrength(comp, ind),           // 강도(보조) — 오늘 신호 반영
       });
     });
   });
@@ -12155,7 +12223,8 @@ function renderDailyBriefingCandidates(stocks) {
     const _indScore = {};
     Object.keys(_indMap).forEach(k => { const a = _indMap[k]; if (a.length >= 2) _indScore[k] = a.reduce((x,y)=>x+y,0)/a.length; });
     const _iv = Object.values(_indScore).sort((a,b)=>b-a);
-    const _top20 = _iv.length ? _iv[Math.floor(_iv.length*0.2)] : 999;
+    // 백분위 위치(0=최상위 … 1=최하위). 임계는 매 실행 전체 산업 분포에서 도출 → 시장 적응.
+    const _indPct = (v) => { const i = _iv.findIndex(x => x <= v); return _iv.length ? (i < 0 ? 1 : i / _iv.length) : 1; };
 
     const _conf = (s) => {
       const pts = []; let tot = 0;
@@ -12169,12 +12238,21 @@ function renderDailyBriefingCandidates(stocks) {
       } else if (s.phase_changed_up) {
         add('🚀 신선 진입 (오늘 Phase 상향)', 25);
       }
+      // [E 등급] 가이드 사양: RS Line 80+ +10 / 65~79 +7 / 50~64 +3 (선행 지표)
       const rl = s.rs_line_score || 0;
-      if (rl >= 60 && rl < 80) add(`📈 RS Line ${rl} (early breakout ⭐)`, 12);
-      else if (rl >= 80) add(`📈 RS Line ${rl} (진행 중)`, 7);
+      if (rl >= 80)      add(`📈 RS Line ${rl} (선행 강세)`, 10);
+      else if (rl >= 65) add(`📈 RS Line ${rl} (early breakout ⭐)`, 7);
+      else if (rl >= 50) add(`📈 RS Line ${rl} (형성 중)`, 3);
       if ((s.pattern_count || 0) > 0) add(`📊 패턴 ${s.pattern_count}종${s.best_pattern ? ` (최고 ${s.best_pattern})` : ''}`, 10);
-      const isc = _indScore[s.industry] || 0;
-      if (isc >= _top20) add(`🔥 산업 강도 ${Math.round(isc)} (${s.industry} · 상위 20%)`, 10);
+      // [H 산업 강도] 가이드 사양: 백분위 Top20% +10 / 21~50% +7 / 51~80% +3 / 절대약세 -5
+      const isc = _indScore[s.industry];
+      if (typeof isc === 'number') {
+        const pr = _indPct(isc);   // 0=최상위 … 1=최하위
+        if (pr <= 0.20)      add(`🔥 산업 강도 ${Math.round(isc)} (${s.industry} · 상위 20%)`, 10);
+        else if (pr <= 0.50) add(`🔥 산업 강도 ${Math.round(isc)} (${s.industry} · 상위 50%)`, 7);
+        else if (pr <= 0.80) add(`🔥 산업 강도 ${Math.round(isc)} (${s.industry} · 상위 80%)`, 3);
+        if (isc < 40)        add(`🔻 산업 절대 약세 (${s.industry})`, -5);
+      }
       if ((s.ad || 0) >= 70) add(`💪 AD ${s.ad} ${s.ad_grade} (기관 매집)`, 10);
       if (s.is_stage2) add('✅ Stage 2 (추세 확립)', 8);
       return { tot, pts };
