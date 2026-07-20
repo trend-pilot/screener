@@ -10,7 +10,9 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    # NYSE 추가로 대상 종목이 약 2배(2,431 → 4,000+) → 실행시간 40~50분 예상.
+    # 기존 60분은 여유가 부족해 중단 위험이 있어 120분으로 상향.
+    timeout-minutes: 120
 
     permissions:
       contents: write
