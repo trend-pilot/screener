@@ -10,7 +10,9 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    # NYSE 추가로 대상 종목이 약 2배(2,431 → 4,000+) → 실행시간 40~50분 예상.
+    # 기존 60분은 여유가 부족해 중단 위험이 있어 120분으로 상향.
+    timeout-minutes: 120
 
     permissions:
       contents: write
@@ -29,6 +31,14 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pandas numpy yfinance requests python-dotenv
+
+      # NYSE/AMEX 티커 목록 갱신 (없거나 오래되면 재생성)
+      #   screener.py 는 nyse_tickers.csv 가 있으면 자동으로 나스닥 목록과 합친다.
+      - name: 🗽 NYSE 티커 목록 갱신
+        continue-on-error: true      # 실패해도 기존 CSV 로 진행
+        run: |
+          python build_nyse_tickers.py --out nyse_tickers.csv
+          wc -l nyse_tickers.csv
 
       - name: 🔍 Screener 실행 (US 1900+ 종목)
         run: python screener.py
@@ -61,21 +71,47 @@ jobs:
           GITHUB_REPO: screener
         run: python github_upload.py
 
+      # 전략실 엔진 결과 확인 (조용한 실패 조기 발견)
+      - name: 🔎 strategy_room.json 검증
+        run: |
+          python - <<'PY'
+          import json, sys, datetime
+          try:
+              sr = json.load(open("strategy_room.json", encoding="utf-8"))
+          except Exception as e:
+              print(f"::error::strategy_room.json 읽기 실패 — {e}"); sys.exit(1)
+          d = sr.get("data_date") or "?"
+          print(f"strategy_room data_date = {d} · NAV={sr.get('nav')} "
+                f"· 보유={len(sr.get('holdings') or [])} · 신호={len(sr.get('signals') or [])}")
+          try:
+              age = (datetime.date.today() - datetime.date.fromisoformat(str(d))).days
+              if age > 5:
+                  print(f"::warning::전략실 데이터가 {age}일 지연됨 (data_date={d}) — 엔진이 새 거래일을 만들지 못했습니다")
+          except Exception:
+              print(f"::warning::data_date 파싱 불가: {d}")
+          PY
+
       - name: 💾 캐시/상태 commit (sector_cache + catalyst_state + strategy_room)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # phase_history는 github_upload.py가 이미 GitHub API로 푸시했으므로
-          # 로컬 working tree에서 제거 → git pull --rebase 시 conflict 회피
-          rm -f phase_history.json kr_phase_history.json
-          # sector_cache + catalyst_state(D+N 누적) + strategy_room(forward 누적) 스테이징 (없어도 무시)
-          git add sector_cache.json 2>/dev/null || true
-          git add catalyst_state.json 2>/dev/null || true
-          git add strategy_room.json 2>/dev/null || true
+          # [수정] phase_history 는 github_upload.py 가 GitHub API 로 이미 푸시함.
+          #   기존엔 rm -f 로 지운 뒤 pull --rebase --autostash 를 했는데,
+          #   '로컬 삭제' vs '원격 갱신' 이 충돌해 autostash 적용이 실패했다
+          #   (로그: "Applying autostash resulted in conflicts").
+          #   → 삭제하지 말고 원격 버전을 그대로 따르도록 checkout 으로 되돌린다.
+          git checkout -- phase_history.json kr_phase_history.json 2>/dev/null || true
+          # 상태 파일은 매 실행 새로 생성되는 산출물 → 충돌 시 '이번 실행분' 우선
+          git add sector_cache.json catalyst_state.json strategy_room.json 2>/dev/null || true
           if git diff --staged --quiet; then
-            echo "변경 없음"
+            echo "변경 없음 — 상태 파일이 어제와 동일합니다 (엔진 미진행 가능성 점검 필요)"
           else
             git commit -m "🎨 sector_cache + 🎯 catalyst_state + 🏛 strategy_room [auto]"
-            git pull --rebase --autostash || true
-            git push
+            # 재시도 + 충돌 시 이번 실행분 채택 (stash 미사용 → 조용한 유실 방지)
+            for i in 1 2 3; do
+              git fetch origin main
+              git merge -X ours origin/main -m "merge: keep this run's state" || { echo "merge 실패"; exit 1; }
+              git push origin main && break
+              echo "push 재시도 $i"; sleep 5
+            done
           fi
