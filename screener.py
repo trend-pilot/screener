@@ -794,8 +794,10 @@ def main():
     # GitHub 자동 업로드
     log.info("GitHub 업로드 중...")
     try:
-        from github_upload import upload_to_github
-        upload_to_github()
+        # github_upload.py 의 진입점은 main() 이다 (upload_to_github 라는 이름은 없음).
+        # 워크플로우가 별도 스텝으로도 업로드하므로 여기 실패는 치명적이지 않다.
+        from github_upload import main as _gh_upload
+        _gh_upload()
     except Exception as e:
         log.warning(f"GitHub 업로드 실패: {e}")
 
