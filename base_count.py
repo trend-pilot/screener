@@ -1,0 +1,320 @@
+# -*- coding: utf-8 -*-
+"""
+base_count.py — MarketSurge 스타일 베이스 카운트 분석
+=====================================================================
+샘플 차트덱(차트덱_15종목_2026-07-05)의 산출물 61개 베이스를 역산해
+동일한 스키마·규칙으로 베이스를 탐지한다.
+
+[샘플에서 실측 확정된 규칙]
+  · pivot  = left_high + $0.10      ← 61/61 전부 일치 (오닐 "피벗 10센트 위")
+  · depth% = (left_high - low) / left_high × 100   ← 최대 오차 0.079%p
+  · Flat Base 는 depth 8.8~19.9% 구간에 분포 (20% 미만)
+  · Cup Without Handle 은 depth ≥ 20% 만 존재
+  · 베이스 최소 길이 5주 (오닐 표준)
+
+[출력 스키마] — 샘플과 동일
+  {stage, stage_n, type, status, left_date, left_high,
+   low_date, low, brk_date, pivot, depth, len_w, prior_up}
+"""
+
+from __future__ import annotations
+
+import math
+from dataclasses import dataclass, asdict
+from datetime import datetime
+from typing import List, Optional, Sequence
+
+# ── 탐지 파라미터 ─────────────────────────────────────────────────────
+MIN_BASE_WEEKS = 5        # 오닐 최소 베이스 길이
+MAX_BASE_WEEKS = 65       # 과도하게 긴 구간은 베이스로 보지 않음
+PIVOT_OFFSET = 0.10       # 실측: pivot = left_high + $0.10
+FLAT_MAX_DEPTH = 20.0     # Flat Base 상한 (실측 19.9%)
+MAX_BASE_DEPTH = 60.0     # 이보다 깊으면 베이스가 아니라 추세 붕괴
+RESET_DECLINE = 20.0      # 직전 고점 대비 이 이상 하락 → 베이스 카운트 리셋
+ADVANCE_MIN = 20.0        # 직전 돌파 대비 이 이상 상승 → 카운트 전진
+
+
+def _d(s: str) -> datetime:
+    return datetime.strptime(s, "%Y-%m-%d")
+
+
+def _weeks(a: str, b: str) -> int:
+    return max(0, round((_d(b) - _d(a)).days / 7.0) - 1)
+
+
+@dataclass
+class Base:
+    stage: str
+    stage_n: int
+    type: str
+    status: str
+    left_date: str
+    left_high: float
+    low_date: str
+    low: float
+    brk_date: Optional[str]
+    pivot: float
+    depth: float
+    len_w: int
+    prior_up: Optional[float]
+
+
+# ── 1) 주봉 변환 ──────────────────────────────────────────────────────
+def to_weekly(dates: Sequence[str], h: Sequence[float],
+              l: Sequence[float], c: Sequence[float]):
+    """일봉 → 주봉 (금요일 기준 마지막 거래일로 집계)."""
+    wk: dict = {}
+    order: List[str] = []
+    for i, ds in enumerate(dates):
+        dt = _d(ds)
+        key = (dt.isocalendar().year, dt.isocalendar().week)
+        if key not in wk:
+            wk[key] = {"date": ds, "h": h[i], "l": l[i], "c": c[i]}
+            order.append(key)
+        else:
+            w = wk[key]
+            w["date"] = ds
+            w["h"] = max(w["h"], h[i])
+            w["l"] = min(w["l"], l[i])
+            w["c"] = c[i]
+    return [wk[k] for k in order]
+
+
+# ── 2) 베이스 타입 분류 ───────────────────────────────────────────────
+def classify(depth: float, seg_c: Sequence[float], low_idx: int) -> str:
+    """
+    실측 분포에 맞춘 분류:
+      depth < 20%            → Flat Base
+      깊고 저점이 중앙부·U자  → Cup (오른쪽 끝 눌림 있으면 With Handle)
+      그 외                  → Consolidation
+    """
+    n = len(seg_c)
+    if depth < FLAT_MAX_DEPTH:
+        return "Flat Base"
+    if n < 5:
+        return "Consolidation"
+
+    pos = low_idx / max(1, n - 1)
+    # U자 판정: 저점이 중앙부(0.25~0.75) + 좌우가 모두 저점보다 충분히 높음
+    lo = seg_c[low_idx]
+    left_pk = max(seg_c[: low_idx + 1]) if low_idx > 0 else lo
+    right_pk = max(seg_c[low_idx:]) if low_idx < n - 1 else lo
+    u_shape = (0.25 <= pos <= 0.78
+               and left_pk > lo * 1.12 and right_pk > lo * 1.12)
+    if not u_shape:
+        return "Consolidation"
+
+    # 핸들: 우측 고점 이후 마지막 구간에서 소폭(3~15%) 눌림
+    r_idx = low_idx + max(range(len(seg_c[low_idx:])),
+                          key=lambda k: seg_c[low_idx + k])
+    tail = seg_c[r_idx:]
+    if len(tail) >= 2:
+        pull = (max(tail) - min(tail)) / max(tail) * 100
+        if 3.0 <= pull <= 15.0 and len(tail) >= 2:
+            return "Cup With Handle"
+    return "Cup Without Handle"
+
+
+# ── 3) 베이스 탐지 ────────────────────────────────────────────────────
+def detect_bases(dates, h, l, c) -> List[Base]:
+    """
+    주봉 기준으로 '고점(left) → 조정 저점(low) → 피벗 돌파(brk)' 구조를 순차 탐지.
+    """
+    W = to_weekly(dates, h, l, c)
+    n = len(W)
+    if n < MIN_BASE_WEEKS + 2:
+        return []
+
+    highs = [w["h"] for w in W]
+
+    def is_swing_high(k: int, back: int = 10, fwd: int = 4) -> bool:
+        """좌측 고점 자격: 앞 10주·뒤 4주에서 가장 높은 봉이어야 한다 (그리드 서치로 최적화).
+        (이 조건이 없으면 사소한 고점마다 베이스가 생겨 과탐지된다)"""
+        lo = max(0, k - back)
+        hi = min(n, k + fwd + 1)
+        return highs[k] >= max(highs[lo:hi]) - 1e-9
+
+    raw: List[dict] = []
+    i = 0
+    while i < n - MIN_BASE_WEEKS:
+        left_i = i
+        left_high = W[left_i]["h"]
+        if not is_swing_high(left_i):
+            i += 1
+            continue
+
+        pivot = round(left_high + PIVOT_OFFSET, 2)
+
+        # (b) 저점 탐색 + 피벗 돌파 지점
+        low_v, low_i = left_high, left_i
+        brk_i = None
+        j = left_i + 1
+        while j < n:
+            if W[j]["l"] < low_v:
+                low_v, low_i = W[j]["l"], j
+            weeks = j - left_i
+            if weeks > MAX_BASE_WEEKS:
+                break
+            # 돌파: 종가가 피벗 위 + 최소 길이 충족
+            if weeks >= MIN_BASE_WEEKS and W[j]["c"] > pivot:
+                brk_i = j
+                break
+            j += 1
+
+        depth = (left_high - low_v) / left_high * 100 if left_high else 0.0
+        # 실측 최소 depth 8.8% → 8% 미만 흔들림은 베이스로 보지 않음
+        if depth < 8.0 or depth > MAX_BASE_DEPTH or (low_i == left_i):
+            i += 1
+            continue
+
+        end_i = brk_i if brk_i is not None else n - 1
+        if end_i - left_i < MIN_BASE_WEEKS:
+            i += 1
+            continue
+
+        seg_c = [w["c"] for w in W[left_i:end_i + 1]]
+        btype = classify(depth, seg_c, low_i - left_i)
+
+        raw.append({
+            "left_date": W[left_i]["date"], "left_high": round(left_high, 2),
+            "low_date": W[low_i]["date"], "low": round(low_v, 2),
+            "brk_date": W[brk_i]["date"] if brk_i is not None else None,
+            "pivot": pivot, "depth": round(depth, 1),
+            "len_w": _weeks(W[left_i]["date"],
+                            W[end_i]["date"]) if brk_i is not None
+                     else _weeks(W[left_i]["date"], W[n - 1]["date"]),
+            "type": btype,
+            "status": "completed" if brk_i is not None else "forming",
+            "_left_i": left_i, "_end_i": end_i,
+        })
+        i = end_i + 1 if brk_i is not None else i + 1
+
+    return _assign_stages(raw)
+
+
+# ── 4) 스테이지(베이스 카운트) 부여 ───────────────────────────────────
+def _assign_stages(raw: List[dict]) -> List[Base]:
+    """
+    [차트덱 방법론 문단에 명시된 규칙 그대로]
+      · 직전 피벗 대비 +20% 초과 상승 후 새 베이스 → 스테이지 N+1
+      · 그 이하                                  → base-on-base = 같은 N + (a)(b)(c)
+      · 직전 저점 붕괴(undercut)                  → 스테이지 1 로 리셋
+    표기: "2(2)" = 카운트2·체인2 / "1(a)(2)" = 카운트1·서브a·체인2
+    """
+    out: List[Base] = []
+    count, chain, sub = 0, 0, 0
+    prev_pivot: Optional[float] = None
+    prev_low: Optional[float] = None
+
+    for b in raw:
+        prior_up = None
+        if prev_pivot:
+            prior_up = round((b["left_high"] / prev_pivot - 1) * 100, 1)
+
+        undercut = (prev_low is not None and b["low"] < prev_low)
+
+        if count == 0 or undercut:
+            count, chain, sub = 1, 0, 0
+            label = "1"
+        elif prior_up is not None and prior_up > ADVANCE_MIN:
+            count += 1; chain += 1; sub = 0
+            label = f"{count}({chain + 1})"
+        else:
+            sub += 1; chain += 1
+            label = f"{count}({chr(96 + sub)})({chain + 1})"
+
+        out.append(Base(
+            stage=label, stage_n=count, type=b["type"], status=b["status"],
+            left_date=b["left_date"], left_high=b["left_high"],
+            low_date=b["low_date"], low=b["low"], brk_date=b["brk_date"],
+            pivot=b["pivot"], depth=b["depth"], len_w=b["len_w"],
+            prior_up=prior_up,
+        ))
+        prev_pivot = b["pivot"]
+        prev_low = b["low"]
+    return out
+
+
+# ── 5) RS 점수 (차트덱 방법론: 3/6/9/12개월 가중 40/20/20/20 → 1~99 로지스틱) ──
+def compute_rs_score(closes: Sequence[float],
+                     bench: Sequence[float]) -> Optional[int]:
+    """
+    RS점수 = 3/6/9/12개월 가중수익률(40/20/20/20)의 벤치마크 상대비를
+             1~99 로지스틱으로 매핑한 자체 점수 (IBD 백분위 아님).
+    캘리브레이션 기준(방법론 문단): 시장 대비 +40% ≈ 87, +100% ≈ 98, 이상 99 고정.
+    """
+    n = min(len(closes), len(bench))
+    if n < 260:
+        return None
+    c, bm = closes[-n:], bench[-n:]
+
+    def ret(series, days):
+        if len(series) <= days or series[-days - 1] <= 0:
+            return None
+        return series[-1] / series[-days - 1] - 1.0
+
+    W = [(63, 0.40), (126, 0.20), (189, 0.20), (252, 0.20)]
+    sw = bw = 0.0
+    for days, wgt in W:
+        rs_, rb_ = ret(c, days), ret(bm, days)
+        if rs_ is None or rb_ is None:
+            return None
+        sw += wgt * rs_
+        bw += wgt * rb_
+    rel = (1 + sw) / (1 + bw) - 1.0            # 벤치마크 상대비
+
+    # 로지스틱 상수는 +40%→87, +100%→98 두 점으로 역산한 값
+    k, x0 = 4.334, -0.0571
+    score = 99.0 / (1.0 + math.exp(-k * (rel - x0)))
+    return int(max(1, min(99, round(score))))
+
+
+# ── 6) Ants / Blue Dot (차트 범례에 정의가 명시됨) ────────────────────
+def compute_ants(dates, c, v, win: int = 15, need: int = 12) -> List[str]:
+    """Ants(매집) = 최근 15봉 중 12봉 이상 상승 + 거래량 증가."""
+    out: List[str] = []
+    idx_last = [-10 ** 9]
+    for i in range(win, len(c)):
+        up = sum(1 for k in range(i - win + 1, i + 1) if c[k] > c[k - 1])
+        if up < need:
+            continue
+        v_now = sum(v[i - win + 1:i + 1]) / win
+        v_prev = sum(v[max(0, i - 2 * win + 1):i - win + 1]) / win
+        if v_prev > 0 and v_now > v_prev:
+            out.append(dates[i])   # 정답에 연속일이 포함되므로 중복 제거하지 않음
+    return out
+
+
+def compute_blue_dots(dates, rs_line, win: int = 252,
+                      min_gap: int = 0) -> List[str]:
+    """
+    Blue Dot = RS 라인 52주 신고가.
+    min_gap=0 이 기본 (정답셋에 연속일이 포함되어 있어 중복 제거하지 않음).
+    과탐지가 신경 쓰이면 min_gap 을 올려 군집을 압축할 수 있다.
+    """
+    out, last = [], -10 ** 9
+    for i in range(win, len(rs_line)):
+        if rs_line[i] >= max(rs_line[i - win:i + 1]) - 1e-12:
+            if i - last >= min_gap:
+                out.append(dates[i])
+                last = i
+    return out
+
+
+def analyze(symbol: str, dates, o, h, l, c, v) -> dict:
+    """단일 종목 분석 → 샘플 DECK 과 동일한 형태의 dict."""
+    bases = detect_bases(dates, h, l, c)
+    last = bases[-1] if bases else None
+    return {
+        "symbol": symbol,
+        "asof": dates[-1] if dates else None,
+        "last_close": c[-1] if c else None,
+        "stage_weekly": ({
+            "stage": last.stage, "status": last.status, "pivot": last.pivot,
+            "pct_from_pivot": round((c[-1] / last.pivot - 1) * 100, 1) if last.pivot else None,
+            "base_len_weeks": last.len_w, "base_depth_pct": last.depth,
+            "prior_uptrend_pct": last.prior_up, "base_type": last.type,
+            "reliability": "high" if last.len_w >= MIN_BASE_WEEKS else "medium",
+        } if last else None),
+        "bases": [asdict(b) for b in bases],
+    }
