@@ -21,7 +21,8 @@ import numpy as np
 from dotenv import load_dotenv
 
 from phase_history import annotate_and_persist  # v11: Phase 전환 추적
-from ad_early_strength import compute_ad_rating, compute_early_strength, compute_vol_ratio  # AD·추세초기강세·거래량비율 (참고본 ⑧)
+from ad_early_strength import (compute_ad_rating, compute_early_strength,
+                               compute_vol_ratio, compute_distribution_days)  # AD·추세초기강세·거래량·분산일
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -125,9 +126,32 @@ def calc_market_signals():
     else:
         overall, overall_label, invest_pct = "blue",   "🔵 과매도 (Capitulation)", "20~30%"
     log.info(f"$NDFI: {ndfi['value']}% | $S5FI: {s5fi['value']}% | {overall_label}")
+    dist = calc_distribution_days()
     return {"ndfi": ndfi, "s5fi": s5fi, "overall": overall,
             "overall_label": overall_label, "invest_pct": invest_pct,
-            "avg": round(avg,1), "updated_at": datetime.now().isoformat()}
+            "avg": round(avg,1), "distribution": dist,
+            "updated_at": datetime.now().isoformat()}
+
+
+def calc_distribution_days():
+    """
+    S&P500 / 나스닥 분산일 카운트 (대시보드 ① 'S&P DD / NASDAQ DD').
+    지수 ETF(SPY/QQQ) 일봉으로 계산 — 지수 심볼(^GSPC)보다 거래량 데이터가 안정적.
+    """
+    out = {}
+    for key, tk in (("sp_count", "SPY"), ("nasdaq_count", "QQQ")):
+        try:
+            h = yf.Ticker(tk).history(period="4mo", interval="1d", auto_adjust=False)
+            if h is None or h.empty:
+                out[key] = None
+                continue
+            out[key] = compute_distribution_days(h["Close"].values, h["Volume"].values)
+        except Exception as e:
+            log.warning(f"  분산일 계산 실패({tk}): {e}")
+            out[key] = None
+        time.sleep(0.2)
+    log.info(f"분산일 — S&P: {out.get('sp_count')} / NASDAQ: {out.get('nasdaq_count')}")
+    return out
 
 
 # ── 종목 목록 ─────────────────────────────────────────────────────────────────

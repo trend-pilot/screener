@@ -106,6 +106,50 @@ def compute_vol_ratio(volume, lookback=50):
 
 
 # ─────────────────────────────────────────────────────────────────────
+# 1-c) 분산일 (Distribution Day) — IBD 정통 정의
+# ─────────────────────────────────────────────────────────────────────
+def compute_distribution_days(close, volume, lookback=25,
+                              drop_pct=0.2, rally_reset_pct=5.0):
+    """
+    지수의 최근 lookback 거래일 중 '분산일' 개수.
+
+    [IBD 정의]
+      분산일 = 지수가 전일 대비 drop_pct(기본 0.2%) 이상 하락 +
+               거래량이 전일보다 증가한 날 (기관 매도 흔적).
+      만료   = ① lookback(25) 거래일 경과, 또는
+               ② 해당 분산일 종가 대비 지수가 rally_reset_pct(5%) 이상 상승.
+
+    close/volume: 시간순(과거→최신) array-like
+    return: int (없거나 데이터 부족이면 None)
+    """
+    c = np.asarray(close, dtype=float)
+    v = np.asarray(volume, dtype=float)
+    n = len(c)
+    if n < lookback + 2 or len(v) != n:
+        return None
+
+    latest = float(c[-1])
+    count = 0
+    # 최근 lookback 거래일 검사 (인덱스는 전일 비교가 가능해야 하므로 1부터)
+    start = max(1, n - lookback)
+    for i in range(start, n):
+        prev_c, cur_c = float(c[i - 1]), float(c[i])
+        prev_v, cur_v = float(v[i - 1]), float(v[i])
+        if not (np.isfinite(prev_c) and np.isfinite(cur_c)
+                and np.isfinite(prev_v) and np.isfinite(cur_v)):
+            continue
+        if prev_c <= 0:
+            continue
+        chg = (cur_c / prev_c - 1.0) * 100.0
+        if chg <= -drop_pct and cur_v > prev_v:
+            # 5% 랠리 리셋: 이후 지수가 해당 종가 대비 5%+ 상승했으면 만료
+            if (latest / cur_c - 1.0) * 100.0 >= rally_reset_pct:
+                continue
+            count += 1
+    return count
+
+
+# ─────────────────────────────────────────────────────────────────────
 # 2) 추세초기강세
 # ─────────────────────────────────────────────────────────────────────
 def compute_early_strength(s):
