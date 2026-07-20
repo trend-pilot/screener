@@ -1,59 +1,107 @@
 {
 "_date": "2026-07-20",
 "_fired_names": [
-"Biotechnology",
-"Chemicals",
-"Consumer Electronics",
-"Insurance - Reinsurance",
-"Oil & Gas Drilling",
-"Oil & Gas E&P",
-"Oil & Gas Integrated",
-"Oil & Gas Refining & Marketing"
+"Apparel Retail",
+"Beverages - Wineries & Distilleries",
+"Capital Markets",
+"Copper",
+"Electronic Gaming & Multimedia",
+"Internet Content & Information",
+"Internet Retail",
+"Marine Shipping"
 ],
-"Oil & Gas Integrated": {
+"Capital Markets": {
 "consecutive_days": 1,
+"first_fired": "2026-07-20",
+"last_avg_pct": 2.62,
+"ever_fired": true
+},
+"Copper": {
+"consecutive_days": 1,
+"first_fired": "2026-07-20",
+"last_avg_pct": 1.92,
+"ever_fired": true
+},
+"Marine Shipping": {
+"consecutive_days": 1,
+"first_fired": "2026-07-20",
+"last_avg_pct": 1.59,
+"ever_fired": true
+},
+"Beverages - Wineries & Distilleries": {
+"consecutive_days": 1,
+"first_fired": "2026-07-20",
+"last_avg_pct": 1.5,
+"ever_fired": true
+},
+"Apparel Retail": {
+"consecutive_days": 1,
+"first_fired": "2026-07-20",
+"last_avg_pct": 1.13,
+"ever_fired": true
+},
+"Electronic Gaming & Multimedia": {
+"consecutive_days": 1,
+"first_fired": "2026-07-20",
+"last_avg_pct": 1.11,
+"ever_fired": true
+},
+"Internet Content & Information": {
+"consecutive_days": 1,
+"first_fired": "2026-07-20",
+"last_avg_pct": 1.07,
+"ever_fired": true
+},
+"Internet Retail": {
+"consecutive_days": 1,
+"first_fired": "2026-07-20",
+"last_avg_pct": 1.02,
+"ever_fired": true
+},
+"Oil & Gas Integrated": {
+"consecutive_days": 0,
 "first_fired": "2026-07-20",
 "last_avg_pct": 2.09,
 "ever_fired": true
 },
 "Chemicals": {
-"consecutive_days": 8,
+"consecutive_days": 0,
 "first_fired": "2026-07-17",
 "last_avg_pct": 1.91,
 "ever_fired": true
 },
 "Oil & Gas Drilling": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-20",
 "last_avg_pct": 1.91,
 "ever_fired": true
 },
 "Oil & Gas E&P": {
-"consecutive_days": 8,
+"consecutive_days": 0,
 "first_fired": "2026-07-17",
 "last_avg_pct": 1.82,
 "ever_fired": true
 },
 "Biotechnology": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-20",
 "last_avg_pct": 1.62,
 "ever_fired": true
 },
 "Consumer Electronics": {
-"consecutive_days": 8,
+"consecutive_days": 0,
 "first_fired": "2026-07-17",
 "last_avg_pct": 1.57,
 "ever_fired": true
 },
 "Insurance - Reinsurance": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-20",
 "last_avg_pct": 1.53,
 "ever_fired": true
 },
 "Oil & Gas Refining & Marketing": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-20",
 "last_avg_pct": 1.5,
 "ever_fired": true
@@ -118,12 +166,6 @@
 "last_avg_pct": 3.7,
 "ever_fired": true
 },
-"Beverages - Wineries & Distilleries": {
-"consecutive_days": 0,
-"first_fired": "2026-07-16",
-"last_avg_pct": 3.3,
-"ever_fired": true
-},
 "Tools & Accessories": {
 "consecutive_days": 0,
 "first_fired": "2026-07-16",
@@ -178,12 +220,6 @@
 "last_avg_pct": 2.7,
 "ever_fired": true
 },
-"Apparel Retail": {
-"consecutive_days": 0,
-"first_fired": "2026-07-15",
-"last_avg_pct": 2.61,
-"ever_fired": true
-},
 "Semiconductor Equipment & Materials": {
 "consecutive_days": 0,
 "first_fired": "2026-07-14",
@@ -236,12 +272,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-10",
 "last_avg_pct": 2.87,
-"ever_fired": true
-},
-"Marine Shipping": {
-"consecutive_days": 0,
-"first_fired": "2026-07-10",
-"last_avg_pct": 2.47,
 "ever_fired": true
 },
 "Discount Stores": {
@@ -326,12 +356,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-06",
 "last_avg_pct": 3.32,
-"ever_fired": true
-},
-"Capital Markets": {
-"consecutive_days": 0,
-"first_fired": "2026-07-06",
-"last_avg_pct": 3.26,
 "ever_fired": true
 },
 "Security & Protection Services": {
@@ -458,12 +482,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-24",
 "last_avg_pct": 4.41,
-"ever_fired": true
-},
-"Electronic Gaming & Multimedia": {
-"consecutive_days": 0,
-"first_fired": "2026-06-23",
-"last_avg_pct": 2.46,
 "ever_fired": true
 },
 "Telecom Services": {

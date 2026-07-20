@@ -2,104 +2,50 @@
   "data_date": "2026-07-20",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v1)",
-  "nav": 0.9995,
-  "ret_pct": -0.05,
-  "unreal_pct": -0.05,
+  "nav": 0.7484,
+  "ret_pct": -25.16,
+  "unreal_pct": -0.2,
   "cap": 12,
   "runner_cap": 5,
-  "core_count": 12,
+  "core_count": 9,
   "runner_count": 0,
   "regime": "🟢 Uptrend",
   "signals": [
     {
-      "ticker": "ATAI",
-      "industry": "Biotechnology",
-      "pattern": "어닝갭업",
-      "signal_close": 7.22,
-      "pivot": 7.22,
-      "dist": 0.0,
-      "score": 91.25
+      "ticker": "GRPN",
+      "industry": "Internet Content & Information",
+      "pattern": "어센딩베이스",
+      "signal_close": 27.95,
+      "pivot": 28.59,
+      "dist": -2.2,
+      "score": 87.51
     },
     {
-      "ticker": "PARR",
-      "industry": "Oil & Gas Refining & Marketing",
-      "pattern": "이중바닥",
-      "signal_close": 76.25,
-      "pivot": 77.21,
-      "dist": -1.2,
-      "score": 91.14
+      "ticker": "CTRN",
+      "industry": "Apparel Retail",
+      "pattern": "어센딩베이스",
+      "signal_close": 65.65,
+      "pivot": 66.38,
+      "dist": -1.1,
+      "score": 86.77
     },
     {
-      "ticker": "PVLA",
-      "industry": "Biotechnology",
-      "pattern": "이중바닥",
-      "signal_close": 157.24,
-      "pivot": 161.38,
-      "dist": -2.6,
-      "score": 90.65
-    },
-    {
-      "ticker": "DINO",
-      "industry": "Oil & Gas Refining & Marketing",
-      "pattern": "파워플레이",
-      "signal_close": 88.59,
-      "pivot": 88.74,
-      "dist": -0.2,
-      "score": 89.74
-    },
-    {
-      "ticker": "PBF",
-      "industry": "Oil & Gas Refining & Marketing",
-      "pattern": "파워플레이",
-      "signal_close": 62.75,
-      "pivot": 63.6,
-      "dist": -1.3,
-      "score": 88.93
-    },
-    {
-      "ticker": "SION",
-      "industry": "Biotechnology",
+      "ticker": "MATX",
+      "industry": "Marine Shipping",
       "pattern": "컵앤핸들",
-      "signal_close": 49.41,
-      "pivot": 51.0,
-      "dist": -3.1,
-      "score": 87.84
+      "signal_close": 218.41,
+      "pivot": 230.74,
+      "dist": -5.3,
+      "score": 81.87
     },
     {
-      "ticker": "MRVI",
-      "industry": "Biotechnology",
-      "pattern": "VCP",
-      "signal_close": 7.24,
-      "pivot": 7.26,
-      "dist": -0.2,
-      "score": 87.77
-    },
-    {
-      "ticker": "ORKA",
-      "industry": "Biotechnology",
-      "pattern": "RS Line 선행",
-      "signal_close": 92.7,
-      "pivot": 97.78,
-      "dist": -5.2,
-      "score": 85.73
-    },
-    {
-      "ticker": "DNTH",
-      "industry": "Biotechnology",
-      "pattern": "이중바닥",
-      "signal_close": 105.6,
-      "pivot": 105.72,
-      "dist": -0.1,
-      "score": 85.5
-    },
-    {
-      "ticker": "MPC",
-      "industry": "Oil & Gas Refining & Marketing",
-      "pattern": "파워플레이",
-      "signal_close": 312.6,
-      "pivot": 313.15,
-      "dist": -0.2,
-      "score": 84.75
+      "ticker": "ETSY",
+      "industry": "Internet Retail",
+      "pattern": "컵앤핸들",
+      "signal_close": 84.03,
+      "pivot": 87.14,
+      "dist": -3.6,
+      "score": 76.36
     }
   ],
   "gates": [
@@ -110,14 +56,14 @@
     "G2 Pattern"
   ],
   "benchmarks": {
-    "strat": -0.05,
+    "strat": -25.16,
     "spy": null,
     "qqq": null,
     "tqqq": null
   },
   "risk": {
     "days": 1,
-    "ret": -0.05,
+    "ret": -25.16,
     "sharpe": null,
     "sortino": null,
     "vol": null,
@@ -129,76 +75,31 @@
     "alpha_qqq": null
   },
   "trades": {
-    "n": 0,
-    "winrate": null,
-    "payoff": null,
-    "pf": null,
-    "avg_win": null,
-    "avg_loss": null,
-    "expectancy": null,
-    "best": null,
-    "worst": null
+    "n": 3,
+    "winrate": 0.0,
+    "payoff": 0.0,
+    "pf": 0.0,
+    "avg_win": 0,
+    "avg_loss": -13.7,
+    "expectancy": -13.68,
+    "best": -7.5,
+    "worst": -21.0
   },
   "nav_history": [
     {
       "date": "2026-07-20",
-      "nav": 0.9995,
-      "chg": -0.04
+      "nav": 0.7484,
+      "chg": -25.12
     }
   ],
   "holdings": [
-    {
-      "ticker": "GPRE",
-      "entry": "2026-07-20",
-      "days": 0,
-      "cd": "",
-      "entry_px": 19.23,
-      "cur": 19.23,
-      "runner": false
-    },
-    {
-      "ticker": "DRH",
-      "entry": "2026-07-20",
-      "days": 0,
-      "cd": "",
-      "entry_px": 12.55,
-      "cur": 12.55,
-      "runner": false
-    },
-    {
-      "ticker": "ATAI",
-      "entry": "2026-07-20",
-      "days": 0,
-      "cd": "",
-      "entry_px": 7.22,
-      "cur": 7.22,
-      "runner": false
-    },
-    {
-      "ticker": "PARR",
-      "entry": "2026-07-20",
-      "days": 0,
-      "cd": "",
-      "entry_px": 76.25,
-      "cur": 76.25,
-      "runner": false
-    },
-    {
-      "ticker": "PVLA",
-      "entry": "2026-07-20",
-      "days": 0,
-      "cd": "",
-      "entry_px": 157.24,
-      "cur": 157.24,
-      "runner": false
-    },
     {
       "ticker": "DINO",
       "entry": "2026-07-20",
       "days": 0,
       "cd": "",
       "entry_px": 88.59,
-      "cur": 88.59,
+      "cur": 90.41,
       "runner": false
     },
     {
@@ -207,43 +108,25 @@
       "days": 0,
       "cd": "",
       "entry_px": 62.75,
-      "cur": 62.75,
+      "cur": 63.85,
       "runner": false
     },
     {
-      "ticker": "SION",
+      "ticker": "PARR",
       "entry": "2026-07-20",
       "days": 0,
       "cd": "",
-      "entry_px": 49.41,
-      "cur": 49.41,
+      "entry_px": 76.25,
+      "cur": 77.56,
       "runner": false
     },
     {
-      "ticker": "MRVI",
+      "ticker": "DRH",
       "entry": "2026-07-20",
       "days": 0,
       "cd": "",
-      "entry_px": 7.24,
-      "cur": 7.24,
-      "runner": false
-    },
-    {
-      "ticker": "ORKA",
-      "entry": "2026-07-20",
-      "days": 0,
-      "cd": "",
-      "entry_px": 92.7,
-      "cur": 92.7,
-      "runner": false
-    },
-    {
-      "ticker": "DNTH",
-      "entry": "2026-07-20",
-      "days": 0,
-      "cd": "",
-      "entry_px": 105.6,
-      "cur": 105.6,
+      "entry_px": 12.55,
+      "cur": 12.75,
       "runner": false
     },
     {
@@ -252,34 +135,91 @@
       "days": 0,
       "cd": "",
       "entry_px": 312.6,
-      "cur": 312.6,
+      "cur": 315.31,
+      "runner": false
+    },
+    {
+      "ticker": "ATAI",
+      "entry": "2026-07-20",
+      "days": 0,
+      "cd": "",
+      "entry_px": 7.22,
+      "cur": 7.19,
+      "runner": false
+    },
+    {
+      "ticker": "ORKA",
+      "entry": "2026-07-20",
+      "days": 0,
+      "cd": "",
+      "entry_px": 92.7,
+      "cur": 91.71,
+      "runner": false
+    },
+    {
+      "ticker": "MRVI",
+      "entry": "2026-07-20",
+      "days": 0,
+      "cd": "",
+      "entry_px": 7.24,
+      "cur": 6.99,
+      "runner": false
+    },
+    {
+      "ticker": "DNTH",
+      "entry": "2026-07-20",
+      "days": 0,
+      "cd": "",
+      "entry_px": 105.6,
+      "cur": 101.0,
       "runner": false
     }
   ],
   "closed_summary": {
-    "n": 0,
-    "winrate": null,
-    "avg": null,
-    "best": null,
-    "worst": null,
-    "categories": []
+    "n": 3,
+    "winrate": 0.0,
+    "avg": -13.68,
+    "best": -7.5,
+    "worst": -21.0,
+    "categories": [
+      [
+        "손절",
+        3,
+        "#A32D2D",
+        "#FDECEC"
+      ]
+    ]
   },
-  "closed": [],
-  "_holdings": [
+  "closed": [
+    {
+      "ticker": "SION",
+      "entry": "2026-07-20",
+      "exit": "2026-07-20",
+      "days": 0,
+      "entry_px": 49.41,
+      "exit_px": 45.69,
+      "cat": "손절"
+    },
+    {
+      "ticker": "PVLA",
+      "entry": "2026-07-20",
+      "exit": "2026-07-20",
+      "days": 0,
+      "entry_px": 157.24,
+      "exit_px": 124.15,
+      "cat": "손절"
+    },
     {
       "ticker": "GPRE",
-      "entry_date": "2026-07-20",
+      "entry": "2026-07-20",
+      "exit": "2026-07-20",
+      "days": 0,
       "entry_px": 19.23,
-      "avg_cost_px": 19.23,
-      "shares": 0.004333506673600277,
-      "entry_value": 0.08337499999999999,
-      "cur": 19.23,
-      "max_gain_pct": 0.0,
-      "days_in": 0,
-      "current_stop": 17.8839,
-      "runner": false,
-      "oneill_8w_active": false
-    },
+      "exit_px": 16.83,
+      "cat": "손절"
+    }
+  ],
+  "_holdings": [
     {
       "ticker": "DRH",
       "entry_date": "2026-07-20",
@@ -287,8 +227,8 @@
       "avg_cost_px": 12.55,
       "shares": 0.0066401062416998665,
       "entry_value": 0.08337499999999999,
-      "cur": 12.55,
-      "max_gain_pct": 0.0,
+      "cur": 12.75,
+      "max_gain_pct": 1.5936254980079667,
       "days_in": 0,
       "current_stop": 11.6715,
       "runner": false,
@@ -301,7 +241,7 @@
       "avg_cost_px": 7.22,
       "shares": 0.011541051092643891,
       "entry_value": 0.08336805208333334,
-      "cur": 7.22,
+      "cur": 7.19,
       "max_gain_pct": 0.0,
       "days_in": 0,
       "current_stop": 6.714599999999999,
@@ -315,24 +255,10 @@
       "avg_cost_px": 76.25,
       "shares": 0.0010928051001821493,
       "entry_value": 0.08336805208333334,
-      "cur": 76.25,
-      "max_gain_pct": 0.0,
+      "cur": 77.56,
+      "max_gain_pct": 1.7180327868852485,
       "days_in": 0,
       "current_stop": 70.9125,
-      "runner": false,
-      "oneill_8w_active": false
-    },
-    {
-      "ticker": "PVLA",
-      "entry_date": "2026-07-20",
-      "entry_px": 157.24,
-      "avg_cost_px": 157.24,
-      "shares": 0.0005299312445235874,
-      "entry_value": 0.08336805208333334,
-      "cur": 157.24,
-      "max_gain_pct": 0.0,
-      "days_in": 0,
-      "current_stop": 146.2332,
       "runner": false,
       "oneill_8w_active": false
     },
@@ -343,8 +269,8 @@
       "avg_cost_px": 88.59,
       "shares": 0.0009405845906861823,
       "entry_value": 0.08336805208333334,
-      "cur": 88.59,
-      "max_gain_pct": 0.0,
+      "cur": 90.41,
+      "max_gain_pct": 2.0544079467208487,
       "days_in": 0,
       "current_stop": 82.3887,
       "runner": false,
@@ -357,24 +283,10 @@
       "avg_cost_px": 62.75,
       "shares": 0.001327910579902612,
       "entry_value": 0.08336805208333334,
-      "cur": 62.75,
-      "max_gain_pct": 0.0,
+      "cur": 63.85,
+      "max_gain_pct": 1.7529880478087678,
       "days_in": 0,
       "current_stop": 58.357499999999995,
-      "runner": false,
-      "oneill_8w_active": false
-    },
-    {
-      "ticker": "SION",
-      "entry_date": "2026-07-20",
-      "entry_px": 49.41,
-      "avg_cost_px": 49.41,
-      "shares": 0.001686427623737885,
-      "entry_value": 0.08336805208333334,
-      "cur": 49.41,
-      "max_gain_pct": 0.0,
-      "days_in": 0,
-      "current_stop": 45.951299999999996,
       "runner": false,
       "oneill_8w_active": false
     },
@@ -385,7 +297,7 @@
       "avg_cost_px": 7.24,
       "shares": 0.011509169736034377,
       "entry_value": 0.08336805208333334,
-      "cur": 7.24,
+      "cur": 6.99,
       "max_gain_pct": 0.0,
       "days_in": 0,
       "current_stop": 6.7332,
@@ -399,7 +311,7 @@
       "avg_cost_px": 92.7,
       "shares": 0.0008988822965360182,
       "entry_value": 0.08336805208333334,
-      "cur": 92.7,
+      "cur": 91.71,
       "max_gain_pct": 0.0,
       "days_in": 0,
       "current_stop": 86.211,
@@ -413,7 +325,7 @@
       "avg_cost_px": 105.6,
       "shares": 0.0007890756523569024,
       "entry_value": 0.08336805208333334,
-      "cur": 105.6,
+      "cur": 101.0,
       "max_gain_pct": 0.0,
       "days_in": 0,
       "current_stop": 98.20799999999998,
@@ -427,15 +339,49 @@
       "avg_cost_px": 312.6,
       "shares": 0.00026531519913627693,
       "entry_value": 0.08297900001562517,
-      "cur": 312.6,
-      "max_gain_pct": 0.0,
+      "cur": 315.31,
+      "max_gain_pct": 0.8669225847728557,
       "days_in": 0,
       "current_stop": 290.718,
       "runner": false,
       "oneill_8w_active": false
     }
   ],
-  "_closed": [],
+  "_closed": [
+    {
+      "ticker": "GPRE",
+      "entry": "2026-07-20",
+      "exit": "2026-07-20",
+      "days": 0,
+      "entry_px": 19.23,
+      "exit_px": 16.83,
+      "shares": 0.004333506673600277,
+      "realized": -0.010478549141965679,
+      "cat": "손절"
+    },
+    {
+      "ticker": "PVLA",
+      "entry": "2026-07-20",
+      "exit": "2026-07-20",
+      "days": 0,
+      "entry_px": 157.24,
+      "exit_px": 124.15,
+      "shares": 0.0005299312445235874,
+      "realized": -0.017609983557733758,
+      "cat": "손절"
+    },
+    {
+      "ticker": "SION",
+      "entry": "2026-07-20",
+      "exit": "2026-07-20",
+      "days": 0,
+      "entry_px": 49.41,
+      "exit_px": 45.69,
+      "shares": 0.001686427623737885,
+      "realized": -0.006353700393813652,
+      "cat": "손절"
+    }
+  ],
   "_cash": -4.1468765624996795e-05,
   "_entries_recent": [
     "2026-07-20",
