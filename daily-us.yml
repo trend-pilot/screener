@@ -30,6 +30,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install pandas numpy yfinance requests python-dotenv
 
+      # NYSE/AMEX 티커 목록 갱신 (없거나 오래되면 재생성)
+      #   screener.py 는 nyse_tickers.csv 가 있으면 자동으로 나스닥 목록과 합친다.
+      - name: 🗽 NYSE 티커 목록 갱신
+        continue-on-error: true      # 실패해도 기존 CSV 로 진행
+        run: |
+          python build_nyse_tickers.py --out nyse_tickers.csv
+          wc -l nyse_tickers.csv
+
       - name: 🔍 Screener 실행 (US 1900+ 종목)
         run: python screener.py
 
