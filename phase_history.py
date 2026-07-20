@@ -17,8 +17,21 @@ JSON 구조:
     "AAPL": "4plus",
     "MSFT": "4",
     ...
+  },
+  "since": {            # v12: 현재 phase 에 '진입한 날' (경과일수 계산용)
+    "AAPL": "2026-04-25",
+    ...
+  },
+  "since_up": {         # v12: 그 진입이 상향 전환이었는지 (신선도 가점 조건)
+    "AAPL": true,
+    ...
   }
 }
+
+v12 추가 필드 (종목 dict 주입):
+  - days_since_phase_change: 현재 phase 진입 후 경과일수 (오늘 전환=0). 이력 없으면 None
+  - phase_change_was_up:     그 진입이 상향이었는지 (True/False/None)
+  → 대시보드 ⑧-b 확신도의 "🚀 신선 진입 (Phase 5, 3일째)" 가점에 사용
 
 Phase 전환 정의 (IBD pivot buy point):
   - phase_yesterday=3 → phase=4: 🚀 pivot buy point 당일 (가장 강한 신호)
@@ -146,15 +159,25 @@ def save_phase_history(path: str, stocks: List[dict], today_str: str) -> None:
         date_iso = today_str
 
     phases = {}
+    since = {}
+    since_up = {}
     for s in stocks:
         ticker = s.get("ticker")
         phase = s.get("phase")  # annotate_phase_changes에서 이미 주입됨
         if ticker and phase:
             phases[ticker] = phase
+            # v12: 현재 phase 진입일 — annotate 단계에서 계산된 값을 그대로 보존
+            sd = s.get("_phase_since")
+            since[ticker] = sd if sd else date_iso
+            wu = s.get("phase_change_was_up")
+            if wu is not None:
+                since_up[ticker] = bool(wu)
 
     out = {
         "date": date_iso,
         "phases": phases,
+        "since": since,        # v12
+        "since_up": since_up,  # v12
     }
 
     try:
@@ -178,7 +201,12 @@ def annotate_phase_changes(stocks: List[dict], history: dict) -> Tuple[int, bool
         - phase_first_day: history가 비어있어서 비교 불가능한 첫날인지 여부
     """
     yesterday_phases = history.get("phases", {}) if history else {}
+    prev_since = history.get("since", {}) if history else {}       # v12 (구버전 파일엔 없음)
+    prev_since_up = history.get("since_up", {}) if history else {}  # v12
     is_first_day = not bool(yesterday_phases)
+
+    # 오늘 날짜 (경과일수 계산 기준)
+    today_date = datetime.now().date()
 
     up_count = 0
     for s in stocks:
@@ -195,13 +223,45 @@ def annotate_phase_changes(stocks: List[dict], history: dict) -> Tuple[int, bool
         if is_first_day or yesterday_phase is None:
             # 첫날이거나 어제 데이터에 없는 종목 → 비교 불가
             s["phase_changed_up"] = None
+            changed_up = None
+            same_phase = False
         else:
             today_rank = PHASE_RANK.get(today_phase, -1)
             yesterday_rank = PHASE_RANK.get(yesterday_phase, -1)
             changed_up = (today_rank > yesterday_rank)
             s["phase_changed_up"] = changed_up
+            same_phase = (today_phase == yesterday_phase)
             if changed_up:
                 up_count += 1
+
+        # 4) v12: 현재 phase 진입일(_phase_since) / 경과일수 / 상향 여부
+        #    - phase 가 어제와 같으면 기존 진입일 유지
+        #    - 바뀌었으면 오늘이 진입일
+        #    - 이력이 없으면(첫날/신규 종목) None → 대시보드에서 가점 제외
+        today_iso = today_date.isoformat()
+        if same_phase and ticker and prev_since.get(ticker):
+            since_str = prev_since[ticker]
+            was_up = prev_since_up.get(ticker)
+        elif yesterday_phase is not None:
+            # 오늘 전환됨 (상향/하향 모두)
+            since_str = today_iso
+            was_up = changed_up
+        else:
+            # 비교 불가 — 진입일 미상
+            since_str = None
+            was_up = None
+
+        s["_phase_since"] = since_str or today_iso  # 저장용(항상 값 보유)
+        s["phase_change_was_up"] = was_up
+
+        if since_str:
+            try:
+                d0 = datetime.strptime(since_str, "%Y-%m-%d").date()
+                s["days_since_phase_change"] = max(0, (today_date - d0).days)
+            except ValueError:
+                s["days_since_phase_change"] = None
+        else:
+            s["days_since_phase_change"] = None
 
     return up_count, is_first_day
 
@@ -264,8 +324,10 @@ if __name__ == "__main__":
     # AAA가 어제는 4였는데 오늘은 4plus → up
     # BBB가 어제는 5였는데 오늘은 4 → up
     # CCC가 어제는 4plus였는데 오늘은 5 → down (NOT up)
+    _yday = (datetime.now().date() - timedelta(days=1)).isoformat()
+    _today_iso = datetime.now().date().isoformat()
     fake_history = {
-        "date": "2026-04-27",
+        "date": _yday,   # 상대 날짜 — stale(7일) 걸리지 않도록
         "phases": {
             "AAA": "4",
             "BBB": "5",
@@ -278,10 +340,11 @@ if __name__ == "__main__":
     }
     with open(test_path, "w") as f:
         json.dump(fake_history, f)
-    up, first = annotate_and_persist(fake_stocks_today_2, test_path, "2026-04-28")
+    up, first = annotate_and_persist(fake_stocks_today_2, test_path, _today_iso)
     print(f"  up_count={up}, first_day={first}")
     for s in fake_stocks_today_2:
-        print(f"  {s['ticker']}: {s['phase_yesterday']} → {s['phase']} (up={s['phase_changed_up']})")
+        print(f"  {s['ticker']}: {s['phase_yesterday']} → {s['phase']} (up={s['phase_changed_up']}, "
+              f"경과={s['days_since_phase_change']}일, 상향진입={s['phase_change_was_up']})")
     assert first is False
     assert up == 4  # AAA, BBB, DDD, EEE up
     assert fake_stocks_today_2[0]["phase_changed_up"] is True   # AAA 4 → 4plus
@@ -290,7 +353,45 @@ if __name__ == "__main__":
     assert fake_stocks_today_2[3]["phase_changed_up"] is True   # DDD 2 → 3
     assert fake_stocks_today_2[4]["phase_changed_up"] is True   # EEE 01 → 2
     assert fake_stocks_today_2[5]["phase_changed_up"] is False  # FFF 01 → 01 (same)
+    # v12: 오늘 전환된 종목은 경과 0일 + 진입 방향 기록
+    assert fake_stocks_today_2[0]["days_since_phase_change"] == 0   # AAA 오늘 전환
+    assert fake_stocks_today_2[0]["phase_change_was_up"] is True
+    assert fake_stocks_today_2[2]["phase_change_was_up"] is False   # CCC 하향 진입
     print("  ✅ PASS")
+
+    print("\n=== Test 5 (v12): 셋째날 — phase 유지 시 경과일수 누적 ===")
+    with open(test_path, "r", encoding="utf-8") as f:
+        saved = json.load(f)
+    saved["date"] = _yday
+    saved["since"] = {k: _yday for k in saved["phases"]}
+    saved["since_up"] = {k: True for k in saved["phases"]}
+    with open(test_path, "w", encoding="utf-8") as f:
+        json.dump(saved, f)
+
+    fake_stocks_today_3 = [dict(s) for s in fake_stocks_today]  # 오늘도 동일 phase
+    up3, first3 = annotate_and_persist(fake_stocks_today_3, test_path, _today_iso)
+    aaa = fake_stocks_today_3[0]
+    print(f"  AAA: phase={aaa['phase']} 유지 · 경과={aaa['days_since_phase_change']}일 "
+          f"· 상향진입={aaa['phase_change_was_up']}")
+    assert up3 == 0, "phase 유지이므로 상향 0"
+    assert aaa["days_since_phase_change"] == 1, "어제 진입 → 오늘 경과 1일"
+    assert aaa["phase_change_was_up"] is True, "진입 방향(상향)이 보존돼야 함"
+    with open(test_path, "r", encoding="utf-8") as f:
+        saved2 = json.load(f)
+    assert saved2["since"]["AAA"] == _yday, "phase 유지 시 진입일이 보존돼야 함"
+    print("  ✅ PASS")
+
+    print("\n=== Test 6 (v12): 구버전 파일 하위호환 (since 없음) ===")
+    legacy = {"date": _yday, "phases": {"AAA": "4", "BBB": "4"}}  # since/since_up 없음
+    with open(test_path, "w", encoding="utf-8") as f:
+        json.dump(legacy, f)
+    fake4 = [dict(s) for s in fake_stocks_today[:2]]
+    up4, first4 = annotate_and_persist(fake4, test_path, _today_iso)
+    print(f"  AAA(4→4plus): 경과={fake4[0]['days_since_phase_change']}일, up={fake4[0]['phase_changed_up']}")
+    print(f"  BBB(4→4 유지): 경과={fake4[1]['days_since_phase_change']}일")
+    assert fake4[0]["days_since_phase_change"] == 0
+    assert fake4[1]["days_since_phase_change"] == 0
+    print("  ✅ PASS (구버전 파일에서도 크래시 없음)")
 
     print("\n=== Test 4: stale 처리 ===")
     old_history = {

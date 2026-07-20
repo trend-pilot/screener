@@ -12025,8 +12025,9 @@ function renderDailyBriefingCandidates(stocks) {
       const pts = []; let tot = 0;
       const add = (t,p) => { pts.push([t,p]); tot += p; };
       // 신선도: 전환 후 경과일수(days_since_phase_change)가 있으면 차등, 없으면 당일 플래그만
+      //   단, '상향' 진입일 때만 가점 (phase_change_was_up === false 면 하향 진입 → 제외)
       const dsc = (typeof s.days_since_phase_change === 'number') ? s.days_since_phase_change : null;
-      if (dsc !== null && dsc >= 0 && dsc <= 10) {
+      if (dsc !== null && dsc >= 0 && dsc <= 10 && s.phase_change_was_up !== false) {
         const fp = dsc === 0 ? 25 : dsc <= 2 ? 22 : dsc <= 5 ? 18 : 12;
         add(`🚀 신선 진입 (Phase ${s.phase}, ${dsc + 1}일째 — 페이크아웃 1차 통과)`, fp);
       } else if (s.phase_changed_up) {
