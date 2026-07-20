@@ -25,7 +25,7 @@ strategy_room_v1.py — 전략실 forward 페이퍼 트레이딩 엔진 (v1)
 """
 
 import json
-import math, os, sys, math
+import math, os, sys
 from datetime import date, datetime
 
 # ─── 파라미터 (명세 §5) ───────────────────────────────────────────────

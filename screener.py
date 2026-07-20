@@ -11,7 +11,7 @@
 실행: python screener.py
 """
 
-import os, re, json, time, logging
+import os, re, math, json, time, logging
 from datetime import datetime, timedelta
 from typing import Optional
 
