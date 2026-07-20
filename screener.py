@@ -596,6 +596,24 @@ def rank_rs(stocks):
 
 # ── 메인 ──────────────────────────────────────────────────────────────────────
 
+def _sanitize_json(obj):
+    """
+    NaN / Infinity 를 None 으로 치환 (재귀).
+
+    [왜 필요한가] Python json.dump 는 NaN 을 그대로 'NaN' 으로 쓰지만 이는 표준 JSON 이
+    아니라서 브라우저 JSON.parse() 가 파싱 자체를 거부한다 → 대시보드가 데이터를
+    전혀 못 읽는 사고로 이어진다. (예: 가격 이력이 빈 우선주 ZIONP 의 price/ma50/w1)
+    """
+    import math
+    if isinstance(obj, float):
+        return None if (math.isnan(obj) or math.isinf(obj)) else obj
+    if isinstance(obj, dict):
+        return {k: _sanitize_json(v) for k, v in obj.items()}
+    if isinstance(obj, (list, tuple)):
+        return [_sanitize_json(v) for v in obj]
+    return obj
+
+
 def _json_default(obj):
     """numpy/pandas 타입을 JSON 직렬화 가능하게 변환"""
     import numpy as np
@@ -703,7 +721,9 @@ def main():
     }
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(output, f, ensure_ascii=False, indent=2, default=_json_default)
+        # NaN/Inf 제거 후 저장. allow_nan=False 로 혹시 남아있으면 즉시 에러(조용한 손상 방지)
+        json.dump(_sanitize_json(output), f, ensure_ascii=False, indent=2,
+                  default=_json_default, allow_nan=False)
 
     # GitHub 자동 업로드
     log.info("GitHub 업로드 중...")
