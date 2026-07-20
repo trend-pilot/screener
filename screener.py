@@ -11,7 +11,7 @@
 실행: python screener.py
 """
 
-import os, json, time, logging
+import os, re, json, time, logging
 from datetime import datetime, timedelta
 from typing import Optional
 
@@ -38,6 +38,14 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 TEST_MODE        = False
 TEST_LIMIT       = 50
 RS_RANK_MIN      = 70
+
+# ── 유니버스 사전 필터 (추세추종 대상이 아닌 종목 제외) ──────────────────────
+#   목적: ① 데이터 품질(가격 이력 없는 우선주·워런트가 NaN 의 주 원인)
+#         ② 추세추종으로 매매 불가능한 초저가·초소형주 제외
+#   0 으로 두면 해당 필터 비활성화.
+MIN_PRICE        = 5.0     # IBD 표준 최소 주가 ($5 미만 제외)
+MIN_MKTCAP       = 3e8     # 최소 시가총액 (3억 달러)
+EXCLUDE_NON_COMMON = True  # 워런트(W)/유닛(U)/권리(R)/우선주(P) 티커 제외
 FROM_52W_LOW     = 30
 FROM_52W_HIGH    = -25
 HISTORY_DAYS     = 320
@@ -440,6 +448,14 @@ def momentum_score_v2(rs_now, rs_line_score, rs_line_1w, rs_line_3w):
 
 # ── 종목 지표 계산 ────────────────────────────────────────────────────────────
 
+_NON_COMMON = re.compile(r"^[A-Z]{4,}(W|U|R)$|^[A-Z]{4,}P[A-Z]?$")
+
+
+def is_non_common(ticker: str) -> bool:
+    """워런트/유닛/권리/우선주 추정 티커 (예: BULLW, BACCU, OYSER, HBANP)."""
+    return bool(_NON_COMMON.match(ticker or ""))
+
+
 def process_symbol(ticker, name, asset_type="STOCK", asset_class=""):
     """
     asset_type: "STOCK" (기본) 또는 "ETF"
@@ -449,6 +465,10 @@ def process_symbol(ticker, name, asset_type="STOCK", asset_class=""):
     is_etf = (asset_type == "ETF")
     try:
         end   = datetime.now()
+        # [유니버스 필터] 비보통주는 다운로드 전에 제외 (API 호출·시간 절약)
+        if EXCLUDE_NON_COMMON and is_non_common(ticker):
+            return None
+
         start = end - timedelta(days=HISTORY_DAYS)
         tk    = yf.Ticker(ticker)
         df    = tk.history(start=start, end=end, auto_adjust=True)
@@ -461,6 +481,13 @@ def process_symbol(ticker, name, asset_type="STOCK", asset_class=""):
             if mktcap: mktcap = int(mktcap)
         except Exception:
             pass
+
+        # [유니버스 필터] 최소 주가·시가총액 미달 종목 제외
+        _last_px = float(df["Close"].iloc[-1]) if len(df) else 0.0
+        if MIN_PRICE and (not math.isfinite(_last_px) or _last_px < MIN_PRICE):
+            return None
+        if MIN_MKTCAP and mktcap is not None and mktcap < MIN_MKTCAP:
+            return None
 
         close  = df["Close"].astype(float)
         high   = df["High"].astype(float)
@@ -495,6 +522,9 @@ def process_symbol(ticker, name, asset_type="STOCK", asset_class=""):
         c4 = ma50_now > ma150_now > ma200_now
         c5 = low_52w>0  and (latest-low_52w)/low_52w*100   >= FROM_52W_LOW
         c6 = high_52w>0 and (latest-high_52w)/high_52w*100 >= FROM_52W_HIGH
+        # [원전 5번] 현재가 > 50일선 — 단기 추세도 정상
+        #   (Minervini Trend Template 8조건 중 유일하게 빠져 있던 항목)
+        c7 = latest > ma50_now
 
         acc  = w1>0 and w3>0 and w1>abs(w3)/3
         acc2 = acc and w3>0 and w6>0
@@ -560,12 +590,13 @@ def process_symbol(ticker, name, asset_type="STOCK", asset_class=""):
             "vol_ratio_50d": vol_ratio,  # 50일 평균 대비 당일 거래량 배수
             "early_strength": None,   # 추세초기강세 — main()에서 phase 채운 뒤 계산
             "is_stage2": False,
-            "_base": all([c1,c2,c3,c4,c5,c6]),
+            "_base": all([c1,c2,c3,c4,c5,c6,c7]),
             "acc":bool(acc),"acc2":bool(acc2),
             "h52_new": h52_pct >= -3,
             "stage2":{
                 "above_ma150":bool(c1),"above_ma200":bool(c2),
                 "ma200_uptrend":bool(c3),"ma_aligned":bool(c4),
+                "above_ma50":bool(c7),
                 "from_52w_low":bool(c5),"from_52w_high":bool(c6),
                 "rs_rank":False,
             },
@@ -617,9 +648,12 @@ def rank_rs(stocks):
         )
         s["stage2"]["rs_rank"] = s["rs"] >= RS_RANK_MIN
         s["is_stage2"] = s.pop("_base",False) and s["stage2"]["rs_rank"]
+        # Minervini Trend Template 8조건 (원전 순서에 맞춰 정렬)
+        #   1)>150MA 2)>200MA 3)200MA 상승 4)정배열 5)>50MA 6)52주저점+30% 7)52주고점-25% 8)RS>=70
         s["pass_dots"] = [
             int(s["stage2"]["above_ma150"]),  int(s["stage2"]["above_ma200"]),
             int(s["stage2"]["ma200_uptrend"]),int(s["stage2"]["ma_aligned"]),
+            int(s["stage2"].get("above_ma50", False)),
             int(s["stage2"]["from_52w_low"]), int(s["stage2"]["from_52w_high"]),
             int(s["stage2"]["rs_rank"]),
         ]
