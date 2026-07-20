@@ -95,12 +95,18 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # [수정] phase_history 는 github_upload.py 가 GitHub API 로 이미 푸시함.
-          #   기존엔 rm -f 로 지운 뒤 pull --rebase --autostash 를 했는데,
-          #   '로컬 삭제' vs '원격 갱신' 이 충돌해 autostash 적용이 실패했다
-          #   (로그: "Applying autostash resulted in conflicts").
-          #   → 삭제하지 말고 원격 버전을 그대로 따르도록 checkout 으로 되돌린다.
-          git checkout -- phase_history.json kr_phase_history.json 2>/dev/null || true
+          # [중요] screener_data.json / phase_history.json 은 github_upload.py 가
+          #   GitHub API 로 '이미' 푸시했다. 그런데 로컬 working tree 에도 수정본이
+          #   남아 있어서, 커밋하지 않은 채 merge 하면 git 이 거부한다:
+          #     "error: Your local changes to the following files would be
+          #      overwritten by merge: screener_data.json → Aborting"
+          #   → API 로 올라간 파일들의 로컬 변경은 버리고 원격 버전을 따른다.
+          for f in screener_data.json output/screener_data.json \
+                   phase_history.json kr_phase_history.json; do
+            git checkout -- "$f" 2>/dev/null || true
+          done
+          # 그래도 남은 추적 파일 변경이 있으면 merge 가 막히므로 확인용으로 출력
+          git status --porcelain
           # 상태 파일은 매 실행 새로 생성되는 산출물 → 충돌 시 '이번 실행분' 우선
           git add sector_cache.json catalyst_state.json strategy_room.json 2>/dev/null || true
           if git diff --staged --quiet; then
