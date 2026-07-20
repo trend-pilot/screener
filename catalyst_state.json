@@ -1,61 +1,91 @@
 {
 "_date": "2026-07-20",
 "_fired_names": [
+"Biotechnology",
 "Chemicals",
-"Communication Equipment",
 "Consumer Electronics",
-"Healthcare Plans",
+"Insurance - Reinsurance",
+"Oil & Gas Drilling",
 "Oil & Gas E&P",
-"Other Precious Metals & Mining",
-"REIT - Hotel & Motel",
-"Uranium"
+"Oil & Gas Integrated",
+"Oil & Gas Refining & Marketing"
 ],
+"Oil & Gas Integrated": {
+"consecutive_days": 1,
+"first_fired": "2026-07-20",
+"last_avg_pct": 2.09,
+"ever_fired": true
+},
 "Chemicals": {
-"consecutive_days": 7,
+"consecutive_days": 8,
 "first_fired": "2026-07-17",
-"last_avg_pct": 4.33,
+"last_avg_pct": 1.91,
+"ever_fired": true
+},
+"Oil & Gas Drilling": {
+"consecutive_days": 1,
+"first_fired": "2026-07-20",
+"last_avg_pct": 1.91,
+"ever_fired": true
+},
+"Oil & Gas E&P": {
+"consecutive_days": 8,
+"first_fired": "2026-07-17",
+"last_avg_pct": 1.82,
+"ever_fired": true
+},
+"Biotechnology": {
+"consecutive_days": 1,
+"first_fired": "2026-07-20",
+"last_avg_pct": 1.62,
+"ever_fired": true
+},
+"Consumer Electronics": {
+"consecutive_days": 8,
+"first_fired": "2026-07-17",
+"last_avg_pct": 1.57,
+"ever_fired": true
+},
+"Insurance - Reinsurance": {
+"consecutive_days": 1,
+"first_fired": "2026-07-20",
+"last_avg_pct": 1.53,
+"ever_fired": true
+},
+"Oil & Gas Refining & Marketing": {
+"consecutive_days": 1,
+"first_fired": "2026-07-20",
+"last_avg_pct": 1.5,
 "ever_fired": true
 },
 "Other Precious Metals & Mining": {
-"consecutive_days": 7,
+"consecutive_days": 0,
 "first_fired": "2026-07-17",
 "last_avg_pct": 3.65,
 "ever_fired": true
 },
-"Consumer Electronics": {
-"consecutive_days": 7,
-"first_fired": "2026-07-17",
-"last_avg_pct": 3.0,
-"ever_fired": true
-},
 "Healthcare Plans": {
-"consecutive_days": 7,
+"consecutive_days": 0,
 "first_fired": "2026-07-17",
 "last_avg_pct": 2.67,
 "ever_fired": true
 },
 "Uranium": {
-"consecutive_days": 7,
+"consecutive_days": 0,
 "first_fired": "2026-07-17",
 "last_avg_pct": 2.6,
 "ever_fired": true
 },
 "Communication Equipment": {
-"consecutive_days": 7,
+"consecutive_days": 0,
 "first_fired": "2026-07-17",
 "last_avg_pct": 1.72,
 "ever_fired": true
 },
 "REIT - Hotel & Motel": {
-"consecutive_days": 7,
+"consecutive_days": 0,
 "first_fired": "2026-07-17",
 "last_avg_pct": 1.65,
-"ever_fired": true
-},
-"Oil & Gas E&P": {
-"consecutive_days": 7,
-"first_fired": "2026-07-17",
-"last_avg_pct": 1.51,
 "ever_fired": true
 },
 "Trucking": {
@@ -190,12 +220,6 @@
 "last_avg_pct": 2.72,
 "ever_fired": true
 },
-"Oil & Gas Refining & Marketing": {
-"consecutive_days": 0,
-"first_fired": "2026-07-13",
-"last_avg_pct": 3.2,
-"ever_fired": true
-},
 "Utilities - Independent Power Producers": {
 "consecutive_days": 0,
 "first_fired": "2026-07-13",
@@ -278,12 +302,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-08",
 "last_avg_pct": 1.98,
-"ever_fired": true
-},
-"Biotechnology": {
-"consecutive_days": 0,
-"first_fired": "2026-07-07",
-"last_avg_pct": 2.31,
 "ever_fired": true
 },
 "Oil & Gas Midstream": {
