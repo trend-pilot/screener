@@ -655,8 +655,9 @@ def main():
     # ─── Phase 전환 추적 (v11) ──────────────────────────────────────────
     log.info("📜 Phase 전환 추적 (어제 vs 오늘)...")
     today_str = datetime.now().strftime("%Y-%m-%d")
+    flow_data = {}   # v13: 진입/편출 흐름 + 60일 추이 (대시보드 ③④)
     phase_up_count, phase_first_day = annotate_and_persist(
-        results, "phase_history.json", today_str
+        results, "phase_history.json", today_str, flow_out=flow_data
     )
     log.info(f"   NEW↑ {phase_up_count}개 종목 (첫날={phase_first_day})")
 
@@ -678,6 +679,7 @@ def main():
     stock_count    = sum(1 for s in results if s.get("asset_type") != "ETF")
 
     output = {
+        "flow": flow_data,   # v13: 진입/편출 흐름 + 60일 추이 (대시보드 ③④)
         "meta": {
             "updated_at":    datetime.now().isoformat(),
             "total":         len(results),

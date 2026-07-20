@@ -2169,6 +2169,18 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
       </div>
     </section>
 
+    <!-- ③ 진입/편출 흐름 (참고본 ③④) -->
+    <section class="db-section">
+      <div class="db-section-header">
+        <span class="db-section-num">③</span>
+        <span class="db-section-title">진입/편출 흐름</span>
+        <span class="db-section-desc">강세 셋업 종목의 1일 변화 · 추이</span>
+      </div>
+      <div class="db-section-body" id="db-flow-body">
+        <div class="db-placeholder">⏳ 흐름 이력 수집 중 — screener 재실행 후 표시됩니다</div>
+      </div>
+    </section>
+
     <!-- ③ 강세 섹터 -->
     <section class="db-section">
       <div class="db-section-header">
@@ -11238,6 +11250,7 @@ function updateMarketPulse(raw, krRaw) {
     const stocksDB = stocks.filter(s => typeof s.rs === 'number' && s.rs >= DB_RS_MIN);
     const dbSectors = buildSectorsForTab(stocksDB);
     renderDailyBriefingSector(dbSectors);
+    try { renderDailyBriefingFlow(); } catch(e) { console.warn('[진입/편출 흐름] 렌더 실패:', e); }
     renderDailyBriefingIndustry(dbSectors);
     // [v2026-06-01 Stage1 D] 신규 탭 "테마 분석"용 데이터 캐싱 (탭 클릭 시 즉시 렌더)
     window._lastSectorsData = dbSectors;
@@ -11425,6 +11438,94 @@ window.dbToggleAll = function(open) {
 
 // ═══ v12 Phase 3: Daily Briefing ② 강세 섹터 ═══
 // 1위 메가 카드 + 강세/중립/약세 섹터 chip (RS Line 점수 기준 분류)
+function renderDailyBriefingFlow() {
+  const body = document.getElementById('db-flow-body');
+  if (!body) return;
+  const F = (typeof US !== 'undefined' && US.flow) ? US.flow : null;
+  if (!F || !F.date) {
+    body.innerHTML = `<div class="db-placeholder">⏳ 흐름 이력 없음 — phase_history.py v13 배포 후 screener 재실행 시 표시됩니다</div>`;
+    return;
+  }
+  if (F.first_day) {
+    body.innerHTML = `<div style="font-size:12px;color:#666;padding:10px 2px">📗 흐름 이력 첫날 — 강세 셋업 <b>${F.setup_today}</b>개 기록. 내일 실행부터 진입/편출이 표시됩니다.</div>`;
+    return;
+  }
+  const dC = F.delta > 0 ? '#1a8a4a' : F.delta < 0 ? '#A32D2D' : '#888';
+  const row = (x, color) => `
+    <div style="display:flex;justify-content:space-between;gap:8px;padding:5px 2px;border-bottom:1px dotted #e8e5da;font-size:11.5px">
+      <span onclick="openDetailByTicker('${x.ticker}')" style="font-weight:700;color:${color};cursor:pointer">${x.ticker}</span>
+      <span style="color:#8a8a82;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${x.industry || '—'}</span>
+      <span style="color:#666;flex-shrink:0">RS ${x.rs ?? '—'}</span>
+    </div>`;
+  const col = (title, items, color, bg, bd) => `
+    <div style="border:1px solid ${bd};border-radius:9px;padding:10px 12px;background:${bg}">
+      <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;color:${color};margin-bottom:5px">
+        <span>${title}</span><span>${items.length}개</span>
+      </div>
+      ${items.length ? items.slice(0, 12).map(x => row(x, color)).join('')
+                     : '<div style="font-size:11.5px;color:#aaa;padding:6px 0">없음</div>'}
+      ${items.length > 12 ? `<div style="font-size:10.5px;color:#999;padding-top:5px">… 외 ${items.length - 12}개</div>` : ''}
+    </div>`;
+
+  // 산업 변화 (증감 있는 것만)
+  const inds = (F.industry_delta || []).filter(i => i.delta !== 0).slice(0, 10);
+  const indHtml = inds.length ? inds.map(i => {
+    const c = i.delta > 0 ? '#1a8a4a' : '#A32D2D';
+    return `<div style="display:flex;justify-content:space-between;gap:8px;padding:4px 2px;border-bottom:1px dotted #e8e5da;font-size:11.5px">
+      <span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#444">${i.name}</span>
+      <span style="color:#888;flex-shrink:0">${i.prev}→${i.now}</span>
+      <span style="color:${c};font-weight:700;flex-shrink:0;width:28px;text-align:right">${i.delta > 0 ? '+' : ''}${i.delta}</span>
+    </div>`;
+  }).join('') : '<div style="font-size:11.5px;color:#aaa;padding:6px 0">변화 없음</div>';
+
+  // ④ 60일 추이 스파크라인 (SVG)
+  const S = (F.series || []).filter(p => typeof p.setup === 'number');
+  let chart = '';
+  if (S.length >= 2) {
+    const W = 640, H = 90, PAD = 4;
+    const keys = [['setup', '#185FA5', '강세 셋업'], ['leaders', '#1a8a4a', '리더(P4+/4/5)'], ['rs90', '#b5521a', 'RS 90+']];
+    const allV = keys.flatMap(k => S.map(p => p[k[0]] || 0));
+    const mx = Math.max(...allV, 1), mn = Math.min(...allV, 0);
+    const X = i => PAD + i * (W - PAD * 2) / (S.length - 1);
+    const Y = v => H - PAD - ((v - mn) / (mx - mn || 1)) * (H - PAD * 2);
+    const lines = keys.map(([k, c]) =>
+      `<polyline fill="none" stroke="${c}" stroke-width="1.8" points="${S.map((p, i) => `${X(i).toFixed(1)},${Y(p[k] || 0).toFixed(1)}`).join(' ')}"/>`).join('');
+    const last = S[S.length - 1];
+    chart = `
+      <div style="margin-top:14px;padding-top:10px;border-top:1px solid #f0efea">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;margin-bottom:6px">
+          <span style="font-size:12px;font-weight:700;color:#1a4a08">④ 진입 후보 추이</span>
+          <span style="font-size:10.5px;color:#999">${S[0].date} → ${last.date} · ${S.length}일 누적 (최대 60일)</span>
+        </div>
+        <svg viewBox="0 0 ${W} ${H}" style="width:100%;height:${H}px;display:block">${lines}</svg>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;font-size:10.5px;color:#666;margin-top:4px">
+          ${keys.map(([k, c, lbl]) => `<span><span style="display:inline-block;width:14px;height:2px;background:${c};vertical-align:middle"></span> ${lbl} <b>${last[k] ?? '—'}</b></span>`).join('')}
+        </div>
+      </div>`;
+  } else {
+    chart = `<div style="margin-top:12px;font-size:11px;color:#999;padding-top:8px;border-top:1px solid #f0efea">④ 진입 후보 추이 — 데이터 ${S.length}일치 (2일 이상 누적 시 차트 표시)</div>`;
+  }
+
+  body.innerHTML = `
+    <div style="font-size:12px;color:#555;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #f0efea">
+      강세 셋업 (RS≥80 & 조건 대부분 통과) · 어제 <b>${F.setup_yesterday}</b> → 오늘 <b>${F.setup_today}</b>
+      <b style="color:${dC}">(${F.delta > 0 ? '+' : ''}${F.delta})</b>
+      · 🆕 신규 <b style="color:#1a8a4a">${(F.entered || []).length}</b>개
+      · 📤 편출 <b style="color:#A32D2D">${(F.exited || []).length}</b>개
+      · 유지 <b>${F.kept}</b>개
+      ${F.prev_date ? `<span style="color:#aaa;font-size:10.5px"> · 기준 ${F.prev_date} → ${F.date}</span>` : ''}
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:11px">
+      ${col('🆕 신규 진입 →', F.entered || [], '#1a8a4a', '#fbfdf8', '#cfe6c0')}
+      ${col('📤 편출 →', F.exited || [], '#A32D2D', '#fffafa', '#e8c9c9')}
+      <div style="border:1px solid #d8dfe8;border-radius:9px;padding:10px 12px;background:#fbfcfd">
+        <div style="font-size:12px;font-weight:700;color:#185FA5;margin-bottom:5px">🏭 산업 카테고리 변화</div>
+        ${indHtml}
+      </div>
+    </div>
+    ${chart}`;
+}
+
 function renderDailyBriefingSector(sectors) {
   const body = document.getElementById('db-sector-body');
   if (!body) return;
@@ -12441,6 +12542,7 @@ function ingestUS(raw) {
   US.market = raw.market || {};
   US.sectors = buildUSSectors(US.data);
   US.catalyst = raw.catalyst || null;
+  US.flow = raw.flow || null;   // v13: 진입/편출 흐름 + 60일 추이 (③④)
   try { renderStrategyRoom(); } catch(e) { console.warn('[전략실] 렌더 실패:', e); }
   try { renderStrategyPortfolio(); } catch(e) { console.warn('[전략실 포트폴리오] 렌더 실패:', e); }
   // ───────── 진단 로그 (F12 콘솔에서 확인) ─────────

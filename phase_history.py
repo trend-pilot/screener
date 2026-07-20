@@ -63,6 +63,106 @@ PHASE_RANK = {
 # stale 처리 임계값 — 마지막 저장으로부터 N일 초과면 폐기
 STALE_DAYS = 7
 
+# ─────────────────────────────────────────────────────────────────────
+# v13: 진입/편출 흐름 + 60일 추이 (대시보드 ③④)
+# ─────────────────────────────────────────────────────────────────────
+FLOW_SERIES_MAX = 60   # 추이 차트 보존 일수
+
+
+def _setup_pass_count(s: dict) -> int:
+    """pass_dots 배열의 통과 개수 (배열/숫자 모두 허용)."""
+    pd = s.get("pass_dots")
+    if isinstance(pd, list):
+        return sum(1 for d in pd if d)
+    if isinstance(pd, (int, float)):
+        return int(pd)
+    return 0
+
+
+def _is_strong_setup(s: dict, max_cond: int) -> bool:
+    """
+    '강세 셋업' 정의 — 참고 대시보드 ③과 동일 개념:
+      RS >= 80 AND 트렌드템플릿 조건 (전체-1) 개 이상 통과.
+      (참고본은 8조건 중 7+, 본 스크리너는 7조건 중 6+)
+    """
+    return (s.get("rs") or 0) >= 80 and _setup_pass_count(s) >= max(1, max_cond - 1)
+
+
+def compute_flow(stocks: List[dict], history: dict, today_iso: str) -> dict:
+    """
+    전일 대비 진입/편출 흐름 + 60일 추이 시리즈를 계산한다.
+
+    Returns: {
+      "date", "prev_date", "first_day",
+      "setup_today", "setup_yesterday", "delta",
+      "entered": [{ticker,name,industry,rs}], "exited": [...], "kept": int,
+      "industry_delta": [{name, prev, now, delta}],
+      "series": [{date, setup, leaders, rs90, new_up}, ...]   # 최대 60일
+    }
+    """
+    flow_prev = (history or {}).get("flow") or {}
+    last = flow_prev.get("last") or {}
+    series = list(flow_prev.get("series") or [])
+
+    # 조건 수 자동 감지 (7조건 스크리너면 7)
+    max_cond = 8
+    for s in stocks:
+        if isinstance(s.get("pass_dots"), list) and s["pass_dots"]:
+            max_cond = len(s["pass_dots"])
+            break
+
+    today_setup = [s for s in stocks if _is_strong_setup(s, max_cond)]
+    today_tk = {s.get("ticker") for s in today_setup if s.get("ticker")}
+    prev_tk = set(last.get("setup") or [])
+    first_day = not bool(prev_tk)
+
+    by_tk = {s.get("ticker"): s for s in stocks}
+    def _brief(tk):
+        s = by_tk.get(tk) or {}
+        return {"ticker": tk, "name": s.get("name"),
+                "industry": s.get("industry"), "rs": s.get("rs")}
+
+    entered = [] if first_day else sorted(today_tk - prev_tk)
+    exited = [] if first_day else sorted(prev_tk - today_tk)
+
+    # 산업별 카운트 변화
+    now_ind: Dict[str, int] = {}
+    for s in today_setup:
+        k = s.get("industry") or "—"
+        now_ind[k] = now_ind.get(k, 0) + 1
+    prev_ind = last.get("industries") or {}
+    ind_delta = []
+    for k in set(list(now_ind.keys()) + list(prev_ind.keys())):
+        p, n = int(prev_ind.get(k, 0)), int(now_ind.get(k, 0))
+        ind_delta.append({"name": k, "prev": p, "now": n, "delta": n - p})
+    ind_delta.sort(key=lambda d: (-abs(d["delta"]), -d["now"]))
+
+    # 60일 추이 포인트
+    leaders = sum(1 for s in stocks if s.get("phase") in ("4plus", "4", "5"))
+    rs90 = sum(1 for s in stocks if (s.get("rs") or 0) >= 90)
+    new_up = sum(1 for s in stocks if s.get("phase_changed_up") is True)
+    point = {"date": today_iso, "setup": len(today_tk),
+             "leaders": leaders, "rs90": rs90, "new_up": new_up}
+    series = [p for p in series if p.get("date") != today_iso]
+    series.append(point)
+    series = series[-FLOW_SERIES_MAX:]
+
+    return {
+        "date": today_iso,
+        "prev_date": last.get("date"),
+        "first_day": first_day,
+        "setup_today": len(today_tk),
+        "setup_yesterday": len(prev_tk),
+        "delta": len(today_tk) - len(prev_tk) if not first_day else 0,
+        "entered": [_brief(t) for t in entered],
+        "exited": [_brief(t) for t in exited],
+        "kept": len(today_tk & prev_tk) if not first_day else len(today_tk),
+        "industry_delta": ind_delta[:20],
+        "series": series,
+        # 저장용 (다음 실행에서 비교 기준)
+        "_persist": {"date": today_iso, "setup": sorted(today_tk), "industries": now_ind},
+    }
+
 
 # ─────────────────────────────────────────────────────────────────────
 # 1) calc_phase: dashboard.html의 calcPhase() 1:1 포팅
@@ -147,7 +247,8 @@ def load_phase_history(path: str) -> dict:
     return data
 
 
-def save_phase_history(path: str, stocks: List[dict], today_str: str) -> None:
+def save_phase_history(path: str, stocks: List[dict], today_str: str,
+                       flow: Optional[dict] = None) -> None:
     """
     오늘자 phase 저장. today_str는 YYYY-MM-DD 또는 YYYYMMDD.
     """
@@ -179,6 +280,13 @@ def save_phase_history(path: str, stocks: List[dict], today_str: str) -> None:
         "since": since,        # v12
         "since_up": since_up,  # v12
     }
+
+    # v13: 흐름 이력 (③ 진입/편출, ④ 60일 추이) — 같은 파일에 얹어 커밋 대상 유지
+    if flow:
+        out["flow"] = {
+            "last": flow.get("_persist") or {},
+            "series": flow.get("series") or [],
+        }
 
     try:
         with open(path, "w", encoding="utf-8") as f:
@@ -269,19 +377,35 @@ def annotate_phase_changes(stocks: List[dict], history: dict) -> Tuple[int, bool
 # ─────────────────────────────────────────────────────────────────────
 # 4) 편의 함수: load + annotate + save 한 방에
 # ─────────────────────────────────────────────────────────────────────
-def annotate_and_persist(stocks: List[dict], history_path: str, today_str: str) -> Tuple[int, bool]:
+def annotate_and_persist(stocks: List[dict], history_path: str, today_str: str,
+                         flow_out: Optional[dict] = None) -> Tuple[int, bool]:
     """
     원샷 처리:
       1. history_path에서 어제 phase 로드 (없거나 stale이면 빈 상태)
       2. 모든 종목에 phase / phase_yesterday / phase_changed_up 주입
-      3. 오늘자 phase를 history_path에 저장
+      3. v13: 진입/편출 흐름 + 60일 추이 계산
+      4. 오늘자 phase(+since/flow)를 history_path에 저장
+
+    flow_out: dict 를 넘기면 흐름 결과가 여기에 채워진다 (미지정 시 기존 동작과 동일).
 
     Returns:
         (phase_up_count, phase_first_day)
     """
     history = load_phase_history(history_path)
     up_count, first_day = annotate_phase_changes(stocks, history)
-    save_phase_history(history_path, stocks, today_str)
+
+    # 날짜 정규화 (save 와 동일 규칙)
+    if len(today_str) == 8 and today_str.isdigit():
+        today_iso = f"{today_str[:4]}-{today_str[4:6]}-{today_str[6:]}"
+    else:
+        today_iso = today_str
+
+    flow = compute_flow(stocks, history, today_iso)
+    if flow_out is not None:
+        # 저장 전용 키는 제외하고 전달
+        flow_out.update({k: v for k, v in flow.items() if k != "_persist"})
+
+    save_phase_history(history_path, stocks, today_str, flow=flow)
     return up_count, first_day
 
 
