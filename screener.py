@@ -791,15 +791,24 @@ def main():
         json.dump(_sanitize_json(output), f, ensure_ascii=False, indent=2,
                   default=_json_default, allow_nan=False)
 
-    # GitHub 자동 업로드
-    log.info("GitHub 업로드 중...")
-    try:
-        # github_upload.py 의 진입점은 main() 이다 (upload_to_github 라는 이름은 없음).
-        # 워크플로우가 별도 스텝으로도 업로드하므로 여기 실패는 치명적이지 않다.
-        from github_upload import main as _gh_upload
-        _gh_upload()
-    except Exception as e:
-        log.warning(f"GitHub 업로드 실패: {e}")
+    # ── GitHub 자동 업로드 ───────────────────────────────────────────
+    #   [주의] github_upload.main() 은 토큰이 없으면 sys.exit(1) 을 호출한다.
+    #   sys.exit 이 던지는 SystemExit 은 Exception 의 하위 클래스가 아니라서
+    #   `except Exception` 으로는 잡히지 않고 프로세스를 그대로 죽인다.
+    #   GitHub Actions 에서는 이 스텝에 GITHUB_TOKEN 이 없고(별도 업로드 스텝이
+    #   담당한다) 그 때문에 워크플로우 전체가 exit 1 로 실패했었다.
+    #   → 토큰이 있을 때만 시도하고, SystemExit 까지 삼켜서 절대 죽지 않게 한다.
+    if os.environ.get("GITHUB_TOKEN"):
+        log.info("GitHub 업로드 중...")
+        try:
+            from github_upload import main as _gh_upload
+            _gh_upload()
+        except SystemExit as e:
+            log.warning(f"GitHub 업로드가 종료코드 {e.code} 로 끝남 — 계속 진행")
+        except Exception as e:
+            log.warning(f"GitHub 업로드 실패: {e}")
+    else:
+        log.info("GITHUB_TOKEN 없음 → 업로드 건너뜀 (워크플로우 업로드 스텝이 처리)")
 
     elapsed_total = round((time.time()-t0)/60,1)
     log.info("="*60)
