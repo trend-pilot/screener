@@ -149,6 +149,57 @@ def _one(it: Dict) -> str:
     bw = max(1.1, plotw / n * 0.62)
 
     parts: List[str] = []
+    placed: List[tuple] = []      # 이미 배치된 라벨 사각형 (x0,y0,x1,y1)
+
+    def place(x0: float, y0: float, w_: float, h_: float,
+              step: float = 20.0, tries: int = 14) -> float:
+        """겹치지 않는 y 를 찾아 반환. 라벨끼리 포개지는 것을 막는다."""
+        y = y0
+        for _ in range(tries):
+            if not any(not (x0 + w_ < a or x1_ < x0 or y + h_ < b or y1_ < y)
+                       for (a, b, x1_, y1_) in placed):
+                break
+            y += step
+        placed.append((x0, y, x0 + w_, y + h_))
+        return y
+
+    # ── 배경: 가격 눈금 · 현재가 점선 · 연도 구분선 ──────────────────
+    def nice_ticks(a: float, b: float, cnt: int = 9):
+        """로그 스케일에 어울리는 눈금값 생성 (1·2·2.5·5 계열)."""
+        out, span = [], b / max(a, 1e-9)
+        step = 10 ** math.floor(math.log10(max(b, 1e-9)))
+        while True:
+            for m in (1, 1.3, 1.6, 2, 2.5, 3.2, 4, 5, 6.5, 8):
+                t = step * m
+                if a <= t <= b:
+                    out.append(t)
+            step /= 10
+            if step < a / 100 or len(out) > 40:
+                break
+        out = sorted(set(out))
+        if len(out) > cnt:
+            k = max(1, len(out) // cnt)
+            out = out[::k]
+        return out
+
+    for t in nice_ticks(lo, hi):
+        yy = Y(t)
+        parts.append(f'<line x1="{PAD_L}" y1="{yy:.1f}" x2="{W-PAD_R}" y2="{yy:.1f}" '
+                     f'stroke="{TOK["line"]}" stroke-width="1"/>')
+        parts.append(f'<text x="{W-PAD_R+8}" y="{yy+4:.1f}" font-size="11" '
+                     f'fill="{TOK["mut"]}">{t:,.6g}</text>')
+
+    # 연도 구분 세로 점선
+    for i in range(1, n):
+        if dates[i][:4] != dates[i - 1][:4]:
+            parts.append(f'<line x1="{X(i):.1f}" y1="26" x2="{X(i):.1f}" y2="{H-26}" '
+                         f'stroke="#c8d2de" stroke-width="1" stroke-dasharray="4 4"/>')
+            parts.append(f'<text x="{X(i)+5:.1f}" y="{H-30}" font-size="11.5" '
+                         f'font-weight="700" fill="{TOK["mut"]}">{dates[i][:4]}</text>')
+
+    # 현재가 수평 점선
+    parts.append(f'<line x1="{PAD_L}" y1="{Y(last):.1f}" x2="{W-PAD_R}" y2="{Y(last):.1f}" '
+                 f'stroke="#8b98a8" stroke-width="1" stroke-dasharray="5 4"/>')
 
     # 캔들
     for i in range(n):
@@ -176,12 +227,25 @@ def _one(it: Dict) -> str:
         bi = idx.get(b["brk_date"]) if b.get("brk_date") else n - 1
         if li is None or lo_i is None or bi is None:
             continue
-        # 컵 윤곽 (좌측고점 → 저점 → 돌파)
-        parts.append(
-            f'<path d="M {X(li):.1f} {Y(b["left_high"]):.1f} '
-            f'Q {X((li+lo_i)//2):.1f} {Y(b["low"]):.1f} {X(lo_i):.1f} {Y(b["low"]):.1f} '
-            f'Q {X((lo_i+bi)//2):.1f} {Y(b["low"]):.1f} {X(bi):.1f} {Y(b["pivot"]):.1f}" '
-            f'fill="none" stroke="{TOK["arc"]}" stroke-width="2.4" opacity=".85"/>')
+        # 컵 윤곽 — 실제 저가 경로를 따라가도록 그린다.
+        #   (기존엔 2차 베지어 하나로 이어서 베이스가 길면 화면을 가로지르는
+        #    거대한 U자가 그려졌다. 참고본은 가격에 밀착한 곡선이다.)
+        span = max(1, bi - li)
+        step_i = max(1, span // 26)
+        pts_cup = []
+        for k in range(li, bi + 1, step_i):
+            w0, w1 = max(li, k - step_i), min(bi, k + step_i)
+            pts_cup.append((X(k), Y(min(l[w0:w1 + 1]))))
+        pts_cup.insert(0, (X(li), Y(b["left_high"])))
+        pts_cup.append((X(bi), Y(b["pivot"])))
+        # 3점 이동평균으로 완만하게
+        sm = []
+        for k, (px_, py_) in enumerate(pts_cup):
+            ys = [pts_cup[j][1] for j in range(max(0, k - 1), min(len(pts_cup), k + 2))]
+            sm.append(f"{px_:.1f},{sum(ys)/len(ys):.1f}")
+        parts.append(f'<polyline points="{" ".join(sm)}" fill="none" '
+                     f'stroke="{TOK["arc"]}" stroke-width="2.4" opacity=".9" '
+                     f'stroke-linejoin="round"/>')
         # 피벗 점선
         parts.append(f'<line x1="{X(li):.1f}" y1="{Y(b["pivot"]):.1f}" x2="{X(bi):.1f}" '
                      f'y2="{Y(b["pivot"]):.1f}" stroke="{TOK["arc"]}" stroke-width="1.2" '
@@ -190,10 +254,12 @@ def _one(it: Dict) -> str:
         parts.append(f'<path d="M {X(bi):.1f} {Y(b["pivot"])-6:.1f} l -6 11 l 12 0 z" '
                      f'fill="#1552a0"/>')
         # 스테이지 라벨 박스
-        lx, ly = X((li + bi) // 2), Y(b["low"]) + 26
+        lx = X((li + bi) // 2)
+        ly = Y(b["low"]) + 26
         label = f'{b["stage"]} · {b["type"]}'
         sub = f'{b["len_w"]}주 · −{b["depth"]}% · P {b["pivot"]}'
         wbox = max(len(label), len(sub)) * 6.6 + 22
+        ly = place(lx - wbox / 2, ly, wbox, 34)
         parts.append(
             f'<g><rect x="{lx-wbox/2:.1f}" y="{ly:.1f}" width="{wbox:.1f}" height="34" rx="7" '
             f'fill="#fff" stroke="{TOK["arc"]}" stroke-width="1.2"/>'
@@ -236,15 +302,82 @@ def _one(it: Dict) -> str:
             if i is not None:
                 parts.append(f'<circle cx="{X(i):.1f}" cy="{RY(rs[i]):.1f}" r="3.1" '
                              f'fill="{TOK["rs"]}"/>')
+        # 월별 RS 점수 마커 (참고본: RS 라인 위에 47·48·32·65 처럼 숫자 표기)
+        marks = it.get("rs_marks") or []
+        prev_sc = None
+        for mk in marks:
+            mi = idx.get(mk.get("d"))
+            if mi is None:
+                continue
+            sc = mk.get("s")
+            if sc == prev_sc:      # 99 99 99 처럼 같은 값 연속이면 생략
+                continue
+            prev_sc = sc
+            col = TOK["rs"] if (sc or 0) >= 60 else TOK["down"]
+            parts.append(f'<circle cx="{X(mi):.1f}" cy="{RY(rs[mi]):.1f}" r="2.2" fill="{col}"/>')
+            parts.append(f'<text x="{X(mi):.1f}" y="{RY(rs[mi])-7:.1f}" text-anchor="middle" '
+                         f'font-size="9.5" font-weight="600" fill="{col}">{sc}</text>')
         parts.append(f'<text x="{X(n-1)+8:.1f}" y="{RY(rs[-1])+4:.1f}" font-size="12.5" '
                      f'font-weight="800" fill="{TOK["rs"]}">RS {meta.get("rs_score","—")}</text>')
 
-    # Ants (삼각형)
-    for d in (it.get("ants") or []):
-        i = idx.get(d)
-        if i is not None:
-            y = Y(l[i]) + 12
-            parts.append(f'<path d="M {X(i):.1f} {y:.1f} l -4.2 7 l 8.4 0 z" fill="{TOK["ema21"]}"/>')
+    # ── HTF (폴 화살선 + 깃발 박스) ─────────────────────────────────
+    for f in (it.get("htf") or []):
+        pi, fi = idx.get(f["pole_top_date"]), idx.get(f["flag_end"])
+        si = idx.get(f["pole_start"])
+        if pi is None or fi is None:
+            continue
+        if si is not None:   # 폴: 저점 → 고점 화살선
+            parts.append(f'<line x1="{X(si):.1f}" y1="{Y(l[si]):.1f}" x2="{X(pi):.1f}" '
+                         f'y2="{Y(f["pole_top"]):.1f}" stroke="#8b5cf6" stroke-width="2.2" '
+                         f'marker-end="url(#htfArrow)"/>')
+        # 깃발: 폴 고점 이후 조정 구간을 연보라 박스로
+        y0 = Y(f["pole_top"]); y1_ = Y(f["pole_top"] * (1 - f["flag_depth"] / 100))
+        parts.append(f'<rect x="{X(pi):.1f}" y="{y0:.1f}" width="{max(4,X(fi)-X(pi)):.1f}" '
+                     f'height="{max(4,y1_-y0):.1f}" fill="#8b5cf6" opacity=".12" '
+                     f'stroke="#8b5cf6" stroke-width="1" stroke-dasharray="3 3"/>')
+        htxt = f'HTF +{f["pole_gain"]:.0f}% · P {f["pivot"]}'
+        hy = place(X(pi), y0 - 18, len(htxt) * 5.6, 14)
+        parts.append(f'<text x="{X(pi):.1f}" y="{hy+11:.1f}" font-size="10" font-weight="700" '
+                     f'fill="#7c3aed">{_e(htxt)}</text>')
+
+    # ── 3~4주 타이트 밴드 ───────────────────────────────────────────
+    for tb in (it.get("tight") or []):
+        a, b2 = idx.get(tb["start"]), idx.get(tb["end"])
+        if a is None or b2 is None:
+            continue
+        ty = Y(tb["top"])
+        parts.append(f'<rect x="{X(a):.1f}" y="{ty-16:.1f}" width="{max(6,X(b2)-X(a)):.1f}" '
+                     f'height="16" fill="none" stroke="#7c5cd6" stroke-width="1.2" rx="3"/>')
+        parts.append(f'<text x="{(X(a)+X(b2))/2:.1f}" y="{ty-19:.1f}" text-anchor="middle" '
+                     f'font-size="9.5" font-weight="700" fill="#7c5cd6">{tb["weeks"]}주T</text>')
+
+    # ── VCP 축소 표기 ───────────────────────────────────────────────
+    vcp = it.get("vcp")
+    if vcp:
+        parts.append(f'<g><rect x="{PAD_L+14}" y="40" width="176" height="24" rx="6" '
+                     f'fill="{TOK["amberBg"]}" stroke="#e6d3a8"/>'
+                     f'<text x="{PAD_L+102}" y="56" text-anchor="middle" font-size="11.5" '
+                     f'font-weight="700" fill="{TOK["amber"]}">'
+                     f'VCP {vcp["n"]}축소 {vcp["from"]:.0f}→{vcp["to"]:.0f}%</text></g>')
+
+    # ── ANTS ────────────────────────────────────────────────────────
+    #   MVP 3조건(M·V·P) 충족 = 진한 큰 삼각형 / M+V 만 = 옅은 작은 삼각형
+    #   클라이맥스(50일선 이격 과대) = 주황 역삼각형 ▽ 경고
+    for a in (it.get("ants") or []):
+        rec = a if isinstance(a, dict) else {"d": a, "kind": "weak", "mvp": False}
+        i = idx.get(rec.get("d"))
+        if i is None:
+            continue
+        y = Y(l[i]) + 12
+        if rec.get("kind") == "climax":
+            parts.append(f'<path d="M {X(i):.1f} {y+8:.1f} l -4.6 -8 l 9.2 0 z" '
+                         f'fill="{TOK["amber"]}"/>')
+        elif rec.get("mvp"):
+            parts.append(f'<path d="M {X(i):.1f} {y:.1f} l -5 8 l 10 0 z" '
+                         f'fill="{TOK["ema21"]}"/>')
+        else:
+            parts.append(f'<path d="M {X(i):.1f} {y+1:.1f} l -3.2 5.5 l 6.4 0 z" '
+                         f'fill="{TOK["ema21"]}" opacity=".45"/>')
 
     # 마지막 종가 태그
     parts.append(f'<rect x="{W-PAD_R+4}" y="{Y(last)-11:.1f}" width="76" height="22" rx="4" fill="#1c2530"/>'
@@ -266,7 +399,7 @@ def _one(it: Dict) -> str:
 
     # 날짜 눈금
     ticks = []
-    step = max(1, n // 14)
+    step = max(1, n // 22)
     for i in range(0, n, step):
         dt = dates[i]
         ticks.append(f'<text x="{X(i):.1f}" y="{VOL_H-6}" text-anchor="middle" font-size="10.5" '
@@ -316,7 +449,10 @@ def _one(it: Dict) -> str:
 <div class="card">
   <div class="readout">{_e(dates[-1])} &nbsp; 시 <b>{o[-1]:,.2f}</b> &nbsp; 고 <b>{h[-1]:,.2f}</b>
    &nbsp; 저 <b>{l[-1]:,.2f}</b> &nbsp; 종 <b>{last:,.2f}</b> &nbsp; 거래량 <b>{_fmt_vol(v[-1])}</b></div>
-  <svg viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMid meet">{''.join(parts)}</svg>
+  <svg viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMid meet">
+    <defs><marker id="htfArrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5"
+      orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="#8b5cf6"/></marker></defs>
+    {''.join(parts)}</svg>
   <svg viewBox="0 0 {W} {VOL_H}" preserveAspectRatio="xMidYMid meet">
     <text x="{PAD_L}" y="16" font-size="11.5" fill="{TOK['mut']}">거래량 · 50일 평균선</text>
     {''.join(vparts)}{''.join(ticks)}</svg>
@@ -326,7 +462,9 @@ def _one(it: Dict) -> str:
     <span><i style="border-color:{TOK['ma200']}"></i>200일선</span>
     <span><i style="border-color:{TOK['rs']}"></i>RS 라인 (대 S&amp;P500) · <b>굵은 구간 = RS 신고가 영역</b></span>
     <span><i style="border-color:{TOK['arc']}"></i>베이스 윤곽(컵) · 점선 = 피벗(매수점)</span>
-    <span>▲ Ants (매집: 15봉중 12↑·거래량↑)</span>
+    <span>▲ ANTS <b>MVP</b> (15일중 12↑ · 15일 +20% · 거래량 50일평균×1.2)</span>
+    <span style="opacity:.55">▲ ANTS 약식 (M+V만)</span>
+    <span style="color:#a86a14">▽ 클라이맥스 경고 (50일선 이격 과대)</span>
     <span>● Blue Dot (RS 52주 신고가)</span>
   </div>
 </div>
