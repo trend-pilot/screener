@@ -2181,11 +2181,23 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
       </div>
     </section>
 
-    <!-- ③ 강세 섹터 -->
+    <!-- ④ 진입 후보 추이 -->
     <section class="db-section">
       <div class="db-section-header">
-        <span class="db-section-num">③</span>
-        <span class="db-section-title">강세 섹터</span>
+        <span class="db-section-num">④</span>
+        <span class="db-section-title">진입 후보 추이</span>
+        <span class="db-section-desc">강세 셋업·리더 종목 수의 누적 변화</span>
+      </div>
+      <div class="db-section-body" id="db-trend-body">
+        <div class="db-placeholder">⏳ 추이 데이터 누적 중 — 2일 이상 실행 시 차트 표시</div>
+      </div>
+    </section>
+
+    <!-- ⑤ 섹터 강도 현황 -->
+    <section class="db-section">
+      <div class="db-section-header">
+        <span class="db-section-num">⑤</span>
+        <span class="db-section-title">섹터 강도 현황 (RS Line 점수 기반)</span>
         <span class="db-section-desc">어느 섹터에서 종목을 찾을 것인가</span>
       </div>
       <div class="db-section-body" id="db-sector-body">
@@ -2196,8 +2208,8 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
     <!-- ③ 강세 산업 -->
     <section class="db-section">
       <div class="db-section-header">
-        <span class="db-section-num">③</span>
-        <span class="db-section-title">강세 산업</span>
+        <span class="db-section-num">⑥</span>
+        <span class="db-section-title">강세 세부 업종 (Industry-level)</span>
         <span class="db-section-desc">섹터 안에서 어느 세부 업종이 뜨는가</span>
       </div>
       <div class="db-section-body" id="db-industry-body">
@@ -2208,8 +2220,8 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
     <!-- ④ 진입 후보 -->
     <section class="db-section">
       <div class="db-section-header">
-        <span class="db-section-num">④</span>
-        <span class="db-section-title">진입 후보</span>
+        <span class="db-section-num">⑧</span>
+        <span class="db-section-title">진입 후보 — 테마 종합점수 × 추세 초기 강세</span>
         <span class="db-section-desc">오늘 매수를 고려할 종목</span>
       </div>
       <div class="db-section-body" id="db-candidates-body">
@@ -2220,7 +2232,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
     <!-- ⑤ 워치리스트 변동 -->
     <section class="db-section">
       <div class="db-section-header">
-        <span class="db-section-num">⑤</span>
+        <span class="db-section-num">⑨</span>
         <span class="db-section-title">워치리스트 변동</span>
         <span class="db-section-desc">관심 종목 중 오늘 어떤 변화가</span>
       </div>
@@ -2232,7 +2244,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
     <!-- ⑥ 보유 포지션 -->
     <section class="db-section">
       <div class="db-section-header">
-        <span class="db-section-num">⑥</span>
+        <span class="db-section-num">⑩</span>
         <span class="db-section-title">보유 포지션</span>
         <span class="db-section-desc">매수가 대비 손익 + IBD 손절/익절 시그널 (localStorage 기반)</span>
       </div>
@@ -11442,12 +11454,15 @@ function renderDailyBriefingFlow() {
   const body = document.getElementById('db-flow-body');
   if (!body) return;
   const F = (typeof US !== 'undefined' && US.flow) ? US.flow : null;
+  const _tb = document.getElementById('db-trend-body');
   if (!F || !F.date) {
-    body.innerHTML = `<div class="db-placeholder">⏳ 흐름 이력 없음 — phase_history.py v13 배포 후 screener 재실행 시 표시됩니다</div>`;
+    const m = `<div class="db-placeholder">⏳ 흐름 이력 없음 — phase_history.py v13 배포 후 screener 재실행 시 표시됩니다</div>`;
+    body.innerHTML = m; if (_tb) _tb.innerHTML = m;
     return;
   }
   if (F.first_day) {
     body.innerHTML = `<div style="font-size:12px;color:#666;padding:10px 2px">📗 흐름 이력 첫날 — 강세 셋업 <b>${F.setup_today}</b>개 기록. 내일 실행부터 진입/편출이 표시됩니다.</div>`;
+    if (_tb) _tb.innerHTML = `<div style="font-size:11.5px;color:#999;padding:8px 2px">추이 데이터 1일치 누적 — 내일부터 차트가 그려집니다.</div>`;
     return;
   }
   const dC = F.delta > 0 ? '#1a8a4a' : F.delta < 0 ? '#A32D2D' : '#888';
@@ -11492,9 +11507,8 @@ function renderDailyBriefingFlow() {
       `<polyline fill="none" stroke="${c}" stroke-width="1.8" points="${S.map((p, i) => `${X(i).toFixed(1)},${Y(p[k] || 0).toFixed(1)}`).join(' ')}"/>`).join('');
     const last = S[S.length - 1];
     chart = `
-      <div style="margin-top:14px;padding-top:10px;border-top:1px solid #f0efea">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;margin-bottom:6px">
-          <span style="font-size:12px;font-weight:700;color:#1a4a08">④ 진입 후보 추이</span>
+      <div>
+        <div style="display:flex;justify-content:flex-end;margin-bottom:6px">
           <span style="font-size:10.5px;color:#999">${S[0].date} → ${last.date} · ${S.length}일 누적 (최대 60일)</span>
         </div>
         <svg viewBox="0 0 ${W} ${H}" style="width:100%;height:${H}px;display:block">${lines}</svg>
@@ -11503,8 +11517,12 @@ function renderDailyBriefingFlow() {
         </div>
       </div>`;
   } else {
-    chart = `<div style="margin-top:12px;font-size:11px;color:#999;padding-top:8px;border-top:1px solid #f0efea">④ 진입 후보 추이 — 데이터 ${S.length}일치 (2일 이상 누적 시 차트 표시)</div>`;
+    chart = `<div style="font-size:11.5px;color:#999;padding:8px 2px">추이 데이터 ${S.length}일치 누적 — 2일 이상부터 차트가 그려집니다 (최대 60일).</div>`;
   }
+
+  // ④ 추이 차트는 별도 섹션에 렌더
+  const tbody = document.getElementById('db-trend-body');
+  if (tbody) tbody.innerHTML = chart;
 
   body.innerHTML = `
     <div style="font-size:12px;color:#555;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #f0efea">
@@ -11522,8 +11540,7 @@ function renderDailyBriefingFlow() {
         <div style="font-size:12px;font-weight:700;color:#185FA5;margin-bottom:5px">🏭 산업 카테고리 변화</div>
         ${indHtml}
       </div>
-    </div>
-    ${chart}`;
+    </div>`;
 }
 
 function renderDailyBriefingSector(sectors) {
