@@ -21,7 +21,7 @@ import numpy as np
 from dotenv import load_dotenv
 
 from phase_history import annotate_and_persist  # v11: Phase 전환 추적
-from ad_early_strength import compute_ad_rating, compute_early_strength  # AD·추세초기강세 (참고본 ⑧)
+from ad_early_strength import compute_ad_rating, compute_early_strength, compute_vol_ratio  # AD·추세초기강세·거래량비율 (참고본 ⑧)
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -508,6 +508,13 @@ def process_symbol(ticker, name, asset_type="STOCK", asset_class=""):
             log.debug(f"{ticker} AD 계산 오류: {e}")
             ad_score, ad_grade = None, None
 
+        # 거래량 비율 (50일 평균 대비) — ⑧ 진입 근거의 '거래량 폭증/미달'
+        try:
+            vol_ratio = compute_vol_ratio(volume.values)
+        except Exception as e:
+            log.debug(f"{ticker} 거래량비율 오류: {e}")
+            vol_ratio = None
+
         return {
             "ticker":    ticker, "market":"US", "name":name,
             "asset_type":  asset_type,    # "STOCK" or "ETF"
@@ -526,6 +533,7 @@ def process_symbol(ticker, name, asset_type="STOCK", asset_class=""):
             "ibd_raw":   round(ibd_raw, 2),
             "ad":        ad_score,    # AD 점수 0~100 (없으면 None)
             "ad_grade":  ad_grade,    # A+/A/B/C/D/E
+            "vol_ratio_50d": vol_ratio,  # 50일 평균 대비 당일 거래량 배수
             "early_strength": None,   # 추세초기강세 — main()에서 phase 채운 뒤 계산
             "is_stage2": False,
             "_base": all([c1,c2,c3,c4,c5,c6]),

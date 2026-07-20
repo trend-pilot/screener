@@ -11866,31 +11866,34 @@ function themeGlobalMeanRSL(list) {
   return n ? sum / n : 0;
 }
 function themeComposite(ind, gm) {
+  // [보정 근거] 참고 대시보드 2026-07-01 실측값으로 스케일 캘리브레이션.
+  //   Airlines(9) RSL66→종합68.9 · Biotechnology(75) RSL71→66.0 · Diagnostics(12) RSL74→67.5
+  //   → 종합점수는 'RS Line ±8' 밴드에 머물며 대체로 약간 아래. 따라서 품질 가산은
+  //     큰 보너스가 아니라 기대치(baseline) 대비 '편차'로 반영한다.
   const n = ind.count || 0;
   const rsl = (ind.avg_rs_line_score ?? ind.avg_rs ?? 0);
-  // 1) 베이즈 RSL — 소표본은 전체 평균으로 수축
+  // 1) 베이즈 RSL — 소표본은 전체 평균으로 수축 (가이드: K=10)
   const base = (n * rsl + THEME_SHRINK_K * gm) / (n + THEME_SHRINK_K);
-  // 2) Phase 품질 (리더 비중) + 신고가 비율
+  // 2) Phase·신고가·지속성 — 기대치 대비 편차 (대략 -6 ~ +6)
   const leadRatio = n ? (ind.leader_count || 0) / n : 0;
   const pc = ind.phase_counts || {};
   const topRatio = n ? ((pc['4plus'] || 0) + (pc['4'] || 0)) / n : 0;
-  const phaseBonus = leadRatio * 8 + topRatio * 7;              // 최대 15
-  const h52Bonus = ((ind.h52_ratio || 0) / 100) * 6;             // 최대 6
+  const h52 = (ind.h52_ratio || 0) / 100;
+  const persist = (ind.acc_ratio || 0) / 100;
+  const qual = leadRatio * 4 + topRatio * 3 + h52 * 3 + persist * 2;   // 0~12
   // 3) Δ1주 (모멘텀 방향)
-  const d1w = Math.max(-6, Math.min(6, (ind.avg_w1 || 0) * 1.2));
-  // 4) 지속성 (가속 종목 비중)
-  const persist = ((ind.acc_ratio || 0) / 100) * 5;              // 최대 5
-  const v = base + phaseBonus + h52Bonus + d1w + persist;
-  return Math.round(Math.max(0, Math.min(100, v)) * 10) / 10;   // 0~100
+  const d1w = Math.max(-4, Math.min(4, (ind.avg_w1 || 0) * 0.8));
+  const v = base + (qual - 6) + d1w;
+  return Math.round(Math.max(0, Math.min(100, v)) * 10) / 10;
 }
 function themeStrength(comp, ind) {
-  // 참고본 표기와 동일하게 '오늘 신호 델타(+N)'를 반환한다 (종합점수와 별도 지표).
+  // 참고본 표기와 동일한 '오늘 신호 델타(+N)'. 실측 밴드 +26 ~ +42 에 맞춰 캘리브레이션.
   const n = ind.count || 1;
   const pc = ind.phase_counts || {};
-  const fresh = ((ind.new_count || 0) / n) * 25;                     // 🆕 신규 진입 비중
-  const lead  = (((pc['4plus'] || 0) * 2 + (pc['4'] || 0)) / n) * 20; // 🚀🎯+ 리더 비중
-  const accel = ((ind.acc2_ratio || 0) / 100) * 12;                   // 가속
-  const back  = ((ind.warn_count || 0) / n) * 20;                     // ⚠ 역행
+  const fresh = ((ind.new_count || 0) / n) * 25;
+  const lead  = ((((pc['4plus'] || 0) + (pc['4'] || 0) + (pc['5'] || 0)) / n)) * 30;
+  const accel = ((ind.acc2_ratio || 0) / 100) * 15;
+  const back  = ((ind.warn_count || 0) / n) * 20;
   return Math.round((fresh + lead + accel - back) * 10) / 10;
 }
 function renderThemeAnalysisTab(sectors) {
@@ -12226,43 +12229,55 @@ function renderDailyBriefingCandidates(stocks) {
     // 백분위 위치(0=최상위 … 1=최하위). 임계는 매 실행 전체 산업 분포에서 도출 → 시장 적응.
     const _indPct = (v) => { const i = _iv.findIndex(x => x <= v); return _iv.length ? (i < 0 ? 1 : i / _iv.length) : 1; };
 
+    // [확신도 calcEntryScore] 참고 대시보드 2026-06-30 / 07-01 실측값 기준 (21개 항목 관측).
+    //   ⚡🆕 트리플 전환(가속+오늘 상향) +30  ·  🚀 신선 진입(N일째) +25
+    //   📊 거래량 폭증(50d 3x+) +15  ·  📈 RS Line 60~79 +12 / 80+ +7
+    //   📊 패턴 +10  ·  🔥🔥 산업강도 상위20% +10 / 🔥 21~50% +7 / 51~80% +3
+    //   ⚠ 거래량 미달(50d <1x)은 주의사항 표시 + −10 감점 (CUE 49→39, CLS 52→42, JAZZ 62→52 로 역산 검증)
     const _conf = (s) => {
-      const pts = []; let tot = 0;
-      const add = (t,p) => { pts.push([t,p]); tot += p; };
-      // 신선도: 전환 후 경과일수(days_since_phase_change)가 있으면 차등, 없으면 당일 플래그만
-      //   단, '상향' 진입일 때만 가점 (phase_change_was_up === false 면 하향 진입 → 제외)
+      const pts = []; const warns = []; let tot = 0;
+      const add = (t, p) => { pts.push([t, p]); tot += p; };
+      // A) 신선도 — 트리플 전환(가속 동반)이 우선, 아니면 경과일 기반 신선 진입
       const dsc = (typeof s.days_since_phase_change === 'number') ? s.days_since_phase_change : null;
-      if (dsc !== null && dsc >= 0 && dsc <= 10 && s.phase_change_was_up !== false) {
+      const freshOK = (s.phase_change_was_up !== false);
+      const accel = !!(s.acc2 || s.acc);
+      if (accel && s.phase_changed_up) {
+        add('⚡🆕 트리플 전환 (가속+오늘 Phase 상향)', 30);
+      } else if (dsc !== null && dsc >= 0 && dsc <= 10 && freshOK) {
         const fp = dsc === 0 ? 25 : dsc <= 2 ? 22 : dsc <= 5 ? 18 : 12;
         add(`🚀 신선 진입 (Phase ${s.phase}, ${dsc + 1}일째 — 페이크아웃 1차 통과)`, fp);
       } else if (s.phase_changed_up) {
         add('🚀 신선 진입 (오늘 Phase 상향)', 25);
       }
-      // [E 등급] 가이드 사양: RS Line 80+ +10 / 65~79 +7 / 50~64 +3 (선행 지표)
+      // B) 거래량 (vol_ratio_50d 필드가 있을 때만)
+      const vr = (typeof s.vol_ratio_50d === 'number') ? s.vol_ratio_50d : null;
+      if (vr !== null) {
+        if (vr >= 3)        add(`📊 거래량 폭증 (50d ${vr.toFixed(1)}x — 매우 강한 확인)`, 15);
+        else if (vr >= 1.5) add(`📊 거래량 증가 (50d ${vr.toFixed(1)}x — 확인)`, 8);
+        else if (vr < 1)  { warns.push(`⚠ 거래량 미달 (50d ${vr.toFixed(1)}x — false breakout 위험)`); tot -= 10; }  // 실측: 주의 표시 + 10점 감점
+      }
+      // C) RS Line — 실측: 60~79 early breakout +12 / 80+ 진행 중 +7
       const rl = s.rs_line_score || 0;
-      if (rl >= 80)      add(`📈 RS Line ${rl} (선행 강세)`, 10);
-      else if (rl >= 65) add(`📈 RS Line ${rl} (early breakout ⭐)`, 7);
-      else if (rl >= 50) add(`📈 RS Line ${rl} (형성 중)`, 3);
+      if (rl >= 80)      add(`📈 RS Line ${rl} (진행 중)`, 7);
+      else if (rl >= 60) add(`📈 RS Line ${rl} (early breakout ⭐)`, 12);
+      // D) 패턴
       if ((s.pattern_count || 0) > 0) add(`📊 패턴 ${s.pattern_count}종${s.best_pattern ? ` (최고 ${s.best_pattern})` : ''}`, 10);
-      // [H 산업 강도] 가이드 사양: 백분위 Top20% +10 / 21~50% +7 / 51~80% +3 / 절대약세 -5
+      // E) 산업 강도 — 백분위 티어
       const isc = _indScore[s.industry];
       if (typeof isc === 'number') {
-        const pr = _indPct(isc);   // 0=최상위 … 1=최하위
-        if (pr <= 0.20)      add(`🔥 산업 강도 ${Math.round(isc)} (${s.industry} · 상위 20%)`, 10);
-        else if (pr <= 0.50) add(`🔥 산업 강도 ${Math.round(isc)} (${s.industry} · 상위 50%)`, 7);
-        else if (pr <= 0.80) add(`🔥 산업 강도 ${Math.round(isc)} (${s.industry} · 상위 80%)`, 3);
-        if (isc < 40)        add(`🔻 산업 절대 약세 (${s.industry})`, -5);
+        const pr = _indPct(isc);
+        if (pr <= 0.20)      add(`🔥🔥 산업 강도 ${Math.round(isc)} (${s.industry} · 상위 20%)`, 10);
+        else if (pr <= 0.50) add(`🔥 산업 강도 ${Math.round(isc)} (${s.industry} · 상위 21~50%)`, 7);
+        else if (pr <= 0.80) add(`🔥 산업 강도 ${Math.round(isc)} (${s.industry} · 상위 51~80%)`, 3);
       }
-      if ((s.ad || 0) >= 70) add(`💪 AD ${s.ad} ${s.ad_grade} (기관 매집)`, 10);
-      if (s.is_stage2) add('✅ Stage 2 (추세 확립)', 8);
-      return { tot, pts };
+      return { tot, pts, warns };
     };
 
     const _cands = _pool.map(s => {
       const theme = _indScore[s.industry] || 0;
       const es = s.early_strength || 0;
       const c = _conf(s);
-      return { s, theme, es, sort: Math.round((theme*0.4 + es*0.6)*10)/10, conf: c.tot, pts: c.pts };
+      return { s, theme, es, sort: Math.round((theme*0.4 + es*0.6)*10)/10, conf: c.tot, pts: c.pts, warns: c.warns || [] };
     }).filter(x => x.es > 0).sort((a,b) => b.sort - a.sort);
 
     const _stars = c => c >= 60 ? ['★★★★★ 매우 높음','#b5521a','#FFF3E0']
@@ -12301,6 +12316,11 @@ function renderDailyBriefingCandidates(stocks) {
         <div style="font-size:11px;color:#555;line-height:1.7">
           ${x.pts.length ? x.pts.map(p => `<div>• ${p[0]} <span style="color:#1a8a4a;font-weight:600">(+${p[1]})</span></div>`).join('') : '<div style="color:#aaa">— 가점 항목 없음</div>'}
         </div>
+        ${(x.warns && x.warns.length) ? `
+        <div style="margin-top:6px;padding:6px 9px;background:#FFF8E8;border:1px solid #efe0b8;border-radius:6px">
+          <div style="font-size:10.5px;font-weight:700;color:#8a6a1a;margin-bottom:2px">⚠ 주의사항</div>
+          <div style="font-size:10.5px;color:#7a6a3a;line-height:1.6">${x.warns.map(w => `<div>• ${w.replace(/^⚠\s*/,'')} <span style="color:#a13030;font-weight:600">(−10)</span></div>`).join('')}</div>
+        </div>` : ''}
       </div>`;
     };
 

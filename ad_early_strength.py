@@ -83,6 +83,29 @@ def compute_ad_rating(high, low, close, volume, lookback=50):
 
 
 # ─────────────────────────────────────────────────────────────────────
+# 1-b) 거래량 비율 (50일 평균 대비 당일)
+# ─────────────────────────────────────────────────────────────────────
+def compute_vol_ratio(volume, lookback=50):
+    """
+    당일 거래량 / 최근 lookback일 평균 거래량.
+    참고 대시보드 ⑧ 진입 근거의 '거래량 폭증 (50d 3.9x)' / '거래량 미달 (50d 0.4x)' 용.
+    return: float (소수 2자리) 또는 None
+    """
+    v = np.asarray(volume, dtype=float)
+    v = v[np.isfinite(v)]
+    if len(v) < 10:
+        return None
+    today = float(v[-1])
+    base = v[-(lookback + 1):-1] if len(v) > lookback else v[:-1]
+    if len(base) == 0:
+        return None
+    avg = float(np.mean(base))
+    if avg <= 0:
+        return None
+    return round(today / avg, 2)
+
+
+# ─────────────────────────────────────────────────────────────────────
 # 2) 추세초기강세
 # ─────────────────────────────────────────────────────────────────────
 def compute_early_strength(s):
