@@ -12448,6 +12448,26 @@ function _srSeries(n, retPct, vol, seed){
 }
 
 function renderStrategyPortfolio(){
+  // [폴백 가시화] 실데이터를 못 읽어 샘플로 대체될 때 화면 '최상단'에 크게 알린다.
+  //   (기존엔 맨 아래 작은 배너뿐이라 옛 날짜가 실데이터처럼 보였다)
+  try {
+    const _real = (typeof window.__STRATEGY_ROOM === 'object' && window.__STRATEGY_ROOM);
+    const _errs = window.__JSON_PARSE_ERRORS || [];
+    const _host = document.getElementById('sr-fallback-warn') || (() => {
+      const d = document.createElement('div'); d.id = 'sr-fallback-warn';
+      const anchor = document.getElementById('strategy-room') || document.body;
+      anchor.insertBefore(d, anchor.firstChild); return d;
+    })();
+    if (!_real) {
+      const why = _errs.length
+        ? `strategy_room.json 을 읽었지만 <b>파싱 실패</b> (${_errs.map(e => e.reason).join(', ')})`
+        : 'strategy_room.json 을 찾지 못함 (엔진 첫 실행 전이면 정상)';
+      _host.innerHTML = `<div style="background:#FDF2F2;border:2px solid #e8b4b4;border-radius:9px;padding:11px 14px;margin:10px 0;font-size:12.5px;color:#a13030;line-height:1.6">
+        🚨 <b>아래는 실제 데이터가 아니라 시연용 샘플입니다.</b><br>
+        <span style="font-size:11.5px;color:#8a4a4a">사유: ${why} · F12 콘솔에서 상세 확인</span></div>`;
+    } else { _host.innerHTML = ''; }
+  } catch (e) {}
+
   var body=document.getElementById('strategyroom-portfolio');
   if(!body) return;
   var d=_srData();
@@ -12842,9 +12862,23 @@ async function autoLoad() {
       try {
         const r = await fetch(p + cacheBust);
         if (!r.ok) continue;
-        const json = await r.json();
+        const txt = await r.text();
+        let json;
+        try {
+          json = JSON.parse(txt);
+        } catch (pe) {
+          // [중요] 파싱 실패를 조용히 넘기면 '샘플 폴백'이 실데이터처럼 보인다.
+          //   대표 원인: 파이썬이 NaN/Infinity 를 그대로 기록 (표준 JSON 아님)
+          const hasNaN = /\bNaN\b|\bInfinity\b/.test(txt);
+          console.error(`%c[자동로드] ❌ ${p} JSON 파싱 실패${hasNaN ? ' — 파일에 NaN/Infinity 가 있습니다 (표준 JSON 아님)' : ''}: ${pe.message}`, 'color:#c0392b;font-weight:bold');
+          window.__JSON_PARSE_ERRORS = window.__JSON_PARSE_ERRORS || [];
+          window.__JSON_PARSE_ERRORS.push({ path: p, reason: hasNaN ? 'NaN/Infinity' : pe.message });
+          continue;
+        }
         results.push({ path: p, json });
-      } catch (e) {}
+      } catch (e) {
+        console.warn(`[자동로드] ${p} 요청 실패: ${e.message}`);
+      }
     }
     return results;
   };
