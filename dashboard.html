@@ -11553,6 +11553,20 @@ function renderDailyBriefingSector(sectors) {
   // RS Line 점수 기준 정렬 + GICS 미분류('Other')·RS구간 폴백 버킷 제외 (참고본과 동일)
   let _s2 = sectors.filter(s => s.name !== 'Other' && !/RS\s|회피|약세|양호|중립|강세|최상위/.test(s.name));
   if (!_s2.length) _s2 = sectors;
+  // [축소 보정 shrinkage] 3~9종목짜리 작은 섹터가 평균 노이즈로 1위를 차지하는 문제 보정.
+  //   조정점수 = (n·섹터평균 + K·전체평균) / (n + K),  K=10
+  //   → 큰 섹터는 거의 그대로, 작은 섹터는 전체 평균 쪽으로 수축 (참고본 문서 정의와 동일)
+  const _SHRINK_K = 10;
+  {
+    let _sum = 0, _cnt = 0;
+    _s2.forEach(x => { const n = x.count || 0; _sum += (x.avg_rs_line || 0) * n; _cnt += n; });
+    const _gm = _cnt ? _sum / _cnt : 0;
+    _s2 = _s2.map(x => {
+      const n = x.count || 0;
+      const adj = (n * (x.avg_rs_line || 0) + _SHRINK_K * _gm) / (n + _SHRINK_K);
+      return Object.assign({}, x, { avg_rs_line: Math.round(adj), _raw_rs_line: Math.round(x.avg_rs_line || 0) });
+    });
+  }
   const sorted = [..._s2].sort((a,b) => (b.avg_rs_line || 0) - (a.avg_rs_line || 0));
   // [참고본 ⑤ 레이아웃] 강세 ≥65 / 약세 <35 / 그 사이(35~64) = 양호 폴드
   const STRONG_DB = 65, WEAK_DB = 35;
@@ -11564,7 +11578,11 @@ function renderDailyBriefingSector(sectors) {
   // [가드] 전일 phase 가 전부 동일('01' 등)하면 = phase_history 결측 → NEW↑ 신뢰 불가 → 🆕 숨김.
   const _allDbStocks = sectors.flatMap(s => s.allStocks || []);
   const _puRatio = _allDbStocks.length ? _allDbStocks.filter(s => s.phase_changed_up).length / _allDbStocks.length : 0;
-  const _phaseHistOK = _puRatio > 0 && _puRatio < 0.9;
+  // 전일 phase 가 '전 종목 동일'(=이력 결측)일 때만 결측으로 판단.
+  // 전환 0건은 정상 상황(그날 전환이 없었을 뿐)이므로 경고하지 않는다.
+  const _phaseMissing = _allDbStocks.length > 0 &&
+        (_puRatio >= 0.9 || _allDbStocks.every(s => s.phase_yesterday == null));
+  const _phaseHistOK = !_phaseMissing;
   const counters = (s) => {
     let nNew = 0, nLead = 0, nTop = 0;
     (s.allStocks || []).forEach(st => {
@@ -11591,7 +11609,7 @@ function renderDailyBriefingSector(sectors) {
           ${ctr.length ? `<div style="font-size:10.5px;color:#73726c;margin-top:3px;display:flex;gap:8px">${ctr.join('')}</div>` : ''}
         </div>
         <div style="text-align:right;white-space:nowrap;flex-shrink:0">
-          <span style="font-size:10px;color:#999">RS Line</span> <span style="font-size:15px;font-weight:700;color:${accent}">${rl}</span>
+          <span style="font-size:10px;color:#999">RS Line</span> <span style="font-size:15px;font-weight:700;color:${accent}" title="축소보정 ${rl} (원점수 ${s._raw_rs_line ?? rl}, n=${s.count})">${rl}</span>
           <span style="font-size:10px;color:#aaa"> · IBD ${ibd}</span>
         </div>
       </div>`;
@@ -11607,7 +11625,7 @@ function renderDailyBriefingSector(sectors) {
       📊 RS Rating 70+ 종목 기준 (${poolCount.toLocaleString()}개) · 1위 ${strong.length ? `${strong[0].name} RS Line ${Math.round(strong[0].avg_rs_line||0)}` : '—'}
     </div>
     <div style="background:#FFFBEF;border:1px solid #efe6c8;border-radius:8px;padding:9px 12px;margin-bottom:12px;font-size:11px;color:#7a6a3a;line-height:1.55">
-      💡 <b>RS Line 점수 기반 분류</b>: 섹터 ETF 대비 종목 RS Line 평균. 강세 ${STRONG_DB}+ · 양호 ${WEAK_DB}~${STRONG_DB-1} · 약세 ${WEAK_DB} 미만. 큰 섹터는 평균이 안정적, 작은 섹터는 전체 평균에 묶임.${!_phaseHistOK ? `<br><span style="color:#a86b2a">⚠ 전일 phase 데이터 결측(phase_yesterday 동일) → 🆕(오늘 상향) 카운터 숨김. phase_history 정상화 시 자동 표시.</span>` : ''}
+      💡 <b>RS Line 점수 기반 분류</b>: 섹터 ETF 대비 종목 RS Line 평균. 강세 ${STRONG_DB}+ · 양호 ${WEAK_DB}~${STRONG_DB-1} · 약세 ${WEAK_DB} 미만. 큰 섹터는 평균이 안정적, 작은 섹터(n작음)는 축소보정으로 전체 평균에 묶임 — 숫자 hover 시 원점수 표시.${!_phaseHistOK ? `<br><span style="color:#a86b2a">⚠ 전일 phase 이력 없음/동일 → 🆕(오늘 상향) 카운터 숨김. phase_history 누적 시 자동 표시.</span>` : ''}
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
       <!-- 강세 컬럼 -->
