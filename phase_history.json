@@ -1239,7 +1239,6 @@
     "SMTC": "01",
     "SNDK": "01",
     "SNDX": "3",
-    "SNEX": "01",
     "SNPS": "01",
     "SNY": "3",
     "SOFI": "67",
@@ -1453,7 +1452,6 @@
     "WING": "01",
     "WIX": "67",
     "WLDN": "01",
-    "WLFC": "01",
     "WMG": "2",
     "WMT": "01",
     "WRD": "67",
@@ -4759,7 +4757,6 @@
     "SMTC": "2026-07-20",
     "SNDK": "2026-07-20",
     "SNDX": "2026-07-20",
-    "SNEX": "2026-07-20",
     "SNPS": "2026-07-20",
     "SNY": "2026-07-20",
     "SOFI": "2026-07-20",
@@ -4973,7 +4970,6 @@
     "WING": "2026-07-20",
     "WIX": "2026-07-20",
     "WLDN": "2026-07-20",
-    "WLFC": "2026-07-20",
     "WMG": "2026-07-20",
     "WMT": "2026-07-20",
     "WRD": "2026-07-20",
@@ -8279,7 +8275,6 @@
     "SMTC": false,
     "SNDK": false,
     "SNDX": false,
-    "SNEX": false,
     "SNPS": false,
     "SNY": true,
     "SOFI": false,
@@ -8493,7 +8488,6 @@
     "WING": false,
     "WIX": false,
     "WLDN": false,
-    "WLFC": false,
     "WMG": false,
     "WMT": false,
     "WRD": false,
@@ -8933,7 +8927,7 @@
         "setup": 294,
         "leaders": 365,
         "rs90": 351,
-        "new_up": 95
+        "new_up": 0
       }
     ]
   }
