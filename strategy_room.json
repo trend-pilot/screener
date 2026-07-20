@@ -1,1 +1,142 @@
-{}
+{
+  "data_date": "2026-07-20",
+  "track": "g3+g0+g1+g2",
+  "logic_version": "v6.15(v1)",
+  "nav": 0.9999,
+  "ret_pct": -0.01,
+  "unreal_pct": -0.01,
+  "cap": 12,
+  "runner_cap": 5,
+  "core_count": 2,
+  "runner_count": 0,
+  "regime": "🟢 Uptrend",
+  "signals": [
+    {
+      "ticker": "GPRE",
+      "industry": "Chemicals",
+      "pattern": "RS Line 선행",
+      "signal_close": 19.23,
+      "pivot": 19.65,
+      "dist": -2.1,
+      "score": 93.46
+    },
+    {
+      "ticker": "DRH",
+      "industry": "REIT - Hotel & Motel",
+      "pattern": "거래량돌파",
+      "signal_close": 12.55,
+      "pivot": 12.56,
+      "dist": -0.1,
+      "score": 68.17
+    }
+  ],
+  "gates": [
+    "G3 Trigger",
+    "G4 Guard",
+    "G0 Market",
+    "G1 Theme",
+    "G2 Pattern"
+  ],
+  "benchmarks": {
+    "strat": -0.01,
+    "spy": null,
+    "qqq": null,
+    "tqqq": null
+  },
+  "risk": {
+    "days": 1,
+    "ret": -0.01,
+    "sharpe": null,
+    "sortino": null,
+    "vol": null,
+    "mdd": null,
+    "ret_mdd": null,
+    "day_hi": null,
+    "day_lo": null,
+    "alpha_voo": null,
+    "alpha_qqq": null
+  },
+  "trades": {
+    "n": 0,
+    "winrate": null,
+    "payoff": null,
+    "pf": null,
+    "avg_win": null,
+    "avg_loss": null,
+    "expectancy": null,
+    "best": null,
+    "worst": null
+  },
+  "nav_history": [
+    {
+      "date": "2026-07-20",
+      "nav": 0.9999,
+      "chg": -0.01
+    }
+  ],
+  "holdings": [
+    {
+      "ticker": "GPRE",
+      "entry": "2026-07-20",
+      "days": 0,
+      "cd": "",
+      "entry_px": 19.23,
+      "cur": 19.23,
+      "runner": false
+    },
+    {
+      "ticker": "DRH",
+      "entry": "2026-07-20",
+      "days": 0,
+      "cd": "",
+      "entry_px": 12.55,
+      "cur": 12.55,
+      "runner": false
+    }
+  ],
+  "closed_summary": {
+    "n": 0,
+    "winrate": null,
+    "avg": null,
+    "best": null,
+    "worst": null,
+    "categories": []
+  },
+  "closed": [],
+  "_holdings": [
+    {
+      "ticker": "GPRE",
+      "entry_date": "2026-07-20",
+      "entry_px": 19.23,
+      "avg_cost_px": 19.23,
+      "shares": 0.004333506673600277,
+      "entry_value": 0.08337499999999999,
+      "cur": 19.23,
+      "max_gain_pct": 0.0,
+      "days_in": 0,
+      "current_stop": 17.8839,
+      "runner": false,
+      "oneill_8w_active": false
+    },
+    {
+      "ticker": "DRH",
+      "entry_date": "2026-07-20",
+      "entry_px": 12.55,
+      "avg_cost_px": 12.55,
+      "shares": 0.0066401062416998665,
+      "entry_value": 0.08337499999999999,
+      "cur": 12.55,
+      "max_gain_pct": 0.0,
+      "days_in": 0,
+      "current_stop": 11.6715,
+      "runner": false,
+      "oneill_8w_active": false
+    }
+  ],
+  "_closed": [],
+  "_cash": 0.83325,
+  "_entries_recent": [
+    "2026-07-20",
+    "2026-07-20"
+  ]
+}
