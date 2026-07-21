@@ -8,6 +8,8 @@ strategy_room_v1.py — 전략실 forward 페이퍼 트레이딩 엔진 (v1)
 【구현됨】
   - 5게이트 AND: G0(시장 레짐) · G1(발화 테마) · G2(패턴) · G3(RS 가속+신고가) · G4(종합점수+추세)
   - RVOL 하드게이트 (§1-B, entry_min_rvol=1.5 — vol_ratio_50d 기반)
+  - 재진입 정책 v6.20: 종목약화 손절만 10영업일 차단, 시장동반 손절은 즉시 재진입 허용
+    (판별은 청산 시점 레짐 프록시 — STRATEGY_ROOM_LOGIC.md 원문 확보 시 대조 필요)
   - total_score 랭킹 (Comp는 rs percentile로 대체)
   - 진입: 균등가중 · 12슬롯 + 런너 제외 · 레짐 사이징(진입개수/노출)
   - 보유: Lock 7단계 래칫 · 8주룰 · max-hold(40bd) · 스위칭(weed the garden)
@@ -46,8 +48,12 @@ RULES = {
     # RVOL 하드게이트 (명세 §1-B): 진입 당일 거래량이 50일 평균의 1.5배 이상.
     #   "거래량 확인 없는 돌파는 가짜 돌파" — 게이트 통과 후 진입 직전에 거른다.
     "entry_min_rvol": 1.5,
+    # 재진입 정책 v6.20: 종목약화 손절 후 이 기간 동안 같은 종목 재진입 차단.
+    #   시장동반 손절(청산 당시 레짐이 pressure/rally/correction)은 차단하지 않음 —
+    #   검증 리포트: "중간 베어에 −7% 손절로 전부 잘림 → 재진입이 필수 메커니즘".
+    "reentry_block_bdays": 10,
     "cost_bps": 5.0,
-    "track": "g3+g0+g1+g2", "logic_version": "v6.15(v1.2)",
+    "track": "g3+g0+g1+g2", "logic_version": "v6.15(v1.3)",
 }
 GATES = ["G3 Trigger","G4 Guard","G0 Market","G1 Theme","G2 Pattern"]
 # 레짐 사이징 (G0; screener market.overall = green/yellow/red 3단계로 단순화)
@@ -321,6 +327,12 @@ def run(screener_path, state_path):
                 "max_gain_pct": round(h.get("max_gain_pct", 0.0), 1),
                 "reentry": bool(h.get("reentry")),            # 재진입 건이었나
                 "giveback_pct": round(max(0.0, h.get("max_gain_pct", 0.0) - gain), 1),
+                # ── 재진입 정책 v6.20 판별용 ──
+                #   시장동반 손절 = 청산 당시 레짐이 이미 약세(pressure 이하).
+                #   종목약화 손절 = 시장은 멀쩡(confirmed/resumed)한데 혼자 -7% 도달.
+                #   ※ 레짐 프록시 기준 — STRATEGY_ROOM_LOGIC.md 원문 확보 시 대조할 것.
+                "exit_regime": regime_key,
+                "mkt_driven": regime_key in ("pressure", "rally", "correction"),
             })
         else:
             survivors.append(h)
@@ -334,10 +346,27 @@ def run(screener_path, state_path):
     #   가능하지만, 실제로 몇 건이나 일어나는지 측정된 적이 없었다.
     prev_closed = {c["ticker"] for c in closed}
 
+    # ── 재진입 차단 목록 (정책 v6.20) ────────────────────────────────
+    #   종목약화 손절(cat=="손절" & mkt_driven=False)만 10영업일 차단.
+    #   시장동반 손절·BE/Lock 청산·50일선 이탈·max hold 는 차단하지 않는다.
+    #   과거 기록에 mkt_driven 필드가 없으면(구버전 데이터) 차단하지 않음.
+    reentry_block = {}
+    for c in closed:                     # 뒤로 갈수록 최신 → 최신 기록이 덮어씀
+        if c.get("cat") == "손절" and c.get("mkt_driven") is False:
+            reentry_block[c["ticker"]] = c.get("exit", "")
+        elif c["ticker"] in reentry_block:
+            reentry_block.pop(c["ticker"])   # 이후 다른 사유 청산이 있으면 해제
+    reentry_blocked = 0
+
     cands = []
     rvol_blocked, rvol_missing = 0, 0
     for t, s in stocks.items():
         if t in held: continue
+        # 재진입 차단 (종목약화 손절 후 10영업일)
+        _bx = reentry_block.get(t)
+        if _bx and _bdays(_bx, data_date) < RULES["reentry_block_bdays"]:
+            reentry_blocked += 1
+            continue
         ok, gd = passes_gates(s, fired_themes, regime_key)
         if not ok: continue
         # 피벗 거리 가드 (근사): 52주 고점 -10%~+5%
@@ -446,7 +475,8 @@ def run(screener_path, state_path):
         json.dump(_sanitize(out), f, ensure_ascii=False, indent=2, allow_nan=False)
 
     print(f"[strategy_room] {data_date} | NAV {nav:.4f} ({chg:+.2f}%) | 보유 {len(holdings)} | 신규 {entered} | 청산누적 {len(closed)} | 레짐 {reg['label']}")
-    print(f"   RVOL 게이트(≥{RULES['entry_min_rvol']}): 차단 {rvol_blocked}건 · 데이터 없음(통과) {rvol_missing}건 · 후보 {len(cands)}건")
+    print(f"   RVOL 게이트(≥{RULES['entry_min_rvol']}): 차단 {rvol_blocked}건 · 데이터 없음(통과) {rvol_missing}건"
+          f" | 재진입 차단(종목약화 {RULES['reentry_block_bdays']}bd) {reentry_blocked}건 · 후보 {len(cands)}건")
     _rs = out.get("runner_stats") or {}
     if _rs:
         r, c_, re_ = _rs["runner_closed"], _rs["core_closed"], _rs["reentry"]
