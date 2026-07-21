@@ -7,6 +7,7 @@ strategy_room_v1.py — 전략실 forward 페이퍼 트레이딩 엔진 (v1)
 
 【구현됨】
   - 5게이트 AND: G0(시장 레짐) · G1(발화 테마) · G2(패턴) · G3(RS 가속+신고가) · G4(종합점수+추세)
+  - RVOL 하드게이트 (§1-B, entry_min_rvol=1.5 — vol_ratio_50d 기반)
   - total_score 랭킹 (Comp는 rs percentile로 대체)
   - 진입: 균등가중 · 12슬롯 + 런너 제외 · 레짐 사이징(진입개수/노출)
   - 보유: Lock 7단계 래칫 · 8주룰 · max-hold(40bd) · 스위칭(weed the garden)
@@ -16,7 +17,6 @@ strategy_room_v1.py — 전략실 forward 페이퍼 트레이딩 엔진 (v1)
 
 【v1 비활성 (데이터 없음 — screener.py 보강 시 활성)】
   - 실적 룰 전체 (days_to_earnings 없음): 실적 부분정리·재매수·실적전 정리·실적 임박 가드
-  - RVOL 하드게이트 (vol_ratio_50d 없음)
   - 피라미딩 · 클라이맥스 트림 (v6.20 확장)
   - 벤치마크 NAV(SPY/QQQ/TQQQ) — 별도 yfinance 단계 필요 (TODO)
 
@@ -43,8 +43,11 @@ RULES = {
     # 셀 시그널: 진입 후 grace 기간이 지나면 50일선 이탈 시 전량 청산.
     #   운용로직 v6.15 ④-2. (RS 다이버전스는 스크리너에 필드가 없어 미구현)
     "sell_grace_bdays": 10, "sell_ma50_break": True,
+    # RVOL 하드게이트 (명세 §1-B): 진입 당일 거래량이 50일 평균의 1.5배 이상.
+    #   "거래량 확인 없는 돌파는 가짜 돌파" — 게이트 통과 후 진입 직전에 거른다.
+    "entry_min_rvol": 1.5,
     "cost_bps": 5.0,
-    "track": "g3+g0+g1+g2", "logic_version": "v6.15(v1)",
+    "track": "g3+g0+g1+g2", "logic_version": "v6.15(v1.2)",
 }
 GATES = ["G3 Trigger","G4 Guard","G0 Market","G1 Theme","G2 Pattern"]
 # 레짐 사이징 (G0; screener market.overall = green/yellow/red 3단계로 단순화)
@@ -332,6 +335,7 @@ def run(screener_path, state_path):
     prev_closed = {c["ticker"] for c in closed}
 
     cands = []
+    rvol_blocked, rvol_missing = 0, 0
     for t, s in stocks.items():
         if t in held: continue
         ok, gd = passes_gates(s, fired_themes, regime_key)
@@ -339,6 +343,17 @@ def run(screener_path, state_path):
         # 피벗 거리 가드 (근사): 52주 고점 -10%~+5%
         _, dist = pivot_approx(s)
         if dist is not None and not (-10 <= dist <= 5): continue
+        # ── RVOL 하드게이트 (명세 §1-B, entry_min_rvol=1.5) ─────────
+        #   당일 거래량 / 50일 평균 < 1.5 → 진입 후보에서 제외.
+        #   값이 없으면(NaN/None) 피벗 가드와 동일하게 통과시키되 개수를
+        #   집계해 로그로 남긴다 — 데이터 결손이 전량 차단으로 이어지지
+        #   않게 하는 기존 가드들의 fail-open 관행을 따름.
+        rvol = _num(s.get("vol_ratio_50d"))
+        if rvol is None:
+            rvol_missing += 1
+        elif rvol < RULES["entry_min_rvol"]:
+            rvol_blocked += 1
+            continue
         cands.append((total_score(s), s))
     cands.sort(key=lambda x: x[0], reverse=True)
 
@@ -381,11 +396,13 @@ def run(screener_path, state_path):
     for score, s in cands:
         t = s["ticker"]
         _, dist = pivot_approx(s)
+        _rv = _num(s.get("vol_ratio_50d"))
         signals.append({"ticker": t, "industry": s.get("industry",""),
                         "pattern": (s.get("pattern_detail",{}).get(s.get("best_pattern"),{}) or {}).get("name", s.get("best_pattern","")),
                         "signal_close": round(float(s["price"]),2),
                         "pivot": round(float(s.get("high_52w") or s["price"]),2),
                         "dist": round(dist,1) if dist is not None else None,
+                        "rvol": round(_rv, 2) if _rv is not None else None,
                         "score": score})
         if entered >= week_quota or slots <= 0: continue
         # cash/(1+cost) 로 상한을 둬 인출액(alloc*(1+cost))이 현금을 넘지 않게 한다
@@ -429,6 +446,7 @@ def run(screener_path, state_path):
         json.dump(_sanitize(out), f, ensure_ascii=False, indent=2, allow_nan=False)
 
     print(f"[strategy_room] {data_date} | NAV {nav:.4f} ({chg:+.2f}%) | 보유 {len(holdings)} | 신규 {entered} | 청산누적 {len(closed)} | 레짐 {reg['label']}")
+    print(f"   RVOL 게이트(≥{RULES['entry_min_rvol']}): 차단 {rvol_blocked}건 · 데이터 없음(통과) {rvol_missing}건 · 후보 {len(cands)}건")
     _rs = out.get("runner_stats") or {}
     if _rs:
         r, c_, re_ = _rs["runner_closed"], _rs["core_closed"], _rs["reentry"]
