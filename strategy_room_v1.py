@@ -40,6 +40,9 @@ RULES = {
     "switch_edge_min": 12.0, "switch_protect_gain_pct": 10.0, "switch_max_per_day": 2, "switch_grace_bdays": 10,
     "runner_promote_gain_pct": 100.0, "runner_cap": 5,
     "runner_trend_min_gain_pct": 40.0, "runner_trend_giveback_max": 0.30,
+    # 셀 시그널: 진입 후 grace 기간이 지나면 50일선 이탈 시 전량 청산.
+    #   운용로직 v6.15 ④-2. (RS 다이버전스는 스크리너에 필드가 없어 미구현)
+    "sell_grace_bdays": 10, "sell_ma50_break": True,
     "cost_bps": 5.0,
     "track": "g3+g0+g1+g2", "logic_version": "v6.15(v1)",
 }
@@ -238,6 +241,13 @@ def run(screener_path, state_path):
         exit_cause = None
         if px <= h["current_stop"]:
             exit_cause = "손절" if h["max_gain_pct"] < RULES["be_threshold_pct"] else ("BE 청산" if h["current_stop"]<=h["entry_px"]*1.001 else "Lock 청산")
+        elif (RULES["sell_ma50_break"]
+              and h["days_in"] >= RULES["sell_grace_bdays"]
+              and s and _num(s.get("ma50")) and px < _num(s.get("ma50"))):
+            # 셀 시그널 — 진입 10영업일 grace 후 50일선 이탈 → 전량.
+            #   런너도 동일 적용(운용로직: "런너는 50일선 이탈만" = 시간청산은
+            #   면제되지만 50일선 이탈에는 걸린다).
+            exit_cause = "50일선 이탈"
         else:
             # 시간 청산 (런너/8주룰 면제)
             time_cap = RULES["hold_days"]
@@ -247,6 +257,14 @@ def run(screener_path, state_path):
                 exit_cause = "max hold"
 
         if exit_cause:
+            # ══ [치명적 버그 수정] 청산 대금을 현금으로 회수한다 ══
+            #   기존 코드엔 `cash +=` 가 파일 전체에 단 한 줄도 없어서,
+            #   종목을 팔면 closed[] 에 기록만 되고 자본이 증발했다.
+            #   실측(2026-07-20 라이브): 12종목 전액투자 → 3건 청산 후
+            #   회수됐어야 할 0.216 이 사라져 NAV 1.0 → 0.7484 (−25%).
+            #   미실현이 −0.2%인데 NAV 가 −25%였던 이유가 이것이다.
+            proceeds = px * (_num(h.get("shares"), 0.0) or 0.0) * (1 - cost)
+            state["_cash"] = _num(state.get("_cash"), 0.0) + proceeds
             closed.append({
                 "ticker": h["ticker"], "entry": h["entry_date"], "exit": data_date,
                 "days": h["days_in"], "entry_px": round(h["entry_px"],2), "exit_px": round(px,2),
@@ -299,7 +317,25 @@ def run(screener_path, state_path):
 
     signals = []
     entered = 0
-    target_per = nav_pre / cap  # 균등가중 목표
+
+    # ── 사이징: per-position = 가용현금 ÷ 그날 통과 신규수 ──────────
+    #   운용로직 v6.15 ⑤: "NAV÷슬롯 균등 아님 — v6.21 기각".
+    #   신호가 몰린 날은 그날 들어갈 종목 수로 현금을 쪼개 넣어 상시 풀투자를
+    #   유지한다. 흩어져 뜨면 첫날이 현금을 다 먹고 나머지는 청산 때까지 대기.
+    #   (기존엔 nav_pre/cap 고정이라 신호가 적은 날 현금이 놀았다)
+    n_plan = 0
+    _cash_left, _exp_left = cash, max_new_cash
+    for _sc, _s in cands:
+        if n_plan >= min(week_quota, slots):
+            break
+        _px = _num(_s.get("price"))
+        if _px is None or _px <= 0:
+            continue
+        n_plan += 1
+    avail = max(0.0, min(cash, max_new_cash))
+    # 왕복 비용(진입분)을 미리 반영해야 현금이 음수로 떨어지지 않는다.
+    target_per = (avail / n_plan / (1 + cost)) if n_plan > 0 else 0.0
+
     for score, s in cands:
         t = s["ticker"]
         _, dist = pivot_approx(s)
@@ -310,7 +346,8 @@ def run(screener_path, state_path):
                         "dist": round(dist,1) if dist is not None else None,
                         "score": score})
         if entered >= week_quota or slots <= 0: continue
-        alloc = min(target_per, cash, max_new_cash)
+        # cash/(1+cost) 로 상한을 둬 인출액(alloc*(1+cost))이 현금을 넘지 않게 한다
+        alloc = min(target_per, cash / (1 + cost), max_new_cash)
         if alloc < nav_pre*0.005: continue  # 먼지 가드
         px = _num(s.get("price"))
         if px is None or px <= 0:
