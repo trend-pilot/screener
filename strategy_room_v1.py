@@ -252,6 +252,12 @@ def run(screener_path, state_path):
                 "days": h["days_in"], "entry_px": round(h["entry_px"],2), "exit_px": round(px,2),
                 "shares": h["shares"], "realized": (px*(_num(h.get("shares"),0.0) or 0.0)*(1-cost) - _ev(h)),
                 "cat": exit_cause,
+                # ── 사후 분석용 메타 (검증 리포트 권고: 튜닝 전에 측정부터) ──
+                "was_runner": bool(h.get("runner")),          # 런너 승격 여부
+                "runner_tier": h.get("runner_tier"),
+                "max_gain_pct": round(h.get("max_gain_pct", 0.0), 1),
+                "reentry": bool(h.get("reentry")),            # 재진입 건이었나
+                "giveback_pct": round(max(0.0, h.get("max_gain_pct", 0.0) - gain), 1),
             })
         else:
             survivors.append(h)
@@ -259,6 +265,12 @@ def run(screener_path, state_path):
 
     # ── 2) 진입 후보 (게이트 → 가드 → 랭킹) ─────────────────────────
     held = set(h["ticker"] for h in holdings)
+    # 과거에 청산한 적 있는 티커 — 재진입 추적용.
+    #   검증 리포트: "최초발화→peak 사이 −41~−88% 중간 베어가 있어 −7% 손절에
+    #   전부 잘린다 → 재진입이 필수 메커니즘". 우리는 쿨다운이 없어 재진입이
+    #   가능하지만, 실제로 몇 건이나 일어나는지 측정된 적이 없었다.
+    prev_closed = {c["ticker"] for c in closed}
+
     cands = []
     for t, s in stocks.items():
         if t in held: continue
@@ -309,6 +321,7 @@ def run(screener_path, state_path):
             "shares": shares, "entry_value": alloc*(1+cost), "cur": px,
             "max_gain_pct": 0.0, "days_in": 0, "current_stop": px*(1+RULES["stop_pct"]/100),
             "runner": False, "oneill_8w_active": False,
+            "reentry": t in prev_closed,
         })
         cash -= alloc*(1+cost); max_new_cash -= alloc
         state.setdefault("entries_recent", []).append(data_date)
@@ -337,6 +350,13 @@ def run(screener_path, state_path):
         json.dump(_sanitize(out), f, ensure_ascii=False, indent=2, allow_nan=False)
 
     print(f"[strategy_room] {data_date} | NAV {nav:.4f} ({chg:+.2f}%) | 보유 {len(holdings)} | 신규 {entered} | 청산누적 {len(closed)} | 레짐 {reg['label']}")
+    _rs = out.get("runner_stats") or {}
+    if _rs:
+        r, c_, re_ = _rs["runner_closed"], _rs["core_closed"], _rs["reentry"]
+        print(f"   런너 청산 {r['n']}건 평균 {r['avg']:+.1f}% (승률 {r['winrate']}%, 최고 {r['best']:+.1f}%)"
+              f" | 코어 {c_['n']}건 평균 {c_['avg']:+.1f}%"
+              f" | 재진입 {re_['n']}건 평균 {re_['avg']:+.1f}%"
+              f" | 보유중 런너 {_rs['runner_active']}·재진입 {_rs['reentry_active']}")
     return out
 
 
@@ -355,6 +375,7 @@ def build_output(data_date, nav, holdings, closed, nav_history, signals, cash, r
     risk = _risk_metrics(nav_history, rets, ret_pct)
     # 트레이드 지표
     trades = _trade_metrics(closed)
+    runner_stats = _runner_metrics(closed, holdings)
     # 청산 카테고리 집계
     cat_colors = {"손절":["#A32D2D","#FDECEC"],"실적 부분정리":["#854F0B","#FFF4E6"],"BE 청산":["#185FA5","#E6F1FB"],
                   "스위칭 교체":["#0F6E56","#E0F5F2"],"실적전 정리":["#73726c","#f0efea"],"RS 다이버":["#534AB7","#F3F0FF"],
@@ -382,6 +403,7 @@ def build_output(data_date, nav, holdings, closed, nav_history, signals, cash, r
         "benchmarks": {"strat": round(ret_pct,2), "spy": None, "qqq": None, "tqqq": None},
         "risk": risk, "trades": trades, "nav_history": nav_history,
         "holdings": hd,
+        "runner_stats": runner_stats,
         "closed_summary": {"n": trades["n"], "winrate": trades["winrate"], "avg": trades["expectancy"],
                            "best": trades["best"], "worst": trades["worst"], "categories": categories},
         "closed": cl,
@@ -409,6 +431,45 @@ def _risk_metrics(nav_history, rets, ret_pct):
             "ret_mdd":round(abs(ret_pct/(mdd*100)),2) if mdd else None,
             "day_hi":round(max(rets)*100,1),"day_lo":round(min(rets)*100,1),
             "alpha_voo":None,"alpha_qqq":None}
+
+
+def _runner_metrics(closed, holdings):
+    """
+    런너 기여도 · 재진입 통계 — '튜닝하기 전에 측정하라'는 검증 리포트의
+    방법론을 그대로 따른다. 파라미터를 바꾸지 않으므로 과최적화 위험이 없다.
+
+    검증 리포트 요지(8종목 실측): 런너 ON 평균 +587% vs OFF +498% (+89%p).
+    무작위 150종목 교차검증에서도 중앙값 −0.5%p·승률 77 vs 79% 로 무해했고,
+    이득은 전부 우측 꼬리(대형 승자)에서 나왔다 → 구조적 비대칭.
+    우리 페이퍼 트레이딩에서도 같은 패턴이 나오는지 확인하기 위한 지표.
+    """
+    def _pl(c):
+        e, x = c.get("entry_px") or 0, c.get("exit_px") or 0
+        return (x / e - 1) * 100 if e else 0.0
+
+    run_c  = [c for c in closed if c.get("was_runner")]
+    core_c = [c for c in closed if not c.get("was_runner")]
+    re_c   = [c for c in closed if c.get("reentry")]
+
+    def _agg(rows):
+        if not rows:
+            return {"n": 0, "avg": 0.0, "winrate": 0.0, "best": 0.0}
+        pls = [_pl(c) for c in rows]
+        return {"n": len(rows),
+                "avg": round(sum(pls) / len(pls), 1),
+                "winrate": round(sum(1 for p in pls if p > 0) / len(pls) * 100),
+                "best": round(max(pls), 1)}
+
+    # 런너 승격 문턱을 넘었는데 결국 얼마나 되돌렸나 (락 사다리 점검용)
+    gb = [c.get("giveback_pct", 0) for c in run_c if c.get("giveback_pct") is not None]
+    return {
+        "runner_closed": _agg(run_c),
+        "core_closed":   _agg(core_c),
+        "reentry":       _agg(re_c),
+        "runner_active": sum(1 for h in holdings if h.get("runner")),
+        "reentry_active": sum(1 for h in holdings if h.get("reentry")),
+        "runner_avg_giveback": round(sum(gb) / len(gb), 1) if gb else 0.0,
+    }
 
 
 def _trade_metrics(closed):
