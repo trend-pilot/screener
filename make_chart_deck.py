@@ -242,10 +242,20 @@ def main():
     with open(out, "w", encoding="utf-8") as f:
         f.write(html)
     print(f"\n✅ 완료 → {out}  ({len(html)//1024:,} KB · {len(items)}종목)")
+    # 종목별 신호 요약 — "신호가 0건인지, 렌더링이 안 된 건지" 구분하기 위해
+    # 각 신호의 검출 개수를 그대로 보여준다.
+    print(f"\n{'종목':<8}{'RS':>4}{'Stage':>10}{'베이스':>6}{'ANTS':>14}"
+          f"{'HTF':>5}{'타이트':>7}{'VCP':>5}")
     for it in items:
         sw = it["meta"]["stage_weekly"] or {}
-        print(f"   {it['meta']['symbol']:<7} RS {str(it['meta']['rs_score']):>3} · "
-              f"Stage {sw.get('stage','—'):<9} · 베이스 {len(it['bases'])}개")
+        ants = it.get("ants") or []
+        mvp = sum(1 for a in ants if a.get("mvp"))
+        clx = sum(1 for a in ants if a.get("kind") == "climax")
+        ants_s = f"{len(ants)}(M{mvp}/C{clx})" if ants else "0"
+        print(f"{it['meta']['symbol']:<8}{str(it['meta']['rs_score']):>4}"
+              f"{sw.get('stage','—'):>10}{len(it['bases']):>6}{ants_s:>14}"
+              f"{len(it.get('htf') or []):>5}{len(it.get('tight') or []):>7}"
+              f"{('O' if it.get('vcp') else '—'):>5}")
 
 
 if __name__ == "__main__":
