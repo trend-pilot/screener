@@ -4900,8 +4900,10 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 </div>
 
 
-  </div>
 </div><!-- end top-panel-rsmomentum -->
+<!-- [레이아웃 수정 2026-07-21] 여기 있던 </div> 1개가 #main-content 를 조기에 닫아
+     이후 탭 패널(섹터/ETF/테마/스크리너/패턴/백테스트/가이드)이 전부 사이드바 컬럼으로
+     밀려나던 버그. main-content 닫는 태그는 전략 가이드 패널 뒤로 이동함. -->
 
 <!-- ══ 종목 상세 슬라이드 패널 ══ -->
 <div class="detail-overlay" id="detail-overlay" onclick="closeDetail()"></div>
@@ -10108,6 +10110,7 @@ C:\SyncedWork\<br>
 </div>
   </div>
 </div>
+</div><!-- end main-content (2026-07-21 이동: 원래 rsmomentum 뒤에서 조기 닫힘) -->
 
 <script>
 'use strict';
