@@ -10,6 +10,16 @@ on:
         description: '티커 (공백으로 구분). 비우면 스크리너 상위 종목 자동 선별'
         required: false
         default: ''
+      mode:
+        description: '선별 기준 (티커 미입력 시)'
+        required: false
+        default: 'stage2'
+        type: choice
+        options:
+          - stage2      # RS 상위 + 추세템플릿 Stage2
+          - rs-accel    # RS 가속 + RS 라인 신고가
+          - phase4      # 베이스 Phase 4 (돌파 임박/직후)
+          - all         # RS 상위만
       top:
         description: '자동 선별 시 종목 수'
         required: false
@@ -51,6 +61,7 @@ jobs:
             echo "티커 미입력 → screener_data.json 에서 자동 선별"
             python make_chart_deck.py \
               --from-json output/screener_data.json \
+              --mode "${{ github.event.inputs.mode }}" \
               --top "${{ github.event.inputs.top }}" \
               --min-rs "${{ github.event.inputs.min_rs }}" \
               --years "${{ github.event.inputs.years }}" \
