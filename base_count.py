@@ -92,7 +92,11 @@ def classify(depth: float, seg_c: Sequence[float], low_idx: int) -> str:
     """
     n = len(seg_c)
     if depth < FLAT_MAX_DEPTH:
-        return "Flat Base"
+         # 얕더라도 종가가 넓게 출렁이면 Flat Base 가 아니라 Consolidation 이다.
+        #   실측(정답 70개): Flat Base 종가밴드 중앙값 11.1% vs Consolidation 21.7%
+        _hi, _lo = max(seg_c), min(seg_c)
+        _band = (_hi - _lo) / _hi * 100 if _hi else 0.0
+        return "Flat Base" if _band < 15.0 else "Consolidation"
     if n < 5:
         return "Consolidation"
 
@@ -101,7 +105,7 @@ def classify(depth: float, seg_c: Sequence[float], low_idx: int) -> str:
     lo = seg_c[low_idx]
     left_pk = max(seg_c[: low_idx + 1]) if low_idx > 0 else lo
     right_pk = max(seg_c[low_idx:]) if low_idx < n - 1 else lo
-    u_shape = (0.25 <= pos <= 0.78
+    u_shape = (0.32 <= pos <= 0.78
                and left_pk > lo * 1.12 and right_pk > lo * 1.12)
     if not u_shape:
         return "Consolidation"
