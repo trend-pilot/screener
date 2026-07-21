@@ -48,11 +48,52 @@ RULES = {
 }
 GATES = ["G3 Trigger","G4 Guard","G0 Market","G1 Theme","G2 Pattern"]
 # 레짐 사이징 (G0; screener market.overall = green/yellow/red 3단계로 단순화)
+# ── 마켓펄스 5단계 레짐 (STRATEGY_ROOM_LOGIC.md §1-D) ────────────────
+#   기존엔 screener 의 market.overall(green/yellow/red)을 그대로 썼는데,
+#   그 값은 브레드스만 보는 데다 red 가 "조정"이 아니라 "과열(Euphoria)"이라
+#   의미가 어긋나 있었다. 대시보드와 동일한 5단계로 통일한다.
 REGIME = {
-    "green":  {"label":"🟢 Uptrend",        "max_exp":1.00, "entries":99},
-    "yellow": {"label":"🟡 Under Pressure",  "max_exp":0.50, "entries":2},
-    "red":    {"label":"🔴 Correction",      "max_exp":0.25, "entries":0},
+    "confirmed":  {"label":"🟢 Confirmed Uptrend",     "max_exp":1.00, "entries":99},
+    "resumed":    {"label":"🟢 Uptrend Resumed",       "max_exp":1.00, "entries":99},
+    "pressure":   {"label":"🟡 Uptrend Under Pressure","max_exp":0.50, "entries":2},
+    "rally":      {"label":"🟠 Rally Attempt",         "max_exp":0.30, "entries":1},
+    "correction": {"label":"🔴 Market in Correction",  "max_exp":0.25, "entries":0},
 }
+_REGIME_ORDER = ["correction", "rally", "pressure", "resumed", "confirmed"]
+
+
+def calc_regime_key(market):
+    """
+    브레드스로 1차 판정 후 분산일(Distribution Day)로 강등.
+
+    분산일은 IBD 시장 타이밍의 핵심 지표이고, 이 시스템의 전략 가이드에도
+    "6~7개 → Under Pressure 전환 / 8개+ → Correction 임박·진행" 이라고
+    명시돼 있는데 계산에는 전혀 반영되지 않았다.
+    (2026-07-20 실측: S&P·NASDAQ 분산일 8개인데 🟢 Uptrend Resumed 표시)
+
+    STRATEGY_ROOM_LOGIC.md §1-A G0: "하락장(천장·분배·조정)이면 신규 진입 차단",
+    §검증: G0 추가로 MDD −33%→−22%, Calmar 0.53→0.83.
+    """
+    m = market or {}
+    ndfi = ((m.get("ndfi") or {}).get("value"))
+    s5fi = ((m.get("s5fi") or {}).get("value"))
+    vals = [v for v in (ndfi, s5fi) if isinstance(v, (int, float))]
+    breadth = (sum(vals) / len(vals)) if vals else (m.get("avg") or 60)
+
+    key = ("confirmed" if breadth >= 80 else
+           "resumed"   if breadth >= 50 else
+           "pressure"  if breadth >= 30 else
+           "rally"     if breadth >= 15 else "correction")
+
+    dist = m.get("distribution") or {}
+    dds = [v for v in (dist.get("sp_count"), dist.get("nasdaq_count"))
+           if isinstance(v, (int, float))]
+    if dds:
+        dd = max(dds)                      # 나쁜 쪽 지수 기준
+        cap = "correction" if dd >= 8 else ("pressure" if dd >= 6 else None)
+        if cap and _REGIME_ORDER.index(key) > _REGIME_ORDER.index(cap):
+            key = cap
+    return key
 
 
 
@@ -129,7 +170,8 @@ def total_score(s):
 
 def passes_gates(s, fired_themes, regime_key):
     """5게이트 AND. (통과여부, 사유dict)"""
-    g0 = regime_key != "red"
+    # G0 — 조정장이면 신규 진입 차단 (§1-A). entries=0 과 이중 방어.
+    g0 = regime_key != "correction"
     g3 = bool(s.get("acc2")) and bool(s.get("rs_line_high"))
     g1 = s.get("industry") in fired_themes
     g2 = (s.get("pattern_count", 0) or 0) > 0
@@ -152,8 +194,8 @@ def run(screener_path, state_path):
     data_date = (meta.get("updated_at") or date.today().isoformat())[:10]
     cat = sd.get("catalyst", {}) or {}
     fired_themes = set(c.get("cluster") for c in cat.get("clusters", []))
-    regime_key = (sd.get("market", {}) or {}).get("overall", "green")
-    reg = REGIME.get(regime_key, REGIME["green"])
+    regime_key = calc_regime_key(sd.get("market", {}) or {})
+    reg = REGIME.get(regime_key, REGIME["resumed"])
 
     # 상태 로드 (forward 누적)
     state = {"holdings": [], "closed": [], "nav_history": [], "entries_recent": [],
