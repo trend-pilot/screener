@@ -163,7 +163,11 @@ def main():
         ap.error("티커를 지정하거나 --from-json 을 사용하세요")
 
     print(f"벤치마크({BENCH}) 로드 중...")
-    bench = fetch(BENCH, a.years)
+    # [중요] 벤치마크도 종목과 같은 길이로 받아야 한다.
+    #   align() 이 '벤치마크 값이 있는 날짜'로만 종목을 맞추기 때문에,
+    #   SPY 를 짧게 받으면 종목의 과거 데이터가 통째로 잘려나가
+    #   RS 마커가 차트 앞부분에 찍히지 않는다.
+    bench = fetch(BENCH, a.years + 1.2)
     if not bench:
         print("벤치마크 로드 실패 — 중단"); sys.exit(1)
 
