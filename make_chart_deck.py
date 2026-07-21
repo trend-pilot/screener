@@ -180,13 +180,9 @@ def main():
         if not s:
             continue
         bench_c, rs_line = align(s, bench)
-        res = analyze(tk, s["dates"], s["o"], s["h"], s["l"], s["c"], s["v"])
-        last_base = res["bases"][-1] if res["bases"] else None
-        ma50_arr = sma(s["c"], 50)
-        # VCP: 마지막 베이스 안에서 먼저 찾고, 없으면 전 구간에서 탐색
-        vcp = (compute_vcp(s["dates"], s["h"], s["l"], s["c"], last_base)
-               or compute_vcp(s["dates"], s["h"], s["l"], s["c"]))
-        # 월별 RS 점수 마커 — 각 달의 마지막 거래일에 그 시점 RS 점수를 표기
+
+        # ── 1) 긴 데이터가 필요한 것만 먼저 계산 ────────────────────
+        #   RS 점수는 12개월 과거가 있어야 산출되므로, 자르기 전에 구한다.
         rs_marks = []
         for k in range(1, len(s["dates"])):
             if s["dates"][k][:7] != s["dates"][k - 1][:7] and k >= 260:
@@ -194,7 +190,10 @@ def main():
                 if sc is not None:
                     rs_marks.append({"d": s["dates"][k - 1], "s": sc})
 
-        # ── 표시 구간으로 잘라내기 (계산은 긴 데이터로, 표시는 요청 기간만) ──
+        # ── 2) 표시 구간으로 잘라내기 ───────────────────────────────
+        #   [중요] 이 뒤에 오는 분석은 모두 잘린 데이터로 해야 한다.
+        #   자르기 전에 analyze() 를 돌리면 화면 밖(예: 2023년) 베이스가
+        #   체인 카드에 섞여 들어온다.
         keep_from = max(0, len(s["dates"]) - int(252 * a.years) - 5)
         cut_date = s["dates"][keep_from]
         for key in ("dates", "o", "h", "l", "c", "v"):
@@ -202,6 +201,13 @@ def main():
         rs_line = rs_line[keep_from:]
         bench_c = bench_c[keep_from:]
         rs_marks = [m for m in rs_marks if m["d"] >= cut_date]
+
+        # ── 3) 나머지 분석은 표시 구간 기준 ─────────────────────────
+        res = analyze(tk, s["dates"], s["o"], s["h"], s["l"], s["c"], s["v"])
+        last_base = res["bases"][-1] if res["bases"] else None
+        ma50_arr = sma(s["c"], 50)
+        vcp = (compute_vcp(s["dates"], s["h"], s["l"], s["c"], last_base)
+               or compute_vcp(s["dates"], s["h"], s["l"], s["c"]))
         items.append({
             "meta": {
                 "symbol": tk,
