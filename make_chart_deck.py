@@ -42,7 +42,7 @@ from chart_deck import build_deck  # noqa: E402
 BENCH = "SPY"          # RS 라인 기준 (차트덱 방법론: 종가/S&P500)
 
 
-def fetch(ticker: str, years: int):
+def fetch(ticker: str, years: float):
     """일봉 OHLCV 로드. 실패 시 None."""
     end = date.today() + timedelta(days=1)
     start = end - timedelta(days=int(365.25 * years) + 40)
@@ -129,6 +129,20 @@ def pick_from_json(path: str, top: int, min_rs: int, mode: str = "stage2"):
     return picked
 
 
+def _tight_in_uptrend(s: dict, ma50_arr) -> list:
+    """타이트 밴드 중 종료 시점이 50일선 위인 것만 남긴다."""
+    pos = {d: i for i, d in enumerate(s["dates"])}
+    out = []
+    for tb in compute_tight_bands(s["dates"], s["h"], s["l"], s["c"]):
+        i = pos.get(tb["end"])
+        if i is None:
+            continue
+        m = ma50_arr[i] if i < len(ma50_arr) else None
+        if m and s["c"][i] > m:
+            out.append(tb)
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("tickers", nargs="*", help="티커 목록")
@@ -138,7 +152,7 @@ def main():
     ap.add_argument("--mode", default="stage2",
                     choices=["stage2", "rs-accel", "phase4", "all"],
                     help="선별 기준 (--from-json 사용 시)")
-    ap.add_argument("--years", type=int, default=2)
+    ap.add_argument("--years", type=float, default=2)
     ap.add_argument("--out", default=None)
     a = ap.parse_args()
 
@@ -156,12 +170,15 @@ def main():
     items = []
     for i, tk in enumerate(tickers, 1):
         print(f"[{i}/{len(tickers)}] {tk}")
-        s = fetch(tk, a.years)
+        # RS 점수는 12개월 과거가 필요하다. 표시 기간만 받으면 차트 앞부분의
+        # RS 마커를 계산할 수 없으므로 1.2년치를 더 받아 계산 후 잘라낸다.
+        s = fetch(tk, a.years + 1.2)
         if not s:
             continue
         bench_c, rs_line = align(s, bench)
         res = analyze(tk, s["dates"], s["o"], s["h"], s["l"], s["c"], s["v"])
         last_base = res["bases"][-1] if res["bases"] else None
+        ma50_arr = sma(s["c"], 50)
         # VCP: 마지막 베이스 안에서 먼저 찾고, 없으면 전 구간에서 탐색
         vcp = (compute_vcp(s["dates"], s["h"], s["l"], s["c"], last_base)
                or compute_vcp(s["dates"], s["h"], s["l"], s["c"]))
@@ -172,6 +189,15 @@ def main():
                 sc = compute_rs_score(s["c"][:k], bench_c[:k])
                 if sc is not None:
                     rs_marks.append({"d": s["dates"][k - 1], "s": sc})
+
+        # ── 표시 구간으로 잘라내기 (계산은 긴 데이터로, 표시는 요청 기간만) ──
+        keep_from = max(0, len(s["dates"]) - int(252 * a.years) - 5)
+        cut_date = s["dates"][keep_from]
+        for key in ("dates", "o", "h", "l", "c", "v"):
+            s[key] = s[key][keep_from:]
+        rs_line = rs_line[keep_from:]
+        bench_c = bench_c[keep_from:]
+        rs_marks = [m for m in rs_marks if m["d"] >= cut_date]
         items.append({
             "meta": {
                 "symbol": tk,
@@ -188,7 +214,11 @@ def main():
             "blue_dots": compute_blue_dots(s["dates"], rs_line),
             "rs_marks": rs_marks,
             "htf": compute_htf(s["dates"], s["h"], s["l"], s["c"]),
-            "tight": compute_tight_bands(s["dates"], s["h"], s["l"], s["c"]),
+            # 타이트 밴드는 상승 맥락에서만 의미가 있다.
+            #   백테스트: 일반 tight 단독 n=1,324 Δ−3.2%p (무의미)
+            #             HTF 맥락 위의 tight  n=41   Δ+6.8%p (유효)
+            #   → 50일선 위에서 형성된 밴드만 표시해 노이즈를 줄인다.
+            "tight": _tight_in_uptrend(s, ma50_arr),
             "vcp": vcp,
             "vcp_points": (vcp or {}).get("points"),
         })
