@@ -1,61 +1,97 @@
 {
-"_date": "2026-07-21",
+"_date": "2026-07-22",
 "_fired_names": [
-"Computer Hardware",
-"Copper",
-"Drug Manufacturers - Specialty & Generic",
+"Chemicals",
+"Coking Coal",
+"Department Stores",
+"Farm & Heavy Construction Machinery",
 "Gold",
-"Other Precious Metals & Mining",
-"Semiconductor Equipment & Materials",
-"Semiconductors",
+"Lumber & Wood Production",
+"Oil & Gas E&P",
 "Silver"
 ],
-"Drug Manufacturers - Specialty & Generic": {
+"Gold": {
+"consecutive_days": 2,
+"first_fired": "2026-07-21",
+"last_avg_pct": 3.14,
+"ever_fired": true
+},
+"Silver": {
+"consecutive_days": 2,
+"first_fired": "2026-07-21",
+"last_avg_pct": 2.87,
+"ever_fired": true
+},
+"Department Stores": {
 "consecutive_days": 1,
+"first_fired": "2026-07-22",
+"last_avg_pct": 2.85,
+"ever_fired": true
+},
+"Lumber & Wood Production": {
+"consecutive_days": 1,
+"first_fired": "2026-07-22",
+"last_avg_pct": 2.8,
+"ever_fired": true
+},
+"Farm & Heavy Construction Machinery": {
+"consecutive_days": 1,
+"first_fired": "2026-07-22",
+"last_avg_pct": 2.55,
+"ever_fired": true
+},
+"Oil & Gas E&P": {
+"consecutive_days": 1,
+"first_fired": "2026-07-22",
+"last_avg_pct": 2.42,
+"ever_fired": true
+},
+"Coking Coal": {
+"consecutive_days": 1,
+"first_fired": "2026-07-22",
+"last_avg_pct": 2.36,
+"ever_fired": true
+},
+"Chemicals": {
+"consecutive_days": 1,
+"first_fired": "2026-07-22",
+"last_avg_pct": 2.28,
+"ever_fired": true
+},
+"Drug Manufacturers - Specialty & Generic": {
+"consecutive_days": 0,
 "first_fired": "2026-07-21",
 "last_avg_pct": 22.79,
 "ever_fired": true
 },
 "Copper": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-07-20",
 "last_avg_pct": 9.58,
 "ever_fired": true
 },
 "Semiconductor Equipment & Materials": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-21",
 "last_avg_pct": 8.84,
 "ever_fired": true
 },
-"Silver": {
-"consecutive_days": 1,
-"first_fired": "2026-07-21",
-"last_avg_pct": 7.57,
-"ever_fired": true
-},
 "Other Precious Metals & Mining": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-21",
 "last_avg_pct": 7.08,
 "ever_fired": true
 },
 "Computer Hardware": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-21",
 "last_avg_pct": 6.59,
 "ever_fired": true
 },
 "Semiconductors": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-21",
 "last_avg_pct": 6.14,
-"ever_fired": true
-},
-"Gold": {
-"consecutive_days": 1,
-"first_fired": "2026-07-21",
-"last_avg_pct": 5.77,
 "ever_fired": true
 },
 "Capital Markets": {
@@ -106,22 +142,10 @@
 "last_avg_pct": 2.09,
 "ever_fired": true
 },
-"Chemicals": {
-"consecutive_days": 0,
-"first_fired": "2026-07-17",
-"last_avg_pct": 1.91,
-"ever_fired": true
-},
 "Oil & Gas Drilling": {
 "consecutive_days": 0,
 "first_fired": "2026-07-20",
 "last_avg_pct": 1.91,
-"ever_fired": true
-},
-"Oil & Gas E&P": {
-"consecutive_days": 0,
-"first_fired": "2026-07-17",
-"last_avg_pct": 1.82,
 "ever_fired": true
 },
 "Biotechnology": {
@@ -286,12 +310,6 @@
 "last_avg_pct": 2.43,
 "ever_fired": true
 },
-"Coking Coal": {
-"consecutive_days": 0,
-"first_fired": "2026-07-10",
-"last_avg_pct": 4.8,
-"ever_fired": true
-},
 "Footwear & Accessories": {
 "consecutive_days": 0,
 "first_fired": "2026-07-10",
@@ -452,12 +470,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-24",
 "last_avg_pct": 5.23,
-"ever_fired": true
-},
-"Farm & Heavy Construction Machinery": {
-"consecutive_days": 0,
-"first_fired": "2026-06-25",
-"last_avg_pct": 4.54,
 "ever_fired": true
 },
 "Steel": {
