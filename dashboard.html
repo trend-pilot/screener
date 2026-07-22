@@ -2336,6 +2336,11 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
     </div>
   </div>
 
+  <!-- ═══ US FTD 상세 (2026-07-21 추가) — strategy_room.json 의 market_ftd 로 렌더 ═══ -->
+  <div id="mp-us-ftd" style="padding:14px 20px 0">
+    <!-- JS renderUsFtd() 에서 렌더 -->
+  </div>
+
   <!-- ═══ KR Market Pulse 5지표 (Phase C 완성) — KR 모드에서만 표시 ═══ -->
   <!-- Step 1: ① 지수 Stage 카드 3개 (KOSPI / KOSPI200 / KOSDAQ) -->
   <!-- Step 2: ② FTD 카운터 (Follow-Through Day) -->
@@ -12539,10 +12544,41 @@ function renderStrategyPortfolio(){
     +bigCard(null,'Last Update','<span style="color:#1a1a1a;font-size:16px">'+_g(d,['data_date'],'—')+'</span>','Track '+_g(d,['track'],''))
     +'</div>';
 
-  // ── 운용 로직 (접이식) ──
+  // ── 운용 로직 (접이식 · 상세 — 2026-07-21 스펙 패널로 교체) ──
+  function _lrow(k, v, hl){ return '<div style="display:flex;gap:10px;padding:5px 0;border-bottom:1px solid #f0efea;font-size:11.5px;line-height:1.55"><span style="flex-shrink:0;width:86px;font-weight:700;color:'+(hl||'#185FA5')+'">'+k+'</span><span style="color:#444">'+v+'</span></div>'; }
+  function _lsec(t){ return '<div style="font-size:12px;font-weight:800;color:#1a1a1a;margin:14px 0 4px">'+t+'</div>'; }
   H+='<details style="margin-bottom:14px;background:#fafaf8;border:1px solid #e0dfd8;border-radius:8px;padding:10px 14px">'
-    +'<summary style="cursor:pointer;font-size:13px;font-weight:600;color:#555">📋 운용 로직 ('+_g(d,['logic_version'],'')+' — IBD/O&#39;Neil 정통) · 트랙 '+_g(d,['track'],'')+'</summary>'
-    +'<div style="font-size:11.5px;color:#666;line-height:1.7;margin-top:8px">진입: 5게이트 AND(G3 RS가속·신고가 · G4 종합점수·A/D·추세 · G0 시장레짐 · G1 리딩테마 · G2 패턴·피벗) → 가드(피벗거리·실적임박·RVOL·먼지) → 레짐 사이징 → 12슬롯+스위칭.<br>보유: Lock 7단계 래칫 · 런너(Tier1 +100%/Tier2 추세) · 8주룰 · 클라이맥스 트림. 손절 짧게 · winner 끝까지.</div></details>';
+    +'<summary style="cursor:pointer;font-size:13px;font-weight:600;color:#555">📋 운용 로직 ('+_g(d,['logic_version'],'')+' — IBD/O&#39;Neil 정통) · 트랙 '+_g(d,['track'],'')+' — 클릭하여 전체 펼치기</summary>'
+    +_lsec('① 진입 게이트 (5개 AND · 트랙 g3+g0+g1+g2)')
+    +_lrow('G3','RS 가속 상승 + RS Line 252일 신고가')
+    +_lrow('G4','total_score 랭킹 + 추세템플릿 통과 (pass_dots ≥6)')
+    +_lrow('G0 🆕','시장 레짐 OK — 하락장(Correction)이면 신규 진입 차단. 마켓펄스 5단계 + 분산일 강등 + <b>FTD 골든윈도우 선점</b>(≤7거래일 Resumed 승격 · &gt;21거래일 만료 제외). MDD 핵심 방어 (검증: MDD −33%→−22%, Calmar 0.53→0.83)')
+    +_lrow('G1','발화 테마(catalyst clusters) 소속 — 리딩 테마')
+    +_lrow('G2','IBD 패턴 감지 + 피벗 근접/돌파')
+    +_lsec('② 진입 가드 (게이트 통과해도 보류)')
+    +_lrow('피벗 거리','현재가 −10% ~ +5% 밖이면 skip (extended/미돌파 stale 차단)')
+    +_lrow('RVOL 🆕','vol_ratio_50d ≥ 1.5 — 거래량 확인 없는 돌파는 가짜 돌파 (v1.2)')
+    +_lrow('재진입 🆕','종목약화 손절 후 10영업일 차단 · 시장동반 손절은 즉시 재진입 허용 (v6.20)')
+    +_lrow('실적 임박','실적 D-7 이내 skip — <span style="color:#a86a14">데이터 대기 (days_to_earnings 필드 필요)</span>','#888')
+    +_lrow('ETF','G1(테마)+G4(품질)로 구조적 제외')
+    +_lrow('슬롯/스위칭','동시 보유 cap <b>12</b>. 가득 시 → 정체 최약 보유 vs 신규 강신호 total_score 차 ≥<b>12점</b> → 교체 (winner +10%·grace 10영업일·8주룰·런너 보호, 일일 ≤2) 🆕 v1.4 활성')
+    +_lrow('먼지 가드','배분액 &lt; NAV 0.5% 면 진입 생략')
+    +_lsec('③ 보유 중 관리 (매일)')
+    +_lrow('Lock 래칫','max_gain 도달 시 stop 단조 상향(절대 안 낮춤): L1 +25%→+10% · L2 +50%→+25% · L3 +100%→+70% · L4 +200%→+150% · L5 +300%→+250% · L6 +400%→+350% · L7 +500%→+400%')
+    +_lrow('8주 룰','진입 후 15영업일 내 +20% 도달 → max hold 를 발동일+40영업일로 연장')
+    +_lrow('런너 승격 🚀','max_gain ≥ +100%(Tier1) 또는 +40%·추세 유지·giveback ≤30%(Tier2) → 시간 캡(max hold) 면제, 50일선/lock 까지 보유. 12-cap 별도 (<b>런너 최대 5 · 총 최대 17</b> 🆕 v1.4 cap 강제). fat-tail(monster) 보존용')
+    +_lrow('실적 룰','실적 부분정리/실적 후 재매수 — <span style="color:#a86a14">데이터 대기 (실적일 필드 필요)</span>','#888')
+    +_lsec('④ 청산 우선순위 (위→아래)')
+    +_lrow('1. 하드스톱','종가 ≤ current_stop (−7% 또는 lock 래칫 상향분) → 전량')
+    +_lrow('2. 셀 시그널','진입 10영업일 grace 후: 50일선 이탈 → 전량 (런너도 동일 적용 · RS 다이버전스는 <span style="color:#a86a14">rs_divergence 필드 대기</span>)')
+    +_lrow('3. 스위칭','weed the garden 교체 청산 (② 슬롯/스위칭)')
+    +_lrow('4. max hold','40영업일 (8주룰 발동 시 발동일+40) · 런너 🚀 면제')
+    +_lsec('⑤ 운용 파라미터')
+    +_lrow('진입가','시그널 발생일 종가 (실거래 1일 lag 가정)')
+    +_lrow('사이징','per-position = <b>가용현금 ÷ 그날 통과 신규수</b> (NAV÷슬롯 균등 아님 — v6.21 기각). 신호 몰린 날 한꺼번에 쪼개 넣고 현금 소진 → 상시 풀투자. 흩어져 뜨면 첫날이 현금 다 먹고 나머지는 청산 때까지 대기. 왕복 비용 5bps×2 선반영(현금 음수 방지)')
+    +_lrow('회계','청산 대금 → 현금 복귀(v1.1 수정) · NAV = 현금 + 보유평가 · 손익 표시 = 진입가 기준 / stop·R = 원진입가 기준')
+    +'<div style="margin-top:10px;font-size:11px;color:#854F0B;background:#FFF4E6;border:1px solid #f0e0b0;border-radius:6px;padding:7px 10px">⚠️ 현재 NAV 는 forward 페이퍼 트레이딩 — 회계는 검증됐고, 전략 성과는 검증 패널(forward OOS)에서 누적. 10년 proxy 근거: G0 추가로 MDD −33→−22%, Calmar 0.53→0.83.</div>'
+    +'</details>';
 
   // ── NAV 곡선 ──
   H+='<div style="background:#fff;border:1px solid #e0e0d8;border-radius:10px;padding:14px 16px;margin-bottom:14px">'
@@ -12958,8 +12994,11 @@ async function autoLoad() {
     const sr = window.__STRATEGY_ROOM;
     console.log(`%c[자동로드] 🏛 전략실: ${srResults[0].path} · ${sr.data_date} · NAV ${sr.nav} · 보유 ${(sr.holdings||[]).length} · 신호 ${(sr.signals||[]).length}`, 'color:#7a5a00;font-weight:bold');
     try { if (typeof renderStrategyPortfolio === 'function') renderStrategyPortfolio(); } catch(e) { console.warn('[전략실] 실데이터 렌더 실패:', e); }
+    // US FTD 상세 카드 (market_ftd) — 전략실 JSON 로드 후 갱신
+    try { if (typeof renderUsFtd === 'function') renderUsFtd(); } catch(e) { console.warn('[FTD] 렌더 실패:', e); }
   } else {
     console.warn('%c[자동로드] 🏛 전략실: strategy_room.json 없음 → 샘플 데이터 표시 (엔진 첫 실행 전이면 정상)', 'color:#b08a3a');
+    try { if (typeof renderUsFtd === 'function') renderUsFtd(); } catch(e) {}   // 대기 카드 표시
   }
 
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -15047,6 +15086,8 @@ function refreshMarketPulse() {
     updateMarketPulse(krFormatted, null);
     // Phase C: KR 5지표 컴포넌트 표시 + 렌더
     if (krPulseWrap) krPulseWrap.style.display = '';
+    const usFtdWrap = document.getElementById('mp-us-ftd');
+    if (usFtdWrap) usFtdWrap.style.display = 'none';   // US FTD 는 US 모드 전용
     const pulse = (krRaw.market || {}).kr_pulse;
     renderKrIndexStages(pulse);
     renderKrFtd(pulse);
@@ -15057,6 +15098,9 @@ function refreshMarketPulse() {
   } else {
     // US 데이터로 복원
     if (krPulseWrap) krPulseWrap.style.display = 'none';
+    const usFtdWrap = document.getElementById('mp-us-ftd');
+    if (usFtdWrap) usFtdWrap.style.display = '';
+    try { renderUsFtd(); } catch(e) { console.warn('[FTD] 렌더 실패:', e); }
     const usRaw = window._lastUSRaw || null;
     if (usRaw) updateMarketPulse(usRaw, null);
   }
@@ -15065,6 +15109,92 @@ function refreshMarketPulse() {
 function updateMpMarketBadges() {
   setText('mp-mkt-us-badge',  (US.data  || []).length || '—');
   setText('mp-mkt-kr-badge',  ((KR.data || []).length + (KR2.data || []).length) || '—');
+}
+
+// ═══ US FTD 상세 (2026-07-21 추가) ═══════════════════════════════════
+//   데이터: strategy_room.json → market_ftd (strategy_room_v1.py v1.4+ 가
+//   yfinance 로 ^GSPC/^IXIC/^RUT 를 받아 FTD 를 직접 계산해 출력).
+//   규칙(가이드 ⑦): ≤7거래일 골든윈도우 / 8~21 골든 지남 / >21 유효창 만료.
+function renderUsFtd() {
+  const wrap = document.getElementById('mp-us-ftd');
+  if (!wrap) return;
+  const ftd = (window.__STRATEGY_ROOM || {}).market_ftd || null;
+
+  const guide = `
+  <details style="background:#fff;border:1px solid #e0e0d8;border-radius:12px;padding:12px 16px;margin-bottom:12px">
+    <summary style="cursor:pointer;font-size:12.5px;font-weight:700;color:#185FA5">ℹ️ Follow-Through Day가 뭔가요? — 처음 보는 지표라면 펼쳐보세요</summary>
+    <div style="font-size:12px;color:#555;line-height:1.75;margin-top:10px">
+      <b>① 한 줄 정의</b><br>하락하던 시장이 바닥을 찍고 올라올 때, 그 반등이 <b>"진짜 추세 전환"인지 거래량으로 확인하는 날</b>입니다. William O'Neil(IBD 창업자)이 정립한 시장 바닥 판정의 핵심 지표 — <b>1929년 이후 모든 강세장은 FTD로 시작</b>됐습니다.<br><br>
+      <b>② 왜 필요한가</b><br>바닥에서의 첫 반등은 대부분 <b>가짜</b>(failed rally)입니다. FTD는 "거래량이 실린 강한 상승"을 요구해서 <b>기관이 실제로 매수에 들어왔는지</b>를 걸러냅니다. FTD 없이 올라가는 반등을 추격하면 자주 물립니다.<br><br>
+      <b>③ 발생 절차 (3단계)</b><br>
+      1) 지수가 신저점 → <b>반등 시도(rally attempt)</b> 시작 (저점 다음 첫 양봉이 d1)<br>
+      2) 반등 <b>4~7일차(d4~d7)</b>에 — 너무 이른 반등(d1~d3)은 신뢰도 낮아 제외<br>
+      3) 종가 <b>+임계% 이상 상승 + 거래량이 전일보다 증가</b><br>
+      → 이 세 조건이 맞는 날이 FTD. Regime이 🟢 <b>Uptrend Resumed</b>로 승격됩니다.<br><br>
+      <b>④ 지수별 상승 임계</b><br>· S&amp;P 500: <b>+1.25%</b> (대형 안정 지수, 기준 낮음)<br>· NASDAQ · Russell 2000: <b>+1.50%</b> (변동성 큰 지수, 기준 높음)<br><span style="color:#999">고전 IBD 룰은 +1.7%였으나, 최근 시장 특성에 맞춰 지수별로 보정한 값입니다.</span><br><br>
+      <b>⑤ 무효화 (failed FTD)</b><br>FTD가 떴어도 이후 지수가 <b>반등 시작 저점을 다시 깨면</b> 그 FTD는 실패로 간주됩니다. 반등이 가짜였다는 뜻 — 추격 진입 금물. IBD 통계상 FTD의 상당수는 실패하지만, <b>실패한 FTD 없이 시작된 강세장은 없습니다</b>(필요조건).<br><br>
+      <b>⑥ d4~d7 창과 후발 FTD</b><br>가장 신뢰도 높은 구간은 <b>d4~d7</b>입니다. d7을 크게 넘긴 <b>후발 FTD</b>(예: d15+)는 이미 반등이 상당히 진행된 뒤라 신뢰도가 다소 떨어집니다 — 본 시스템은 이 경우 <b>⚠후발</b>로 표시합니다.<br><br>
+      <b>⑦ FTD 유효 기간 (2026-07-21 추가 — 거래일 기준)</b><br>FTD는 "발생"만큼 <b>경과 시간</b>이 중요합니다. 가격이 저점을 안 깨면 status는 계속 active지만, 시간이 지나면 신호로서의 관련성은 소멸합니다:<br>
+      · <b>골든윈도우 ≤7거래일</b> — 적극 진입 보호 구간 (Resumed가 Under Pressure 선점)<br>
+      · <b>8~21거래일</b> — 골든 지남: 신뢰도 하락, 분산 쌓이면 Under Pressure 강등 대상<br>
+      · <b>&gt;21거래일 = 유효창 만료</b> — 레짐 판정에서 제외되는 과거 이벤트 (카드에 ⏳ 표시)<br>
+      <span style="color:#999">만료는 "실패(저점 이탈)"와 다름 — 신호 노화일 뿐.</span>
+    </div>
+  </details>`;
+
+  let cards = '';
+  if (!ftd) {
+    cards = `<div style="background:#fafaf8;border:1px dashed #d0d0c8;border-radius:12px;padding:14px 16px;font-size:12px;color:#888">
+      ⏳ FTD 데이터 대기 — 전략실 엔진(v1.4+)이 다음 실행에서 <code>market_ftd</code>를 생성하면 지수별 카드가 표시됩니다.</div>`;
+  } else {
+    const order = ['sp', 'nasdaq', 'russell'];
+    const fmtN = v => (v == null ? '—' : Number(v).toLocaleString('en-US', {maximumFractionDigits: 2}));
+    cards = '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px">'
+      + order.filter(k => ftd[k]).map(k => {
+        const f = ftd[k];
+        const thr = f.threshold_pct != null ? f.threshold_pct.toFixed(2).replace(/0$/,'') : '—';
+        if (f.status === 'ftd') {
+          const win = f.window;
+          const head = win === 'golden'
+            ? `🟢 FTD 활성 · 골든윈도우 (경과 ${f.age_bd}거래일)`
+            : win === 'stale'
+            ? `🟡 FTD 활성 · 골든 지남 (경과 ${f.age_bd}거래일)`
+            : `⏳ FTD 만료 (경과 ${f.age_bd}거래일)`;
+          const col  = win === 'golden' ? '#1a8a4a' : win === 'stale' ? '#a86a14' : '#888';
+          const bg   = win === 'golden' ? '#f4faf1' : win === 'stale' ? '#fdf6ec' : '#fafaf6';
+          const bd   = win === 'golden' ? '#b6d8a3' : win === 'stale' ? '#ecd9b0' : '#e0e0d8';
+          const note = win === 'golden'
+            ? `🟢 골든윈도우(≤7거래일) — 적극 진입 보호 구간 · <b>Resumed가 Under Pressure 선점</b> (잔여 ${Math.max(0, 7 - f.age_bd)}거래일)`
+            : win === 'stale'
+            ? `🟡 골든윈도우(7거래일) 지남 — 신뢰도 하락, 분산 쌓이면 Under Pressure 강등 대상 (유효창 잔여 ${Math.max(0, 21 - f.age_bd)}거래일)`
+            : `⏳ 유효창(21거래일) 만료 — 레짐 판정에서 제외되는 과거 이벤트`;
+          return `<div style="background:${bg};border:1px solid ${bd};border-radius:12px;padding:13px 16px">
+            <div style="font-size:13px;font-weight:800;color:${col};margin-bottom:8px">${f.name} — ${head}</div>
+            <div style="font-size:12px;color:#444;line-height:1.7">
+              <b>반등 시작 저점</b>: ${f.rally_low_date} (${fmtN(f.rally_low)})<br>
+              <b>FTD 발생</b>: ${f.ftd_date} · 반등 <b>${f.ftd_day}일차(d${f.ftd_day})</b>에 발생${f.late ? ' <span style="color:#a86a14">⚠후발</span>' : ''}<br>
+              당일 <b style="color:${col}">+${f.ftd_gain_pct}%</b> · 거래량 <b>+${f.ftd_vol_chg_pct}%</b> <span style="color:#999">(임계 +${thr}%)</span><br>
+              <span style="color:${col}">${note}</span>
+            </div></div>`;
+        }
+        if (f.status === 'rally') {
+          const longWarn = (f.rally_day || 0) > 15
+            ? `<br><span style="color:#a86a14">⚠ 반등 ${f.rally_day}일째 FTD 부재 — 장기화된 반등 시도는 신뢰도 낮음 (거래량 확인 없이 오르는 반등)</span>` : '';
+          return `<div style="background:#fdf6ec;border:1px solid #ecd9b0;border-radius:12px;padding:13px 16px">
+            <div style="font-size:13px;font-weight:800;color:#a86a14;margin-bottom:8px">${f.name} — ⏳ 반등 시도 중</div>
+            <div style="font-size:12px;color:#444;line-height:1.7">
+              <b>반등 시작 저점</b>: ${f.rally_low_date} (${fmtN(f.rally_low)})<br>
+              현재 <b>${f.rally_day}일차</b> — d4+, 거래량 동반 +${thr}% 나오면 FTD 확정<br>
+              💡 FTD 확인 전 선제 진입 자제${longWarn}
+            </div></div>`;
+        }
+        return `<div style="background:#fafaf6;border:1px solid #e0e0d8;border-radius:12px;padding:13px 16px">
+          <div style="font-size:13px;font-weight:800;color:#888;margin-bottom:8px">${f.name} — 📉 반등 대기 (하락 지속)</div>
+          <div style="font-size:12px;color:#666;line-height:1.7">최근 저점: ${f.rally_low_date} (${fmtN(f.rally_low)})<br>저점 이후 상승 마감일 미출현 — 반등 시도 시작 전</div></div>`;
+      }).join('') + '</div>';
+  }
+
+  wrap.innerHTML = `<div style="font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:10px">🚀 Follow-Through Day (FTD) 상세</div>${guide}${cards}`;
 }
 
 function updateSecMarketBadges() {
