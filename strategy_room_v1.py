@@ -10,6 +10,14 @@ strategy_room_v1.py — 전략실 forward 페이퍼 트레이딩 엔진 (v1)
   - RVOL 하드게이트 (§1-B, entry_min_rvol=1.5 — vol_ratio_50d 기반)
   - 재진입 정책 v6.20: 종목약화 손절만 10영업일 차단, 시장동반 손절은 즉시 재진입 허용
     (판별은 청산 시점 레짐 프록시 — STRATEGY_ROOM_LOGIC.md 원문 확보 시 대조 필요)
+  - FTD(Follow-Through Day) 유효기간 레짐 (2026-07-21 대시보드 가이드 ⑦):
+    yfinance 로 ^GSPC·^IXIC·^RUT 를 받아 반등시도/FTD 를 직접 탐지.
+    골든윈도우(FTD 후 ≤7거래일) → Resumed 가 Under Pressure 선점 (DD 8+ Correction 은 유지),
+    8~21거래일 → 보호 없음, >21거래일 → 유효창 만료(레짐 판정에서 제외).
+    yfinance 불가/실패 시 현행(브레드스+분산일) 로직으로 자동 폴백. 결과는 market_ftd 로 출력.
+  - 스위칭(weed the garden): cap 가득 시 최약 보유 vs 신규 강신호 total_score 차 ≥12점 교체
+    (winner +10%·grace 10bd·8주룰·런너 보호, 일일 ≤2)
+  - 런너 cap 5 강제 (초과 시 승격 보류 — 총 최대 17 유지)
   - total_score 랭킹 (Comp는 rs percentile로 대체)
   - 진입: 균등가중 · 12슬롯 + 런너 제외 · 레짐 사이징(진입개수/노출)
   - 보유: Lock 7단계 래칫 · 8주룰 · max-hold(40bd) · 스위칭(weed the garden)
@@ -53,7 +61,7 @@ RULES = {
     #   검증 리포트: "중간 베어에 −7% 손절로 전부 잘림 → 재진입이 필수 메커니즘".
     "reentry_block_bdays": 10,
     "cost_bps": 5.0,
-    "track": "g3+g0+g1+g2", "logic_version": "v6.15(v1.3)",
+    "track": "g3+g0+g1+g2", "logic_version": "v6.15(v1.4)",
 }
 GATES = ["G3 Trigger","G4 Guard","G0 Market","G1 Theme","G2 Pattern"]
 # 레짐 사이징 (G0; screener market.overall = green/yellow/red 3단계로 단순화)
@@ -70,10 +78,106 @@ REGIME = {
 }
 _REGIME_ORDER = ["correction", "rally", "pressure", "resumed", "confirmed"]
 
+# ─── FTD (Follow-Through Day) — 대시보드 가이드 ①~⑦ 규칙 그대로 ──────
+#   ① 저점 다음 첫 양봉 = d1  ② d1~d3 은 너무 이른 반등이라 제외
+#   ③ FTD = d4 이후 종가 +임계% 이상 + 거래량 전일보다 증가
+#   ④ 임계: S&P +1.25% / NASDAQ·Russell +1.50%
+#   ⑤ 반등 시작 저점 붕괴 → FTD 무효 (최신 저점 기준으로 사이클 재시작)
+#   ⑥ d7 크게 넘긴 후발 FTD 는 late 표시
+#   ⑦ 유효 기간(거래일): ≤7 골든윈도우 / 8~21 골든 지남 / >21 만료
+FTD_THRESHOLDS = {"sp": 1.25, "nasdaq": 1.50, "russell": 1.50}
+FTD_TICKERS = {"sp": ("^GSPC", "S&P 500"), "nasdaq": ("^IXIC", "NASDAQ"),
+               "russell": ("^RUT", "Russell 2000")}
+FTD_GOLDEN_BD = 7          # 골든윈도우 (적극 진입 보호 구간)
+FTD_VALID_BD = 21          # 유효창 — 넘기면 레짐 판정에서 제외
+FTD_LOOKBACK = 140         # 저점 탐색 구간 (거래일)
 
-def calc_regime_key(market):
+
+def detect_ftd(dates, closes, lows, vols, thr_pct):
     """
-    브레드스로 1차 판정 후 분산일(Distribution Day)로 강등.
+    단일 지수의 현재 사이클 FTD 상태를 계산한다 (마지막 저점 기준).
+    반환: {status: none|rally|ftd, rally_low, rally_low_date, rally_day,
+           ftd_date, ftd_day, ftd_gain_pct, ftd_vol_chg_pct,
+           age_bd, window: golden|stale|expired|None, late}
+    """
+    n = len(closes)
+    if n < 10:
+        return None
+    s = max(0, n - FTD_LOOKBACK)
+    # 반등 시작 저점 = 구간 내 최저 저가 (이후 더 낮은 저점이 생기면
+    # 자동으로 그 저점 기준 사이클로 바뀜 = ⑤ 무효화 규칙과 동치)
+    lo_i = min(range(s, n), key=lambda i: lows[i])
+    out = {"rally_low": round(lows[lo_i], 2), "rally_low_date": dates[lo_i],
+           "status": "none", "rally_day": None, "ftd_date": None, "ftd_day": None,
+           "ftd_gain_pct": None, "ftd_vol_chg_pct": None,
+           "age_bd": None, "window": None, "late": False}
+    # d1 = 저점 다음 첫 양봉(전일 대비 상승 마감)
+    d1_i = None
+    for i in range(lo_i + 1, n):
+        if closes[i] > closes[i - 1]:
+            d1_i = i
+            break
+    if d1_i is None:
+        return out                      # 아직 반등 시도 없음 (하락 지속)
+    out["status"] = "rally"
+    out["rally_day"] = n - 1 - d1_i + 1     # 오늘이 d몇일차인가
+    # FTD 탐색: d4 이후, 종가 +thr% & 거래량 전일 초과
+    for i in range(d1_i, n):
+        day_no = i - d1_i + 1
+        if day_no < 4:
+            continue
+        if closes[i - 1] <= 0 or vols[i - 1] <= 0:
+            continue
+        gain = (closes[i] / closes[i - 1] - 1) * 100
+        if gain >= thr_pct and vols[i] > vols[i - 1]:
+            age = n - 1 - i
+            out.update({
+                "status": "ftd", "ftd_date": dates[i], "ftd_day": day_no,
+                "ftd_gain_pct": round(gain, 2),
+                "ftd_vol_chg_pct": round((vols[i] / vols[i - 1] - 1) * 100, 1),
+                "age_bd": age, "late": day_no > 7,
+                "window": ("golden" if age <= FTD_GOLDEN_BD else
+                           "stale" if age <= FTD_VALID_BD else "expired"),
+            })
+            break
+    return out
+
+
+def fetch_market_ftd():
+    """
+    yfinance 로 지수 3종을 받아 FTD 상태 계산. 실패 시 None (폴백).
+    워크플로우(GitHub Actions)에서는 동작하고, 오프라인 환경에서는 조용히 건너뛴다.
+    """
+    try:
+        import yfinance as yf
+    except ImportError:
+        print("[ftd] yfinance 없음 — FTD 계산 생략 (브레드스+분산일 폴백)")
+        return None
+    out = {}
+    for key, (tk, name) in FTD_TICKERS.items():
+        try:
+            df = yf.Ticker(tk).history(period="9mo", auto_adjust=False)
+            if df is None or len(df) < 30:
+                print(f"[ftd] {tk} 데이터 부족 — 생략")
+                continue
+            r = detect_ftd([d.strftime("%Y-%m-%d") for d in df.index],
+                           [float(x) for x in df["Close"]],
+                           [float(x) for x in df["Low"]],
+                           [float(x) for x in df["Volume"]],
+                           FTD_THRESHOLDS[key])
+            if r:
+                r["name"] = name
+                r["threshold_pct"] = FTD_THRESHOLDS[key]
+                out[key] = r
+        except Exception as e:
+            print(f"[ftd] {tk} 실패({e}) — 생략")
+    return out or None
+
+
+def calc_regime_key(market, ftd=None):
+    """
+    브레드스로 1차 판정 후 분산일(Distribution Day)로 강등,
+    마지막으로 FTD 골든윈도우 보호를 적용.
 
     분산일은 IBD 시장 타이밍의 핵심 지표이고, 이 시스템의 전략 가이드에도
     "6~7개 → Under Pressure 전환 / 8개+ → Correction 임박·진행" 이라고
@@ -97,11 +201,24 @@ def calc_regime_key(market):
     dist = m.get("distribution") or {}
     dds = [v for v in (dist.get("sp_count"), dist.get("nasdaq_count"))
            if isinstance(v, (int, float))]
-    if dds:
-        dd = max(dds)                      # 나쁜 쪽 지수 기준
+    dd = max(dds) if dds else None
+    if dd is not None:
         cap = "correction" if dd >= 8 else ("pressure" if dd >= 6 else None)
         if cap and _REGIME_ORDER.index(key) > _REGIME_ORDER.index(cap):
             key = cap
+
+    # ── FTD 유효기간 레짐 (가이드 ⑦) ────────────────────────────────
+    #   골든윈도우(FTD 후 ≤7거래일)에는 Resumed 가 Under Pressure 를 선점:
+    #   브레드스/분산일(6~7)로 pressure·rally·correction 까지 내려갔더라도
+    #   DD 8+ 확정 조정만 아니면 resumed 로 승격해 진입 보호 구간을 연다.
+    #   8~21거래일(stale)은 보호 없음, >21거래일(expired)은 판정에서 제외.
+    if ftd:
+        golden = any(isinstance(x, dict) and x.get("status") == "ftd"
+                     and x.get("window") == "golden" for x in ftd.values())
+        hard_correction = dd is not None and dd >= 8
+        if golden and not hard_correction \
+           and _REGIME_ORDER.index(key) < _REGIME_ORDER.index("resumed"):
+            key = "resumed"
     return key
 
 
@@ -203,7 +320,8 @@ def run(screener_path, state_path):
     data_date = (meta.get("updated_at") or date.today().isoformat())[:10]
     cat = sd.get("catalyst", {}) or {}
     fired_themes = set(c.get("cluster") for c in cat.get("clusters", []))
-    regime_key = calc_regime_key(sd.get("market", {}) or {})
+    market_ftd = fetch_market_ftd()          # 실패 시 None → 폴백
+    regime_key = calc_regime_key(sd.get("market", {}) or {}, market_ftd)
     reg = REGIME.get(regime_key, REGIME["resumed"])
 
     # 상태 로드 (forward 누적)
@@ -274,9 +392,13 @@ def run(screener_path, state_path):
         gain = (px/h["entry_px"] - 1)*100
         h["max_gain_pct"] = max(h.get("max_gain_pct", 0), gain)
         h["days_in"] = _bdays(h["entry_date"], data_date)
-        # 런너 승격
+        # 런너 승격 — runner_cap(5) 강제: 가득 차면 승격 보류(코어 유지, 다음날 재평가)
+        #   운용로직: 12-cap 별도(런너 최대 5, 총 최대 17)
+        n_runners = sum(1 for x in holdings if x.get("runner"))
         is_runner = h.get("runner", False)
-        if not is_runner and h["max_gain_pct"] >= RULES["runner_promote_gain_pct"]:
+        if not is_runner and n_runners >= RULES["runner_cap"]:
+            pass                                     # cap 가득 — 승격 보류
+        elif not is_runner and h["max_gain_pct"] >= RULES["runner_promote_gain_pct"]:
             h["runner"] = True; h["runner_tier"] = 1; is_runner = True
         elif not is_runner and h["max_gain_pct"] >= RULES["runner_trend_min_gain_pct"]:
             giveback = (h["max_gain_pct"] - gain)/max(h["max_gain_pct"],1)
@@ -452,6 +574,72 @@ def run(screener_path, state_path):
         state.setdefault("entries_recent", []).append(data_date)
         entered += 1; slots -= 1
 
+    # ── 3b) 스위칭 (weed the garden — 운용로직 ② 슬롯/스위칭) ────────
+    #   슬롯 가득 시: 정체 최약 보유 vs 신규 강신호 total_score 차 ≥12점 → 교체.
+    #   보호: 런너 · 8주룰 활성 · 수익 ≥ +10%(winner) · 진입 10영업일 이내(grace).
+    #   일일 최대 2건. (조정장은 후보 자체가 G0 에서 걸러져 자연 차단)
+    switched = 0
+    if slots <= 0 and cands:
+        held_now = {h["ticker"] for h in holdings}
+        rest = [(sc, s) for sc, s in cands if s["ticker"] not in held_now]
+        for sc, s in rest:
+            if switched >= RULES["switch_max_per_day"] or entered >= week_quota:
+                break
+            elig = []
+            for h in holdings:
+                if h.get("runner") or h.get("oneill_8w_active"):
+                    continue
+                if (h["cur"]/h["entry_px"] - 1)*100 >= RULES["switch_protect_gain_pct"]:
+                    continue                                   # winner 보호
+                if h.get("days_in", 0) < RULES["switch_grace_bdays"]:
+                    continue                                   # grace 보호
+                hs = stocks.get(h["ticker"])
+                elig.append((total_score(hs) if hs else 0.0, h))
+            if not elig:
+                break
+            h_score, weakest = min(elig, key=lambda x: x[0])
+            if sc - h_score < RULES["switch_edge_min"]:
+                break                       # 최고 신규조차 엣지 부족 → 종료
+            px_new = _num(s.get("price"))
+            if px_new is None or px_new <= 0:
+                continue
+            # 최약 보유 청산 → 대금 회수
+            px_w = weakest["cur"]
+            sh_w = _num(weakest.get("shares"), 0.0) or 0.0
+            proceeds = px_w * sh_w * (1 - cost)
+            cash += proceeds
+            gain_w = (px_w/weakest["entry_px"] - 1)*100
+            closed.append({
+                "ticker": weakest["ticker"], "entry": weakest["entry_date"],
+                "exit": data_date, "days": weakest.get("days_in", 0),
+                "entry_px": round(weakest["entry_px"],2), "exit_px": round(px_w,2),
+                "shares": sh_w, "realized": proceeds - _ev(weakest),
+                "cat": "스위칭 교체",
+                "was_runner": False, "runner_tier": None,
+                "max_gain_pct": round(weakest.get("max_gain_pct",0.0),1),
+                "reentry": bool(weakest.get("reentry")),
+                "giveback_pct": round(max(0.0, weakest.get("max_gain_pct",0.0)-gain_w),1),
+                "exit_regime": regime_key,
+                "mkt_driven": True,   # 스위칭은 재진입 차단 대상 아님
+            })
+            holdings.remove(weakest)
+            # 해방된 현금으로 신규 진입
+            alloc = min(proceeds, cash) / (1 + cost)
+            if alloc < nav_pre*0.005:
+                continue
+            holdings.append({
+                "ticker": s["ticker"], "entry_date": data_date, "entry_px": px_new,
+                "avg_cost_px": px_new, "shares": alloc/px_new,
+                "entry_value": alloc*(1+cost), "cur": px_new,
+                "max_gain_pct": 0.0, "days_in": 0,
+                "current_stop": px_new*(1+RULES["stop_pct"]/100),
+                "runner": False, "oneill_8w_active": False,
+                "reentry": s["ticker"] in prev_closed,
+            })
+            cash -= alloc*(1+cost)
+            state.setdefault("entries_recent", []).append(data_date)
+            entered += 1; switched += 1
+
     # ── 4) NAV 누적 + 회계 ──────────────────────────────────────────
     hold_val = sum(h["cur"]*h["shares"] for h in holdings)
     nav = cash + hold_val
@@ -466,6 +654,7 @@ def run(screener_path, state_path):
 
     # ── 5) 지표 계산 + UI 출력 shape ────────────────────────────────
     out = build_output(data_date, nav, holdings, closed, nh, signals, cash, regime_key)
+    out["market_ftd"] = market_ftd          # 대시보드 FTD 상세 카드가 읽음 (없으면 null)
     out["_holdings"] = holdings
     out["_closed"] = closed
     out["_cash"] = cash
@@ -476,7 +665,20 @@ def run(screener_path, state_path):
 
     print(f"[strategy_room] {data_date} | NAV {nav:.4f} ({chg:+.2f}%) | 보유 {len(holdings)} | 신규 {entered} | 청산누적 {len(closed)} | 레짐 {reg['label']}")
     print(f"   RVOL 게이트(≥{RULES['entry_min_rvol']}): 차단 {rvol_blocked}건 · 데이터 없음(통과) {rvol_missing}건"
-          f" | 재진입 차단(종목약화 {RULES['reentry_block_bdays']}bd) {reentry_blocked}건 · 후보 {len(cands)}건")
+          f" | 재진입 차단(종목약화 {RULES['reentry_block_bdays']}bd) {reentry_blocked}건"
+          f" | 스위칭 {switched}건 · 후보 {len(cands)}건")
+    if market_ftd:
+        for k, f in market_ftd.items():
+            if f.get("status") == "ftd":
+                print(f"   FTD {f['name']}: {f['ftd_date']} d{f['ftd_day']} "
+                      f"+{f['ftd_gain_pct']}% (경과 {f['age_bd']}bd · {f['window']}"
+                      f"{' · 후발' if f.get('late') else ''})")
+            elif f.get("status") == "rally":
+                print(f"   FTD {f['name']}: 반등 시도 d{f['rally_day']} (저점 {f['rally_low_date']})")
+            else:
+                print(f"   FTD {f['name']}: 반등 대기 (저점 {f['rally_low_date']})")
+    else:
+        print("   FTD: 데이터 없음 — 브레드스+분산일 폴백")
     _rs = out.get("runner_stats") or {}
     if _rs:
         r, c_, re_ = _rs["runner_closed"], _rs["core_closed"], _rs["reentry"]
