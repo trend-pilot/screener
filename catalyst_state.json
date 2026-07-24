@@ -1,59 +1,107 @@
 {
-"_date": "2026-07-23",
+"_date": "2026-07-24",
 "_fired_names": [
-"Aerospace & Defense",
-"Aluminum",
-"Diagnostics & Research",
-"Education & Training Services",
-"Marine Shipping",
-"Railroads",
-"Rental & Leasing Services",
-"Steel"
+"Airlines",
+"Consulting Services",
+"Insurance - Property & Casualty",
+"Insurance - Reinsurance",
+"Insurance - Specialty",
+"Insurance Brokers",
+"Packaging & Containers",
+"Residential Construction"
 ],
-"Aluminum": {
+"Consulting Services": {
 "consecutive_days": 1,
+"first_fired": "2026-07-24",
+"last_avg_pct": 3.84,
+"ever_fired": true
+},
+"Packaging & Containers": {
+"consecutive_days": 1,
+"first_fired": "2026-07-24",
+"last_avg_pct": 3.64,
+"ever_fired": true
+},
+"Insurance - Property & Casualty": {
+"consecutive_days": 1,
+"first_fired": "2026-07-24",
+"last_avg_pct": 3.56,
+"ever_fired": true
+},
+"Airlines": {
+"consecutive_days": 1,
+"first_fired": "2026-07-24",
+"last_avg_pct": 3.44,
+"ever_fired": true
+},
+"Insurance - Reinsurance": {
+"consecutive_days": 1,
+"first_fired": "2026-07-24",
+"last_avg_pct": 3.03,
+"ever_fired": true
+},
+"Insurance Brokers": {
+"consecutive_days": 1,
+"first_fired": "2026-07-24",
+"last_avg_pct": 2.88,
+"ever_fired": true
+},
+"Residential Construction": {
+"consecutive_days": 1,
+"first_fired": "2026-07-24",
+"last_avg_pct": 2.75,
+"ever_fired": true
+},
+"Insurance - Specialty": {
+"consecutive_days": 1,
+"first_fired": "2026-07-24",
+"last_avg_pct": 2.69,
+"ever_fired": true
+},
+"Aluminum": {
+"consecutive_days": 0,
 "first_fired": "2026-07-23",
 "last_avg_pct": 3.15,
 "ever_fired": true
 },
 "Steel": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-23",
 "last_avg_pct": 2.94,
 "ever_fired": true
 },
 "Railroads": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-23",
 "last_avg_pct": 2.77,
 "ever_fired": true
 },
 "Diagnostics & Research": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-23",
 "last_avg_pct": 2.71,
 "ever_fired": true
 },
 "Marine Shipping": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-23",
 "last_avg_pct": 2.27,
 "ever_fired": true
 },
 "Education & Training Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-23",
 "last_avg_pct": 2.19,
 "ever_fired": true
 },
 "Aerospace & Defense": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-23",
 "last_avg_pct": 1.78,
 "ever_fired": true
 },
 "Rental & Leasing Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-23",
 "last_avg_pct": 1.28,
 "ever_fired": true
@@ -202,12 +250,6 @@
 "last_avg_pct": 1.57,
 "ever_fired": true
 },
-"Insurance - Reinsurance": {
-"consecutive_days": 0,
-"first_fired": "2026-07-20",
-"last_avg_pct": 1.53,
-"ever_fired": true
-},
 "Oil & Gas Refining & Marketing": {
 "consecutive_days": 0,
 "first_fired": "2026-07-20",
@@ -248,12 +290,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-16",
 "last_avg_pct": 4.92,
-"ever_fired": true
-},
-"Insurance Brokers": {
-"consecutive_days": 0,
-"first_fired": "2026-07-16",
-"last_avg_pct": 4.77,
 "ever_fired": true
 },
 "Integrated Freight & Logistics": {
@@ -308,12 +344,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-15",
 "last_avg_pct": 2.8,
-"ever_fired": true
-},
-"Consulting Services": {
-"consecutive_days": 0,
-"first_fired": "2026-07-15",
-"last_avg_pct": 2.77,
 "ever_fired": true
 },
 "Recreational Vehicles": {
@@ -472,12 +502,6 @@
 "last_avg_pct": 6.87,
 "ever_fired": true
 },
-"Insurance - Property & Casualty": {
-"consecutive_days": 0,
-"first_fired": "2026-06-26",
-"last_avg_pct": NaN,
-"ever_fired": true
-},
 "Furnishings, Fixtures & Appliances": {
 "consecutive_days": 0,
 "first_fired": "2026-06-24",
@@ -490,12 +514,6 @@
 "last_avg_pct": 3.39,
 "ever_fired": true
 },
-"Residential Construction": {
-"consecutive_days": 0,
-"first_fired": "2026-06-24",
-"last_avg_pct": 5.57,
-"ever_fired": true
-},
 "Restaurants": {
 "consecutive_days": 0,
 "first_fired": "2026-06-24",
@@ -506,12 +524,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-24",
 "last_avg_pct": 4.47,
-"ever_fired": true
-},
-"Airlines": {
-"consecutive_days": 0,
-"first_fired": "2026-06-24",
-"last_avg_pct": 4.41,
 "ever_fired": true
 },
 "Telecom Services": {
@@ -560,12 +572,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-17",
 "last_avg_pct": 1.36,
-"ever_fired": true
-},
-"Packaging & Containers": {
-"consecutive_days": 0,
-"first_fired": "2026-06-15",
-"last_avg_pct": 4.98,
 "ever_fired": true
 }
 }
