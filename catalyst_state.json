@@ -1,5 +1,5 @@
 {
-"_date": "2026-07-24",
+"_date": "2026-07-25",
 "_fired_names": [
 "Airlines",
 "Consulting Services",
@@ -11,49 +11,49 @@
 "Residential Construction"
 ],
 "Consulting Services": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-07-24",
 "last_avg_pct": 3.84,
 "ever_fired": true
 },
 "Packaging & Containers": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-07-24",
 "last_avg_pct": 3.64,
 "ever_fired": true
 },
 "Insurance - Property & Casualty": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-07-24",
 "last_avg_pct": 3.56,
 "ever_fired": true
 },
 "Airlines": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-07-24",
 "last_avg_pct": 3.44,
 "ever_fired": true
 },
 "Insurance - Reinsurance": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-07-24",
 "last_avg_pct": 3.03,
 "ever_fired": true
 },
 "Insurance Brokers": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-07-24",
 "last_avg_pct": 2.88,
 "ever_fired": true
 },
 "Residential Construction": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-07-24",
 "last_avg_pct": 2.75,
 "ever_fired": true
 },
 "Insurance - Specialty": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-07-24",
 "last_avg_pct": 2.69,
 "ever_fired": true
