@@ -1,67 +1,103 @@
 {
-"_date": "2026-07-27",
+"_date": "2026-07-28",
 "_fired_names": [
-"Consumer Electronics",
-"Internet Content & Information",
-"Internet Retail",
-"Luxury Goods",
-"Software - Application",
-"Staffing & Employment Services",
-"Travel Services",
-"Uranium"
+"Apparel Retail",
+"Beverages - Wineries & Distilleries",
+"Broadcasting",
+"Consulting Services",
+"Footwear & Accessories",
+"Insurance Brokers",
+"Medical Instruments & Supplies",
+"Travel Services"
 ],
-"Staffing & Employment Services": {
+"Insurance Brokers": {
 "consecutive_days": 1,
+"first_fired": "2026-07-28",
+"last_avg_pct": 4.62,
+"ever_fired": true
+},
+"Beverages - Wineries & Distilleries": {
+"consecutive_days": 1,
+"first_fired": "2026-07-28",
+"last_avg_pct": 4.3,
+"ever_fired": true
+},
+"Broadcasting": {
+"consecutive_days": 1,
+"first_fired": "2026-07-28",
+"last_avg_pct": 4.03,
+"ever_fired": true
+},
+"Consulting Services": {
+"consecutive_days": 1,
+"first_fired": "2026-07-28",
+"last_avg_pct": 3.96,
+"ever_fired": true
+},
+"Travel Services": {
+"consecutive_days": 2,
+"first_fired": "2026-07-27",
+"last_avg_pct": 3.81,
+"ever_fired": true
+},
+"Medical Instruments & Supplies": {
+"consecutive_days": 1,
+"first_fired": "2026-07-28",
+"last_avg_pct": 3.71,
+"ever_fired": true
+},
+"Footwear & Accessories": {
+"consecutive_days": 1,
+"first_fired": "2026-07-28",
+"last_avg_pct": 3.6,
+"ever_fired": true
+},
+"Apparel Retail": {
+"consecutive_days": 1,
+"first_fired": "2026-07-28",
+"last_avg_pct": 3.52,
+"ever_fired": true
+},
+"Staffing & Employment Services": {
+"consecutive_days": 0,
 "first_fired": "2026-07-27",
 "last_avg_pct": 4.93,
 "ever_fired": true
 },
 "Consumer Electronics": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-27",
 "last_avg_pct": 4.67,
 "ever_fired": true
 },
 "Software - Application": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-27",
 "last_avg_pct": 4.5,
 "ever_fired": true
 },
 "Luxury Goods": {
-"consecutive_days": 1,
-"first_fired": "2026-07-27",
-"last_avg_pct": 3.71,
-"ever_fired": true
-},
-"Travel Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-27",
 "last_avg_pct": 3.71,
 "ever_fired": true
 },
 "Internet Retail": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-27",
 "last_avg_pct": 3.66,
 "ever_fired": true
 },
 "Internet Content & Information": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-27",
 "last_avg_pct": 3.66,
 "ever_fired": true
 },
 "Uranium": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-27",
 "last_avg_pct": 3.58,
-"ever_fired": true
-},
-"Consulting Services": {
-"consecutive_days": 0,
-"first_fired": "2026-07-24",
-"last_avg_pct": 3.84,
 "ever_fired": true
 },
 "Packaging & Containers": {
@@ -86,12 +122,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-24",
 "last_avg_pct": 3.03,
-"ever_fired": true
-},
-"Insurance Brokers": {
-"consecutive_days": 0,
-"first_fired": "2026-07-24",
-"last_avg_pct": 2.88,
 "ever_fired": true
 },
 "Residential Construction": {
@@ -244,18 +274,6 @@
 "last_avg_pct": 2.62,
 "ever_fired": true
 },
-"Beverages - Wineries & Distilleries": {
-"consecutive_days": 0,
-"first_fired": "2026-07-20",
-"last_avg_pct": 1.5,
-"ever_fired": true
-},
-"Apparel Retail": {
-"consecutive_days": 0,
-"first_fired": "2026-07-20",
-"last_avg_pct": 1.13,
-"ever_fired": true
-},
 "Electronic Gaming & Multimedia": {
 "consecutive_days": 0,
 "first_fired": "2026-07-20",
@@ -334,12 +352,6 @@
 "last_avg_pct": 3.2,
 "ever_fired": true
 },
-"Broadcasting": {
-"consecutive_days": 0,
-"first_fired": "2026-07-15",
-"last_avg_pct": 5.57,
-"ever_fired": true
-},
 "Electrical Equipment & Parts": {
 "consecutive_days": 0,
 "first_fired": "2026-07-15",
@@ -398,12 +410,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-13",
 "last_avg_pct": 2.43,
-"ever_fired": true
-},
-"Footwear & Accessories": {
-"consecutive_days": 0,
-"first_fired": "2026-07-10",
-"last_avg_pct": 2.87,
 "ever_fired": true
 },
 "Discount Stores": {
@@ -470,12 +476,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-02",
 "last_avg_pct": 2.72,
-"ever_fired": true
-},
-"Medical Instruments & Supplies": {
-"consecutive_days": 0,
-"first_fired": "2026-07-02",
-"last_avg_pct": 2.43,
 "ever_fired": true
 },
 "Waste Management": {

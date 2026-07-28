@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-07-27",
+  "data_date": "2026-07-28",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v1.4)",
   "nav": 1.0,
@@ -25,7 +25,7 @@
     "tqqq": null
   },
   "risk": {
-    "days": 7,
+    "days": 8,
     "ret": 0.0,
     "sharpe": 0,
     "sortino": 0.0,
@@ -81,6 +81,11 @@
     },
     {
       "date": "2026-07-27",
+      "nav": 1.0,
+      "chg": 0.0
+    },
+    {
+      "date": "2026-07-28",
       "nav": 1.0,
       "chg": 0.0
     }
