@@ -16456,7 +16456,10 @@ function buildBriefingV2Data(){
   //   지속성은 이력이 아직 없어 추세템플릿 통과율로 근사(이력 축적 후 교체).
   //   섹터 = 구성 업종 점수의 종목수(n) 가중 집계.
   //   밴드: 섹터 강세 ≥52.5/관심 ≥44.5/중립 ≥37.5 · 업종 60/47.5/39.5.
-  var pool = stocks.filter(function(s){ return typeof s.rs === 'number' && s.rs >= 70; });
+  //   [보정 2026-07-28] 풀 = 전체 유니버스. RS70+ 상위만 쓰면 모든 섹터가
+  //   강세로 부풀어 절대 임계 분류가 무의미해진다(라이브 실측: 11개 섹터 전부
+  //   강세). 샘플은 약한 종목 포함 풀이라 약세 섹터가 정상적으로 낮게 나온다.
+  var pool = stocks.filter(function(s){ return typeof s.rs === 'number' && (s.sector||'') !== '' && s.sector !== '기타' && (s.industry||'') !== '' && s.industry !== '기타'; });
   var PRIOR_K = 10;
   var gRSL = pool.length ? pool.reduce(function(a,s){return a+(_b2Num(s.rs_line_score)||0);},0)/pool.length : 50;
   var gP45 = pool.length ? pool.filter(function(s){return ['4','4plus','5'].indexOf(String(s.phase))>=0;}).length/pool.length : 0.1;
@@ -16484,7 +16487,7 @@ function buildBriefingV2Data(){
 
   // 업종 집계 (3종목 미만 제외 — 잡음)
   var byInd = {};
-  pool.forEach(function(s){ var k=(s.sector||'')+' ▸ '+(s.industry||'기타'); (byInd[k]=byInd[k]||[]).push(s); });
+  pool.forEach(function(s){ var k=s.sector+' ▸ '+s.industry; (byInd[k]=byInd[k]||[]).push(s); });
   var indRows = Object.keys(byInd).filter(function(k){return byInd[k].length>=3;}).map(function(k){
     var rows = byInd[k], t = themeScore(rows), g = sigOf(rows), n = rows.length;
     // 강도 = (점수−47.5) + 신선신호비율(전환↑·최근↑·P4+)×15 + 가속비율×10 − 역행비율×20
