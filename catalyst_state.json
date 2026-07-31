@@ -1,59 +1,95 @@
 {
-"_date": "2026-07-30",
+"_date": "2026-07-31",
 "_fired_names": [
-"Capital Markets",
-"Computer Hardware",
-"Electrical Equipment & Parts",
+"Communication Equipment",
 "Engineering & Construction",
-"Other Industrial Metals & Mining",
-"Semiconductor Equipment & Materials",
-"Semiconductors",
-"Uranium"
+"Oil & Gas Drilling",
+"Oil & Gas E&P",
+"Oil & Gas Equipment & Services",
+"Scientific & Technical Instruments",
+"Security & Protection Services",
+"Semiconductor Equipment & Materials"
 ],
-"Semiconductor Equipment & Materials": {
+"Oil & Gas Drilling": {
 "consecutive_days": 1,
+"first_fired": "2026-07-31",
+"last_avg_pct": 5.4,
+"ever_fired": true
+},
+"Oil & Gas Equipment & Services": {
+"consecutive_days": 1,
+"first_fired": "2026-07-31",
+"last_avg_pct": 3.0,
+"ever_fired": true
+},
+"Semiconductor Equipment & Materials": {
+"consecutive_days": 2,
 "first_fired": "2026-07-30",
-"last_avg_pct": 12.91,
+"last_avg_pct": 2.87,
+"ever_fired": true
+},
+"Oil & Gas E&P": {
+"consecutive_days": 1,
+"first_fired": "2026-07-31",
+"last_avg_pct": 2.27,
+"ever_fired": true
+},
+"Engineering & Construction": {
+"consecutive_days": 2,
+"first_fired": "2026-07-30",
+"last_avg_pct": 1.6,
+"ever_fired": true
+},
+"Security & Protection Services": {
+"consecutive_days": 1,
+"first_fired": "2026-07-31",
+"last_avg_pct": 1.55,
+"ever_fired": true
+},
+"Communication Equipment": {
+"consecutive_days": 1,
+"first_fired": "2026-07-31",
+"last_avg_pct": 1.55,
+"ever_fired": true
+},
+"Scientific & Technical Instruments": {
+"consecutive_days": 1,
+"first_fired": "2026-07-31",
+"last_avg_pct": 1.31,
 "ever_fired": true
 },
 "Computer Hardware": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-30",
 "last_avg_pct": 9.41,
 "ever_fired": true
 },
 "Semiconductors": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-30",
 "last_avg_pct": 8.48,
 "ever_fired": true
 },
 "Electrical Equipment & Parts": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-30",
 "last_avg_pct": 8.19,
 "ever_fired": true
 },
 "Other Industrial Metals & Mining": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-30",
 "last_avg_pct": 7.1,
 "ever_fired": true
 },
 "Uranium": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-30",
 "last_avg_pct": 6.78,
 "ever_fired": true
 },
-"Engineering & Construction": {
-"consecutive_days": 1,
-"first_fired": "2026-07-30",
-"last_avg_pct": 6.42,
-"ever_fired": true
-},
 "Capital Markets": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-07-30",
 "last_avg_pct": 6.34,
 "ever_fired": true
@@ -74,12 +110,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-29",
 "last_avg_pct": 4.1,
-"ever_fired": true
-},
-"Oil & Gas E&P": {
-"consecutive_days": 0,
-"first_fired": "2026-07-29",
-"last_avg_pct": 3.3,
 "ever_fired": true
 },
 "Oil & Gas Integrated": {
@@ -322,12 +352,6 @@
 "last_avg_pct": 1.11,
 "ever_fired": true
 },
-"Oil & Gas Drilling": {
-"consecutive_days": 0,
-"first_fired": "2026-07-20",
-"last_avg_pct": 1.91,
-"ever_fired": true
-},
 "Biotechnology": {
 "consecutive_days": 0,
 "first_fired": "2026-07-20",
@@ -344,12 +368,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-17",
 "last_avg_pct": 2.67,
-"ever_fired": true
-},
-"Communication Equipment": {
-"consecutive_days": 0,
-"first_fired": "2026-07-17",
-"last_avg_pct": 1.72,
 "ever_fired": true
 },
 "REIT - Hotel & Motel": {
@@ -448,12 +466,6 @@
 "last_avg_pct": 3.68,
 "ever_fired": true
 },
-"Oil & Gas Equipment & Services": {
-"consecutive_days": 0,
-"first_fired": "2026-07-08",
-"last_avg_pct": 3.26,
-"ever_fired": true
-},
 "Information Technology Services": {
 "consecutive_days": 0,
 "first_fired": "2026-07-08",
@@ -476,12 +488,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-06",
 "last_avg_pct": 3.32,
-"ever_fired": true
-},
-"Security & Protection Services": {
-"consecutive_days": 0,
-"first_fired": "2026-07-06",
-"last_avg_pct": 2.95,
 "ever_fired": true
 },
 "Auto Manufacturers": {
@@ -530,12 +536,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-24",
 "last_avg_pct": 5.23,
-"ever_fired": true
-},
-"Scientific & Technical Instruments": {
-"consecutive_days": 0,
-"first_fired": "2026-06-25",
-"last_avg_pct": 3.39,
 "ever_fired": true
 },
 "Restaurants": {

@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-07-30",
+  "data_date": "2026-07-31",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v1.4)",
   "nav": 1.0,
@@ -25,7 +25,7 @@
     "tqqq": null
   },
   "risk": {
-    "days": 10,
+    "days": 11,
     "ret": 0.0,
     "sharpe": 0,
     "sortino": 0.0,
@@ -98,6 +98,11 @@
       "date": "2026-07-30",
       "nav": 1.0,
       "chg": 0.0
+    },
+    {
+      "date": "2026-07-31",
+      "nav": 1.0,
+      "chg": 0.0
     }
   ],
   "holdings": [],
@@ -133,7 +138,53 @@
     "categories": []
   },
   "closed": [],
-  "market_ftd": null,
+  "market_ftd": {
+    "sp": {
+      "rally_low": 6316.91,
+      "rally_low_date": "2026-03-30",
+      "status": "ftd",
+      "rally_day": 85,
+      "ftd_date": "2026-04-08",
+      "ftd_day": 6,
+      "ftd_gain_pct": 2.51,
+      "ftd_vol_chg_pct": 29.6,
+      "age_bd": 79,
+      "window": "expired",
+      "late": false,
+      "name": "S&P 500",
+      "threshold_pct": 1.25
+    },
+    "nasdaq": {
+      "rally_low": 20690.25,
+      "rally_low_date": "2026-03-30",
+      "status": "ftd",
+      "rally_day": 85,
+      "ftd_date": "2026-04-14",
+      "ftd_day": 10,
+      "ftd_gain_pct": 1.96,
+      "ftd_vol_chg_pct": 14.9,
+      "age_bd": 75,
+      "window": "expired",
+      "late": true,
+      "name": "NASDAQ",
+      "threshold_pct": 1.5
+    },
+    "russell": {
+      "rally_low": 2404.99,
+      "rally_low_date": "2026-03-30",
+      "status": "ftd",
+      "rally_day": 85,
+      "ftd_date": "2026-04-08",
+      "ftd_day": 6,
+      "ftd_gain_pct": 2.97,
+      "ftd_vol_chg_pct": 29.6,
+      "age_bd": 79,
+      "window": "expired",
+      "late": false,
+      "name": "Russell 2000",
+      "threshold_pct": 1.5
+    }
+  },
   "_holdings": [],
   "_closed": [],
   "_cash": 1.0,
