@@ -1,5 +1,5 @@
 {
-"_date": "2026-07-31",
+"_date": "2026-08-01",
 "_fired_names": [
 "Communication Equipment",
 "Engineering & Construction",
@@ -11,49 +11,49 @@
 "Semiconductor Equipment & Materials"
 ],
 "Oil & Gas Drilling": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-07-31",
 "last_avg_pct": 5.4,
 "ever_fired": true
 },
 "Oil & Gas Equipment & Services": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-07-31",
 "last_avg_pct": 3.0,
 "ever_fired": true
 },
 "Semiconductor Equipment & Materials": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-07-30",
 "last_avg_pct": 2.87,
 "ever_fired": true
 },
 "Oil & Gas E&P": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-07-31",
 "last_avg_pct": 2.27,
 "ever_fired": true
 },
 "Engineering & Construction": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-07-30",
 "last_avg_pct": 1.6,
 "ever_fired": true
 },
 "Security & Protection Services": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-07-31",
 "last_avg_pct": 1.55,
 "ever_fired": true
 },
 "Communication Equipment": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-07-31",
 "last_avg_pct": 1.55,
 "ever_fired": true
 },
 "Scientific & Technical Instruments": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-07-31",
 "last_avg_pct": 1.31,
 "ever_fired": true
