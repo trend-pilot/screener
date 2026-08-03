@@ -1,59 +1,107 @@
 {
-"_date": "2026-08-02",
+"_date": "2026-08-03",
 "_fired_names": [
-"Communication Equipment",
-"Engineering & Construction",
-"Oil & Gas Drilling",
-"Oil & Gas E&P",
-"Oil & Gas Equipment & Services",
-"Scientific & Technical Instruments",
-"Security & Protection Services",
-"Semiconductor Equipment & Materials"
+"Airlines",
+"Department Stores",
+"Footwear & Accessories",
+"Lumber & Wood Production",
+"Mortgage Finance",
+"Pollution & Treatment Controls",
+"Solar",
+"Uranium"
 ],
+"Department Stores": {
+"consecutive_days": 1,
+"first_fired": "2026-08-03",
+"last_avg_pct": 7.87,
+"ever_fired": true
+},
+"Solar": {
+"consecutive_days": 1,
+"first_fired": "2026-08-03",
+"last_avg_pct": 6.07,
+"ever_fired": true
+},
+"Mortgage Finance": {
+"consecutive_days": 1,
+"first_fired": "2026-08-03",
+"last_avg_pct": 5.37,
+"ever_fired": true
+},
+"Footwear & Accessories": {
+"consecutive_days": 1,
+"first_fired": "2026-08-03",
+"last_avg_pct": 4.9,
+"ever_fired": true
+},
+"Airlines": {
+"consecutive_days": 1,
+"first_fired": "2026-08-03",
+"last_avg_pct": 4.83,
+"ever_fired": true
+},
+"Lumber & Wood Production": {
+"consecutive_days": 1,
+"first_fired": "2026-08-03",
+"last_avg_pct": 4.82,
+"ever_fired": true
+},
+"Pollution & Treatment Controls": {
+"consecutive_days": 1,
+"first_fired": "2026-08-03",
+"last_avg_pct": 4.58,
+"ever_fired": true
+},
+"Uranium": {
+"consecutive_days": 1,
+"first_fired": "2026-08-03",
+"last_avg_pct": 4.27,
+"ever_fired": true
+},
 "Oil & Gas Drilling": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-07-31",
 "last_avg_pct": 5.4,
 "ever_fired": true
 },
 "Oil & Gas Equipment & Services": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-07-31",
 "last_avg_pct": 3.0,
 "ever_fired": true
 },
 "Semiconductor Equipment & Materials": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-07-30",
 "last_avg_pct": 2.87,
 "ever_fired": true
 },
 "Oil & Gas E&P": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-07-31",
 "last_avg_pct": 2.27,
 "ever_fired": true
 },
 "Engineering & Construction": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-07-30",
 "last_avg_pct": 1.6,
 "ever_fired": true
 },
 "Security & Protection Services": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-07-31",
 "last_avg_pct": 1.55,
 "ever_fired": true
 },
 "Communication Equipment": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-07-31",
 "last_avg_pct": 1.55,
 "ever_fired": true
 },
 "Scientific & Technical Instruments": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-07-31",
 "last_avg_pct": 1.31,
 "ever_fired": true
@@ -80,12 +128,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-30",
 "last_avg_pct": 7.1,
-"ever_fired": true
-},
-"Uranium": {
-"consecutive_days": 0,
-"first_fired": "2026-07-30",
-"last_avg_pct": 6.78,
 "ever_fired": true
 },
 "Capital Markets": {
@@ -166,12 +208,6 @@
 "last_avg_pct": 3.71,
 "ever_fired": true
 },
-"Footwear & Accessories": {
-"consecutive_days": 0,
-"first_fired": "2026-07-28",
-"last_avg_pct": 3.6,
-"ever_fired": true
-},
 "Apparel Retail": {
 "consecutive_days": 0,
 "first_fired": "2026-07-28",
@@ -218,12 +254,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-24",
 "last_avg_pct": 3.56,
-"ever_fired": true
-},
-"Airlines": {
-"consecutive_days": 0,
-"first_fired": "2026-07-24",
-"last_avg_pct": 3.44,
 "ever_fired": true
 },
 "Insurance - Reinsurance": {
@@ -296,18 +326,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-21",
 "last_avg_pct": 2.87,
-"ever_fired": true
-},
-"Department Stores": {
-"consecutive_days": 0,
-"first_fired": "2026-07-22",
-"last_avg_pct": 2.85,
-"ever_fired": true
-},
-"Lumber & Wood Production": {
-"consecutive_days": 0,
-"first_fired": "2026-07-22",
-"last_avg_pct": 2.8,
 "ever_fired": true
 },
 "Farm & Heavy Construction Machinery": {
@@ -428,12 +446,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-15",
 "last_avg_pct": 2.7,
-"ever_fired": true
-},
-"Solar": {
-"consecutive_days": 0,
-"first_fired": "2026-07-14",
-"last_avg_pct": 4.6,
 "ever_fired": true
 },
 "Utilities - Renewable": {
@@ -572,12 +584,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-19",
 "last_avg_pct": NaN,
-"ever_fired": true
-},
-"Pollution & Treatment Controls": {
-"consecutive_days": 0,
-"first_fired": "2026-06-17",
-"last_avg_pct": 2.92,
 "ever_fired": true
 },
 "Airports & Air Services": {
