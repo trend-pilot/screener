@@ -11093,6 +11093,45 @@ function maxDistributionDays(mkt) {
   return vals.length ? Math.max.apply(null, vals) : null;
 }
 
+// ═══ 레짐 v2 (2026-08-04 — 샘플 dashboard_public '여정 29/30' 규칙) ═══
+//   · Correction 은 가격 기준만: S&P/NASDAQ 중 하나라도 50MA·200MA 모두 이탈.
+//     (분산일 개수 단독 Correction 폐기 — raw DD 8+ 강등 제거)
+//   · 가중 DD(엔진 market_idx): ≥6 → Under Pressure 상한, ≥4 & 21MA 미회복 → UP.
+//   · 골든윈도우 FTD → Resumed 우선 (가격 Correction 은 못 이김).
+//   market_idx 없으면(엔진 첫 실행 전/KR) 기존 브레드스+분산일 폴백.
+//   ※ 엔진 strategy_room_v1.py calc_regime_key 와 동일 규칙 — 교차검증됨.
+function calcRegimeV2(breadth, mkt, noIdx) {
+  const ORDER = ['correction', 'rally', 'pressure', 'resumed', 'confirmed'];
+  const sr = (typeof window !== 'undefined' && window.__STRATEGY_ROOM) || {};
+  const midx = (!noIdx && sr.market_idx) || null;
+  const ftd = (!noIdx && sr.market_ftd) || null;
+  const ddMax = maxDistributionDays(mkt);
+  const golden = !!(ftd && Object.values(ftd).some(f => f && f.status === 'ftd' && f.window === 'golden'));
+  if (!midx) {
+    let key = calcRegime(breadth, ddMax);
+    if (golden && !(ddMax != null && ddMax >= 8) && ORDER.indexOf(key) < ORDER.indexOf('resumed')) key = 'resumed';
+    return key;
+  }
+  let key = calcRegime(breadth, null);          // 브레드스 1차 (raw DD 강등 미적용)
+  let pxCorr = false;
+  ['sp', 'nasdaq'].forEach(k => {
+    const g = (midx[k] || {}).gaps || {};
+    if (g.ma50 != null && g.ma50 < 0 && g.ma200 != null && g.ma200 < 0) pxCorr = true;
+  });
+  if (pxCorr) return 'correction';
+  let wddCap = false;
+  ['sp', 'nasdaq', 'russell'].forEach(k => {
+    const x = midx[k] || {};
+    if (typeof x.dd_weighted !== 'number') return;
+    const g21 = (x.gaps || {}).ma21;
+    if (x.dd_weighted >= 6 || (x.dd_weighted >= 4 && g21 != null && g21 < 0)) wddCap = true;
+  });
+  if (wddCap && ORDER.indexOf(key) > ORDER.indexOf('pressure')) key = 'pressure';
+  if (key === 'correction') key = 'rally';      // 브레드스發 correction 은 가격 기준으론 아님
+  if (golden && ORDER.indexOf(key) < ORDER.indexOf('resumed')) key = 'resumed';
+  return key;
+}
+
 function updateMarketPulse(raw, krRaw) {
   const mkt = raw?.market || {}, meta = raw?.meta || {};
   const stocks = raw?.all_stocks || raw?.stocks || [];
@@ -11107,7 +11146,7 @@ function updateMarketPulse(raw, krRaw) {
   if (lastRun) lastRun.textContent = dt ? dt.toLocaleString('ko-KR') : '—';
 
   const ndfi = mkt.ndfi?.value ?? 60, s5fi = mkt.s5fi?.value ?? ndfi;
-  const regimeKey = calcRegime((ndfi + s5fi) / 2, maxDistributionDays(mkt));
+  const regimeKey = calcRegimeV2((ndfi + s5fi) / 2, mkt, !!raw?._isKR);
   const regime = REGIMES[regimeKey];
 
   // ── 사이드바 미니 카드
@@ -12428,7 +12467,7 @@ function renderDailyBriefingCandidates(stocks) {
 function updateSizing(regimeKeyOverride) {
   const capital = parseFloat(document.getElementById('mp-capital')?.value) || 100000;
   const ndfi = US.market?.ndfi?.value ?? 60, s5fi = US.market?.s5fi?.value ?? ndfi;
-  const regimeKey = regimeKeyOverride || calcRegime((ndfi + s5fi) / 2, maxDistributionDays(US.market));
+  const regimeKey = regimeKeyOverride || calcRegimeV2((ndfi + s5fi) / 2, US.market);
   const pctMap   = {confirmed:0.9, resumed:0.7, pressure:0.4, rally:0.25, correction:0.1};
   const slotsMap = {confirmed:5,   resumed:4,   pressure:2,   rally:1,    correction:0};
   const aggrMap  = {confirmed:'공격',resumed:'적극',pressure:'중립+',rally:'보수',correction:'현금'};
@@ -15222,12 +15261,15 @@ function renderUsFtd() {
         if (f.status === 'rally') {
           const longWarn = (f.rally_day || 0) > 15
             ? `<br><span style="color:#a86a14">⚠ 반등 ${f.rally_day}일째 FTD 부재 — 장기화된 반등 시도는 신뢰도 낮음 (거래량 확인 없이 오르는 반등)</span>` : '';
+          // FTD 임박: d3+ 이면 다음 거래일 임계 충족 시 FTD 확정 가능 (d4~d7 최적 창)
+          const imminent = (f.rally_day || 0) >= 3 && (f.rally_day || 0) <= 15
+            ? `<br><span style="color:#1a8a4a;font-weight:700">🔔 FTD 임박 — 다음 거래일 종가 +${thr}% 이상 + 거래량 전일 초과 마감 시 FTD 확정 → 🟢 Uptrend Resumed 승격${(f.rally_day||0)+1>7?' (d7 초과라 ⚠후발 표시)':''}</span>` : '';
           return `<div style="background:#fdf6ec;border:1px solid #ecd9b0;border-radius:12px;padding:13px 16px">
             <div style="font-size:13px;font-weight:800;color:#a86a14;margin-bottom:8px">${f.name} — ⏳ 반등 시도 중</div>
             <div style="font-size:12px;color:#444;line-height:1.7">
               <b>반등 시작 저점</b>: ${f.rally_low_date} (${fmtN(f.rally_low)})<br>
               현재 <b>${f.rally_day}일차</b> — d4+, 거래량 동반 +${thr}% 나오면 FTD 확정<br>
-              💡 FTD 확인 전 선제 진입 자제${longWarn}
+              💡 FTD 확인 전 선제 진입 자제${imminent}${longWarn}
             </div></div>`;
         }
         return `<div style="background:#fafaf6;border:1px solid #e0e0d8;border-radius:12px;padding:13px 16px">
@@ -15236,7 +15278,77 @@ function renderUsFtd() {
       }).join('') + '</div>';
   }
 
-  wrap.innerHTML = `<div style="font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:10px">🚀 Follow-Through Day (FTD) 상세</div>${guide}${cards}`;
+  // ═══ 📈 주요 지수 현황 + 📉 DD 상세 (1단계 — dashboard_public 샘플 이식) ═══
+  //   데이터: strategy_room.json → market_idx (엔진 v1.5 가 yfinance 지수에서 계산)
+  const midx = (window.__STRATEGY_ROOM || {}).market_idx || null;
+  const IDXORD = ['sp', 'nasdaq', 'russell'];
+  const DDCOL = {regular:'#e6a817', heavy:'#d97706', major:'#A32D2D'};
+  function _spark(arr, col){
+    if (!arr || arr.length < 2) return '';
+    const mn = Math.min.apply(null, arr), mx = Math.max.apply(null, arr), rg = (mx-mn)||1;
+    const pts = arr.map((v,i)=>`${(2+i*256/(arr.length-1)).toFixed(1)},${(42-(v-mn)/rg*38).toFixed(1)}`).join(' ');
+    const lastY = (42-(arr[arr.length-1]-mn)/rg*38).toFixed(1);
+    return `<svg width="260" height="44" viewBox="0 0 260 44" style="display:block;max-width:100%"><polyline points="${pts}" fill="none" stroke="${col}" stroke-width="1.5"/><circle cx="258" cy="${lastY}" r="2" fill="${col}"/></svg>`;
+  }
+  let idxSec = '', ddSec = '';
+  if (midx) {
+    const STG = {1:['#185FA5','바닥 다지기'],2:['#3B6D11','상승 추세'],3:['#854F0B','고점권 조정'],4:['#A32D2D','하락 추세']};
+    idxSec = `<div style="font-size:13px;font-weight:700;color:#1a1a1a;margin:18px 0 10px">📈 주요 지수 현황 <span style="font-size:10.5px;color:#888;font-weight:400">Stage · 이동평균 · 분배일(25일 가중)</span></div>`
+      + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-bottom:6px">'
+      + IDXORD.filter(k=>midx[k]).map(k=>{
+        const x = midx[k], up = (x.chg_pct||0) >= 0, col = up ? '#3B6D11' : '#A32D2D';
+        const stg = STG[x.stage] || ['#888','—'];
+        const mas = [21,50,200].map(m=>{
+          const g = (x.gaps||{})['ma'+m];
+          if (g == null) return '';
+          const ok = g >= 0;
+          return `<span title="이격 ${g>=0?'+':''}${g}%" style="font-size:10px;padding:3px 6px;border-radius:3px;background:${ok?'#EAF3DE':'#FCEBEB'};color:${ok?'#3B6D11':'#A32D2D'};font-weight:600;cursor:help">${ok?'✓':'✗'} ${m}MA ${g>=0?'+':''}${g}%</span>`;
+        }).join(' ');
+        const strip = (x.dd_strip||[]).map(kd=>`<div style="flex:1;height:14px;background:${kd?DDCOL[kd]:'#e0dfd8'};margin-right:1px;border-radius:1px"></div>`).join('');
+        const ddc = x.dd_weighted >= 6 ? '#A32D2D' : x.dd_weighted >= 4 ? '#854F0B' : '#3B6D11';
+        return `<div style="background:#fff;border:1px solid #e0dfd8;border-radius:10px;padding:14px 16px">
+          <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:8px">
+            <div><div style="font-size:15px;font-weight:700;color:#1a1a18">${x.name}</div><div style="font-size:10px;color:#73726c">${x.ticker||''}</div></div>
+            <div style="text-align:right"><div style="font-size:16px;font-weight:700">${Number(x.last).toLocaleString('en-US',{maximumFractionDigits:2})}</div>
+            <div style="font-size:11px;color:${col};font-weight:600">${x.chg_pct>=0?'+':''}${x.chg_pct}%</div></div></div>
+          <div style="margin:8px 0">${_spark(x.spark, col)}</div>
+          <div style="display:flex;gap:10px;font-size:11px;color:#73726c;margin-top:4px">
+            <span>1주 <b style="color:${(x.w1||0)>=0?'#3B6D11':'#A32D2D'}">${x.w1!=null?(x.w1>=0?'+':'')+x.w1+'%':'—'}</b></span>
+            <span>1개월 <b style="color:${(x.m1||0)>=0?'#3B6D11':'#A32D2D'}">${x.m1!=null?(x.m1>=0?'+':'')+x.m1+'%':'—'}</b></span></div>
+          <div style="margin-top:10px"><span style="font-size:10px;color:#73726c">Stage:</span> <b style="color:${stg[0]}">Stage ${x.stage}</b> <span style="font-size:10px;color:#73726c">· ${stg[1]}</span></div>
+          <div style="display:flex;gap:4px;margin-top:8px;flex-wrap:wrap">${mas}</div>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:8px" title="발생: 종가 ≤ -0.2% + 거래량 증가 · 가중: heavy(≤-2%·vol+20%) 1.5 / major(≤-3%·vol+20%) 2.0 · 만료: 25거래일 or +6% 반등">
+            <span style="font-size:10px;color:#73726c">DD 25일:</span><b style="font-size:14px;color:${ddc}">${x.dd_count}</b>
+            <span style="font-size:10.5px;color:#73726c">/ 가중 <b style="color:${ddc}">${x.dd_weighted}</b></span>${x.dd_weighted>=4?'<span style="font-size:10px;color:'+ddc+'">⚠</span>':''}</div>
+          <div style="display:flex;width:100%;height:14px;margin-top:5px">${strip}</div></div>`;
+      }).join('') + '</div>'
+      + '<div style="font-size:10px;color:#999;margin-bottom:4px">DD 스트립: 최근 25거래일 · <span style="color:#e6a817">■</span> regular <span style="color:#d97706">■</span> heavy <span style="color:#A32D2D">■</span> major</div>';
+
+    ddSec = `<div style="font-size:13px;font-weight:700;color:#1a1a1a;margin:18px 0 10px">📉 Distribution Day 상세 <span style="font-size:10.5px;color:#888;font-weight:400">개별 분배일 내역 — 가격↓ + 거래량↑</span></div>`
+      + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin-bottom:8px">'
+      + IDXORD.filter(k=>midx[k]).map(k=>{
+        const x = midx[k];
+        const ddc = x.dd_weighted >= 6 ? '#A32D2D' : x.dd_weighted >= 4 ? '#854F0B' : '#3B6D11';
+        const rows = (x.dd_days||[]).map(d=>`<tr style="border-bottom:0.5px solid #f5f4ef">
+          <td style="padding:5px 8px">${d.d}${d.kind!=='regular'?` <span style="font-size:9px;color:${DDCOL[d.kind]};font-weight:700">${d.kind}</span>`:''}</td>
+          <td style="text-align:right;padding:5px 8px;color:#A32D2D;font-weight:500">${d.drop_pct}%</td>
+          <td style="text-align:right;padding:5px 8px;color:#73726c">+${d.vol_chg_pct}%</td></tr>`).join('');
+        return `<div style="background:#fff;border:1px solid #e0dfd8;border-radius:10px;padding:14px 16px">
+          <div style="font-size:13px;font-weight:600;margin-bottom:4px">${x.name} · DD <b style="color:${ddc}">${x.dd_count}개</b> <span style="font-size:11px;color:#888">(가중 ${x.dd_weighted})</span></div>
+          <div style="font-size:10px;color:#73726c;margin-bottom:10px">25거래일 경과 또는 +6% 반등 시 만료 · heavy ×1.5 · major ×2.0</div>
+          ${rows ? `<table style="width:100%;font-size:11px;border-collapse:collapse"><thead><tr style="background:#f5f4ef;border-bottom:1px solid #e0dfd8">
+            <th style="text-align:left;padding:6px 8px">날짜</th><th style="text-align:right;padding:6px 8px">하락%</th><th style="text-align:right;padding:6px 8px">거래량 증가</th></tr></thead><tbody>${rows}</tbody></table>`
+            : '<div style="font-size:11.5px;color:#3B6D11;padding:6px 0">유효 분배일 없음 — 기관 매도 흔적 청정.</div>'}</div>`;
+      }).join('') + '</div>';
+  } else {
+    idxSec = `<div style="font-size:13px;font-weight:700;color:#1a1a1a;margin:18px 0 10px">📈 주요 지수 현황</div>
+      <div style="background:#fafaf8;border:1px dashed #d0d0c8;border-radius:12px;padding:14px 16px;font-size:12px;color:#888;margin-bottom:6px">
+      ⏳ 지수 데이터 대기 — 전략실 엔진(v1.5+)이 다음 실행에서 <code>market_idx</code>를 생성하면 Stage·이동평균·가중 DD 카드가 표시됩니다.</div>`;
+  }
+
+  wrap.innerHTML = idxSec
+    + `<div style="font-size:13px;font-weight:700;color:#1a1a1a;margin:18px 0 10px">🚀 Follow-Through Day (FTD) 상세</div>${guide}${cards}`
+    + ddSec;
 }
 
 function updateSecMarketBadges() {
@@ -16396,7 +16508,9 @@ function buildBriefingV2Data(){
   var ndfi = (mkt.ndfi||{}).value, s5fi = (mkt.s5fi||{}).value;
   var breadth = (ndfi != null && s5fi != null) ? (ndfi+s5fi)/2 : (s5fi != null ? s5fi : ndfi);
   var ddMax = (typeof maxDistributionDays === 'function') ? maxDistributionDays(mkt) : null;
-  var rkey = (typeof calcRegime === 'function') ? calcRegime(breadth != null ? breadth : 60, ddMax) : 'pressure';
+  // [레짐 v2] 여정 29/30 — 가격 기준 Correction · 가중 DD 상한 · 골든 FTD 우선
+  var rkey = (typeof calcRegimeV2 === 'function') ? calcRegimeV2(breadth != null ? breadth : 60, mkt)
+           : (typeof calcRegime === 'function') ? calcRegime(breadth != null ? breadth : 60, ddMax) : 'pressure';
   var ftd = sr.market_ftd || null;
   var golden = false, ftdAge = null;
   if (ftd) {
@@ -16410,8 +16524,7 @@ function buildBriefingV2Data(){
     });
     if (ages.length) ftdAge = Math.min.apply(null, ages);
   }
-  var ORDER5 = ['correction','rally','pressure','resumed','confirmed'];
-  if (golden && !(ddMax != null && ddMax >= 8) && ORDER5.indexOf(rkey) < ORDER5.indexOf('resumed')) rkey = 'resumed';
+  // (골든 FTD 선점은 calcRegimeV2 내부에서 처리됨)
   var CODE = {confirmed:'confirmed_uptrend', resumed:'uptrend_resumed', pressure:'uptrend_under_pressure', rally:'rally_attempt', correction:'correction'};
   var reg = (typeof REGIMES === 'object' && REGIMES[rkey]) || {label:'—', invest:'—'};
 
