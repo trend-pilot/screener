@@ -1,5 +1,5 @@
 {
-"_date": "2026-08-03",
+"_date": "2026-08-04",
 "_fired_names": [
 "Airlines",
 "Department Stores",
@@ -11,49 +11,49 @@
 "Uranium"
 ],
 "Department Stores": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-08-03",
 "last_avg_pct": 7.87,
 "ever_fired": true
 },
 "Solar": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-08-03",
 "last_avg_pct": 6.07,
 "ever_fired": true
 },
 "Mortgage Finance": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-08-03",
 "last_avg_pct": 5.37,
 "ever_fired": true
 },
 "Footwear & Accessories": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-08-03",
 "last_avg_pct": 4.9,
 "ever_fired": true
 },
 "Airlines": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-08-03",
 "last_avg_pct": 4.83,
 "ever_fired": true
 },
 "Lumber & Wood Production": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-08-03",
 "last_avg_pct": 4.82,
 "ever_fired": true
 },
 "Pollution & Treatment Controls": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-08-03",
 "last_avg_pct": 4.58,
 "ever_fired": true
 },
 "Uranium": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-08-03",
 "last_avg_pct": 4.27,
 "ever_fired": true
