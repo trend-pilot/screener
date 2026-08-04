@@ -61,7 +61,7 @@ RULES = {
     #   검증 리포트: "중간 베어에 −7% 손절로 전부 잘림 → 재진입이 필수 메커니즘".
     "reentry_block_bdays": 10,
     "cost_bps": 5.0,
-    "track": "g3+g0+g1+g2", "logic_version": "v6.15(v1.4)",
+    "track": "g3+g0+g1+g2", "logic_version": "v6.15(v1.6)",
 }
 GATES = ["G3 Trigger","G4 Guard","G0 Market","G1 Theme","G2 Pattern"]
 # 레짐 사이징 (G0; screener market.overall = green/yellow/red 3단계로 단순화)
@@ -143,41 +143,122 @@ def detect_ftd(dates, closes, lows, vols, thr_pct):
     return out
 
 
-def fetch_market_ftd():
+def _sma_last(vals, n):
+    """마지막 시점의 단순이동평균 (데이터 부족 시 None)."""
+    if len(vals) < n:
+        return None
+    return sum(vals[-n:]) / n
+
+
+def compute_idx_stats(dates, closes, vols):
     """
-    yfinance 로 지수 3종을 받아 FTD 상태 계산. 실패 시 None (폴백).
-    워크플로우(GitHub Actions)에서는 동작하고, 오프라인 환경에서는 조용히 건너뛴다.
+    지수 카드/DD 상세용 통계 — 샘플 dashboard_public 의 규칙 그대로:
+      · DD 발생: 종가 ≤ -0.2% + 거래량 전일 대비 증가 (25거래일 윈도우)
+      · 가중치: regular 1.0 / heavy(≤-2.0% & vol+20%↑) 1.5 / major(≤-3.0% & vol+20%↑) 2.0
+      · 만료: 25거래일 경과 OR 그날 종가 대비 +6% 반등
+      · Stage(주간 추세 근사): 200MA·50MA 상대 위치 4분면
+    """
+    n = len(closes)
+    if n < 30:
+        return None
+    last, prev = closes[-1], closes[-2]
+    def ret(days):
+        return round((last / closes[-days - 1] - 1) * 100, 2) if n > days else None
+    ma = {k: _sma_last(closes, k) for k in (21, 50, 200)}
+    gaps = {f"ma{k}": (round((last / v - 1) * 100, 2) if v else None) for k, v in ma.items()}
+    above50 = gaps["ma50"] is not None and gaps["ma50"] >= 0
+    above200 = gaps["ma200"] is not None and gaps["ma200"] >= 0
+    if above200 and above50:
+        stage, stage_label = 2, "상승 추세"
+    elif above200 and not above50:
+        stage, stage_label = 3, "고점권 조정"
+    elif not above200 and not above50:
+        stage, stage_label = 4, "하락 추세"
+    else:
+        stage, stage_label = 1, "바닥 다지기"
+
+    # DD 스캔 (최근 25거래일)
+    dd_days, strip = [], []
+    start = max(1, n - 25)
+    for i in range(start, n):
+        chg = closes[i] / closes[i - 1] - 1
+        vol_up = vols[i] > vols[i - 1] > 0
+        kind = None
+        if chg <= -0.002 and vol_up:
+            big_vol = vols[i] >= vols[i - 1] * 1.2
+            kind = ("major" if (chg <= -0.03 and big_vol) else
+                    "heavy" if (chg <= -0.02 and big_vol) else "regular")
+            if last >= closes[i] * 1.06:      # +6% 반등 → 만료
+                kind = None
+        strip.append(kind)
+        if kind:
+            dd_days.append({"d": dates[i], "drop_pct": round(chg * 100, 2),
+                            "vol_chg_pct": round((vols[i] / vols[i - 1] - 1) * 100, 1),
+                            "kind": kind,
+                            "w": {"regular": 1.0, "heavy": 1.5, "major": 2.0}[kind]})
+    return {
+        "last": round(last, 2), "chg_pct": round((last / prev - 1) * 100, 2),
+        "w1": ret(5), "m1": ret(21),
+        "gaps": gaps, "stage": stage, "stage_label": stage_label,
+        "spark": [round(x, 2) for x in closes[-60:]],
+        "dd_count": len(dd_days),
+        "dd_weighted": round(sum(x["w"] for x in dd_days), 1),
+        "dd_days": dd_days, "dd_strip": strip,
+    }
+
+
+def fetch_market_data():
+    """
+    yfinance 로 지수 3종을 받아 (FTD 상태, 지수 통계) 를 한 번에 계산.
+    실패 시 (None, None) — 대시보드/레짐은 기존 폴백으로 동작한다.
     """
     try:
         import yfinance as yf
     except ImportError:
-        print("[ftd] yfinance 없음 — FTD 계산 생략 (브레드스+분산일 폴백)")
-        return None
-    out = {}
+        print("[ftd] yfinance 없음 — FTD/지수 계산 생략 (브레드스+분산일 폴백)")
+        return None, None
+    ftd_out, idx_out = {}, {}
     for key, (tk, name) in FTD_TICKERS.items():
         try:
-            df = yf.Ticker(tk).history(period="9mo", auto_adjust=False)
+            df = yf.Ticker(tk).history(period="12mo", auto_adjust=False)
             if df is None or len(df) < 30:
                 print(f"[ftd] {tk} 데이터 부족 — 생략")
                 continue
-            r = detect_ftd([d.strftime("%Y-%m-%d") for d in df.index],
-                           [float(x) for x in df["Close"]],
-                           [float(x) for x in df["Low"]],
-                           [float(x) for x in df["Volume"]],
-                           FTD_THRESHOLDS[key])
+            dates = [d.strftime("%Y-%m-%d") for d in df.index]
+            closes = [float(x) for x in df["Close"]]
+            lows = [float(x) for x in df["Low"]]
+            vols = [float(x) for x in df["Volume"]]
+            r = detect_ftd(dates, closes, lows, vols, FTD_THRESHOLDS[key])
             if r:
                 r["name"] = name
                 r["threshold_pct"] = FTD_THRESHOLDS[key]
-                out[key] = r
+                ftd_out[key] = r
+            s = compute_idx_stats(dates, closes, vols)
+            if s:
+                s["name"] = name
+                s["ticker"] = tk
+                idx_out[key] = s
         except Exception as e:
             print(f"[ftd] {tk} 실패({e}) — 생략")
-    return out or None
+    return (ftd_out or None), (idx_out or None)
 
 
-def calc_regime_key(market, ftd=None):
+def fetch_market_ftd():
+    """(하위 호환) FTD 만 필요할 때."""
+    ftd, _ = fetch_market_data()
+    return ftd
+
+
+def calc_regime_key(market, ftd=None, idx=None):
     """
-    브레드스로 1차 판정 후 분산일(Distribution Day)로 강등,
-    마지막으로 FTD 골든윈도우 보호를 적용.
+    [v1.6 — 샘플 dashboard_public '여정 29/30' 규칙 이식]
+      idx(market_idx) 가 있으면:
+        · Correction 은 가격 기준만 — S&P/NASDAQ 중 하나라도 50MA·200MA 모두 이탈 시.
+          (가중 DD 단독 Correction 폐기)
+        · 가중 DD: max(sp/nd/russell dd_weighted) ≥6 → Under Pressure 상한,
+          ≥4 이고 해당 지수 21MA 미회복 → Under Pressure.
+        · active FTD(유효창 내) → Resumed 우선 (가격 Correction 은 못 이김).
+      idx 가 없으면(엔진 미실행/오프라인): 기존 브레드스+분산일 폴백 유지.
 
     분산일은 IBD 시장 타이밍의 핵심 지표이고, 이 시스템의 전략 가이드에도
     "6~7개 → Under Pressure 전환 / 8개+ → Correction 임박·진행" 이라고
@@ -198,6 +279,44 @@ def calc_regime_key(market, ftd=None):
            "pressure"  if breadth >= 30 else
            "rally"     if breadth >= 15 else "correction")
 
+    #   Resumed 선점은 골든윈도우(≤7거래일) FTD 만 — 가이드 ⑦과 일관:
+    #   stale(8~21일)은 보호 없음(분산 쌓이면 Under Pressure 강등 대상).
+    ftd_golden = bool(ftd) and any(
+        isinstance(x, dict) and x.get("status") == "ftd"
+        and x.get("window") == "golden" for x in (ftd or {}).values())
+
+    if idx:
+        # ── 신규 규칙 (여정 29/30) ──────────────────────────────────
+        # 1) 가격 기준 Correction: S&P/NASDAQ 중 하나라도 50MA·200MA 모두 이탈
+        px_correction = False
+        for k in ("sp", "nasdaq"):
+            g = (idx.get(k) or {}).get("gaps") or {}
+            if (g.get("ma50") is not None and g.get("ma50") < 0
+                    and g.get("ma200") is not None and g.get("ma200") < 0):
+                px_correction = True
+        # 2) 가중 DD → Under Pressure 상한 (Correction 으로는 못 내려감)
+        wdd_cap = False
+        for k in ("sp", "nasdaq", "russell"):
+            x = idx.get(k) or {}
+            w = x.get("dd_weighted")
+            if not isinstance(w, (int, float)):
+                continue
+            g21 = ((x.get("gaps") or {}).get("ma21"))
+            if w >= 6 or (w >= 4 and g21 is not None and g21 < 0):
+                wdd_cap = True
+        if px_correction:
+            key = "correction"
+        else:
+            if wdd_cap and _REGIME_ORDER.index(key) > _REGIME_ORDER.index("pressure"):
+                key = "pressure"
+            if key == "correction":          # 브레드스發 correction 도 가격 기준으론 아님
+                key = "rally"
+            # 3) 골든윈도우 FTD → Resumed 우선 (pressure/rally 를 이김)
+            if ftd_golden and _REGIME_ORDER.index(key) < _REGIME_ORDER.index("resumed"):
+                key = "resumed"
+        return key
+
+    # ── 폴백 (market_idx 없음): 기존 브레드스+분산일 규칙 유지 ──────
     dist = m.get("distribution") or {}
     dds = [v for v in (dist.get("sp_count"), dist.get("nasdaq_count"))
            if isinstance(v, (int, float))]
@@ -206,12 +325,6 @@ def calc_regime_key(market, ftd=None):
         cap = "correction" if dd >= 8 else ("pressure" if dd >= 6 else None)
         if cap and _REGIME_ORDER.index(key) > _REGIME_ORDER.index(cap):
             key = cap
-
-    # ── FTD 유효기간 레짐 (가이드 ⑦) ────────────────────────────────
-    #   골든윈도우(FTD 후 ≤7거래일)에는 Resumed 가 Under Pressure 를 선점:
-    #   브레드스/분산일(6~7)로 pressure·rally·correction 까지 내려갔더라도
-    #   DD 8+ 확정 조정만 아니면 resumed 로 승격해 진입 보호 구간을 연다.
-    #   8~21거래일(stale)은 보호 없음, >21거래일(expired)은 판정에서 제외.
     if ftd:
         golden = any(isinstance(x, dict) and x.get("status") == "ftd"
                      and x.get("window") == "golden" for x in ftd.values())
@@ -320,8 +433,8 @@ def run(screener_path, state_path):
     data_date = (meta.get("updated_at") or date.today().isoformat())[:10]
     cat = sd.get("catalyst", {}) or {}
     fired_themes = set(c.get("cluster") for c in cat.get("clusters", []))
-    market_ftd = fetch_market_ftd()          # 실패 시 None → 폴백
-    regime_key = calc_regime_key(sd.get("market", {}) or {}, market_ftd)
+    market_ftd, market_idx = fetch_market_data()   # 실패 시 (None, None) → 폴백
+    regime_key = calc_regime_key(sd.get("market", {}) or {}, market_ftd, market_idx)
     reg = REGIME.get(regime_key, REGIME["resumed"])
 
     # 상태 로드 (forward 누적)
@@ -655,6 +768,7 @@ def run(screener_path, state_path):
     # ── 5) 지표 계산 + UI 출력 shape ────────────────────────────────
     out = build_output(data_date, nav, holdings, closed, nh, signals, cash, regime_key)
     out["market_ftd"] = market_ftd          # 대시보드 FTD 상세 카드가 읽음 (없으면 null)
+    out["market_idx"] = market_idx          # 주요 지수 현황·DD 상세 카드가 읽음 (없으면 null)
     out["_holdings"] = holdings
     out["_closed"] = closed
     out["_cash"] = cash
