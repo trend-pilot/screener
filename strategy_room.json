@@ -1,10 +1,10 @@
 {
-  "data_date": "2026-08-05",
+  "data_date": "2026-08-07",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v1.6)",
-  "nav": 1.0221,
-  "ret_pct": 2.21,
-  "unreal_pct": 2.16,
+  "nav": 1.0184,
+  "ret_pct": 1.84,
+  "unreal_pct": 1.8,
   "cap": 12,
   "runner_cap": 5,
   "core_count": 2,
@@ -12,24 +12,24 @@
   "regime": "🟡 Uptrend Under Pressure",
   "signals": [
     {
-      "ticker": "BLMN",
-      "industry": "Restaurants",
-      "pattern": "VCP",
-      "signal_close": 11.85,
-      "pivot": 12.63,
-      "dist": -6.2,
-      "rvol": 5.21,
-      "score": 97.68
+      "ticker": "KRO",
+      "industry": "Specialty Chemicals",
+      "pattern": "이중바닥",
+      "signal_close": 8.23,
+      "pivot": 8.7,
+      "dist": -5.5,
+      "rvol": 6.37,
+      "score": 96.93
     },
     {
-      "ticker": "TBI",
-      "industry": "Staffing & Employment Services",
+      "ticker": "TIGO",
+      "industry": "Telecom Services",
       "pattern": "RS Line 선행",
-      "signal_close": 9.9,
-      "pivot": 10.25,
-      "dist": -3.4,
-      "rvol": 3.2,
-      "score": 96.68
+      "signal_close": 104.31,
+      "pivot": 107.13,
+      "dist": -2.6,
+      "rvol": 1.73,
+      "score": 86.78
     }
   ],
   "gates": [
@@ -40,21 +40,21 @@
     "G2 Pattern"
   ],
   "benchmarks": {
-    "strat": 2.21,
+    "strat": 1.84,
     "spy": null,
     "qqq": null,
     "tqqq": null
   },
   "risk": {
-    "days": 16,
-    "ret": 2.21,
-    "sharpe": 6.21,
-    "sortino": 23494271.64,
-    "vol": 6.0,
-    "mdd": 0,
-    "ret_mdd": null,
+    "days": 17,
+    "ret": 1.84,
+    "sharpe": 4.74,
+    "sortino": 4.96,
+    "vol": 6.1,
+    "mdd": -0.4,
+    "ret_mdd": 5.07,
     "day_hi": 1.2,
-    "day_lo": 0.0,
+    "day_lo": -0.4,
     "alpha_voo": null,
     "alpha_qqq": null
   },
@@ -149,25 +149,30 @@
       "date": "2026-08-05",
       "nav": 1.0221,
       "chg": 1.04
+    },
+    {
+      "date": "2026-08-07",
+      "nav": 1.0184,
+      "chg": -0.37
     }
   ],
   "holdings": [
     {
       "ticker": "WEYS",
       "entry": "2026-08-04",
-      "days": 0,
+      "days": 2,
       "cd": "",
       "entry_px": 40.42,
-      "cur": 43.9,
+      "cur": 43.91,
       "runner": false
     },
     {
       "ticker": "FOSL",
       "entry": "2026-08-04",
-      "days": 0,
+      "days": 2,
       "cd": "",
       "entry_px": 5.89,
-      "cur": 5.91,
+      "cur": 5.82,
       "runner": false
     }
   ],
@@ -208,12 +213,12 @@
       "rally_low": 6316.91,
       "rally_low_date": "2026-03-30",
       "status": "ftd",
-      "rally_day": 88,
+      "rally_day": 89,
       "ftd_date": "2026-04-08",
       "ftd_day": 6,
       "ftd_gain_pct": 2.51,
       "ftd_vol_chg_pct": 29.6,
-      "age_bd": 82,
+      "age_bd": 83,
       "window": "expired",
       "late": false,
       "name": "S&P 500",
@@ -223,12 +228,12 @@
       "rally_low": 20690.25,
       "rally_low_date": "2026-03-30",
       "status": "ftd",
-      "rally_day": 88,
+      "rally_day": 89,
       "ftd_date": "2026-04-14",
       "ftd_day": 10,
       "ftd_gain_pct": 1.96,
       "ftd_vol_chg_pct": 14.9,
-      "age_bd": 78,
+      "age_bd": 79,
       "window": "expired",
       "late": true,
       "name": "NASDAQ",
@@ -238,12 +243,12 @@
       "rally_low": 2404.99,
       "rally_low_date": "2026-03-30",
       "status": "ftd",
-      "rally_day": 88,
+      "rally_day": 89,
       "ftd_date": "2026-04-08",
       "ftd_day": 6,
       "ftd_gain_pct": 2.97,
       "ftd_vol_chg_pct": 29.6,
-      "age_bd": 82,
+      "age_bd": 83,
       "window": "expired",
       "late": false,
       "name": "Russell 2000",
@@ -252,19 +257,18 @@
   },
   "market_idx": {
     "sp": {
-      "last": 7723.55,
-      "chg_pct": -0.17,
-      "w1": 5.57,
-      "m1": 2.93,
+      "last": 7709.96,
+      "chg_pct": -0.18,
+      "w1": 3.66,
+      "m1": 3.04,
       "gaps": {
-        "ma21": 2.89,
-        "ma50": 3.18,
-        "ma200": 9.71
+        "ma21": 2.56,
+        "ma50": 2.94,
+        "ma200": 9.44
       },
       "stage": 2,
       "stage_label": "상승 추세",
       "spark": [
-        7412.84,
         7400.96,
         7444.25,
         7501.24,
@@ -323,7 +327,8 @@
         7489.72,
         7600.5,
         7736.52,
-        7723.55
+        7723.55,
+        7709.96
       ],
       "dd_count": 6,
       "dd_weighted": 6.0,
@@ -374,7 +379,6 @@
       "dd_strip": [
         null,
         null,
-        null,
         "regular",
         "regular",
         null,
@@ -392,6 +396,7 @@
         null,
         null,
         "regular",
+        null,
         null,
         null,
         null,
@@ -402,19 +407,18 @@
       "ticker": "^GSPC"
     },
     "nasdaq": {
-      "last": 26363.44,
-      "chg_pct": -0.83,
-      "w1": 7.86,
-      "m1": 2.11,
+      "last": 26348.35,
+      "chg_pct": -0.06,
+      "w1": 4.88,
+      "m1": 1.85,
       "gaps": {
-        "ma21": 2.76,
-        "ma50": 1.6,
-        "ma200": 9.6
+        "ma21": 2.61,
+        "ma50": 1.57,
+        "ma200": 9.46
       },
       "stage": 2,
       "stage_label": "상승 추세",
       "spark": [
-        26274.13,
         26088.2,
         26402.34,
         26635.22,
@@ -473,7 +477,8 @@
         25373.85,
         25913.9,
         26584.99,
-        26363.44
+        26363.44,
+        26348.35
       ],
       "dd_count": 6,
       "dd_weighted": 6.0,
@@ -522,7 +527,6 @@
         }
       ],
       "dd_strip": [
-        null,
         "regular",
         null,
         "regular",
@@ -541,6 +545,7 @@
         null,
         null,
         "regular",
+        null,
         null,
         null,
         null,
@@ -552,19 +557,18 @@
       "ticker": "^IXIC"
     },
     "russell": {
-      "last": 3019.19,
-      "chg_pct": -0.59,
-      "w1": 3.88,
-      "m1": 1.23,
+      "last": 3001.55,
+      "chg_pct": -0.58,
+      "w1": 1.88,
+      "m1": 1.53,
       "gaps": {
-        "ma21": 1.87,
-        "ma50": 2.22,
-        "ma200": 12.48
+        "ma21": 1.2,
+        "ma50": 1.57,
+        "ma200": 11.71
       },
       "stage": 2,
       "stage_label": "상승 추세",
       "spark": [
-        2870.64,
         2842.83,
         2843.93,
         2863.09,
@@ -623,7 +627,8 @@
         2931.34,
         2981.91,
         3036.98,
-        3019.19
+        3019.19,
+        3001.55
       ],
       "dd_count": 5,
       "dd_weighted": 5.0,
@@ -667,7 +672,6 @@
       "dd_strip": [
         null,
         null,
-        null,
         "regular",
         "regular",
         null,
@@ -685,6 +689,7 @@
         null,
         null,
         "regular",
+        null,
         null,
         null,
         null,
@@ -703,9 +708,9 @@
       "avg_cost_px": 5.89,
       "shares": 0.04242360992678534,
       "entry_value": 0.25,
-      "cur": 5.91,
+      "cur": 5.82,
       "max_gain_pct": 3.395585738539908,
-      "days_in": 0,
+      "days_in": 2,
       "current_stop": 5.4777,
       "runner": false,
       "oneill_8w_active": false,
@@ -718,9 +723,9 @@
       "avg_cost_px": 40.42,
       "shares": 0.006181965919563721,
       "entry_value": 0.25,
-      "cur": 43.9,
-      "max_gain_pct": 8.609599208312702,
-      "days_in": 0,
+      "cur": 43.91,
+      "max_gain_pct": 8.6343394359228,
+      "days_in": 2,
       "current_stop": 37.5906,
       "runner": false,
       "oneill_8w_active": false,
