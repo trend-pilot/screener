@@ -1,79 +1,103 @@
 {
 "_date": "2026-08-07",
 "_fired_names": [
-"Airports & Air Services",
+"Advertising Agencies",
+"Aluminum",
 "Broadcasting",
-"Chemicals",
-"Coking Coal",
-"Oil & Gas Drilling",
-"Semiconductors",
-"Specialty Chemicals",
-"Telecom Services"
+"Gold",
+"Health Information Services",
+"Other Industrial Metals & Mining",
+"Other Precious Metals & Mining",
+"Silver"
 ],
-"Oil & Gas Drilling": {
+"Gold": {
 "consecutive_days": 1,
+"first_fired": "2026-08-07",
+"last_avg_pct": 8.34,
+"ever_fired": true
+},
+"Broadcasting": {
+"consecutive_days": 2,
+"first_fired": "2026-08-07",
+"last_avg_pct": 7.4,
+"ever_fired": true
+},
+"Health Information Services": {
+"consecutive_days": 1,
+"first_fired": "2026-08-07",
+"last_avg_pct": 7.17,
+"ever_fired": true
+},
+"Aluminum": {
+"consecutive_days": 1,
+"first_fired": "2026-08-07",
+"last_avg_pct": 7.05,
+"ever_fired": true
+},
+"Silver": {
+"consecutive_days": 1,
+"first_fired": "2026-08-07",
+"last_avg_pct": 6.93,
+"ever_fired": true
+},
+"Other Industrial Metals & Mining": {
+"consecutive_days": 1,
+"first_fired": "2026-08-07",
+"last_avg_pct": 5.83,
+"ever_fired": true
+},
+"Advertising Agencies": {
+"consecutive_days": 1,
+"first_fired": "2026-08-07",
+"last_avg_pct": 5.4,
+"ever_fired": true
+},
+"Other Precious Metals & Mining": {
+"consecutive_days": 1,
+"first_fired": "2026-08-07",
+"last_avg_pct": 5.1,
+"ever_fired": true
+},
+"Oil & Gas Drilling": {
+"consecutive_days": 0,
 "first_fired": "2026-08-07",
 "last_avg_pct": 3.92,
 "ever_fired": true
 },
 "Semiconductors": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-07",
 "last_avg_pct": 2.68,
 "ever_fired": true
 },
 "Specialty Chemicals": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-07",
 "last_avg_pct": 2.35,
 "ever_fired": true
 },
-"Broadcasting": {
-"consecutive_days": 1,
-"first_fired": "2026-08-07",
-"last_avg_pct": 2.27,
-"ever_fired": true
-},
 "Airports & Air Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-07",
 "last_avg_pct": 2.26,
 "ever_fired": true
 },
 "Telecom Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-07",
 "last_avg_pct": 2.05,
 "ever_fired": true
 },
 "Coking Coal": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-07",
 "last_avg_pct": 1.9,
 "ever_fired": true
 },
 "Chemicals": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-07",
 "last_avg_pct": 1.88,
-"ever_fired": true
-},
-"Silver": {
-"consecutive_days": 0,
-"first_fired": "2026-08-04",
-"last_avg_pct": 8.4,
-"ever_fired": true
-},
-"Gold": {
-"consecutive_days": 0,
-"first_fired": "2026-08-05",
-"last_avg_pct": 7.56,
-"ever_fired": true
-},
-"Other Precious Metals & Mining": {
-"consecutive_days": 0,
-"first_fired": "2026-08-04",
-"last_avg_pct": 5.76,
 "ever_fired": true
 },
 "Copper": {
@@ -122,12 +146,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-04",
 "last_avg_pct": 6.98,
-"ever_fired": true
-},
-"Other Industrial Metals & Mining": {
-"consecutive_days": 0,
-"first_fired": "2026-08-04",
-"last_avg_pct": 6.72,
 "ever_fired": true
 },
 "Department Stores": {
@@ -352,12 +370,6 @@
 "last_avg_pct": 2.69,
 "ever_fired": true
 },
-"Aluminum": {
-"consecutive_days": 0,
-"first_fired": "2026-07-23",
-"last_avg_pct": 3.15,
-"ever_fired": true
-},
 "Steel": {
 "consecutive_days": 0,
 "first_fired": "2026-07-23",
@@ -530,12 +542,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-07",
 "last_avg_pct": 1.44,
-"ever_fired": true
-},
-"Advertising Agencies": {
-"consecutive_days": 0,
-"first_fired": "2026-07-06",
-"last_avg_pct": 3.32,
 "ever_fired": true
 },
 "Auto Manufacturers": {
