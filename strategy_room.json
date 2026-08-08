@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-08-07",
+  "data_date": "2026-08-08",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v1.6)",
   "nav": 1.0132,
@@ -10,68 +10,7 @@
   "core_count": 7,
   "runner_count": 0,
   "regime": "🟢 Uptrend Resumed",
-  "signals": [
-    {
-      "ticker": "MAKO",
-      "industry": "Gold",
-      "pattern": "이중바닥",
-      "signal_close": 9.54,
-      "pivot": 9.6,
-      "dist": -0.6,
-      "rvol": 3.03,
-      "score": 92.18
-    },
-    {
-      "ticker": "SOPH",
-      "industry": "Health Information Services",
-      "pattern": "어센딩베이스",
-      "signal_close": 7.71,
-      "pivot": 7.86,
-      "dist": -1.8,
-      "rvol": 2.92,
-      "score": 91.93
-    },
-    {
-      "ticker": "QNST",
-      "industry": "Advertising Agencies",
-      "pattern": "어센딩베이스",
-      "signal_close": 21.08,
-      "pivot": 21.27,
-      "dist": -0.9,
-      "rvol": 6.88,
-      "score": 90.0
-    },
-    {
-      "ticker": "WPP",
-      "industry": "Advertising Agencies",
-      "pattern": "이중바닥",
-      "signal_close": 27.55,
-      "pivot": 27.78,
-      "dist": -0.8,
-      "rvol": 1.99,
-      "score": 89.82
-    },
-    {
-      "ticker": "TXG",
-      "industry": "Health Information Services",
-      "pattern": "컵앤핸들",
-      "signal_close": 52.03,
-      "pivot": 52.22,
-      "dist": -0.4,
-      "rvol": 1.62,
-      "score": 80.22
-    },
-    {
-      "ticker": "NEXN",
-      "industry": "Advertising Agencies",
-      "pattern": "컵앤핸들",
-      "signal_close": 10.9,
-      "pivot": 11.13,
-      "dist": -2.1,
-      "rvol": 1.58,
-      "score": 70.93
-    }
-  ],
+  "signals": [],
   "gates": [
     "G3 Trigger",
     "G4 Guard",
@@ -86,11 +25,11 @@
     "tqqq": null
   },
   "risk": {
-    "days": 17,
+    "days": 18,
     "ret": 1.32,
-    "sharpe": 4.25,
-    "sortino": 3.33,
-    "vol": 6.3,
+    "sharpe": 4.11,
+    "sortino": 3.13,
+    "vol": 6.2,
     "mdd": -0.9,
     "ret_mdd": 1.51,
     "day_hi": 1.2,
@@ -194,6 +133,11 @@
       "date": "2026-08-07",
       "nav": 1.0132,
       "chg": -0.51
+    },
+    {
+      "date": "2026-08-08",
+      "nav": 1.0132,
+      "chg": -0.0
     }
   ],
   "holdings": [

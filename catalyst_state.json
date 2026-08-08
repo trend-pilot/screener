@@ -1,5 +1,5 @@
 {
-"_date": "2026-08-07",
+"_date": "2026-08-08",
 "_fired_names": [
 "Advertising Agencies",
 "Aluminum",
@@ -11,49 +11,49 @@
 "Silver"
 ],
 "Gold": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-08-07",
 "last_avg_pct": 8.34,
 "ever_fired": true
 },
 "Broadcasting": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-08-07",
 "last_avg_pct": 7.4,
 "ever_fired": true
 },
 "Health Information Services": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-08-07",
 "last_avg_pct": 7.17,
 "ever_fired": true
 },
 "Aluminum": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-08-07",
 "last_avg_pct": 7.05,
 "ever_fired": true
 },
 "Silver": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-08-07",
 "last_avg_pct": 6.93,
 "ever_fired": true
 },
 "Other Industrial Metals & Mining": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-08-07",
 "last_avg_pct": 5.83,
 "ever_fired": true
 },
 "Advertising Agencies": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-08-07",
 "last_avg_pct": 5.4,
 "ever_fired": true
 },
 "Other Precious Metals & Mining": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-08-07",
 "last_avg_pct": 5.1,
 "ever_fired": true
