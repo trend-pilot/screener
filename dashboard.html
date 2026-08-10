@@ -18846,7 +18846,7 @@ function buildBriefingV2Data(){
     var w1c = Math.max(0, Math.min(100, 50 + avgW1*5));
     var persist = rows.reduce(function(a,s){return a+((s.pass_dots||[]).reduce(function(x,y){return x+(y?1:0);},0))/7*100;},0)/n;
     return {score: _b2Round(.30*bayesRSL + .20*p45 + .15*nh + .15*w1c + .20*persist, 1),
-            rslB: Math.round(bayesRSL), avgW1: avgW1};
+            rslB: Math.round(bayesRSL), rslBH: _b2Round(bayesRSL, 1), avgW1: avgW1};
   }
   function sigOf(rows){
     return {nw: rows.filter(function(s){return s.phase_changed_up;}).length,
@@ -18873,14 +18873,15 @@ function buildBriefingV2Data(){
               rsNow:_b2Num(s.rs_now), trans:(s.phase_changed_up?'up':(s.phase_change_was_up===false?'down':null)),
               accel:!!s.acc2};
     });
-    return {ind:k, sec:rows[0].sector||'', n:n, score:t.score, rslB:t.rslB,
+    return {ind:k, sec:rows[0].sector||'', n:n, score:t.score, rslB:t.rslB, rslBH:t.rslBH,
             rsLine:_b2Round(rows.reduce(function(a,s){return a+(_b2Num(s.rs_line_score)||0);},0)/n,1),
             chg1w:_b2Round(rows.reduce(function(a,s){return a+(_b2Num(s.w1)||0);},0)/n,1),
             avgRs:Math.round(rows.reduce(function(a,s){return a+(_b2Num(s.rs)||0);},0)/n),
             intensity:intensity, nw:g.nw, ru:g.ru, p4p:g.p4p, ac:g.ac, dn:g.dn,
             chips:chips, more:Math.max(0, n-chips.length)};
   }).sort(function(a,b){return b.score-a.score;});
-  var bandCnt = {strong:0, watch:0, mid:0, weak:0};
+  var bandCnt = {strong:0, watch:0, mid:0, weak:0,
+                 na: Math.max(0, Object.keys(byInd).length - indRows.length)};  // 3종목 미만 = 미평가
   indRows.forEach(function(r){ bandCnt[indBand(r.score)]++; });
   // 0810 렌더러용: 정렬키별 상위 재선정(byKey) + 상세(items)
   //   score = 강세(≥60) 전부, 없으면 상위 8 / 나머지 키 = 그 지표 상위 8
@@ -18927,8 +18928,10 @@ function buildBriefingV2Data(){
              g3: !!(s.acc2 && s.rs_line_high),
              g4: ((s.pass_dots||[]).reduce(function(a,b){return a+(b?1:0);},0))>=6};
     var nPass = (g.g0?1:0)+(g.g1?1:0)+(g.g2?1:0)+(g.g3?1:0)+(g.g4?1:0);
+    var pn = String(s.phase)==='4plus'?4:parseInt(String(s.phase).replace('plus',''))||null;
     return {sym:s.ticker, nPass:nPass, idio:false, g:g, score:Math.round(_b2TotalScore(s)),
             rs:_b2Num(s.rs), name:s.name||s.company||'',
+            p:pn, plus:String(s.phase)==='4plus',
             held:(sr.holdings||[]).some(function(h){return h.ticker===s.ticker;})};
   }).sort(function(a,b){return b.nPass-a.nPass || b.score-a.score;});
   var srGate = {g0off: rkey==='correction', nFull: gTop.filter(function(x){return x.nPass===5;}).length,
@@ -18938,8 +18941,12 @@ function buildBriefingV2Data(){
   // ── NAV / 통계 / 현금 / 청산 / 보유 (strategy_room.json) ──
   var nh = sr.nav_history || [];
   var navArr = nh.map(function(r){return _b2Num(r.nav);});
-  var ddArr = []; var pk = -1;
-  navArr.forEach(function(v){ if(v==null){ddArr.push(null);return;} pk=Math.max(pk,v); ddArr.push(_b2Round((v/pk-1)*100,2)); });
+  // 시리즈별 드로다운 (0810 렌더러 08 MDD 차트 — dd.{nav,spy,qqq,tqqq})
+  function ddOf(arr){
+    var out = [], pk = -1;
+    (arr||[]).forEach(function(v){ if(v==null){out.push(null);return;} pk=Math.max(pk,v); out.push(_b2Round((v/pk-1)*100,2)); });
+    return out;
+  }
   // 벤치마크 시리즈 (엔진 v1.8 bench_history — 시작일 1.0 리베이스, 날짜 정렬 동일)
   var bh = sr.bench_history || null;
   function bSeries(k){
@@ -18947,7 +18954,8 @@ function buildBriefingV2Data(){
   }
   var spyS = bSeries('spy'), qqqS = bSeries('qqq'), tqqqS = bSeries('tqqq');
   var navChart = {dates: nh.map(function(r){return r.date;}), nav: navArr,
-                  spy: spyS, qqq: qqqS, tqqq: tqqqS, dd: ddArr};
+                  spy: spyS, qqq: qqqS, tqqq: tqqqS,
+                  dd: {nav: ddOf(navArr), spy: ddOf(spyS), qqq: ddOf(qqqS), tqqq: ddOf(tqqqS)}};
   function navRet(nBack){
     if (navArr.length < 2) return null;
     var i = Math.max(0, navArr.length-1-nBack);
@@ -19005,7 +19013,8 @@ function buildBriefingV2Data(){
             stopDist:stopDist, days:h.days_in||0, cat:cat, reasons:reasons, be:be, lock:lock,
             lockTier:tier, oneill:!!h.oneill_8w_active, runner:!!h.runner,
             p:phN, plus:String(stk.phase)==='4plus',
-            wPct:_b2Round(cur*(_b2Num(h.shares)||0)/navV*100,1), entry:h.entry_date, spark:[]};
+            wPct:_b2Round(cur*(_b2Num(h.shares)||0)/navV*100,1), entry:h.entry_date,
+            spark:(h.px_hist||[]).slice(-21)};   // 엔진 v2.0 px_hist — 일별 종가 축적
   });
   var holdings = {list: hRows,
     critN: hRows.filter(function(r){return r.cat==='critical';}).length,
@@ -19053,6 +19062,11 @@ function buildBriefingV2Data(){
   //   — 사이징에 실제 적용된 값과 표시값을 일치시킴 (자동매매 일관성)
   if (sr.alloc3l && sr.alloc3l.lo != null) alloc3l = sr.alloc3l;
   try { window.__ALLOC3L = alloc3l; } catch(e) {}
+  // 02 해석의 노출도 문구를 L1 밴드가 아닌 3층 최종값으로 교정 (표시=실행 일치)
+  if (alloc3l.lo != null) {
+    phase.interp[1] = '권장 노출도 ' + alloc3l.lo + '~' + alloc3l.hi + '% (3층 최종 · L1 '
+      + CODE[rkey] + (exLo != null ? ' ' + exLo + '~' + exHi + '%' : '') + ').';
+  }
   // 0810 렌더러용: 베이즈 RSL 상위 / 종합점수 상위 두 순위 + 핵심 종목 3
   function ribRow(r){
     var top3 = (byInd[r.ind]||[]).slice()
