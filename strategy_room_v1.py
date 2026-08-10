@@ -25,8 +25,11 @@ strategy_room_v1.py — 전략실 forward 페이퍼 트레이딩 엔진 (v1)
   - 회계: entry_px 불변 · avg_cost 손익 · NAV = cash + 평가액
   - forward 누적: 전일 strategy_room.json 읽어 당일 반영 → 재기록
 
+【v2.0 활성 — earnings.json (snapshots 워크플로우 --earnings) 존재 시】
+  - 실적 임박 가드 (D-7 이내 신규 진입 금지) · 실적 D-3 R-tier 부분정리 (손실 전량 / 0~2R ⅔ / 2~4R ⅓ / ≥4R 보유)
+
 【v1 비활성 (데이터 없음 — screener.py 보강 시 활성)】
-  - 실적 룰 전체 (days_to_earnings 없음): 실적 부분정리·재매수·실적전 정리·실적 임박 가드
+  - 실적 후 재매수 룰
   - 피라미딩 · 클라이맥스 트림 (v6.20 확장)
   - 벤치마크 NAV(SPY/QQQ/TQQQ) — 별도 yfinance 단계 필요 (TODO)
 
@@ -60,8 +63,11 @@ RULES = {
     #   시장동반 손절(청산 당시 레짐이 pressure/rally/correction)은 차단하지 않음 —
     #   검증 리포트: "중간 베어에 −7% 손절로 전부 잘림 → 재진입이 필수 메커니즘".
     "reentry_block_bdays": 10,
+    # 실적 룰 (v2.0 — earnings.json 활성 시): 임박 D-7 이내 신규 진입 금지,
+    #   D-3 이내 R구간 부분정리 (손실 전량 / 0~2R ⅔ / 2~4R ⅓ / 4R+ 보유. R = gain/7%)
+    "earnings_entry_guard_bdays": 7, "earnings_trim_bdays": 3,
     "cost_bps": 5.0,
-    "track": "g3+g0+g1+g2", "logic_version": "v6.15(v1.9)",
+    "track": "g3+g0+g1+g2", "logic_version": "v6.15(v2.0)",
 }
 GATES = ["G3 Trigger","G4 Guard","G0 Market","G1 Theme","G2 Pattern"]
 # 레짐 사이징 (G0; screener market.overall = green/yellow/red 3단계로 단순화)
@@ -675,6 +681,23 @@ def run(screener_path, state_path):
     closed   = state["closed"]
     cost = RULES["cost_bps"]/10000.0
 
+    # ── 실적일 로드 (make_snapshots.py --earnings 가 생성 · 없으면 실적 룰 비활성) ──
+    earn_map = {}
+    try:
+        if os.path.exists("earnings.json"):
+            _ej = json.load(open("earnings.json", encoding="utf-8"))
+            earn_map = {k: v for k, v in _ej.items()
+                        if k != "meta" and isinstance(v, str)}
+    except Exception as _e:
+        print(f"[earnings] 로드 실패({_e}) — 실적 룰 비활성")
+
+    def _dte(t):
+        """다음 실적까지 영업일 (없거나 과거면 None)."""
+        d = earn_map.get(t)
+        if not d or d < data_date:
+            return None
+        return _bdays(data_date, d)
+
     # 일일 이력 병합 (같은 날짜 재실행은 덮어씀 · 최근 90건)
     daily_history = [r for r in state.get("daily_history", [])
                      if r.get("date") != data_date]
@@ -723,12 +746,44 @@ def run(screener_path, state_path):
             #   면제되지만 50일선 이탈에는 걸린다).
             exit_cause = "50일선 이탈"
         else:
-            # 시간 청산 (런너/8주룰 면제)
-            time_cap = RULES["hold_days"]
-            if h.get("oneill_8w_active"):
-                time_cap = RULES["oneill_hold_bdays"] + _bdays(h.get("oneill_trigger_date",h["entry_date"]), data_date) - h["days_in"] + RULES["oneill_hold_bdays"]
-            if not is_runner and h["days_in"] >= time_cap:
-                exit_cause = "max hold"
+            # ── 실적 D-3 대응 (운용로직 ③ · v2.0) — 청산 우선순위: 스탑 > 셀시그널 > 실적 > max hold
+            #   손실 → 전량 정리 / 0~2R → ⅔ 트림 / 2~4R → ⅓ 트림 / 4R+ → 보유 (R = gain/7%)
+            #   같은 실적일에 한 번만 실행 (earn_trimmed 마킹)
+            h["dte"] = _dte(h["ticker"])
+            if (h["dte"] is not None and h["dte"] <= RULES["earnings_trim_bdays"]
+                    and h.get("earn_trimmed") != earn_map.get(h["ticker"])):
+                h["earn_trimmed"] = earn_map.get(h["ticker"])
+                _R = gain / abs(RULES["stop_pct"])
+                if gain < 0:
+                    exit_cause = "실적전 정리"
+                else:
+                    _frac = (2.0/3.0) if _R < 2 else ((1.0/3.0) if _R < 4 else 0.0)
+                    if _frac > 0:
+                        _sold = (_num(h.get("shares"), 0.0) or 0.0) * _frac
+                        _proceeds = px * _sold * (1 - cost)
+                        state["_cash"] = _num(state.get("_cash"), 0.0) + _proceeds
+                        closed.append({
+                            "ticker": h["ticker"], "entry": h["entry_date"], "exit": data_date,
+                            "days": h["days_in"], "entry_px": round(h["entry_px"],2),
+                            "exit_px": round(px,2), "shares": _sold,
+                            "realized": _proceeds - _ev(h) * _frac,
+                            "cat": "실적 부분정리", "partial": int(round(_frac*100)),
+                            "was_runner": bool(h.get("runner")), "runner_tier": h.get("runner_tier"),
+                            "max_gain_pct": round(h.get("max_gain_pct", 0.0), 1),
+                            "reentry": bool(h.get("reentry")),
+                            "giveback_pct": round(max(0.0, h.get("max_gain_pct", 0.0) - gain), 1),
+                            "exit_regime": regime_key, "mkt_driven": True,
+                        })
+                        h["shares"] = (_num(h.get("shares"), 0.0) or 0.0) * (1 - _frac)
+                        h["entry_value"] = _ev(h) * (1 - _frac)
+                        h["partial"] = int(round(_frac*100))
+            if exit_cause is None:
+                # 시간 청산 (런너/8주룰 면제)
+                time_cap = RULES["hold_days"]
+                if h.get("oneill_8w_active"):
+                    time_cap = RULES["oneill_hold_bdays"] + _bdays(h.get("oneill_trigger_date",h["entry_date"]), data_date) - h["days_in"] + RULES["oneill_hold_bdays"]
+                if not is_runner and h["days_in"] >= time_cap:
+                    exit_cause = "max hold"
 
         if exit_cause:
             # ══ [치명적 버그 수정] 청산 대금을 현금으로 회수한다 ══
@@ -782,13 +837,18 @@ def run(screener_path, state_path):
     reentry_blocked = 0
 
     cands = []
-    rvol_blocked, rvol_missing = 0, 0
+    rvol_blocked, rvol_missing, earn_blocked = 0, 0, 0
     for t, s in stocks.items():
         if t in held: continue
         # 재진입 차단 (종목약화 손절 후 10영업일)
         _bx = reentry_block.get(t)
         if _bx and _bdays(_bx, data_date) < RULES["reentry_block_bdays"]:
             reentry_blocked += 1
+            continue
+        # 실적 임박 가드 (D-7 이내 신규 진입 금지 · v2.0)
+        _ed = _dte(t)
+        if _ed is not None and _ed <= RULES["earnings_entry_guard_bdays"]:
+            earn_blocked += 1
             continue
         ok, gd = passes_gates(s, fired_themes, regime_key)
         if not ok: continue
@@ -992,6 +1052,8 @@ def run(screener_path, state_path):
               f"강세섹터 {alloc3l['strong_sectors']} · Leading테마 {alloc3l['lead_n']} → 노출상한 {exp_cap:.0%}")
     print(f"   RVOL 게이트(≥{RULES['entry_min_rvol']}): 차단 {rvol_blocked}건 · 데이터 없음(통과) {rvol_missing}건"
           f" | 재진입 차단(종목약화 {RULES['reentry_block_bdays']}bd) {reentry_blocked}건"
+          f" | 실적 D-{RULES['earnings_entry_guard_bdays']} 차단 {earn_blocked}건"
+          f"{'' if earn_map else ' (earnings.json 없음 — 실적 룰 비활성)'}"
           f" | 스위칭 {switched}건 · 후보 {len(cands)}건")
     if market_ftd:
         for k, f in market_ftd.items():
@@ -1043,8 +1105,11 @@ def build_output(data_date, nav, holdings, closed, nav_history, signals, cash, r
     hd = []
     for h in sorted(holdings, key=lambda x:(x["cur"]/x["entry_px"]-1), reverse=True):
         hd.append({"ticker":h["ticker"], "entry":h["entry_date"], "days":h.get("days_in",0),
-                   "cd":"∞" if h.get("runner") else "", "entry_px":round(h["entry_px"],2),
-                   "cur":round(h["cur"],2), "runner":h.get("runner",False)})
+                   "cd":("∞" if h.get("runner") else
+                         (f"D-{h['dte']}" if isinstance(h.get("dte"), int) and h["dte"] <= 14 else "")),
+                   "entry_px":round(h["entry_px"],2),
+                   "cur":round(h["cur"],2), "runner":h.get("runner",False),
+                   "partial":h.get("partial"), "dte":h.get("dte")})
     # 청산 표시 (최신순)
     cl = [{"ticker":c["ticker"],"entry":c["entry"],"exit":c["exit"],"days":c["days"],
            "entry_px":c["entry_px"],"exit_px":c["exit_px"],"cat":c["cat"]} for c in reversed(closed)][:30]
