@@ -1,0 +1,41 @@
+# .github/workflows/snapshots.yml  ← 반드시 이 경로에 넣을 것 (루트에 두면 Actions 인식 못 함)
+# 종목 스냅샷 미니차트 생성 — snapshots.json 을 만들어 커밋한다.
+# daily-us 워크플로우가 screener_data.json 을 갱신한 "뒤"에 도는 게 이상적이므로
+# 스케줄 시각은 daily-us 종료 시각 +30분 정도로 조정할 것.
+name: snapshots
+
+on:
+  workflow_dispatch:        # 수동 실행 버튼
+  schedule:
+    - cron: "30 23 * * 2-6"   # UTC 23:30 (= KST 08:30, 화~토) — daily-us 이후로 조정 필요
+
+permissions:
+  contents: write
+
+jobs:
+  snapshots:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: pip install yfinance
+
+      - name: Build snapshots.json
+        run: python make_snapshots.py --from-json screener_data.json --min-rs 70 --limit 1200
+
+      - name: Commit & push
+        run: |
+          git config user.name "snapshot-bot"
+          git config user.email "actions@github.com"
+          git add snapshots.json
+          git diff --cached --quiet && echo "변경 없음" && exit 0
+          git commit -m "snapshots: $(date -u +%F)"
+          # daily-us 등이 먼저 푸시했을 수 있으므로 rebase 후 푸시
+          git pull --rebase origin main
+          git push
