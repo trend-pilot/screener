@@ -14603,7 +14603,7 @@ function renderStrategyPortfolio(){
     +_lrow('피벗 거리','현재가 −10% ~ +5% 밖이면 skip (extended/미돌파 stale 차단)')
     +_lrow('RVOL 🆕','vol_ratio_50d ≥ 1.5 — 거래량 확인 없는 돌파는 가짜 돌파 (v1.2)')
     +_lrow('재진입 🆕','종목약화 손절 후 10영업일 차단 · 시장동반 손절은 즉시 재진입 허용 (v6.20)')
-    +_lrow('실적 임박','실적 D-7 이내 skip — <span style="color:#a86a14">데이터 대기 (days_to_earnings 필드 필요)</span>','#888')
+    +_lrow('실적 임박 🆕','실적 D-7 이내 신규 진입 skip — earnings.json (snapshots 워크플로우 --earnings) 기반 (v2.0 활성)')
     +_lrow('ETF','G1(테마)+G4(품질)로 구조적 제외')
     +_lrow('슬롯/스위칭','동시 보유 cap <b>12</b>. 가득 시 → 정체 최약 보유 vs 신규 강신호 total_score 차 ≥<b>12점</b> → 교체 (winner +10%·grace 10영업일·8주룰·런너 보호, 일일 ≤2) 🆕 v1.4 활성')
     +_lrow('먼지 가드','배분액 &lt; NAV 0.5% 면 진입 생략')
@@ -14611,7 +14611,7 @@ function renderStrategyPortfolio(){
     +_lrow('Lock 래칫','max_gain 도달 시 stop 단조 상향(절대 안 낮춤): L1 +25%→+10% · L2 +50%→+25% · L3 +100%→+70% · L4 +200%→+150% · L5 +300%→+250% · L6 +400%→+350% · L7 +500%→+400%')
     +_lrow('8주 룰','진입 후 15영업일 내 +20% 도달 → max hold 를 발동일+40영업일로 연장')
     +_lrow('런너 승격 🚀','max_gain ≥ +100%(Tier1) 또는 +40%·추세 유지·giveback ≤30%(Tier2) → 시간 캡(max hold) 면제, 50일선/lock 까지 보유. 12-cap 별도 (<b>런너 최대 5 · 총 최대 17</b> 🆕 v1.4 cap 강제). fat-tail(monster) 보존용')
-    +_lrow('실적 룰','실적 부분정리/실적 후 재매수 — <span style="color:#a86a14">데이터 대기 (실적일 필드 필요)</span>','#888')
+    +_lrow('실적 D-3 🆕','R-tier 부분정리: 손실 전량 / 0~2R ⅔ / 2~4R ⅓ / ≥4R 보유 (R=gain/7%) — 같은 실적일 1회 (v2.0 활성). <span style="color:#a86a14">실적 후 재매수는 추후</span>')
     +_lsec('④ 청산 우선순위 (위→아래)')
     +_lrow('1. 하드스톱','종가 ≤ current_stop (−7% 또는 lock 래칫 상향분) → 전량')
     +_lrow('2. 셀 시그널','진입 10영업일 grace 후: 50일선 이탈 → 전량 (런너도 동일 적용 · RS 다이버전스는 <span style="color:#a86a14">rs_divergence 필드 대기</span>)')
@@ -15656,12 +15656,24 @@ async function injectSnapshot(ticker) {
       }
     }
     const sn = (window.__SNAPSHOTS || {})[ticker];
+    // 실적일 뱃지 (earnings.json)
+    let earnBadge = '';
+    try {
+      const em = await loadEarnings();
+      const ed = em[ticker];
+      if (ed) {
+        const today = ((window._lastUSRaw||{}).meta||{}).updated_at?.slice(0,10) || new Date().toISOString().slice(0,10);
+        const dte = ed >= today ? _bdaysBetween(today, ed) : null;
+        const col = dte != null && dte <= 3 ? '#A32D2D' : dte != null && dte <= 7 ? '#B5500A' : '#73726c';
+        earnBadge = ` · <b style="color:${col}">📅 실적 ${ed.slice(5)}${dte!=null?' (D-'+dte+')':''}</b>`;
+      }
+    } catch(e) {}
     if (sn && sn.svg) {
       host.innerHTML = sn.svg
         + `<div style="font-size:10px;color:#999;margin:4px 0 2px">자체 스냅샷 · ${(window.__SNAPSHOTS.meta||{}).asof||''} 종가 기준 · `
-        + `<span style="color:#e0413c">─</span> 50MA · <span style="color:#3c4450">─</span> 200MA · 하단 = 거래량</div>`;
+        + `<span style="color:#e0413c">─</span> 50MA · <span style="color:#3c4450">─</span> 200MA · 하단 = 거래량${earnBadge}</div>`;
     } else if ((window.__SNAPSHOTS.meta || {}).n) {
-      host.innerHTML = `<div style="font-size:10.5px;color:#bbb;margin:2px 0 4px">자체 스냅샷 없음 — 스냅샷 유니버스(RS≥${(window.__SNAPSHOTS.meta||{}).min_rs||70}+ETF+보유) 밖 종목</div>`;
+      host.innerHTML = `<div style="font-size:10.5px;color:#bbb;margin:2px 0 4px">자체 스냅샷 없음 — 스냅샷 유니버스(RS≥${(window.__SNAPSHOTS.meta||{}).min_rs||70}+ETF+보유) 밖 종목${earnBadge}</div>`;
     }
   } catch(e) { /* 스냅샷은 부가 기능 — 실패해도 조용히 */ }
 }
@@ -17461,7 +17473,57 @@ function renderUsFtd() {
   wrap.innerHTML = idxSec
     + brSec
     + `<div style="font-size:13px;font-weight:700;color:#1a1a1a;margin:18px 0 10px">🚀 Follow-Through Day (FTD) 상세</div>${guide}${cards}`
-    + ddSec + rhSec + dmSec;
+    + ddSec + rhSec + dmSec
+    + '<div id="mp-earn-host"></div>';
+  try { fillEarningsCal(); } catch(e) {}
+}
+
+// ═══ 📅 실적 발표 캘린더 (earnings.json — make_snapshots.py --earnings 생성) ═══
+async function loadEarnings() {
+  if (window.__EARNINGS) return window.__EARNINGS;
+  if (!window.__EARN_LOADING) {
+    window.__EARN_LOADING = fetch('./earnings.json', {cache: 'no-store'})
+      .then(r => r.ok ? r.json() : {}).catch(() => ({}));
+  }
+  window.__EARNINGS = await window.__EARN_LOADING;
+  return window.__EARNINGS;
+}
+function _bdaysBetween(d1, d2) {   // 근사 (달력일 ×5/7) — 엔진 _bdays 와 동일 방식
+  const a = new Date(d1), b = new Date(d2);
+  return Math.round(Math.abs(b - a) / 864e5 * 5 / 7);
+}
+async function fillEarningsCal() {
+  const host = document.getElementById('mp-earn-host');
+  if (!host) return;
+  const em = await loadEarnings();
+  const keys = Object.keys(em).filter(k => k !== 'meta');
+  const title = `<div style="font-size:13px;font-weight:700;color:#1a1a1a;margin:18px 0 10px">📅 실적 발표 캘린더 <span style="font-size:10.5px;color:#888;font-weight:400">RS 80+ / Phase 4·4+·5 종목 — D-14~D+0 임박은 변동성 급증 위험</span></div>`;
+  if (!keys.length) {
+    host.innerHTML = title + `<div style="background:#fafaf8;border:1px dashed #d0d0c8;border-radius:10px;padding:14px 16px;margin-bottom:6px;font-size:12px;color:#888">⏳ 실적일 데이터 대기 — snapshots 워크플로우(--earnings)가 earnings.json 을 생성하면 표시됩니다.</div>`;
+    return;
+  }
+  const today = ((window._lastUSRaw||{}).meta||{}).updated_at?.slice(0,10) || new Date().toISOString().slice(0,10);
+  const byT = {}; ((window._lastUSRaw||{}).stocks||[]).forEach(s => byT[s.ticker] = s);
+  const held = new Set((((window.__STRATEGY_ROOM||{}).holdings)||[]).map(h => h.ticker));
+  const rows = keys.map(t => ({t, d: em[t], dte: em[t] >= today ? _bdaysBetween(today, em[t]) : -1, s: byT[t]}))
+    .filter(r => r.dte >= 0 && r.dte <= 21).sort((a,b) => a.d < b.d ? -1 : 1);
+  const imminent = rows.filter(r => r.dte <= 7), later = rows.filter(r => r.dte > 7);
+  const chip = r => {
+    const isH = held.has(r.t);
+    const col = r.dte <= 3 ? '#A32D2D' : r.dte <= 7 ? '#B5500A' : '#73726c';
+    return `<span onclick="openDetailByTicker('${r.t}')" title="${(r.s||{}).name||''} · RS ${(r.s||{}).rs||'—'}" style="display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border:1.5px solid ${isH?'#854F0B':'#e0dfd8'};border-radius:6px;background:${isH?'#FFF4E6':'#fff'};font-size:11px;cursor:pointer;margin:0 6px 6px 0">
+      ${isH?'💼 ':''}<b>${r.t}</b><span style="color:${col};font-weight:700">D-${r.dte}</span><span style="color:#999">${r.d.slice(5)}</span></span>`;
+  };
+  host.innerHTML = title
+    + `<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin-bottom:6px">
+      <div style="background:#fff;border:2px solid #EF9F27;border-radius:10px;padding:14px 16px">
+        <div style="font-size:12px;font-weight:700;color:#854F0B;margin-bottom:8px">⚠ 실적 임박 (D-7 이내) · ${imminent.length}종목 <span style="font-size:10px;font-weight:400;color:#999">— 엔진은 신규 진입 금지 · D-3 부분정리</span></div>
+        <div>${imminent.slice(0,40).map(chip).join('') || '<span style="font-size:11.5px;color:#3B6D11">임박 종목 없음</span>'}</div></div>
+      <div style="background:#fff;border:1px solid #e0dfd8;border-radius:10px;padding:14px 16px">
+        <div style="font-size:12px;font-weight:700;color:#1a1a1a;margin-bottom:8px">📅 예정 (D-8~21) · ${later.length}종목</div>
+        <div>${later.slice(0,40).map(chip).join('') || '<span style="font-size:11.5px;color:#999">해당 없음</span>'}</div></div>
+      </div>
+      <div style="font-size:10px;color:#999;margin-bottom:4px">💼 = 전략실 보유 · 클릭 = 종목 상세 · 기준일 ${(em.meta||{}).asof||''} · ${keys.length}종목 수집</div>`;
 }
 
 function updateSecMarketBadges() {
@@ -18934,8 +18996,10 @@ function buildBriefingV2Data(){
     var stk = all.find(function(s){return s.ticker===h.ticker;}) || {};
     var reasons=[], cat='normal';
     if ((stopDist!=null && stopDist<=3) || (gain!=null && gain<=-5)) { cat='critical'; reasons.push('스탑 근접 (이격 '+(stopDist!=null?stopDist:'—')+'%)'); }
+    else if (typeof h.dte === 'number' && h.dte <= 7) { cat='review'; reasons.push('실적 D-'+h.dte+' (이벤트 리스크)'); }
     else if (h.runner || lock || be) { cat='protect'; reasons.push(h.runner?'런너 — 시간캡 면제':(lock?'Lock 래칫 보호':'BE 보호')); }
     else if ((h.days_in||0) >= 35 && !h.oneill_8w_active) { cat='review'; reasons.push('max hold 임박 ('+h.days_in+'/40영업일)'); }
+    if (h.partial) reasons.push('실적 부분정리 완료 ✂'+h.partial+'%');
     var phN = String(stk.phase)==='4plus'?4:parseInt(String(stk.phase||'').replace('plus',''))||null;
     return {tk:h.ticker, ind:stk.industry||'', pat:(stk.best_pattern||''), gain:gain, maxg:maxg,
             stopDist:stopDist, days:h.days_in||0, cat:cat, reasons:reasons, be:be, lock:lock,
@@ -19043,7 +19107,6 @@ function tryRenderBriefingV2(){
     }
   } catch(e) { console.warn('[BriefingV2] 빌드 실패:', e); }
 }
-
 </script>
 </body>
 </html>
