@@ -713,6 +713,11 @@ def run(screener_path, state_path):
         if px is None or px <= 0:
             px = _num(h.get("cur"), None) or _num(h.get("entry_px"), 0.0)
         h["cur"] = px
+        # 스파크라인용 종가 이력 (하루 1회 append · 최근 30개 — 브리핑 09 spark)
+        if h.get("px_hist_d") != data_date:
+            h.setdefault("px_hist", []).append(round(px, 2))
+            h["px_hist"] = h["px_hist"][-30:]
+            h["px_hist_d"] = data_date
         gain = (px/h["entry_px"] - 1)*100
         h["max_gain_pct"] = max(h.get("max_gain_pct", 0), gain)
         h["days_in"] = _bdays(h["entry_date"], data_date)
@@ -931,6 +936,7 @@ def run(screener_path, state_path):
             "max_gain_pct": 0.0, "days_in": 0, "current_stop": px*(1+RULES["stop_pct"]/100),
             "runner": False, "oneill_8w_active": False,
             "reentry": t in prev_closed,
+            "px_hist": [round(px, 2)], "px_hist_d": data_date,
         })
         cash -= alloc*(1+cost); max_new_cash -= alloc
         state.setdefault("entries_recent", []).append(data_date)
@@ -997,6 +1003,7 @@ def run(screener_path, state_path):
                 "current_stop": px_new*(1+RULES["stop_pct"]/100),
                 "runner": False, "oneill_8w_active": False,
                 "reentry": s["ticker"] in prev_closed,
+                "px_hist": [round(px_new, 2)], "px_hist_d": data_date,
             })
             cash -= alloc*(1+cost)
             state.setdefault("entries_recent", []).append(data_date)
