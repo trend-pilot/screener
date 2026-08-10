@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IBD early bird Dashboard</title>
-<style>html{overflow-x:hidden}
+<style>html{overflow-x:clip}
 /* CSS 변수: fixed 헤더+탭바 실측 높이. JS가 ResizeObserver 로 동적 업데이트. */
 :root{--hdr-h:92px}
 /* ══ Grid 기반 레이아웃 ══
@@ -51,7 +51,7 @@ body{
 
 *{box-sizing:border-box;margin:0;padding:0}
 
-body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;color:#1a1a1a;font-size:14px;overflow-x:hidden}
+body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;color:#1a1a1a;font-size:14px;overflow-x:clip}
 *{box-sizing:border-box}
 
 /* ── 헤더 ── */
@@ -118,6 +118,15 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 /* ═══ v12: Daily Briefing 탭 신규 (6 섹션 Top-Down 골격) ═══ */
 .db-section{background:#fff;border:1px solid #e0dfd8;border-radius:10px;margin-bottom:14px;overflow:hidden}
 .db-section-header{display:flex;align-items:center;gap:10px;padding:11px 16px;background:#fafaf8;border-bottom:1px solid #e0dfd8;flex-wrap:wrap}
+/* [0810 샘플 동기화] 접이식 브리핑 패널 — 체크박스 접기/펼치기 + 우측 요약 칩 */
+.db-cb{position:absolute;left:-9999px;opacity:0}
+.db-panel{position:relative}
+.db-panel-head{cursor:pointer;user-select:none}
+.db-arrow::before{content:"▼";font-size:11px;color:#73726c}
+.db-cb:checked ~ .db-panel-body{display:none !important}
+.db-cb:checked ~ label .db-arrow::before{content:"▶"}
+.db-cb:checked ~ label.db-section-header{border-bottom:none}
+.db-panel-sum{margin-left:auto;font-size:12.5px;font-weight:600;color:#4a4945;white-space:nowrap;max-width:55%;overflow:hidden;text-overflow:ellipsis;padding-left:10px}
 .db-section-num{font-size:18px;font-weight:700;color:#185FA5;min-width:24px;text-align:center}
 .db-section-title{font-size:15px;font-weight:700;color:#1a1a1a}
 .db-section-desc{font-size:11.5px;color:#73726c;margin-left:auto;font-weight:400}
@@ -1059,8 +1068,10 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 
 /* ── 모바일 완전 수정 ── */
 @media(max-width:768px){
-  /* 모바일: grid 1열로 변경, 사이드바는 fixed overlay */
-  body{grid-template-columns:1fr;grid-template-rows:auto 1fr}
+  /* 모바일: grid 1열로 변경, 사이드바는 fixed overlay
+     [모바일 v2026-08-10] 1fr → minmax(0,1fr): static이 된 top-sticky-wrap(탭 11개
+     nowrap ≈1,075px)의 min-content가 트랙을 밀어 본문 전체가 1075px로 커지는 것 방지 */
+  body{grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr}
   .mp-sidebar{
     grid-column:1;grid-row:1 / -1;
     position:fixed;left:0;top:0;width:200px;height:100vh;
@@ -1070,7 +1081,14 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
   }
   .mp-sidebar.mobile-open{transform:translateX(0) !important}
   /* 모바일: top-sticky-wrap은 전체 너비 (사이드바는 overlay) */
-  .top-sticky-wrap{left:0;right:0}
+  /* [모바일 v2026-08-10] fixed → static: 세로 664px 중 ~196px를 헤더가 상시
+     점유하던 문제 해결. 헤더·검증바·탭바는 위로 스크롤되어 사라지고,
+     각 탭의 자체 sticky(브리핑 섹션 내비 등)가 top:~0에 붙는다.
+     --hdr-h 는 JS(updateHeight)가 모바일에서 8px로 세팅. */
+  .top-sticky-wrap{left:0;right:0;position:static;min-width:0;max-width:100vw}
+  .main-with-sidebar{padding-top:0}
+  /* 데이터 토스트: 폰 폭에 맞게 */
+  #__data_toast{left:12px !important;right:12px !important;max-width:none !important;top:8px !important}
   .main-with-sidebar{grid-column:1;grid-row:2}
   /* 토글 버튼 */
   .mp-toggle{right:-18px;width:18px;height:32px;font-size:8px;opacity:0.7}
@@ -1128,7 +1146,7 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
   .scr-tbl{min-width:1200px !important}
   .etf-tbl{min-width:1400px !important}
   /* 패널 자체는 가로 overflow 방지 (테이블 wrap에서만 스크롤) */
-  #top-panel-screener,#top-panel-etf{overflow-x:hidden}
+  #top-panel-screener,#top-panel-etf{overflow-x:clip}
 
   /* ETF Phase 행 */
   .etf-tbl-head,.etf-row{min-width:900px}
@@ -1718,10 +1736,13 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
   .scr-tbl{min-width:1200px !important}
   .etf-tbl{min-width:1400px !important}
   
-  /* 패널 자체가 가로 overflow 막아 테이블 wrap이 viewport 안에 갇히게 */
+  /* 패널 자체가 가로 overflow 막아 테이블 wrap이 viewport 안에 갇히게
+     [모바일 v2026-08-10] hidden → clip: hidden은 overflow-y를 auto로 만들어
+     패널이 스크롤 컨테이너가 되고, 그 안의 sticky(브리핑 섹션 내비)가
+     뷰포트에 안 붙는 부작용이 있었다. clip은 스크롤 컨테이너를 안 만든다. */
   #top-panel-screener, #top-panel-etf, #top-panel-sector,
   #top-panel-briefing, #top-panel-themeanalysis{
-    overflow-x:hidden !important;
+    overflow-x:clip !important;
   }
   /* [v2026-06-01 fix] 모바일에서 카드가 viewport 넘치는 문제 방지 */
   .tm-card{box-sizing:border-box;max-width:100%;overflow:hidden}
@@ -1963,6 +1984,21 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
   --font-heading:"Barlow Condensed","Noto Sans KR",system-ui,sans-serif;--font-body:"Barlow","Noto Sans KR",system-ui,sans-serif;
 }
 #top-panel-briefing .brf2-wrap{background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);-webkit-font-smoothing:antialiased;font-size:14px;line-height:1.5;font-variant-numeric:tabular-nums;word-break:keep-all;overflow-wrap:break-word}
+/* [모바일 v2026-08-10] 고정폭 SVG 차트(02·06·08·10·11 등)가 폰 화면을 밀어내지
+   않도록 비율 유지 축소 — 데스크톱에선 natural width가 컨테이너보다 작아 무해 */
+#top-panel-briefing #brf2-app svg{max-width:100%;height:auto}
+/* 데스크톱: 페이지 상단 고정바(top-sticky-wrap)가 있으므로 브리핑 자체 헤더는
+   기존처럼 본문과 함께 스크롤 (모바일에서만 sticky 섹션 내비로 동작) */
+@media(min-width:769px){
+  #top-panel-briefing #brf2-app header{position:static !important}
+}
+/* 모바일: 브리핑 sticky 헤더 컴팩트 — 날짜 줄 숨기고 제목 축소 (166px→~100px) */
+@media(max-width:768px){
+  #top-panel-briefing #brf2-app header>div:first-child{padding:8px 12px 4px}
+  #top-panel-briefing #brf2-app header>div:first-child>div:first-child{font-size:15px}
+  #top-panel-briefing #brf2-app header>div:first-child>div:nth-child(2){display:none}
+  #top-panel-briefing #brf2-app header nav{padding:0 12px 6px}
+}
 #top-panel-briefing a{color:var(--color-accent-700);text-decoration:none}
 #top-panel-briefing a:hover{color:var(--color-accent-900)}
 #top-panel-briefing ::selection{background:var(--color-accent-200)}
@@ -2162,136 +2198,195 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 <!-- ══ TOP PANEL: Market Pulse ══ -->
 <!-- ══ Daily Briefing 탭 패널 (v12 신규 / 6 섹션 Top-Down) ══ -->
 <div class="top-panel on" id="top-panel-briefing">
-<div class="brf2-wrap"><div id="brf2-app"><div style="padding:40px;text-align:center;color:#98989b;font-size:13px">⏳ 데이터를 불러오면 브리핑이 렌더링됩니다</div></div></div>
-<div id="db-legacy" style="display:none">
+<!-- [0810 샘플 동기화] 브리핑 뷰 토글: 대시보드형(기본, 샘플 dashboard_public 구조) ↔ 블루프린트형(표준 브리핑) -->
+<div id="brf-view-toggle" style="max-width:1200px;margin:0 auto;padding:12px 16px 0;display:flex;gap:6px;justify-content:flex-end">
+  <button id="brfv-dash" onclick="switchBriefingView('dash')" style="padding:6px 14px;font-size:12px;border:1.5px solid #185FA5;border-radius:99px;cursor:pointer;font-weight:700;background:#185FA5;color:#fff">🌅 대시보드형</button>
+  <button id="brfv-bp" onclick="switchBriefingView('bp')" style="padding:6px 14px;font-size:12px;border:1.5px solid #d3d1c7;border-radius:99px;cursor:pointer;font-weight:700;background:#fff;color:#4a4945">📘 표준 브리핑</button>
+</div>
+<div class="brf2-wrap" style="display:none"><div id="brf2-app"><div style="padding:40px;text-align:center;color:#98989b;font-size:13px">⏳ 데이터를 불러오면 브리핑이 렌더링됩니다</div></div></div>
+<div id="db-legacy">
   <div style="max-width:1200px;margin:0 auto;padding:20px 16px">
 
-    <!-- [v2026-06-12 Phase3] Daily Briefing 노란 배너 + 액션 버튼 -->
-    <div style="background:linear-gradient(135deg,#FFFBE6,#FFF8DC);border:2px solid #F5C518;border-radius:12px;padding:18px 24px;margin-bottom:20px">
+    <!-- Daily Briefing 골드 배너 (0810 샘플 헤더) -->
+    <div style="background:linear-gradient(135deg,#FFF5DD,#FFE8A3);border:1.5px solid #FFD700;border-radius:12px;padding:18px 24px;margin-bottom:20px">
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
         <div>
-          <div style="font-size:22px;font-weight:700;color:#7a5400;margin-bottom:2px">🌅 Daily Briefing</div>
-          <div style="font-size:12px;color:#7a5400" id="db-briefing-sub">다음날 장 시작 전 의사결정 보조</div>
+          <div style="font-size:24px;font-weight:700;color:#854F0B;margin-bottom:2px">🌅 Daily Briefing</div>
+          <div style="font-size:13px;color:#73726c" id="db-briefing-sub">다음날 장 시작 전 의사결정 보조</div>
         </div>
         <div style="display:flex;gap:6px;flex-wrap:wrap">
-          <button onclick="dbToggleAll(true)" style="padding:6px 12px;background:#fff;border:1px solid #d3a017;border-radius:6px;font-size:12px;color:#7a5400;cursor:pointer;font-weight:600">▼ 모두 펼치기</button>
-          <button onclick="dbToggleAll(false)" style="padding:6px 12px;background:#fff;border:1px solid #d3a017;border-radius:6px;font-size:12px;color:#7a5400;cursor:pointer;font-weight:600">▶ 모두 접기</button>
-          <button onclick="renderDailyBriefing(window.__lastRawData)" style="padding:6px 12px;background:#fff;border:1px solid #d3a017;border-radius:6px;font-size:12px;color:#7a5400;cursor:pointer;font-weight:600">🔄 새로고침</button>
+          <button onclick="dbToggleAll(true)" style="padding:7px 11px;background:#fff;border:1px solid #d3d1c7;border-radius:6px;font-size:11px;cursor:pointer">▼ 모두 펼치기</button>
+          <button onclick="dbToggleAll(false)" title="모든 패널 접기 — 헤더만 보고 필요한 것만 펼침" style="padding:7px 11px;background:#fff;border:1px solid #d3d1c7;border-radius:6px;font-size:11px;cursor:pointer">▶ 모두 접기</button>
+          <button onclick="renderDailyBriefing(window.__lastRawData)" style="padding:7px 14px;background:#fff;border:1px solid #d3d1c7;border-radius:6px;font-size:11px;cursor:pointer">🔄 새로고침</button>
         </div>
       </div>
-      <div style="margin-top:12px;padding-top:12px;border-top:1px dashed #d3a017;font-size:11.5px;color:#5a3a00;line-height:1.6">
-        💡 <b>운용 철학:</b> 이 화면은 "AI 가 결정 추천"이 아니라 <b>"사용자 결정을 위한 정보 정리"</b>. 모든 신호의 근거가 표시되며, 반대 시나리오도 함께 제시됩니다. 결정은 사용자.
+      <div style="font-size:11.5px;color:#854F0B;margin-top:10px;padding-top:10px;border-top:1px dashed #EF9F27;line-height:1.7">
+        <b>🎯 운용 철학</b>: 이 화면은 "AI 가 결정 추천" 이 아니라 <b>"사용자 결정을 위한 정보 정리"</b>. 모든 신호의 근거가 표시되며, 반대 시나리오도 함께 제시됩니다. 결정은 사용자.
       </div>
     </div>
 
-    <!-- ① 오늘의 시장 상태 (v2026-06-12 Phase3 풍부화) -->
-    <section class="db-section">
-      <div class="db-section-header">
+    <section class="db-section db-panel">
+      <input type="checkbox" class="db-cb" id="dbcb-regime">
+      <label for="dbcb-regime" class="db-section-header db-panel-head">
+        <span class="db-arrow"></span>
         <span class="db-section-num">①</span>
         <span class="db-section-title">오늘의 시장 상태</span>
-        <span class="db-section-desc" id="db-market-regime-label">—</span>
-      </div>
+        <span class="db-panel-sum" id="db-market-regime-label">—</span>
+      </label>
+      <div class="db-panel-body">
       <div class="db-section-body" id="db-market-body">
         <div class="db-placeholder">⏳ JSON 불러오면 자동 렌더링</div>
       </div>
+      </div>
     </section>
-
-    <!-- ② 시장 환경 평가 (Universe Breadth) - 9개 카드 3×3 -->
-    <section class="db-section">
-      <div class="db-section-header">
+    <section class="db-section db-panel">
+      <input type="checkbox" class="db-cb" id="dbcb-health">
+      <label for="dbcb-health" class="db-section-header db-panel-head">
+        <span class="db-arrow"></span>
         <span class="db-section-num">②</span>
         <span class="db-section-title">시장 환경 평가 (Universe Breadth)</span>
-        <span class="db-section-desc" id="db-breadth-desc">전 종목 풀 기반 9개 지표 종합</span>
-      </div>
+        <span class="db-section-desc">전 종목 풀 기반 9개 지표 종합</span>
+        <span class="db-panel-sum" id="dbsum-health"></span>
+      </label>
+      <div class="db-panel-body">
       <div class="db-section-body" id="db-breadth-body">
         <div class="db-placeholder">⏳ JSON 불러오면 자동 렌더링</div>
       </div>
+      </div>
     </section>
-
-    <!-- ③ 진입/편출 흐름 (참고본 ③④) -->
-    <section class="db-section">
-      <div class="db-section-header">
+    <section class="db-section db-panel">
+      <input type="checkbox" class="db-cb" id="dbcb-stockflow">
+      <label for="dbcb-stockflow" class="db-section-header db-panel-head">
+        <span class="db-arrow"></span>
         <span class="db-section-num">③</span>
         <span class="db-section-title">진입/편출 흐름</span>
         <span class="db-section-desc">강세 셋업 종목의 1일 변화 · 추이</span>
-      </div>
+        <span class="db-panel-sum" id="dbsum-stockflow"></span>
+      </label>
+      <div class="db-panel-body">
       <div class="db-section-body" id="db-flow-body">
         <div class="db-placeholder">⏳ 흐름 이력 수집 중 — screener 재실행 후 표시됩니다</div>
       </div>
+      </div>
     </section>
-
-    <!-- ④ 진입 후보 추이 -->
-    <section class="db-section">
-      <div class="db-section-header">
+    <section class="db-section db-panel">
+      <input type="checkbox" class="db-cb" id="dbcb-entry">
+      <label for="dbcb-entry" class="db-section-header db-panel-head">
+        <span class="db-arrow"></span>
         <span class="db-section-num">④</span>
         <span class="db-section-title">진입 후보 추이</span>
-        <span class="db-section-desc">강세 셋업·리더 종목 수의 누적 변화</span>
-      </div>
+        <span class="db-section-desc">강세 셋업·리더 종목 수의 누적 변화 (60일)</span>
+        <span class="db-panel-sum" id="dbsum-entry"></span>
+      </label>
+      <div class="db-panel-body">
       <div class="db-section-body" id="db-trend-body">
         <div class="db-placeholder">⏳ 추이 데이터 누적 중 — 2일 이상 실행 시 차트 표시</div>
       </div>
+      </div>
     </section>
-
-    <!-- ⑤ 섹터 강도 현황 -->
-    <section class="db-section">
-      <div class="db-section-header">
+    <section class="db-section db-panel">
+      <input type="checkbox" class="db-cb" id="dbcb-phasedist">
+      <label for="dbcb-phasedist" class="db-section-header db-panel-head">
+        <span class="db-arrow"></span>
+        <span class="db-section-num">④.5</span>
+        <span class="db-section-title">Base Phase 분포 × Market Pulse 노출도</span>
+        <span class="db-section-desc">유니버스 전 종목 phase 누적 스택 + 권장 노출도 계단선</span>
+        <span class="db-panel-sum" id="dbsum-phasedist"></span>
+      </label>
+      <div class="db-panel-body">
+      <div class="db-section-body" id="db-phasedist-body">
+        <div class="db-placeholder">⏳ 전략실 daily_history 축적 시 표시</div>
+      </div>
+      </div>
+    </section>
+    <section class="db-section db-panel">
+      <input type="checkbox" class="db-cb" id="dbcb-sectors">
+      <label for="dbcb-sectors" class="db-section-header db-panel-head">
+        <span class="db-arrow"></span>
         <span class="db-section-num">⑤</span>
-        <span class="db-section-title">섹터 강도 현황 (RS Line 점수 기반)</span>
+        <span class="db-section-title">강세 섹터 (절대점수 분류 · 섹터 탭과 동일)</span>
         <span class="db-section-desc">어느 섹터에서 종목을 찾을 것인가</span>
-      </div>
+        <span class="db-panel-sum" id="dbsum-sectors"></span>
+      </label>
+      <div class="db-panel-body">
       <div class="db-section-body" id="db-sector-body">
-        <div class="db-placeholder">⏳ Phase 5에서 채워질 예정 — 1위 메가 카드 + 강세 섹터 리스트 (RS Line 점수 기반)</div>
+        <div class="db-placeholder">⏳ JSON 불러오면 자동 렌더링</div>
+      </div>
       </div>
     </section>
-
-    <!-- ③ 강세 산업 -->
-    <section class="db-section">
-      <div class="db-section-header">
+    <section class="db-section db-panel">
+      <input type="checkbox" class="db-cb" id="dbcb-industries">
+      <label for="dbcb-industries" class="db-section-header db-panel-head">
+        <span class="db-arrow"></span>
         <span class="db-section-num">⑥</span>
         <span class="db-section-title">강세 세부 업종 (Industry-level)</span>
         <span class="db-section-desc">섹터 안에서 어느 세부 업종이 뜨는가</span>
-      </div>
+        <span class="db-panel-sum" id="dbsum-industries"></span>
+      </label>
+      <div class="db-panel-body">
       <div class="db-section-body" id="db-industry-body">
-        <div class="db-placeholder">⏳ Phase 4에서 채워질 예정 — 강세/약세 산업 chip + 대표 종목 chip (백분위 기반)</div>
+        <div class="db-placeholder">⏳ JSON 불러오면 자동 렌더링</div>
+      </div>
       </div>
     </section>
-
-    <!-- ④ 진입 후보 -->
-    <section class="db-section">
-      <div class="db-section-header">
+    <section class="db-section db-panel">
+      <input type="checkbox" class="db-cb" id="dbcb-candidates">
+      <label for="dbcb-candidates" class="db-section-header db-panel-head">
+        <span class="db-arrow"></span>
         <span class="db-section-num">⑧</span>
         <span class="db-section-title">진입 후보 — 테마 종합점수 × 추세 초기 강세</span>
         <span class="db-section-desc">오늘 매수를 고려할 종목</span>
-      </div>
+        <span class="db-panel-sum" id="dbsum-candidates"></span>
+      </label>
+      <div class="db-panel-body">
       <div class="db-section-body" id="db-candidates-body">
-        <div class="db-placeholder">⏳ Phase 5에서 채워질 예정 — 진입 후보 점수 (D/E/F/H 카테고리) + 종목 카드</div>
+        <div class="db-placeholder">⏳ JSON 불러오면 자동 렌더링</div>
+      </div>
       </div>
     </section>
-
-    <!-- ⑤ 워치리스트 변동 -->
-    <section class="db-section">
-      <div class="db-section-header">
-        <span class="db-section-num">⑨</span>
+    <section class="db-section db-panel">
+      <input type="checkbox" class="db-cb" id="dbcb-watchlist">
+      <label for="dbcb-watchlist" class="db-section-header db-panel-head">
+        <span class="db-arrow"></span>
+        <span class="db-section-num">⑩</span>
         <span class="db-section-title">워치리스트 변동</span>
         <span class="db-section-desc">관심 종목 중 오늘 어떤 변화가</span>
-      </div>
+        <span class="db-panel-sum" id="dbsum-watchlist"></span>
+      </label>
+      <div class="db-panel-body">
       <div class="db-section-body" id="db-watchlist-body">
-        <div class="db-placeholder">📋 워치리스트가 비어있습니다.<br><span style="font-size:11px;color:#aaa">현재 워치리스트 기능 미구현 — 별도 인프라 작업 (localStorage 기반) 후 활성화 예정</span></div>
+        <div class="db-placeholder">📋 워치리스트가 비어있습니다.<br><span style="font-size:11px;color:#aaa">사이드바 ★ WATCHLIST 에 종목을 추가하면 변동이 표시됩니다</span></div>
+      </div>
       </div>
     </section>
-
-    <!-- ⑥ 보유 포지션 -->
-    <section class="db-section">
-      <div class="db-section-header">
-        <span class="db-section-num">⑩</span>
-        <span class="db-section-title">보유 포지션</span>
-        <span class="db-section-desc">매수가 대비 손익 + IBD 손절/익절 시그널 (localStorage 기반)</span>
-      </div>
+    <section class="db-section db-panel">
+      <input type="checkbox" class="db-cb" id="dbcb-positions">
+      <label for="dbcb-positions" class="db-section-header db-panel-head">
+        <span class="db-arrow"></span>
+        <span class="db-section-num">⑪</span>
+        <span class="db-section-title">보유 포지션 액션 (🏛 전략실 동기화)</span>
+        <span class="db-section-desc">전략실 페이퍼 트레이딩 보유 — 손익·스탑 여유·실적 D-n</span>
+        <span class="db-panel-sum" id="dbsum-positions"></span>
+      </label>
+      <div class="db-panel-body">
       <div class="db-section-body" id="db-positions-body">
-        <div class="pos-empty">
-          <b>💼 등록된 보유 포지션이 없습니다</b>
-          종목 상세 모달에서 <b>📦 포지션</b> 버튼으로 추가하세요.
-        </div>
+        <div class="db-placeholder">⏳ strategy_room.json 로드 시 표시</div>
+      </div>
+      </div>
+    </section>
+    <section class="db-section db-panel">
+      <input type="checkbox" class="db-cb" id="dbcb-moneyflow">
+      <label for="dbcb-moneyflow" class="db-section-header db-panel-head">
+        <span class="db-arrow"></span>
+        <span class="db-section-num">⑫</span>
+        <span class="db-section-title">자금 흐름 분석 — 거래대금 폭증 + 주가 방향</span>
+        <span class="db-section-desc">기관 수급 프록시: RVOL 급증 종목의 방향성 분해</span>
+        <span class="db-panel-sum" id="dbsum-moneyflow"></span>
+      </label>
+      <div class="db-panel-body">
+      <div class="db-section-body" id="db-moneyflow-body">
+        <div class="db-placeholder">⏳ JSON 불러오면 자동 렌더링</div>
+      </div>
       </div>
     </section>
 
@@ -13346,7 +13441,13 @@ function updateMarketPulse(raw, krRaw) {
     }
     // v12 Phase 5: ④ 진입 후보 — 단순 필터링 (Phase × RS Line 점수) — 전체 풀 사용
     renderDailyBriefingCandidates(stocks);
-    try { tryRenderBriefingV2(); } catch(e) { console.warn('[BriefingV2]', e); }
+    // [0810 샘플 동기화] 신규 패널: ④.5 Phase 스택 · ⑪ 전략실 보유 · ⑫ 자금 흐름 + 요약 칩
+    try { renderDbPhaseDist(); } catch(e) { console.warn('[④.5 Phase분포]', e); }
+    try { renderDbPositions(); } catch(e) { console.warn('[⑪ 보유]', e); }
+    try { renderDbMoneyFlow(stocks); } catch(e) { console.warn('[⑫ 자금흐름]', e); }
+    try { fillDbPanelSums(stocks); } catch(e) {}
+    if (window.__BRF_VIEW === 'bp') { try { tryRenderBriefingV2(); } catch(e) { console.warn('[BriefingV2]', e); } }
+    else { try { tryRenderBriefingV2(); } catch(e) {} }  // 표준 브리핑도 미리 렌더 (토글 즉시 표시)
   }
   catch(e) { console.warn('[Daily Briefing] 렌더 실패:', e); }
 }
@@ -13518,11 +13619,147 @@ function renderDailyBriefingBreadth(stocks, mkt, regime) {
 
 // [v2026-06-12 Phase3] Daily Briefing 토글 (모두 펼치기/접기)
 window.dbToggleAll = function(open) {
-  document.querySelectorAll('#top-panel-briefing .db-section').forEach(sec => {
-    const body = sec.querySelector('.db-section-body');
-    if (body) body.style.display = open ? '' : 'none';
-  });
+  // [0810 샘플] 접이식 패널: 체크박스 checked = 접힘
+  document.querySelectorAll('#top-panel-briefing .db-cb').forEach(cb => { cb.checked = !open; });
 };
+
+// ═══ [0810 샘플 동기화] 브리핑 뷰 토글: 대시보드형(기본) ↔ 표준(블루프린트) ═══
+window.__BRF_VIEW = 'dash';
+window.switchBriefingView = function(mode) {
+  window.__BRF_VIEW = mode;
+  const dash = document.getElementById('db-legacy');
+  const bp = document.querySelector('#top-panel-briefing .brf2-wrap');
+  const bDash = document.getElementById('brfv-dash'), bBp = document.getElementById('brfv-bp');
+  const on = 'padding:6px 14px;font-size:12px;border:1.5px solid #185FA5;border-radius:99px;cursor:pointer;font-weight:700;background:#185FA5;color:#fff';
+  const off = 'padding:6px 14px;font-size:12px;border:1.5px solid #d3d1c7;border-radius:99px;cursor:pointer;font-weight:700;background:#fff;color:#4a4945';
+  if (dash) dash.style.display = mode === 'dash' ? '' : 'none';
+  if (bp) bp.style.display = mode === 'bp' ? '' : 'none';
+  if (bDash) bDash.style.cssText = mode === 'dash' ? on : off;
+  if (bBp) bBp.style.cssText = mode === 'bp' ? on : off;
+  if (mode === 'bp') { try { tryRenderBriefingV2(); } catch(e) {} }
+};
+
+// ═══ [0810 샘플] ④.5 Base Phase 분포 × 노출도 — daily_history 스택 (컴팩트판) ═══
+function renderDbPhaseDist() {
+  const el = document.getElementById('db-phasedist-body');
+  if (el === null) return;
+  let d;
+  try { d = buildBriefingV2Data(); } catch(e) { return; }
+  const rows = ((d.phase||{}).rows||[]);
+  if (!rows.length) return;
+  const ORDER = [['4+','#1D4230'],['4','#2E5C43'],['5+','#3E7D5C'],['5','#5E9678'],['3','#8FB49A'],
+                 ['2','#C8B96A'],['1','#c4c2b8'],['6','#C87F2F'],['7','#A34141'],['0','#b8b6ac']];
+  const W = Math.min(860, Math.max(320, rows.length*40+80)), H = 190, L = 34, R = 8, T = 6, B = 26;
+  const iw = W-L-R, ih = H-T-B;
+  const X = i => L + (rows.length === 1 ? iw/2 : i*iw/(rows.length-1));
+  let svg = '';
+  // 스택 (각 시점 세로 100% 정규화 밴드)
+  ORDER.forEach(() => {});
+  const bandsAt = r => { const t2 = r.t||1; let acc = 0; return ORDER.map(([k]) => { const v = (r.ph||{})[k]||0; const y0 = acc/t2; acc += v; return [y0, acc/t2]; }); };
+  for (let oi = 0; oi < ORDER.length; oi++) {
+    let up = '', dn = '';
+    rows.forEach((r, i) => { const b = bandsAt(r)[oi]; up += (up?' L':'M')+X(i).toFixed(1)+' '+(T+b[0]*ih).toFixed(1); });
+    for (let i = rows.length-1; i >= 0; i--) { const b = bandsAt(rows[i])[oi]; dn += ' L'+X(i).toFixed(1)+' '+(T+b[1]*ih).toFixed(1); }
+    svg += '<path d="'+up+dn+' Z" fill="'+ORDER[oi][1]+'" fill-opacity=".92"/>';
+  }
+  // 노출도 계단선 (mid of lo~hi, % → 위가 100)
+  let ln = '';
+  rows.forEach((r, i) => {
+    const lo = r.ex&&r.ex.lo, hi = r.ex&&r.ex.hi;
+    if (lo == null || hi == null) return;
+    const y = T + (1-((lo+hi)/2)/100)*ih;
+    ln += (ln?' L':'M')+X(i).toFixed(1)+' '+y.toFixed(1);
+  });
+  if (ln) svg += '<path d="'+ln+'" fill="none" stroke="#1a2b4a" stroke-width="2" stroke-dasharray="1 0"/>';
+  // 축·날짜
+  [0,25,50,75,100].forEach(p => { const y = T+(1-p/100)*ih;
+    svg += '<text x="'+(L-4)+'" y="'+(y+3)+'" text-anchor="end" font-size="8.5" fill="#999">'+p+'%</text>'; });
+  const step = Math.max(1, Math.ceil(rows.length/8));
+  rows.forEach((r, i) => { if (i%step && i !== rows.length-1) return;
+    svg += '<text x="'+X(i).toFixed(1)+'" y="'+(H-8)+'" text-anchor="middle" font-size="8.5" fill="#999">'+String(r.d||'').slice(5)+'</text>'; });
+  const legend = ORDER.map(([k,c]) => '<span style="display:inline-flex;align-items:center;gap:3px;font-size:10.5px;color:#555"><span style="width:9px;height:9px;background:'+c+';display:inline-block;border-radius:2px"></span>'+k+'</span>').join(' ');
+  const last = rows[rows.length-1] || {};
+  el.innerHTML = '<div style="font-size:11.5px;color:#555;margin-bottom:6px">노출도 '+((last.ex||{}).lo!=null?(last.ex.lo+'~'+last.ex.hi+'%'):'—')+' · 이력 '+rows.length+'거래일 (매일 자동 축적)</div>'
+    + '<svg width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" style="max-width:100%;height:auto;background:#fafaf8;border:1px solid #eceae2;border-radius:8px">'+svg+'</svg>'
+    + '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">'+legend+' <span style="font-size:10.5px;color:#555">— <b style="color:#1a2b4a">노출도 계단선</b></span></div>';
+  const g = (d.phase.green!=null?d.phase.green:'—'), a = (d.phase.aging!=null?d.phase.aging:'—');
+  const s = document.getElementById('dbsum-phasedist');
+  if (s) s.textContent = '🟢 진입풀 '+g+'% · 노화 '+a+'%';
+}
+
+// ═══ [0810 샘플] ⑪ 보유 포지션 액션 — 전략실 동기화 ═══
+function renderDbPositions() {
+  const el = document.getElementById('db-positions-body');
+  if (!el) return;
+  const sr = window.__STRATEGY_ROOM;
+  const hs = (sr && sr._holdings) || [];
+  const s = document.getElementById('dbsum-positions');
+  if (!hs.length) {
+    el.innerHTML = '<div class="db-placeholder">🏛 전략실 보유 없음'+(sr?'':' — strategy_room.json 미로드')+'</div>';
+    if (s) s.textContent = '🏛 보유 0건';
+    return;
+  }
+  let crit = 0;
+  const rows = hs.slice().sort((a,b) => ((b.cur/b.entry_px)||0)-((a.cur/a.entry_px)||0)).map(h => {
+    const gain = (h.cur/h.entry_px-1)*100;
+    const stopD = h.current_stop!=null && h.cur ? (h.cur-h.current_stop)/h.cur*100 : null;
+    const isCrit = (stopD!=null && stopD<=3) || gain<=-5;
+    if (isCrit) crit++;
+    const act = isCrit ? '<b style="color:#A32D2D">🔴 손절임박</b>'
+      : (typeof h.dte==='number' && h.dte<=7) ? '<b style="color:#B5500A">📅 실적 D-'+h.dte+'</b>'
+      : h.runner ? '<b style="color:#3B6D11">🚀 런너</b>'
+      : (h.current_stop>=h.entry_px*1.02) ? '<b style="color:#185FA5">🔒 Lock</b>' : '정상';
+    return '<tr style="border-bottom:1px solid #f0f0ea">'
+      + '<td style="padding:7px 10px"><b style="cursor:pointer;color:#185FA5" onclick="openDetailByTicker(\''+h.ticker+'\')">'+h.ticker+'</b>'+(h.partial?' <span style="font-size:10px;color:#B5500A">✂'+h.partial+'%</span>':'')+'</td>'
+      + '<td style="padding:7px 10px;text-align:right;font-weight:700;color:'+(gain>=0?'#3B6D11':'#A32D2D')+'">'+(gain>=0?'+':'')+gain.toFixed(1)+'%</td>'
+      + '<td style="padding:7px 10px;text-align:right">'+(h.max_gain_pct!=null?('+'+h.max_gain_pct.toFixed(1)+'%'):'—')+'</td>'
+      + '<td style="padding:7px 10px;text-align:right">'+(stopD!=null?stopD.toFixed(1)+'%':'—')+'</td>'
+      + '<td style="padding:7px 10px;text-align:right">'+(h.days_in!=null?h.days_in+'일':'—')+'</td>'
+      + '<td style="padding:7px 10px">'+act+'</td></tr>';
+  }).join('');
+  el.innerHTML = '<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12.5px">'
+    + '<thead><tr style="background:#fafaf8;border-bottom:1px solid #e0dfd8;font-size:11px;color:#888">'
+    + '<th style="padding:6px 10px;text-align:left">티커</th><th style="padding:6px 10px;text-align:right">손익</th>'
+    + '<th style="padding:6px 10px;text-align:right">max</th><th style="padding:6px 10px;text-align:right">스탑 여유</th>'
+    + '<th style="padding:6px 10px;text-align:right">보유일</th><th style="padding:6px 10px;text-align:left">액션</th></tr></thead>'
+    + '<tbody>'+rows+'</tbody></table></div>'
+    + '<div style="font-size:10.5px;color:#999;margin-top:6px">🏛 전략실 페이퍼 트레이딩과 실시간 동기화 · 손절임박 = 스탑 여유 ≤3% 또는 손익 ≤−5% · 티커 클릭 = 상세</div>';
+  if (s) s.textContent = '🏛 보유 '+hs.length+'건'+(crit?' · 🔴 손절임박 '+crit:'');
+}
+
+// ═══ [0810 샘플] ⑫ 자금 흐름 분석 — 거래대금 폭증 + 주가 방향 ═══
+function renderDbMoneyFlow(stocks) {
+  const el = document.getElementById('db-moneyflow-body');
+  if (!el) return;
+  const pool = (stocks||[]).filter(s => s.asset_type === 'STOCK' && typeof s.vol_ratio_50d === 'number');
+  const s = document.getElementById('dbsum-moneyflow');
+  if (!pool.length) {
+    el.innerHTML = '<div class="db-placeholder">⏳ vol_ratio_50d 필드 없음 — 데이터 대기</div>';
+    if (s) s.textContent = '';
+    return;
+  }
+  const chg = x => { const v = x.chg_pct!=null?x.chg_pct:(x.day_chg!=null?x.day_chg:x.w1); return typeof v==='number'?v:0; };
+  const surge = pool.filter(x => x.vol_ratio_50d >= 2);
+  const up = surge.filter(x => chg(x) > 0).sort((a,b) => b.vol_ratio_50d-a.vol_ratio_50d);
+  const dn = surge.filter(x => chg(x) <= 0).sort((a,b) => b.vol_ratio_50d-a.vol_ratio_50d);
+  const chip = x => '<span onclick="openDetailByTicker(\''+x.ticker+'\')" style="display:inline-flex;gap:5px;align-items:center;padding:4px 9px;border:1px solid #e0dfd8;border-radius:6px;background:#fff;font-size:11.5px;cursor:pointer;margin:0 5px 5px 0"><b>'+x.ticker+'</b><span style="color:#888">×'+x.vol_ratio_50d.toFixed(1)+'</span><span style="color:'+(chg(x)>0?'#3B6D11':'#A32D2D')+';font-weight:700">'+(chg(x)>0?'+':'')+chg(x).toFixed(1)+'%</span></span>';
+  el.innerHTML = '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px">'
+    + '<div style="background:#f4f9f2;border:1px solid #cfe3c8;border-radius:8px;padding:12px 14px"><div style="font-size:12px;font-weight:700;color:#3B6D11;margin-bottom:8px">📈 거래량 폭증 + 상승 (RVOL≥2) · '+up.length+'종목 — 기관 매집 후보</div><div>'+(up.slice(0,24).map(chip).join('')||'<span style="font-size:11px;color:#999">없음</span>')+'</div></div>'
+    + '<div style="background:#fdf4f4;border:1px solid #ecd0d0;border-radius:8px;padding:12px 14px"><div style="font-size:12px;font-weight:700;color:#A32D2D;margin-bottom:8px">📉 거래량 폭증 + 하락 (RVOL≥2) · '+dn.length+'종목 — 분배 경계</div><div>'+(dn.slice(0,24).map(chip).join('')||'<span style="font-size:11px;color:#999">없음</span>')+'</div></div></div>'
+    + '<div style="font-size:10.5px;color:#999;margin-top:8px">등락은 chg_pct(당일) 없으면 1주 변화로 대체 · 유니버스 '+pool.length+'종목 중 폭증 '+surge.length+'</div>';
+  if (s) s.textContent = '📈 급증 '+up.length+' · 📉 급락 '+dn.length;
+}
+
+// ═══ [0810 샘플] 패널 우측 요약 칩 채우기 (렌더 완료 후 호출) ═══
+function fillDbPanelSums(stocks) {
+  const q = id => document.getElementById(id);
+  try { if (q('dbsum-sectors') && window._lastSectorsData) {
+    const st = window._lastSectorsData.filter(x => x.avg_rs_line >= 60).length;
+    q('dbsum-sectors').textContent = '🟢 강세 ' + st; } } catch(e) {}
+  try { if (q('dbsum-candidates')) {
+    const n = (document.getElementById('db-candidates-body')||{}).querySelectorAll ? document.getElementById('db-candidates-body').querySelectorAll('[data-cand], .cand-card').length : 0;
+    if (n) q('dbsum-candidates').textContent = n + '개 후보'; } } catch(e) {}
+}
 
 // ═══ v12 Phase 3: Daily Briefing ② 강세 섹터 ═══
 // 1위 메가 카드 + 강세/중립/약세 섹터 chip (RS Line 점수 기준 분류)
@@ -15041,6 +15278,9 @@ async function autoLoad() {
     // US FTD 상세 카드 (market_ftd) — 전략실 JSON 로드 후 갱신
     try { if (typeof renderUsFtd === 'function') renderUsFtd(); } catch(e) { console.warn('[FTD] 렌더 실패:', e); }
     try { tryRenderBriefingV2(); } catch(e) {}
+    // [0810 샘플] 전략실 의존 패널 재렌더 (④.5 daily_history · ⑪ 보유)
+    try { renderDbPhaseDist(); } catch(e) {}
+    try { renderDbPositions(); } catch(e) {}
   } else {
     console.warn('%c[자동로드] 🏛 전략실: strategy_room.json 없음 → 샘플 데이터 표시 (엔진 첫 실행 전이면 정상)', 'color:#b08a3a');
     try { if (typeof renderUsFtd === 'function') renderUsFtd(); } catch(e) {}   // 대기 카드 표시
@@ -16685,9 +16925,13 @@ function exportEtf() {
   function updateHeight() {
     const wrap = document.querySelector('.top-sticky-wrap');
     if (!wrap) return;
-    // 모바일은 헤더가 wrap되어 더 클 수 있음 → 여유분 더 크게
     const isMobile = window.innerWidth <= 768;
-    const padding = isMobile ? 64 : 48;
+    // [모바일 v2026-08-10] 헤더가 static(스크롤 아웃)이므로 sticky 오프셋들은 0 근처
+    if (isMobile) {
+      document.documentElement.style.setProperty('--hdr-h', '8px');
+      return;
+    }
+    const padding = 48;
     const h = (wrap.offsetHeight || 92) + padding;
     document.documentElement.style.setProperty('--hdr-h', h + 'px');
     // 디버그 오버레이 (?debug=1 쿼리에서만)
