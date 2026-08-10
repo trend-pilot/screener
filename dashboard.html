@@ -5010,6 +5010,8 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
         <span>차트 로딩 중...</span>
       </div>
     </div>
+    <!-- 스냅샷 미니차트 (snapshots.json — make_snapshots.py 가 매일 생성 · lazy load) -->
+    <div id="snap-chart-host" style="padding:8px 16px 0"></div>
     <div class="dp-section">
       <div class="dp-section-title">📈 RS 지표 4종 · Stage 분석</div>
       <!-- 가이드 의도: IBD RS (후행) / RS now (선행) / RS Line 점수 (종합 모멘텀) + 갭 (RS now - IBD RS) -->
@@ -15633,9 +15635,41 @@ function renderPositionsSection() {
 // 14. 종목 상세 패널
 // ════════════════════════════════════════════════════════
 
+// ═══ 종목 스냅샷 미니차트 (2026-08-10) ═══════════════════════════════
+//   make_snapshots.py 가 매일 생성하는 snapshots.json 을 첫 요청 시 1회
+//   lazy-load 해서 상세 패널에 자체 렌더 차트를 표시한다.
+//   (TradingView 위젯이 차단·실패해도 항상 뜨는 백업 겸 분석 오버레이)
+async function injectSnapshot(ticker) {
+  const host = document.getElementById('snap-chart-host');
+  if (!host) return;
+  host.innerHTML = '';
+  try {
+    if (!window.__SNAPSHOTS) {
+      if (window.__SNAP_LOADING) { await window.__SNAP_LOADING; }
+      else {
+        window.__SNAP_LOADING = fetch('./snapshots.json', {cache: 'no-store'})
+          .then(r => r.ok ? r.json() : {})
+          .catch(() => ({}));
+        window.__SNAPSHOTS = await window.__SNAP_LOADING;
+        const n = (window.__SNAPSHOTS.meta || {}).n;
+        if (n) console.log(`%c[스냅샷] snapshots.json 로드 — ${n}종목 · ${(window.__SNAPSHOTS.meta||{}).asof||''}`, 'color:#1a56db');
+      }
+    }
+    const sn = (window.__SNAPSHOTS || {})[ticker];
+    if (sn && sn.svg) {
+      host.innerHTML = sn.svg
+        + `<div style="font-size:10px;color:#999;margin:4px 0 2px">자체 스냅샷 · ${(window.__SNAPSHOTS.meta||{}).asof||''} 종가 기준 · `
+        + `<span style="color:#e0413c">─</span> 50MA · <span style="color:#3c4450">─</span> 200MA · 하단 = 거래량</div>`;
+    } else if ((window.__SNAPSHOTS.meta || {}).n) {
+      host.innerHTML = `<div style="font-size:10.5px;color:#bbb;margin:2px 0 4px">자체 스냅샷 없음 — 스냅샷 유니버스(RS≥${(window.__SNAPSHOTS.meta||{}).min_rs||70}+ETF+보유) 밖 종목</div>`;
+    }
+  } catch(e) { /* 스냅샷은 부가 기능 — 실패해도 조용히 */ }
+}
+
 function openDetail(ticker, s, mkt) {
   s = s || {};
   const isKR = mkt === 'kr' || mkt === 'kr2';
+  try { injectSnapshot(ticker); } catch(e) {}
   const tickerEl = document.getElementById('dp-ticker');
   if (!tickerEl) return;
   tickerEl.textContent = ticker;
@@ -17325,9 +17359,109 @@ function renderUsFtd() {
       ⏳ 지수 데이터 대기 — 전략실 엔진(v1.5+)이 다음 실행에서 <code>market_idx</code>를 생성하면 Stage·이동평균·가중 DD 카드가 표시됩니다.</div>`;
   }
 
+  // ═══ 🌐 Market Breadth (시장 폭) — 2026-08-10 보강 ═══
+  const rawUS = window._lastUSRaw || window.__lastRawData || null;
+  let brSec = '';
+  {
+    const mkt2 = (rawUS || {}).market || {};
+    const arr = ((rawUS || {}).stocks || []).filter(s => s.asset_type === 'STOCK');
+    const withMa = arr.filter(s => typeof s.price === 'number' && typeof s.ma50 === 'number' && s.ma50 > 0);
+    const above = withMa.filter(s => s.price > s.ma50).length;
+    const uPct = withMa.length ? Math.round(above / withMa.length * 1000) / 10 : null;
+    const rsStrong = arr.filter(s => (s.rs || 0) >= 80).length;
+    const rsPct = arr.length ? Math.round(rsStrong / arr.length * 1000) / 10 : null;
+    const bCol = v => v == null ? '#888' : v >= 55 ? '#0F6E56' : v >= 40 ? '#854F0B' : '#A32D2D';
+    const bLbl = v => v == null ? '—' : v >= 55 ? '건강 (정상 상승)' : v >= 40 ? '중립 (참여 축소)' : '취약 (좁은 리더십)';
+    const bar = (v, col) => `<div style="margin-top:8px;max-width:380px"><div style="position:relative;height:18px;background:#f5f4ef;border-radius:9px;overflow:hidden">
+      <div style="position:absolute;left:0;top:0;height:100%;width:${v||0}%;background:linear-gradient(90deg,${col}dd,${col});border-radius:9px"></div>
+      ${[25,50,75].map(m=>`<div style="position:absolute;left:${m}%;top:0;height:100%;width:1px;background:#d3d1c7"></div>`).join('')}</div></div>`;
+    const idxBr = (name, o) => {
+      const v = (o||{}).value, ab = (o||{}).above, tt = (o||{}).total;
+      return `<div style="background:#fff;border:1px solid #e0dfd8;border-radius:10px;padding:13px 16px">
+        <div style="font-size:11px;color:#73726c;margin-bottom:3px">${name} — 50MA 상회 비율 <span style="font-size:9.5px">(구성종목 전체)</span></div>
+        <div style="display:flex;align-items:baseline;gap:8px"><div style="font-size:26px;font-weight:700;color:${bCol(v)}">${v!=null?v.toFixed(1):'—'}<span style="font-size:14px">%</span></div>
+        <div style="font-size:10.5px;color:#73726c">${ab!=null&&tt!=null?ab+' / '+tt+'개':''} · ${bLbl(v)}</div></div>${bar(v, bCol(v))}</div>`;
+    };
+    brSec = `<div style="font-size:13px;font-weight:700;color:#1a1a1a;margin:18px 0 10px">🌐 Market Breadth (시장 폭) <span style="font-size:10.5px;color:#888;font-weight:400">지수보다 내부 건강도 — 자체 계산</span></div>`
+      + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-bottom:6px">'
+      + `<div style="background:#fff;border:1px solid #e0dfd8;border-radius:10px;padding:13px 16px">
+          <div title="분모 = 스크리너 전체 유니버스(전 시장 STOCK). 강세 선별 풀이 아니라 중립 분모 — 절대 수준으로 읽어도 됨." style="font-size:11px;color:#73726c;margin-bottom:3px;cursor:help">🌐 유니버스 가격 폭 — 50MA 상회 <span style="color:#B5500A">ⓘ</span></div>
+          <div style="display:flex;align-items:baseline;gap:8px"><div style="font-size:26px;font-weight:700;color:${bCol(uPct)}">${uPct!=null?uPct:'—'}<span style="font-size:14px">%</span></div>
+          <div style="font-size:10.5px;color:#73726c">${above} / ${withMa.length}개 · ${bLbl(uPct)}</div></div>${bar(uPct, bCol(uPct))}</div>`
+      + idxBr('S&P 500 (S5FI)', mkt2.s5fi)
+      + idxBr('NASDAQ (NDFI)', mkt2.ndfi)
+      + `<div style="background:#fff;border:1px solid #e0dfd8;border-radius:10px;padding:13px 16px">
+          <div style="font-size:11px;color:#73726c;margin-bottom:3px">💪 RS 강세 비율 — RS 80+ 종목</div>
+          <div style="display:flex;align-items:baseline;gap:8px"><div style="font-size:26px;font-weight:700;color:#185FA5">${rsPct!=null?rsPct:'—'}<span style="font-size:14px">%</span></div>
+          <div style="font-size:10.5px;color:#73726c">${rsStrong} / ${arr.length}개 · 상대강도 상위군 두께</div></div>${bar(rsPct, '#185FA5')}</div>`
+      + '</div>';
+  }
+
+  // ═══ 📅 Regime 30일 히스토리 (엔진 daily_history) ═══
+  let rhSec = '';
+  {
+    const dh = ((window.__STRATEGY_ROOM || {}).daily_history || []).slice(-30);
+    const RCOL = {confirmed:'#3B6D11', resumed:'#0F6E56', pressure:'#B58A1B', rally:'#B5500A', correction:'#A32D2D'};
+    const REMO = {confirmed:'🟢', resumed:'🟢', pressure:'🟡', rally:'🟠', correction:'🔴'};
+    const cells = dh.map(r => {
+      const tip = `${r.date} · ${r.regime}` + (r.breadth!=null?` · 브레쓰 ${r.breadth}%`:'')
+        + (r.wdd!=null?` · 가중DD ${r.wdd}`:'') + (r.alloc_lo!=null?` · 노출 ${r.alloc_lo}~${r.alloc_hi}%`:'')
+        + (r.stress?' · ⚡스트레스':'');
+      return `<div title="${tip}" style="width:20px;height:26px;background:${RCOL[r.regime]||'#888'};border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:11px;cursor:help;${r.stress?'box-shadow:inset 0 -3px 0 #EFB100;':''}">${REMO[r.regime]||'·'}</div>`;
+    }).join('');
+    rhSec = `<div style="font-size:13px;font-weight:700;color:#1a1a1a;margin:18px 0 10px">📅 Regime 히스토리 <span style="font-size:10.5px;color:#888;font-weight:400">최근 ${dh.length}거래일 — 칸에 마우스 = 상세 · 금색 밑줄 = 주도지수 스트레스</span></div>`
+      + (dh.length
+        ? `<div style="background:#fff;border:1px solid #e0dfd8;border-radius:10px;padding:14px 16px;margin-bottom:6px;overflow-x:auto"><div style="display:flex;gap:3px">${cells}</div>
+           <div style="font-size:10px;color:#999;margin-top:8px">🟢 Confirmed/Resumed · 🟡 Under Pressure · 🟠 Rally Attempt · 🔴 Correction — 이력은 매일 자동 축적 (최대 90일 보관)</div></div>`
+        : `<div style="background:#fafaf8;border:1px dashed #d0d0c8;border-radius:10px;padding:14px 16px;margin-bottom:6px;font-size:12px;color:#888">⏳ 이력 축적 중 — 엔진(v1.9+) 실행일부터 하루씩 쌓입니다.</div>`);
+  }
+
+  // ═══ 📉 포트폴리오 Drawdown 모니터 (전략실 NAV·보유 기준) ═══
+  let dmSec = '';
+  {
+    const sr2 = window.__STRATEGY_ROOM || {};
+    const nh = sr2.nav_history || [];
+    const hds = sr2._holdings || [];
+    let pk = -1, cur = null, mdd = 0;
+    nh.forEach(r => { const v = Number(r.nav); if (!isFinite(v)) return; pk = Math.max(pk, v); cur = v/pk-1; mdd = Math.min(mdd, cur); });
+    const curDD = cur != null ? Math.round(cur*10000)/100 : null;
+    const stage = curDD == null ? ['—','#888'] : curDD > -3 ? ['정상','#0F6E56'] : curDD > -7 ? ['주의','#B58A1B'] : curDD > -10 ? ['경계','#B5500A'] : ['방어','#A32D2D'];
+    if (!nh.length && !hds.length) {
+      dmSec = `<div style="font-size:13px;font-weight:700;color:#1a1a1a;margin:18px 0 10px">📉 포트폴리오 Drawdown 모니터</div>
+        <div style="background:#f5f4ef;border:1px dashed #d3d1c7;border-radius:10px;padding:16px 20px;margin-bottom:6px;display:flex;gap:12px;align-items:center">
+        <div style="font-size:28px">💼</div><div style="font-size:12px;color:#73726c;line-height:1.7"><b style="color:#1a1a18">전략실 이력이 아직 없습니다</b><br>
+        Drawdown 모니터는 전략실 페이퍼 트레이딩의 <b>NAV·보유 종목</b> 기준으로 자동 표시됩니다 — 엔진이 실행되면 채워집니다.</div></div>`;
+    } else {
+      const rows = hds.map(h => {
+        const gain = (h.cur/h.entry_px-1)*100, gb = Math.max(0, (h.max_gain_pct||0) - gain);
+        const gbCol = gb >= 15 ? '#A32D2D' : gb >= 8 ? '#B5500A' : '#73726c';
+        return `<tr style="border-bottom:0.5px solid #f5f4ef"><td style="padding:5px 8px;font-weight:700">${h.ticker}</td>
+          <td style="text-align:right;padding:5px 8px;color:${gain>=0?'#0F6E56':'#A32D2D'}">${gain>=0?'+':''}${gain.toFixed(1)}%</td>
+          <td style="text-align:right;padding:5px 8px">${(h.max_gain_pct||0).toFixed(1)}%</td>
+          <td style="text-align:right;padding:5px 8px;color:${gbCol};font-weight:600">−${gb.toFixed(1)}%p</td>
+          <td style="text-align:right;padding:5px 8px;color:#73726c">${h.current_stop!=null?((h.cur-h.current_stop)/h.cur*100).toFixed(1)+'%':'—'}</td></tr>`;
+      }).join('');
+      dmSec = `<div style="font-size:13px;font-weight:700;color:#1a1a1a;margin:18px 0 10px">📉 포트폴리오 Drawdown 모니터 <span style="font-size:10.5px;color:#888;font-weight:400">전략실 NAV·보유 기준 — 리스크 가드</span></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-bottom:6px">
+        <div style="background:#fff;border:1px solid #e0dfd8;border-radius:10px;padding:13px 16px">
+          <div style="font-size:11px;color:#73726c;margin-bottom:3px">NAV 고점 대비 낙폭 (현재)</div>
+          <div style="display:flex;align-items:baseline;gap:10px"><div style="font-size:26px;font-weight:700;color:${stage[1]}">${curDD!=null?curDD.toFixed(2):'—'}%</div>
+          <div style="font-size:11px;font-weight:700;color:${stage[1]}">${stage[0]}</div></div>
+          <div style="font-size:10.5px;color:#73726c;margin-top:4px">역대 MDD ${nh.length?Math.round(mdd*10000)/100:'—'}% · ${nh.length}거래일</div>
+          <div style="font-size:10px;color:#999;margin-top:6px">단계: 정상 >−3% · 주의 −3~−7% · 경계 −7~−10% · 방어 −10%+</div></div>
+        ${hds.length ? `<div style="background:#fff;border:1px solid #e0dfd8;border-radius:10px;padding:13px 16px;grid-column:span 2;min-width:0">
+          <div style="font-size:11px;color:#73726c;margin-bottom:6px">보유 종목 고점 되돌림 (giveback) — 클라이맥스/추세 훼손 조기 감지</div>
+          <div style="overflow-x:auto"><table style="width:100%;font-size:11px;border-collapse:collapse"><thead><tr style="background:#f5f4ef">
+          <th style="text-align:left;padding:6px 8px">티커</th><th style="text-align:right;padding:6px 8px">손익</th><th style="text-align:right;padding:6px 8px">max</th><th style="text-align:right;padding:6px 8px">되돌림</th><th style="text-align:right;padding:6px 8px">스탑 여유</th></tr></thead><tbody>${rows}</tbody></table></div></div>`
+        : `<div style="background:#fafaf8;border:1px dashed #d0d0c8;border-radius:10px;padding:13px 16px;font-size:12px;color:#888">현재 보유 종목 없음 — 진입 발생 시 종목별 되돌림·스탑 여유가 표시됩니다.</div>`}
+        </div>`;
+    }
+  }
+
   wrap.innerHTML = idxSec
+    + brSec
     + `<div style="font-size:13px;font-weight:700;color:#1a1a1a;margin:18px 0 10px">🚀 Follow-Through Day (FTD) 상세</div>${guide}${cards}`
-    + ddSec;
+    + ddSec + rhSec + dmSec;
 }
 
 function updateSecMarketBadges() {
