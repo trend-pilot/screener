@@ -128,6 +128,7 @@ def detect_ftd(dates, closes, lows, vols, thr_pct):
     out["status"] = "rally"
     out["rally_day"] = n - 1 - d1_i + 1     # 오늘이 d몇일차인가
     # FTD 탐색: d4 이후, 종가 +thr% & 거래량 전일 초과
+    ftd_i = None
     for i in range(d1_i, n):
         day_no = i - d1_i + 1
         if day_no < 4:
@@ -137,6 +138,7 @@ def detect_ftd(dates, closes, lows, vols, thr_pct):
         gain = (closes[i] / closes[i - 1] - 1) * 100
         if gain >= thr_pct and vols[i] > vols[i - 1]:
             age = n - 1 - i
+            ftd_i = i
             out.update({
                 "status": "ftd", "ftd_date": dates[i], "ftd_day": day_no,
                 "ftd_gain_pct": round(gain, 2),
@@ -146,6 +148,41 @@ def detect_ftd(dates, closes, lows, vols, thr_pct):
                            "stale" if age <= FTD_VALID_BD else "expired"),
             })
             break
+    # ── 랠리 데이 히스토리 (0808 샘플 "랠리 데이 히스토리" 표 — 저점 이후 일별) ──
+    #   행: 날짜·일차(0=저점, d1=첫 양봉 이후 매 거래일 +1)·등락%·거래량·전일비%·비고
+    rd = []
+    for i in range(lo_i, n):
+        day = 0 if i == lo_i else ((i - d1_i + 1) if (d1_i is not None and i >= d1_i) else None)
+        chg = round((closes[i] / closes[i - 1] - 1) * 100, 2) if (i > 0 and closes[i - 1] > 0) else None
+        volc = round((vols[i] / vols[i - 1] - 1) * 100, 1) if (i > 0 and vols[i - 1] > 0) else None
+        if i == lo_i:
+            note = "저점 (d0)"
+        elif ftd_i is not None and i == ftd_i:
+            note = "FTD 발생"
+        elif ftd_i is not None and i > ftd_i:
+            if chg is not None and chg < 0:
+                note = "하락일"
+            elif chg is not None and chg >= thr_pct:
+                note = "거래량 미충족" if not (volc and volc > 0) else ""
+            else:
+                note = "상승폭·거래량 미충족" if not (volc and volc > 0) else "상승폭 미충족"
+        elif day is not None and day < 4:
+            note = ("조건충족·d4 전" if (chg is not None and chg >= thr_pct
+                                        and volc is not None and volc > 0) else "d4 전")
+        elif day is not None:
+            if chg is not None and chg < 0:
+                note = "하락일"
+            elif chg is not None and chg >= thr_pct:
+                note = "거래량 미충족"
+            elif chg is not None and volc is not None and volc > 0:
+                note = "상승폭 미충족"
+            else:
+                note = "상승폭·거래량 미충족"
+        else:
+            note = ""
+        rd.append({"d": dates[i], "day": day, "chg": chg,
+                   "vol": (round(vols[i]) if vols[i] else None), "volc": volc, "note": note})
+    out["rally_days"] = rd[-20:]
     return out
 
 
