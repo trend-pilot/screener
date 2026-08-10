@@ -26,14 +26,14 @@ jobs:
       - name: Install deps
         run: pip install yfinance
 
-      - name: Build snapshots.json
-        run: python make_snapshots.py --from-json screener_data.json --min-rs 70 --limit 1200
+      - name: Build snapshots.json + earnings.json
+        run: python make_snapshots.py --from-json screener_data.json --min-rs 70 --limit 1200 --earnings earnings.json
 
       - name: Commit & push
         run: |
           git config user.name "snapshot-bot"
           git config user.email "actions@github.com"
-          git add snapshots.json
+          git add snapshots.json earnings.json
           git diff --cached --quiet && echo "변경 없음" && exit 0
           git commit -m "snapshots: $(date -u +%F)"
           # daily-us 등이 먼저 푸시했을 수 있으므로 rebase 후 푸시
