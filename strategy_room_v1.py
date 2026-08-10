@@ -61,7 +61,7 @@ RULES = {
     #   검증 리포트: "중간 베어에 −7% 손절로 전부 잘림 → 재진입이 필수 메커니즘".
     "reentry_block_bdays": 10,
     "cost_bps": 5.0,
-    "track": "g3+g0+g1+g2", "logic_version": "v6.15(v1.6)",
+    "track": "g3+g0+g1+g2", "logic_version": "v6.15(v1.8)",
 }
 GATES = ["G3 Trigger","G4 Guard","G0 Market","G1 Theme","G2 Pattern"]
 # 레짐 사이징 (G0; screener market.overall = green/yellow/red 3단계로 단순화)
@@ -207,16 +207,103 @@ def compute_idx_stats(dates, closes, vols):
     }
 
 
+# ─── 테마/섹터 점수 + 3층 노출도 (대시보드 빌더와 동일 산식) ──────────
+#   [2026-08-10] 자동매매 사이저 통합: 대시보드에 표시되는 권장 비중(alloc3l)과
+#   엔진의 실제 노출 상한이 같은 산식을 쓰도록 파이썬에 포팅.
+#   업종 = 테마 종합점수 5성분: 베이즈 RS Line 30% + P4/5 비율 20% + 신고가 15%
+#          + 1주 변화 15% + 지속성(추세템플릿 근사) 20% · PRIOR_K=10 · 3종목 미만 제외
+#   섹터 = 업종 점수의 종목수 가중 · 강세 ≥52.5 / Leading 테마 ≥47.5
+THEME_PRIOR_K = 10
+
+
+def _n0(v):
+    f = _num(v)
+    return f if f is not None else 0.0
+
+
+def compute_theme_stats(stocks_list):
+    """강세 섹터 수 · Leading 테마 수 (3층 노출도 가드 판정용)."""
+    pool = [s for s in stocks_list
+            if isinstance(s.get("rs"), (int, float))
+            and (s.get("sector") or "") not in ("", "기타")
+            and (s.get("industry") or "") not in ("", "기타")]
+    if not pool:
+        return None
+    g_rsl = sum(_n0(s.get("rs_line_score")) for s in pool) / len(pool)
+    g_p45 = sum(1 for s in pool if str(s.get("phase")) in ("4", "4plus", "5")) / len(pool)
+
+    def theme_score(rows):
+        n = len(rows)
+        bayes = (sum(_n0(s.get("rs_line_score")) for s in rows) + THEME_PRIOR_K * g_rsl) / (n + THEME_PRIOR_K)
+        p45 = ((sum(1 for s in rows if str(s.get("phase")) in ("4", "4plus", "5"))
+                + THEME_PRIOR_K * g_p45) / (n + THEME_PRIOR_K)) * 100
+        nh = sum(1 for s in rows if s.get("h52_new") or s.get("rs_line_high")) / n * 100
+        avg_w1 = sum(_n0(s.get("w1")) for s in rows) / n
+        w1c = max(0.0, min(100.0, 50 + avg_w1 * 5))
+        persist = sum(sum(1 for d in (s.get("pass_dots") or []) if d) / 7 * 100 for s in rows) / n
+        return round(.30 * bayes + .20 * p45 + .15 * nh + .15 * w1c + .20 * persist, 1)
+
+    by_ind = {}
+    for s in pool:
+        by_ind.setdefault((s["sector"], s["industry"]), []).append(s)
+    ind_scores = {k: theme_score(v) for k, v in by_ind.items() if len(v) >= 3}
+    lead_n = sum(1 for sc in ind_scores.values() if sc >= 47.5)
+    by_sec = {}
+    for (sec, _ind), sc in ind_scores.items():
+        by_sec.setdefault(sec, []).append((sc, len(by_ind[(sec, _ind)])))
+    strong = 0
+    for rows in by_sec.values():
+        w = sum(n for _sc, n in rows) or 1
+        if sum(sc * n for sc, n in rows) / w >= 52.5:
+            strong += 1
+    return {"lead_n": lead_n, "strong_sectors": strong, "n_industries": len(ind_scores)}
+
+
+def compute_alloc3l(regime_key, idx, market, theme):
+    """3층 노출도 (0810 샘플 산식) — 레짐 라벨 무손상, 비중 밴드만 조정."""
+    L1B = {"confirmed": (80, 100), "resumed": (75, 95), "pressure": (30, 50),
+           "rally": (20, 30), "correction": (0, 25)}
+    lo, hi = L1B.get(regime_key, (30, 50))
+    stress = False
+    if idx:
+        for x in idx.values():
+            w = (x or {}).get("dd_weighted")
+            if isinstance(w, (int, float)) and w >= 4:
+                stress = True
+    else:
+        dist = (market or {}).get("distribution") or {}
+        dds = [v for v in (dist.get("sp_count"), dist.get("nasdaq_count"))
+               if isinstance(v, (int, float))]
+        if dds and max(dds) >= 6:
+            stress = True
+    l1lo, l1hi = max(0, lo - (15 if stress else 0)), max(0, hi - (15 if stress else 0))
+    sub2 = 15 if (theme and theme["strong_sectors"] == 0) else 0
+    sub3 = 20 if (theme and theme["lead_n"] < 10) else 0
+    return {"lo": max(0, l1lo - sub2 - sub3), "hi": max(0, l1hi - sub2 - sub3),
+            "sub2": sub2, "sub3": sub3, "sub_total": sub2 + sub3,
+            "regime": regime_key, "stress": stress, "l1_lo": l1lo, "l1_hi": l1hi,
+            "lead_n": theme["lead_n"] if theme else None,
+            "strong_sectors": theme["strong_sectors"] if theme else None,
+            "note": ("L1 %s~%s%%" % (l1lo, l1hi))
+                    + (" −섹터%d" % sub2 if sub2 else "")
+                    + (" −테마%d" % sub3 if sub3 else "")
+                    + (" (스트레스 −15 반영)" if stress else "")}
+
+
+BENCH_TICKERS = {"spy": "SPY", "qqq": "QQQ", "tqqq": "TQQQ"}
+
+
 def fetch_market_data():
     """
-    yfinance 로 지수 3종을 받아 (FTD 상태, 지수 통계) 를 한 번에 계산.
-    실패 시 (None, None) — 대시보드/레짐은 기존 폴백으로 동작한다.
+    yfinance 로 지수 3종 + 벤치마크 3종을 받아
+    (FTD 상태, 지수 통계, 벤치마크 종가맵) 을 한 번에 계산.
+    실패 시 (None, None, None) — 대시보드/레짐은 기존 폴백으로 동작한다.
     """
     try:
         import yfinance as yf
     except ImportError:
-        print("[ftd] yfinance 없음 — FTD/지수 계산 생략 (브레드스+분산일 폴백)")
-        return None, None
+        print("[ftd] yfinance 없음 — FTD/지수/벤치마크 계산 생략 (폴백)")
+        return None, None, None
     ftd_out, idx_out = {}, {}
     for key, (tk, name) in FTD_TICKERS.items():
         try:
@@ -240,13 +327,63 @@ def fetch_market_data():
                 idx_out[key] = s
         except Exception as e:
             print(f"[ftd] {tk} 실패({e}) — 생략")
-    return (ftd_out or None), (idx_out or None)
+    # 벤치마크 종가맵 {key: {date: close}} — NAV 리베이스용 (auto_adjust=True 로 배당 반영)
+    bench_px = {}
+    for key, tk in BENCH_TICKERS.items():
+        try:
+            df = yf.Ticker(tk).history(period="12mo", auto_adjust=True)
+            if df is None or len(df) < 10:
+                print(f"[bench] {tk} 데이터 부족 — 생략")
+                continue
+            bench_px[key] = {d.strftime("%Y-%m-%d"): float(c)
+                             for d, c in zip(df.index, df["Close"])}
+        except Exception as e:
+            print(f"[bench] {tk} 실패({e}) — 생략")
+    return (ftd_out or None), (idx_out or None), (bench_px or None)
 
 
 def fetch_market_ftd():
     """(하위 호환) FTD 만 필요할 때."""
-    ftd, _ = fetch_market_data()
+    ftd, _, _ = fetch_market_data()
     return ftd
+
+
+def build_bench_history(nav_history, bench_px):
+    """
+    전략 nav_history 의 날짜열에 맞춰 벤치마크를 시작일 1.0 으로 리베이스.
+    휴장/결측일은 직전 종가 carry-forward. 시작일 이전 종가가 없으면 None.
+    반환: (bench_history 리스트, {key: 최종수익률%})
+    """
+    if not nav_history or not bench_px:
+        return None, {}
+    dates = [r.get("date") for r in nav_history if r.get("date")]
+    if not dates:
+        return None, {}
+    hist, final = [], {}
+    series = {}
+    for key, px in bench_px.items():
+        all_dates = sorted(px.keys())
+        def close_on_or_before(d):
+            last = None
+            for ad in all_dates:
+                if ad > d:
+                    break
+                last = ad
+            return px[last] if last else None
+        base = close_on_or_before(dates[0])
+        vals = []
+        for d in dates:
+            c = close_on_or_before(d)
+            vals.append(round(c / base, 4) if (c and base) else None)
+        series[key] = vals
+        last_v = next((v for v in reversed(vals) if v is not None), None)
+        final[key] = round((last_v - 1) * 100, 2) if last_v is not None else None
+    for i, d in enumerate(dates):
+        hist.append({"date": d,
+                     "spy": (series.get("spy") or [None]*len(dates))[i],
+                     "qqq": (series.get("qqq") or [None]*len(dates))[i],
+                     "tqqq": (series.get("tqqq") or [None]*len(dates))[i]})
+    return hist, final
 
 
 def calc_regime_key(market, ftd=None, idx=None):
@@ -433,9 +570,13 @@ def run(screener_path, state_path):
     data_date = (meta.get("updated_at") or date.today().isoformat())[:10]
     cat = sd.get("catalyst", {}) or {}
     fired_themes = set(c.get("cluster") for c in cat.get("clusters", []))
-    market_ftd, market_idx = fetch_market_data()   # 실패 시 (None, None) → 폴백
+    market_ftd, market_idx, bench_px = fetch_market_data()   # 실패 시 (None,None,None) → 폴백
     regime_key = calc_regime_key(sd.get("market", {}) or {}, market_ftd, market_idx)
     reg = REGIME.get(regime_key, REGIME["resumed"])
+    # ── 3층 노출도: 대시보드와 동일 산식으로 계산해 노출 상한으로 사용 ──
+    theme_stats = compute_theme_stats(list(stocks.values()))
+    alloc3l = compute_alloc3l(regime_key, market_idx, sd.get("market") or {}, theme_stats)
+    exp_cap = (alloc3l["hi"] / 100.0) if alloc3l else reg["max_exp"]
 
     # 상태 로드 (forward 누적)
     state = {"holdings": [], "closed": [], "nav_history": [], "entries_recent": [],
@@ -634,7 +775,8 @@ def run(screener_path, state_path):
         return state.get("_cash", RULES["initial_capital"]) + hv
     cash = state.get("_cash", RULES["initial_capital"])
     nav_pre = cash + sum(h["cur"]*h["shares"] for h in holdings)
-    max_new_cash = max(0, nav_pre*reg["max_exp"] - sum(h["cur"]*h["shares"] for h in holdings))
+    # 노출 상한 = 3층 노출도 hi (레짐 밴드 − 스트레스 − 섹터 − 테마 가드)
+    max_new_cash = max(0, nav_pre*exp_cap - sum(h["cur"]*h["shares"] for h in holdings))
 
     signals = []
     entered = 0
@@ -769,6 +911,24 @@ def run(screener_path, state_path):
     out = build_output(data_date, nav, holdings, closed, nh, signals, cash, regime_key)
     out["market_ftd"] = market_ftd          # 대시보드 FTD 상세 카드가 읽음 (없으면 null)
     out["market_idx"] = market_idx          # 주요 지수 현황·DD 상세 카드가 읽음 (없으면 null)
+    out["alloc3l"] = alloc3l                # 3층 노출도 — 대시보드 권장 비중이 이 값을 우선 사용
+
+    # ── 벤치마크 NAV (SPY/QQQ/TQQQ — 시작일 1.0 리베이스, α 산출) ──
+    bench_hist, bench_final = build_bench_history(nh, bench_px)
+    out["bench_history"] = bench_hist       # NAV 곡선·MDD 차트용 (없으면 null)
+    out["benchmarks"] = {"strat": out.get("ret_pct"),
+                         "spy": bench_final.get("spy"),
+                         "qqq": bench_final.get("qqq"),
+                         "tqqq": bench_final.get("tqqq")}
+    if isinstance(out.get("risk"), dict):
+        out["risk"]["alpha_voo"] = (round(out["ret_pct"] - bench_final["spy"], 2)
+                                    if bench_final.get("spy") is not None else None)
+        out["risk"]["alpha_qqq"] = (round(out["ret_pct"] - bench_final["qqq"], 2)
+                                    if bench_final.get("qqq") is not None else None)
+    if bench_final:
+        print(f"   벤치마크: SPY {bench_final.get('spy')}% · QQQ {bench_final.get('qqq')}% · "
+              f"TQQQ {bench_final.get('tqqq')}% | α(vs SPY) "
+              f"{out['risk'].get('alpha_voo') if isinstance(out.get('risk'), dict) else '—'}%p")
     out["_holdings"] = holdings
     out["_closed"] = closed
     out["_cash"] = cash
@@ -778,6 +938,9 @@ def run(screener_path, state_path):
         json.dump(_sanitize(out), f, ensure_ascii=False, indent=2, allow_nan=False)
 
     print(f"[strategy_room] {data_date} | NAV {nav:.4f} ({chg:+.2f}%) | 보유 {len(holdings)} | 신규 {entered} | 청산누적 {len(closed)} | 레짐 {reg['label']}")
+    if alloc3l:
+        print(f"   3층 노출도: {alloc3l['lo']}~{alloc3l['hi']}% ({alloc3l['note']}) | "
+              f"강세섹터 {alloc3l['strong_sectors']} · Leading테마 {alloc3l['lead_n']} → 노출상한 {exp_cap:.0%}")
     print(f"   RVOL 게이트(≥{RULES['entry_min_rvol']}): 차단 {rvol_blocked}건 · 데이터 없음(통과) {rvol_missing}건"
           f" | 재진입 차단(종목약화 {RULES['reentry_block_bdays']}bd) {reentry_blocked}건"
           f" | 스위칭 {switched}건 · 후보 {len(cands)}건")
