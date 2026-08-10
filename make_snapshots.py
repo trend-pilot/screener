@@ -160,6 +160,31 @@ def fetch_batch(tickers, months):
     return out
 
 
+def fetch_earnings(tickers, asof):
+    """
+    다음 실적 발표일 수집 → {ticker: "YYYY-MM-DD"}.
+    yfinance 는 실적일이 배치 API 가 없어 종목별 호출 — RS 상위·보유 위주로
+    호출 수를 줄인다. 실패/없음은 조용히 생략.
+    """
+    import yfinance as yf
+    out, fail = {}, 0
+    for i, tk in enumerate(tickers, 1):
+        try:
+            df = yf.Ticker(tk).get_earnings_dates(limit=8)
+            if df is None or df.empty:
+                continue
+            fut = sorted(d.strftime("%Y-%m-%d") for d in df.index
+                         if d.strftime("%Y-%m-%d") >= asof)
+            if fut:
+                out[tk] = fut[0]
+        except Exception:
+            fail += 1
+        if i % 100 == 0:
+            print(f"  [실적 {i}/{len(tickers)}] 확보 {len(out)} · 실패 {fail}")
+            time.sleep(0.5)
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--from-json", dest="from_json", default="screener_data.json")
@@ -167,6 +192,10 @@ def main():
     ap.add_argument("--limit", type=int, default=1200)
     ap.add_argument("--months", type=int, default=7)
     ap.add_argument("--out", default="snapshots.json")
+    ap.add_argument("--earnings", default="earnings.json",
+                    help="실적일 출력 파일 ('' 이면 실적 수집 생략)")
+    ap.add_argument("--earnings-min-rs", type=int, default=80,
+                    help="실적일 수집 대상 RS 하한 (호출 수 절약)")
     a = ap.parse_args()
 
     with open(a.from_json, encoding="utf-8") as f:
@@ -196,6 +225,21 @@ def main():
     if out["meta"]["n"] < len(uni) * 0.5:
         print("⚠ 수집률 50% 미만 — yfinance rate limit 가능성, 재실행 권장")
         sys.exit(1)
+
+    # ── 실적일 수집 (RS 상위 + 보유/신호 위주 — 종목별 호출이라 대상 축소) ──
+    if a.earnings:
+        asof = out["meta"]["asof"]
+        etarget = [s["ticker"] for s in uni
+                   if s.get("asset_type") == "STOCK"
+                   and ((s.get("rs") or 0) >= a.earnings_min_rs
+                        or str(s.get("phase")) in ("4", "4plus", "5"))]
+        print(f"실적일 수집 대상 {len(etarget)}종목 (RS≥{a.earnings_min_rs} 또는 Phase 4/4+/5)")
+        emap = fetch_earnings(etarget, asof)
+        ej = {"meta": {"asof": asof, "n": len(emap)}}
+        ej.update(emap)
+        with open(a.earnings, "w", encoding="utf-8") as f:
+            json.dump(ej, f, ensure_ascii=False, separators=(",", ":"))
+        print(f"✅ {a.earnings} — 실적일 {len(emap)}종목")
 
 
 if __name__ == "__main__":
