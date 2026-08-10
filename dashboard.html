@@ -17714,9 +17714,46 @@ function renderUsFtd() {
     }
   }
 
+  // ── 📋 랠리 데이 히스토리 (0808 샘플) — 저점 이후 일별 반등일차·상승률·거래량 ──
+  let rallySec = '';
+  try {
+    const NM = { sp: ['S&P 500', 1.25], nasdaq: ['NASDAQ', 1.5], russell: ['Russell 2000', 1.5] };
+    const fmtV = v => v == null ? '—' : (v >= 1e9 ? (v/1e9).toFixed(2)+'B' : v >= 1e6 ? (v/1e6).toFixed(1)+'M' : String(v));
+    const tblOf = (k) => {
+      const f = ftd && ftd[k];
+      const rows = f && f.rally_days;
+      if (!rows || !rows.length) return '';
+      const trs = rows.map(r => {
+        const isFtd = r.note === 'FTD 발생', isLow = (r.day === 0);
+        const dayLb = isLow ? '<span style="color:#185FA5;font-weight:700">저점</span>' : (r.day != null ? 'd'+r.day : '—');
+        const cCol = r.chg == null ? '#999' : r.chg >= 0 ? '#3B6D11' : '#A32D2D';
+        return `<tr style="border-bottom:1px solid #f0f0ea${isFtd ? ';background:#eef7ea' : isLow ? ';background:#f0f4fa' : ''}">`
+          + `<td style="padding:4px 8px;white-space:nowrap">${(r.d||'').slice(5)}</td>`
+          + `<td style="padding:4px 8px;font-weight:600">${dayLb}</td>`
+          + `<td style="padding:4px 8px;text-align:right;font-weight:700;color:${cCol}">${r.chg != null ? (r.chg >= 0 ? '+' : '')+r.chg.toFixed(2)+'%' : '—'}</td>`
+          + `<td style="padding:4px 8px;text-align:right;color:#555">${fmtV(r.vol)}</td>`
+          + `<td style="padding:4px 8px;text-align:right;color:${r.volc > 0 ? '#3B6D11' : '#999'}">${r.volc != null ? (r.volc >= 0 ? '+' : '')+r.volc.toFixed(1)+'%' : '—'}</td>`
+          + `<td style="padding:4px 8px;white-space:nowrap;${isFtd ? 'color:#1a8a4a;font-weight:700' : 'color:#888'}">${isFtd ? '🚀 FTD 발생' : (r.note||'')}</td></tr>`;
+      }).join('');
+      const low = f.rally_low != null ? f.rally_low.toLocaleString() : '—';
+      return `<div style="background:#fff;border:1px solid #e0dfd8;border-radius:8px;padding:10px 12px;overflow-x:auto">
+        <div style="font-size:11.5px;font-weight:700;margin-bottom:6px">${NM[k][0]} <span style="font-weight:400;color:#888">저점 ${f.rally_low_date||''} (${low}) · 임계 +${NM[k][1]}%</span></div>
+        <table style="border-collapse:collapse;font-size:11px;width:100%;min-width:340px">
+        <thead><tr style="border-bottom:1px solid #e0dfd8;color:#888"><th style="padding:4px 8px;text-align:left">날짜</th><th style="padding:4px 8px;text-align:left">일차</th><th style="padding:4px 8px;text-align:right">등락</th><th style="padding:4px 8px;text-align:right">거래량</th><th style="padding:4px 8px;text-align:right">전일비</th><th style="padding:4px 8px;text-align:left">비고</th></tr></thead>
+        <tbody>${trs}</tbody></table></div>`;
+    };
+    const tbls = ['sp','nasdaq','russell'].map(tblOf).filter(Boolean);
+    if (tbls.length) {
+      rallySec = `<details style="background:#fafaf8;border:1px solid #e0dfd8;border-radius:10px;padding:10px 14px;margin-top:12px" open>
+        <summary style="cursor:pointer;font-size:12.5px;font-weight:700;color:#1a1a1a">📋 랠리 데이 히스토리 — 저점 이후 일별 반등일차·상승률·거래량 <span style="font-weight:400;color:#888">(펼치기/접기)</span></summary>
+        <div style="font-size:11px;color:#888;line-height:1.6;margin:8px 0">저점(d0) 이후 매 거래일의 반등 일차·등락·거래량. 저점 후 <b>첫 양봉이 d1</b>, 이후 상승/하락 무관 매 거래일 +1 (FTD 판정 엔진과 동일 번호). <b>d4 이후</b> 종가 +임계% &amp; 거래량 전일 초과면 FTD 충족. ※ 수치는 데일리 런 시점 스냅샷 — 지수 거래량은 마감 후 확정치로 수정될 수 있음.</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:10px">${tbls.join('')}</div></details>`;
+    }
+  } catch(e) { console.warn('[랠리 히스토리]', e); }
+
   wrap.innerHTML = idxSec
     + brSec
-    + `<div style="font-size:13px;font-weight:700;color:#1a1a1a;margin:18px 0 10px">🚀 Follow-Through Day (FTD) 상세</div>${guide}${cards}`
+    + `<div style="font-size:13px;font-weight:700;color:#1a1a1a;margin:18px 0 10px">🚀 Follow-Through Day (FTD) 상세</div>${guide}${cards}${rallySec}`
     + ddSec + rhSec + dmSec
     + '<div id="mp-earn-host"></div>';
   try { fillEarningsCal(); } catch(e) {}
