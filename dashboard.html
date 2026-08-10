@@ -16095,11 +16095,15 @@ function render(){
   var winDays={'3개월':63,'6개월':126,'전체':9999}[STATE.win]||9999;
 
   /* 01 market */
+  /* [3층 노출도 2026-08-10] 권장 비중 = alloc3l(L1 레짐 − 섹터 − 테마 가드) 우선, 없으면 L1 폴백 */
+  var l3=m.alloc3l||null,gated=!!(l3&&(l3.sub_total||0)>0);
   var allocM=String(m.alloc||'').match(/(\d+)~(\d+)/),gapNote='',gapC='var(--color-neutral-600)';
-  if(allocM&&cash.investedPct!=null){var lo=+allocM[1],hi=+allocM[2],iv=cash.investedPct;
-    if(iv>hi){gapNote='(권장 최대 '+hi+'% 대비 +'+(iv-hi).toFixed(1)+'%p 초과 — 신규 진입 억제)';gapC=DN;}
-    else if(iv<lo){gapNote='(권장 최소 대비 '+(lo-iv).toFixed(1)+'%p 여유)';gapC=UP;}
+  var _gLo=(l3?l3.lo:(allocM?+allocM[1]:null)),_gHi=(l3?l3.hi:(allocM?+allocM[2]:null));
+  if(_gLo!=null&&cash.investedPct!=null){var iv=cash.investedPct;
+    if(iv>_gHi){gapNote='(권장 최대 '+_gHi+'% 대비 +'+(iv-_gHi).toFixed(1)+'%p 초과 — 신규 진입 억제)';gapC=DN;}
+    else if(iv<_gLo){gapNote='(권장 최소 대비 '+(_gLo-iv).toFixed(1)+'%p 여유'+(gated?' — 단 3층 가드 중엔 채우기보다 A급 선별':'')+')';gapC=UP;}
     else {gapNote='(권장 범위 내)';gapC=UP;}}
+  var allocHTML=l3?(l3.lo+'~'+l3.hi+'%'+(gated?' <span style="font-size:12px;color:var(--color-neutral-400);text-decoration:line-through;font-weight:400" title="'+esc(l3.note||'')+'">'+l3.l1_lo+'~'+l3.l1_hi+'%</span>':'')):esc(m.alloc||'—');
   var idx=m.idx||{};
   var idxCards=[['S&P 500',idx.sp500],['NASDAQ',idx.nasdaq],['Russell',idx.russell]].map(function(x){
     var o=x[1]||{};
@@ -16110,7 +16114,7 @@ function render(){
   var s1=secHead('01','오늘의 시장 상태','','regime','용어 ⓘ')
     +bp('<div style="display:flex;gap:18px;flex-wrap:wrap"><div style="flex:1;min-width:250px">'
       +'<div style="font-family:var(--font-heading);font-size:26px;font-weight:600;color:'+rg.c+';line-height:1.15">'+esc(regimeLabel)+'</div>'
-      +'<div style="font-size:13px;margin-top:6px">'+term('alloc','권장 비중')+' <b style="font-size:16px">'+esc(m.alloc||'—')+'</b> · 현재 투자 <b>'+cash.investedPct+'%</b> <span style="color:'+gapC+';font-size:12px">'+gapNote+'</span></div>'
+      +'<div style="font-size:13px;margin-top:6px">'+term('alloc','권장 비중')+' <b style="font-size:16px">'+allocHTML+'</b> · 현재 투자 <b>'+cash.investedPct+'%</b> <span style="color:'+gapC+';font-size:12px">'+gapNote+'</span></div>'
       +'<div style="font-size:13px;color:var(--color-neutral-700);margin-top:5px"><b style="color:var(--color-text)">전략</b> — '+rg.strat+'</div>'
       +(m.stress?'<div style="margin-top:9px;border-left:2px solid '+WARN+';padding:5px 10px;font-size:12px;color:var(--color-neutral-700);background:var(--color-neutral-100)">'+term('stress','주도지수 스트레스','w')+' 발동 '+(m.lsN!=null?m.lsN+'/3':'')+' — <span style="font-size:11.5px">'+esc(m.lsReasons||'')+'</span></div>':'')
       +'</div><div style="display:grid;grid-template-columns:repeat(3,minmax(84px,1fr));gap:8px;align-content:start;flex:1;min-width:264px">'+idxCards+'</div></div>'
@@ -16721,13 +16725,39 @@ function buildBriefingV2Data(){
   var leadN = indRows.filter(function(r){return r.score>=47.5;}).length;
   var themeCount = {dates:[usClose], counts:[leadN], bandHi:10, bandLo:5,
     interp: 'Leading 테마 '+leadN+'개 — '+(leadN>10?'과열 주의 대역':leadN>=5?'안전 대역(broad leadership)':'협소한 리더십')+'. (이력은 매일 축적)'};
+
+  // ── 3층 노출도 alloc3l (0810 샘플 산식) ─────────────────────────
+  //   L1 = 레짐 기본 밴드 − (주도지수 스트레스 발동 시 15%p)
+  //   L2 = 강세(주도, ≥52.5) 섹터 부재 시 −15%p
+  //   L3 = Leading 테마 <10개(노랑/빨강 대역) 시 −20%p · 바닥 0%
+  //   레짐 라벨은 무손상 — 비중 밴드만 조정 (IBD 방식)
+  var L1B = {confirmed:[80,100], resumed:[75,95], pressure:[30,50], rally:[20,30], correction:[0,25]};
+  var _b = L1B[rkey] || [30,50];
+  var stressOn = false;
+  if (sr.market_idx) {
+    Object.keys(sr.market_idx).forEach(function(k){
+      var x = sr.market_idx[k];
+      if (x && typeof x.dd_weighted === 'number' && x.dd_weighted >= 4) stressOn = true;
+    });
+  } else if (ddMax != null && ddMax >= 6) stressOn = true;
+  if (stressOn && lsFlags.indexOf('지수 가중 DD ≥4 (스트레스)') < 0) lsFlags.unshift('지수 가중 DD ≥4 (스트레스)');
+  var l1lo = Math.max(0, _b[0] - (stressOn?15:0)), l1hi = Math.max(0, _b[1] - (stressOn?15:0));
+  var sub2 = (nStrong === 0) ? 15 : 0;
+  var sub3 = (leadN < 10) ? 20 : 0;
+  var alloc3l = {lo: Math.max(0, l1lo - sub2 - sub3), hi: Math.max(0, l1hi - sub2 - sub3),
+                 sub2: sub2, sub3: sub3, sub_total: sub2 + sub3, regime: CODE[rkey],
+                 stress: stressOn, l1_lo: l1lo, l1_hi: l1hi,
+                 note: 'L1 ' + l1lo + '~' + l1hi + '%' + (sub2 ? ' −섹터' + sub2 : '') + (sub3 ? ' −테마' + sub3 : '')
+                       + (stressOn ? ' (스트레스 −15 반영)' : '')};
+  try { window.__ALLOC3L = alloc3l; } catch(e) {}
   var ribbon = {dates:[usClose], themes: indRows.slice(0,12).map(function(r){
     return {name:(r.ind.split(' ▸ ')[1]||r.ind), sec:r.sec, dw:r.score, cells:[r.score]};})};
 
   return {
     asof: today, usClose: usClose,
     market: {date: usClose, code: CODE[rkey], label: reg.label, alloc: reg.invest,
-             stress: (ddMax!=null && ddMax>=6), lsReasons: lsFlags.join(' / '), lsN: lsFlags.length,
+             alloc3l: alloc3l,
+             stress: stressOn, lsReasons: lsFlags.join(' / '), lsN: lsFlags.length,
              ftdAge: ftdAge, idx: idx, breadth: _b2Round(breadth,1)},
     phase: phase, sectors: sectors, inds: inds, srGate: srGate,
     navChart: navChart, stats: stats, cash: cash, closedStats: closedStats,
@@ -16742,6 +16772,15 @@ function tryRenderBriefingV2(){
     if (typeof renderBriefingV2 !== 'function') return;
     var d = buildBriefingV2Data();
     if (d) renderBriefingV2(d);
+    // 3층 노출도 — 레짐 카드의 권장 비중을 3층 최종값으로 갱신 (취소선 = L1)
+    var a = d && d.market && d.market.alloc3l;
+    if (a && a.sub_total > 0) {
+      ['regime-invest', 'mp-big-invest'].forEach(function(id){
+        var e = document.getElementById(id);
+        if (e) e.innerHTML = a.lo + '~' + a.hi + '%' +
+          ' <span style="font-size:.45em;color:#b4b2a9;text-decoration:line-through;font-weight:400" title="' + a.note + '">' + a.l1_lo + '~' + a.l1_hi + '%</span>';
+      });
+    }
   } catch(e) { console.warn('[BriefingV2] 빌드 실패:', e); }
 }
 
