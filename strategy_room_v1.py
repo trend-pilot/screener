@@ -61,7 +61,7 @@ RULES = {
     #   검증 리포트: "중간 베어에 −7% 손절로 전부 잘림 → 재진입이 필수 메커니즘".
     "reentry_block_bdays": 10,
     "cost_bps": 5.0,
-    "track": "g3+g0+g1+g2", "logic_version": "v6.15(v1.8)",
+    "track": "g3+g0+g1+g2", "logic_version": "v6.15(v1.9)",
 }
 GATES = ["G3 Trigger","G4 Guard","G0 Market","G1 Theme","G2 Pattern"]
 # 레짐 사이징 (G0; screener market.overall = green/yellow/red 3단계로 단순화)
@@ -281,6 +281,7 @@ def compute_alloc3l(regime_key, idx, market, theme):
     sub3 = 20 if (theme and theme["lead_n"] < 10) else 0
     return {"lo": max(0, l1lo - sub2 - sub3), "hi": max(0, l1hi - sub2 - sub3),
             "sub2": sub2, "sub3": sub3, "sub_total": sub2 + sub3,
+            "lv2": 1 if sub2 else 0, "lv3": 1 if sub3 else 0,
             "regime": regime_key, "stress": stress, "l1_lo": l1lo, "l1_hi": l1hi,
             "lead_n": theme["lead_n"] if theme else None,
             "strong_sectors": theme["strong_sectors"] if theme else None,
@@ -303,7 +304,7 @@ def fetch_market_data():
         import yfinance as yf
     except ImportError:
         print("[ftd] yfinance 없음 — FTD/지수/벤치마크 계산 생략 (폴백)")
-        return None, None, None
+        return None, None, None, None
     ftd_out, idx_out = {}, {}
     for key, (tk, name) in FTD_TICKERS.items():
         try:
@@ -339,12 +340,28 @@ def fetch_market_data():
                              for d, c in zip(df.index, df["Close"])}
         except Exception as e:
             print(f"[bench] {tk} 실패({e}) — 생략")
-    return (ftd_out or None), (idx_out or None), (bench_px or None)
+    # 심리 지표: VIX (변동성 지수) — <15 안정 / 15~20 보통 / 20~30 경계 / 30+ 공황
+    sent = None
+    try:
+        df = yf.Ticker("^VIX").history(period="3mo", auto_adjust=False)
+        if df is not None and len(df) >= 5:
+            c = [float(x) for x in df["Close"]]
+            last, prev = c[-1], c[-2]
+            ma20 = _sma_last(c, 20)
+            sent = {"vix": {"last": round(last, 2),
+                            "chg_pct": round((last / prev - 1) * 100, 2),
+                            "ma20": round(ma20, 2) if ma20 else None,
+                            "spark": [round(x, 2) for x in c[-60:]],
+                            "level": ("공황" if last >= 30 else "경계" if last >= 20 else
+                                      "보통" if last >= 15 else "안정")}}
+    except Exception as e:
+        print(f"[sent] ^VIX 실패({e}) — 생략")
+    return (ftd_out or None), (idx_out or None), (bench_px or None), sent
 
 
 def fetch_market_ftd():
     """(하위 호환) FTD 만 필요할 때."""
-    ftd, _, _ = fetch_market_data()
+    ftd = fetch_market_data()[0]
     return ftd
 
 
@@ -570,13 +587,36 @@ def run(screener_path, state_path):
     data_date = (meta.get("updated_at") or date.today().isoformat())[:10]
     cat = sd.get("catalyst", {}) or {}
     fired_themes = set(c.get("cluster") for c in cat.get("clusters", []))
-    market_ftd, market_idx, bench_px = fetch_market_data()   # 실패 시 (None,None,None) → 폴백
+    market_ftd, market_idx, bench_px, market_sent = fetch_market_data()  # 실패 시 None들 → 폴백
     regime_key = calc_regime_key(sd.get("market", {}) or {}, market_ftd, market_idx)
     reg = REGIME.get(regime_key, REGIME["resumed"])
     # ── 3층 노출도: 대시보드와 동일 산식으로 계산해 노출 상한으로 사용 ──
     theme_stats = compute_theme_stats(list(stocks.values()))
     alloc3l = compute_alloc3l(regime_key, market_idx, sd.get("market") or {}, theme_stats)
     exp_cap = (alloc3l["hi"] / 100.0) if alloc3l else reg["max_exp"]
+
+    # ── 일일 이력 축적 (v1.9) — 브리핑 02 베이스분포·10 테마카운트·Regime
+    #    히스토리의 시계열 데이터. 최근 90건 유지, 같은 날짜 재실행은 덮어씀.
+    _m2 = sd.get("market") or {}
+    _bv = [v for v in (((_m2.get("ndfi") or {}).get("value")),
+                       ((_m2.get("s5fi") or {}).get("value")))
+           if isinstance(v, (int, float))]
+    breadth_now = round(sum(_bv) / len(_bv), 1) if _bv else None
+    _PH = {"4plus": "4+", "4": "4", "5": "5", "3": "3", "2": "2", "01": "1", "67": "6"}
+    ph_cnt = {"4+": 0, "4": 0, "5+": 0, "5": 0, "3": 0, "2": 0, "1": 0, "6": 0, "7": 0, "0": 0}
+    for _s in stocks.values():
+        ph_cnt[_PH.get(str(_s.get("phase")), "0")] += 1
+    _wdds = [x.get("dd_weighted") for x in (market_idx or {}).values()
+             if isinstance((x or {}).get("dd_weighted"), (int, float))]
+    daily_rec = {"date": data_date, "regime": regime_key, "breadth": breadth_now,
+                 "wdd": (max(_wdds) if _wdds else None),
+                 "alloc_lo": alloc3l["lo"] if alloc3l else None,
+                 "alloc_hi": alloc3l["hi"] if alloc3l else None,
+                 "stress": bool(alloc3l and alloc3l.get("stress")),
+                 "lead_n": (theme_stats or {}).get("lead_n"),
+                 "strong_sectors": (theme_stats or {}).get("strong_sectors"),
+                 "t": len(stocks), "ph": ph_cnt}
+    # (이력 병합은 state 로드 후 — 아래 참조)
 
     # 상태 로드 (forward 누적)
     state = {"holdings": [], "closed": [], "nav_history": [], "entries_recent": [],
@@ -591,6 +631,7 @@ def run(screener_path, state_path):
             # [fix] 현금 잔고 복원 — 빠지면 매 실행마다 cash가 initial_capital(1.0)로
             # 리셋되어 NAV가 매번 한 슬롯(≈1/cap=+8.33%)만큼 튀는 회계 버그가 생김.
             state["_cash"] = prev.get("_cash", RULES["initial_capital"])
+            state["daily_history"] = prev.get("daily_history", [])   # v1.9 이력 축적
 
             # ── [자가치유] 과거 실행에서 NaN 이 섞여 저장된 상태를 자동 복구 ──
             #   NaN 이 하나라도 남으면 NAV 전체가 NaN 이 되고, 표준 JSON 이 아니라
@@ -633,6 +674,12 @@ def run(screener_path, state_path):
     holdings = state["holdings"]
     closed   = state["closed"]
     cost = RULES["cost_bps"]/10000.0
+
+    # 일일 이력 병합 (같은 날짜 재실행은 덮어씀 · 최근 90건)
+    daily_history = [r for r in state.get("daily_history", [])
+                     if r.get("date") != data_date]
+    daily_history.append(daily_rec)
+    daily_history = daily_history[-90:]
 
     # ── 1) mark-to-market + 청산 ─────────────────────────────────────
     survivors = []
@@ -912,6 +959,8 @@ def run(screener_path, state_path):
     out["market_ftd"] = market_ftd          # 대시보드 FTD 상세 카드가 읽음 (없으면 null)
     out["market_idx"] = market_idx          # 주요 지수 현황·DD 상세 카드가 읽음 (없으면 null)
     out["alloc3l"] = alloc3l                # 3층 노출도 — 대시보드 권장 비중이 이 값을 우선 사용
+    out["daily_history"] = daily_history    # 레짐·phase·테마 이력 (브리핑 02/10 시계열)
+    out["market_sent"] = market_sent        # 심리 지표 (VIX)
 
     # ── 벤치마크 NAV (SPY/QQQ/TQQQ — 시작일 1.0 리베이스, α 산출) ──
     bench_hist, bench_final = build_bench_history(nh, bench_px)
