@@ -1,67 +1,103 @@
 {
-"_date": "2026-08-09",
+"_date": "2026-08-10",
 "_fired_names": [
-"Advertising Agencies",
-"Aluminum",
-"Broadcasting",
-"Gold",
-"Health Information Services",
-"Other Industrial Metals & Mining",
-"Other Precious Metals & Mining",
+"Copper",
+"Medical Devices",
+"Oil & Gas Drilling",
+"Oil & Gas E&P",
+"Oil & Gas Equipment & Services",
+"Oil & Gas Integrated",
+"Oil & Gas Refining & Marketing",
 "Silver"
 ],
+"Oil & Gas Drilling": {
+"consecutive_days": 1,
+"first_fired": "2026-08-10",
+"last_avg_pct": 9.01,
+"ever_fired": true
+},
+"Oil & Gas Equipment & Services": {
+"consecutive_days": 1,
+"first_fired": "2026-08-10",
+"last_avg_pct": 5.15,
+"ever_fired": true
+},
+"Copper": {
+"consecutive_days": 1,
+"first_fired": "2026-08-10",
+"last_avg_pct": 5.02,
+"ever_fired": true
+},
+"Oil & Gas E&P": {
+"consecutive_days": 1,
+"first_fired": "2026-08-10",
+"last_avg_pct": 4.82,
+"ever_fired": true
+},
+"Oil & Gas Refining & Marketing": {
+"consecutive_days": 1,
+"first_fired": "2026-08-10",
+"last_avg_pct": 3.79,
+"ever_fired": true
+},
+"Silver": {
+"consecutive_days": 4,
+"first_fired": "2026-08-07",
+"last_avg_pct": 3.75,
+"ever_fired": true
+},
+"Oil & Gas Integrated": {
+"consecutive_days": 1,
+"first_fired": "2026-08-10",
+"last_avg_pct": 3.12,
+"ever_fired": true
+},
+"Medical Devices": {
+"consecutive_days": 1,
+"first_fired": "2026-08-10",
+"last_avg_pct": 2.1,
+"ever_fired": true
+},
 "Gold": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-07",
 "last_avg_pct": 8.34,
 "ever_fired": true
 },
 "Broadcasting": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-08-07",
 "last_avg_pct": 7.4,
 "ever_fired": true
 },
 "Health Information Services": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-07",
 "last_avg_pct": 7.17,
 "ever_fired": true
 },
 "Aluminum": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-07",
 "last_avg_pct": 7.05,
 "ever_fired": true
 },
-"Silver": {
-"consecutive_days": 3,
-"first_fired": "2026-08-07",
-"last_avg_pct": 6.93,
-"ever_fired": true
-},
 "Other Industrial Metals & Mining": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-07",
 "last_avg_pct": 5.83,
 "ever_fired": true
 },
 "Advertising Agencies": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-07",
 "last_avg_pct": 5.4,
 "ever_fired": true
 },
 "Other Precious Metals & Mining": {
-"consecutive_days": 3,
-"first_fired": "2026-08-07",
-"last_avg_pct": 5.1,
-"ever_fired": true
-},
-"Oil & Gas Drilling": {
 "consecutive_days": 0,
 "first_fired": "2026-08-07",
-"last_avg_pct": 3.92,
+"last_avg_pct": 5.1,
 "ever_fired": true
 },
 "Semiconductors": {
@@ -98,12 +134,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-07",
 "last_avg_pct": 1.88,
-"ever_fired": true
-},
-"Copper": {
-"consecutive_days": 0,
-"first_fired": "2026-08-04",
-"last_avg_pct": 3.22,
 "ever_fired": true
 },
 "Medical Distribution": {
@@ -196,22 +226,10 @@
 "last_avg_pct": 4.27,
 "ever_fired": true
 },
-"Oil & Gas Equipment & Services": {
-"consecutive_days": 0,
-"first_fired": "2026-07-31",
-"last_avg_pct": 3.0,
-"ever_fired": true
-},
 "Semiconductor Equipment & Materials": {
 "consecutive_days": 0,
 "first_fired": "2026-07-30",
 "last_avg_pct": 2.87,
-"ever_fired": true
-},
-"Oil & Gas E&P": {
-"consecutive_days": 0,
-"first_fired": "2026-07-31",
-"last_avg_pct": 2.27,
 "ever_fired": true
 },
 "Engineering & Construction": {
@@ -260,12 +278,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-29",
 "last_avg_pct": 4.1,
-"ever_fired": true
-},
-"Oil & Gas Integrated": {
-"consecutive_days": 0,
-"first_fired": "2026-07-29",
-"last_avg_pct": 3.19,
 "ever_fired": true
 },
 "Auto & Truck Dealerships": {
@@ -428,12 +440,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-20",
 "last_avg_pct": 1.62,
-"ever_fired": true
-},
-"Oil & Gas Refining & Marketing": {
-"consecutive_days": 0,
-"first_fired": "2026-07-20",
-"last_avg_pct": 1.5,
 "ever_fired": true
 },
 "Healthcare Plans": {
