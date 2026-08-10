@@ -16670,21 +16670,41 @@ function buildBriefingV2Data(){
   var navArr = nh.map(function(r){return _b2Num(r.nav);});
   var ddArr = []; var pk = -1;
   navArr.forEach(function(v){ if(v==null){ddArr.push(null);return;} pk=Math.max(pk,v); ddArr.push(_b2Round((v/pk-1)*100,2)); });
+  // 벤치마크 시리즈 (엔진 v1.8 bench_history — 시작일 1.0 리베이스, 날짜 정렬 동일)
+  var bh = sr.bench_history || null;
+  function bSeries(k){
+    return nh.map(function(_r, i){ return (bh && bh[i]) ? _b2Num(bh[i][k]) : null; });
+  }
+  var spyS = bSeries('spy'), qqqS = bSeries('qqq'), tqqqS = bSeries('tqqq');
   var navChart = {dates: nh.map(function(r){return r.date;}), nav: navArr,
-                  spy: navArr.map(function(){return null;}), qqq: navArr.map(function(){return null;}),
-                  tqqq: navArr.map(function(){return null;}), dd: ddArr};
+                  spy: spyS, qqq: qqqS, tqqq: tqqqS, dd: ddArr};
   function navRet(nBack){
     if (navArr.length < 2) return null;
     var i = Math.max(0, navArr.length-1-nBack);
     return (navArr[i] ? _b2Round((navArr[navArr.length-1]/navArr[i]-1)*100,2) : null);
   }
+  function serStats(key, name, arr){
+    var vals = arr.filter(function(v){ return v != null; });
+    if (vals.length < 2) return {key:key, name:name, w1:null, m1:null, m3:null, inc:null, mdd:null, vol:null, sharpe:null};
+    function retBack(nb){
+      var i = Math.max(0, arr.length-1-nb), a = arr[i], b2 = arr[arr.length-1];
+      return (a && b2) ? _b2Round((b2/a-1)*100, 2) : null;
+    }
+    var rets = [];
+    for (var i2 = 1; i2 < arr.length; i2++){ if (arr[i2] != null && arr[i2-1]) rets.push(arr[i2]/arr[i2-1]-1); }
+    var mean = rets.reduce(function(a,b){return a+b;},0)/(rets.length||1);
+    var sd = Math.sqrt(rets.reduce(function(a,b){return a+(b-mean)*(b-mean);},0)/(rets.length||1));
+    var pk = -1, mdd = 0;
+    arr.forEach(function(v){ if (v == null) return; pk = Math.max(pk, v); mdd = Math.min(mdd, v/pk-1); });
+    return {key:key, name:name, w1:retBack(5), m1:retBack(21), m3:retBack(63),
+            inc:_b2Round((vals[vals.length-1]-1)*100,2), mdd:_b2Round(mdd*100,2),
+            vol:_b2Round(sd*Math.sqrt(252)*100,1), sharpe: sd ? _b2Round(mean/sd*Math.sqrt(252),2) : null};
+  }
   var rk = sr.risk || {};
   var stats = [
     {key:'nav', name:'전략실 NAV', w1:navRet(5), m1:navRet(21), m3:navRet(63),
      inc:_b2Round(((sr.nav||1)-1)*100,2), mdd:_b2Num(rk.mdd), vol:_b2Num(rk.vol), sharpe:_b2Num(rk.sharpe)},
-    {key:'spy', name:'SPY', w1:null, m1:null, m3:null, inc:null, mdd:null, vol:null, sharpe:null},
-    {key:'qqq', name:'QQQ', w1:null, m1:null, m3:null, inc:null, mdd:null, vol:null, sharpe:null},
-    {key:'tqqq', name:'TQQQ', w1:null, m1:null, m3:null, inc:null, mdd:null, vol:null, sharpe:null},
+    serStats('spy','SPY',spyS), serStats('qqq','QQQ',qqqS), serStats('tqqq','TQQQ',tqqqS),
   ];
   var navV = _b2Num(sr.nav) || 1;
   var cashV = _b2Num(sr._cash);
@@ -16749,6 +16769,9 @@ function buildBriefingV2Data(){
                  stress: stressOn, l1_lo: l1lo, l1_hi: l1hi,
                  note: 'L1 ' + l1lo + '~' + l1hi + '%' + (sub2 ? ' −섹터' + sub2 : '') + (sub3 ? ' −테마' + sub3 : '')
                        + (stressOn ? ' (스트레스 −15 반영)' : '')};
+  // 엔진(strategy_room v1.7+)이 계산한 alloc3l 이 있으면 그 값을 우선 사용
+  //   — 사이징에 실제 적용된 값과 표시값을 일치시킴 (자동매매 일관성)
+  if (sr.alloc3l && sr.alloc3l.lo != null) alloc3l = sr.alloc3l;
   try { window.__ALLOC3L = alloc3l; } catch(e) {}
   var ribbon = {dates:[usClose], themes: indRows.slice(0,12).map(function(r){
     return {name:(r.ind.split(' ▸ ')[1]||r.ind), sec:r.sec, dw:r.score, cells:[r.score]};})};
@@ -16762,7 +16785,17 @@ function buildBriefingV2Data(){
     phase: phase, sectors: sectors, inds: inds, srGate: srGate,
     navChart: navChart, stats: stats, cash: cash, closedStats: closedStats,
     holdings: holdings, themeCount: themeCount, ribbon: ribbon,
-    interpNav: (nh.length ? '전략실 NAV '+navV.toFixed(4)+' ('+_b2Round((navV-1)*100,2)+'%) · '+nh.length+'거래일 누적. 벤치마크 곡선은 엔진 보강 후 표시.' : '엔진 첫 실행 전 — NAV 이력이 쌓이면 표시됩니다.'),
+    interpNav: (function(){
+      if (!nh.length) return '엔진 첫 실행 전 — NAV 이력이 쌓이면 표시됩니다.';
+      var s = '시작('+(nh[0]||{}).date+') 이후 NAV '+_b2Round((navV-1)*100,2)+'%';
+      var bmv = (sr.benchmarks||{}).spy;
+      if (bmv != null) {
+        var al = _b2Round((navV-1)*100 - bmv, 1);
+        s += ' vs SPY '+(bmv>=0?'+':'')+bmv+'% (α '+(al>=0?'+':'')+al+'%p)';
+      }
+      if (cashPct != null) s += ' · 현금 '+cashPct+'%';
+      return s + ' · '+nh.length+'거래일 누적';
+    })(),
     rules: {hold: 40, stop: -7.0, maxPos: 12, track: sr.track || 'g3+g0+g1+g2'},
   };
 }
