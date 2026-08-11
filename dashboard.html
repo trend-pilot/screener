@@ -13754,7 +13754,8 @@ function renderDbMoneyFlow(stocks) {
 function fillDbPanelSums(stocks) {
   const q = id => document.getElementById(id);
   try { if (q('dbsum-sectors') && window._lastSectorsData) {
-    const st = window._lastSectorsData.filter(x => x.avg_rs_line >= 60).length;
+    // ⑤ 패널 본문과 동일 임계(RS Line ≥65) — 칩 8 vs 본문 5 불일치 수정 (2026-08-11)
+    const st = window._lastSectorsData.filter(x => x.avg_rs_line >= 65).length;
     q('dbsum-sectors').textContent = '🟢 강세 ' + st; } } catch(e) {}
   try { if (q('dbsum-candidates')) {
     const n = (document.getElementById('db-candidates-body')||{}).querySelectorAll ? document.getElementById('db-candidates-body').querySelectorAll('[data-cand], .cand-card').length : 0;
@@ -19115,12 +19116,25 @@ function buildBriefingV2Data(){
   //   강세). 샘플은 약한 종목 포함 풀이라 약세 섹터가 정상적으로 낮게 나온다.
   var pool = stocks.filter(function(s){ return typeof s.rs === 'number' && (s.sector||'') !== '' && s.sector !== '기타' && (s.industry||'') !== '' && s.industry !== '기타'; });
   var PRIOR_K = 10;
-  var gRSL = pool.length ? pool.reduce(function(a,s){return a+(_b2Num(s.rs_line_score)||0);},0)/pool.length : 50;
+  // [v2.2 — 엔진 compute_theme_stats 와 동일] RS Line 점수 백분위 정규화:
+  //   rs_line_score 가 상위권 100 포화 → 점수 인플레이션(테마 97 vs 샘플 53.5)·
+  //   테마 가드 미발동. 유니버스 내 순위 백분위(0~100, 동점은 rs→rs_now 타이브레이크)로 변환.
+  //   칩에 표시되는 개별 종목 숫자는 원점수 유지 (집계·밴드 판정만 백분위).
+  (function(){
+    var rk = pool.slice().sort(function(a,b){
+      return ((_b2Num(a.rs_line_score)||0)-(_b2Num(b.rs_line_score)||0))
+          || ((_b2Num(a.rs)||0)-(_b2Num(b.rs)||0))
+          || ((_b2Num(a.rs_now)||0)-(_b2Num(b.rs_now)||0)); });
+    var np = rk.length;
+    rk.forEach(function(s,i){ s.__rslp = np>1 ? i/(np-1)*100 : 50; });
+  })();
+  function _rslp(s){ return typeof s.__rslp === 'number' ? s.__rslp : 50; }
+  var gRSL = pool.length ? pool.reduce(function(a,s){return a+_rslp(s);},0)/pool.length : 50;
   var gP45 = pool.length ? pool.filter(function(s){return ['4','4plus','5'].indexOf(String(s.phase))>=0;}).length/pool.length : 0.1;
   function isNH(s){ return !!(s.h52_new || s.rs_line_high); }   // 신고가 (가격 or RS라인)
   function themeScore(rows){
     var n = rows.length;
-    var bayesRSL = (rows.reduce(function(a,s){return a+(_b2Num(s.rs_line_score)||0);},0) + PRIOR_K*gRSL)/(n+PRIOR_K);
+    var bayesRSL = (rows.reduce(function(a,s){return a+_rslp(s);},0) + PRIOR_K*gRSL)/(n+PRIOR_K);
     var p45 = ((rows.filter(function(s){return ['4','4plus','5'].indexOf(String(s.phase))>=0;}).length + PRIOR_K*gP45)/(n+PRIOR_K))*100;
     var nh = rows.filter(isNH).length/n*100;
     var avgW1 = rows.reduce(function(a,s){return a+(_b2Num(s.w1)||0);},0)/n;
