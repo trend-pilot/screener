@@ -13422,6 +13422,10 @@ function updateMarketPulse(raw, krRaw) {
 
   // v12 Phase 2~5: Daily Briefing 섹션 갱신
   try {
+    // [v2.3] 백분위 정규화(themeGlobalMeanRSL)가 ⑤⑥ 렌더 시점에 전체 유니버스를
+    // 쓸 수 있도록 먼저 노출 (기존엔 _lastUSRaw 세팅이 이보다 늦어 원점수 폴백을 탔음)
+    window.__lastRawData = window.__lastRawData || null;
+    if (stocks && stocks.length) window.__RSLP_FULL = stocks;
     renderDailyBriefingMarket(regimeKey, regime, mkt, stocks, dt);
     // v12 Phase 3+4: 섹터/산업 데이터는 한 번만 빌드해서 두 함수에 전달
     // [v2026-05-11] IBD early bird 정합: RS Rating 70+ 풀 (IBD 가이드 표준 사전 필터)
@@ -14171,17 +14175,42 @@ window.setThemeFilter = function(filter, btn) {
 //   * 산업별 테마 composite 백필이 없으므로 RS Line 베이즈를 기반으로 재현한다.
 const THEME_SHRINK_K = 8;
 function themeGlobalMeanRSL(list) {
-  // [v2.2 — 엔진과 동일 취지] 업종 평균 RSL을 업종 간 순위 백분위(0~100)로 정규화.
-  //   스크리너 rs_line_score 상위 포화(다수 100) → 테마 종합 97 인플레이션 해소.
-  //   동점은 avg_rs 로 타이브레이크. 각 업종에 __rslp 를 심고(themeComposite 가 사용),
-  //   반환값은 종목수 가중 평균 백분위.
-  const arr = (list || []).filter(i => (i.count || 0) > 0);
-  const rk = arr.slice().sort((a, b) =>
-    ((a.avg_rs_line_score ?? a.avg_rs ?? 0) - (b.avg_rs_line_score ?? b.avg_rs ?? 0))
-    || ((a.avg_rs ?? 0) - (b.avg_rs ?? 0)));
-  rk.forEach((i, idx) => { i.__rslp = rk.length > 1 ? idx / (rk.length - 1) * 100 : 50; });
+  // [v2.3 — 엔진 compute_theme_stats 와 동일 방식] 종목 단위 백분위 정규화.
+  //   전체 유니버스에서 rs_line_score 를 순위 백분위(0~100)로 변환하되
+  //   동점은 "평균 순위"(같은 원점수 = 같은 백분위 — 포화 블록이 중간값으로 눌림).
+  //   각 업종의 __rslp = 소속 종목 백분위 평균 (themeComposite 가 사용).
+  //   v2.2 의 업종 단위 순위는 1위 업종이 항상 100이 되어 정규화 효과가 없었음.
+  const full = window.__RSLP_FULL
+    || ((window.__lastRawData || window._lastUSRaw || {}).stocks) || null;
+  let pctByTicker = window.__RSLP_CACHE && window.__RSLP_CACHE.src === full
+    ? window.__RSLP_CACHE.map : null;
+  if (!pctByTicker && full && full.length > 1) {
+    const rk = full.filter(s => typeof (s.rs_line_score ?? s.rs) === 'number')
+      .sort((a, b) => ((a.rs_line_score ?? a.rs ?? 0) - (b.rs_line_score ?? b.rs ?? 0)));
+    const np = rk.length;
+    pctByTicker = {};
+    let i = 0;
+    while (i < np) {
+      let j = i; const v = rk[i].rs_line_score ?? rk[i].rs ?? 0;
+      while (j + 1 < np && (rk[j + 1].rs_line_score ?? rk[j + 1].rs ?? 0) === v) j++;
+      const p = np > 1 ? ((i + j) / 2) / (np - 1) * 100 : 50;
+      for (let k = i; k <= j; k++) pctByTicker[rk[k].ticker] = p;
+      i = j + 1;
+    }
+    window.__RSLP_CACHE = { src: full, map: pctByTicker };
+  }
+  const arr = (list || []).filter(x => (x.count || 0) > 0);
+  arr.forEach(ind => {
+    const ss = ind.allStocks || ind.stocks || [];   // 최종 업종 객체는 allStocks 필드
+    if (pctByTicker && ss.length) {
+      let s2 = 0, n2 = 0;
+      ss.forEach(s => { const p = pctByTicker[s.ticker]; if (p != null) { s2 += p; n2++; } });
+      ind.__rslp = n2 ? s2 / n2 : null;
+    } else ind.__rslp = null;   // 폴백: themeComposite 가 원점수 사용
+  });
   let sum = 0, n = 0;
-  arr.forEach(i => { sum += i.__rslp * (i.count || 0); n += i.count || 0; });
+  arr.forEach(x => { const v = (typeof x.__rslp === 'number') ? x.__rslp
+    : (x.avg_rs_line_score ?? x.avg_rs ?? 0); sum += v * (x.count || 0); n += x.count || 0; });
   return n ? sum / n : 50;
 }
 function themeComposite(ind, gm) {
@@ -19127,13 +19156,18 @@ function buildBriefingV2Data(){
   //   rs_line_score 가 상위권 100 포화 → 점수 인플레이션(테마 97 vs 샘플 53.5)·
   //   테마 가드 미발동. 유니버스 내 순위 백분위(0~100, 동점은 rs→rs_now 타이브레이크)로 변환.
   //   칩에 표시되는 개별 종목 숫자는 원점수 유지 (집계·밴드 판정만 백분위).
+  //   [v2.3] 동점 = 평균 순위 (같은 원점수 = 같은 백분위 — 포화 블록이 중간값으로 눌림)
   (function(){
     var rk = pool.slice().sort(function(a,b){
-      return ((_b2Num(a.rs_line_score)||0)-(_b2Num(b.rs_line_score)||0))
-          || ((_b2Num(a.rs)||0)-(_b2Num(b.rs)||0))
-          || ((_b2Num(a.rs_now)||0)-(_b2Num(b.rs_now)||0)); });
-    var np = rk.length;
-    rk.forEach(function(s,i){ s.__rslp = np>1 ? i/(np-1)*100 : 50; });
+      return ((_b2Num(a.rs_line_score)||0)-(_b2Num(b.rs_line_score)||0)); });
+    var np = rk.length, i = 0;
+    while (i < np) {
+      var j = i, v = _b2Num(rk[i].rs_line_score)||0;
+      while (j+1 < np && (_b2Num(rk[j+1].rs_line_score)||0) === v) j++;
+      var p = np > 1 ? ((i+j)/2)/(np-1)*100 : 50;
+      for (var k = i; k <= j; k++) rk[k].__rslp = p;
+      i = j + 1;
+    }
   })();
   function _rslp(s){ return typeof s.__rslp === 'number' ? s.__rslp : 50; }
   var gRSL = pool.length ? pool.reduce(function(a,s){return a+_rslp(s);},0)/pool.length : 50;
