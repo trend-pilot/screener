@@ -67,7 +67,7 @@ RULES = {
     #   D-3 이내 R구간 부분정리 (손실 전량 / 0~2R ⅔ / 2~4R ⅓ / 4R+ 보유. R = gain/7%)
     "earnings_entry_guard_bdays": 7, "earnings_trim_bdays": 3,
     "cost_bps": 5.0,
-    "track": "g3+g0+g1+g2", "logic_version": "v6.15(v2.2)",
+    "track": "g3+g0+g1+g2", "logic_version": "v6.15(v2.3)",
 }
 GATES = ["G3 Trigger","G4 Guard","G0 Market","G1 Theme","G2 Pattern"]
 # 레짐 사이징 (G0; screener market.overall = green/yellow/red 3단계로 단순화)
@@ -285,11 +285,22 @@ def compute_theme_stats(stocks_list):
     #   유니버스 내 순위 백분위(0~100, 동점은 rs → rs_now 로 타이브레이크)로
     #   변환하면 분포가 항상 균등해져 절대 임계(47.5/52.5)가 샘플과 같은 의미를 가진다.
     #   (검증: 8/10 포화 데이터에서 Gold 베이즈 ≈70 — 샘플 67.7 과 같은 스케일)
-    _ranked = sorted(pool, key=lambda s: (_n0(s.get("rs_line_score")),
-                                          _n0(s.get("rs")), _n0(s.get("rs_now"))))
+    #   [v2.3] 동점은 "평균 순위" — rs 타이브레이크로 순위를 벌리면 포화 블록(점수 100)
+    #   상단 종목들이 백분위 90+를 독식해 정규화 효과가 사라진다 (실측: Gold 97→95 뿐).
+    #   같은 원점수 = 같은 백분위(블록 평균)가 통계적으로 정직하고, 샘플 스케일(Gold 67.7)과 일치.
+    _ranked = sorted(pool, key=lambda s: _n0(s.get("rs_line_score")))
     _np = len(_ranked)
-    _pct = {id(s): (i / (_np - 1) * 100 if _np > 1 else 50.0)
-            for i, s in enumerate(_ranked)}
+    _pct = {}
+    _i = 0
+    while _i < _np:
+        _j = _i
+        _v = _n0(_ranked[_i].get("rs_line_score"))
+        while _j + 1 < _np and _n0(_ranked[_j + 1].get("rs_line_score")) == _v:
+            _j += 1
+        _p = ((_i + _j) / 2.0) / (_np - 1) * 100 if _np > 1 else 50.0
+        for _k in range(_i, _j + 1):
+            _pct[id(_ranked[_k])] = _p
+        _i = _j + 1
     def _rslp(s):
         return _pct.get(id(s), 50.0)
     g_rsl = sum(_rslp(s) for s in pool) / len(pool)
