@@ -14171,13 +14171,18 @@ window.setThemeFilter = function(filter, btn) {
 //   * 산업별 테마 composite 백필이 없으므로 RS Line 베이즈를 기반으로 재현한다.
 const THEME_SHRINK_K = 8;
 function themeGlobalMeanRSL(list) {
+  // [v2.2 — 엔진과 동일 취지] 업종 평균 RSL을 업종 간 순위 백분위(0~100)로 정규화.
+  //   스크리너 rs_line_score 상위 포화(다수 100) → 테마 종합 97 인플레이션 해소.
+  //   동점은 avg_rs 로 타이브레이크. 각 업종에 __rslp 를 심고(themeComposite 가 사용),
+  //   반환값은 종목수 가중 평균 백분위.
+  const arr = (list || []).filter(i => (i.count || 0) > 0);
+  const rk = arr.slice().sort((a, b) =>
+    ((a.avg_rs_line_score ?? a.avg_rs ?? 0) - (b.avg_rs_line_score ?? b.avg_rs ?? 0))
+    || ((a.avg_rs ?? 0) - (b.avg_rs ?? 0)));
+  rk.forEach((i, idx) => { i.__rslp = rk.length > 1 ? idx / (rk.length - 1) * 100 : 50; });
   let sum = 0, n = 0;
-  (list || []).forEach(i => {
-    const c = i.count || 0;
-    const v = (i.avg_rs_line_score ?? i.avg_rs ?? 0);
-    sum += v * c; n += c;
-  });
-  return n ? sum / n : 0;
+  arr.forEach(i => { sum += i.__rslp * (i.count || 0); n += i.count || 0; });
+  return n ? sum / n : 50;
 }
 function themeComposite(ind, gm) {
   // [보정 근거] 참고 대시보드 2026-07-01 실측값으로 스케일 캘리브레이션.
@@ -14185,7 +14190,9 @@ function themeComposite(ind, gm) {
   //   → 종합점수는 'RS Line ±8' 밴드에 머물며 대체로 약간 아래. 따라서 품질 가산은
   //     큰 보너스가 아니라 기대치(baseline) 대비 '편차'로 반영한다.
   const n = ind.count || 0;
-  const rsl = (ind.avg_rs_line_score ?? ind.avg_rs ?? 0);
+  // [v2.2] themeGlobalMeanRSL 이 심은 백분위 우선 (없으면 원점수 폴백)
+  const rsl = (typeof ind.__rslp === 'number') ? ind.__rslp
+            : (ind.avg_rs_line_score ?? ind.avg_rs ?? 0);
   // 1) 베이즈 RSL — 소표본은 전체 평균으로 수축 (가이드: K=10)
   const base = (n * rsl + THEME_SHRINK_K * gm) / (n + THEME_SHRINK_K);
   // 2) Phase·신고가·지속성 — 기대치 대비 편차 (대략 -6 ~ +6)
