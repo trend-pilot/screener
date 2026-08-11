@@ -67,7 +67,7 @@ RULES = {
     #   D-3 이내 R구간 부분정리 (손실 전량 / 0~2R ⅔ / 2~4R ⅓ / 4R+ 보유. R = gain/7%)
     "earnings_entry_guard_bdays": 7, "earnings_trim_bdays": 3,
     "cost_bps": 5.0,
-    "track": "g3+g0+g1+g2", "logic_version": "v6.15(v2.0)",
+    "track": "g3+g0+g1+g2", "logic_version": "v6.15(v2.2)",
 }
 GATES = ["G3 Trigger","G4 Guard","G0 Market","G1 Theme","G2 Pattern"]
 # 레짐 사이징 (G0; screener market.overall = green/yellow/red 3단계로 단순화)
@@ -110,9 +110,15 @@ def detect_ftd(dates, closes, lows, vols, thr_pct):
     if n < 10:
         return None
     s = max(0, n - FTD_LOOKBACK)
-    # 반등 시작 저점 = 구간 내 최저 저가 (이후 더 낮은 저점이 생기면
-    # 자동으로 그 저점 기준 사이클로 바뀜 = ⑤ 무효화 규칙과 동치)
-    lo_i = min(range(s, n), key=lambda i: lows[i])
+    # [v2.1 수정] 반등 시작 저점 = "최근 종가 고점 이후"의 최저 저가.
+    #   기존(구간 전체 최저)은 수개월 전 대저점(예: 03-30)에 사이클이 고정되어,
+    #   그 FTD가 만료된 뒤 새 눌림목 사이클(07-29 저점 → 08-04 FTD)을 못 봤다.
+    #   실측(2026-08-10): 샘플=Resumed(8/4 FTD 골든) vs 우리=Under Pressure(4월 만료).
+    #   고점→저점 앵커는 얕은 눌림목도 현재 조정 사이클로 정확히 잡고,
+    #   조정 중 더 낮은 저점이 생기면 자동 재앵커(⑤ 무효화 규칙)도 그대로 유지.
+    pk_i = max(range(s, n), key=lambda i: closes[i])
+    lo_from = pk_i if pk_i < n - 1 else s   # 오늘이 신고가면 폴백(구간 전체)
+    lo_i = min(range(lo_from, n), key=lambda i: lows[i])
     out = {"rally_low": round(lows[lo_i], 2), "rally_low_date": dates[lo_i],
            "status": "none", "rally_day": None, "ftd_date": None, "ftd_day": None,
            "ftd_gain_pct": None, "ftd_vol_chg_pct": None,
@@ -272,12 +278,26 @@ def compute_theme_stats(stocks_list):
             and (s.get("industry") or "") not in ("", "기타")]
     if not pool:
         return None
-    g_rsl = sum(_n0(s.get("rs_line_score")) for s in pool) / len(pool)
+    # ── [v2.2] RS Line 점수 백분위 정규화 ─────────────────────────────
+    #   스크리너 rs_line_score 가 상위권에서 100으로 포화(실측 8/10: 다수 종목 100)
+    #   → 베이즈 RSL·테마 종합점수가 샘플 대비 크게 부풀어(97 vs 53.5)
+    #   Leading 테마가 과다 집계되고 테마 가드(−20)가 발동하지 않았다.
+    #   유니버스 내 순위 백분위(0~100, 동점은 rs → rs_now 로 타이브레이크)로
+    #   변환하면 분포가 항상 균등해져 절대 임계(47.5/52.5)가 샘플과 같은 의미를 가진다.
+    #   (검증: 8/10 포화 데이터에서 Gold 베이즈 ≈70 — 샘플 67.7 과 같은 스케일)
+    _ranked = sorted(pool, key=lambda s: (_n0(s.get("rs_line_score")),
+                                          _n0(s.get("rs")), _n0(s.get("rs_now"))))
+    _np = len(_ranked)
+    _pct = {id(s): (i / (_np - 1) * 100 if _np > 1 else 50.0)
+            for i, s in enumerate(_ranked)}
+    def _rslp(s):
+        return _pct.get(id(s), 50.0)
+    g_rsl = sum(_rslp(s) for s in pool) / len(pool)
     g_p45 = sum(1 for s in pool if str(s.get("phase")) in ("4", "4plus", "5")) / len(pool)
 
     def theme_score(rows):
         n = len(rows)
-        bayes = (sum(_n0(s.get("rs_line_score")) for s in rows) + THEME_PRIOR_K * g_rsl) / (n + THEME_PRIOR_K)
+        bayes = (sum(_rslp(s) for s in rows) + THEME_PRIOR_K * g_rsl) / (n + THEME_PRIOR_K)
         p45 = ((sum(1 for s in rows if str(s.get("phase")) in ("4", "4plus", "5"))
                 + THEME_PRIOR_K * g_p45) / (n + THEME_PRIOR_K)) * 100
         nh = sum(1 for s in rows if s.get("h52_new") or s.get("rs_line_high")) / n * 100
