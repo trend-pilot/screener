@@ -1,59 +1,101 @@
 {
-"_date": "2026-08-11",
+"_date": "2026-08-12",
 "_fired_names": [
-"Aluminum",
-"Auto & Truck Dealerships",
-"Electronic Components",
-"Gambling",
-"Security & Protection Services",
+"Coking Coal",
+"Communication Equipment",
+"Computer Hardware",
+"Healthcare Plans",
+"Personal Services",
+"Restaurants",
 "Semiconductor Equipment & Materials",
-"Silver",
-"Utilities - Renewable"
+"Trucking"
 ],
-"Auto & Truck Dealerships": {
+"Semiconductor Equipment & Materials": {
+"consecutive_days": 2,
+"first_fired": "2026-08-11",
+"last_avg_pct": 4.26,
+"ever_fired": true
+},
+"Computer Hardware": {
 "consecutive_days": 1,
+"first_fired": "2026-08-12",
+"last_avg_pct": 3.81,
+"ever_fired": true
+},
+"Communication Equipment": {
+"consecutive_days": 1,
+"first_fired": "2026-08-12",
+"last_avg_pct": 3.8,
+"ever_fired": true
+},
+"Coking Coal": {
+"consecutive_days": 1,
+"first_fired": "2026-08-12",
+"last_avg_pct": 3.58,
+"ever_fired": true
+},
+"Restaurants": {
+"consecutive_days": 1,
+"first_fired": "2026-08-12",
+"last_avg_pct": 3.21,
+"ever_fired": true
+},
+"Trucking": {
+"consecutive_days": 1,
+"first_fired": "2026-08-12",
+"last_avg_pct": 3.18,
+"ever_fired": true
+},
+"Personal Services": {
+"consecutive_days": 1,
+"first_fired": "2026-08-12",
+"last_avg_pct": 3.07,
+"ever_fired": true
+},
+"Healthcare Plans": {
+"consecutive_days": 1,
+"first_fired": "2026-08-12",
+"last_avg_pct": 2.32,
+"ever_fired": true
+},
+"Auto & Truck Dealerships": {
+"consecutive_days": 0,
 "first_fired": "2026-08-11",
 "last_avg_pct": 5.91,
 "ever_fired": true
 },
 "Utilities - Renewable": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-11",
 "last_avg_pct": 4.29,
 "ever_fired": true
 },
-"Semiconductor Equipment & Materials": {
-"consecutive_days": 1,
-"first_fired": "2026-08-11",
-"last_avg_pct": 3.55,
-"ever_fired": true
-},
 "Electronic Components": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-11",
 "last_avg_pct": 2.88,
 "ever_fired": true
 },
 "Silver": {
-"consecutive_days": 5,
+"consecutive_days": 0,
 "first_fired": "2026-08-07",
 "last_avg_pct": 2.87,
 "ever_fired": true
 },
 "Security & Protection Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-11",
 "last_avg_pct": 2.87,
 "ever_fired": true
 },
 "Aluminum": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-11",
 "last_avg_pct": 2.68,
 "ever_fired": true
 },
 "Gambling": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-11",
 "last_avg_pct": 2.36,
 "ever_fired": true
@@ -160,12 +202,6 @@
 "last_avg_pct": 2.05,
 "ever_fired": true
 },
-"Coking Coal": {
-"consecutive_days": 0,
-"first_fired": "2026-08-07",
-"last_avg_pct": 1.9,
-"ever_fired": true
-},
 "Chemicals": {
 "consecutive_days": 0,
 "first_fired": "2026-08-07",
@@ -178,12 +214,6 @@
 "last_avg_pct": 3.02,
 "ever_fired": true
 },
-"Restaurants": {
-"consecutive_days": 0,
-"first_fired": "2026-08-05",
-"last_avg_pct": 2.91,
-"ever_fired": true
-},
 "Lodging": {
 "consecutive_days": 0,
 "first_fired": "2026-08-05",
@@ -194,18 +224,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-05",
 "last_avg_pct": 2.51,
-"ever_fired": true
-},
-"Communication Equipment": {
-"consecutive_days": 0,
-"first_fired": "2026-08-04",
-"last_avg_pct": 7.45,
-"ever_fired": true
-},
-"Computer Hardware": {
-"consecutive_days": 0,
-"first_fired": "2026-08-04",
-"last_avg_pct": 6.98,
 "ever_fired": true
 },
 "Department Stores": {
@@ -454,22 +472,10 @@
 "last_avg_pct": 1.62,
 "ever_fired": true
 },
-"Healthcare Plans": {
-"consecutive_days": 0,
-"first_fired": "2026-07-17",
-"last_avg_pct": 2.67,
-"ever_fired": true
-},
 "REIT - Hotel & Motel": {
 "consecutive_days": 0,
 "first_fired": "2026-07-17",
 "last_avg_pct": 1.65,
-"ever_fired": true
-},
-"Trucking": {
-"consecutive_days": 0,
-"first_fired": "2026-07-16",
-"last_avg_pct": 5.71,
 "ever_fired": true
 },
 "Industrial Distribution": {
