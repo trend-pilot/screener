@@ -1,59 +1,101 @@
 {
-"_date": "2026-08-12",
+"_date": "2026-08-13",
 "_fired_names": [
-"Coking Coal",
-"Communication Equipment",
+"Broadcasting",
 "Computer Hardware",
-"Healthcare Plans",
-"Personal Services",
-"Restaurants",
-"Semiconductor Equipment & Materials",
-"Trucking"
+"Footwear & Accessories",
+"Insurance Brokers",
+"Mortgage Finance",
+"Software - Application",
+"Software - Infrastructure",
+"Staffing & Employment Services"
 ],
-"Semiconductor Equipment & Materials": {
+"Staffing & Employment Services": {
+"consecutive_days": 1,
+"first_fired": "2026-08-13",
+"last_avg_pct": 4.61,
+"ever_fired": true
+},
+"Insurance Brokers": {
+"consecutive_days": 1,
+"first_fired": "2026-08-13",
+"last_avg_pct": 4.33,
+"ever_fired": true
+},
+"Software - Application": {
+"consecutive_days": 1,
+"first_fired": "2026-08-13",
+"last_avg_pct": 4.23,
+"ever_fired": true
+},
+"Broadcasting": {
+"consecutive_days": 1,
+"first_fired": "2026-08-13",
+"last_avg_pct": 4.05,
+"ever_fired": true
+},
+"Software - Infrastructure": {
+"consecutive_days": 1,
+"first_fired": "2026-08-13",
+"last_avg_pct": 3.48,
+"ever_fired": true
+},
+"Computer Hardware": {
 "consecutive_days": 2,
+"first_fired": "2026-08-12",
+"last_avg_pct": 3.13,
+"ever_fired": true
+},
+"Mortgage Finance": {
+"consecutive_days": 1,
+"first_fired": "2026-08-13",
+"last_avg_pct": 2.94,
+"ever_fired": true
+},
+"Footwear & Accessories": {
+"consecutive_days": 1,
+"first_fired": "2026-08-13",
+"last_avg_pct": 2.91,
+"ever_fired": true
+},
+"Semiconductor Equipment & Materials": {
+"consecutive_days": 0,
 "first_fired": "2026-08-11",
 "last_avg_pct": 4.26,
 "ever_fired": true
 },
-"Computer Hardware": {
-"consecutive_days": 1,
-"first_fired": "2026-08-12",
-"last_avg_pct": 3.81,
-"ever_fired": true
-},
 "Communication Equipment": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-12",
 "last_avg_pct": 3.8,
 "ever_fired": true
 },
 "Coking Coal": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-12",
 "last_avg_pct": 3.58,
 "ever_fired": true
 },
 "Restaurants": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-12",
 "last_avg_pct": 3.21,
 "ever_fired": true
 },
 "Trucking": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-12",
 "last_avg_pct": 3.18,
 "ever_fired": true
 },
 "Personal Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-12",
 "last_avg_pct": 3.07,
 "ever_fired": true
 },
 "Healthcare Plans": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-12",
 "last_avg_pct": 2.32,
 "ever_fired": true
@@ -148,12 +190,6 @@
 "last_avg_pct": 8.34,
 "ever_fired": true
 },
-"Broadcasting": {
-"consecutive_days": 0,
-"first_fired": "2026-08-07",
-"last_avg_pct": 7.4,
-"ever_fired": true
-},
 "Health Information Services": {
 "consecutive_days": 0,
 "first_fired": "2026-08-07",
@@ -220,12 +256,6 @@
 "last_avg_pct": 2.66,
 "ever_fired": true
 },
-"Staffing & Employment Services": {
-"consecutive_days": 0,
-"first_fired": "2026-08-05",
-"last_avg_pct": 2.51,
-"ever_fired": true
-},
 "Department Stores": {
 "consecutive_days": 0,
 "first_fired": "2026-08-03",
@@ -236,18 +266,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-03",
 "last_avg_pct": 6.07,
-"ever_fired": true
-},
-"Mortgage Finance": {
-"consecutive_days": 0,
-"first_fired": "2026-08-03",
-"last_avg_pct": 5.37,
-"ever_fired": true
-},
-"Footwear & Accessories": {
-"consecutive_days": 0,
-"first_fired": "2026-08-03",
-"last_avg_pct": 4.9,
 "ever_fired": true
 },
 "Airlines": {
@@ -328,12 +346,6 @@
 "last_avg_pct": 1.9,
 "ever_fired": true
 },
-"Insurance Brokers": {
-"consecutive_days": 0,
-"first_fired": "2026-07-28",
-"last_avg_pct": 4.62,
-"ever_fired": true
-},
 "Beverages - Wineries & Distilleries": {
 "consecutive_days": 0,
 "first_fired": "2026-07-28",
@@ -356,12 +368,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-28",
 "last_avg_pct": 3.52,
-"ever_fired": true
-},
-"Software - Application": {
-"consecutive_days": 0,
-"first_fired": "2026-07-27",
-"last_avg_pct": 4.5,
 "ever_fired": true
 },
 "Luxury Goods": {
@@ -602,12 +608,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-23",
 "last_avg_pct": 2.4,
-"ever_fired": true
-},
-"Software - Infrastructure": {
-"consecutive_days": 0,
-"first_fired": "2026-06-19",
-"last_avg_pct": NaN,
 "ever_fired": true
 },
 "Shell Companies": {
