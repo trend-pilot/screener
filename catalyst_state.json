@@ -1,5 +1,5 @@
 {
-"_date": "2026-08-15",
+"_date": "2026-08-16",
 "_fired_names": [
 "Broadcasting",
 "Coking Coal",
@@ -11,49 +11,49 @@
 "Thermal Coal"
 ],
 "Coking Coal": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-08-14",
 "last_avg_pct": 6.84,
 "ever_fired": true
 },
 "Broadcasting": {
-"consecutive_days": 3,
+"consecutive_days": 4,
 "first_fired": "2026-08-13",
 "last_avg_pct": 5.38,
 "ever_fired": true
 },
 "Thermal Coal": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-08-14",
 "last_avg_pct": 2.82,
 "ever_fired": true
 },
 "Oil & Gas Equipment & Services": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-08-14",
 "last_avg_pct": 2.75,
 "ever_fired": true
 },
 "Silver": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-08-14",
 "last_avg_pct": 2.45,
 "ever_fired": true
 },
 "Other Industrial Metals & Mining": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-08-14",
 "last_avg_pct": 2.4,
 "ever_fired": true
 },
 "Electronic Components": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-08-14",
 "last_avg_pct": 2.38,
 "ever_fired": true
 },
 "Healthcare Plans": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-08-14",
 "last_avg_pct": 2.33,
 "ever_fired": true
