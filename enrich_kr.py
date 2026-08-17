@@ -94,6 +94,7 @@ def fetch_ohlcv(ticker, days):
         return None
     return {
         "dates": [d.strftime("%Y-%m-%d") for d in df.index],
+        "opens": [float(v) for v in df["시가"]],
         "closes": [float(v) for v in df["종가"]],
         "highs": [float(v) for v in df["고가"]],
         "lows": [float(v) for v in df["저가"]],
@@ -152,6 +153,9 @@ def main():
                             ohlcv["lows"], ohlcv["vols"])
         m["name"] = name
         m["last_date"] = ohlcv["dates"][-1]
+        m["open"] = round(ohlcv["opens"][-1], 2)
+        m["low"] = round(ohlcv["lows"][-1], 2)
+      
         data[t] = m
         if m.get("ma50") is None:
             thin.append(f"{t} {name}({m['bars']}봉)")
