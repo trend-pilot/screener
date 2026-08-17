@@ -43,16 +43,20 @@ jobs:
       - name: 3. Paper engine
         run: python strategy_room_kr_v1.py
 
-      - name: Commit outputs
+     - name: Commit outputs
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin main || true
-          git add stockeasy_kr.json stockeasy_history.jsonl \
-                  kr_ohlcv_extra.json \
-                  strategy_room_kr.json strategy_room_kr_cap12.json
-          git diff --staged --quiet || git commit -m "kr pipeline $(date -u +%Y-%m-%d)"
-          git push
+          git add -A -- stockeasy_kr.json stockeasy_history.jsonl \
+                        kr_ohlcv_extra.json \
+                        strategy_room_kr.json strategy_room_kr_cap12.json 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "변경 없음 — 커밋 생략"
+          else
+            git commit -m "kr pipeline $(date -u +%Y-%m-%d)"
+            git pull --rebase origin main
+            git push origin main
+          fi
 
       - name: Notify failure
         if: failure()
