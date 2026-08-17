@@ -2,7 +2,14 @@
 """
 stockeasy_fetch.py — 스탁이지 전략실 스냅샷 수집 · diff · 텔레그램 알림 (Phase 0)
 ================================================================================
-출력:  stockeasy_kr.json   ← Phase 1 엔진(strategy_room_kr)의 입력
+전략실 페이지는 로그인 없이 SSR HTML 로 보유/이탈 테이블을 내려준다.
+이 스크립트는 그 테이블을 파싱해 스냅샷 JSON 으로 남기고, 전일 스냅샷과
+비교해 신규 편입 / 이탈을 텔레그램으로 알린다.
+
+종목코드는 kr_screener_output.json 의 name 필드로 조인해 붙인다.
+(별도 KRX 마스터 불필요 — 매칭 실패분은 unmapped 로 분리해 알림에 경고)
+
+출력:  stockeasy_kr.json   ← Phase 1 enrich_kr.py 의 입력이 된다
 
 실행:
     python stockeasy_fetch.py                       # 1호 모멘텀, 알림 O
@@ -10,10 +17,17 @@ stockeasy_fetch.py — 스탁이지 전략실 스냅샷 수집 · diff · 텔레
     python stockeasy_fetch.py --no-notify           # 수집만
     python stockeasy_fetch.py --html saved.html     # 오프라인 테스트
 
-환경변수: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+환경변수:
+    TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
 
-주의: 개인 알림 용도. 하루 1~2회만 호출 (이용약관 제6조 3호 — 부하 유발 금지).
+주의: 개인 알림 용도. 하루 1~2회만 호출한다 (이용약관 제6조 3호 — 부하 유발 금지).
       수집 결과를 재배포·상업적 이용하지 않는다 (제7조 2항).
+
+변경 이력:
+    v1.0  최초
+    v1.1  rowspan 병합 셀 파싱 (섹터 열이 빈 td 가 아니라 rowspan 이었음)
+    v1.2  보유 0 = 전량 이탈 처리. 파싱 실패와 구분한다 — 전량 이탈은
+          가장 중요한 신호인데 기존 코드는 알림 없이 종료했다.
 """
 
 import argparse
@@ -35,7 +49,7 @@ STRATEGIES = {"momentum": "1호 모멘텀", "peak": "2호 피크", "value": "3�
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/126.0 Safari/537.36")
 
-STOP_PCT = -7.0   # 전략실 하드스톱 (알림 참고용 표시)
+STOP_PCT = -7.0   # 전략실 하드스톱 (알림 참고 표시용)
 
 
 # ─── 수집 ────────────────────────────────────────────────────────────
@@ -74,7 +88,11 @@ def _mmdd(txt, ref_year):
 
 
 def _rows_from_table(table):
-    """thead 헤더 + tbody 행. rowspan 병합 셀을 그리드로 펼친다."""
+    """thead 헤더 + tbody 행. rowspan 병합 셀을 그리드로 펼친다.
+
+    섹터 열은 같은 섹터 종목들에 rowspan 으로 병합돼 있어서, 2번째 행부터는
+    td 가 아예 없다(빈 td 가 아니다). 단순 zip 으로는 열이 밀린다.
+    """
     heads = [th.get_text(strip=True) for th in table.select("thead th")]
     if not heads:
         first = table.find("tr")
@@ -129,7 +147,7 @@ def _pick(row, *names):
 
 
 def parse_page(html, ref_year=None):
-    """보유/이탈 테이블 + updated 날짜."""
+    """보유/이탈 테이블 + updated 날짜를 뽑는다."""
     ref_year = ref_year or date.today().year
     soup = BeautifulSoup(html, "html.parser")
     text = soup.get_text(" ", strip=True)
@@ -145,9 +163,6 @@ def parse_page(html, ref_year=None):
         keys = set().union(*(set(r.keys()) for r in rows))
         is_exit = "매도가" in keys
         for r in rows:
-            if "_cells" in r:
-                print(f"  [warn] 헤더 불일치 행 스킵: {r['_cells'][:3]}")
-                continue
             name = _pick(r, "종목명")
             if not name:
                 continue
@@ -232,6 +247,10 @@ def build_message(snap, d, label):
     L.append(f"📋 <b>[국장] 스탁이지 {label}</b> · {snap['data_date']}")
     L.append(f"보유 {len(snap['holdings'])} · 신규 {len(d['new'])} · 이탈 {len(d['dropped'])}")
 
+    # 전량 이탈 — 소스가 전부 손을 털었다는 뜻. 가장 눈에 띄어야 하는 상태다.
+    if not snap["holdings"]:
+        L.append("\n🚨 <b>보유 0 — 전량 이탈</b>")
+
     if d["first_run"]:
         L.append("\n<i>첫 실행 — 기준 스냅샷을 저장했습니다.</i>")
 
@@ -299,8 +318,15 @@ def main():
 
     html = open(a.html, encoding="utf-8").read() if a.html else fetch_html(a.strategy)
     snap = parse_page(html)
+
+    # 보유 0 과 파싱 실패는 정반대 상황이다.
+    #   전량 이탈이면 이탈 테이블에는 종목이 남아 있다.
+    #   둘 다 비어 있을 때만 파싱 실패로 판정한다.
+    if not snap["holdings"] and not snap["exits"]:
+        sys.exit("[!] 보유·이탈 테이블 모두 비어 있음 — 파싱 실패로 판단합니다.")
     if not snap["holdings"]:
-        sys.exit("[!] 보유 테이블 파싱 실패 — 사이트 구조가 바뀌었을 수 있습니다.")
+        print("[!] 보유 0종목 — 전량 이탈 상태입니다.")
+
     print(f"[parse] {snap['data_date']} · 보유 {len(snap['holdings'])} · 이탈 {len(snap['exits'])}")
 
     snap = enrich(snap, load_code_map(a.screener))
@@ -315,7 +341,7 @@ def main():
         except Exception as e:
             print(f"[state] 이전 스냅샷 로드 실패({e}) — 첫 실행으로 처리")
 
-    # 같은 data_date 재실행이면 중복 알림 방지
+    # 같은 data_date 재실행이면 diff 를 재계산하지 않는다 (중복 알림 방지)
     if prev and prev.get("data_date") == snap["data_date"]:
         print(f"[skip] {snap['data_date']} 스냅샷 이미 처리됨 — 알림 생략")
         snap["diff"] = prev.get("diff", {"new": [], "dropped": [], "first_run": False})
