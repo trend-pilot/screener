@@ -74,25 +74,50 @@ def _mmdd(txt, ref_year):
 
 
 def _rows_from_table(table):
-    """thead 헤더 + tbody 행. 섹터 셀 빈칸은 carry-forward (rowspan 대응)."""
+    """thead 헤더 + tbody 행. rowspan 병합 셀을 그리드로 펼친다."""
     heads = [th.get_text(strip=True) for th in table.select("thead th")]
     if not heads:
         first = table.find("tr")
         heads = [c.get_text(strip=True) for c in first.find_all(["th", "td"])] if first else []
-    out, carry = [], ""
+    ncol = len(heads)
+    if not ncol:
+        return []
+
     body = table.find("tbody") or table
+    carry = {}          # col -> [text, 남은 행수]
+    out = []
     for tr in body.find_all("tr"):
-        cells = [td.get_text(strip=True) for td in tr.find_all(["td", "th"])]
-        if not cells or len(cells) < 4:
+        raw = tr.find_all(["td", "th"])
+        if not raw:
             continue
-        if cells == heads:
+        row = [None] * ncol
+        # 위 행에서 rowspan 으로 내려온 셀 먼저 채운다
+        for col in sorted(carry):
+            txt, left = carry[col]
+            if col < ncol:
+                row[col] = txt
+            carry[col][1] = left - 1
+        carry = {c: v for c, v in carry.items() if v[1] > 0}
+        # 남은 빈 칸에 이 행의 셀을 순서대로 배치
+        for cell in raw:
+            try:
+                col = row.index(None)
+            except ValueError:
+                break
+            txt = cell.get_text(strip=True)
+            row[col] = txt
+            try:
+                rs = int(cell.get("rowspan") or 1)
+            except ValueError:
+                rs = 1
+            if rs > 1:
+                carry[col] = [txt, rs - 1]
+        if all(v is None for v in row):
             continue
-        if cells[0]:
-            carry = cells[0]
-        else:
-            cells[0] = carry
-        out.append(dict(zip(heads, cells)) if len(heads) == len(cells)
-                   else {"_cells": cells})
+        row = ["" if v is None else v for v in row]
+        if row == heads:
+            continue
+        out.append(dict(zip(heads, row)))
     return out
 
 
