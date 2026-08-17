@@ -1,59 +1,107 @@
 {
-"_date": "2026-08-16",
+"_date": "2026-08-17",
 "_fired_names": [
-"Broadcasting",
-"Coking Coal",
-"Electronic Components",
-"Healthcare Plans",
-"Oil & Gas Equipment & Services",
-"Other Industrial Metals & Mining",
-"Silver",
-"Thermal Coal"
+"Aluminum",
+"Copper",
+"Lodging",
+"Marine Shipping",
+"Oil & Gas Drilling",
+"Oil & Gas E&P",
+"Oil & Gas Integrated",
+"Semiconductor Equipment & Materials"
 ],
+"Semiconductor Equipment & Materials": {
+"consecutive_days": 1,
+"first_fired": "2026-08-17",
+"last_avg_pct": 3.43,
+"ever_fired": true
+},
+"Copper": {
+"consecutive_days": 1,
+"first_fired": "2026-08-17",
+"last_avg_pct": 3.27,
+"ever_fired": true
+},
+"Marine Shipping": {
+"consecutive_days": 1,
+"first_fired": "2026-08-17",
+"last_avg_pct": 2.43,
+"ever_fired": true
+},
+"Oil & Gas Drilling": {
+"consecutive_days": 1,
+"first_fired": "2026-08-17",
+"last_avg_pct": 2.19,
+"ever_fired": true
+},
+"Aluminum": {
+"consecutive_days": 1,
+"first_fired": "2026-08-17",
+"last_avg_pct": 1.9,
+"ever_fired": true
+},
+"Lodging": {
+"consecutive_days": 1,
+"first_fired": "2026-08-17",
+"last_avg_pct": 1.72,
+"ever_fired": true
+},
+"Oil & Gas Integrated": {
+"consecutive_days": 1,
+"first_fired": "2026-08-17",
+"last_avg_pct": 1.62,
+"ever_fired": true
+},
+"Oil & Gas E&P": {
+"consecutive_days": 1,
+"first_fired": "2026-08-17",
+"last_avg_pct": 1.58,
+"ever_fired": true
+},
 "Coking Coal": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-14",
 "last_avg_pct": 6.84,
 "ever_fired": true
 },
 "Broadcasting": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-08-13",
 "last_avg_pct": 5.38,
 "ever_fired": true
 },
 "Thermal Coal": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-14",
 "last_avg_pct": 2.82,
 "ever_fired": true
 },
 "Oil & Gas Equipment & Services": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-14",
 "last_avg_pct": 2.75,
 "ever_fired": true
 },
 "Silver": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-14",
 "last_avg_pct": 2.45,
 "ever_fired": true
 },
 "Other Industrial Metals & Mining": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-14",
 "last_avg_pct": 2.4,
 "ever_fired": true
 },
 "Electronic Components": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-14",
 "last_avg_pct": 2.38,
 "ever_fired": true
 },
 "Healthcare Plans": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-14",
 "last_avg_pct": 2.33,
 "ever_fired": true
@@ -100,12 +148,6 @@
 "last_avg_pct": 2.91,
 "ever_fired": true
 },
-"Semiconductor Equipment & Materials": {
-"consecutive_days": 0,
-"first_fired": "2026-08-11",
-"last_avg_pct": 4.26,
-"ever_fired": true
-},
 "Communication Equipment": {
 "consecutive_days": 0,
 "first_fired": "2026-08-12",
@@ -148,46 +190,16 @@
 "last_avg_pct": 2.87,
 "ever_fired": true
 },
-"Aluminum": {
-"consecutive_days": 0,
-"first_fired": "2026-08-11",
-"last_avg_pct": 2.68,
-"ever_fired": true
-},
 "Gambling": {
 "consecutive_days": 0,
 "first_fired": "2026-08-11",
 "last_avg_pct": 2.36,
 "ever_fired": true
 },
-"Oil & Gas Drilling": {
-"consecutive_days": 0,
-"first_fired": "2026-08-10",
-"last_avg_pct": 9.01,
-"ever_fired": true
-},
-"Copper": {
-"consecutive_days": 0,
-"first_fired": "2026-08-10",
-"last_avg_pct": 5.02,
-"ever_fired": true
-},
-"Oil & Gas E&P": {
-"consecutive_days": 0,
-"first_fired": "2026-08-10",
-"last_avg_pct": 4.82,
-"ever_fired": true
-},
 "Oil & Gas Refining & Marketing": {
 "consecutive_days": 0,
 "first_fired": "2026-08-10",
 "last_avg_pct": 3.79,
-"ever_fired": true
-},
-"Oil & Gas Integrated": {
-"consecutive_days": 0,
-"first_fired": "2026-08-10",
-"last_avg_pct": 3.12,
 "ever_fired": true
 },
 "Medical Devices": {
@@ -254,12 +266,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-05",
 "last_avg_pct": 3.02,
-"ever_fired": true
-},
-"Lodging": {
-"consecutive_days": 0,
-"first_fired": "2026-08-05",
-"last_avg_pct": 2.66,
 "ever_fired": true
 },
 "Department Stores": {
@@ -440,12 +446,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-23",
 "last_avg_pct": 2.71,
-"ever_fired": true
-},
-"Marine Shipping": {
-"consecutive_days": 0,
-"first_fired": "2026-07-23",
-"last_avg_pct": 2.27,
 "ever_fired": true
 },
 "Aerospace & Defense": {
