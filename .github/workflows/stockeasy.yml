@@ -1,9 +1,14 @@
 name: stockeasy daily
 
 on:
+  # daily-kr 이 끝나면 이어서 실행 — 고정 시각으로는 순서를 보장할 수 없다.
+  # (오늘 daily-kr 은 15:40 예정이었으나 19:32 에 완료됐다)
+  workflow_run:
+    workflows: ["Daily KR Update"]
+    types: [completed]
+  # 체이닝이 불발될 때를 대비한 백업
   schedule:
-    - cron: '30 7 * * 1-5'
-    - cron: '0 10 * * 1-5'
+    - cron: '30 12 * * 1-5'
   workflow_dispatch:
 
 permissions:
@@ -12,6 +17,10 @@ permissions:
 jobs:
   run:
     runs-on: ubuntu-latest
+    # daily-kr 이 실패했으면 낡은 스크리너로 돌지 않는다
+    if: >
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
     steps:
       - uses: actions/checkout@v4
 
@@ -19,20 +28,30 @@ jobs:
         with:
           python-version: '3.11'
 
-      - run: pip install beautifulsoup4
+      - name: Install deps
+        run: pip install beautifulsoup4 pykrx
 
-      - name: Fetch stockeasy
+      - name: 1. Fetch stockeasy
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python stockeasy_fetch.py --strategy momentum
 
-     - name: Commit snapshot
+      - name: 2. Enrich OHLCV
+        run: python enrich_kr.py
+
+      - name: 3. Paper engine
+        run: python strategy_room_kr_v1.py
+
+      - name: Commit outputs
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add stockeasy_kr.json stockeasy_history.jsonl
-          git diff --staged --quiet || git commit -m "stockeasy snapshot $(date -u +%Y-%m-%d)"
+          git pull --rebase origin main || true
+          git add stockeasy_kr.json stockeasy_history.jsonl \
+                  kr_ohlcv_extra.json \
+                  strategy_room_kr.json strategy_room_kr_cap12.json
+          git diff --staged --quiet || git commit -m "kr pipeline $(date -u +%Y-%m-%d)"
           git push
 
       - name: Notify failure
@@ -44,4 +63,4 @@ jobs:
           curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
             -d chat_id="${TELEGRAM_CHAT_ID}" \
             -d parse_mode=HTML \
-            -d text="🔥 <b>스탁이지 수집 실패</b>%0A워크플로가 중단됐습니다.%0A${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            -d text="🔥 <b>국장 파이프라인 실패</b>%0A${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
