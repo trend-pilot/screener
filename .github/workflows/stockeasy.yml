@@ -1,15 +1,12 @@
 name: stockeasy daily
 
 on:
-  # daily-kr 이 끝나면 이어서 실행 — 고정 시각으로는 순서를 보장할 수 없다.
-  # (오늘 daily-kr 은 15:40 예정이었으나 19:32 에 완료됐다)
+  workflow_dispatch:
+  schedule:
+    - cron: '30 12 * * 1-5'
   workflow_run:
     workflows: ["Daily KR Update"]
     types: [completed]
-  # 체이닝이 불발될 때를 대비한 백업
-  schedule:
-    - cron: '30 12 * * 1-5'
-  workflow_dispatch:
 
 permissions:
   contents: write
