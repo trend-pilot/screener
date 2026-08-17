@@ -1,33 +1,34 @@
 # -*- coding: utf-8 -*-
 """
-stockeasy_fetch.py — 스탁이지 전략실 스냅샷 수집 · diff · 텔레그램 알림 (Phase 0)
+stockeasy_fetch.py — 스탁이지 전략실 스냅샷 수집 · diff · 텔레그램 알림
 ================================================================================
 전략실 페이지는 로그인 없이 SSR HTML 로 보유/이탈 테이블을 내려준다.
-이 스크립트는 그 테이블을 파싱해 스냅샷 JSON 으로 남기고, 전일 스냅샷과
-비교해 신규 편입 / 이탈을 텔레그램으로 알린다.
+이 스크립트는 그 테이블을 파싱해 스냅샷으로 남기고, 전일과 비교해 신규 편입 /
+이탈을 알린다. 몇 달치 이력 축적이 목적이므로 수집 신뢰성을 최우선으로 둔다.
 
-종목코드는 kr_screener_output.json 의 name 필드로 조인해 붙인다.
-(별도 KRX 마스터 불필요 — 매칭 실패분은 unmapped 로 분리해 알림에 경고)
-
-출력:  stockeasy_kr.json   ← Phase 1 enrich_kr.py 의 입력이 된다
+출력:
+    stockeasy_kr.json        최신 스냅샷 (덮어쓰기) — enrich_kr.py 의 입력
+    stockeasy_history.jsonl  일별 이력 (append) — 백테스트/분석용
 
 실행:
     python stockeasy_fetch.py                       # 1호 모멘텀, 알림 O
     python stockeasy_fetch.py --strategy peak       # 2호 피크
     python stockeasy_fetch.py --no-notify           # 수집만
     python stockeasy_fetch.py --html saved.html     # 오프라인 테스트
+    python stockeasy_fetch.py --heartbeat-day 4     # 하트비트 요일 (0=월)
 
 환경변수:
     TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
 
-주의: 개인 알림 용도. 하루 1~2회만 호출한다 (이용약관 제6조 3호 — 부하 유발 금지).
+주의: 개인 알림 용도. 하루 1~2회만 호출 (이용약관 제6조 3호 — 부하 유발 금지).
       수집 결과를 재배포·상업적 이용하지 않는다 (제7조 2항).
 
 변경 이력:
     v1.0  최초
-    v1.1  rowspan 병합 셀 파싱 (섹터 열이 빈 td 가 아니라 rowspan 이었음)
-    v1.2  보유 0 = 전량 이탈 처리. 파싱 실패와 구분한다 — 전량 이탈은
-          가장 중요한 신호인데 기존 코드는 알림 없이 종료했다.
+    v1.1  rowspan 병합 셀 파싱
+    v1.2  보유 0 = 전량 이탈 처리 (파싱 실패와 구분)
+    v1.3  신뢰성 보강 — 이력 누적(jsonl) · stale 감지 · 종목수 급변 경고 ·
+          주간 하트비트. "알림이 안 온다"가 정상인지 고장인지 구분되게 한다.
 """
 
 import argparse
@@ -36,7 +37,7 @@ import os
 import re
 import sys
 import urllib.request
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 try:
     from bs4 import BeautifulSoup
@@ -49,7 +50,55 @@ STRATEGIES = {"momentum": "1호 모멘텀", "peak": "2호 피크", "value": "3�
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/126.0 Safari/537.36")
 
-STOP_PCT = -7.0   # 전략실 하드스톱 (알림 참고 표시용)
+STOP_PCT = -7.0        # 전략실 하드스톱 (알림 참고 표시용)
+STALE_MAX_BD = 3       # 사이트 미갱신 경고 임계 (영업일)
+SHOCK_RATIO = 0.5      # 종목수 급감 경고 비율
+SHOCK_MIN_BASE = 10    # 이 미만이면 급변 판정 안 함
+
+
+# ─── 신뢰성 가드 ─────────────────────────────────────────────────────
+def bdays_between(d1, d2):
+    """두 ISO 날짜 사이 영업일 수 (주말만 제외 · 공휴일 무시)."""
+    try:
+        a = datetime.strptime(d1, "%Y-%m-%d").date()
+        b = datetime.strptime(d2, "%Y-%m-%d").date()
+    except Exception:
+        return 0
+    if a > b:
+        a, b = b, a
+    n, cur = 0, a
+    while cur < b:
+        cur += timedelta(days=1)
+        if cur.weekday() < 5:
+            n += 1
+    return n
+
+
+def check_stale(data_date, today, max_bd=STALE_MAX_BD):
+    """사이트 data_date 가 N영업일 넘게 안 바뀌면 경고."""
+    bd = bdays_between(data_date, today)
+    return (bd >= max_bd), bd
+
+
+def check_count_shock(prev_n, cur_n, ratio=SHOCK_RATIO, min_base=SHOCK_MIN_BASE):
+    """종목 수 급감 감지 — DOM 변경/부분 파싱 실패의 대리 신호.
+
+    전량 이탈(cur_n==0)은 정상 상태라 여기서 잡지 않는다.
+    별도 '보유 0' 알림이 이미 처리한다.
+    """
+    if prev_n is None or prev_n < min_base or cur_n == 0:
+        return False, None
+    if cur_n < prev_n * ratio:
+        return True, f"{prev_n}→{cur_n}"
+    return False, None
+
+
+def is_heartbeat_day(today, weekday=4):
+    """주간 하트비트 — 기본 금요일(4). 변화가 없어도 살아있음을 알린다."""
+    try:
+        return datetime.strptime(today, "%Y-%m-%d").date().weekday() == weekday
+    except Exception:
+        return False
 
 
 # ─── 수집 ────────────────────────────────────────────────────────────
@@ -90,7 +139,7 @@ def _mmdd(txt, ref_year):
 def _rows_from_table(table):
     """thead 헤더 + tbody 행. rowspan 병합 셀을 그리드로 펼친다.
 
-    섹터 열은 같은 섹터 종목들에 rowspan 으로 병합돼 있어서, 2번째 행부터는
+    섹터 열은 같은 섹터 종목들에 rowspan 으로 병합돼 있어서 2번째 행부터
     td 가 아예 없다(빈 td 가 아니다). 단순 zip 으로는 열이 밀린다.
     """
     heads = [th.get_text(strip=True) for th in table.select("thead th")]
@@ -109,14 +158,12 @@ def _rows_from_table(table):
         if not raw:
             continue
         row = [None] * ncol
-        # 위 행에서 rowspan 으로 내려온 셀 먼저 채운다
         for col in sorted(carry):
             txt, left = carry[col]
             if col < ncol:
                 row[col] = txt
             carry[col][1] = left - 1
         carry = {c: v for c, v in carry.items() if v[1] > 0}
-        # 남은 빈 칸에 이 행의 셀을 순서대로 배치
         for cell in raw:
             try:
                 col = row.index(None)
@@ -227,7 +274,7 @@ def enrich(snap, code_map):
     return snap
 
 
-# ─── diff ────────────────────────────────────────────────────────────
+# ─── diff · 이력 ─────────────────────────────────────────────────────
 def diff(prev, cur):
     """전일 스냅샷 대비 신규/이탈. 이름 기준(코드 없는 종목도 추적)."""
     if not prev:
@@ -241,13 +288,56 @@ def diff(prev, cur):
     }
 
 
+def append_history(path, snap, d):
+    """일별 이력 누적 (jsonl · 한 줄 = 하루).
+
+    최신 스냅샷 파일은 덮어쓰기라 과거가 사라진다. 몇 달치 데이터 축적이
+    목적이므로 별도 append 파일을 둔다. 같은 data_date 는 중복 기록하지 않는다.
+    """
+    if os.path.exists(path):
+        try:
+            with open(path, encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if line and json.loads(line).get("data_date") == snap["data_date"]:
+                        return False
+        except Exception as e:
+            print(f"[hist] 기존 이력 확인 실패({e}) — 그대로 append")
+
+    rec = {
+        "data_date": snap["data_date"],
+        "logged_at": snap.get("fetched_at"),
+        "source": snap.get("source"),
+        "n_holdings": len(snap["holdings"]),
+        "n_exits": len(snap["exits"]),
+        "n_new": len(d["new"]),
+        "n_dropped": len(d["dropped"]),
+        "holdings": [{"name": r["name"], "ticker": r.get("ticker"),
+                      "sector": r.get("sector"),
+                      "src_entry_px": r.get("src_entry_px"),
+                      "cur": r.get("cur"), "entry_date": r.get("entry_date"),
+                      "ret_pct": r.get("ret_pct")} for r in snap["holdings"]],
+        "exits": [{"name": r["name"], "ticker": r.get("ticker"),
+                   "src_entry_px": r.get("src_entry_px"),
+                   "exit_px": r.get("exit_px"), "entry_date": r.get("entry_date"),
+                   "ret_pct": r.get("ret_pct")} for r in snap["exits"]],
+        "new": [r["name"] for r in d["new"]],
+        "dropped": [r["name"] for r in d["dropped"]],
+    }
+    with open(path, "a", encoding="utf-8") as f:
+        f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+    return True
+
+
 # ─── 알림 ────────────────────────────────────────────────────────────
-def build_message(snap, d, label):
+def build_message(snap, d, label, alerts=None, hist_n=None):
     L = []
     L.append(f"📋 <b>[국장] 스탁이지 {label}</b> · {snap['data_date']}")
     L.append(f"보유 {len(snap['holdings'])} · 신규 {len(d['new'])} · 이탈 {len(d['dropped'])}")
 
-    # 전량 이탈 — 소스가 전부 손을 털었다는 뜻. 가장 눈에 띄어야 하는 상태다.
+    for a in (alerts or []):
+        L.append(f"\n⚠️ <b>{a}</b>")
+
     if not snap["holdings"]:
         L.append("\n🚨 <b>보유 0 — 전량 이탈</b>")
 
@@ -281,7 +371,10 @@ def build_message(snap, d, label):
     if snap.get("unmapped"):
         L.append(f"\n⚠️ 코드 미매칭 {len(snap['unmapped'])}건: {', '.join(snap['unmapped'][:5])}")
 
-    L.append("\n<i>※ 관찰용 · 자동 발주 없음</i>")
+    if hist_n is not None:
+        L.append(f"\n<i>※ 관찰용 · 자동 발주 없음 · 이력 {hist_n}일치</i>")
+    else:
+        L.append("\n<i>※ 관찰용 · 자동 발주 없음</i>")
     return "\n".join(L)
 
 
@@ -306,16 +399,30 @@ def notify(text):
         return False
 
 
+def count_history(path):
+    if not os.path.exists(path):
+        return 0
+    try:
+        with open(path, encoding="utf-8") as f:
+            return sum(1 for line in f if line.strip())
+    except Exception:
+        return 0
+
+
 # ─── main ────────────────────────────────────────────────────────────
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--strategy", default="momentum", choices=list(STRATEGIES))
     ap.add_argument("--out", default="stockeasy_kr.json")
+    ap.add_argument("--history", default="stockeasy_history.jsonl")
     ap.add_argument("--screener", default="kr_screener_output.json")
     ap.add_argument("--html", help="오프라인 테스트용 저장 HTML")
     ap.add_argument("--no-notify", action="store_true")
+    ap.add_argument("--heartbeat-day", type=int, default=4,
+                    help="주간 하트비트 요일 (0=월 … 4=금, -1=끄기)")
     a = ap.parse_args()
 
+    today = date.today().isoformat()
     html = open(a.html, encoding="utf-8").read() if a.html else fetch_html(a.strategy)
     snap = parse_page(html)
 
@@ -341,20 +448,47 @@ def main():
         except Exception as e:
             print(f"[state] 이전 스냅샷 로드 실패({e}) — 첫 실행으로 처리")
 
-    # 같은 data_date 재실행이면 diff 를 재계산하지 않는다 (중복 알림 방지)
+    # ── 신뢰성 가드 ──────────────────────────────────────────────
+    alerts = []
+    stale, stale_bd = check_stale(snap["data_date"], today)
+    if stale:
+        alerts.append(f"사이트 미갱신 {stale_bd}영업일 — 데이터 정지 의심")
+        print(f"[warn] stale: {snap['data_date']} 이후 {stale_bd}영업일 경과")
+
+    prev_n = len(prev.get("holdings", [])) if prev else None
+    shock, shock_msg = check_count_shock(prev_n, len(snap["holdings"]))
+    if shock:
+        alerts.append(f"종목수 급감 {shock_msg} — 파싱 오류 의심")
+        print(f"[warn] count shock: {shock_msg}")
+
+    # ── 같은 data_date 재실행 — 알림은 생략하되 가드/하트비트는 살린다 ──
     if prev and prev.get("data_date") == snap["data_date"]:
-        print(f"[skip] {snap['data_date']} 스냅샷 이미 처리됨 — 알림 생략")
+        print(f"[skip] {snap['data_date']} 스냅샷 이미 처리됨 — diff 알림 생략")
         snap["diff"] = prev.get("diff", {"new": [], "dropped": [], "first_run": False})
+        snap["alerts"] = alerts
         json.dump(snap, open(a.out, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+
+        hb = (a.heartbeat_day >= 0 and is_heartbeat_day(today, a.heartbeat_day))
+        if not a.no_notify and (alerts or hb):
+            n = count_history(a.history)
+            head = "🫀 <b>주간 점검</b>\n" if hb and not alerts else ""
+            msg = head + build_message(snap, snap["diff"], STRATEGIES[a.strategy],
+                                       alerts, hist_n=n)
+            notify(msg)
         return
 
     d = diff(prev, snap)
     snap["diff"] = d
+    snap["alerts"] = alerts
     json.dump(snap, open(a.out, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+
+    added = append_history(a.history, snap, d)
+    n = count_history(a.history)
     print(f"[out] {a.out} · 신규 {len(d['new'])} · 이탈 {len(d['dropped'])}")
+    print(f"[hist] {a.history} · {'추가' if added else '중복 스킵'} · 누적 {n}일")
 
     if not a.no_notify:
-        notify(build_message(snap, d, STRATEGIES[a.strategy]))
+        notify(build_message(snap, d, STRATEGIES[a.strategy], alerts, hist_n=n))
 
 
 if __name__ == "__main__":
