@@ -12,13 +12,13 @@
    "ticker": "008930",
    "market": "KOSPI",
    "rs_score": 52,
-   "ibd_rs": 76,
+   "ibd_rs": 50,
    "is_stage2": false,
-   "pass_dots": 4,
+   "pass_dots": 1,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 30297.5
+   "mktcap": 26330.7
   },
   {
    "name": "유한양행",
@@ -30,14 +30,14 @@
    "cur": 83600.0,
    "ticker": "000100",
    "market": "KOSPI",
-   "rs_score": 30,
-   "ibd_rs": 34,
+   "rs_score": 9,
+   "ibd_rs": 8,
    "is_stage2": false,
-   "pass_dots": 1,
+   "pass_dots": 0,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "의약품",
-   "mktcap": 66665.0
+   "mktcap": 74629.8
   },
   {
    "name": "삼성바이오로직스",
@@ -49,14 +49,14 @@
    "cur": 1552000.0,
    "ticker": "207940",
    "market": "KOSPI",
-   "rs_score": 60,
-   "ibd_rs": 65,
+   "rs_score": 20,
+   "ibd_rs": 16,
    "is_stage2": false,
    "pass_dots": 2,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "의약품",
-   "mktcap": 716583.9
+   "mktcap": 696215.9
   },
   {
    "name": "셀트리온",
@@ -68,14 +68,14 @@
    "cur": 202000.0,
    "ticker": "068270",
    "market": "KOSPI",
-   "rs_score": 72,
-   "ibd_rs": 76,
+   "rs_score": 39,
+   "ibd_rs": 40,
    "is_stage2": false,
    "pass_dots": 6,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "의약품",
-   "mktcap": 467560.5
+   "mktcap": 459412.2
   },
   {
    "name": "파마리서치",
@@ -88,13 +88,13 @@
    "ticker": "214450",
    "market": "KOSDAQ",
    "rs_score": 25,
-   "ibd_rs": 54,
+   "ibd_rs": 11,
    "is_stage2": false,
-   "pass_dots": 3,
+   "pass_dots": 0,
    "h52_new": false,
    "acc2": true,
    "sector_kr": "기타",
-   "mktcap": 41350.8
+   "mktcap": 33766.4
   },
   {
    "name": "씨젠",
@@ -106,14 +106,14 @@
    "cur": 32050.0,
    "ticker": "096530",
    "market": "KOSDAQ",
-   "rs_score": 58,
-   "ibd_rs": 66,
+   "rs_score": 23,
+   "ibd_rs": 24,
    "is_stage2": false,
-   "pass_dots": 6,
+   "pass_dots": 0,
    "h52_new": false,
-   "acc2": true,
+   "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 16790.7
+   "mktcap": 12952.0
   },
   {
    "name": "한화솔루션",
@@ -125,14 +125,14 @@
    "cur": 35350.0,
    "ticker": "009830",
    "market": "KOSPI",
-   "rs_score": 66,
-   "ibd_rs": 76,
-   "is_stage2": false,
-   "pass_dots": 3,
+   "rs_score": 85,
+   "ibd_rs": 88,
+   "is_stage2": true,
+   "pass_dots": 7,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 79612.0
+   "mktcap": 84914.9
   },
   {
    "name": "SK이터닉스",
@@ -145,13 +145,13 @@
    "ticker": "475150",
    "market": "KOSPI",
    "rs_score": 94,
-   "ibd_rs": 93,
-   "is_stage2": false,
-   "pass_dots": 6,
+   "ibd_rs": 97,
+   "is_stage2": true,
+   "pass_dots": 7,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 19861.1
+   "mktcap": 18736.9
   },
   {
    "name": "OCI홀딩스",
@@ -164,13 +164,13 @@
    "ticker": "010060",
    "market": "KOSPI",
    "rs_score": 96,
-   "ibd_rs": 91,
-   "is_stage2": false,
-   "pass_dots": 6,
+   "ibd_rs": 98,
+   "is_stage2": true,
+   "pass_dots": 7,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 52089.9
+   "mktcap": 68613.1
   },
   {
    "name": "SK이노베이션",
@@ -182,14 +182,14 @@
    "cur": 128700.0,
    "ticker": "096770",
    "market": "KOSPI",
-   "rs_score": 68,
-   "ibd_rs": 72,
+   "rs_score": 31,
+   "ibd_rs": 54,
    "is_stage2": false,
-   "pass_dots": 5,
+   "pass_dots": 6,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "화학",
-   "mktcap": 217570.9
+   "mktcap": 224840.2
   },
   {
    "name": "GS건설",
@@ -201,14 +201,14 @@
    "cur": 35400.0,
    "ticker": "006360",
    "market": "KOSPI",
-   "rs_score": 85,
-   "ibd_rs": 86,
+   "rs_score": 84,
+   "ibd_rs": 93,
    "is_stage2": true,
    "pass_dots": 7,
    "h52_new": false,
-   "acc2": true,
+   "acc2": false,
    "sector_kr": "건설업",
-   "mktcap": 30253.1
+   "mktcap": 36329.3
   },
   {
    "name": "삼성E&A",
@@ -220,14 +220,14 @@
    "cur": 49750.0,
    "ticker": "028050",
    "market": "KOSPI",
-   "rs_score": 90,
-   "ibd_rs": 85,
+   "rs_score": 88,
+   "ibd_rs": 91,
    "is_stage2": true,
    "pass_dots": 7,
-   "h52_new": false,
+   "h52_new": true,
    "acc2": true,
    "sector_kr": "기타",
-   "mktcap": 97608.0
+   "mktcap": 110348.0
   },
   {
    "name": "DL이앤씨",
@@ -239,14 +239,14 @@
    "cur": 73700.0,
    "ticker": "375500",
    "market": "KOSPI",
-   "rs_score": 82,
-   "ibd_rs": 82,
-   "is_stage2": false,
-   "pass_dots": 6,
+   "rs_score": 84,
+   "ibd_rs": 93,
+   "is_stage2": true,
+   "pass_dots": 7,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 28555.9
+   "mktcap": 38654.9
   },
   {
    "name": "대우건설",
@@ -258,14 +258,14 @@
    "cur": 18110.0,
    "ticker": "047040",
    "market": "KOSPI",
-   "rs_score": 98,
+   "rs_score": 99,
    "ibd_rs": 99,
-   "is_stage2": false,
-   "pass_dots": 6,
+   "is_stage2": true,
+   "pass_dots": 7,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "건설업",
-   "mktcap": 74004.5
+   "mktcap": 152652.2
   },
   {
    "name": "현대해상",
@@ -277,14 +277,14 @@
    "cur": 45250.0,
    "ticker": "001450",
    "market": "KOSPI",
-   "rs_score": 82,
-   "ibd_rs": 88,
-   "is_stage2": true,
-   "pass_dots": 7,
-   "h52_new": true,
+   "rs_score": 51,
+   "ibd_rs": 54,
+   "is_stage2": false,
+   "pass_dots": 5,
+   "h52_new": false,
    "acc2": true,
    "sector_kr": "기타",
-   "mktcap": 38660.1
+   "mktcap": 26299.1
   },
   {
    "name": "에이비엘바이오",
@@ -296,14 +296,14 @@
    "cur": 84200.0,
    "ticker": "298380",
    "market": "KOSDAQ",
-   "rs_score": 76,
-   "ibd_rs": 74,
+   "rs_score": 94,
+   "ibd_rs": 77,
    "is_stage2": false,
-   "pass_dots": 2,
+   "pass_dots": 4,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 47085.5
+   "mktcap": 78046.5
   },
   {
    "name": "알테오젠",
@@ -315,14 +315,14 @@
    "cur": 313500.0,
    "ticker": "196170",
    "market": "KOSDAQ",
-   "rs_score": 50,
-   "ibd_rs": 65,
+   "rs_score": 27,
+   "ibd_rs": 23,
    "is_stage2": false,
-   "pass_dots": 4,
+   "pass_dots": 0,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 168261.1
+   "mktcap": 201554.9
   },
   {
    "name": "SK바이오팜",
@@ -334,14 +334,14 @@
    "cur": 86700.0,
    "ticker": "326030",
    "market": "KOSPI",
-   "rs_score": 49,
-   "ibd_rs": 45,
+   "rs_score": 23,
+   "ibd_rs": 17,
    "is_stage2": false,
-   "pass_dots": 0,
+   "pass_dots": 2,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "의약품",
-   "mktcap": 68367.5
+   "mktcap": 80349.4
   },
   {
    "name": "삼성전기",
@@ -353,14 +353,14 @@
    "cur": 1558000.0,
    "ticker": "009150",
    "market": "KOSPI",
-   "rs_score": 99,
-   "ibd_rs": 99,
-   "is_stage2": false,
-   "pass_dots": 6,
-   "h52_new": false,
+   "rs_score": 98,
+   "ibd_rs": 98,
+   "is_stage2": true,
+   "pass_dots": 7,
+   "h52_new": true,
    "acc2": false,
    "sector_kr": "전기전자",
-   "mktcap": 1163727.8
+   "mktcap": 626680.1
   },
   {
    "name": "인텔리안테크",
@@ -372,14 +372,14 @@
    "cur": 79000.0,
    "ticker": "189300",
    "market": "KOSDAQ",
-   "rs_score": 85,
-   "ibd_rs": 91,
-   "is_stage2": false,
-   "pass_dots": 3,
+   "rs_score": 94,
+   "ibd_rs": 92,
+   "is_stage2": true,
+   "pass_dots": 7,
    "h52_new": false,
-   "acc2": true,
+   "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 8482.6
+   "mktcap": 15043.2
   },
   {
    "name": "스피어",
@@ -391,14 +391,14 @@
    "cur": 26400.0,
    "ticker": "347700",
    "market": "KOSDAQ",
-   "rs_score": 93,
-   "ibd_rs": 97,
+   "rs_score": 97,
+   "ibd_rs": 96,
    "is_stage2": false,
-   "pass_dots": 2,
+   "pass_dots": 5,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 13635.3
+   "mktcap": 19885.4
   },
   {
    "name": "HD한국조선해양",
@@ -410,14 +410,14 @@
    "cur": 383500.0,
    "ticker": "009540",
    "market": "KOSPI",
-   "rs_score": 72,
-   "ibd_rs": 62,
+   "rs_score": 81,
+   "ibd_rs": 69,
    "is_stage2": false,
-   "pass_dots": 2,
+   "pass_dots": 6,
    "h52_new": false,
-   "acc2": false,
+   "acc2": true,
    "sector_kr": "기타",
-   "mktcap": 273184.2
+   "mktcap": 331572.0
   },
   {
    "name": "한화오션",
@@ -429,14 +429,14 @@
    "cur": 95500.0,
    "ticker": "042660",
    "market": "KOSPI",
-   "rs_score": 74,
-   "ibd_rs": 32,
-   "is_stage2": false,
-   "pass_dots": 2,
+   "rs_score": 73,
+   "ibd_rs": 57,
+   "is_stage2": true,
+   "pass_dots": 7,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 293544.0
+   "mktcap": 410287.5
   },
   {
    "name": "에코프로",
@@ -448,14 +448,14 @@
    "cur": 93700.0,
    "ticker": "086520",
    "market": "KOSDAQ",
-   "rs_score": 89,
-   "ibd_rs": 87,
-   "is_stage2": false,
-   "pass_dots": 3,
+   "rs_score": 87,
+   "ibd_rs": 85,
+   "is_stage2": true,
+   "pass_dots": 7,
    "h52_new": false,
-   "acc2": true,
+   "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 127086.5
+   "mktcap": 219278.5
   },
   {
    "name": "포스코퓨처엠",
@@ -467,14 +467,14 @@
    "cur": 170300.0,
    "ticker": "003670",
    "market": "KOSPI",
-   "rs_score": 74,
-   "ibd_rs": 63,
-   "is_stage2": false,
-   "pass_dots": 2,
-   "h52_new": false,
-   "acc2": true,
+   "rs_score": 77,
+   "ibd_rs": 72,
+   "is_stage2": true,
+   "pass_dots": 7,
+   "h52_new": true,
+   "acc2": false,
    "sector_kr": "화학",
-   "mktcap": 151653.3
+   "mktcap": 233928.6
   },
   {
    "name": "HMM",
@@ -486,14 +486,14 @@
    "cur": 21250.0,
    "ticker": "011200",
    "market": "KOSPI",
-   "rs_score": 39,
-   "ibd_rs": 57,
+   "rs_score": 28,
+   "ibd_rs": 31,
    "is_stage2": false,
-   "pass_dots": 3,
+   "pass_dots": 2,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 200438.1
+   "mktcap": 195721.9
   },
   {
    "name": "레인보우로보틱스",
@@ -505,14 +505,14 @@
    "cur": 502000.0,
    "ticker": "277810",
    "market": "KOSDAQ",
-   "rs_score": 88,
-   "ibd_rs": 83,
-   "is_stage2": false,
-   "pass_dots": 3,
+   "rs_score": 83,
+   "ibd_rs": 75,
+   "is_stage2": true,
+   "pass_dots": 7,
    "h52_new": false,
-   "acc2": true,
+   "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 97193.3
+   "mktcap": 129591.1
   },
   {
    "name": "로보티즈",
@@ -524,14 +524,14 @@
    "cur": 279000.0,
    "ticker": "108490",
    "market": "KOSDAQ",
-   "rs_score": 97,
-   "ibd_rs": 96,
-   "is_stage2": false,
-   "pass_dots": 5,
+   "rs_score": 99,
+   "ibd_rs": 97,
+   "is_stage2": true,
+   "pass_dots": 7,
    "h52_new": false,
    "acc2": true,
    "sector_kr": "기타",
-   "mktcap": 41050.9
+   "mktcap": 47855.2
   },
   {
    "name": "LIG디펜스앤에어로스페이스",
@@ -543,14 +543,14 @@
    "cur": 816000.0,
    "ticker": "079550",
    "market": "KOSPI",
-   "rs_score": 79,
-   "ibd_rs": 82,
+   "rs_score": 92,
+   "ibd_rs": 93,
    "is_stage2": true,
    "pass_dots": 7,
    "h52_new": false,
-   "acc2": true,
+   "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 179300.0
+   "mktcap": 205260.0
   },
   {
    "name": "한화시스템",
@@ -562,14 +562,14 @@
    "cur": 80300.0,
    "ticker": "272210",
    "market": "KOSPI",
-   "rs_score": 82,
-   "ibd_rs": 78,
+   "rs_score": 91,
+   "ibd_rs": 84,
    "is_stage2": false,
-   "pass_dots": 3,
+   "pass_dots": 6,
    "h52_new": false,
-   "acc2": true,
+   "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 151702.3
+   "mktcap": 226514.3
   },
   {
    "name": "한화에어로스페이스",
@@ -581,14 +581,14 @@
    "cur": 1160000.0,
    "ticker": "012450",
    "market": "KOSPI",
-   "rs_score": 81,
-   "ibd_rs": 69,
-   "is_stage2": false,
-   "pass_dots": 4,
+   "rs_score": 79,
+   "ibd_rs": 61,
+   "is_stage2": true,
+   "pass_dots": 7,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 598135.5
+   "mktcap": 719309.4
   },
   {
    "name": "풍산",
@@ -600,14 +600,14 @@
    "cur": 82100.0,
    "ticker": "103140",
    "market": "KOSPI",
-   "rs_score": 18,
-   "ibd_rs": 22,
+   "rs_score": 61,
+   "ibd_rs": 78,
    "is_stage2": false,
    "pass_dots": 1,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 22979.9
+   "mktcap": 28528.7
   },
   {
    "name": "NHN",
@@ -619,14 +619,14 @@
    "cur": 75200.0,
    "ticker": "181710",
    "market": "KOSPI",
-   "rs_score": 94,
-   "ibd_rs": 96,
+   "rs_score": 81,
+   "ibd_rs": 70,
    "is_stage2": true,
    "pass_dots": 7,
-   "h52_new": true,
-   "acc2": true,
+   "h52_new": false,
+   "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 24466.6
+   "mktcap": 13494.3
   },
   {
    "name": "NAVER",
@@ -638,14 +638,14 @@
    "cur": 227500.0,
    "ticker": "035420",
    "market": "KOSPI",
-   "rs_score": 50,
-   "ibd_rs": 65,
+   "rs_score": 31,
+   "ibd_rs": 25,
    "is_stage2": false,
-   "pass_dots": 3,
+   "pass_dots": 1,
    "h52_new": false,
-   "acc2": true,
+   "acc2": false,
    "sector_kr": "서비스업",
-   "mktcap": 357908.9
+   "mktcap": 344291.5
   },
   {
    "name": "카카오",
@@ -657,14 +657,14 @@
    "cur": 39950.0,
    "ticker": "035720",
    "market": "KOSPI",
-   "rs_score": 24,
-   "ibd_rs": 30,
+   "rs_score": 40,
+   "ibd_rs": 33,
    "is_stage2": false,
-   "pass_dots": 0,
+   "pass_dots": 1,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "서비스업",
-   "mktcap": 177192.4
+   "mktcap": 216406.0
   },
   {
    "name": "LG",
@@ -676,14 +676,14 @@
    "cur": 119700.0,
    "ticker": "003550",
    "market": "KOSPI",
-   "rs_score": 81,
-   "ibd_rs": 79,
+   "rs_score": 55,
+   "ibd_rs": 55,
    "is_stage2": false,
    "pass_dots": 6,
    "h52_new": false,
-   "acc2": true,
+   "acc2": false,
    "sector_kr": "금융업",
-   "mktcap": 181430.4
+   "mktcap": 151445.6
   },
   {
    "name": "HD현대",
@@ -695,14 +695,14 @@
    "cur": 234500.0,
    "ticker": "267250",
    "market": "KOSPI",
-   "rs_score": 86,
-   "ibd_rs": 82,
-   "is_stage2": false,
-   "pass_dots": 4,
+   "rs_score": 94,
+   "ibd_rs": 86,
+   "is_stage2": true,
+   "pass_dots": 7,
    "h52_new": false,
    "acc2": true,
    "sector_kr": "기타",
-   "mktcap": 186028.7
+   "mktcap": 221575.6
   },
   {
    "name": "LG씨엔에스",
@@ -714,14 +714,14 @@
    "cur": 79800.0,
    "ticker": "064400",
    "market": "KOSPI",
-   "rs_score": 62,
-   "ibd_rs": 66,
+   "rs_score": 48,
+   "ibd_rs": 42,
    "is_stage2": false,
-   "pass_dots": 5,
+   "pass_dots": 3,
    "h52_new": false,
-   "acc2": true,
+   "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 77411.9
+   "mktcap": 65398.0
   },
   {
    "name": "현대오토에버",
@@ -733,14 +733,14 @@
    "cur": 489500.0,
    "ticker": "307950",
    "market": "KOSPI",
-   "rs_score": 95,
-   "ibd_rs": 93,
-   "is_stage2": false,
-   "pass_dots": 6,
+   "rs_score": 93,
+   "ibd_rs": 90,
+   "is_stage2": true,
+   "pass_dots": 7,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 134240.4
+   "mktcap": 131086.6
   },
   {
    "name": "삼성에스디에스",
@@ -752,14 +752,14 @@
    "cur": 243500.0,
    "ticker": "018260",
    "market": "KOSPI",
-   "rs_score": 77,
-   "ibd_rs": 85,
+   "rs_score": 56,
+   "ibd_rs": 52,
    "is_stage2": false,
-   "pass_dots": 6,
+   "pass_dots": 5,
    "h52_new": false,
-   "acc2": true,
+   "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 188414.9
+   "mktcap": 133476.7
   },
   {
    "name": "SK텔레콤",
@@ -771,14 +771,14 @@
    "cur": 100400.0,
    "ticker": "017670",
    "market": "KOSPI",
-   "rs_score": 87,
-   "ibd_rs": 83,
+   "rs_score": 70,
+   "ibd_rs": 75,
    "is_stage2": true,
    "pass_dots": 7,
    "h52_new": false,
-   "acc2": true,
+   "acc2": false,
    "sector_kr": "통신업",
-   "mktcap": 215864.0
+   "mktcap": 207916.8
   },
   {
    "name": "삼성SDI",
@@ -790,14 +790,14 @@
    "cur": 515000.0,
    "ticker": "006400",
    "market": "KOSPI",
-   "rs_score": 95,
-   "ibd_rs": 90,
-   "is_stage2": false,
-   "pass_dots": 6,
-   "h52_new": false,
-   "acc2": true,
+   "rs_score": 92,
+   "ibd_rs": 91,
+   "is_stage2": true,
+   "pass_dots": 7,
+   "h52_new": true,
+   "acc2": false,
    "sector_kr": "전기전자",
-   "mktcap": 415821.3
+   "mktcap": 547981.6
   },
   {
    "name": "LG에너지솔루션",
@@ -809,14 +809,14 @@
    "cur": 369500.0,
    "ticker": "373220",
    "market": "KOSPI",
-   "rs_score": 71,
-   "ibd_rs": 50,
+   "rs_score": 55,
+   "ibd_rs": 54,
    "is_stage2": false,
-   "pass_dots": 3,
+   "pass_dots": 5,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 864630.0
+   "mktcap": 1104480.0
   },
   {
    "name": "고려아연",
@@ -826,7 +826,16 @@
    "entry_date": "2026-08-10",
    "ret_pct": -3.08,
    "cur": 1196000.0,
-   "ticker": null
+   "ticker": "010130",
+   "market": "KOSPI",
+   "rs_score": 77,
+   "ibd_rs": 68,
+   "is_stage2": true,
+   "pass_dots": 7,
+   "h52_new": false,
+   "acc2": false,
+   "sector_kr": "기타",
+   "mktcap": 339603.2
   },
   {
    "name": "현대제철",
@@ -838,14 +847,14 @@
    "cur": 29850.0,
    "ticker": "004020",
    "market": "KOSPI",
-   "rs_score": 42,
-   "ibd_rs": 37,
+   "rs_score": 59,
+   "ibd_rs": 73,
    "is_stage2": false,
-   "pass_dots": 1,
+   "pass_dots": 5,
    "h52_new": false,
-   "acc2": true,
+   "acc2": false,
    "sector_kr": "철강금속",
-   "mktcap": 39900.3
+   "mktcap": 58849.6
   }
  ],
  "exits": [
@@ -859,22 +868,20 @@
    "exit_px": 10010.0,
    "ticker": "108860",
    "market": "KOSDAQ",
-   "rs_score": 25,
-   "ibd_rs": 27,
+   "rs_score": 31,
+   "ibd_rs": 25,
    "is_stage2": false,
-   "pass_dots": 1,
+   "pass_dots": 4,
    "h52_new": false,
    "acc2": false,
    "sector_kr": "기타",
-   "mktcap": 2667.3
+   "mktcap": 3676.6
   }
  ],
- "unmapped": [
-  "고려아연"
- ],
+ "unmapped": [],
  "source": "stockeasy:momentum",
  "strategy_label": "1호 모멘텀",
- "fetched_at": "2026-08-17T06:11:23",
+ "fetched_at": "2026-08-17T17:11:47",
  "diff": {
   "new": [],
   "dropped": [],

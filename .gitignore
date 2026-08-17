@@ -1,0 +1,9 @@
+.env
+__pycache__/
+*.pyc
+*.bak
+output/
+*.pdf
+run_daily.bat
+setup_auto_run.bat
+unregister_auto.bat
