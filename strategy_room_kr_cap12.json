@@ -1,0 +1,33 @@
+{
+ "data_date": "2026-08-14",
+ "track": "stockeasy:momentum",
+ "logic_version": "kr-v1.0 (base v6.15)",
+ "cap": 12,
+ "source_exit_action": "watch",
+ "nav": 1.0,
+ "ret_pct": 0.0,
+ "cash": 1.0,
+ "n_holdings": 0,
+ "n_pending": 0,
+ "runner_count": 0,
+ "trades": {
+  "n": 0,
+  "winrate": null,
+  "avg_ret": null,
+  "avg_gap": null
+ },
+ "holdings": [],
+ "pending": [],
+ "closed": [],
+ "nav_history": [
+  {
+   "date": "2026-08-14",
+   "nav": 1.0
+  }
+ ],
+ "generated_at": "2026-08-18T00:53:04",
+ "_cash": 1.0,
+ "_holdings": [],
+ "_closed": [],
+ "_pending": []
+}

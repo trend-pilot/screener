@@ -881,10 +881,11 @@
  "unmapped": [],
  "source": "stockeasy:momentum",
  "strategy_label": "1호 모멘텀",
- "fetched_at": "2026-08-17T17:11:47",
+ "fetched_at": "2026-08-18T00:52:28",
  "diff": {
   "new": [],
   "dropped": [],
   "first_run": true
- }
+ },
+ "alerts": []
 }
