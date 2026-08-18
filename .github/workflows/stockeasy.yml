@@ -6,7 +6,8 @@ on:
     - cron: '30 12 * * 1-5'
   workflow_run:
     workflows: ["Daily KR Update"]
-    types: [completed]
+    types:
+      - completed
 
 permissions:
   contents: write
@@ -14,10 +15,7 @@ permissions:
 jobs:
   run:
     runs-on: ubuntu-latest
-    # daily-kr 이 실패했으면 낡은 스크리너로 돌지 않는다
-    if: >
-      github.event_name != 'workflow_run' ||
-      github.event.workflow_run.conclusion == 'success'
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -28,27 +26,27 @@ jobs:
       - name: Install deps
         run: pip install beautifulsoup4 pykrx
 
-      - name: 1. Fetch stockeasy
+      - name: Fetch stockeasy
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python stockeasy_fetch.py --strategy momentum
 
-      - name: 2. Enrich OHLCV
+      - name: Enrich OHLCV
         run: python enrich_kr.py
 
-      - name: 3. Paper engine
+      - name: Paper engine
         run: python strategy_room_kr_v1.py
 
-     - name: Commit outputs
+      - name: Commit outputs
         run: |
-          git config user.name  "github-actions[bot]"
+          git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A -- stockeasy_kr.json stockeasy_history.jsonl \
-                        kr_ohlcv_extra.json \
-                        strategy_room_kr.json strategy_room_kr_cap12.json 2>/dev/null || true
+          for f in stockeasy_kr.json stockeasy_history.jsonl kr_ohlcv_extra.json strategy_room_kr.json strategy_room_kr_cap12.json; do
+            if [ -f "$f" ]; then git add "$f"; fi
+          done
           if git diff --staged --quiet; then
-            echo "변경 없음 — 커밋 생략"
+            echo "no changes"
           else
             git commit -m "kr pipeline $(date -u +%Y-%m-%d)"
             git pull --rebase origin main
@@ -63,5 +61,4 @@ jobs:
         run: |
           curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
             -d chat_id="${TELEGRAM_CHAT_ID}" \
-            -d parse_mode=HTML \
-            -d text="🔥 <b>국장 파이프라인 실패</b>%0A${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            -d text="KR pipeline failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
