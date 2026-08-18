@@ -769,7 +769,9 @@
    "entry_date": "2026-08-10",
    "ret_pct": -2.03,
    "cur": 1209000.0,
-   "ticker": null
+   "ticker": "010130",
+   "market": "KOSPI",
+   "code_source": "fallback"
   },
   {
    "name": "현대제철",
@@ -888,12 +890,13 @@
    "mktcap": 122242.4
   }
  ],
- "unmapped": [
+ "unmapped": [],
+ "code_recovered": [
   "고려아연"
  ],
  "source": "stockeasy:momentum",
  "strategy_label": "1호 모멘텀",
- "fetched_at": "2026-08-18T07:42:35",
+ "fetched_at": "2026-08-18T13:25:21",
  "diff": {
   "new": [
    {
