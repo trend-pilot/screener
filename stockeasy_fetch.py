@@ -9,13 +9,14 @@ stockeasy_fetch.py — 스탁이지 전략실 스냅샷 수집 · diff · 텔레
 출력:
     stockeasy_kr.json        최신 스냅샷 (덮어쓰기) — enrich_kr.py 의 입력
     stockeasy_history.jsonl  일별 이력 (append) — 백테스트/분석용
+    kr_ticker_master.json    종목코드 폴백 캐시 (주 1회 갱신)
 
 실행:
-    python stockeasy_fetch.py                       # 1호 모멘텀, 알림 O
-    python stockeasy_fetch.py --strategy peak       # 2호 피크
-    python stockeasy_fetch.py --no-notify           # 수집만
-    python stockeasy_fetch.py --html saved.html     # 오프라인 테스트
-    python stockeasy_fetch.py --heartbeat-day 4     # 하트비트 요일 (0=월)
+    python stockeasy_fetch.py
+    python stockeasy_fetch.py --strategy peak
+    python stockeasy_fetch.py --no-notify
+    python stockeasy_fetch.py --html saved.html
+    python stockeasy_fetch.py --no-notify --out test_kr.json   (로컬 테스트)
 
 환경변수:
     TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
@@ -27,8 +28,9 @@ stockeasy_fetch.py — 스탁이지 전략실 스냅샷 수집 · diff · 텔레
     v1.0  최초
     v1.1  rowspan 병합 셀 파싱
     v1.2  보유 0 = 전량 이탈 처리 (파싱 실패와 구분)
-    v1.3  신뢰성 보강 — 이력 누적(jsonl) · stale 감지 · 종목수 급변 경고 ·
-          주간 하트비트. "알림이 안 온다"가 정상인지 고장인지 구분되게 한다.
+    v1.3  신뢰성 보강 — 이력 누적 · stale 감지 · 종목수 급변 경고 · 주간 하트비트
+    v1.4  종목코드 폴백 — 스크리너는 자체 필터로 매일 구성이 바뀌므로
+          (1635→1628) 단독 매핑 소스로 쓰면 신규 편입 종목이 누락된다.
 """
 
 import argparse
@@ -50,7 +52,7 @@ STRATEGIES = {"momentum": "1호 모멘텀", "peak": "2호 피크", "value": "3�
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/126.0 Safari/537.36")
 
-STOP_PCT = -7.0        # 전략실 하드스톱 (알림 참고 표시용)
+STOP_PCT = -7.0        # 전략실 하드스톱 (종가 판정 · 알림 참고 표시용)
 STALE_MAX_BD = 3       # 사이트 미갱신 경고 임계 (영업일)
 SHOCK_RATIO = 0.5      # 종목수 급감 경고 비율
 SHOCK_MIN_BASE = 10    # 이 미만이면 급변 판정 안 함
@@ -241,7 +243,7 @@ def _norm(s):
 def load_code_map(path):
     """kr_screener_output.json → {정규화이름: {ticker, market, rs_score, ...}}"""
     if not path or not os.path.exists(path):
-        print(f"[map] {path} 없음 — 종목코드 매핑 생략")
+        print(f"[map] {path} 없음 — 스크리너 매핑 생략")
         return {}
     with open(path, encoding="utf-8") as f:
         raw = json.load(f)
@@ -260,7 +262,64 @@ def load_code_map(path):
     return m
 
 
+def _pick_col(df, *cands):
+    for c in cands:
+        if c in df.columns:
+            return c
+    return None
+
+
+def load_fallback_map(cache="kr_ticker_master.json", max_age_days=7):
+    """KRX 전체 상장종목 name→code. 스크리너에서 못 찾은 종목용 폴백.
+
+    스크리너는 자체 필터로 매일 종목 구성이 바뀐다(1635→1628). 단독 매핑
+    소스로 쓰면 신규 편입 종목이 코드 없이 누락돼 매수 자체가 안 된다.
+    """
+    if os.path.exists(cache):
+        try:
+            c = json.load(open(cache, encoding="utf-8"))
+            age = (date.today() - datetime.strptime(c["as_of"], "%Y-%m-%d").date()).days
+            if age <= max_age_days and c.get("map"):
+                print(f"[fallback] 캐시 사용 ({len(c['map'])}종목 · {age}일 전)")
+                return c["map"]
+        except Exception as e:
+            print(f"[fallback] 캐시 손상({e}) — 재생성")
+
+    try:
+        import FinanceDataReader as fdr
+        df = fdr.StockListing("KRX")
+        cc = _pick_col(df, "Code", "Symbol")
+        nc = _pick_col(df, "Name")
+        mc = _pick_col(df, "Market")
+        if not (cc and nc):
+            print(f"[fallback] 컬럼 인식 실패: {list(df.columns)[:8]}")
+            return {}
+        rows = [{"code": str(r[cc]).zfill(6), "name": r[nc],
+                 "market": r[mc] if mc else None} for _, r in df.iterrows()]
+    except ImportError:
+        print("[fallback] FinanceDataReader 없음 — 폴백 생략")
+        return {}
+    except Exception as e:
+        print(f"[fallback] 목록 수집 실패({e}) — 폴백 생략")
+        return {}
+
+    m = {}
+    for r in rows:
+        n = _norm(r.get("name"))
+        code = str(r["code"]).zfill(6)
+        if n and code.isdigit() and len(code) == 6:
+            m[n] = {"ticker": code, "market": r.get("market")}
+    try:
+        json.dump({"as_of": date.today().isoformat(), "map": m},
+                  open(cache, "w", encoding="utf-8"), ensure_ascii=False)
+    except Exception as e:
+        print(f"[fallback] 캐시 저장 실패({e})")
+    print(f"[fallback] 갱신 {len(m)}종목")
+    return m
+
+
 def enrich(snap, code_map):
+    """스크리너 매핑 우선, 실패분만 폴백으로 재시도."""
     unmapped = []
     for bucket in ("holdings", "exits"):
         for r in snap[bucket]:
@@ -269,8 +328,24 @@ def enrich(snap, code_map):
                 r.update({k: v for k, v in hit.items() if v is not None})
             else:
                 r["ticker"] = None
-                unmapped.append(r["name"])
-    snap["unmapped"] = sorted(set(unmapped))
+                unmapped.append(r)
+
+    recovered = []
+    if unmapped:
+        fb = load_fallback_map()
+        for r in unmapped:
+            hit = fb.get(_norm(r["name"]))
+            if hit:
+                r["ticker"] = hit["ticker"]
+                if hit.get("market"):
+                    r["market"] = hit["market"]
+                r["code_source"] = "fallback"
+                recovered.append(r["name"])
+
+    snap["unmapped"] = sorted({r["name"] for r in unmapped if not r.get("ticker")})
+    snap["code_recovered"] = sorted(set(recovered))
+    if recovered:
+        print(f"[map] 폴백 복구 {len(recovered)}건: {', '.join(recovered[:5])}")
     return snap
 
 
@@ -329,6 +404,16 @@ def append_history(path, snap, d):
     return True
 
 
+def count_history(path):
+    if not os.path.exists(path):
+        return 0
+    try:
+        with open(path, encoding="utf-8") as f:
+            return sum(1 for line in f if line.strip())
+    except Exception:
+        return 0
+
+
 # ─── 알림 ────────────────────────────────────────────────────────────
 def build_message(snap, d, label, alerts=None, hist_n=None):
     L = []
@@ -368,128 +453,14 @@ def build_message(snap, d, label, alerts=None, hist_n=None):
             rp = r.get("ret_pct")
             L.append(f"• {r['name']} {rp:+.2f}%" if rp is not None else f"• {r['name']}")
 
+    if snap.get("code_recovered"):
+        L.append(f"\n🔧 코드 폴백 복구 {len(snap['code_recovered'])}건: "
+                 f"{', '.join(snap['code_recovered'][:3])}")
+
     if snap.get("unmapped"):
         L.append(f"\n⚠️ 코드 미매칭 {len(snap['unmapped'])}건: {', '.join(snap['unmapped'][:5])}")
 
     if hist_n is not None:
         L.append(f"\n<i>※ 관찰용 · 자동 발주 없음 · 이력 {hist_n}일치</i>")
     else:
-        L.append("\n<i>※ 관찰용 · 자동 발주 없음</i>")
-    return "\n".join(L)
-
-
-def notify(text):
-    tok, chat = os.environ.get("TELEGRAM_BOT_TOKEN"), os.environ.get("TELEGRAM_CHAT_ID")
-    if not (tok and chat):
-        print("[tg] 토큰/챗ID 없음 — 콘솔 출력만\n" + "─" * 50 + f"\n{text}\n" + "─" * 50)
-        return False
-    payload = json.dumps({"chat_id": chat, "text": text,
-                          "parse_mode": "HTML",
-                          "disable_web_page_preview": True}).encode()
-    req = urllib.request.Request(
-        f"https://api.telegram.org/bot{tok}/sendMessage",
-        data=payload, headers={"Content-Type": "application/json"})
-    try:
-        with urllib.request.urlopen(req, timeout=15) as r:
-            ok = json.load(r).get("ok")
-        print(f"[tg] 발송 {'성공' if ok else '실패'}")
-        return bool(ok)
-    except Exception as e:
-        print(f"[tg] 발송 실패: {e}")
-        return False
-
-
-def count_history(path):
-    if not os.path.exists(path):
-        return 0
-    try:
-        with open(path, encoding="utf-8") as f:
-            return sum(1 for line in f if line.strip())
-    except Exception:
-        return 0
-
-
-# ─── main ────────────────────────────────────────────────────────────
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--strategy", default="momentum", choices=list(STRATEGIES))
-    ap.add_argument("--out", default="stockeasy_kr.json")
-    ap.add_argument("--history", default="stockeasy_history.jsonl")
-    ap.add_argument("--screener", default="kr_screener_output.json")
-    ap.add_argument("--html", help="오프라인 테스트용 저장 HTML")
-    ap.add_argument("--no-notify", action="store_true")
-    ap.add_argument("--heartbeat-day", type=int, default=4,
-                    help="주간 하트비트 요일 (0=월 … 4=금, -1=끄기)")
-    a = ap.parse_args()
-
-    today = date.today().isoformat()
-    html = open(a.html, encoding="utf-8").read() if a.html else fetch_html(a.strategy)
-    snap = parse_page(html)
-
-    # 보유 0 과 파싱 실패는 정반대 상황이다.
-    #   전량 이탈이면 이탈 테이블에는 종목이 남아 있다.
-    #   둘 다 비어 있을 때만 파싱 실패로 판정한다.
-    if not snap["holdings"] and not snap["exits"]:
-        sys.exit("[!] 보유·이탈 테이블 모두 비어 있음 — 파싱 실패로 판단합니다.")
-    if not snap["holdings"]:
-        print("[!] 보유 0종목 — 전량 이탈 상태입니다.")
-
-    print(f"[parse] {snap['data_date']} · 보유 {len(snap['holdings'])} · 이탈 {len(snap['exits'])}")
-
-    snap = enrich(snap, load_code_map(a.screener))
-    snap.update({"source": f"stockeasy:{a.strategy}",
-                 "strategy_label": STRATEGIES[a.strategy],
-                 "fetched_at": datetime.now().isoformat(timespec="seconds")})
-
-    prev = None
-    if os.path.exists(a.out):
-        try:
-            prev = json.load(open(a.out, encoding="utf-8"))
-        except Exception as e:
-            print(f"[state] 이전 스냅샷 로드 실패({e}) — 첫 실행으로 처리")
-
-    # ── 신뢰성 가드 ──────────────────────────────────────────────
-    alerts = []
-    stale, stale_bd = check_stale(snap["data_date"], today)
-    if stale:
-        alerts.append(f"사이트 미갱신 {stale_bd}영업일 — 데이터 정지 의심")
-        print(f"[warn] stale: {snap['data_date']} 이후 {stale_bd}영업일 경과")
-
-    prev_n = len(prev.get("holdings", [])) if prev else None
-    shock, shock_msg = check_count_shock(prev_n, len(snap["holdings"]))
-    if shock:
-        alerts.append(f"종목수 급감 {shock_msg} — 파싱 오류 의심")
-        print(f"[warn] count shock: {shock_msg}")
-
-    # ── 같은 data_date 재실행 — 알림은 생략하되 가드/하트비트는 살린다 ──
-    if prev and prev.get("data_date") == snap["data_date"]:
-        print(f"[skip] {snap['data_date']} 스냅샷 이미 처리됨 — diff 알림 생략")
-        snap["diff"] = prev.get("diff", {"new": [], "dropped": [], "first_run": False})
-        snap["alerts"] = alerts
-        json.dump(snap, open(a.out, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-
-        hb = (a.heartbeat_day >= 0 and is_heartbeat_day(today, a.heartbeat_day))
-        if not a.no_notify and (alerts or hb):
-            n = count_history(a.history)
-            head = "🫀 <b>주간 점검</b>\n" if hb and not alerts else ""
-            msg = head + build_message(snap, snap["diff"], STRATEGIES[a.strategy],
-                                       alerts, hist_n=n)
-            notify(msg)
-        return
-
-    d = diff(prev, snap)
-    snap["diff"] = d
-    snap["alerts"] = alerts
-    json.dump(snap, open(a.out, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-
-    added = append_history(a.history, snap, d)
-    n = count_history(a.history)
-    print(f"[out] {a.out} · 신규 {len(d['new'])} · 이탈 {len(d['dropped'])}")
-    print(f"[hist] {a.history} · {'추가' if added else '중복 스킵'} · 누적 {n}일")
-
-    if not a.no_notify:
-        notify(build_message(snap, d, STRATEGIES[a.strategy], alerts, hist_n=n))
-
-
-if __name__ == "__main__":
-    main()
+        L.append("\n<i>※ 관찰용 · 자동 발주
