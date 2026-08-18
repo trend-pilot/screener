@@ -463,4 +463,112 @@ def build_message(snap, d, label, alerts=None, hist_n=None):
     if hist_n is not None:
         L.append(f"\n<i>※ 관찰용 · 자동 발주 없음 · 이력 {hist_n}일치</i>")
     else:
-        L.append("\n<i>※ 관찰용 · 자동 발주
+        L.append("\n<i>※ 관찰용 · 자동 발주 없음</i>")
+    return "\n".join(L)
+
+
+def notify(text):
+    tok, chat = os.environ.get("TELEGRAM_BOT_TOKEN"), os.environ.get("TELEGRAM_CHAT_ID")
+    if not (tok and chat):
+        print("[tg] 토큰/챗ID 없음 — 콘솔 출력만\n" + "─" * 50 + f"\n{text}\n" + "─" * 50)
+        return False
+    payload = json.dumps({"chat_id": chat, "text": text,
+                          "parse_mode": "HTML",
+                          "disable_web_page_preview": True}).encode()
+    req = urllib.request.Request(
+        f"https://api.telegram.org/bot{tok}/sendMessage",
+        data=payload, headers={"Content-Type": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=15) as r:
+            ok = json.load(r).get("ok")
+        print(f"[tg] 발송 {'성공' if ok else '실패'}")
+        return bool(ok)
+    except Exception as e:
+        print(f"[tg] 발송 실패: {e}")
+        return False
+
+
+# ─── main ────────────────────────────────────────────────────────────
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--strategy", default="momentum", choices=list(STRATEGIES))
+    ap.add_argument("--out", default="stockeasy_kr.json")
+    ap.add_argument("--history", default="stockeasy_history.jsonl")
+    ap.add_argument("--screener", default="kr_screener_output.json")
+    ap.add_argument("--html", help="오프라인 테스트용 저장 HTML")
+    ap.add_argument("--no-notify", action="store_true")
+    ap.add_argument("--heartbeat-day", type=int, default=4,
+                    help="주간 하트비트 요일 (0=월 … 4=금, -1=끄기)")
+    a = ap.parse_args()
+
+    today = date.today().isoformat()
+    html = open(a.html, encoding="utf-8").read() if a.html else fetch_html(a.strategy)
+    snap = parse_page(html)
+
+    # 보유 0 과 파싱 실패는 정반대 상황이다.
+    #   전량 이탈이면 이탈 테이블에는 종목이 남아 있다.
+    #   둘 다 비어 있을 때만 파싱 실패로 판정한다.
+    if not snap["holdings"] and not snap["exits"]:
+        sys.exit("[!] 보유·이탈 테이블 모두 비어 있음 — 파싱 실패로 판단합니다.")
+    if not snap["holdings"]:
+        print("[!] 보유 0종목 — 전량 이탈 상태입니다.")
+
+    print(f"[parse] {snap['data_date']} · 보유 {len(snap['holdings'])} · 이탈 {len(snap['exits'])}")
+
+    snap = enrich(snap, load_code_map(a.screener))
+    snap.update({"source": f"stockeasy:{a.strategy}",
+                 "strategy_label": STRATEGIES[a.strategy],
+                 "fetched_at": datetime.now().isoformat(timespec="seconds")})
+
+    prev = None
+    if os.path.exists(a.out):
+        try:
+            prev = json.load(open(a.out, encoding="utf-8"))
+        except Exception as e:
+            print(f"[state] 이전 스냅샷 로드 실패({e}) — 첫 실행으로 처리")
+
+    # ── 신뢰성 가드 ──────────────────────────────────────────────
+    alerts = []
+    stale, stale_bd = check_stale(snap["data_date"], today)
+    if stale:
+        alerts.append(f"사이트 미갱신 {stale_bd}영업일 — 데이터 정지 의심")
+        print(f"[warn] stale: {snap['data_date']} 이후 {stale_bd}영업일 경과")
+
+    prev_n = len(prev.get("holdings", [])) if prev else None
+    shock, shock_msg = check_count_shock(prev_n, len(snap["holdings"]))
+    if shock:
+        alerts.append(f"종목수 급감 {shock_msg} — 파싱 오류 의심")
+        print(f"[warn] count shock: {shock_msg}")
+
+    # ── 같은 data_date 재실행 — 알림은 생략하되 가드/하트비트는 살린다 ──
+    if prev and prev.get("data_date") == snap["data_date"]:
+        print(f"[skip] {snap['data_date']} 스냅샷 이미 처리됨 — diff 알림 생략")
+        snap["diff"] = prev.get("diff", {"new": [], "dropped": [], "first_run": False})
+        snap["alerts"] = alerts
+        json.dump(snap, open(a.out, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+
+        hb = (a.heartbeat_day >= 0 and is_heartbeat_day(today, a.heartbeat_day))
+        if not a.no_notify and (alerts or hb):
+            n = count_history(a.history)
+            head = "🫀 <b>주간 점검</b>\n" if hb and not alerts else ""
+            msg = head + build_message(snap, snap["diff"], STRATEGIES[a.strategy],
+                                       alerts, hist_n=n)
+            notify(msg)
+        return
+
+    d = diff(prev, snap)
+    snap["diff"] = d
+    snap["alerts"] = alerts
+    json.dump(snap, open(a.out, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+
+    added = append_history(a.history, snap, d)
+    n = count_history(a.history)
+    print(f"[out] {a.out} · 신규 {len(d['new'])} · 이탈 {len(d['dropped'])}")
+    print(f"[hist] {a.history} · {'추가' if added else '중복 스킵'} · 누적 {n}일")
+
+    if not a.no_notify:
+        notify(build_message(snap, d, STRATEGIES[a.strategy], alerts, hist_n=n))
+
+
+if __name__ == "__main__":
+    main()
