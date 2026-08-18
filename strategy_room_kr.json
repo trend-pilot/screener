@@ -1,5 +1,5 @@
 {
- "data_date": "2026-08-14",
+ "data_date": "2026-08-18",
  "track": "stockeasy:momentum",
  "logic_version": "kr-v1.0 (base v6.15)",
  "cap": "무제한",
@@ -8,7 +8,7 @@
  "ret_pct": 0.0,
  "cash": 1.0,
  "n_holdings": 0,
- "n_pending": 0,
+ "n_pending": 2,
  "runner_count": 0,
  "trades": {
   "n": 0,
@@ -17,17 +17,55 @@
   "avg_gap": null
  },
  "holdings": [],
- "pending": [],
+ "pending": [
+  {
+   "action": "buy",
+   "ticker": "005830",
+   "name": "DB손해보험",
+   "signal_date": "2026-08-18",
+   "signal_px": 181900.0,
+   "alloc": 0.08333333333333333
+  },
+  {
+   "action": "buy",
+   "ticker": "006260",
+   "name": "LS",
+   "signal_date": "2026-08-18",
+   "signal_px": 342500.0,
+   "alloc": 0.08333333333333333
+  }
+ ],
  "closed": [],
  "nav_history": [
   {
    "date": "2026-08-14",
    "nav": 1.0
+  },
+  {
+   "date": "2026-08-18",
+   "nav": 1.0
   }
  ],
- "generated_at": "2026-08-18T00:53:04",
+ "generated_at": "2026-08-18T07:43:21",
  "_cash": 1.0,
  "_holdings": [],
  "_closed": [],
- "_pending": []
+ "_pending": [
+  {
+   "action": "buy",
+   "ticker": "005830",
+   "name": "DB손해보험",
+   "signal_date": "2026-08-18",
+   "signal_px": 181900.0,
+   "alloc": 0.08333333333333333
+  },
+  {
+   "action": "buy",
+   "ticker": "006260",
+   "name": "LS",
+   "signal_date": "2026-08-18",
+   "signal_px": 342500.0,
+   "alloc": 0.08333333333333333
+  }
+ ]
 }
