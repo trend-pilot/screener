@@ -67,7 +67,7 @@ RULES = {
     #   D-3 이내 R구간 부분정리 (손실 전량 / 0~2R ⅔ / 2~4R ⅓ / 4R+ 보유. R = gain/7%)
     "earnings_entry_guard_bdays": 7, "earnings_trim_bdays": 3,
     "cost_bps": 5.0,
-    "track": "g3+g0+g1+g2", "logic_version": "v6.15(v2.3)",
+    "track": "g3+g0+g1+g2", "logic_version": "v6.15(v2.4)",
 }
 GATES = ["G3 Trigger","G4 Guard","G0 Market","G1 Theme","G2 Pattern"]
 # 레짐 사이징 (G0; screener market.overall = green/yellow/red 3단계로 단순화)
@@ -119,6 +119,39 @@ def detect_ftd(dates, closes, lows, vols, thr_pct):
     pk_i = max(range(s, n), key=lambda i: closes[i])
     lo_from = pk_i if pk_i < n - 1 else s   # 오늘이 신고가면 폴백(구간 전체)
     lo_i = min(range(lo_from, n), key=lambda i: lows[i])
+    out = _ftd_cycle(dates, closes, lows, vols, thr_pct, lo_i)
+    # [v2.4] 직전 사이클 FTD 승계 — 최근 고점 이후 사이클이 아직 FTD 미확정(none/rally)이고,
+    #   그 고점 "이전" 조정 사이클(직전 고점→저점)에 유효창(≤21bd) 안의 FTD가 있으며
+    #   저점이 이후 한 번도 깨지지 않았다면 그 FTD를 현재 유효 FTD로 승계한다.
+    #   실측(2026-08-17): S&P 8/14 신고점 → 8/17 눌림 → status none 으로 8/4 FTD(유효)를
+    #   놓쳐 카드 "none"·레짐 보호 소실. 샘플은 8/4 FTD active 유지.
+    if out["status"] != "ftd" and pk_i - s > 5:
+        # 직전 조정 구간 = 최근 고점(pk_i) 이전에 종가가 '누적 최고가' 아래에 있던 마지막 연속 구간
+        runmax, m = [], -1e18
+        for i in range(n):
+            m = max(m, closes[i]) if i >= s else m
+            runmax.append(m)
+        e = None
+        for i in range(pk_i - 1, s, -1):
+            if closes[i] < runmax[i]:
+                e = i
+                break
+        if e is not None:
+            b = e
+            while b - 1 > s and closes[b - 1] < runmax[b - 1]:
+                b -= 1
+            lo2 = min(range(b, e + 1), key=lambda i: lows[i])
+            if min(lows[lo2 + 1:n]) >= lows[lo2]:          # 저점 미붕괴
+                alt = _ftd_cycle(dates, closes, lows, vols, thr_pct, lo2)
+                if alt["status"] == "ftd" and alt["window"] != "expired":
+                    alt["carried"] = True     # 직전 사이클 승계 표시
+                    out = alt
+    return out
+
+
+def _ftd_cycle(dates, closes, lows, vols, thr_pct, lo_i):
+    """저점 인덱스 lo_i 기준 사이클(d1·FTD·유효창·랠리 데이 히스토리) 계산."""
+    n = len(closes)
     out = {"rally_low": round(lows[lo_i], 2), "rally_low_date": dates[lo_i],
            "status": "none", "rally_day": None, "ftd_date": None, "ftd_day": None,
            "ftd_gain_pct": None, "ftd_vol_chg_pct": None,
@@ -272,8 +305,9 @@ def _n0(v):
 
 def compute_theme_stats(stocks_list):
     """강세 섹터 수 · Leading 테마 수 (3층 노출도 가드 판정용)."""
+    # [v2.4] 풀 = RS≥70 (대시보드 빌더·레거시 ⑤⑥과 동일 — 샘플 유니버스 규모)
     pool = [s for s in stocks_list
-            if isinstance(s.get("rs"), (int, float))
+            if isinstance(s.get("rs"), (int, float)) and s.get("rs") >= 70
             and (s.get("sector") or "") not in ("", "기타")
             and (s.get("industry") or "") not in ("", "기타")]
     if not pool:
@@ -322,6 +356,7 @@ def compute_theme_stats(stocks_list):
         by_ind.setdefault((s["sector"], s["industry"]), []).append(s)
     ind_scores = {k: theme_score(v) for k, v in by_ind.items() if len(v) >= 3}
     lead_n = sum(1 for sc in ind_scores.values() if sc >= 47.5)
+    strong_ind = sum(1 for sc in ind_scores.values() if sc >= 60.0)   # 강세 업종 (L3 가드 기준)
     by_sec = {}
     for (sec, _ind), sc in ind_scores.items():
         by_sec.setdefault(sec, []).append((sc, len(by_ind[(sec, _ind)])))
@@ -330,7 +365,8 @@ def compute_theme_stats(stocks_list):
         w = sum(n for _sc, n in rows) or 1
         if sum(sc * n for sc, n in rows) / w >= 52.5:
             strong += 1
-    return {"lead_n": lead_n, "strong_sectors": strong, "n_industries": len(ind_scores)}
+    return {"lead_n": lead_n, "strong_sectors": strong, "strong_ind": strong_ind,
+            "n_industries": len(ind_scores)}
 
 
 def compute_alloc3l(regime_key, idx, market, theme):
@@ -352,13 +388,21 @@ def compute_alloc3l(regime_key, idx, market, theme):
             stress = True
     l1lo, l1hi = max(0, lo - (15 if stress else 0)), max(0, hi - (15 if stress else 0))
     sub2 = 15 if (theme and theme["strong_sectors"] == 0) else 0
-    sub3 = 20 if (theme and theme["lead_n"] < 10) else 0
+    # [v2.4] L3 테마 가드 = 강세(≥60) 업종 0개 (샘플 dashboard_public 0818 3층 카드 원문:
+    #   "L3 테마 강세(≥60.5) 0개 · 관심 21개 → −20%p"). 기존 Leading<10 규칙은 관심 대역
+    #   테마가 많으면 가드가 안 걸려 실측(8/17) 우리 75~95% vs 샘플 40~60% 괴리 발생.
+    #   strong_ind 키가 없는 구버전 theme 는 기존 규칙으로 폴백.
+    if theme and "strong_ind" in theme:
+        sub3 = 20 if theme["strong_ind"] == 0 else 0
+    else:
+        sub3 = 20 if (theme and theme["lead_n"] < 10) else 0
     return {"lo": max(0, l1lo - sub2 - sub3), "hi": max(0, l1hi - sub2 - sub3),
             "sub2": sub2, "sub3": sub3, "sub_total": sub2 + sub3,
             "lv2": 1 if sub2 else 0, "lv3": 1 if sub3 else 0,
             "regime": regime_key, "stress": stress, "l1_lo": l1lo, "l1_hi": l1hi,
             "lead_n": theme["lead_n"] if theme else None,
             "strong_sectors": theme["strong_sectors"] if theme else None,
+            "strong_ind": theme.get("strong_ind") if theme else None,
             "note": ("L1 %s~%s%%" % (l1lo, l1hi))
                     + (" −섹터%d" % sub2 if sub2 else "")
                     + (" −테마%d" % sub3 if sub3 else "")
