@@ -1,59 +1,107 @@
 {
-"_date": "2026-08-17",
+"_date": "2026-08-18",
 "_fired_names": [
-"Aluminum",
-"Copper",
-"Lodging",
-"Marine Shipping",
-"Oil & Gas Drilling",
-"Oil & Gas E&P",
-"Oil & Gas Integrated",
-"Semiconductor Equipment & Materials"
+"Broadcasting",
+"Consulting Services",
+"Drug Manufacturers - General",
+"Drug Manufacturers - Specialty & Generic",
+"Health Information Services",
+"REIT - Hotel & Motel",
+"Staffing & Employment Services",
+"Tobacco"
 ],
-"Semiconductor Equipment & Materials": {
+"Drug Manufacturers - Specialty & Generic": {
 "consecutive_days": 1,
+"first_fired": "2026-08-18",
+"last_avg_pct": 2.54,
+"ever_fired": true
+},
+"Staffing & Employment Services": {
+"consecutive_days": 1,
+"first_fired": "2026-08-18",
+"last_avg_pct": 2.4,
+"ever_fired": true
+},
+"Broadcasting": {
+"consecutive_days": 1,
+"first_fired": "2026-08-18",
+"last_avg_pct": 1.8,
+"ever_fired": true
+},
+"Drug Manufacturers - General": {
+"consecutive_days": 1,
+"first_fired": "2026-08-18",
+"last_avg_pct": 1.73,
+"ever_fired": true
+},
+"Health Information Services": {
+"consecutive_days": 1,
+"first_fired": "2026-08-18",
+"last_avg_pct": 1.67,
+"ever_fired": true
+},
+"Consulting Services": {
+"consecutive_days": 1,
+"first_fired": "2026-08-18",
+"last_avg_pct": 1.41,
+"ever_fired": true
+},
+"Tobacco": {
+"consecutive_days": 1,
+"first_fired": "2026-08-18",
+"last_avg_pct": 1.28,
+"ever_fired": true
+},
+"REIT - Hotel & Motel": {
+"consecutive_days": 1,
+"first_fired": "2026-08-18",
+"last_avg_pct": 1.14,
+"ever_fired": true
+},
+"Semiconductor Equipment & Materials": {
+"consecutive_days": 0,
 "first_fired": "2026-08-17",
 "last_avg_pct": 3.43,
 "ever_fired": true
 },
 "Copper": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-17",
 "last_avg_pct": 3.27,
 "ever_fired": true
 },
 "Marine Shipping": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-17",
 "last_avg_pct": 2.43,
 "ever_fired": true
 },
 "Oil & Gas Drilling": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-17",
 "last_avg_pct": 2.19,
 "ever_fired": true
 },
 "Aluminum": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-17",
 "last_avg_pct": 1.9,
 "ever_fired": true
 },
 "Lodging": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-17",
 "last_avg_pct": 1.72,
 "ever_fired": true
 },
 "Oil & Gas Integrated": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-17",
 "last_avg_pct": 1.62,
 "ever_fired": true
 },
 "Oil & Gas E&P": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-17",
 "last_avg_pct": 1.58,
 "ever_fired": true
@@ -62,12 +110,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-14",
 "last_avg_pct": 6.84,
-"ever_fired": true
-},
-"Broadcasting": {
-"consecutive_days": 0,
-"first_fired": "2026-08-13",
-"last_avg_pct": 5.38,
 "ever_fired": true
 },
 "Thermal Coal": {
@@ -104,12 +146,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-14",
 "last_avg_pct": 2.33,
-"ever_fired": true
-},
-"Staffing & Employment Services": {
-"consecutive_days": 0,
-"first_fired": "2026-08-13",
-"last_avg_pct": 4.61,
 "ever_fired": true
 },
 "Insurance Brokers": {
@@ -212,12 +248,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-07",
 "last_avg_pct": 8.34,
-"ever_fired": true
-},
-"Health Information Services": {
-"consecutive_days": 0,
-"first_fired": "2026-08-07",
-"last_avg_pct": 7.17,
 "ever_fired": true
 },
 "Advertising Agencies": {
@@ -326,12 +356,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-30",
 "last_avg_pct": 6.34,
-"ever_fired": true
-},
-"Consulting Services": {
-"consecutive_days": 0,
-"first_fired": "2026-07-28",
-"last_avg_pct": 7.3,
 "ever_fired": true
 },
 "Paper & Paper Products": {
@@ -466,12 +490,6 @@
 "last_avg_pct": 2.55,
 "ever_fired": true
 },
-"Drug Manufacturers - Specialty & Generic": {
-"consecutive_days": 0,
-"first_fired": "2026-07-21",
-"last_avg_pct": 22.79,
-"ever_fired": true
-},
 "Electronic Gaming & Multimedia": {
 "consecutive_days": 0,
 "first_fired": "2026-07-20",
@@ -482,12 +500,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-20",
 "last_avg_pct": 1.62,
-"ever_fired": true
-},
-"REIT - Hotel & Motel": {
-"consecutive_days": 0,
-"first_fired": "2026-07-17",
-"last_avg_pct": 1.65,
 "ever_fired": true
 },
 "Industrial Distribution": {
@@ -578,12 +590,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-06",
 "last_avg_pct": 2.9,
-"ever_fired": true
-},
-"Drug Manufacturers - General": {
-"consecutive_days": 0,
-"first_fired": "2026-07-02",
-"last_avg_pct": 2.72,
 "ever_fired": true
 },
 "Waste Management": {
