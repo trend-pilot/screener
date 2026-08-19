@@ -1,59 +1,101 @@
 {
-"_date": "2026-08-18",
+"_date": "2026-08-19",
 "_fired_names": [
-"Broadcasting",
-"Consulting Services",
-"Drug Manufacturers - General",
-"Drug Manufacturers - Specialty & Generic",
+"Biotechnology",
+"Coking Coal",
+"Diagnostics & Research",
+"Gold",
 "Health Information Services",
-"REIT - Hotel & Motel",
-"Staffing & Employment Services",
-"Tobacco"
+"Other Precious Metals & Mining",
+"Silver",
+"Solar"
 ],
-"Drug Manufacturers - Specialty & Generic": {
+"Gold": {
 "consecutive_days": 1,
+"first_fired": "2026-08-19",
+"last_avg_pct": 9.68,
+"ever_fired": true
+},
+"Silver": {
+"consecutive_days": 1,
+"first_fired": "2026-08-19",
+"last_avg_pct": 9.05,
+"ever_fired": true
+},
+"Other Precious Metals & Mining": {
+"consecutive_days": 1,
+"first_fired": "2026-08-19",
+"last_avg_pct": 8.16,
+"ever_fired": true
+},
+"Coking Coal": {
+"consecutive_days": 1,
+"first_fired": "2026-08-19",
+"last_avg_pct": 7.86,
+"ever_fired": true
+},
+"Diagnostics & Research": {
+"consecutive_days": 1,
+"first_fired": "2026-08-19",
+"last_avg_pct": 5.32,
+"ever_fired": true
+},
+"Solar": {
+"consecutive_days": 1,
+"first_fired": "2026-08-19",
+"last_avg_pct": 4.67,
+"ever_fired": true
+},
+"Biotechnology": {
+"consecutive_days": 1,
+"first_fired": "2026-08-19",
+"last_avg_pct": 4.29,
+"ever_fired": true
+},
+"Health Information Services": {
+"consecutive_days": 2,
+"first_fired": "2026-08-18",
+"last_avg_pct": 4.19,
+"ever_fired": true
+},
+"Drug Manufacturers - Specialty & Generic": {
+"consecutive_days": 0,
 "first_fired": "2026-08-18",
 "last_avg_pct": 2.54,
 "ever_fired": true
 },
 "Staffing & Employment Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-18",
 "last_avg_pct": 2.4,
 "ever_fired": true
 },
 "Broadcasting": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-18",
 "last_avg_pct": 1.8,
 "ever_fired": true
 },
 "Drug Manufacturers - General": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-18",
 "last_avg_pct": 1.73,
 "ever_fired": true
 },
-"Health Information Services": {
-"consecutive_days": 1,
-"first_fired": "2026-08-18",
-"last_avg_pct": 1.67,
-"ever_fired": true
-},
 "Consulting Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-18",
 "last_avg_pct": 1.41,
 "ever_fired": true
 },
 "Tobacco": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-18",
 "last_avg_pct": 1.28,
 "ever_fired": true
 },
 "REIT - Hotel & Motel": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-18",
 "last_avg_pct": 1.14,
 "ever_fired": true
@@ -106,12 +148,6 @@
 "last_avg_pct": 1.58,
 "ever_fired": true
 },
-"Coking Coal": {
-"consecutive_days": 0,
-"first_fired": "2026-08-14",
-"last_avg_pct": 6.84,
-"ever_fired": true
-},
 "Thermal Coal": {
 "consecutive_days": 0,
 "first_fired": "2026-08-14",
@@ -122,12 +158,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-14",
 "last_avg_pct": 2.75,
-"ever_fired": true
-},
-"Silver": {
-"consecutive_days": 0,
-"first_fired": "2026-08-14",
-"last_avg_pct": 2.45,
 "ever_fired": true
 },
 "Other Industrial Metals & Mining": {
@@ -244,22 +274,10 @@
 "last_avg_pct": 2.1,
 "ever_fired": true
 },
-"Gold": {
-"consecutive_days": 0,
-"first_fired": "2026-08-07",
-"last_avg_pct": 8.34,
-"ever_fired": true
-},
 "Advertising Agencies": {
 "consecutive_days": 0,
 "first_fired": "2026-08-07",
 "last_avg_pct": 5.4,
-"ever_fired": true
-},
-"Other Precious Metals & Mining": {
-"consecutive_days": 0,
-"first_fired": "2026-08-07",
-"last_avg_pct": 5.1,
 "ever_fired": true
 },
 "Semiconductors": {
@@ -302,12 +320,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-03",
 "last_avg_pct": 7.87,
-"ever_fired": true
-},
-"Solar": {
-"consecutive_days": 0,
-"first_fired": "2026-08-03",
-"last_avg_pct": 6.07,
 "ever_fired": true
 },
 "Airlines": {
@@ -466,12 +478,6 @@
 "last_avg_pct": 2.77,
 "ever_fired": true
 },
-"Diagnostics & Research": {
-"consecutive_days": 0,
-"first_fired": "2026-07-23",
-"last_avg_pct": 2.71,
-"ever_fired": true
-},
 "Aerospace & Defense": {
 "consecutive_days": 0,
 "first_fired": "2026-07-23",
@@ -494,12 +500,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-20",
 "last_avg_pct": 1.11,
-"ever_fired": true
-},
-"Biotechnology": {
-"consecutive_days": 0,
-"first_fired": "2026-07-20",
-"last_avg_pct": 1.62,
 "ever_fired": true
 },
 "Industrial Distribution": {
