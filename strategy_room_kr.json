@@ -1,14 +1,14 @@
 {
- "data_date": "2026-08-18",
+ "data_date": "2026-08-19",
  "track": "stockeasy:momentum",
  "logic_version": "kr-v1.0 (base v6.15)",
  "cap": "무제한",
  "source_exit_action": "watch",
- "nav": 1.0,
- "ret_pct": 0.0,
- "cash": 1.0,
- "n_holdings": 0,
- "n_pending": 2,
+ "nav": 1.0029,
+ "ret_pct": 0.29,
+ "cash": 0.8331,
+ "n_holdings": 2,
+ "n_pending": 1,
  "runner_count": 0,
  "trades": {
   "n": 0,
@@ -16,23 +16,42 @@
   "avg_ret": null,
   "avg_gap": null
  },
- "holdings": [],
+ "holdings": [
+  {
+   "ticker": "005830",
+   "name": "DB손해보험",
+   "entry": "2026-08-19",
+   "days": 0,
+   "entry_px": 183500.0,
+   "cur": 187500.0,
+   "ret_pct": 2.18,
+   "stop": 170655.0,
+   "max_gain_pct": 2.2,
+   "runner": false,
+   "weight": 8.49
+  },
+  {
+   "ticker": "006260",
+   "name": "LS",
+   "entry": "2026-08-19",
+   "days": 0,
+   "entry_px": 328000.0,
+   "cur": 333000.0,
+   "ret_pct": 1.52,
+   "stop": 305040.0,
+   "max_gain_pct": 1.5,
+   "runner": false,
+   "weight": 8.44
+  }
+ ],
  "pending": [
   {
    "action": "buy",
-   "ticker": "005830",
-   "name": "DB손해보험",
-   "signal_date": "2026-08-18",
-   "signal_px": 181900.0,
-   "alloc": 0.08333333333333333
-  },
-  {
-   "action": "buy",
-   "ticker": "006260",
-   "name": "LS",
-   "signal_date": "2026-08-18",
-   "signal_px": 342500.0,
-   "alloc": 0.08333333333333333
+   "ticker": "000720",
+   "name": "현대건설",
+   "signal_date": "2026-08-19",
+   "signal_px": 116500.0,
+   "alloc": 0.08357390463584471
   }
  ],
  "closed": [],
@@ -44,28 +63,57 @@
   {
    "date": "2026-08-18",
    "nav": 1.0
+  },
+  {
+   "date": "2026-08-19",
+   "nav": 1.002887
   }
  ],
- "generated_at": "2026-08-18T07:43:21",
- "_cash": 1.0,
- "_holdings": [],
+ "generated_at": "2026-08-19T07:47:37",
+ "_cash": 0.8331333333333333,
+ "_holdings": [
+  {
+   "ticker": "005830",
+   "name": "DB손해보험",
+   "entry_date": "2026-08-19",
+   "entry_px": 183500.0,
+   "signal_px": 181900.0,
+   "gap_pct": 0.88,
+   "shares": 4.5413260672116256e-07,
+   "entry_value": 0.08343333333333333,
+   "cur": 187500.0,
+   "max_gain_pct": 2.1798365122615904,
+   "days_in": 0,
+   "current_stop": 170655.0,
+   "runner": false,
+   "oneill_8w_active": false
+  },
+  {
+   "ticker": "006260",
+   "name": "LS",
+   "entry_date": "2026-08-19",
+   "entry_px": 328000.0,
+   "signal_px": 342500.0,
+   "gap_pct": -4.23,
+   "shares": 2.540650406504065e-07,
+   "entry_value": 0.08343333333333333,
+   "cur": 333000.0,
+   "max_gain_pct": 1.5243902439024293,
+   "days_in": 0,
+   "current_stop": 305040.0,
+   "runner": false,
+   "oneill_8w_active": false
+  }
+ ],
  "_closed": [],
  "_pending": [
   {
    "action": "buy",
-   "ticker": "005830",
-   "name": "DB손해보험",
-   "signal_date": "2026-08-18",
-   "signal_px": 181900.0,
-   "alloc": 0.08333333333333333
-  },
-  {
-   "action": "buy",
-   "ticker": "006260",
-   "name": "LS",
-   "signal_date": "2026-08-18",
-   "signal_px": 342500.0,
-   "alloc": 0.08333333333333333
+   "ticker": "000720",
+   "name": "현대건설",
+   "signal_date": "2026-08-19",
+   "signal_px": 116500.0,
+   "alloc": 0.08357390463584471
   }
  ]
 }
