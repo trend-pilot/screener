@@ -1,14 +1,14 @@
 {
- "data_date": "2026-08-19",
+ "data_date": "2026-08-20",
  "track": "stockeasy:momentum",
  "logic_version": "kr-v1.0 (base v6.15)",
  "cap": 12,
  "source_exit_action": "watch",
- "nav": 1.0029,
- "ret_pct": 0.29,
- "cash": 0.8331,
- "n_holdings": 2,
- "n_pending": 1,
+ "nav": 0.9972,
+ "ret_pct": -0.28,
+ "cash": 0.7495,
+ "n_holdings": 3,
+ "n_pending": 5,
  "runner_count": 0,
  "trades": {
   "n": 0,
@@ -21,37 +21,82 @@
    "ticker": "005830",
    "name": "DB손해보험",
    "entry": "2026-08-19",
-   "days": 0,
+   "days": 1,
    "entry_px": 183500.0,
-   "cur": 187500.0,
-   "ret_pct": 2.18,
+   "cur": 177400.0,
+   "ret_pct": -3.32,
    "stop": 170655.0,
    "max_gain_pct": 2.2,
    "runner": false,
-   "weight": 8.49
+   "weight": 8.08
   },
   {
    "ticker": "006260",
    "name": "LS",
    "entry": "2026-08-19",
-   "days": 0,
+   "days": 1,
    "entry_px": 328000.0,
    "cur": 333000.0,
    "ret_pct": 1.52,
    "stop": 305040.0,
    "max_gain_pct": 1.5,
    "runner": false,
-   "weight": 8.44
+   "weight": 8.48
+  },
+  {
+   "ticker": "000720",
+   "name": "현대건설",
+   "entry": "2026-08-20",
+   "days": 0,
+   "entry_px": 115200.0,
+   "cur": 113800.0,
+   "ret_pct": -1.22,
+   "stop": 107136.0,
+   "max_gain_pct": 0.0,
+   "runner": false,
+   "weight": 8.28
   }
  ],
  "pending": [
   {
    "action": "buy",
-   "ticker": "000720",
-   "name": "현대건설",
-   "signal_date": "2026-08-19",
-   "signal_px": 116500.0,
-   "alloc": 0.08357390463584471
+   "ticker": "214450",
+   "name": "파마리서치",
+   "signal_date": "2026-08-20",
+   "signal_px": 412000.0,
+   "alloc": 0.08309868104380243
+  },
+  {
+   "action": "buy",
+   "ticker": "035420",
+   "name": "NAVER",
+   "signal_date": "2026-08-20",
+   "signal_px": 219500.0,
+   "alloc": 0.08309868104380243
+  },
+  {
+   "action": "buy",
+   "ticker": "064400",
+   "name": "LG씨엔에스",
+   "signal_date": "2026-08-20",
+   "signal_px": 73900.0,
+   "alloc": 0.08309868104380243
+  },
+  {
+   "action": "buy",
+   "ticker": "307950",
+   "name": "현대오토에버",
+   "signal_date": "2026-08-20",
+   "signal_px": 459500.0,
+   "alloc": 0.08309868104380243
+  },
+  {
+   "action": "buy",
+   "ticker": "007660",
+   "name": "이수페타시스",
+   "signal_date": "2026-08-20",
+   "signal_px": 104900.0,
+   "alloc": 0.08309868104380243
   }
  ],
  "closed": [],
@@ -67,10 +112,14 @@
   {
    "date": "2026-08-19",
    "nav": 1.002887
+  },
+  {
+   "date": "2026-08-20",
+   "nav": 0.997184
   }
  ],
- "generated_at": "2026-08-19T07:47:37",
- "_cash": 0.8331333333333333,
+ "generated_at": "2026-08-20T07:52:23",
+ "_cash": 0.7494591400119255,
  "_holdings": [
   {
    "ticker": "005830",
@@ -81,9 +130,9 @@
    "gap_pct": 0.88,
    "shares": 4.5413260672116256e-07,
    "entry_value": 0.08343333333333333,
-   "cur": 187500.0,
+   "cur": 177400.0,
    "max_gain_pct": 2.1798365122615904,
-   "days_in": 0,
+   "days_in": 1,
    "current_stop": 170655.0,
    "runner": false,
    "oneill_8w_active": false
@@ -99,8 +148,24 @@
    "entry_value": 0.08343333333333333,
    "cur": 333000.0,
    "max_gain_pct": 1.5243902439024293,
-   "days_in": 0,
+   "days_in": 1,
    "current_stop": 305040.0,
+   "runner": false,
+   "oneill_8w_active": false
+  },
+  {
+   "ticker": "000720",
+   "name": "현대건설",
+   "entry_date": "2026-08-20",
+   "entry_px": 115200.0,
+   "signal_px": 116500.0,
+   "gap_pct": -1.12,
+   "shares": 7.25467922186152e-07,
+   "entry_value": 0.08367419332140774,
+   "cur": 113800.0,
+   "max_gain_pct": 0.0,
+   "days_in": 0,
+   "current_stop": 107136.0,
    "runner": false,
    "oneill_8w_active": false
   }
@@ -109,11 +174,43 @@
  "_pending": [
   {
    "action": "buy",
-   "ticker": "000720",
-   "name": "현대건설",
-   "signal_date": "2026-08-19",
-   "signal_px": 116500.0,
-   "alloc": 0.08357390463584471
+   "ticker": "214450",
+   "name": "파마리서치",
+   "signal_date": "2026-08-20",
+   "signal_px": 412000.0,
+   "alloc": 0.08309868104380243
+  },
+  {
+   "action": "buy",
+   "ticker": "035420",
+   "name": "NAVER",
+   "signal_date": "2026-08-20",
+   "signal_px": 219500.0,
+   "alloc": 0.08309868104380243
+  },
+  {
+   "action": "buy",
+   "ticker": "064400",
+   "name": "LG씨엔에스",
+   "signal_date": "2026-08-20",
+   "signal_px": 73900.0,
+   "alloc": 0.08309868104380243
+  },
+  {
+   "action": "buy",
+   "ticker": "307950",
+   "name": "현대오토에버",
+   "signal_date": "2026-08-20",
+   "signal_px": 459500.0,
+   "alloc": 0.08309868104380243
+  },
+  {
+   "action": "buy",
+   "ticker": "007660",
+   "name": "이수페타시스",
+   "signal_date": "2026-08-20",
+   "signal_px": 104900.0,
+   "alloc": 0.08309868104380243
   }
  ]
 }
