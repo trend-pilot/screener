@@ -1,117 +1,16 @@
 {
-  "data_date": "2026-08-19",
+  "data_date": "2026-08-20",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v2.4)",
-  "nav": 1.0387,
-  "ret_pct": 3.87,
-  "unreal_pct": 6.29,
+  "nav": 1.0289,
+  "ret_pct": 2.89,
+  "unreal_pct": 5.91,
   "cap": 12,
   "runner_cap": 5,
-  "core_count": 12,
+  "core_count": 11,
   "runner_count": 0,
   "regime": "🟢 Uptrend Resumed",
-  "signals": [
-    {
-      "ticker": "HTFL",
-      "industry": "Health Information Services",
-      "pattern": "이중바닥",
-      "signal_close": 45.53,
-      "pivot": 47.22,
-      "dist": -3.6,
-      "rvol": 1.62,
-      "score": 94.82
-    },
-    {
-      "ticker": "FDMT",
-      "industry": "Biotechnology",
-      "pattern": "어센딩베이스",
-      "signal_close": 16.76,
-      "pivot": 16.91,
-      "dist": -0.9,
-      "rvol": 1.95,
-      "score": 92.68
-    },
-    {
-      "ticker": "MRNA",
-      "industry": "Biotechnology",
-      "pattern": "어닝갭업",
-      "signal_close": 174.38,
-      "pivot": 176.66,
-      "dist": -1.3,
-      "rvol": 25.52,
-      "score": 92.68
-    },
-    {
-      "ticker": "PSNL",
-      "industry": "Diagnostics & Research",
-      "pattern": "하이타이트플래그",
-      "signal_close": 15.81,
-      "pivot": 16.39,
-      "dist": -3.5,
-      "rvol": 2.08,
-      "score": 89.92
-    },
-    {
-      "ticker": "MTA",
-      "industry": "Other Precious Metals & Mining",
-      "pattern": "파워플레이",
-      "signal_close": 10.89,
-      "pivot": 11.05,
-      "dist": -1.4,
-      "rvol": 2.19,
-      "score": 89.17
-    },
-    {
-      "ticker": "MRVI",
-      "industry": "Biotechnology",
-      "pattern": "RS Line 선행",
-      "signal_close": 7.22,
-      "pivot": 7.7,
-      "dist": -6.2,
-      "rvol": 5.03,
-      "score": 87.75
-    },
-    {
-      "ticker": "XNCR",
-      "industry": "Biotechnology",
-      "pattern": "어센딩베이스",
-      "signal_close": 27.52,
-      "pivot": 27.59,
-      "dist": -0.3,
-      "rvol": 2.22,
-      "score": 87.26
-    },
-    {
-      "ticker": "NGNE",
-      "industry": "Biotechnology",
-      "pattern": "컵앤핸들",
-      "signal_close": 39.43,
-      "pivot": 43.66,
-      "dist": -9.7,
-      "rvol": 1.63,
-      "score": 84.65
-    },
-    {
-      "ticker": "MNPR",
-      "industry": "Biotechnology",
-      "pattern": "어센딩베이스",
-      "signal_close": 123.84,
-      "pivot": 124.82,
-      "dist": -0.8,
-      "rvol": 1.74,
-      "score": 78.17
-    },
-    {
-      "ticker": "FBRX",
-      "industry": "Biotechnology",
-      "pattern": "하이타이트플래그",
-      "signal_close": 76.9,
-      "pivot": 77.2,
-      "dist": -0.4,
-      "rvol": 4.91,
-      "score": 54.58
-    }
-  ],
+  "signals": [],
   "gates": [
     "G3 Trigger",
     "G4 Guard",
@@ -120,34 +19,34 @@
     "G2 Pattern"
   ],
   "benchmarks": {
-    "strat": 3.87,
+    "strat": 2.89,
     "spy": null,
     "qqq": null,
     "tqqq": null
   },
   "risk": {
-    "days": 29,
-    "ret": 3.87,
-    "sharpe": 3.15,
-    "sortino": 4.14,
-    "vol": 12.2,
+    "days": 30,
+    "ret": 2.89,
+    "sharpe": 2.34,
+    "sortino": 2.81,
+    "vol": 12.4,
     "mdd": -2.2,
-    "ret_mdd": 1.76,
+    "ret_mdd": 1.32,
     "day_hi": 3.2,
     "day_lo": -1.0,
     "alpha_voo": null,
     "alpha_qqq": null
   },
   "trades": {
-    "n": 3,
-    "winrate": 33.3,
-    "payoff": 0.74,
-    "pf": 0.37,
+    "n": 4,
+    "winrate": 25.0,
+    "payoff": 0.46,
+    "pf": 0.15,
     "avg_win": 6.1,
-    "avg_loss": -8.2,
-    "expectancy": -3.46,
+    "avg_loss": -13.3,
+    "expectancy": -8.48,
     "best": 6.1,
-    "worst": -8.7
+    "worst": -23.5
   },
   "nav_history": [
     {
@@ -294,16 +193,21 @@
       "date": "2026-08-19",
       "nav": 1.0387,
       "chg": 3.16
+    },
+    {
+      "date": "2026-08-20",
+      "nav": 1.0289,
+      "chg": -0.94
     }
   ],
   "holdings": [
     {
       "ticker": "TXG",
       "entry": "2026-08-07",
-      "days": 8,
+      "days": 9,
       "cd": "",
       "entry_px": 52.03,
-      "cur": 62.19,
+      "cur": 63.87,
       "runner": false,
       "partial": null,
       "dte": 55
@@ -311,21 +215,21 @@
     {
       "ticker": "WEYS",
       "entry": "2026-08-04",
-      "days": 10,
+      "days": 11,
       "cd": "",
       "entry_px": 40.42,
-      "cur": 45.8,
+      "cur": 44.9,
       "runner": false,
       "partial": null,
-      "dte": 54
+      "dte": 53
     },
     {
       "ticker": "MAKO",
       "entry": "2026-08-07",
-      "days": 8,
+      "days": 9,
       "cd": "",
       "entry_px": 9.54,
-      "cur": 10.4,
+      "cur": 10.5,
       "runner": false,
       "partial": 67,
       "dte": 65
@@ -333,57 +237,13 @@
     {
       "ticker": "SOPH",
       "entry": "2026-08-07",
-      "days": 8,
+      "days": 9,
       "cd": "",
       "entry_px": 7.71,
-      "cur": 8.28,
+      "cur": 8.33,
       "runner": false,
       "partial": null,
-      "dte": 54
-    },
-    {
-      "ticker": "SBLK",
-      "entry": "2026-08-17",
-      "days": 1,
-      "cd": "",
-      "entry_px": 30.09,
-      "cur": 30.17,
-      "runner": false,
-      "partial": null,
-      "dte": 65
-    },
-    {
-      "ticker": "HTFL",
-      "entry": "2026-08-19",
-      "days": 0,
-      "cd": "",
-      "entry_px": 45.53,
-      "cur": 45.53,
-      "runner": false,
-      "partial": null,
-      "dte": null
-    },
-    {
-      "ticker": "FDMT",
-      "entry": "2026-08-19",
-      "days": 0,
-      "cd": "",
-      "entry_px": 16.76,
-      "cur": 16.76,
-      "runner": false,
-      "partial": null,
-      "dte": null
-    },
-    {
-      "ticker": "MRNA",
-      "entry": "2026-08-19",
-      "days": 0,
-      "cd": "",
-      "entry_px": 174.38,
-      "cur": 174.38,
-      "runner": false,
-      "partial": null,
-      "dte": null
+      "dte": 53
     },
     {
       "ticker": "PSNL",
@@ -391,10 +251,10 @@
       "days": 0,
       "cd": "",
       "entry_px": 15.81,
-      "cur": 15.81,
+      "cur": 16.88,
       "runner": false,
       "partial": null,
-      "dte": null
+      "dte": 53
     },
     {
       "ticker": "MTA",
@@ -402,32 +262,65 @@
       "days": 0,
       "cd": "",
       "entry_px": 10.89,
-      "cur": 10.89,
+      "cur": 11.2,
       "runner": false,
       "partial": null,
-      "dte": null
+      "dte": 60
+    },
+    {
+      "ticker": "HTFL",
+      "entry": "2026-08-19",
+      "days": 0,
+      "cd": "",
+      "entry_px": 45.53,
+      "cur": 46.8,
+      "runner": false,
+      "partial": null,
+      "dte": 59
+    },
+    {
+      "ticker": "SBLK",
+      "entry": "2026-08-17",
+      "days": 2,
+      "cd": "",
+      "entry_px": 30.09,
+      "cur": 30.06,
+      "runner": false,
+      "partial": null,
+      "dte": 64
     },
     {
       "ticker": "QNST",
       "entry": "2026-08-07",
-      "days": 8,
+      "days": 9,
       "cd": "",
       "entry_px": 21.08,
-      "cur": 21.06,
+      "cur": 20.37,
       "runner": false,
       "partial": null,
       "dte": 55
     },
     {
-      "ticker": "WPP",
-      "entry": "2026-08-07",
-      "days": 8,
+      "ticker": "FDMT",
+      "entry": "2026-08-19",
+      "days": 0,
       "cd": "",
-      "entry_px": 27.55,
-      "cur": 26.7,
+      "entry_px": 16.76,
+      "cur": 16.1,
       "runner": false,
       "partial": null,
-      "dte": 136
+      "dte": 58
+    },
+    {
+      "ticker": "WPP",
+      "entry": "2026-08-07",
+      "days": 9,
+      "cd": "",
+      "entry_px": 27.55,
+      "cur": 26.27,
+      "runner": false,
+      "partial": null,
+      "dte": 135
     }
   ],
   "runner_stats": {
@@ -438,9 +331,9 @@
       "best": 0.0
     },
     "core_closed": {
-      "n": 3,
-      "avg": -3.5,
-      "winrate": 33,
+      "n": 4,
+      "avg": -8.5,
+      "winrate": 25,
       "best": 6.1
     },
     "reentry": {
@@ -454,15 +347,15 @@
     "runner_avg_giveback": 0.0
   },
   "closed_summary": {
-    "n": 3,
-    "winrate": 33.3,
-    "avg": -3.46,
+    "n": 4,
+    "winrate": 25.0,
+    "avg": -8.48,
     "best": 6.1,
-    "worst": -8.7,
+    "worst": -23.5,
     "categories": [
       [
         "손절",
-        2,
+        3,
         "#A32D2D",
         "#FDECEC"
       ],
@@ -475,6 +368,15 @@
     ]
   },
   "closed": [
+    {
+      "ticker": "MRNA",
+      "entry": "2026-08-19",
+      "exit": "2026-08-20",
+      "days": 0,
+      "entry_px": 174.38,
+      "exit_px": 133.32,
+      "cat": "손절"
+    },
     {
       "ticker": "NEXN",
       "entry": "2026-08-07",
@@ -517,9 +419,9 @@
     "stress": false,
     "l1_lo": 75,
     "l1_hi": 95,
-    "lead_n": 38,
-    "strong_sectors": 4,
-    "strong_ind": 12,
+    "lead_n": 46,
+    "strong_sectors": 3,
+    "strong_ind": 13,
     "note": "L1 75~95%"
   },
   "daily_history": [
@@ -762,6 +664,30 @@
         "7": 0,
         "0": 0
       }
+    },
+    {
+      "date": "2026-08-20",
+      "regime": "resumed",
+      "breadth": 61.1,
+      "wdd": null,
+      "alloc_lo": 75,
+      "alloc_hi": 95,
+      "stress": false,
+      "lead_n": 46,
+      "strong_sectors": 3,
+      "t": 3426,
+      "ph": {
+        "4+": 22,
+        "4": 66,
+        "5+": 0,
+        "5": 236,
+        "3": 1019,
+        "2": 674,
+        "1": 1227,
+        "6": 182,
+        "7": 0,
+        "0": 0
+      }
     }
   ],
   "market_sent": null,
@@ -774,9 +700,9 @@
       "avg_cost_px": 40.42,
       "shares": 0.006181965919563721,
       "entry_value": 0.25,
-      "cur": 45.8,
+      "cur": 44.9,
       "max_gain_pct": 15.982187036120731,
-      "days_in": 10,
+      "days_in": 11,
       "current_stop": 40.42,
       "runner": false,
       "oneill_8w_active": false,
@@ -791,10 +717,11 @@
         45.26,
         45.79,
         45.41,
-        45.8
+        45.8,
+        44.9
       ],
-      "px_hist_d": "2026-08-19",
-      "dte": 54
+      "px_hist_d": "2026-08-20",
+      "dte": 53
     },
     {
       "ticker": "MAKO",
@@ -803,9 +730,9 @@
       "avg_cost_px": 9.54,
       "shares": 0.004238067909298334,
       "entry_value": 0.040451383438633456,
-      "cur": 10.4,
-      "max_gain_pct": 9.014675052410915,
-      "days_in": 8,
+      "cur": 10.5,
+      "max_gain_pct": 10.062893081761025,
+      "days_in": 9,
       "current_stop": 8.8722,
       "runner": false,
       "oneill_8w_active": false,
@@ -820,9 +747,10 @@
         10.12,
         9.84,
         9.72,
-        10.4
+        10.4,
+        10.5
       ],
-      "px_hist_d": "2026-08-19",
+      "px_hist_d": "2026-08-20",
       "dte": 65,
       "earn_trimmed": "2026-08-14",
       "partial": 67
@@ -834,9 +762,9 @@
       "avg_cost_px": 7.71,
       "shares": 0.015731971927901208,
       "entry_value": 0.12135415031590036,
-      "cur": 8.28,
-      "max_gain_pct": 7.392996108949412,
-      "days_in": 8,
+      "cur": 8.33,
+      "max_gain_pct": 8.041504539559007,
+      "days_in": 9,
       "current_stop": 7.170299999999999,
       "runner": false,
       "oneill_8w_active": false,
@@ -851,10 +779,11 @@
         7.5,
         7.63,
         7.62,
-        8.28
+        8.28,
+        8.33
       ],
-      "px_hist_d": "2026-08-19",
-      "dte": 54
+      "px_hist_d": "2026-08-20",
+      "dte": 53
     },
     {
       "ticker": "QNST",
@@ -863,9 +792,9 @@
       "avg_cost_px": 21.08,
       "shares": 0.005753961269645082,
       "entry_value": 0.12135415031590036,
-      "cur": 21.06,
+      "cur": 20.37,
       "max_gain_pct": 4.459203036053139,
-      "days_in": 8,
+      "days_in": 9,
       "current_stop": 19.6044,
       "runner": false,
       "oneill_8w_active": false,
@@ -880,9 +809,10 @@
         20.5,
         20.17,
         20.76,
-        21.06
+        21.06,
+        20.37
       ],
-      "px_hist_d": "2026-08-19",
+      "px_hist_d": "2026-08-20",
       "dte": 55
     },
     {
@@ -892,9 +822,9 @@
       "avg_cost_px": 27.55,
       "shares": 0.004402668005957107,
       "entry_value": 0.12135415031590036,
-      "cur": 26.7,
+      "cur": 26.27,
       "max_gain_pct": 0.0,
-      "days_in": 8,
+      "days_in": 9,
       "current_stop": 25.621499999999997,
       "runner": false,
       "oneill_8w_active": false,
@@ -909,10 +839,11 @@
         26.91,
         25.84,
         26.4,
-        26.7
+        26.7,
+        26.27
       ],
-      "px_hist_d": "2026-08-19",
-      "dte": 136
+      "px_hist_d": "2026-08-20",
+      "dte": 135
     },
     {
       "ticker": "TXG",
@@ -921,12 +852,12 @@
       "avg_cost_px": 52.03,
       "shares": 0.0023312224402098464,
       "entry_value": 0.12135415031590036,
-      "cur": 62.19,
-      "max_gain_pct": 19.527195848548917,
-      "days_in": 8,
+      "cur": 63.87,
+      "max_gain_pct": 22.75610224870266,
+      "days_in": 9,
       "current_stop": 52.03,
       "runner": false,
-      "oneill_8w_active": false,
+      "oneill_8w_active": true,
       "reentry": false,
       "px_hist": [
         58.57,
@@ -938,10 +869,12 @@
         56.09,
         57.99,
         55.63,
-        62.19
+        62.19,
+        63.87
       ],
-      "px_hist_d": "2026-08-19",
-      "dte": 55
+      "px_hist_d": "2026-08-20",
+      "dte": 55,
+      "oneill_trigger_date": "2026-08-20"
     },
     {
       "ticker": "SBLK",
@@ -950,9 +883,9 @@
       "avg_cost_px": 30.09,
       "shares": 0.0011658853449113978,
       "entry_value": 0.035099030773398154,
-      "cur": 30.17,
+      "cur": 30.06,
       "max_gain_pct": 0.2658690594881996,
-      "days_in": 1,
+      "days_in": 2,
       "current_stop": 27.9837,
       "runner": false,
       "oneill_8w_active": false,
@@ -960,10 +893,11 @@
       "px_hist": [
         30.09,
         30.13,
-        30.17
+        30.17,
+        30.06
       ],
-      "px_hist_d": "2026-08-19",
-      "dte": 65
+      "px_hist_d": "2026-08-20",
+      "dte": 64
     },
     {
       "ticker": "HTFL",
@@ -972,17 +906,19 @@
       "avg_cost_px": 45.53,
       "shares": 0.0004850508081486676,
       "entry_value": 0.022095405476656338,
-      "cur": 45.53,
-      "max_gain_pct": 0.0,
+      "cur": 46.8,
+      "max_gain_pct": 2.7893696463869855,
       "days_in": 0,
       "current_stop": 42.3429,
       "runner": false,
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
-        45.53
+        45.53,
+        46.8
       ],
-      "px_hist_d": "2026-08-19"
+      "px_hist_d": "2026-08-20",
+      "dte": 59
     },
     {
       "ticker": "FDMT",
@@ -991,7 +927,7 @@
       "avg_cost_px": 16.76,
       "shares": 0.001317682774165205,
       "entry_value": 0.022095405476656338,
-      "cur": 16.76,
+      "cur": 16.1,
       "max_gain_pct": 0.0,
       "days_in": 0,
       "current_stop": 15.5868,
@@ -999,28 +935,11 @@
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
-        16.76
+        16.76,
+        16.1
       ],
-      "px_hist_d": "2026-08-19"
-    },
-    {
-      "ticker": "MRNA",
-      "entry_date": "2026-08-19",
-      "entry_px": 174.38,
-      "avg_cost_px": 174.38,
-      "shares": 0.00012664504699511891,
-      "entry_value": 0.022095405476656338,
-      "cur": 174.38,
-      "max_gain_pct": 0.0,
-      "days_in": 0,
-      "current_stop": 162.1734,
-      "runner": false,
-      "oneill_8w_active": false,
-      "reentry": false,
-      "px_hist": [
-        174.38
-      ],
-      "px_hist_d": "2026-08-19"
+      "px_hist_d": "2026-08-20",
+      "dte": 58
     },
     {
       "ticker": "PSNL",
@@ -1029,17 +948,19 @@
       "avg_cost_px": 15.81,
       "shares": 0.0013968604234667196,
       "entry_value": 0.022095405476656338,
-      "cur": 15.81,
-      "max_gain_pct": 0.0,
+      "cur": 16.88,
+      "max_gain_pct": 6.767868437697655,
       "days_in": 0,
       "current_stop": 14.703299999999999,
       "runner": false,
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
-        15.81
+        15.81,
+        16.88
       ],
-      "px_hist_d": "2026-08-19"
+      "px_hist_d": "2026-08-20",
+      "dte": 53
     },
     {
       "ticker": "MTA",
@@ -1048,17 +969,19 @@
       "avg_cost_px": 10.89,
       "shares": 0.002027948879247827,
       "entry_value": 0.022095405476656338,
-      "cur": 10.89,
-      "max_gain_pct": 0.0,
+      "cur": 11.2,
+      "max_gain_pct": 2.846648301193744,
       "days_in": 0,
       "current_stop": 10.127699999999999,
       "runner": false,
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
-        10.89
+        10.89,
+        11.2
       ],
-      "px_hist_d": "2026-08-19"
+      "px_hist_d": "2026-08-20",
+      "dte": 60
     }
   ],
   "_closed": [
@@ -1116,9 +1039,27 @@
       "giveback_pct": 7.8,
       "exit_regime": "resumed",
       "mkt_driven": false
+    },
+    {
+      "ticker": "MRNA",
+      "entry": "2026-08-19",
+      "exit": "2026-08-20",
+      "days": 0,
+      "entry_px": 174.38,
+      "exit_px": 133.32,
+      "shares": 0.00012664504699511891,
+      "realized": -0.005219529970099779,
+      "cat": "손절",
+      "was_runner": false,
+      "runner_tier": null,
+      "max_gain_pct": 0.0,
+      "reentry": false,
+      "giveback_pct": 23.5,
+      "exit_regime": "resumed",
+      "mkt_driven": false
     }
   ],
-  "_cash": 0.05193846551733866,
+  "_cash": 0.06881434102389522,
   "_entries_recent": [
     "2026-08-04",
     "2026-08-04",

@@ -1,59 +1,101 @@
 {
-"_date": "2026-08-19",
+"_date": "2026-08-20",
 "_fired_names": [
-"Biotechnology",
-"Coking Coal",
-"Diagnostics & Research",
+"Agricultural Inputs",
+"Capital Markets",
+"Copper",
+"Financial Data & Stock Exchanges",
 "Gold",
-"Health Information Services",
-"Other Precious Metals & Mining",
-"Silver",
-"Solar"
+"Oil & Gas Drilling",
+"Oil & Gas E&P",
+"Paper & Paper Products"
 ],
-"Gold": {
+"Agricultural Inputs": {
 "consecutive_days": 1,
+"first_fired": "2026-08-20",
+"last_avg_pct": 2.71,
+"ever_fired": true
+},
+"Oil & Gas Drilling": {
+"consecutive_days": 1,
+"first_fired": "2026-08-20",
+"last_avg_pct": 2.4,
+"ever_fired": true
+},
+"Paper & Paper Products": {
+"consecutive_days": 1,
+"first_fired": "2026-08-20",
+"last_avg_pct": 2.3,
+"ever_fired": true
+},
+"Copper": {
+"consecutive_days": 1,
+"first_fired": "2026-08-20",
+"last_avg_pct": 1.94,
+"ever_fired": true
+},
+"Capital Markets": {
+"consecutive_days": 1,
+"first_fired": "2026-08-20",
+"last_avg_pct": 1.76,
+"ever_fired": true
+},
+"Financial Data & Stock Exchanges": {
+"consecutive_days": 1,
+"first_fired": "2026-08-20",
+"last_avg_pct": 1.7,
+"ever_fired": true
+},
+"Gold": {
+"consecutive_days": 2,
 "first_fired": "2026-08-19",
-"last_avg_pct": 9.68,
+"last_avg_pct": 1.68,
+"ever_fired": true
+},
+"Oil & Gas E&P": {
+"consecutive_days": 1,
+"first_fired": "2026-08-20",
+"last_avg_pct": 1.5,
 "ever_fired": true
 },
 "Silver": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-19",
 "last_avg_pct": 9.05,
 "ever_fired": true
 },
 "Other Precious Metals & Mining": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-19",
 "last_avg_pct": 8.16,
 "ever_fired": true
 },
 "Coking Coal": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-19",
 "last_avg_pct": 7.86,
 "ever_fired": true
 },
 "Diagnostics & Research": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-19",
 "last_avg_pct": 5.32,
 "ever_fired": true
 },
 "Solar": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-19",
 "last_avg_pct": 4.67,
 "ever_fired": true
 },
 "Biotechnology": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-19",
 "last_avg_pct": 4.29,
 "ever_fired": true
 },
 "Health Information Services": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-08-18",
 "last_avg_pct": 4.19,
 "ever_fired": true
@@ -106,22 +148,10 @@
 "last_avg_pct": 3.43,
 "ever_fired": true
 },
-"Copper": {
-"consecutive_days": 0,
-"first_fired": "2026-08-17",
-"last_avg_pct": 3.27,
-"ever_fired": true
-},
 "Marine Shipping": {
 "consecutive_days": 0,
 "first_fired": "2026-08-17",
 "last_avg_pct": 2.43,
-"ever_fired": true
-},
-"Oil & Gas Drilling": {
-"consecutive_days": 0,
-"first_fired": "2026-08-17",
-"last_avg_pct": 2.19,
 "ever_fired": true
 },
 "Aluminum": {
@@ -140,12 +170,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-17",
 "last_avg_pct": 1.62,
-"ever_fired": true
-},
-"Oil & Gas E&P": {
-"consecutive_days": 0,
-"first_fired": "2026-08-17",
-"last_avg_pct": 1.58,
 "ever_fired": true
 },
 "Thermal Coal": {
@@ -364,18 +388,6 @@
 "last_avg_pct": 8.19,
 "ever_fired": true
 },
-"Capital Markets": {
-"consecutive_days": 0,
-"first_fired": "2026-07-30",
-"last_avg_pct": 6.34,
-"ever_fired": true
-},
-"Paper & Paper Products": {
-"consecutive_days": 0,
-"first_fired": "2026-07-29",
-"last_avg_pct": 6.8,
-"ever_fired": true
-},
 "Education & Training Services": {
 "consecutive_days": 0,
 "first_fired": "2026-07-29",
@@ -578,12 +590,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-07",
 "last_avg_pct": 1.5,
-"ever_fired": true
-},
-"Financial Data & Stock Exchanges": {
-"consecutive_days": 0,
-"first_fired": "2026-07-07",
-"last_avg_pct": 1.44,
 "ever_fired": true
 },
 "Auto Manufacturers": {
