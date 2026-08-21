@@ -1,59 +1,101 @@
 {
-"_date": "2026-08-20",
+"_date": "2026-08-21",
 "_fired_names": [
-"Agricultural Inputs",
-"Capital Markets",
+"Coking Coal",
 "Copper",
-"Financial Data & Stock Exchanges",
-"Gold",
-"Oil & Gas Drilling",
-"Oil & Gas E&P",
-"Paper & Paper Products"
+"Farm & Heavy Construction Machinery",
+"Oil & Gas Refining & Marketing",
+"Other Industrial Metals & Mining",
+"Restaurants",
+"Shell Companies",
+"Uranium"
 ],
-"Agricultural Inputs": {
+"Uranium": {
 "consecutive_days": 1,
+"first_fired": "2026-08-21",
+"last_avg_pct": 9.78,
+"ever_fired": true
+},
+"Copper": {
+"consecutive_days": 2,
+"first_fired": "2026-08-20",
+"last_avg_pct": 7.49,
+"ever_fired": true
+},
+"Other Industrial Metals & Mining": {
+"consecutive_days": 1,
+"first_fired": "2026-08-21",
+"last_avg_pct": 7.2,
+"ever_fired": true
+},
+"Shell Companies": {
+"consecutive_days": 1,
+"first_fired": "2026-08-21",
+"last_avg_pct": 7.14,
+"ever_fired": true
+},
+"Coking Coal": {
+"consecutive_days": 1,
+"first_fired": "2026-08-21",
+"last_avg_pct": 5.82,
+"ever_fired": true
+},
+"Oil & Gas Refining & Marketing": {
+"consecutive_days": 1,
+"first_fired": "2026-08-21",
+"last_avg_pct": 3.44,
+"ever_fired": true
+},
+"Farm & Heavy Construction Machinery": {
+"consecutive_days": 1,
+"first_fired": "2026-08-21",
+"last_avg_pct": 3.07,
+"ever_fired": true
+},
+"Restaurants": {
+"consecutive_days": 1,
+"first_fired": "2026-08-21",
+"last_avg_pct": 2.73,
+"ever_fired": true
+},
+"Agricultural Inputs": {
+"consecutive_days": 0,
 "first_fired": "2026-08-20",
 "last_avg_pct": 2.71,
 "ever_fired": true
 },
 "Oil & Gas Drilling": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-20",
 "last_avg_pct": 2.4,
 "ever_fired": true
 },
 "Paper & Paper Products": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-20",
 "last_avg_pct": 2.3,
 "ever_fired": true
 },
-"Copper": {
-"consecutive_days": 1,
-"first_fired": "2026-08-20",
-"last_avg_pct": 1.94,
-"ever_fired": true
-},
 "Capital Markets": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-20",
 "last_avg_pct": 1.76,
 "ever_fired": true
 },
 "Financial Data & Stock Exchanges": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-20",
 "last_avg_pct": 1.7,
 "ever_fired": true
 },
 "Gold": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-08-19",
 "last_avg_pct": 1.68,
 "ever_fired": true
 },
 "Oil & Gas E&P": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-20",
 "last_avg_pct": 1.5,
 "ever_fired": true
@@ -68,12 +110,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-19",
 "last_avg_pct": 8.16,
-"ever_fired": true
-},
-"Coking Coal": {
-"consecutive_days": 0,
-"first_fired": "2026-08-19",
-"last_avg_pct": 7.86,
 "ever_fired": true
 },
 "Diagnostics & Research": {
@@ -184,12 +220,6 @@
 "last_avg_pct": 2.75,
 "ever_fired": true
 },
-"Other Industrial Metals & Mining": {
-"consecutive_days": 0,
-"first_fired": "2026-08-14",
-"last_avg_pct": 2.4,
-"ever_fired": true
-},
 "Electronic Components": {
 "consecutive_days": 0,
 "first_fired": "2026-08-14",
@@ -244,12 +274,6 @@
 "last_avg_pct": 3.8,
 "ever_fired": true
 },
-"Restaurants": {
-"consecutive_days": 0,
-"first_fired": "2026-08-12",
-"last_avg_pct": 3.21,
-"ever_fired": true
-},
 "Trucking": {
 "consecutive_days": 0,
 "first_fired": "2026-08-12",
@@ -284,12 +308,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-11",
 "last_avg_pct": 2.36,
-"ever_fired": true
-},
-"Oil & Gas Refining & Marketing": {
-"consecutive_days": 0,
-"first_fired": "2026-08-10",
-"last_avg_pct": 3.79,
 "ever_fired": true
 },
 "Medical Devices": {
@@ -362,12 +380,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-03",
 "last_avg_pct": 4.58,
-"ever_fired": true
-},
-"Uranium": {
-"consecutive_days": 0,
-"first_fired": "2026-08-03",
-"last_avg_pct": 4.27,
 "ever_fired": true
 },
 "Engineering & Construction": {
@@ -502,12 +514,6 @@
 "last_avg_pct": 1.28,
 "ever_fired": true
 },
-"Farm & Heavy Construction Machinery": {
-"consecutive_days": 0,
-"first_fired": "2026-07-22",
-"last_avg_pct": 2.55,
-"ever_fired": true
-},
 "Electronic Gaming & Multimedia": {
 "consecutive_days": 0,
 "first_fired": "2026-07-20",
@@ -626,12 +632,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-23",
 "last_avg_pct": 2.4,
-"ever_fired": true
-},
-"Shell Companies": {
-"consecutive_days": 0,
-"first_fired": "2026-06-19",
-"last_avg_pct": NaN,
 "ever_fired": true
 },
 "Specialty Industrial Machinery": {
