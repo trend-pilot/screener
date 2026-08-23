@@ -1,5 +1,5 @@
 {
-"_date": "2026-08-22",
+"_date": "2026-08-23",
 "_fired_names": [
 "Coking Coal",
 "Copper",
@@ -11,49 +11,49 @@
 "Uranium"
 ],
 "Uranium": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-08-21",
 "last_avg_pct": 9.78,
 "ever_fired": true
 },
 "Copper": {
-"consecutive_days": 3,
+"consecutive_days": 4,
 "first_fired": "2026-08-20",
 "last_avg_pct": 7.49,
 "ever_fired": true
 },
+"Shell Companies": {
+"consecutive_days": 3,
+"first_fired": "2026-08-21",
+"last_avg_pct": 7.29,
+"ever_fired": true
+},
 "Other Industrial Metals & Mining": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-08-21",
 "last_avg_pct": 7.2,
 "ever_fired": true
 },
-"Shell Companies": {
-"consecutive_days": 2,
-"first_fired": "2026-08-21",
-"last_avg_pct": 7.0,
-"ever_fired": true
-},
 "Coking Coal": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-08-21",
 "last_avg_pct": 5.82,
 "ever_fired": true
 },
 "Oil & Gas Refining & Marketing": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-08-21",
 "last_avg_pct": 3.44,
 "ever_fired": true
 },
 "Farm & Heavy Construction Machinery": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-08-21",
 "last_avg_pct": 3.07,
 "ever_fired": true
 },
 "Restaurants": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-08-21",
 "last_avg_pct": 2.73,
 "ever_fired": true
