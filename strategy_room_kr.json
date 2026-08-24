@@ -1,14 +1,14 @@
 {
- "data_date": "2026-08-21",
+ "data_date": "2026-08-24",
  "track": "stockeasy:momentum",
  "logic_version": "kr-v1.0 (base v6.15)",
  "cap": "무제한",
  "source_exit_action": "watch",
- "nav": 0.9881,
- "ret_pct": -1.19,
+ "nav": 0.9967,
+ "ret_pct": -0.33,
  "cash": 0.3335,
  "n_holdings": 8,
- "n_pending": 1,
+ "n_pending": 2,
  "runner_count": 0,
  "trades": {
   "n": 0,
@@ -21,105 +21,105 @@
    "ticker": "005830",
    "name": "DB손해보험",
    "entry": "2026-08-19",
-   "days": 2,
+   "days": 3,
    "entry_px": 183500.0,
-   "cur": 177800.0,
-   "ret_pct": -3.11,
+   "cur": 180500.0,
+   "ret_pct": -1.63,
    "stop": 170655.0,
    "max_gain_pct": 2.2,
    "runner": false,
-   "weight": 8.17
+   "weight": 8.22
   },
   {
    "ticker": "006260",
    "name": "LS",
    "entry": "2026-08-19",
-   "days": 2,
+   "days": 3,
    "entry_px": 328000.0,
    "cur": 333000.0,
    "ret_pct": 1.52,
    "stop": 305040.0,
    "max_gain_pct": 1.5,
    "runner": false,
-   "weight": 8.56
+   "weight": 8.49
   },
   {
    "ticker": "000720",
    "name": "현대건설",
    "entry": "2026-08-20",
-   "days": 1,
+   "days": 2,
    "entry_px": 115200.0,
    "cur": 105600.0,
    "ret_pct": -8.33,
    "stop": 107136.0,
    "max_gain_pct": 0.0,
    "runner": false,
-   "weight": 7.75
+   "weight": 7.69
   },
   {
    "ticker": "214450",
    "name": "파마리서치",
    "entry": "2026-08-21",
-   "days": 0,
+   "days": 1,
    "entry_px": 408500.0,
-   "cur": 400500.0,
-   "ret_pct": -1.96,
+   "cur": 416000.0,
+   "ret_pct": 1.84,
    "stop": 379905.0,
-   "max_gain_pct": 0.0,
+   "max_gain_pct": 1.8,
    "runner": false,
-   "weight": 8.25
+   "weight": 8.49
   },
   {
    "ticker": "035420",
    "name": "NAVER",
    "entry": "2026-08-21",
-   "days": 0,
+   "days": 1,
    "entry_px": 219000.0,
-   "cur": 222000.0,
-   "ret_pct": 1.37,
+   "cur": 223500.0,
+   "ret_pct": 2.05,
    "stop": 203670.0,
-   "max_gain_pct": 1.4,
+   "max_gain_pct": 2.1,
    "runner": false,
-   "weight": 8.53
+   "weight": 8.51
   },
   {
    "ticker": "064400",
    "name": "LG씨엔에스",
    "entry": "2026-08-21",
-   "days": 0,
+   "days": 1,
    "entry_px": 72400.0,
-   "cur": 71600.0,
-   "ret_pct": -1.1,
+   "cur": 72300.0,
+   "ret_pct": -0.14,
    "stop": 67332.0,
    "max_gain_pct": 0.0,
    "runner": false,
-   "weight": 8.32
+   "weight": 8.33
   },
   {
    "ticker": "307950",
    "name": "현대오토에버",
    "entry": "2026-08-21",
-   "days": 0,
+   "days": 1,
    "entry_px": 443500.0,
-   "cur": 448000.0,
-   "ret_pct": 1.01,
+   "cur": 457500.0,
+   "ret_pct": 3.16,
    "stop": 412455.0,
-   "max_gain_pct": 1.0,
+   "max_gain_pct": 3.2,
    "runner": false,
-   "weight": 8.5
+   "weight": 8.6
   },
   {
    "ticker": "007660",
    "name": "이수페타시스",
    "entry": "2026-08-21",
-   "days": 0,
+   "days": 1,
    "entry_px": 102100.0,
-   "cur": 99300.0,
-   "ret_pct": -2.74,
+   "cur": 100600.0,
+   "ret_pct": -1.47,
    "stop": 94953.0,
    "max_gain_pct": 0.0,
    "runner": false,
-   "weight": 8.18
+   "weight": 8.22
   }
  ],
  "pending": [
@@ -129,6 +129,14 @@
    "reason": "손절",
    "signal_date": "2026-08-21",
    "signal_px": 105600.0
+  },
+  {
+   "action": "buy",
+   "ticker": "008930",
+   "name": "한미사이언스",
+   "signal_date": "2026-08-24",
+   "signal_px": 56500.0,
+   "alloc": 0.08305544202427062
   }
  ],
  "closed": [],
@@ -152,9 +160,13 @@
   {
    "date": "2026-08-21",
    "nav": 0.988075
+  },
+  {
+   "date": "2026-08-24",
+   "nav": 0.996665
   }
  ],
- "generated_at": "2026-08-21T07:48:54",
+ "generated_at": "2026-08-24T08:05:13",
  "_cash": 0.33346714270665045,
  "_holdings": [
   {
@@ -166,9 +178,9 @@
    "gap_pct": 0.88,
    "shares": 4.5413260672116256e-07,
    "entry_value": 0.08343333333333333,
-   "cur": 177800.0,
+   "cur": 180500.0,
    "max_gain_pct": 2.1798365122615904,
-   "days_in": 2,
+   "days_in": 3,
    "current_stop": 170655.0,
    "runner": false,
    "oneill_8w_active": false
@@ -184,7 +196,7 @@
    "entry_value": 0.08343333333333333,
    "cur": 333000.0,
    "max_gain_pct": 1.5243902439024293,
-   "days_in": 2,
+   "days_in": 3,
    "current_stop": 305040.0,
    "runner": false,
    "oneill_8w_active": false
@@ -200,7 +212,7 @@
    "entry_value": 0.08367419332140774,
    "cur": 105600.0,
    "max_gain_pct": 0.0,
-   "days_in": 1,
+   "days_in": 2,
    "current_stop": 107136.0,
    "runner": false,
    "oneill_8w_active": false
@@ -214,9 +226,9 @@
    "gap_pct": -0.85,
    "shares": 2.0342394380367792e-07,
    "entry_value": 0.08319839946105499,
-   "cur": 400500.0,
-   "max_gain_pct": 0.0,
-   "days_in": 0,
+   "cur": 416000.0,
+   "max_gain_pct": 1.8359853121175052,
+   "days_in": 1,
    "current_stop": 379905.0,
    "runner": false,
    "oneill_8w_active": false
@@ -230,9 +242,9 @@
    "gap_pct": -0.23,
    "shares": 3.794460321634814e-07,
    "entry_value": 0.08319839946105499,
-   "cur": 222000.0,
-   "max_gain_pct": 1.3698630136986356,
-   "days_in": 0,
+   "cur": 223500.0,
+   "max_gain_pct": 2.0547945205479534,
+   "days_in": 1,
    "current_stop": 203670.0,
    "runner": false,
    "oneill_8w_active": false
@@ -246,9 +258,9 @@
    "gap_pct": -2.03,
    "shares": 1.1477718376215806e-06,
    "entry_value": 0.08319839946105499,
-   "cur": 71600.0,
+   "cur": 72300.0,
    "max_gain_pct": 0.0,
-   "days_in": 0,
+   "days_in": 1,
    "current_stop": 67332.0,
    "runner": false,
    "oneill_8w_active": false
@@ -262,9 +274,9 @@
    "gap_pct": -3.48,
    "shares": 1.8737019401082847e-07,
    "entry_value": 0.08319839946105499,
-   "cur": 448000.0,
-   "max_gain_pct": 1.014656144306647,
-   "days_in": 0,
+   "cur": 457500.0,
+   "max_gain_pct": 3.1567080045095786,
+   "days_in": 1,
    "current_stop": 412455.0,
    "runner": false,
    "oneill_8w_active": false
@@ -278,9 +290,9 @@
    "gap_pct": -2.67,
    "shares": 8.138950151204939e-07,
    "entry_value": 0.08319839946105499,
-   "cur": 99300.0,
+   "cur": 100600.0,
    "max_gain_pct": 0.0,
-   "days_in": 0,
+   "days_in": 1,
    "current_stop": 94953.0,
    "runner": false,
    "oneill_8w_active": false
@@ -294,6 +306,14 @@
    "reason": "손절",
    "signal_date": "2026-08-21",
    "signal_px": 105600.0
+  },
+  {
+   "action": "buy",
+   "ticker": "008930",
+   "name": "한미사이언스",
+   "signal_date": "2026-08-24",
+   "signal_px": 56500.0,
+   "alloc": 0.08305544202427062
   }
  ]
 }
