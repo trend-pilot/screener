@@ -1,59 +1,107 @@
 {
-"_date": "2026-08-23",
+"_date": "2026-08-24",
 "_fired_names": [
-"Coking Coal",
-"Copper",
-"Farm & Heavy Construction Machinery",
-"Oil & Gas Refining & Marketing",
-"Other Industrial Metals & Mining",
-"Restaurants",
-"Shell Companies",
-"Uranium"
+"Beverages - Non-Alcoholic",
+"Discount Stores",
+"Grocery Stores",
+"Household & Personal Products",
+"Insurance - Life",
+"REIT - Office",
+"Tobacco",
+"Utilities - Regulated Water"
 ],
+"Utilities - Regulated Water": {
+"consecutive_days": 1,
+"first_fired": "2026-08-24",
+"last_avg_pct": 2.17,
+"ever_fired": true
+},
+"Grocery Stores": {
+"consecutive_days": 1,
+"first_fired": "2026-08-24",
+"last_avg_pct": 2.08,
+"ever_fired": true
+},
+"Discount Stores": {
+"consecutive_days": 1,
+"first_fired": "2026-08-24",
+"last_avg_pct": 1.94,
+"ever_fired": true
+},
+"Insurance - Life": {
+"consecutive_days": 1,
+"first_fired": "2026-08-24",
+"last_avg_pct": 1.77,
+"ever_fired": true
+},
+"Beverages - Non-Alcoholic": {
+"consecutive_days": 1,
+"first_fired": "2026-08-24",
+"last_avg_pct": 1.71,
+"ever_fired": true
+},
+"Tobacco": {
+"consecutive_days": 1,
+"first_fired": "2026-08-24",
+"last_avg_pct": 1.54,
+"ever_fired": true
+},
+"Household & Personal Products": {
+"consecutive_days": 1,
+"first_fired": "2026-08-24",
+"last_avg_pct": 1.49,
+"ever_fired": true
+},
+"REIT - Office": {
+"consecutive_days": 1,
+"first_fired": "2026-08-24",
+"last_avg_pct": 1.46,
+"ever_fired": true
+},
 "Uranium": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-21",
 "last_avg_pct": 9.78,
 "ever_fired": true
 },
 "Copper": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-08-20",
 "last_avg_pct": 7.49,
 "ever_fired": true
 },
 "Shell Companies": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-21",
 "last_avg_pct": 7.29,
 "ever_fired": true
 },
 "Other Industrial Metals & Mining": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-21",
 "last_avg_pct": 7.2,
 "ever_fired": true
 },
 "Coking Coal": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-21",
 "last_avg_pct": 5.82,
 "ever_fired": true
 },
 "Oil & Gas Refining & Marketing": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-21",
 "last_avg_pct": 3.44,
 "ever_fired": true
 },
 "Farm & Heavy Construction Machinery": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-21",
 "last_avg_pct": 3.07,
 "ever_fired": true
 },
 "Restaurants": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-21",
 "last_avg_pct": 2.73,
 "ever_fired": true
@@ -164,12 +212,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-18",
 "last_avg_pct": 1.41,
-"ever_fired": true
-},
-"Tobacco": {
-"consecutive_days": 0,
-"first_fired": "2026-08-18",
-"last_avg_pct": 1.28,
 "ever_fired": true
 },
 "REIT - Hotel & Motel": {
@@ -412,12 +454,6 @@
 "last_avg_pct": 2.07,
 "ever_fired": true
 },
-"Grocery Stores": {
-"consecutive_days": 0,
-"first_fired": "2026-07-29",
-"last_avg_pct": 1.9,
-"ever_fired": true
-},
 "Beverages - Wineries & Distilleries": {
 "consecutive_days": 0,
 "first_fired": "2026-07-28",
@@ -568,18 +604,6 @@
 "last_avg_pct": 2.43,
 "ever_fired": true
 },
-"Discount Stores": {
-"consecutive_days": 0,
-"first_fired": "2026-07-10",
-"last_avg_pct": 2.28,
-"ever_fired": true
-},
-"Utilities - Regulated Water": {
-"consecutive_days": 0,
-"first_fired": "2026-07-10",
-"last_avg_pct": 1.94,
-"ever_fired": true
-},
 "Electronics & Computer Distribution": {
 "consecutive_days": 0,
 "first_fired": "2026-07-09",
@@ -620,12 +644,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-06-24",
 "last_avg_pct": 5.23,
-"ever_fired": true
-},
-"Household & Personal Products": {
-"consecutive_days": 0,
-"first_fired": "2026-06-24",
-"last_avg_pct": 4.47,
 "ever_fired": true
 },
 "REIT - Industrial": {
