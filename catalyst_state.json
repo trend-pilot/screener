@@ -1,85 +1,115 @@
 {
-"_date": "2026-08-24",
+"_date": "2026-08-25",
 "_fired_names": [
-"Beverages - Non-Alcoholic",
-"Discount Stores",
-"Grocery Stores",
-"Household & Personal Products",
-"Insurance - Life",
-"REIT - Office",
-"Tobacco",
-"Utilities - Regulated Water"
+"Biotechnology",
+"Capital Markets",
+"Computer Hardware",
+"Copper",
+"Other Industrial Metals & Mining",
+"Silver",
+"Uranium",
+"Utilities - Independent Power Producers"
 ],
-"Utilities - Regulated Water": {
+"Uranium": {
 "consecutive_days": 1,
+"first_fired": "2026-08-25",
+"last_avg_pct": 5.58,
+"ever_fired": true
+},
+"Other Industrial Metals & Mining": {
+"consecutive_days": 1,
+"first_fired": "2026-08-25",
+"last_avg_pct": 3.41,
+"ever_fired": true
+},
+"Copper": {
+"consecutive_days": 1,
+"first_fired": "2026-08-25",
+"last_avg_pct": 3.37,
+"ever_fired": true
+},
+"Computer Hardware": {
+"consecutive_days": 1,
+"first_fired": "2026-08-25",
+"last_avg_pct": 3.24,
+"ever_fired": true
+},
+"Utilities - Independent Power Producers": {
+"consecutive_days": 1,
+"first_fired": "2026-08-25",
+"last_avg_pct": 2.88,
+"ever_fired": true
+},
+"Biotechnology": {
+"consecutive_days": 1,
+"first_fired": "2026-08-25",
+"last_avg_pct": 2.79,
+"ever_fired": true
+},
+"Capital Markets": {
+"consecutive_days": 1,
+"first_fired": "2026-08-25",
+"last_avg_pct": 2.69,
+"ever_fired": true
+},
+"Silver": {
+"consecutive_days": 1,
+"first_fired": "2026-08-25",
+"last_avg_pct": 2.65,
+"ever_fired": true
+},
+"Utilities - Regulated Water": {
+"consecutive_days": 0,
 "first_fired": "2026-08-24",
 "last_avg_pct": 2.17,
 "ever_fired": true
 },
 "Grocery Stores": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-24",
 "last_avg_pct": 2.08,
 "ever_fired": true
 },
 "Discount Stores": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-24",
 "last_avg_pct": 1.94,
 "ever_fired": true
 },
 "Insurance - Life": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-24",
 "last_avg_pct": 1.77,
 "ever_fired": true
 },
 "Beverages - Non-Alcoholic": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-24",
 "last_avg_pct": 1.71,
 "ever_fired": true
 },
 "Tobacco": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-24",
 "last_avg_pct": 1.54,
 "ever_fired": true
 },
 "Household & Personal Products": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-24",
 "last_avg_pct": 1.49,
 "ever_fired": true
 },
 "REIT - Office": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-24",
 "last_avg_pct": 1.46,
-"ever_fired": true
-},
-"Uranium": {
-"consecutive_days": 0,
-"first_fired": "2026-08-21",
-"last_avg_pct": 9.78,
-"ever_fired": true
-},
-"Copper": {
-"consecutive_days": 0,
-"first_fired": "2026-08-20",
-"last_avg_pct": 7.49,
 "ever_fired": true
 },
 "Shell Companies": {
 "consecutive_days": 0,
 "first_fired": "2026-08-21",
 "last_avg_pct": 7.29,
-"ever_fired": true
-},
-"Other Industrial Metals & Mining": {
-"consecutive_days": 0,
-"first_fired": "2026-08-21",
-"last_avg_pct": 7.2,
 "ever_fired": true
 },
 "Coking Coal": {
@@ -124,12 +154,6 @@
 "last_avg_pct": 2.3,
 "ever_fired": true
 },
-"Capital Markets": {
-"consecutive_days": 0,
-"first_fired": "2026-08-20",
-"last_avg_pct": 1.76,
-"ever_fired": true
-},
 "Financial Data & Stock Exchanges": {
 "consecutive_days": 0,
 "first_fired": "2026-08-20",
@@ -148,12 +172,6 @@
 "last_avg_pct": 1.5,
 "ever_fired": true
 },
-"Silver": {
-"consecutive_days": 0,
-"first_fired": "2026-08-19",
-"last_avg_pct": 9.05,
-"ever_fired": true
-},
 "Other Precious Metals & Mining": {
 "consecutive_days": 0,
 "first_fired": "2026-08-19",
@@ -170,12 +188,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-19",
 "last_avg_pct": 4.67,
-"ever_fired": true
-},
-"Biotechnology": {
-"consecutive_days": 0,
-"first_fired": "2026-08-19",
-"last_avg_pct": 4.29,
 "ever_fired": true
 },
 "Health Information Services": {
@@ -290,12 +302,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-13",
 "last_avg_pct": 3.48,
-"ever_fired": true
-},
-"Computer Hardware": {
-"consecutive_days": 0,
-"first_fired": "2026-08-12",
-"last_avg_pct": 3.13,
 "ever_fired": true
 },
 "Mortgage Finance": {
@@ -596,12 +602,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-15",
 "last_avg_pct": 2.7,
-"ever_fired": true
-},
-"Utilities - Independent Power Producers": {
-"consecutive_days": 0,
-"first_fired": "2026-07-13",
-"last_avg_pct": 2.43,
 "ever_fired": true
 },
 "Electronics & Computer Distribution": {
