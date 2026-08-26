@@ -1,14 +1,14 @@
 {
- "data_date": "2026-08-25",
+ "data_date": "2026-08-26",
  "track": "stockeasy:momentum",
  "logic_version": "kr-v1.0 (base v6.15)",
  "cap": 12,
  "source_exit_action": "watch",
- "nav": 0.9941,
- "ret_pct": -0.59,
- "cash": 0.3291,
- "n_holdings": 8,
- "n_pending": 5,
+ "nav": 1.0038,
+ "ret_pct": 0.38,
+ "cash": 0.0,
+ "n_holdings": 12,
+ "n_pending": 1,
  "runner_count": 0,
  "trades": {
   "n": 1,
@@ -21,105 +21,157 @@
    "ticker": "005830",
    "name": "DB손해보험",
    "entry": "2026-08-19",
-   "days": 4,
+   "days": 5,
    "entry_px": 183500.0,
-   "cur": 182500.0,
-   "ret_pct": -0.54,
+   "cur": 186700.0,
+   "ret_pct": 1.74,
    "stop": 170655.0,
    "max_gain_pct": 2.2,
    "runner": false,
-   "weight": 8.34
+   "weight": 8.45
   },
   {
    "ticker": "006260",
    "name": "LS",
    "entry": "2026-08-19",
-   "days": 4,
+   "days": 5,
    "entry_px": 328000.0,
    "cur": 333000.0,
    "ret_pct": 1.52,
    "stop": 305040.0,
    "max_gain_pct": 1.5,
    "runner": false,
-   "weight": 8.51
+   "weight": 8.43
   },
   {
    "ticker": "214450",
    "name": "파마리서치",
    "entry": "2026-08-21",
-   "days": 2,
+   "days": 3,
    "entry_px": 408500.0,
-   "cur": 414500.0,
-   "ret_pct": 1.47,
+   "cur": 442000.0,
+   "ret_pct": 8.2,
    "stop": 379905.0,
-   "max_gain_pct": 1.8,
+   "max_gain_pct": 8.2,
    "runner": false,
-   "weight": 8.48
+   "weight": 8.96
   },
   {
    "ticker": "035420",
    "name": "NAVER",
    "entry": "2026-08-21",
-   "days": 2,
+   "days": 3,
    "entry_px": 219000.0,
-   "cur": 220500.0,
-   "ret_pct": 0.68,
+   "cur": 220000.0,
+   "ret_pct": 0.46,
    "stop": 203670.0,
    "max_gain_pct": 2.1,
    "runner": false,
-   "weight": 8.42
+   "weight": 8.32
   },
   {
    "ticker": "064400",
    "name": "LG씨엔에스",
    "entry": "2026-08-21",
-   "days": 2,
+   "days": 3,
    "entry_px": 72400.0,
-   "cur": 73000.0,
-   "ret_pct": 0.83,
+   "cur": 74100.0,
+   "ret_pct": 2.35,
    "stop": 67332.0,
-   "max_gain_pct": 0.8,
+   "max_gain_pct": 2.3,
    "runner": false,
-   "weight": 8.43
+   "weight": 8.47
   },
   {
    "ticker": "307950",
    "name": "현대오토에버",
    "entry": "2026-08-21",
-   "days": 2,
+   "days": 3,
    "entry_px": 443500.0,
-   "cur": 456000.0,
-   "ret_pct": 2.82,
+   "cur": 414500.0,
+   "ret_pct": -6.54,
    "stop": 412455.0,
    "max_gain_pct": 3.2,
    "runner": false,
-   "weight": 8.59
+   "weight": 7.74
   },
   {
    "ticker": "007660",
    "name": "이수페타시스",
    "entry": "2026-08-21",
-   "days": 2,
+   "days": 3,
    "entry_px": 102100.0,
-   "cur": 106900.0,
-   "ret_pct": 4.7,
+   "cur": 110800.0,
+   "ret_pct": 8.52,
    "stop": 94953.0,
-   "max_gain_pct": 4.7,
+   "max_gain_pct": 8.5,
    "runner": false,
-   "weight": 8.75
+   "weight": 8.98
   },
   {
    "ticker": "008930",
    "name": "한미사이언스",
    "entry": "2026-08-25",
-   "days": 0,
+   "days": 1,
    "entry_px": 52500.0,
    "cur": 46300.0,
    "ret_pct": -11.81,
    "stop": 48825.0,
    "max_gain_pct": 0.0,
    "runner": false,
-   "weight": 7.37
+   "weight": 7.3
+  },
+  {
+   "ticker": "000720",
+   "name": "현대건설",
+   "entry": "2026-08-26",
+   "days": 0,
+   "entry_px": 126900.0,
+   "cur": 130400.0,
+   "ret_pct": 2.76,
+   "stop": 118017.0,
+   "max_gain_pct": 2.8,
+   "runner": false,
+   "weight": 8.41
+  },
+  {
+   "ticker": "047040",
+   "name": "대우건설",
+   "entry": "2026-08-26",
+   "days": 0,
+   "entry_px": 18250.0,
+   "cur": 19100.0,
+   "ret_pct": 4.66,
+   "stop": 16972.5,
+   "max_gain_pct": 4.7,
+   "runner": false,
+   "weight": 8.57
+  },
+  {
+   "ticker": "180640",
+   "name": "한진칼",
+   "entry": "2026-08-26",
+   "days": 0,
+   "entry_px": 125000.0,
+   "cur": 128800.0,
+   "ret_pct": 3.04,
+   "stop": 116250.0,
+   "max_gain_pct": 3.0,
+   "runner": false,
+   "weight": 8.44
+  },
+  {
+   "ticker": "036930",
+   "name": "주성엔지니어링",
+   "entry": "2026-08-26",
+   "days": 0,
+   "entry_px": 178700.0,
+   "cur": 173400.0,
+   "ret_pct": -2.97,
+   "stop": 166191.0,
+   "max_gain_pct": 0.0,
+   "runner": false,
+   "weight": 7.94
   }
  ],
  "pending": [
@@ -129,38 +181,6 @@
    "reason": "손절",
    "signal_date": "2026-08-25",
    "signal_px": 46300.0
-  },
-  {
-   "action": "buy",
-   "ticker": "000720",
-   "name": "현대건설",
-   "signal_date": "2026-08-25",
-   "signal_px": 121100.0,
-   "alloc": 0.08218843063171279
-  },
-  {
-   "action": "buy",
-   "ticker": "047040",
-   "name": "대우건설",
-   "signal_date": "2026-08-25",
-   "signal_px": 17590.0,
-   "alloc": 0.08218843063171279
-  },
-  {
-   "action": "buy",
-   "ticker": "180640",
-   "name": "한진칼",
-   "signal_date": "2026-08-25",
-   "signal_px": 121700.0,
-   "alloc": 0.08218843063171279
-  },
-  {
-   "action": "buy",
-   "ticker": "036930",
-   "name": "주성엔지니어링",
-   "signal_date": "2026-08-25",
-   "signal_px": 178000.0,
-   "alloc": 0.08218843063171279
   }
  ],
  "closed": [
@@ -210,10 +230,14 @@
   {
    "date": "2026-08-25",
    "nav": 0.994099
+  },
+  {
+   "date": "2026-08-26",
+   "nav": 1.003833
   }
  ],
- "generated_at": "2026-08-25T07:55:00",
- "_cash": 0.3291482269938834,
+ "generated_at": "2026-08-26T07:55:45",
+ "_cash": 0.0,
  "_holdings": [
   {
    "ticker": "005830",
@@ -224,9 +248,9 @@
    "gap_pct": 0.88,
    "shares": 4.5413260672116256e-07,
    "entry_value": 0.08343333333333333,
-   "cur": 182500.0,
+   "cur": 186700.0,
    "max_gain_pct": 2.1798365122615904,
-   "days_in": 4,
+   "days_in": 5,
    "current_stop": 170655.0,
    "runner": false,
    "oneill_8w_active": false
@@ -242,7 +266,7 @@
    "entry_value": 0.08343333333333333,
    "cur": 333000.0,
    "max_gain_pct": 1.5243902439024293,
-   "days_in": 4,
+   "days_in": 5,
    "current_stop": 305040.0,
    "runner": false,
    "oneill_8w_active": false
@@ -256,9 +280,9 @@
    "gap_pct": -0.85,
    "shares": 2.0342394380367792e-07,
    "entry_value": 0.08319839946105499,
-   "cur": 414500.0,
-   "max_gain_pct": 1.8359853121175052,
-   "days_in": 2,
+   "cur": 442000.0,
+   "max_gain_pct": 8.200734394124854,
+   "days_in": 3,
    "current_stop": 379905.0,
    "runner": false,
    "oneill_8w_active": false
@@ -272,9 +296,9 @@
    "gap_pct": -0.23,
    "shares": 3.794460321634814e-07,
    "entry_value": 0.08319839946105499,
-   "cur": 220500.0,
+   "cur": 220000.0,
    "max_gain_pct": 2.0547945205479534,
-   "days_in": 2,
+   "days_in": 3,
    "current_stop": 203670.0,
    "runner": false,
    "oneill_8w_active": false
@@ -288,9 +312,9 @@
    "gap_pct": -2.03,
    "shares": 1.1477718376215806e-06,
    "entry_value": 0.08319839946105499,
-   "cur": 73000.0,
-   "max_gain_pct": 0.8287292817679592,
-   "days_in": 2,
+   "cur": 74100.0,
+   "max_gain_pct": 2.3480662983425438,
+   "days_in": 3,
    "current_stop": 67332.0,
    "runner": false,
    "oneill_8w_active": false
@@ -304,9 +328,9 @@
    "gap_pct": -3.48,
    "shares": 1.8737019401082847e-07,
    "entry_value": 0.08319839946105499,
-   "cur": 456000.0,
+   "cur": 414500.0,
    "max_gain_pct": 3.1567080045095786,
-   "days_in": 2,
+   "days_in": 3,
    "current_stop": 412455.0,
    "runner": false,
    "oneill_8w_active": false
@@ -320,9 +344,9 @@
    "gap_pct": -2.67,
    "shares": 8.138950151204939e-07,
    "entry_value": 0.08319839946105499,
-   "cur": 106900.0,
-   "max_gain_pct": 4.701273261508332,
-   "days_in": 2,
+   "cur": 110800.0,
+   "max_gain_pct": 8.521057786483844,
+   "days_in": 3,
    "current_stop": 94953.0,
    "runner": false,
    "oneill_8w_active": false
@@ -338,8 +362,72 @@
    "entry_value": 0.08315510855469975,
    "cur": 46300.0,
    "max_gain_pct": 0.0,
-   "days_in": 0,
+   "days_in": 1,
    "current_stop": 48825.0,
+   "runner": false,
+   "oneill_8w_active": false
+  },
+  {
+   "ticker": "000720",
+   "name": "현대건설",
+   "entry_date": "2026-08-26",
+   "entry_px": 126900.0,
+   "signal_px": 121100.0,
+   "gap_pct": 4.79,
+   "shares": 6.476629679409991e-07,
+   "entry_value": 0.08228705674847085,
+   "cur": 130400.0,
+   "max_gain_pct": 2.7580772261623254,
+   "days_in": 0,
+   "current_stop": 118016.99999999999,
+   "runner": false,
+   "oneill_8w_active": false
+  },
+  {
+   "ticker": "047040",
+   "name": "대우건설",
+   "entry_date": "2026-08-26",
+   "entry_px": 18250.0,
+   "signal_px": 17590.0,
+   "gap_pct": 3.75,
+   "shares": 4.503475651052756e-06,
+   "entry_value": 0.08228705674847085,
+   "cur": 19100.0,
+   "max_gain_pct": 4.657534246575334,
+   "days_in": 0,
+   "current_stop": 16972.5,
+   "runner": false,
+   "oneill_8w_active": false
+  },
+  {
+   "ticker": "180640",
+   "name": "한진칼",
+   "entry_date": "2026-08-26",
+   "entry_px": 125000.0,
+   "signal_px": 121700.0,
+   "gap_pct": 2.71,
+   "shares": 6.575074450537023e-07,
+   "entry_value": 0.08228705674847085,
+   "cur": 128800.0,
+   "max_gain_pct": 3.0399999999999983,
+   "days_in": 0,
+   "current_stop": 116249.99999999999,
+   "runner": false,
+   "oneill_8w_active": false
+  },
+  {
+   "ticker": "036930",
+   "name": "주성엔지니어링",
+   "entry_date": "2026-08-26",
+   "entry_px": 178700.0,
+   "signal_px": 178000.0,
+   "gap_pct": 0.39,
+   "shares": 4.599240662099203e-07,
+   "entry_value": 0.08228705674847082,
+   "cur": 173400.0,
+   "max_gain_pct": 0.0,
+   "days_in": 0,
+   "current_stop": 166191.0,
    "runner": false,
    "oneill_8w_active": false
   }
@@ -370,38 +458,6 @@
    "reason": "손절",
    "signal_date": "2026-08-25",
    "signal_px": 46300.0
-  },
-  {
-   "action": "buy",
-   "ticker": "000720",
-   "name": "현대건설",
-   "signal_date": "2026-08-25",
-   "signal_px": 121100.0,
-   "alloc": 0.08218843063171279
-  },
-  {
-   "action": "buy",
-   "ticker": "047040",
-   "name": "대우건설",
-   "signal_date": "2026-08-25",
-   "signal_px": 17590.0,
-   "alloc": 0.08218843063171279
-  },
-  {
-   "action": "buy",
-   "ticker": "180640",
-   "name": "한진칼",
-   "signal_date": "2026-08-25",
-   "signal_px": 121700.0,
-   "alloc": 0.08218843063171279
-  },
-  {
-   "action": "buy",
-   "ticker": "036930",
-   "name": "주성엔지니어링",
-   "signal_date": "2026-08-25",
-   "signal_px": 178000.0,
-   "alloc": 0.08218843063171279
   }
  ]
 }
