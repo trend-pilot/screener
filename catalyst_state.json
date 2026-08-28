@@ -1,61 +1,103 @@
 {
-"_date": "2026-08-27",
+"_date": "2026-08-28",
 "_fired_names": [
-"Apparel Retail",
-"Electronic Components",
+"Coking Coal",
 "Electronics & Computer Distribution",
-"Oil & Gas Refining & Marketing",
-"Tobacco",
-"Tools & Accessories",
-"Trucking",
-"Waste Management"
+"Oil & Gas Drilling",
+"Oil & Gas Equipment & Services",
+"Silver",
+"Software - Application",
+"Software - Infrastructure",
+"Thermal Coal"
 ],
-"Apparel Retail": {
+"Coking Coal": {
 "consecutive_days": 1,
+"first_fired": "2026-08-28",
+"last_avg_pct": 5.32,
+"ever_fired": true
+},
+"Software - Infrastructure": {
+"consecutive_days": 1,
+"first_fired": "2026-08-28",
+"last_avg_pct": 4.0,
+"ever_fired": true
+},
+"Software - Application": {
+"consecutive_days": 1,
+"first_fired": "2026-08-28",
+"last_avg_pct": 3.82,
+"ever_fired": true
+},
+"Silver": {
+"consecutive_days": 1,
+"first_fired": "2026-08-28",
+"last_avg_pct": 3.55,
+"ever_fired": true
+},
+"Oil & Gas Drilling": {
+"consecutive_days": 1,
+"first_fired": "2026-08-28",
+"last_avg_pct": 3.49,
+"ever_fired": true
+},
+"Oil & Gas Equipment & Services": {
+"consecutive_days": 1,
+"first_fired": "2026-08-28",
+"last_avg_pct": 3.25,
+"ever_fired": true
+},
+"Thermal Coal": {
+"consecutive_days": 1,
+"first_fired": "2026-08-28",
+"last_avg_pct": 2.68,
+"ever_fired": true
+},
+"Electronics & Computer Distribution": {
+"consecutive_days": 2,
+"first_fired": "2026-08-27",
+"last_avg_pct": 2.43,
+"ever_fired": true
+},
+"Apparel Retail": {
+"consecutive_days": 0,
 "first_fired": "2026-08-27",
 "last_avg_pct": 3.48,
 "ever_fired": true
 },
 "Oil & Gas Refining & Marketing": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-27",
 "last_avg_pct": 2.35,
 "ever_fired": true
 },
 "Waste Management": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-27",
 "last_avg_pct": 1.84,
 "ever_fired": true
 },
 "Tools & Accessories": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-27",
 "last_avg_pct": 1.83,
 "ever_fired": true
 },
 "Electronic Components": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-27",
 "last_avg_pct": 1.8,
 "ever_fired": true
 },
 "Tobacco": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-27",
 "last_avg_pct": 1.52,
 "ever_fired": true
 },
 "Trucking": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-27",
 "last_avg_pct": 1.31,
-"ever_fired": true
-},
-"Electronics & Computer Distribution": {
-"consecutive_days": 1,
-"first_fired": "2026-08-27",
-"last_avg_pct": 1.3,
 "ever_fired": true
 },
 "Uranium": {
@@ -98,12 +140,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-25",
 "last_avg_pct": 2.69,
-"ever_fired": true
-},
-"Silver": {
-"consecutive_days": 0,
-"first_fired": "2026-08-25",
-"last_avg_pct": 2.65,
 "ever_fired": true
 },
 "Utilities - Regulated Water": {
@@ -154,12 +190,6 @@
 "last_avg_pct": 7.29,
 "ever_fired": true
 },
-"Coking Coal": {
-"consecutive_days": 0,
-"first_fired": "2026-08-21",
-"last_avg_pct": 5.82,
-"ever_fired": true
-},
 "Farm & Heavy Construction Machinery": {
 "consecutive_days": 0,
 "first_fired": "2026-08-21",
@@ -176,12 +206,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-20",
 "last_avg_pct": 2.71,
-"ever_fired": true
-},
-"Oil & Gas Drilling": {
-"consecutive_days": 0,
-"first_fired": "2026-08-20",
-"last_avg_pct": 2.4,
 "ever_fired": true
 },
 "Paper & Paper Products": {
@@ -298,18 +322,6 @@
 "last_avg_pct": 1.62,
 "ever_fired": true
 },
-"Thermal Coal": {
-"consecutive_days": 0,
-"first_fired": "2026-08-14",
-"last_avg_pct": 2.82,
-"ever_fired": true
-},
-"Oil & Gas Equipment & Services": {
-"consecutive_days": 0,
-"first_fired": "2026-08-14",
-"last_avg_pct": 2.75,
-"ever_fired": true
-},
 "Healthcare Plans": {
 "consecutive_days": 0,
 "first_fired": "2026-08-14",
@@ -320,18 +332,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-13",
 "last_avg_pct": 4.33,
-"ever_fired": true
-},
-"Software - Application": {
-"consecutive_days": 0,
-"first_fired": "2026-08-13",
-"last_avg_pct": 4.23,
-"ever_fired": true
-},
-"Software - Infrastructure": {
-"consecutive_days": 0,
-"first_fired": "2026-08-13",
-"last_avg_pct": 3.48,
 "ever_fired": true
 },
 "Mortgage Finance": {
