@@ -1,59 +1,65 @@
 {
-"_date": "2026-08-29",
+"_date": "2026-08-30",
 "_fired_names": [
-"Apparel Retail",
 "Beverages - Wineries & Distilleries",
 "Broadcasting",
 "Consumer Electronics",
 "Gambling",
 "Grocery Stores",
 "Oil & Gas Refining & Marketing",
+"Restaurants",
 "Waste Management"
 ],
 "Gambling": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-08-29",
 "last_avg_pct": 2.46,
 "ever_fired": true
 },
 "Beverages - Wineries & Distilleries": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-08-29",
 "last_avg_pct": 2.23,
 "ever_fired": true
 },
 "Broadcasting": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-08-29",
 "last_avg_pct": 2.12,
 "ever_fired": true
 },
 "Consumer Electronics": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-08-29",
 "last_avg_pct": 2.03,
 "ever_fired": true
 },
-"Oil & Gas Refining & Marketing": {
-"consecutive_days": 1,
+"Grocery Stores": {
+"consecutive_days": 2,
 "first_fired": "2026-08-29",
-"last_avg_pct": 1.6,
+"last_avg_pct": 1.4,
+"ever_fired": true
+},
+"Restaurants": {
+"consecutive_days": 1,
+"first_fired": "2026-08-30",
+"last_avg_pct": 1.36,
+"ever_fired": true
+},
+"Oil & Gas Refining & Marketing": {
+"consecutive_days": 2,
+"first_fired": "2026-08-29",
+"last_avg_pct": 1.35,
 "ever_fired": true
 },
 "Waste Management": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-08-29",
-"last_avg_pct": 1.57,
-"ever_fired": true
-},
-"Grocery Stores": {
-"consecutive_days": 1,
-"first_fired": "2026-08-29",
-"last_avg_pct": 1.46,
+"last_avg_pct": 1.31,
 "ever_fired": true
 },
 "Apparel Retail": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-08-29",
 "last_avg_pct": 1.38,
 "ever_fired": true
@@ -218,12 +224,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-21",
 "last_avg_pct": 3.07,
-"ever_fired": true
-},
-"Restaurants": {
-"consecutive_days": 0,
-"first_fired": "2026-08-21",
-"last_avg_pct": 2.73,
 "ever_fired": true
 },
 "Agricultural Inputs": {
