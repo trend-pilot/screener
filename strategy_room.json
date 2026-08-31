@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-08-30",
+  "data_date": "2026-08-31",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v2.4)",
   "nav": 1.0199,
@@ -25,11 +25,11 @@
     "tqqq": 0.67
   },
   "risk": {
-    "days": 39,
+    "days": 40,
     "ret": 1.99,
-    "sharpe": 1.14,
-    "sortino": 1.01,
-    "vol": 14.8,
+    "sharpe": 1.12,
+    "sortino": 0.98,
+    "vol": 14.6,
     "mdd": -3.4,
     "ret_mdd": 0.59,
     "day_hi": 3.2,
@@ -243,13 +243,18 @@
       "date": "2026-08-30",
       "nav": 1.0199,
       "chg": -0.0
+    },
+    {
+      "date": "2026-08-31",
+      "nav": 1.0199,
+      "chg": -0.0
     }
   ],
   "holdings": [
     {
       "ticker": "TXG",
       "entry": "2026-08-07",
-      "days": 16,
+      "days": 17,
       "cd": "",
       "entry_px": 52.03,
       "cur": 61.54,
@@ -260,7 +265,7 @@
     {
       "ticker": "WEYS",
       "entry": "2026-08-04",
-      "days": 18,
+      "days": 19,
       "cd": "",
       "entry_px": 40.42,
       "cur": 45.39,
@@ -271,18 +276,18 @@
     {
       "ticker": "PSNL",
       "entry": "2026-08-19",
-      "days": 7,
+      "days": 8,
       "cd": "",
       "entry_px": 15.81,
       "cur": 17.07,
       "runner": false,
       "partial": null,
-      "dte": 46
+      "dte": 45
     },
     {
       "ticker": "MAKO",
       "entry": "2026-08-07",
-      "days": 16,
+      "days": 17,
       "cd": "",
       "entry_px": 9.54,
       "cur": 10.19,
@@ -293,29 +298,29 @@
     {
       "ticker": "HTFL",
       "entry": "2026-08-19",
-      "days": 7,
+      "days": 8,
       "cd": "",
       "entry_px": 45.53,
       "cur": 47.78,
       "runner": false,
       "partial": null,
-      "dte": 52
+      "dte": 51
     },
     {
       "ticker": "SBLK",
       "entry": "2026-08-17",
-      "days": 9,
+      "days": 10,
       "cd": "",
       "entry_px": 30.09,
       "cur": 30.48,
       "runner": false,
       "partial": null,
-      "dte": 57
+      "dte": 56
     },
     {
       "ticker": "TECK",
       "entry": "2026-08-22",
-      "days": 5,
+      "days": 6,
       "cd": "",
       "entry_px": 69.2,
       "cur": 69.34,
@@ -326,18 +331,18 @@
     {
       "ticker": "ANF",
       "entry": "2026-08-29",
-      "days": 0,
+      "days": 1,
       "cd": "",
       "entry_px": 148.42,
       "cur": 148.42,
       "runner": false,
       "partial": null,
-      "dte": 62
+      "dte": 61
     },
     {
       "ticker": "FCX",
       "entry": "2026-08-22",
-      "days": 5,
+      "days": 6,
       "cd": "",
       "entry_px": 76.66,
       "cur": 76.45,
@@ -348,18 +353,18 @@
     {
       "ticker": "ERO",
       "entry": "2026-08-22",
-      "days": 5,
+      "days": 6,
       "cd": "",
       "entry_px": 39.42,
       "cur": 38.83,
       "runner": false,
       "partial": null,
-      "dte": 46
+      "dte": 45
     },
     {
       "ticker": "MTA",
       "entry": "2026-08-19",
-      "days": 7,
+      "days": 8,
       "cd": "",
       "entry_px": 10.89,
       "cur": 10.54,
@@ -370,13 +375,13 @@
     {
       "ticker": "OKTA",
       "entry": "2026-08-28",
-      "days": 1,
+      "days": 2,
       "cd": "",
       "entry_px": 172.91,
       "cur": 166.23,
       "runner": false,
       "partial": null,
-      "dte": 66
+      "dte": 65
     }
   ],
   "runner_stats": {
@@ -1164,7 +1169,7 @@
     "l1_hi": 80,
     "lead_n": 47,
     "strong_sectors": 5,
-    "strong_ind": 14,
+    "strong_ind": 13,
     "note": "L1 60~80% (스트레스 −15 반영)"
   },
   "daily_history": [
@@ -1647,6 +1652,30 @@
         "7": 0,
         "0": 0
       }
+    },
+    {
+      "date": "2026-08-31",
+      "regime": "resumed",
+      "breadth": 60.0,
+      "wdd": 4.0,
+      "alloc_lo": 60,
+      "alloc_hi": 80,
+      "stress": true,
+      "lead_n": 47,
+      "strong_sectors": 5,
+      "t": 3425,
+      "ph": {
+        "4+": 12,
+        "4": 72,
+        "5+": 0,
+        "5": 274,
+        "3": 1083,
+        "2": 579,
+        "1": 1236,
+        "6": 169,
+        "7": 0,
+        "0": 0
+      }
     }
   ],
   "market_sent": {
@@ -1953,6 +1982,12 @@
       "spy": 1.0282,
       "qqq": 1.0105,
       "tqqq": 1.0067
+    },
+    {
+      "date": "2026-08-31",
+      "spy": 1.0282,
+      "qqq": 1.0105,
+      "tqqq": 1.0067
     }
   ],
   "_holdings": [
@@ -1965,7 +2000,7 @@
       "entry_value": 0.25,
       "cur": 45.39,
       "max_gain_pct": 15.982187036120731,
-      "days_in": 18,
+      "days_in": 19,
       "current_stop": 40.42,
       "runner": false,
       "oneill_8w_active": false,
@@ -1990,9 +2025,10 @@
         45.24,
         44.84,
         45.39,
+        45.39,
         45.39
       ],
-      "px_hist_d": "2026-08-30",
+      "px_hist_d": "2026-08-31",
       "dte": null
     },
     {
@@ -2004,7 +2040,7 @@
       "entry_value": 0.040451383438633456,
       "cur": 10.19,
       "max_gain_pct": 16.03773584905661,
-      "days_in": 16,
+      "days_in": 17,
       "current_stop": 9.54,
       "runner": false,
       "oneill_8w_active": false,
@@ -2029,9 +2065,10 @@
         10.92,
         10.92,
         10.19,
+        10.19,
         10.19
       ],
-      "px_hist_d": "2026-08-30",
+      "px_hist_d": "2026-08-31",
       "dte": 57,
       "earn_trimmed": "2026-08-14",
       "partial": 67
@@ -2045,7 +2082,7 @@
       "entry_value": 0.12135415031590036,
       "cur": 61.54,
       "max_gain_pct": 25.15856236786469,
-      "days_in": 16,
+      "days_in": 17,
       "current_stop": 57.233000000000004,
       "runner": false,
       "oneill_8w_active": true,
@@ -2070,9 +2107,10 @@
         64.26,
         64.85,
         61.54,
+        61.54,
         61.54
       ],
-      "px_hist_d": "2026-08-30",
+      "px_hist_d": "2026-08-31",
       "dte": 47,
       "oneill_trigger_date": "2026-08-20"
     },
@@ -2085,7 +2123,7 @@
       "entry_value": 0.035099030773398154,
       "cur": 30.48,
       "max_gain_pct": 3.3898305084745672,
-      "days_in": 9,
+      "days_in": 10,
       "current_stop": 27.9837,
       "runner": false,
       "oneill_8w_active": false,
@@ -2103,10 +2141,11 @@
         29.58,
         30.42,
         30.48,
+        30.48,
         30.48
       ],
-      "px_hist_d": "2026-08-30",
-      "dte": 57
+      "px_hist_d": "2026-08-31",
+      "dte": 56
     },
     {
       "ticker": "HTFL",
@@ -2117,7 +2156,7 @@
       "entry_value": 0.022095405476656338,
       "cur": 47.78,
       "max_gain_pct": 10.256973424115978,
-      "days_in": 7,
+      "days_in": 8,
       "current_stop": 42.3429,
       "runner": false,
       "oneill_8w_active": false,
@@ -2133,10 +2172,11 @@
         48.94,
         48.1,
         47.78,
+        47.78,
         47.78
       ],
-      "px_hist_d": "2026-08-30",
-      "dte": 52
+      "px_hist_d": "2026-08-31",
+      "dte": 51
     },
     {
       "ticker": "PSNL",
@@ -2147,7 +2187,7 @@
       "entry_value": 0.022095405476656338,
       "cur": 17.07,
       "max_gain_pct": 16.255534471853238,
-      "days_in": 7,
+      "days_in": 8,
       "current_stop": 15.81,
       "runner": false,
       "oneill_8w_active": false,
@@ -2163,10 +2203,11 @@
         17.08,
         16.8,
         17.07,
+        17.07,
         17.07
       ],
-      "px_hist_d": "2026-08-30",
-      "dte": 46
+      "px_hist_d": "2026-08-31",
+      "dte": 45
     },
     {
       "ticker": "MTA",
@@ -2177,7 +2218,7 @@
       "entry_value": 0.022095405476656338,
       "cur": 10.54,
       "max_gain_pct": 4.224058769513306,
-      "days_in": 7,
+      "days_in": 8,
       "current_stop": 10.127699999999999,
       "runner": false,
       "oneill_8w_active": false,
@@ -2193,9 +2234,10 @@
         10.86,
         11.03,
         10.54,
+        10.54,
         10.54
       ],
-      "px_hist_d": "2026-08-30",
+      "px_hist_d": "2026-08-31",
       "dte": 52
     },
     {
@@ -2207,7 +2249,7 @@
       "entry_value": 0.01670763742692094,
       "cur": 69.34,
       "max_gain_pct": 3.497109826589595,
-      "days_in": 5,
+      "days_in": 6,
       "current_stop": 64.356,
       "runner": false,
       "oneill_8w_active": false,
@@ -2220,9 +2262,10 @@
         71.12,
         70.54,
         69.34,
+        69.34,
         69.34
       ],
-      "px_hist_d": "2026-08-30",
+      "px_hist_d": "2026-08-31",
       "dte": 37
     },
     {
@@ -2234,7 +2277,7 @@
       "entry_value": 0.1160403061394304,
       "cur": 38.83,
       "max_gain_pct": 2.486047691527138,
-      "days_in": 5,
+      "days_in": 6,
       "current_stop": 36.6606,
       "runner": false,
       "oneill_8w_active": false,
@@ -2247,10 +2290,11 @@
         39.24,
         39.82,
         38.83,
+        38.83,
         38.83
       ],
-      "px_hist_d": "2026-08-30",
-      "dte": 46
+      "px_hist_d": "2026-08-31",
+      "dte": 45
     },
     {
       "ticker": "FCX",
@@ -2261,7 +2305,7 @@
       "entry_value": 0.11858735803939155,
       "cur": 76.45,
       "max_gain_pct": 4.23949908687713,
-      "days_in": 5,
+      "days_in": 6,
       "current_stop": 71.29379999999999,
       "runner": false,
       "oneill_8w_active": false,
@@ -2274,9 +2318,10 @@
         79.0,
         78.42,
         76.45,
+        76.45,
         76.45
       ],
-      "px_hist_d": "2026-08-30",
+      "px_hist_d": "2026-08-31",
       "dte": 37
     },
     {
@@ -2288,7 +2333,7 @@
       "entry_value": 0.020004321453617746,
       "cur": 166.23,
       "max_gain_pct": 0.0,
-      "days_in": 1,
+      "days_in": 2,
       "current_stop": 160.8063,
       "runner": false,
       "oneill_8w_active": false,
@@ -2296,10 +2341,11 @@
       "px_hist": [
         172.91,
         166.23,
+        166.23,
         166.23
       ],
-      "px_hist_d": "2026-08-30",
-      "dte": 66
+      "px_hist_d": "2026-08-31",
+      "dte": 65
     },
     {
       "ticker": "ANF",
@@ -2310,17 +2356,18 @@
       "entry_value": 0.1279942223673693,
       "cur": 148.42,
       "max_gain_pct": 0.0,
-      "days_in": 0,
+      "days_in": 1,
       "current_stop": 138.0306,
       "runner": false,
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
         148.42,
+        148.42,
         148.42
       ],
-      "px_hist_d": "2026-08-30",
-      "dte": 62
+      "px_hist_d": "2026-08-31",
+      "dte": 61
     }
   ],
   "_closed": [

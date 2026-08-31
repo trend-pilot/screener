@@ -1,5 +1,5 @@
 {
-"_date": "2026-08-30",
+"_date": "2026-08-31",
 "_fired_names": [
 "Beverages - Wineries & Distilleries",
 "Broadcasting",
@@ -11,49 +11,49 @@
 "Waste Management"
 ],
 "Gambling": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-08-29",
 "last_avg_pct": 2.46,
 "ever_fired": true
 },
 "Beverages - Wineries & Distilleries": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-08-29",
 "last_avg_pct": 2.23,
 "ever_fired": true
 },
 "Broadcasting": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-08-29",
 "last_avg_pct": 2.12,
 "ever_fired": true
 },
 "Consumer Electronics": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-08-29",
 "last_avg_pct": 2.03,
 "ever_fired": true
 },
 "Grocery Stores": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-08-29",
 "last_avg_pct": 1.4,
 "ever_fired": true
 },
 "Restaurants": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-08-30",
 "last_avg_pct": 1.36,
 "ever_fired": true
 },
 "Oil & Gas Refining & Marketing": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-08-29",
 "last_avg_pct": 1.35,
 "ever_fired": true
 },
 "Waste Management": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-08-29",
 "last_avg_pct": 1.31,
 "ever_fired": true
