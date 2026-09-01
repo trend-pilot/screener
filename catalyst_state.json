@@ -1,59 +1,101 @@
 {
-"_date": "2026-08-31",
+"_date": "2026-09-01",
 "_fired_names": [
-"Beverages - Wineries & Distilleries",
-"Broadcasting",
-"Consumer Electronics",
-"Gambling",
-"Grocery Stores",
-"Oil & Gas Refining & Marketing",
-"Restaurants",
-"Waste Management"
+"Agricultural Inputs",
+"Coking Coal",
+"Oil & Gas Drilling",
+"Oil & Gas E&P",
+"Oil & Gas Equipment & Services",
+"Oil & Gas Integrated",
+"Oil & Gas Midstream",
+"Oil & Gas Refining & Marketing"
 ],
+"Coking Coal": {
+"consecutive_days": 1,
+"first_fired": "2026-09-01",
+"last_avg_pct": 3.36,
+"ever_fired": true
+},
+"Oil & Gas Integrated": {
+"consecutive_days": 1,
+"first_fired": "2026-09-01",
+"last_avg_pct": 2.06,
+"ever_fired": true
+},
+"Oil & Gas Equipment & Services": {
+"consecutive_days": 1,
+"first_fired": "2026-09-01",
+"last_avg_pct": 2.01,
+"ever_fired": true
+},
+"Agricultural Inputs": {
+"consecutive_days": 1,
+"first_fired": "2026-09-01",
+"last_avg_pct": 1.76,
+"ever_fired": true
+},
+"Oil & Gas E&P": {
+"consecutive_days": 1,
+"first_fired": "2026-09-01",
+"last_avg_pct": 1.46,
+"ever_fired": true
+},
+"Oil & Gas Refining & Marketing": {
+"consecutive_days": 4,
+"first_fired": "2026-08-29",
+"last_avg_pct": 1.44,
+"ever_fired": true
+},
+"Oil & Gas Drilling": {
+"consecutive_days": 1,
+"first_fired": "2026-09-01",
+"last_avg_pct": 1.35,
+"ever_fired": true
+},
+"Oil & Gas Midstream": {
+"consecutive_days": 1,
+"first_fired": "2026-09-01",
+"last_avg_pct": 1.09,
+"ever_fired": true
+},
 "Gambling": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-29",
 "last_avg_pct": 2.46,
 "ever_fired": true
 },
 "Beverages - Wineries & Distilleries": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-29",
 "last_avg_pct": 2.23,
 "ever_fired": true
 },
 "Broadcasting": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-29",
 "last_avg_pct": 2.12,
 "ever_fired": true
 },
 "Consumer Electronics": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-29",
 "last_avg_pct": 2.03,
 "ever_fired": true
 },
 "Grocery Stores": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-29",
 "last_avg_pct": 1.4,
 "ever_fired": true
 },
 "Restaurants": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-08-30",
 "last_avg_pct": 1.36,
 "ever_fired": true
 },
-"Oil & Gas Refining & Marketing": {
-"consecutive_days": 3,
-"first_fired": "2026-08-29",
-"last_avg_pct": 1.35,
-"ever_fired": true
-},
 "Waste Management": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-08-29",
 "last_avg_pct": 1.31,
 "ever_fired": true
@@ -62,12 +104,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-29",
 "last_avg_pct": 1.38,
-"ever_fired": true
-},
-"Coking Coal": {
-"consecutive_days": 0,
-"first_fired": "2026-08-28",
-"last_avg_pct": 5.32,
 "ever_fired": true
 },
 "Software - Infrastructure": {
@@ -86,18 +122,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-28",
 "last_avg_pct": 3.55,
-"ever_fired": true
-},
-"Oil & Gas Drilling": {
-"consecutive_days": 0,
-"first_fired": "2026-08-28",
-"last_avg_pct": 3.49,
-"ever_fired": true
-},
-"Oil & Gas Equipment & Services": {
-"consecutive_days": 0,
-"first_fired": "2026-08-28",
-"last_avg_pct": 3.25,
 "ever_fired": true
 },
 "Thermal Coal": {
@@ -226,12 +250,6 @@
 "last_avg_pct": 3.07,
 "ever_fired": true
 },
-"Agricultural Inputs": {
-"consecutive_days": 0,
-"first_fired": "2026-08-20",
-"last_avg_pct": 2.71,
-"ever_fired": true
-},
 "Paper & Paper Products": {
 "consecutive_days": 0,
 "first_fired": "2026-08-20",
@@ -248,12 +266,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-19",
 "last_avg_pct": 1.68,
-"ever_fired": true
-},
-"Oil & Gas E&P": {
-"consecutive_days": 0,
-"first_fired": "2026-08-20",
-"last_avg_pct": 1.5,
 "ever_fired": true
 },
 "Other Precious Metals & Mining": {
@@ -332,12 +344,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-17",
 "last_avg_pct": 1.72,
-"ever_fired": true
-},
-"Oil & Gas Integrated": {
-"consecutive_days": 0,
-"first_fired": "2026-08-17",
-"last_avg_pct": 1.62,
 "ever_fired": true
 },
 "Healthcare Plans": {
@@ -620,12 +626,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-08",
 "last_avg_pct": 1.98,
-"ever_fired": true
-},
-"Oil & Gas Midstream": {
-"consecutive_days": 0,
-"first_fired": "2026-07-07",
-"last_avg_pct": 1.5,
 "ever_fired": true
 },
 "Auto Manufacturers": {
