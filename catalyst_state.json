@@ -1,59 +1,83 @@
 {
-"_date": "2026-09-01",
+"_date": "2026-09-02",
 "_fired_names": [
 "Agricultural Inputs",
-"Coking Coal",
+"Aluminum",
+"Food Distribution",
+"Healthcare Plans",
 "Oil & Gas Drilling",
 "Oil & Gas E&P",
-"Oil & Gas Equipment & Services",
 "Oil & Gas Integrated",
-"Oil & Gas Midstream",
-"Oil & Gas Refining & Marketing"
+"REIT - Healthcare Facilities"
 ],
-"Coking Coal": {
+"Agricultural Inputs": {
+"consecutive_days": 2,
+"first_fired": "2026-09-01",
+"last_avg_pct": 2.72,
+"ever_fired": true
+},
+"Oil & Gas Integrated": {
+"consecutive_days": 2,
+"first_fired": "2026-09-01",
+"last_avg_pct": 2.69,
+"ever_fired": true
+},
+"Oil & Gas E&P": {
+"consecutive_days": 2,
+"first_fired": "2026-09-01",
+"last_avg_pct": 2.23,
+"ever_fired": true
+},
+"Aluminum": {
 "consecutive_days": 1,
+"first_fired": "2026-09-02",
+"last_avg_pct": 2.2,
+"ever_fired": true
+},
+"Healthcare Plans": {
+"consecutive_days": 1,
+"first_fired": "2026-09-02",
+"last_avg_pct": 1.88,
+"ever_fired": true
+},
+"Oil & Gas Drilling": {
+"consecutive_days": 2,
+"first_fired": "2026-09-01",
+"last_avg_pct": 1.72,
+"ever_fired": true
+},
+"Food Distribution": {
+"consecutive_days": 1,
+"first_fired": "2026-09-02",
+"last_avg_pct": 1.71,
+"ever_fired": true
+},
+"REIT - Healthcare Facilities": {
+"consecutive_days": 1,
+"first_fired": "2026-09-02",
+"last_avg_pct": 1.59,
+"ever_fired": true
+},
+"Coking Coal": {
+"consecutive_days": 0,
 "first_fired": "2026-09-01",
 "last_avg_pct": 3.36,
 "ever_fired": true
 },
-"Oil & Gas Integrated": {
-"consecutive_days": 1,
-"first_fired": "2026-09-01",
-"last_avg_pct": 2.06,
-"ever_fired": true
-},
 "Oil & Gas Equipment & Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-01",
 "last_avg_pct": 2.01,
 "ever_fired": true
 },
-"Agricultural Inputs": {
-"consecutive_days": 1,
-"first_fired": "2026-09-01",
-"last_avg_pct": 1.76,
-"ever_fired": true
-},
-"Oil & Gas E&P": {
-"consecutive_days": 1,
-"first_fired": "2026-09-01",
-"last_avg_pct": 1.46,
-"ever_fired": true
-},
 "Oil & Gas Refining & Marketing": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-08-29",
 "last_avg_pct": 1.44,
 "ever_fired": true
 },
-"Oil & Gas Drilling": {
-"consecutive_days": 1,
-"first_fired": "2026-09-01",
-"last_avg_pct": 1.35,
-"ever_fired": true
-},
 "Oil & Gas Midstream": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-01",
 "last_avg_pct": 1.09,
 "ever_fired": true
@@ -334,22 +358,10 @@
 "last_avg_pct": 2.43,
 "ever_fired": true
 },
-"Aluminum": {
-"consecutive_days": 0,
-"first_fired": "2026-08-17",
-"last_avg_pct": 1.9,
-"ever_fired": true
-},
 "Lodging": {
 "consecutive_days": 0,
 "first_fired": "2026-08-17",
 "last_avg_pct": 1.72,
-"ever_fired": true
-},
-"Healthcare Plans": {
-"consecutive_days": 0,
-"first_fired": "2026-08-14",
-"last_avg_pct": 2.33,
 "ever_fired": true
 },
 "Insurance Brokers": {
