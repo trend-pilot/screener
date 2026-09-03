@@ -1,59 +1,101 @@
 {
-"_date": "2026-09-02",
+"_date": "2026-09-03",
 "_fired_names": [
 "Agricultural Inputs",
-"Aluminum",
-"Food Distribution",
-"Healthcare Plans",
-"Oil & Gas Drilling",
-"Oil & Gas E&P",
-"Oil & Gas Integrated",
-"REIT - Healthcare Facilities"
+"Chemicals",
+"Electronic Components",
+"Gold",
+"Other Industrial Metals & Mining",
+"Other Precious Metals & Mining",
+"Silver",
+"Steel"
 ],
+"Silver": {
+"consecutive_days": 1,
+"first_fired": "2026-09-03",
+"last_avg_pct": 7.7,
+"ever_fired": true
+},
 "Agricultural Inputs": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-09-01",
-"last_avg_pct": 2.72,
+"last_avg_pct": 5.83,
+"ever_fired": true
+},
+"Electronic Components": {
+"consecutive_days": 1,
+"first_fired": "2026-09-03",
+"last_avg_pct": 5.01,
+"ever_fired": true
+},
+"Other Precious Metals & Mining": {
+"consecutive_days": 1,
+"first_fired": "2026-09-03",
+"last_avg_pct": 4.22,
+"ever_fired": true
+},
+"Other Industrial Metals & Mining": {
+"consecutive_days": 1,
+"first_fired": "2026-09-03",
+"last_avg_pct": 3.53,
+"ever_fired": true
+},
+"Steel": {
+"consecutive_days": 1,
+"first_fired": "2026-09-03",
+"last_avg_pct": 3.52,
+"ever_fired": true
+},
+"Chemicals": {
+"consecutive_days": 1,
+"first_fired": "2026-09-03",
+"last_avg_pct": 3.48,
+"ever_fired": true
+},
+"Gold": {
+"consecutive_days": 1,
+"first_fired": "2026-09-03",
+"last_avg_pct": 3.33,
 "ever_fired": true
 },
 "Oil & Gas Integrated": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-09-01",
 "last_avg_pct": 2.69,
 "ever_fired": true
 },
 "Oil & Gas E&P": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-09-01",
 "last_avg_pct": 2.23,
 "ever_fired": true
 },
 "Aluminum": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-02",
 "last_avg_pct": 2.2,
 "ever_fired": true
 },
 "Healthcare Plans": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-02",
 "last_avg_pct": 1.88,
 "ever_fired": true
 },
 "Oil & Gas Drilling": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-09-01",
 "last_avg_pct": 1.72,
 "ever_fired": true
 },
 "Food Distribution": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-02",
 "last_avg_pct": 1.71,
 "ever_fired": true
 },
 "REIT - Healthcare Facilities": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-02",
 "last_avg_pct": 1.59,
 "ever_fired": true
@@ -142,12 +184,6 @@
 "last_avg_pct": 3.82,
 "ever_fired": true
 },
-"Silver": {
-"consecutive_days": 0,
-"first_fired": "2026-08-28",
-"last_avg_pct": 3.55,
-"ever_fired": true
-},
 "Thermal Coal": {
 "consecutive_days": 0,
 "first_fired": "2026-08-28",
@@ -166,12 +202,6 @@
 "last_avg_pct": 1.83,
 "ever_fired": true
 },
-"Electronic Components": {
-"consecutive_days": 0,
-"first_fired": "2026-08-27",
-"last_avg_pct": 1.8,
-"ever_fired": true
-},
 "Tobacco": {
 "consecutive_days": 0,
 "first_fired": "2026-08-27",
@@ -188,12 +218,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-25",
 "last_avg_pct": 5.58,
-"ever_fired": true
-},
-"Other Industrial Metals & Mining": {
-"consecutive_days": 0,
-"first_fired": "2026-08-25",
-"last_avg_pct": 3.41,
 "ever_fired": true
 },
 "Copper": {
@@ -284,18 +308,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-20",
 "last_avg_pct": 1.7,
-"ever_fired": true
-},
-"Gold": {
-"consecutive_days": 0,
-"first_fired": "2026-08-19",
-"last_avg_pct": 1.68,
-"ever_fired": true
-},
-"Other Precious Metals & Mining": {
-"consecutive_days": 0,
-"first_fired": "2026-08-19",
-"last_avg_pct": 8.16,
 "ever_fired": true
 },
 "Diagnostics & Research": {
@@ -448,12 +460,6 @@
 "last_avg_pct": 2.05,
 "ever_fired": true
 },
-"Chemicals": {
-"consecutive_days": 0,
-"first_fired": "2026-08-07",
-"last_avg_pct": 1.88,
-"ever_fired": true
-},
 "Medical Distribution": {
 "consecutive_days": 0,
 "first_fired": "2026-08-05",
@@ -566,12 +572,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-24",
 "last_avg_pct": 2.69,
-"ever_fired": true
-},
-"Steel": {
-"consecutive_days": 0,
-"first_fired": "2026-07-23",
-"last_avg_pct": 2.94,
 "ever_fired": true
 },
 "Railroads": {
