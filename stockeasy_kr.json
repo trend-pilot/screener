@@ -274,7 +274,7 @@
  "code_recovered": [],
  "source": "stockeasy:momentum",
  "strategy_label": "1호 모멘텀",
- "fetched_at": "2026-09-03T12:07:20",
+ "fetched_at": "2026-09-03T16:38:20",
  "diff": {
   "new": [],
   "dropped": [
@@ -433,7 +433,5 @@
   ],
   "first_run": false
  },
- "alerts": [
-  "종목수 급감 14→6 — 파싱 오류 의심"
- ]
+ "alerts": []
 }
