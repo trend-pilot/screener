@@ -1,61 +1,97 @@
 {
-"_date": "2026-09-03",
+"_date": "2026-09-04",
 "_fired_names": [
-"Agricultural Inputs",
-"Chemicals",
-"Electronic Components",
+"Capital Markets",
+"Electronics & Computer Distribution",
+"Financial Data & Stock Exchanges",
 "Gold",
-"Other Industrial Metals & Mining",
+"Information Technology Services",
 "Other Precious Metals & Mining",
-"Silver",
-"Steel"
+"Software - Application",
+"Software - Infrastructure"
 ],
-"Silver": {
+"Capital Markets": {
 "consecutive_days": 1,
+"first_fired": "2026-09-04",
+"last_avg_pct": 6.71,
+"ever_fired": true
+},
+"Gold": {
+"consecutive_days": 2,
+"first_fired": "2026-09-03",
+"last_avg_pct": 3.53,
+"ever_fired": true
+},
+"Financial Data & Stock Exchanges": {
+"consecutive_days": 1,
+"first_fired": "2026-09-04",
+"last_avg_pct": 3.3,
+"ever_fired": true
+},
+"Information Technology Services": {
+"consecutive_days": 1,
+"first_fired": "2026-09-04",
+"last_avg_pct": 2.62,
+"ever_fired": true
+},
+"Electronics & Computer Distribution": {
+"consecutive_days": 1,
+"first_fired": "2026-09-04",
+"last_avg_pct": 2.52,
+"ever_fired": true
+},
+"Other Precious Metals & Mining": {
+"consecutive_days": 2,
+"first_fired": "2026-09-03",
+"last_avg_pct": 2.42,
+"ever_fired": true
+},
+"Software - Application": {
+"consecutive_days": 1,
+"first_fired": "2026-09-04",
+"last_avg_pct": 2.1,
+"ever_fired": true
+},
+"Software - Infrastructure": {
+"consecutive_days": 1,
+"first_fired": "2026-09-04",
+"last_avg_pct": 2.08,
+"ever_fired": true
+},
+"Silver": {
+"consecutive_days": 0,
 "first_fired": "2026-09-03",
 "last_avg_pct": 7.7,
 "ever_fired": true
 },
 "Agricultural Inputs": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-09-01",
 "last_avg_pct": 5.83,
 "ever_fired": true
 },
 "Electronic Components": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-03",
 "last_avg_pct": 5.01,
 "ever_fired": true
 },
-"Other Precious Metals & Mining": {
-"consecutive_days": 1,
-"first_fired": "2026-09-03",
-"last_avg_pct": 4.22,
-"ever_fired": true
-},
 "Other Industrial Metals & Mining": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-03",
 "last_avg_pct": 3.53,
 "ever_fired": true
 },
 "Steel": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-03",
 "last_avg_pct": 3.52,
 "ever_fired": true
 },
 "Chemicals": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-03",
 "last_avg_pct": 3.48,
-"ever_fired": true
-},
-"Gold": {
-"consecutive_days": 1,
-"first_fired": "2026-09-03",
-"last_avg_pct": 3.33,
 "ever_fired": true
 },
 "Oil & Gas Integrated": {
@@ -172,28 +208,10 @@
 "last_avg_pct": 1.38,
 "ever_fired": true
 },
-"Software - Infrastructure": {
-"consecutive_days": 0,
-"first_fired": "2026-08-28",
-"last_avg_pct": 4.0,
-"ever_fired": true
-},
-"Software - Application": {
-"consecutive_days": 0,
-"first_fired": "2026-08-28",
-"last_avg_pct": 3.82,
-"ever_fired": true
-},
 "Thermal Coal": {
 "consecutive_days": 0,
 "first_fired": "2026-08-28",
 "last_avg_pct": 2.68,
-"ever_fired": true
-},
-"Electronics & Computer Distribution": {
-"consecutive_days": 0,
-"first_fired": "2026-08-27",
-"last_avg_pct": 2.43,
 "ever_fired": true
 },
 "Tools & Accessories": {
@@ -242,12 +260,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-25",
 "last_avg_pct": 2.79,
-"ever_fired": true
-},
-"Capital Markets": {
-"consecutive_days": 0,
-"first_fired": "2026-08-25",
-"last_avg_pct": 2.69,
 "ever_fired": true
 },
 "Utilities - Regulated Water": {
@@ -302,12 +314,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-20",
 "last_avg_pct": 2.3,
-"ever_fired": true
-},
-"Financial Data & Stock Exchanges": {
-"consecutive_days": 0,
-"first_fired": "2026-08-20",
-"last_avg_pct": 1.7,
 "ever_fired": true
 },
 "Diagnostics & Research": {
@@ -632,12 +638,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-15",
 "last_avg_pct": 2.7,
-"ever_fired": true
-},
-"Information Technology Services": {
-"consecutive_days": 0,
-"first_fired": "2026-07-08",
-"last_avg_pct": 1.98,
 "ever_fired": true
 },
 "Auto Manufacturers": {
