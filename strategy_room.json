@@ -2,15 +2,26 @@
   "data_date": "2026-09-05",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v2.4)",
-  "nav": 0.9926,
-  "ret_pct": -0.74,
-  "unreal_pct": 5.1,
+  "nav": 0.9931,
+  "ret_pct": -0.69,
+  "unreal_pct": 5.16,
   "cap": 12,
   "runner_cap": 5,
   "core_count": 10,
   "runner_count": 0,
   "regime": "🟢 Uptrend Resumed",
-  "signals": [],
+  "signals": [
+    {
+      "ticker": "CNH",
+      "industry": "Farm & Heavy Construction Machinery",
+      "pattern": "파워플레이",
+      "signal_close": 14.4,
+      "pivot": 14.46,
+      "dist": -0.4,
+      "rvol": 1.51,
+      "score": 89.68
+    }
+  ],
   "gates": [
     "G3 Trigger",
     "G4 Guard",
@@ -19,23 +30,23 @@
     "G2 Pattern"
   ],
   "benchmarks": {
-    "strat": -0.74,
-    "spy": null,
-    "qqq": null,
-    "tqqq": null
+    "strat": -0.69,
+    "spy": 2.93,
+    "qqq": 1.41,
+    "tqqq": 1.4
   },
   "risk": {
     "days": 45,
-    "ret": -0.74,
-    "sharpe": -0.05,
-    "sortino": -0.04,
-    "vol": 15.7,
+    "ret": -0.69,
+    "sharpe": -0.36,
+    "sortino": -0.28,
+    "vol": 15.6,
     "mdd": -7.1,
     "ret_mdd": 0.1,
     "day_hi": 3.2,
     "day_lo": -2.8,
-    "alpha_voo": null,
-    "alpha_qqq": null
+    "alpha_voo": -3.62,
+    "alpha_qqq": -2.1
   },
   "trades": {
     "n": 13,
@@ -271,8 +282,8 @@
     },
     {
       "date": "2026-09-05",
-      "nav": 0.9926,
-      "chg": 0.88
+      "nav": 0.9931,
+      "chg": 0.05
     }
   ],
   "holdings": [
@@ -332,6 +343,17 @@
       "dte": 43
     },
     {
+      "ticker": "TECK",
+      "entry": "2026-08-22",
+      "days": 10,
+      "cd": "",
+      "entry_px": 69.2,
+      "cur": 69.1,
+      "runner": false,
+      "partial": null,
+      "dte": null
+    },
+    {
       "ticker": "OKTA",
       "entry": "2026-08-28",
       "days": 5,
@@ -343,17 +365,6 @@
       "dte": 62
     },
     {
-      "ticker": "TECK",
-      "entry": "2026-08-22",
-      "days": 10,
-      "cd": "",
-      "entry_px": 69.2,
-      "cur": 66.79,
-      "runner": false,
-      "partial": null,
-      "dte": null
-    },
-    {
       "ticker": "SLB",
       "entry": "2026-09-01",
       "days": 2,
@@ -362,7 +373,7 @@
       "cur": 57.51,
       "runner": false,
       "partial": null,
-      "dte": null
+      "dte": 34
     },
     {
       "ticker": "FCX",
@@ -598,8 +609,8 @@
           "d": "2026-09-04",
           "day": 3,
           "chg": -0.38,
-          "vol": 2531375000,
-          "volc": -46.4,
+          "vol": 4103570000,
+          "volc": -13.2,
           "note": "d4 전"
         }
       ],
@@ -775,8 +786,8 @@
           "d": "2026-09-04",
           "day": 27,
           "chg": -0.29,
-          "vol": 5604391000,
-          "volc": -26.3,
+          "vol": 6529110000,
+          "volc": -14.1,
           "note": "하락일"
         }
       ],
@@ -824,8 +835,8 @@
           "d": "2026-09-04",
           "day": 3,
           "chg": 0.25,
-          "vol": null,
-          "volc": -100.0,
+          "vol": 4103570000,
+          "volc": -13.2,
           "note": "d4 전"
         }
       ],
@@ -1241,9 +1252,9 @@
     "stress": true,
     "l1_lo": 60,
     "l1_hi": 80,
-    "lead_n": 48,
+    "lead_n": 50,
     "strong_sectors": 4,
-    "strong_ind": 13,
+    "strong_ind": 16,
     "note": "L1 60~80% (스트레스 −15 반영)"
   },
   "daily_history": [
@@ -1850,23 +1861,23 @@
     {
       "date": "2026-09-05",
       "regime": "resumed",
-      "breadth": 50.4,
+      "breadth": 51.0,
       "wdd": 4.0,
       "alloc_lo": 60,
       "alloc_hi": 80,
       "stress": true,
-      "lead_n": 48,
+      "lead_n": 50,
       "strong_sectors": 4,
-      "t": 3135,
+      "t": 3425,
       "ph": {
-        "4+": 65,
-        "4": 126,
+        "4+": 78,
+        "4": 139,
         "5+": 0,
-        "5": 129,
-        "3": 971,
-        "2": 557,
-        "1": 1118,
-        "6": 169,
+        "5": 137,
+        "3": 1028,
+        "2": 634,
+        "1": 1218,
+        "6": 191,
         "7": 0,
         "0": 0
       }
@@ -2203,15 +2214,15 @@
     },
     {
       "date": "2026-09-04",
-      "spy": null,
-      "qqq": null,
-      "tqqq": null
+      "spy": 1.0293,
+      "qqq": 1.0141,
+      "tqqq": 1.014
     },
     {
       "date": "2026-09-05",
-      "spy": null,
-      "qqq": null,
-      "tqqq": null
+      "spy": 1.0293,
+      "qqq": 1.0141,
+      "tqqq": 1.014
     }
   ],
   "_holdings": [
@@ -2385,7 +2396,7 @@
       "avg_cost_px": 69.2,
       "shares": 0.00024131918761603215,
       "entry_value": 0.01670763742692094,
-      "cur": 66.79,
+      "cur": 69.1,
       "max_gain_pct": 3.497109826589595,
       "days_in": 10,
       "current_stop": 64.356,
@@ -2518,7 +2529,7 @@
         57.51
       ],
       "px_hist_d": "2026-09-05",
-      "dte": null
+      "dte": 34
     },
     {
       "ticker": "MRX",
