@@ -1,59 +1,107 @@
 {
-"_date": "2026-09-04",
+"_date": "2026-09-05",
 "_fired_names": [
-"Capital Markets",
-"Electronics & Computer Distribution",
-"Financial Data & Stock Exchanges",
-"Gold",
-"Information Technology Services",
-"Other Precious Metals & Mining",
-"Software - Application",
-"Software - Infrastructure"
+"Building Products & Equipment",
+"Coking Coal",
+"Recreational Vehicles",
+"Semiconductor Equipment & Materials",
+"Semiconductors",
+"Trucking",
+"Utilities - Independent Power Producers",
+"Utilities - Renewable"
 ],
-"Capital Markets": {
+"Semiconductor Equipment & Materials": {
 "consecutive_days": 1,
+"first_fired": "2026-09-05",
+"last_avg_pct": 5.25,
+"ever_fired": true
+},
+"Coking Coal": {
+"consecutive_days": 1,
+"first_fired": "2026-09-05",
+"last_avg_pct": 4.75,
+"ever_fired": true
+},
+"Utilities - Independent Power Producers": {
+"consecutive_days": 1,
+"first_fired": "2026-09-05",
+"last_avg_pct": 4.27,
+"ever_fired": true
+},
+"Building Products & Equipment": {
+"consecutive_days": 1,
+"first_fired": "2026-09-05",
+"last_avg_pct": 3.05,
+"ever_fired": true
+},
+"Semiconductors": {
+"consecutive_days": 1,
+"first_fired": "2026-09-05",
+"last_avg_pct": 2.93,
+"ever_fired": true
+},
+"Recreational Vehicles": {
+"consecutive_days": 1,
+"first_fired": "2026-09-05",
+"last_avg_pct": 2.84,
+"ever_fired": true
+},
+"Trucking": {
+"consecutive_days": 1,
+"first_fired": "2026-09-05",
+"last_avg_pct": 2.47,
+"ever_fired": true
+},
+"Utilities - Renewable": {
+"consecutive_days": 1,
+"first_fired": "2026-09-05",
+"last_avg_pct": 2.4,
+"ever_fired": true
+},
+"Capital Markets": {
+"consecutive_days": 0,
 "first_fired": "2026-09-04",
 "last_avg_pct": 6.71,
 "ever_fired": true
 },
 "Gold": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-09-03",
 "last_avg_pct": 3.53,
 "ever_fired": true
 },
 "Financial Data & Stock Exchanges": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-04",
 "last_avg_pct": 3.3,
 "ever_fired": true
 },
 "Information Technology Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-04",
 "last_avg_pct": 2.62,
 "ever_fired": true
 },
 "Electronics & Computer Distribution": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-04",
 "last_avg_pct": 2.52,
 "ever_fired": true
 },
 "Other Precious Metals & Mining": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-09-03",
 "last_avg_pct": 2.42,
 "ever_fired": true
 },
 "Software - Application": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-04",
 "last_avg_pct": 2.1,
 "ever_fired": true
 },
 "Software - Infrastructure": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-04",
 "last_avg_pct": 2.08,
 "ever_fired": true
@@ -134,12 +182,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-02",
 "last_avg_pct": 1.59,
-"ever_fired": true
-},
-"Coking Coal": {
-"consecutive_days": 0,
-"first_fired": "2026-09-01",
-"last_avg_pct": 3.36,
 "ever_fired": true
 },
 "Oil & Gas Equipment & Services": {
@@ -226,12 +268,6 @@
 "last_avg_pct": 1.52,
 "ever_fired": true
 },
-"Trucking": {
-"consecutive_days": 0,
-"first_fired": "2026-08-27",
-"last_avg_pct": 1.31,
-"ever_fired": true
-},
 "Uranium": {
 "consecutive_days": 0,
 "first_fired": "2026-08-25",
@@ -248,12 +284,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-25",
 "last_avg_pct": 3.24,
-"ever_fired": true
-},
-"Utilities - Independent Power Producers": {
-"consecutive_days": 0,
-"first_fired": "2026-08-25",
-"last_avg_pct": 2.88,
 "ever_fired": true
 },
 "Biotechnology": {
@@ -364,12 +394,6 @@
 "last_avg_pct": 1.14,
 "ever_fired": true
 },
-"Semiconductor Equipment & Materials": {
-"consecutive_days": 0,
-"first_fired": "2026-08-17",
-"last_avg_pct": 3.43,
-"ever_fired": true
-},
 "Marine Shipping": {
 "consecutive_days": 0,
 "first_fired": "2026-08-17",
@@ -418,12 +442,6 @@
 "last_avg_pct": 5.91,
 "ever_fired": true
 },
-"Utilities - Renewable": {
-"consecutive_days": 0,
-"first_fired": "2026-08-11",
-"last_avg_pct": 4.29,
-"ever_fired": true
-},
 "Security & Protection Services": {
 "consecutive_days": 0,
 "first_fired": "2026-08-11",
@@ -440,12 +458,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-07",
 "last_avg_pct": 5.4,
-"ever_fired": true
-},
-"Semiconductors": {
-"consecutive_days": 0,
-"first_fired": "2026-08-07",
-"last_avg_pct": 2.68,
 "ever_fired": true
 },
 "Specialty Chemicals": {
@@ -632,12 +644,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-15",
 "last_avg_pct": 2.8,
-"ever_fired": true
-},
-"Recreational Vehicles": {
-"consecutive_days": 0,
-"first_fired": "2026-07-15",
-"last_avg_pct": 2.7,
 "ever_fired": true
 },
 "Auto Manufacturers": {
