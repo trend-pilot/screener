@@ -1,5 +1,5 @@
 {
- "data_date": "2026-09-05",
+ "data_date": "2026-09-06",
  "holdings": [
   {
    "name": "LG",
@@ -11,7 +11,7 @@
    "cur": null,
    "ticker": "003550",
    "market": "KOSPI",
-   "rs_score": 84,
+   "rs_score": 83,
    "ibd_rs": 79,
    "is_stage2": false,
    "pass_dots": 6,
@@ -49,7 +49,7 @@
    "cur": null,
    "ticker": "001450",
    "market": "KOSPI",
-   "rs_score": 89,
+   "rs_score": 90,
    "ibd_rs": 90,
    "is_stage2": true,
    "pass_dots": 7,
@@ -68,7 +68,7 @@
    "cur": null,
    "ticker": "005830",
    "market": "KOSPI",
-   "rs_score": 83,
+   "rs_score": 84,
    "ibd_rs": 88,
    "is_stage2": false,
    "pass_dots": 6,
@@ -159,7 +159,7 @@
  "code_recovered": [],
  "source": "stockeasy:momentum",
  "strategy_label": "1호 모멘텀",
- "fetched_at": "2026-09-05T11:19:47",
+ "fetched_at": "2026-09-06T11:45:35",
  "diff": {
   "new": [],
   "dropped": [],
