@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-09-05",
+  "data_date": "2026-09-06",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v2.4)",
   "nav": 0.9931,
@@ -36,11 +36,11 @@
     "tqqq": 1.4
   },
   "risk": {
-    "days": 45,
+    "days": 46,
     "ret": -0.69,
-    "sharpe": -0.36,
+    "sharpe": -0.35,
     "sortino": -0.28,
-    "vol": 15.6,
+    "vol": 15.4,
     "mdd": -7.1,
     "ret_mdd": 0.1,
     "day_hi": 3.2,
@@ -284,24 +284,29 @@
       "date": "2026-09-05",
       "nav": 0.9931,
       "chg": 0.05
+    },
+    {
+      "date": "2026-09-06",
+      "nav": 0.9931,
+      "chg": 0.0
     }
   ],
   "holdings": [
     {
       "ticker": "TXG",
       "entry": "2026-08-07",
-      "days": 20,
+      "days": 21,
       "cd": "",
       "entry_px": 52.03,
       "cur": 62.65,
       "runner": false,
       "partial": null,
-      "dte": 43
+      "dte": 42
     },
     {
       "ticker": "WEYS",
       "entry": "2026-08-04",
-      "days": 22,
+      "days": 23,
       "cd": "",
       "entry_px": 40.42,
       "cur": 45.37,
@@ -318,7 +323,7 @@
       "cur": 17.2,
       "runner": false,
       "partial": null,
-      "dte": 42
+      "dte": 41
     },
     {
       "ticker": "HTFL",
@@ -334,13 +339,13 @@
     {
       "ticker": "MRX",
       "entry": "2026-09-04",
-      "days": 0,
+      "days": 1,
       "cd": "",
       "entry_px": 75.65,
       "cur": 78.27,
       "runner": false,
       "partial": null,
-      "dte": 43
+      "dte": 42
     },
     {
       "ticker": "TECK",
@@ -351,29 +356,29 @@
       "cur": 69.1,
       "runner": false,
       "partial": null,
-      "dte": null
+      "dte": 32
     },
     {
       "ticker": "OKTA",
       "entry": "2026-08-28",
-      "days": 5,
+      "days": 6,
       "cd": "",
       "entry_px": 172.91,
       "cur": 170.6,
       "runner": false,
       "partial": null,
-      "dte": 62
+      "dte": 61
     },
     {
       "ticker": "SLB",
       "entry": "2026-09-01",
-      "days": 2,
+      "days": 3,
       "cd": "",
       "entry_px": 60.1,
       "cur": 57.51,
       "runner": false,
       "partial": null,
-      "dte": 34
+      "dte": 33
     },
     {
       "ticker": "FCX",
@@ -384,12 +389,12 @@
       "cur": 72.73,
       "runner": false,
       "partial": null,
-      "dte": 33
+      "dte": 32
     },
     {
       "ticker": "NGL",
       "entry": "2026-09-01",
-      "days": 2,
+      "days": 3,
       "cd": "",
       "entry_px": 18.97,
       "cur": 17.75,
@@ -1881,6 +1886,30 @@
         "7": 0,
         "0": 0
       }
+    },
+    {
+      "date": "2026-09-06",
+      "regime": "resumed",
+      "breadth": 51.0,
+      "wdd": 4.0,
+      "alloc_lo": 60,
+      "alloc_hi": 80,
+      "stress": true,
+      "lead_n": 50,
+      "strong_sectors": 4,
+      "t": 3425,
+      "ph": {
+        "4+": 78,
+        "4": 139,
+        "5+": 0,
+        "5": 137,
+        "3": 1028,
+        "2": 632,
+        "1": 1218,
+        "6": 193,
+        "7": 0,
+        "0": 0
+      }
     }
   ],
   "market_sent": {
@@ -2223,6 +2252,12 @@
       "spy": 1.0293,
       "qqq": 1.0141,
       "tqqq": 1.014
+    },
+    {
+      "date": "2026-09-06",
+      "spy": 1.0293,
+      "qqq": 1.0141,
+      "tqqq": 1.014
     }
   ],
   "_holdings": [
@@ -2235,7 +2270,7 @@
       "entry_value": 0.25,
       "cur": 45.37,
       "max_gain_pct": 15.982187036120731,
-      "days_in": 22,
+      "days_in": 23,
       "current_stop": 40.42,
       "runner": false,
       "oneill_8w_active": false,
@@ -2266,9 +2301,10 @@
         44.24,
         44.82,
         44.19,
+        45.37,
         45.37
       ],
-      "px_hist_d": "2026-09-05",
+      "px_hist_d": "2026-09-06",
       "dte": null
     },
     {
@@ -2280,7 +2316,7 @@
       "entry_value": 0.12135415031590036,
       "cur": 62.65,
       "max_gain_pct": 25.15856236786469,
-      "days_in": 20,
+      "days_in": 21,
       "current_stop": 57.233000000000004,
       "runner": false,
       "oneill_8w_active": true,
@@ -2311,10 +2347,11 @@
         59.98,
         61.65,
         63.22,
+        62.65,
         62.65
       ],
-      "px_hist_d": "2026-09-05",
-      "dte": 43,
+      "px_hist_d": "2026-09-06",
+      "dte": 42,
       "oneill_trigger_date": "2026-08-20"
     },
     {
@@ -2348,9 +2385,10 @@
         50.43,
         50.0,
         49.71,
+        48.91,
         48.91
       ],
-      "px_hist_d": "2026-09-05",
+      "px_hist_d": "2026-09-06",
       "dte": 47
     },
     {
@@ -2384,10 +2422,11 @@
         17.06,
         16.73,
         16.83,
+        17.2,
         17.2
       ],
-      "px_hist_d": "2026-09-05",
-      "dte": 42
+      "px_hist_d": "2026-09-06",
+      "dte": 41
     },
     {
       "ticker": "TECK",
@@ -2417,10 +2456,11 @@
         66.79,
         66.79,
         66.79,
-        66.79
+        66.79,
+        69.1
       ],
-      "px_hist_d": "2026-09-05",
-      "dte": null
+      "px_hist_d": "2026-09-06",
+      "dte": 32
     },
     {
       "ticker": "FCX",
@@ -2450,10 +2490,11 @@
         72.47,
         73.93,
         72.56,
+        72.73,
         72.73
       ],
-      "px_hist_d": "2026-09-05",
-      "dte": 33
+      "px_hist_d": "2026-09-06",
+      "dte": 32
     },
     {
       "ticker": "OKTA",
@@ -2464,7 +2505,7 @@
       "entry_value": 0.020004321453617746,
       "cur": 170.6,
       "max_gain_pct": 0.07518362153722258,
-      "days_in": 5,
+      "days_in": 6,
       "current_stop": 160.8063,
       "runner": false,
       "oneill_8w_active": false,
@@ -2478,10 +2519,11 @@
         166.43,
         163.15,
         170.42,
+        170.6,
         170.6
       ],
-      "px_hist_d": "2026-09-05",
-      "dte": 62
+      "px_hist_d": "2026-09-06",
+      "dte": 61
     },
     {
       "ticker": "NGL",
@@ -2492,7 +2534,7 @@
       "entry_value": 0.042613645685957484,
       "cur": 17.75,
       "max_gain_pct": 0.0,
-      "days_in": 2,
+      "days_in": 3,
       "current_stop": 17.6421,
       "runner": false,
       "oneill_8w_active": false,
@@ -2502,9 +2544,10 @@
         18.33,
         18.33,
         18.33,
+        17.75,
         17.75
       ],
-      "px_hist_d": "2026-09-05",
+      "px_hist_d": "2026-09-06",
       "dte": null
     },
     {
@@ -2516,7 +2559,7 @@
       "entry_value": 0.03597288515711614,
       "cur": 57.51,
       "max_gain_pct": 0.0,
-      "days_in": 2,
+      "days_in": 3,
       "current_stop": 55.893,
       "runner": false,
       "oneill_8w_active": false,
@@ -2526,10 +2569,11 @@
         57.15,
         57.15,
         57.15,
+        57.51,
         57.51
       ],
-      "px_hist_d": "2026-09-05",
-      "dte": 34
+      "px_hist_d": "2026-09-06",
+      "dte": 33
     },
     {
       "ticker": "MRX",
@@ -2540,17 +2584,18 @@
       "entry_value": 0.09565773406186473,
       "cur": 78.27,
       "max_gain_pct": 3.463317911434216,
-      "days_in": 0,
+      "days_in": 1,
       "current_stop": 70.3545,
       "runner": false,
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
         75.65,
+        78.27,
         78.27
       ],
-      "px_hist_d": "2026-09-05",
-      "dte": 43
+      "px_hist_d": "2026-09-06",
+      "dte": 42
     }
   ],
   "_closed": [
