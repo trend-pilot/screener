@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-09-06",
+  "data_date": "2026-09-08",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v2.4)",
   "nav": 0.9931,
@@ -36,11 +36,11 @@
     "tqqq": 1.4
   },
   "risk": {
-    "days": 46,
+    "days": 47,
     "ret": -0.69,
     "sharpe": -0.35,
-    "sortino": -0.28,
-    "vol": 15.4,
+    "sortino": -0.27,
+    "vol": 15.2,
     "mdd": -7.1,
     "ret_mdd": 0.1,
     "day_hi": 3.2,
@@ -289,24 +289,29 @@
       "date": "2026-09-06",
       "nav": 0.9931,
       "chg": 0.0
+    },
+    {
+      "date": "2026-09-08",
+      "nav": 0.9931,
+      "chg": 0.0
     }
   ],
   "holdings": [
     {
       "ticker": "TXG",
       "entry": "2026-08-07",
-      "days": 21,
+      "days": 22,
       "cd": "",
       "entry_px": 52.03,
       "cur": 62.65,
       "runner": false,
       "partial": null,
-      "dte": 42
+      "dte": 41
     },
     {
       "ticker": "WEYS",
       "entry": "2026-08-04",
-      "days": 23,
+      "days": 25,
       "cd": "",
       "entry_px": 40.42,
       "cur": 45.37,
@@ -317,84 +322,84 @@
     {
       "ticker": "PSNL",
       "entry": "2026-08-19",
-      "days": 12,
+      "days": 14,
       "cd": "",
       "entry_px": 15.81,
       "cur": 17.2,
       "runner": false,
       "partial": null,
-      "dte": 41
+      "dte": 40
     },
     {
       "ticker": "HTFL",
       "entry": "2026-08-19",
-      "days": 12,
+      "days": 14,
       "cd": "",
       "entry_px": 45.53,
       "cur": 48.91,
       "runner": false,
       "partial": null,
-      "dte": 47
+      "dte": 45
     },
     {
       "ticker": "MRX",
       "entry": "2026-09-04",
-      "days": 1,
+      "days": 2,
       "cd": "",
       "entry_px": 75.65,
       "cur": 78.27,
       "runner": false,
       "partial": null,
-      "dte": 42
+      "dte": 41
     },
     {
       "ticker": "TECK",
       "entry": "2026-08-22",
-      "days": 10,
+      "days": 12,
       "cd": "",
       "entry_px": 69.2,
       "cur": 69.1,
       "runner": false,
       "partial": null,
-      "dte": 32
+      "dte": 31
     },
     {
       "ticker": "OKTA",
       "entry": "2026-08-28",
-      "days": 6,
+      "days": 7,
       "cd": "",
       "entry_px": 172.91,
       "cur": 170.6,
       "runner": false,
       "partial": null,
-      "dte": 61
+      "dte": 60
     },
     {
       "ticker": "SLB",
       "entry": "2026-09-01",
-      "days": 3,
+      "days": 5,
       "cd": "",
       "entry_px": 60.1,
       "cur": 57.51,
       "runner": false,
       "partial": null,
-      "dte": 33
+      "dte": 32
     },
     {
       "ticker": "FCX",
       "entry": "2026-08-22",
-      "days": 10,
+      "days": 12,
       "cd": "",
       "entry_px": 76.66,
       "cur": 72.73,
       "runner": false,
       "partial": null,
-      "dte": 32
+      "dte": 31
     },
     {
       "ticker": "NGL",
       "entry": "2026-09-01",
-      "days": 3,
+      "days": 5,
       "cd": "",
       "entry_px": 18.97,
       "cur": 17.75,
@@ -1257,7 +1262,7 @@
     "stress": true,
     "l1_lo": 60,
     "l1_hi": 80,
-    "lead_n": 50,
+    "lead_n": 49,
     "strong_sectors": 4,
     "strong_ind": 16,
     "note": "L1 60~80% (스트레스 −15 반영)"
@@ -1910,15 +1915,38 @@
         "7": 0,
         "0": 0
       }
+    },
+    {
+      "date": "2026-09-08",
+      "regime": "resumed",
+      "breadth": 51.0,
+      "wdd": 4.0,
+      "alloc_lo": 60,
+      "alloc_hi": 80,
+      "stress": true,
+      "lead_n": 49,
+      "strong_sectors": 4,
+      "t": 3425,
+      "ph": {
+        "4+": 78,
+        "4": 138,
+        "5+": 0,
+        "5": 137,
+        "3": 1029,
+        "2": 631,
+        "1": 1218,
+        "6": 194,
+        "7": 0,
+        "0": 0
+      }
     }
   ],
   "market_sent": {
     "vix": {
-      "last": 14.53,
-      "chg_pct": 1.47,
-      "ma20": 15.1,
+      "last": 15.3,
+      "chg_pct": 5.3,
+      "ma20": 15.09,
       "spark": [
-        19.44,
         17.68,
         16.2,
         16.41,
@@ -1977,9 +2005,10 @@
         16.34,
         15.2,
         14.32,
-        14.53
+        14.53,
+        15.3
       ],
-      "level": "안정"
+      "level": "보통"
     }
   },
   "bench_history": [
@@ -2258,6 +2287,12 @@
       "spy": 1.0293,
       "qqq": 1.0141,
       "tqqq": 1.014
+    },
+    {
+      "date": "2026-09-08",
+      "spy": 1.0293,
+      "qqq": 1.0141,
+      "tqqq": 1.014
     }
   ],
   "_holdings": [
@@ -2270,7 +2305,7 @@
       "entry_value": 0.25,
       "cur": 45.37,
       "max_gain_pct": 15.982187036120731,
-      "days_in": 23,
+      "days_in": 25,
       "current_stop": 40.42,
       "runner": false,
       "oneill_8w_active": false,
@@ -2302,9 +2337,10 @@
         44.82,
         44.19,
         45.37,
+        45.37,
         45.37
       ],
-      "px_hist_d": "2026-09-06",
+      "px_hist_d": "2026-09-08",
       "dte": null
     },
     {
@@ -2316,7 +2352,7 @@
       "entry_value": 0.12135415031590036,
       "cur": 62.65,
       "max_gain_pct": 25.15856236786469,
-      "days_in": 21,
+      "days_in": 22,
       "current_stop": 57.233000000000004,
       "runner": false,
       "oneill_8w_active": true,
@@ -2348,10 +2384,11 @@
         61.65,
         63.22,
         62.65,
+        62.65,
         62.65
       ],
-      "px_hist_d": "2026-09-06",
-      "dte": 42,
+      "px_hist_d": "2026-09-08",
+      "dte": 41,
       "oneill_trigger_date": "2026-08-20"
     },
     {
@@ -2363,7 +2400,7 @@
       "entry_value": 0.022095405476656338,
       "cur": 48.91,
       "max_gain_pct": 10.762134856138816,
-      "days_in": 12,
+      "days_in": 14,
       "current_stop": 42.3429,
       "runner": false,
       "oneill_8w_active": false,
@@ -2386,10 +2423,11 @@
         50.0,
         49.71,
         48.91,
+        48.91,
         48.91
       ],
-      "px_hist_d": "2026-09-06",
-      "dte": 47
+      "px_hist_d": "2026-09-08",
+      "dte": 45
     },
     {
       "ticker": "PSNL",
@@ -2400,7 +2438,7 @@
       "entry_value": 0.022095405476656338,
       "cur": 17.2,
       "max_gain_pct": 16.255534471853238,
-      "days_in": 12,
+      "days_in": 14,
       "current_stop": 15.81,
       "runner": false,
       "oneill_8w_active": false,
@@ -2423,10 +2461,11 @@
         16.73,
         16.83,
         17.2,
+        17.2,
         17.2
       ],
-      "px_hist_d": "2026-09-06",
-      "dte": 41
+      "px_hist_d": "2026-09-08",
+      "dte": 40
     },
     {
       "ticker": "TECK",
@@ -2437,7 +2476,7 @@
       "entry_value": 0.01670763742692094,
       "cur": 69.1,
       "max_gain_pct": 3.497109826589595,
-      "days_in": 10,
+      "days_in": 12,
       "current_stop": 64.356,
       "runner": false,
       "oneill_8w_active": false,
@@ -2457,10 +2496,11 @@
         66.79,
         66.79,
         66.79,
+        69.1,
         69.1
       ],
-      "px_hist_d": "2026-09-06",
-      "dte": 32
+      "px_hist_d": "2026-09-08",
+      "dte": 31
     },
     {
       "ticker": "FCX",
@@ -2471,7 +2511,7 @@
       "entry_value": 0.11858735803939155,
       "cur": 72.73,
       "max_gain_pct": 4.23949908687713,
-      "days_in": 10,
+      "days_in": 12,
       "current_stop": 71.29379999999999,
       "runner": false,
       "oneill_8w_active": false,
@@ -2491,10 +2531,11 @@
         73.93,
         72.56,
         72.73,
+        72.73,
         72.73
       ],
-      "px_hist_d": "2026-09-06",
-      "dte": 32
+      "px_hist_d": "2026-09-08",
+      "dte": 31
     },
     {
       "ticker": "OKTA",
@@ -2505,7 +2546,7 @@
       "entry_value": 0.020004321453617746,
       "cur": 170.6,
       "max_gain_pct": 0.07518362153722258,
-      "days_in": 6,
+      "days_in": 7,
       "current_stop": 160.8063,
       "runner": false,
       "oneill_8w_active": false,
@@ -2520,10 +2561,11 @@
         163.15,
         170.42,
         170.6,
+        170.6,
         170.6
       ],
-      "px_hist_d": "2026-09-06",
-      "dte": 61
+      "px_hist_d": "2026-09-08",
+      "dte": 60
     },
     {
       "ticker": "NGL",
@@ -2534,7 +2576,7 @@
       "entry_value": 0.042613645685957484,
       "cur": 17.75,
       "max_gain_pct": 0.0,
-      "days_in": 3,
+      "days_in": 5,
       "current_stop": 17.6421,
       "runner": false,
       "oneill_8w_active": false,
@@ -2545,9 +2587,10 @@
         18.33,
         18.33,
         17.75,
+        17.75,
         17.75
       ],
-      "px_hist_d": "2026-09-06",
+      "px_hist_d": "2026-09-08",
       "dte": null
     },
     {
@@ -2559,7 +2602,7 @@
       "entry_value": 0.03597288515711614,
       "cur": 57.51,
       "max_gain_pct": 0.0,
-      "days_in": 3,
+      "days_in": 5,
       "current_stop": 55.893,
       "runner": false,
       "oneill_8w_active": false,
@@ -2570,10 +2613,11 @@
         57.15,
         57.15,
         57.51,
+        57.51,
         57.51
       ],
-      "px_hist_d": "2026-09-06",
-      "dte": 33
+      "px_hist_d": "2026-09-08",
+      "dte": 32
     },
     {
       "ticker": "MRX",
@@ -2584,7 +2628,7 @@
       "entry_value": 0.09565773406186473,
       "cur": 78.27,
       "max_gain_pct": 3.463317911434216,
-      "days_in": 1,
+      "days_in": 2,
       "current_stop": 70.3545,
       "runner": false,
       "oneill_8w_active": false,
@@ -2592,10 +2636,11 @@
       "px_hist": [
         75.65,
         78.27,
+        78.27,
         78.27
       ],
-      "px_hist_d": "2026-09-06",
-      "dte": 42
+      "px_hist_d": "2026-09-08",
+      "dte": 41
     }
   ],
   "_closed": [
