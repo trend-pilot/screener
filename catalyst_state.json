@@ -1,59 +1,101 @@
 {
-"_date": "2026-09-08",
+"_date": "2026-09-09",
 "_fired_names": [
-"Building Products & Equipment",
-"Coking Coal",
-"Farm & Heavy Construction Machinery",
-"Recreational Vehicles",
+"Aerospace & Defense",
+"Aluminum",
+"Chemicals",
+"Communication Equipment",
+"Electrical Equipment & Parts",
 "Semiconductor Equipment & Materials",
-"Semiconductors",
-"Trucking",
-"Utilities - Independent Power Producers"
+"Solar",
+"Utilities - Regulated Electric"
 ],
+"Solar": {
+"consecutive_days": 1,
+"first_fired": "2026-09-09",
+"last_avg_pct": 4.49,
+"ever_fired": true
+},
+"Electrical Equipment & Parts": {
+"consecutive_days": 1,
+"first_fired": "2026-09-09",
+"last_avg_pct": 4.01,
+"ever_fired": true
+},
 "Semiconductor Equipment & Materials": {
-"consecutive_days": 4,
+"consecutive_days": 5,
 "first_fired": "2026-09-05",
-"last_avg_pct": 5.26,
+"last_avg_pct": 3.54,
+"ever_fired": true
+},
+"Communication Equipment": {
+"consecutive_days": 1,
+"first_fired": "2026-09-09",
+"last_avg_pct": 2.89,
+"ever_fired": true
+},
+"Aluminum": {
+"consecutive_days": 1,
+"first_fired": "2026-09-09",
+"last_avg_pct": 2.73,
+"ever_fired": true
+},
+"Chemicals": {
+"consecutive_days": 1,
+"first_fired": "2026-09-09",
+"last_avg_pct": 2.45,
+"ever_fired": true
+},
+"Utilities - Regulated Electric": {
+"consecutive_days": 1,
+"first_fired": "2026-09-09",
+"last_avg_pct": 2.29,
+"ever_fired": true
+},
+"Aerospace & Defense": {
+"consecutive_days": 1,
+"first_fired": "2026-09-09",
+"last_avg_pct": 2.28,
 "ever_fired": true
 },
 "Coking Coal": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-09-05",
 "last_avg_pct": 4.08,
 "ever_fired": true
 },
 "Utilities - Independent Power Producers": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-09-05",
 "last_avg_pct": 3.8,
 "ever_fired": true
 },
 "Semiconductors": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-09-05",
 "last_avg_pct": 3.02,
 "ever_fired": true
 },
 "Building Products & Equipment": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-09-05",
 "last_avg_pct": 2.85,
 "ever_fired": true
 },
 "Recreational Vehicles": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-09-05",
 "last_avg_pct": 2.75,
 "ever_fired": true
 },
 "Trucking": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-09-05",
 "last_avg_pct": 2.73,
 "ever_fired": true
 },
 "Farm & Heavy Construction Machinery": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-09-05",
 "last_avg_pct": 2.54,
 "ever_fired": true
@@ -142,12 +184,6 @@
 "last_avg_pct": 3.52,
 "ever_fired": true
 },
-"Chemicals": {
-"consecutive_days": 0,
-"first_fired": "2026-09-03",
-"last_avg_pct": 3.48,
-"ever_fired": true
-},
 "Oil & Gas Integrated": {
 "consecutive_days": 0,
 "first_fired": "2026-09-01",
@@ -158,12 +194,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-01",
 "last_avg_pct": 2.23,
-"ever_fired": true
-},
-"Aluminum": {
-"consecutive_days": 0,
-"first_fired": "2026-09-02",
-"last_avg_pct": 2.2,
 "ever_fired": true
 },
 "Healthcare Plans": {
@@ -352,12 +382,6 @@
 "last_avg_pct": 5.32,
 "ever_fired": true
 },
-"Solar": {
-"consecutive_days": 0,
-"first_fired": "2026-08-19",
-"last_avg_pct": 4.67,
-"ever_fired": true
-},
 "Health Information Services": {
 "consecutive_days": 0,
 "first_fired": "2026-08-18",
@@ -422,12 +446,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-13",
 "last_avg_pct": 2.91,
-"ever_fired": true
-},
-"Communication Equipment": {
-"consecutive_days": 0,
-"first_fired": "2026-08-12",
-"last_avg_pct": 3.8,
 "ever_fired": true
 },
 "Personal Services": {
@@ -520,12 +538,6 @@
 "last_avg_pct": 1.31,
 "ever_fired": true
 },
-"Electrical Equipment & Parts": {
-"consecutive_days": 0,
-"first_fired": "2026-07-30",
-"last_avg_pct": 8.19,
-"ever_fired": true
-},
 "Education & Training Services": {
 "consecutive_days": 0,
 "first_fired": "2026-07-29",
@@ -596,12 +608,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-23",
 "last_avg_pct": 2.77,
-"ever_fired": true
-},
-"Aerospace & Defense": {
-"consecutive_days": 0,
-"first_fired": "2026-07-23",
-"last_avg_pct": 1.78,
 "ever_fired": true
 },
 "Rental & Leasing Services": {
