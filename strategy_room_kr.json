@@ -1,11 +1,11 @@
 {
- "data_date": "2026-09-09",
+ "data_date": "2026-09-10",
  "track": "stockeasy:momentum",
  "logic_version": "kr-v1.0 (base v6.15)",
  "cap": "무제한",
  "source_exit_action": "watch",
- "nav": 0.9907,
- "ret_pct": -0.93,
+ "nav": 0.9921,
+ "ret_pct": -0.79,
  "cash": 0.0411,
  "n_holdings": 14,
  "n_pending": 3,
@@ -21,183 +21,183 @@
    "ticker": "005830",
    "name": "DB손해보험",
    "entry": "2026-08-19",
-   "days": 15,
+   "days": 16,
    "entry_px": 183500.0,
    "cur": 186100.0,
    "ret_pct": 1.42,
    "stop": 170655.0,
    "max_gain_pct": 10.6,
    "runner": false,
-   "weight": 8.53
+   "weight": 8.52
   },
   {
    "ticker": "006260",
    "name": "LS",
    "entry": "2026-08-19",
-   "days": 15,
+   "days": 16,
    "entry_px": 328000.0,
    "cur": 333000.0,
    "ret_pct": 1.52,
    "stop": 305040.0,
    "max_gain_pct": 1.5,
    "runner": false,
-   "weight": 8.54
+   "weight": 8.53
   },
   {
    "ticker": "214450",
    "name": "파마리서치",
    "entry": "2026-08-21",
-   "days": 13,
+   "days": 14,
    "entry_px": 408500.0,
    "cur": 426000.0,
    "ret_pct": 4.28,
    "stop": 379905.0,
    "max_gain_pct": 13.0,
    "runner": false,
-   "weight": 8.75
+   "weight": 8.74
   },
   {
    "ticker": "035420",
    "name": "NAVER",
    "entry": "2026-08-21",
-   "days": 13,
+   "days": 14,
    "entry_px": 219000.0,
    "cur": 209000.0,
    "ret_pct": -4.57,
    "stop": 203670.0,
    "max_gain_pct": 2.1,
    "runner": false,
-   "weight": 8.0
+   "weight": 7.99
   },
   {
    "ticker": "064400",
    "name": "LG씨엔에스",
    "entry": "2026-08-21",
-   "days": 13,
+   "days": 14,
    "entry_px": 72400.0,
    "cur": 74500.0,
    "ret_pct": 2.9,
    "stop": 67332.0,
    "max_gain_pct": 6.6,
    "runner": false,
-   "weight": 8.63
+   "weight": 8.62
   },
   {
    "ticker": "307950",
    "name": "현대오토에버",
    "entry": "2026-08-21",
-   "days": 13,
+   "days": 14,
    "entry_px": 443500.0,
    "cur": 414500.0,
    "ret_pct": -6.54,
    "stop": 412455.0,
    "max_gain_pct": 3.2,
    "runner": false,
-   "weight": 7.84
+   "weight": 7.83
   },
   {
    "ticker": "007660",
    "name": "이수페타시스",
    "entry": "2026-08-21",
-   "days": 13,
+   "days": 14,
    "entry_px": 102100.0,
    "cur": 106000.0,
    "ret_pct": 3.82,
    "stop": 94953.0,
    "max_gain_pct": 11.7,
    "runner": false,
-   "weight": 8.71
+   "weight": 8.7
   },
   {
    "ticker": "008930",
    "name": "한미사이언스",
    "entry": "2026-08-25",
-   "days": 11,
+   "days": 12,
    "entry_px": 52500.0,
    "cur": 46300.0,
    "ret_pct": -11.81,
    "stop": 48825.0,
    "max_gain_pct": 0.0,
    "runner": false,
-   "weight": 7.39
+   "weight": 7.38
   },
   {
    "ticker": "000720",
    "name": "현대건설",
    "entry": "2026-08-26",
-   "days": 10,
+   "days": 11,
    "entry_px": 126900.0,
    "cur": 112600.0,
    "ret_pct": -11.27,
    "stop": 118017.0,
    "max_gain_pct": 2.8,
    "runner": false,
-   "weight": 4.21
+   "weight": 4.2
   },
   {
    "ticker": "180640",
    "name": "한진칼",
    "entry": "2026-08-26",
-   "days": 10,
+   "days": 11,
    "entry_px": 125000.0,
-   "cur": 143500.0,
-   "ret_pct": 14.8,
+   "cur": 136900.0,
+   "ret_pct": 9.52,
    "stop": 125000.0,
    "max_gain_pct": 19.1,
    "runner": false,
-   "weight": 5.44
+   "weight": 5.18
   },
   {
    "ticker": "036930",
    "name": "주성엔지니어링",
    "entry": "2026-08-26",
-   "days": 10,
+   "days": 11,
    "entry_px": 178700.0,
-   "cur": 206500.0,
-   "ret_pct": 15.56,
+   "cur": 221000.0,
+   "ret_pct": 23.67,
    "stop": 178700.0,
-   "max_gain_pct": 15.6,
+   "max_gain_pct": 23.7,
    "runner": false,
-   "weight": 5.48
+   "weight": 5.85
   },
   {
    "ticker": "039030",
    "name": "이오테크닉스",
    "entry": "2026-08-26",
-   "days": 10,
+   "days": 11,
    "entry_px": 397000.0,
    "cur": 418000.0,
    "ret_pct": 5.29,
    "stop": 369210.0,
    "max_gain_pct": 5.3,
    "runner": false,
-   "weight": 4.99
+   "weight": 4.98
   },
   {
    "ticker": "403870",
    "name": "HPSP",
    "entry": "2026-08-26",
-   "days": 10,
+   "days": 11,
    "entry_px": 48000.0,
    "cur": 50200.0,
    "ret_pct": 4.58,
    "stop": 44640.0,
    "max_gain_pct": 6.5,
    "runner": false,
-   "weight": 4.96
+   "weight": 4.95
   },
   {
    "ticker": "034020",
    "name": "두산에너빌리티",
    "entry": "2026-08-26",
-   "days": 10,
+   "days": 11,
    "entry_px": 82900.0,
    "cur": 76600.0,
    "ret_pct": -7.6,
    "stop": 77097.0,
    "max_gain_pct": 6.4,
    "runner": false,
-   "weight": 4.38
+   "weight": 4.37
   }
  ],
  "pending": [
@@ -347,9 +347,13 @@
   {
    "date": "2026-09-09",
    "nav": 0.990721
+  },
+  {
+   "date": "2026-09-10",
+   "nav": 0.992052
   }
  ],
- "generated_at": "2026-09-09T11:50:19",
+ "generated_at": "2026-09-10T11:48:06",
  "_cash": 0.041125224962482214,
  "_holdings": [
   {
@@ -363,7 +367,7 @@
    "entry_value": 0.08343333333333333,
    "cur": 186100.0,
    "max_gain_pct": 10.626702997275196,
-   "days_in": 15,
+   "days_in": 16,
    "current_stop": 170655.0,
    "runner": false,
    "oneill_8w_active": false
@@ -379,7 +383,7 @@
    "entry_value": 0.08343333333333333,
    "cur": 333000.0,
    "max_gain_pct": 1.5243902439024293,
-   "days_in": 15,
+   "days_in": 16,
    "current_stop": 305040.0,
    "runner": false,
    "oneill_8w_active": false
@@ -395,7 +399,7 @@
    "entry_value": 0.08319839946105499,
    "cur": 426000.0,
    "max_gain_pct": 12.974296205630353,
-   "days_in": 13,
+   "days_in": 14,
    "current_stop": 379905.0,
    "runner": false,
    "oneill_8w_active": false
@@ -411,7 +415,7 @@
    "entry_value": 0.08319839946105499,
    "cur": 209000.0,
    "max_gain_pct": 2.0547945205479534,
-   "days_in": 13,
+   "days_in": 14,
    "current_stop": 203670.0,
    "runner": false,
    "oneill_8w_active": false
@@ -427,7 +431,7 @@
    "entry_value": 0.08319839946105499,
    "cur": 74500.0,
    "max_gain_pct": 6.629834254143652,
-   "days_in": 13,
+   "days_in": 14,
    "current_stop": 67332.0,
    "runner": false,
    "oneill_8w_active": false
@@ -443,7 +447,7 @@
    "entry_value": 0.08319839946105499,
    "cur": 414500.0,
    "max_gain_pct": 3.1567080045095786,
-   "days_in": 13,
+   "days_in": 14,
    "current_stop": 412455.0,
    "runner": false,
    "oneill_8w_active": false
@@ -459,7 +463,7 @@
    "entry_value": 0.08319839946105499,
    "cur": 106000.0,
    "max_gain_pct": 11.655239960822716,
-   "days_in": 13,
+   "days_in": 14,
    "current_stop": 94953.0,
    "runner": false,
    "oneill_8w_active": false
@@ -475,7 +479,7 @@
    "entry_value": 0.08315510855469975,
    "cur": 46300.0,
    "max_gain_pct": 0.0,
-   "days_in": 11,
+   "days_in": 12,
    "current_stop": 48825.0,
    "runner": false,
    "oneill_8w_active": false
@@ -491,7 +495,7 @@
    "entry_value": 0.04702117528484049,
    "cur": 112600.0,
    "max_gain_pct": 2.7580772261623254,
-   "days_in": 10,
+   "days_in": 11,
    "current_stop": 118016.99999999999,
    "runner": false,
    "oneill_8w_active": false
@@ -505,9 +509,9 @@
    "gap_pct": 2.71,
    "shares": 3.7571854003068703e-07,
    "entry_value": 0.04702117528484049,
-   "cur": 143500.0,
+   "cur": 136900.0,
    "max_gain_pct": 19.120000000000005,
-   "days_in": 10,
+   "days_in": 11,
    "current_stop": 125000.0,
    "runner": false,
    "oneill_8w_active": false
@@ -521,12 +525,12 @@
    "gap_pct": 0.39,
    "shares": 2.628137521199546e-07,
    "entry_value": 0.04702117528484049,
-   "cur": 206500.0,
-   "max_gain_pct": 15.556799104644647,
-   "days_in": 10,
+   "cur": 221000.0,
+   "max_gain_pct": 23.670956911024057,
+   "days_in": 11,
    "current_stop": 178700.0,
    "runner": false,
-   "oneill_8w_active": false
+   "oneill_8w_active": true
   },
   {
    "ticker": "039030",
@@ -539,7 +543,7 @@
    "entry_value": 0.04702117528484049,
    "cur": 418000.0,
    "max_gain_pct": 5.289672544080615,
-   "days_in": 10,
+   "days_in": 11,
    "current_stop": 369210.0,
    "runner": false,
    "oneill_8w_active": false
@@ -555,7 +559,7 @@
    "entry_value": 0.04702117528484049,
    "cur": 50200.0,
    "max_gain_pct": 6.458333333333344,
-   "days_in": 10,
+   "days_in": 11,
    "current_stop": 44640.0,
    "runner": false,
    "oneill_8w_active": false
@@ -571,7 +575,7 @@
    "entry_value": 0.047021175284840476,
    "cur": 76600.0,
    "max_gain_pct": 6.393244873341386,
-   "days_in": 10,
+   "days_in": 11,
    "current_stop": 77097.0,
    "runner": false,
    "oneill_8w_active": false
