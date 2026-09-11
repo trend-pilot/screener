@@ -81,7 +81,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:48"
+    "fetched_at": "2026-09-11T00:12:11"
   },
   "SBGI": {
     "sector": "Communication Services",
@@ -141,7 +141,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:49"
+    "fetched_at": "2026-09-11T00:12:04"
   },
   "NAMSW": {
     "sector": "",
@@ -339,7 +339,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:53"
+    "fetched_at": "2026-09-11T00:12:21"
   },
   "CRVS": {
     "sector": "Healthcare",
@@ -555,7 +555,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:37"
+    "fetched_at": "2026-09-11T00:12:15"
   },
   "VTV": {
     "sector": "",
@@ -633,7 +633,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:46"
+    "fetched_at": "2026-09-11T00:12:32"
   },
   "ACWX": {
     "sector": "",
@@ -1220,8 +1220,8 @@
   "FISV": {
     "sector": "",
     "industry": "",
-    "marketCap": 25870452736,
-    "fetched_at": "2026-09-10T00:05:51"
+    "marketCap": 26019346432,
+    "fetched_at": "2026-09-11T00:12:29"
   },
   "XLE": {
     "sector": "",
@@ -1785,7 +1785,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:52"
+    "fetched_at": "2026-09-11T00:11:52"
   },
   "NVMI": {
     "sector": "Technology",
@@ -1857,7 +1857,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:43"
+    "fetched_at": "2026-09-11T00:12:04"
   },
   "AMAL": {
     "sector": "Financial Services",
@@ -2631,7 +2631,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:36"
+    "fetched_at": "2026-09-11T00:12:26"
   },
   "BZAI": {
     "sector": "Technology",
@@ -2781,7 +2781,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:01"
+    "fetched_at": "2026-09-11T00:11:54"
   },
   "METC": {
     "sector": "Basic Materials",
@@ -3843,7 +3843,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:06"
+    "fetched_at": "2026-09-11T00:11:54"
   },
   "IMCR": {
     "sector": "Healthcare",
@@ -4437,7 +4437,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:08"
+    "fetched_at": "2026-09-11T00:12:07"
   },
   "NTRSO": {
     "sector": "Financial Services",
@@ -4653,7 +4653,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:58"
+    "fetched_at": "2026-09-11T00:12:21"
   },
   "OXLCP": {
     "sector": "Financial Services",
@@ -4707,7 +4707,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:41"
+    "fetched_at": "2026-09-11T00:12:10"
   },
   "AUR": {
     "sector": "Consumer Cyclical",
@@ -5571,7 +5571,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:36"
+    "fetched_at": "2026-09-11T00:11:46"
   },
   "VOD": {
     "sector": "Communication Services",
@@ -5853,7 +5853,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:02"
+    "fetched_at": "2026-09-11T00:11:44"
   },
   "FULTP": {
     "sector": "Financial Services",
@@ -6657,7 +6657,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:00"
+    "fetched_at": "2026-09-11T00:12:28"
   },
   "ALMS": {
     "sector": "Healthcare",
@@ -6783,7 +6783,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:45"
+    "fetched_at": "2026-09-11T00:12:25"
   },
   "SMMT": {
     "sector": "Healthcare",
@@ -6825,7 +6825,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:45"
+    "fetched_at": "2026-09-11T00:12:20"
   },
   "LNTH": {
     "sector": "Healthcare",
@@ -6837,7 +6837,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:11"
+    "fetched_at": "2026-09-11T00:12:24"
   },
   "SLN": {
     "sector": "Healthcare",
@@ -7707,7 +7707,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:52"
+    "fetched_at": "2026-09-11T00:12:34"
   },
   "CRSP": {
     "sector": "Healthcare",
@@ -7881,7 +7881,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:54"
+    "fetched_at": "2026-09-11T00:11:59"
   },
   "CDZIP": {
     "sector": "Utilities",
@@ -7983,7 +7983,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:15"
+    "fetched_at": "2026-09-11T00:12:00"
   },
   "BCAL": {
     "sector": "Financial Services",
@@ -8097,7 +8097,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:57"
+    "fetched_at": "2026-09-11T00:11:49"
   },
   "ALGT": {
     "sector": "Industrials",
@@ -8139,7 +8139,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:09"
+    "fetched_at": "2026-09-11T00:12:34"
   },
   "RIGL": {
     "sector": "Healthcare",
@@ -8553,7 +8553,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:41"
+    "fetched_at": "2026-09-11T00:12:31"
   },
   "CTMX": {
     "sector": "Healthcare",
@@ -8703,7 +8703,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:47"
+    "fetched_at": "2026-09-11T00:12:22"
   },
   "CBIO": {
     "sector": "Healthcare",
@@ -8907,7 +8907,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:59"
+    "fetched_at": "2026-09-11T00:11:47"
   },
   "TREE": {
     "sector": "Financial Services",
@@ -9051,7 +9051,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:38"
+    "fetched_at": "2026-09-11T00:11:45"
   },
   "USO": {
     "sector": "",
@@ -9165,7 +9165,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:55"
+    "fetched_at": "2026-09-11T00:12:07"
   },
   "BHFAM": {
     "sector": "Financial Services",
@@ -9375,7 +9375,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:09"
+    "fetched_at": "2026-09-11T00:11:56"
   },
   "TWST": {
     "sector": "Healthcare",
@@ -9741,7 +9741,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:12"
+    "fetched_at": "2026-09-11T00:12:12"
   },
   "ULH": {
     "sector": "Industrials",
@@ -9855,7 +9855,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:07"
+    "fetched_at": "2026-09-11T00:12:09"
   },
   "ALCO": {
     "sector": "Consumer Defensive",
@@ -10059,7 +10059,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:16"
+    "fetched_at": "2026-09-11T00:12:06"
   },
   "MKSI": {
     "sector": "Technology",
@@ -10420,7 +10420,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:43"
+    "fetched_at": "2026-09-11T00:12:22"
   },
   "GLIBK": {
     "sector": "Communication Services",
@@ -10618,7 +10618,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:18"
+    "fetched_at": "2026-09-11T00:11:50"
   },
   "NBTX": {
     "sector": "Healthcare",
@@ -10654,7 +10654,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:59"
+    "fetched_at": "2026-09-11T00:12:08"
   },
   "JD": {
     "sector": "Consumer Cyclical",
@@ -10912,7 +10912,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:44"
+    "fetched_at": "2026-09-11T00:12:14"
   },
   "CRUS": {
     "sector": "Technology",
@@ -11122,7 +11122,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:17"
+    "fetched_at": "2026-09-11T00:12:03"
   },
   "AMZN": {
     "sector": "Consumer Cyclical",
@@ -11608,7 +11608,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:15"
+    "fetched_at": "2026-09-11T00:12:17"
   },
   "GTERA": {
     "sector": "Financial Services",
@@ -11650,7 +11650,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:05"
+    "fetched_at": "2026-09-11T00:11:44"
   },
   "BACC": {
     "sector": "Financial Services",
@@ -11662,19 +11662,19 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:43"
+    "fetched_at": "2026-09-11T00:12:05"
   },
   "TMUSI": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:05"
+    "fetched_at": "2026-09-11T00:12:12"
   },
   "TMUSZ": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:52"
+    "fetched_at": "2026-09-11T00:12:16"
   },
   "FLY": {
     "sector": "Industrials",
@@ -11716,7 +11716,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:38"
+    "fetched_at": "2026-09-11T00:12:19"
   },
   "HVMCU": {
     "sector": "Financial Services",
@@ -11890,7 +11890,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:07"
+    "fetched_at": "2026-09-11T00:12:18"
   },
   "LGN": {
     "sector": "Industrials",
@@ -12178,7 +12178,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:14"
+    "fetched_at": "2026-09-11T00:11:53"
   },
   "TJX": {
     "sector": "Consumer Cyclical",
@@ -12400,7 +12400,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:06"
+    "fetched_at": "2026-09-11T00:11:57"
   },
   "CNO": {
     "sector": "Financial Services",
@@ -12436,7 +12436,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:06"
+    "fetched_at": "2026-09-11T00:11:51"
   },
   "ESRT": {
     "sector": "Real Estate",
@@ -12448,7 +12448,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:41"
+    "fetched_at": "2026-09-11T00:12:33"
   },
   "QGEN": {
     "sector": "Healthcare",
@@ -12496,8 +12496,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "error": "Too Many Requests. Rate limited. Try after a while.",
-    "fetched_at": "2026-09-10T00:06:04"
+    "fetched_at": "2026-09-11T00:12:04"
   },
   "FFC": {
     "sector": "Financial Services",
@@ -12737,7 +12736,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:15"
+    "fetched_at": "2026-09-11T00:12:15"
   },
   "NC": {
     "sector": "Energy",
@@ -12821,7 +12820,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:51"
+    "fetched_at": "2026-09-11T00:11:58"
   },
   "KEN": {
     "sector": "Utilities",
@@ -12935,7 +12934,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:40"
+    "fetched_at": "2026-09-11T00:11:57"
   },
   "VTMX": {
     "sector": "Real Estate",
@@ -13289,7 +13288,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:37"
+    "fetched_at": "2026-09-11T00:11:55"
   },
   "MCY": {
     "sector": "Financial Services",
@@ -13451,7 +13450,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:50"
+    "fetched_at": "2026-09-11T00:12:06"
   },
   "CNC": {
     "sector": "Healthcare",
@@ -13571,7 +13570,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:46"
+    "fetched_at": "2026-09-11T00:11:54"
   },
   "TS": {
     "sector": "Energy",
@@ -13601,7 +13600,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:03"
+    "fetched_at": "2026-09-11T00:12:05"
   },
   "RHLD": {
     "sector": "Industrials",
@@ -13643,7 +13642,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:48"
+    "fetched_at": "2026-09-11T00:12:34"
   },
   "KVYO": {
     "sector": "Technology",
@@ -13655,7 +13654,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:09"
+    "fetched_at": "2026-09-11T00:12:25"
   },
   "VTR": {
     "sector": "Real Estate",
@@ -13739,7 +13738,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:04"
+    "fetched_at": "2026-09-11T00:12:26"
   },
   "CTO": {
     "sector": "Real Estate",
@@ -13901,7 +13900,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:56"
+    "fetched_at": "2026-09-11T00:12:30"
   },
   "BRSP": {
     "sector": "Real Estate",
@@ -14165,7 +14164,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:47"
+    "fetched_at": "2026-09-11T00:11:53"
   },
   "TFII": {
     "sector": "Industrials",
@@ -14471,7 +14470,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:13"
+    "fetched_at": "2026-09-11T00:12:17"
   },
   "AVNT": {
     "sector": "Basic Materials",
@@ -14549,7 +14548,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:49"
+    "fetched_at": "2026-09-11T00:12:35"
   },
   "CBAN": {
     "sector": "Financial Services",
@@ -14693,7 +14692,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:00"
+    "fetched_at": "2026-09-11T00:12:18"
   },
   "MTH": {
     "sector": "Consumer Cyclical",
@@ -14711,7 +14710,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:39"
+    "fetched_at": "2026-09-11T00:11:56"
   },
   "FTW": {
     "sector": "Energy",
@@ -14747,7 +14746,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:17"
+    "fetched_at": "2026-09-11T00:12:17"
   },
   "DBRG": {
     "sector": "Financial Services",
@@ -14891,7 +14890,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:38"
+    "fetched_at": "2026-09-11T00:12:31"
   },
   "UCB": {
     "sector": "Financial Services",
@@ -14951,7 +14950,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:53"
+    "fetched_at": "2026-09-11T00:11:56"
   },
   "RCUS": {
     "sector": "Healthcare",
@@ -15065,7 +15064,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:12"
+    "fetched_at": "2026-09-11T00:12:28"
   },
   "BMEZ": {
     "sector": "Financial Services",
@@ -15083,7 +15082,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:48"
+    "fetched_at": "2026-09-11T00:12:01"
   },
   "SRE": {
     "sector": "Utilities",
@@ -15191,7 +15190,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:53"
+    "fetched_at": "2026-09-11T00:12:03"
   },
   "RDW": {
     "sector": "Industrials",
@@ -15233,7 +15232,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:42"
+    "fetched_at": "2026-09-11T00:12:10"
   },
   "FPF": {
     "sector": "Financial Services",
@@ -15293,7 +15292,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:01"
+    "fetched_at": "2026-09-11T00:12:11"
   },
   "YEXT": {
     "sector": "Technology",
@@ -15815,7 +15814,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:08"
+    "fetched_at": "2026-09-11T00:11:46"
   },
   "OMC": {
     "sector": "Communication Services",
@@ -15887,7 +15886,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:50"
+    "fetched_at": "2026-09-11T00:12:13"
   },
   "TKC": {
     "sector": "Communication Services",
@@ -15899,7 +15898,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:03"
+    "fetched_at": "2026-09-11T00:12:13"
   },
   "ETO": {
     "sector": "Financial Services",
@@ -15929,7 +15928,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:44"
+    "fetched_at": "2026-09-11T00:11:55"
   },
   "DIS": {
     "sector": "Communication Services",
@@ -16001,13 +16000,13 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:49"
+    "fetched_at": "2026-09-11T00:12:16"
   },
   "JBK": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:03"
+    "fetched_at": "2026-09-11T00:12:20"
   },
   "AIG": {
     "sector": "Financial Services",
@@ -16085,7 +16084,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:42"
+    "fetched_at": "2026-09-11T00:11:59"
   },
   "RH": {
     "sector": "Consumer Cyclical",
@@ -16133,7 +16132,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:35"
+    "fetched_at": "2026-09-11T00:11:50"
   },
   "BUI": {
     "sector": "Financial Services",
@@ -16283,7 +16282,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:37"
+    "fetched_at": "2026-09-11T00:11:45"
   },
   "NEM": {
     "sector": "Basic Materials",
@@ -16493,7 +16492,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:54"
+    "fetched_at": "2026-09-11T00:12:32"
   },
   "SNDA": {
     "sector": "Healthcare",
@@ -16535,7 +16534,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:08"
+    "fetched_at": "2026-09-11T00:12:01"
   },
   "ADX": {
     "sector": "Financial Services",
@@ -16571,7 +16570,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:51"
+    "fetched_at": "2026-09-11T00:12:13"
   },
   "NPK": {
     "sector": "Industrials",
@@ -16607,7 +16606,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:35"
+    "fetched_at": "2026-09-11T00:11:52"
   },
   "HG": {
     "sector": "Financial Services",
@@ -16667,7 +16666,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:40"
+    "fetched_at": "2026-09-11T00:12:35"
   },
   "CURB": {
     "sector": "Real Estate",
@@ -16859,7 +16858,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:43"
+    "fetched_at": "2026-09-11T00:12:26"
   },
   "BBAR": {
     "sector": "Financial Services",
@@ -16871,13 +16870,13 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:05"
+    "fetched_at": "2026-09-11T00:12:05"
   },
   "CIMP": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:54"
+    "fetched_at": "2026-09-11T00:12:18"
   },
   "CDP": {
     "sector": "Real Estate",
@@ -16913,7 +16912,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:50"
+    "fetched_at": "2026-09-11T00:11:48"
   },
   "CRH": {
     "sector": "Basic Materials",
@@ -17045,7 +17044,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:55"
+    "fetched_at": "2026-09-11T00:11:47"
   },
   "APG": {
     "sector": "Industrials",
@@ -17081,7 +17080,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:59"
+    "fetched_at": "2026-09-11T00:12:33"
   },
   "TDW": {
     "sector": "Energy",
@@ -17225,7 +17224,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:53"
+    "fetched_at": "2026-09-11T00:12:00"
   },
   "MAN": {
     "sector": "Industrials",
@@ -17285,7 +17284,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:10"
+    "fetched_at": "2026-09-11T00:12:02"
   },
   "ARX": {
     "sector": "Financial Services",
@@ -17297,7 +17296,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:39"
+    "fetched_at": "2026-09-11T00:12:27"
   },
   "TNC": {
     "sector": "Industrials",
@@ -17309,7 +17308,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:13"
+    "fetched_at": "2026-09-11T00:11:48"
   },
   "ONTO": {
     "sector": "Technology",
@@ -17453,7 +17452,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:42"
+    "fetched_at": "2026-09-11T00:12:19"
   },
   "OBE": {
     "sector": "Energy",
@@ -17477,7 +17476,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:05"
+    "fetched_at": "2026-09-11T00:12:14"
   },
   "CVI": {
     "sector": "Energy",
@@ -17489,7 +17488,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:49"
+    "fetched_at": "2026-09-11T00:12:32"
   },
   "VIST": {
     "sector": "Energy",
@@ -17603,7 +17602,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:58"
+    "fetched_at": "2026-09-11T00:12:02"
   },
   "RMD": {
     "sector": "Healthcare",
@@ -17801,7 +17800,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:16"
+    "fetched_at": "2026-09-11T00:12:03"
   },
   "KEX": {
     "sector": "Industrials",
@@ -17933,7 +17932,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:14"
+    "fetched_at": "2026-09-11T00:11:52"
   },
   "MLM": {
     "sector": "Basic Materials",
@@ -17975,7 +17974,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:36"
+    "fetched_at": "2026-09-11T00:11:55"
   },
   "U": {
     "sector": "Technology",
@@ -18353,7 +18352,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:00"
+    "fetched_at": "2026-09-11T00:12:19"
   },
   "WT": {
     "sector": "Financial Services",
@@ -18383,7 +18382,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:40"
+    "fetched_at": "2026-09-11T00:12:27"
   },
   "WY": {
     "sector": "Real Estate",
@@ -18485,7 +18484,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:02"
+    "fetched_at": "2026-09-11T00:12:31"
   },
   "CCK": {
     "sector": "Consumer Cyclical",
@@ -18701,7 +18700,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:55"
+    "fetched_at": "2026-09-11T00:12:14"
   },
   "VNO": {
     "sector": "Real Estate",
@@ -18725,7 +18724,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:07"
+    "fetched_at": "2026-09-11T00:12:29"
   },
   "HPP": {
     "sector": "Real Estate",
@@ -18737,7 +18736,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:10"
+    "fetched_at": "2026-09-11T00:12:29"
   },
   "CL": {
     "sector": "Consumer Defensive",
@@ -18773,7 +18772,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:45"
+    "fetched_at": "2026-09-11T00:12:25"
   },
   "EXK": {
     "sector": "Basic Materials",
@@ -18977,7 +18976,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:56"
+    "fetched_at": "2026-09-11T00:12:35"
   },
   "NYT": {
     "sector": "Communication Services",
@@ -19175,7 +19174,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:06"
+    "fetched_at": "2026-09-11T00:12:24"
   },
   "UNM": {
     "sector": "Financial Services",
@@ -19235,7 +19234,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:09"
+    "fetched_at": "2026-09-11T00:12:27"
   },
   "FRA": {
     "sector": "Financial Services",
@@ -19295,7 +19294,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:13"
+    "fetched_at": "2026-09-11T00:12:12"
   },
   "ITW": {
     "sector": "Industrials",
@@ -19319,7 +19318,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:17"
+    "fetched_at": "2026-09-11T00:12:09"
   },
   "ONIT": {
     "sector": "Financial Services",
@@ -19343,7 +19342,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:12"
+    "fetched_at": "2026-09-11T00:11:51"
   },
   "IEX": {
     "sector": "Industrials",
@@ -19769,7 +19768,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:02"
+    "fetched_at": "2026-09-11T00:11:48"
   },
   "TDAY": {
     "sector": "Communication Services",
@@ -19931,7 +19930,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:50"
+    "fetched_at": "2026-09-11T00:12:20"
   },
   "OXY": {
     "sector": "Energy",
@@ -20045,7 +20044,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:07"
+    "fetched_at": "2026-09-11T00:11:45"
   },
   "GME": {
     "sector": "Consumer Cyclical",
@@ -20243,7 +20242,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:39"
+    "fetched_at": "2026-09-11T00:11:51"
   },
   "SE": {
     "sector": "Consumer Cyclical",
@@ -20255,7 +20254,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:18"
+    "fetched_at": "2026-09-11T00:12:08"
   },
   "CNM": {
     "sector": "Industrials",
@@ -20279,7 +20278,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:57"
+    "fetched_at": "2026-09-11T00:12:16"
   },
   "UA": {
     "sector": "Consumer Cyclical",
@@ -20543,7 +20542,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:46"
+    "fetched_at": "2026-09-11T00:11:59"
   },
   "SAM": {
     "sector": "Consumer Defensive",
@@ -21293,7 +21292,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:59"
+    "fetched_at": "2026-09-11T00:11:49"
   },
   "VMO": {
     "sector": "Financial Services",
@@ -21334,8 +21333,8 @@
   "NIQ": {
     "sector": "",
     "industry": "",
-    "marketCap": 5341650944,
-    "fetched_at": "2026-09-10T00:05:44"
+    "marketCap": 5205970944,
+    "fetched_at": "2026-09-11T00:12:00"
   },
   "APD": {
     "sector": "Basic Materials",
@@ -21389,7 +21388,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:01"
+    "fetched_at": "2026-09-11T00:12:30"
   },
   "ORN": {
     "sector": "Industrials",
@@ -21461,7 +21460,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:10"
+    "fetched_at": "2026-09-11T00:11:58"
   },
   "IAG": {
     "sector": "Basic Materials",
@@ -21623,7 +21622,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:55"
+    "fetched_at": "2026-09-11T00:11:48"
   },
   "KTF": {
     "sector": "Financial Services",
@@ -21953,7 +21952,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:13"
+    "fetched_at": "2026-09-11T00:11:52"
   },
   "AYI": {
     "sector": "Industrials",
@@ -21989,7 +21988,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:13"
+    "fetched_at": "2026-09-11T00:12:22"
   },
   "ELV": {
     "sector": "Healthcare",
@@ -22121,7 +22120,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:51"
+    "fetched_at": "2026-09-11T00:12:15"
   },
   "OTF": {
     "sector": "Financial Services",
@@ -22259,7 +22258,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:48"
+    "fetched_at": "2026-09-11T00:12:21"
   },
   "DCO": {
     "sector": "Industrials",
@@ -22367,7 +22366,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:58"
+    "fetched_at": "2026-09-11T00:11:50"
   },
   "CDE": {
     "sector": "Basic Materials",
@@ -22397,7 +22396,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:40"
+    "fetched_at": "2026-09-11T00:12:25"
   },
   "KWR": {
     "sector": "Basic Materials",
@@ -22553,7 +22552,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:11"
+    "fetched_at": "2026-09-11T00:12:09"
   },
   "CTRE": {
     "sector": "Real Estate",
@@ -22625,7 +22624,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:56"
+    "fetched_at": "2026-09-11T00:12:28"
   },
   "PUMP": {
     "sector": "Energy",
@@ -22847,7 +22846,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:45"
+    "fetched_at": "2026-09-11T00:12:30"
   },
   "BOOT": {
     "sector": "Consumer Cyclical",
@@ -22895,13 +22894,13 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:58"
+    "fetched_at": "2026-09-11T00:11:49"
   },
   "PMTU": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:17"
+    "fetched_at": "2026-09-11T00:12:23"
   },
   "GFI": {
     "sector": "Basic Materials",
@@ -22913,7 +22912,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:56"
+    "fetched_at": "2026-09-11T00:11:58"
   },
   "HOV": {
     "sector": "Consumer Cyclical",
@@ -23021,7 +23020,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:11"
+    "fetched_at": "2026-09-11T00:11:53"
   },
   "PKG": {
     "sector": "Consumer Cyclical",
@@ -23039,7 +23038,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:47"
+    "fetched_at": "2026-09-11T00:12:32"
   },
   "ESTC": {
     "sector": "Technology",
@@ -23207,7 +23206,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:37"
+    "fetched_at": "2026-09-11T00:11:57"
   },
   "JENA": {
     "sector": "Financial Services",
@@ -23267,7 +23266,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:46"
+    "fetched_at": "2026-09-11T00:11:45"
   },
   "BNL": {
     "sector": "Real Estate",
@@ -23333,7 +23332,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:38"
+    "fetched_at": "2026-09-11T00:12:01"
   },
   "ARCO": {
     "sector": "Consumer Cyclical",
@@ -23446,8 +23445,8 @@
   "LION": {
     "sector": "",
     "industry": "",
-    "marketCap": 3291010304,
-    "fetched_at": "2026-09-10T00:05:39"
+    "marketCap": 3317790208,
+    "fetched_at": "2026-09-11T00:12:06"
   },
   "SXI": {
     "sector": "Industrials",
@@ -23561,7 +23560,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:41"
+    "fetched_at": "2026-09-11T00:12:23"
   },
   "THG": {
     "sector": "Financial Services",
@@ -23591,7 +23590,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:42"
+    "fetched_at": "2026-09-11T00:12:08"
   },
   "ACHR": {
     "sector": "Industrials",
@@ -23657,7 +23656,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:47"
+    "fetched_at": "2026-09-11T00:12:10"
   },
   "AMBP": {
     "sector": "Consumer Cyclical",
@@ -23668,14 +23667,14 @@
   "DBI": {
     "sector": "Consumer Cyclical",
     "industry": "Footwear & Accessories",
-    "marketCap": 322434464,
-    "fetched_at": "2026-07-28T23:39:23"
+    "marketCap": 304154688,
+    "fetched_at": "2026-09-11T00:12:19"
   },
   "TRNZ": {
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:05:57"
+    "fetched_at": "2026-09-11T00:11:47"
   },
   "PXED": {
     "sector": "Consumer Defensive",
@@ -23705,7 +23704,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:16"
+    "fetched_at": "2026-09-11T00:12:23"
   },
   "SOC": {
     "sector": "Energy",
@@ -23741,7 +23740,7 @@
     "sector": "",
     "industry": "",
     "marketCap": 0,
-    "fetched_at": "2026-09-10T00:06:15"
+    "fetched_at": "2026-09-11T00:12:09"
   },
   "BDCI": {
     "sector": "Financial Services",
@@ -24022,8 +24021,8 @@
   "FSSL": {
     "sector": "",
     "industry": "",
-    "marketCap": 888996608,
-    "fetched_at": "2026-09-10T00:05:36"
+    "marketCap": 882163968,
+    "fetched_at": "2026-09-11T00:12:24"
   },
   "FCRS": {
     "sector": "Financial Services",
@@ -24066,5 +24065,17 @@
     "industry": "Asset Management",
     "marketCap": 0,
     "fetched_at": "2026-09-10T00:06:18"
+  },
+  "ANGX": {
+    "sector": "Communication Services",
+    "industry": "Entertainment",
+    "marketCap": 1004748992,
+    "fetched_at": "2026-09-11T00:12:02"
+  },
+  "CBC": {
+    "sector": "Financial Services",
+    "industry": "Banks - Regional",
+    "marketCap": 7692904960,
+    "fetched_at": "2026-09-11T00:12:36"
   }
 }
