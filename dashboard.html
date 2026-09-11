@@ -2025,6 +2025,16 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 #top-panel-briefing .wbtn{font-size:11px;padding:2px 10px;border:1px solid var(--color-neutral-300);background:transparent;color:var(--color-neutral-600);cursor:pointer;font-family:inherit;white-space:nowrap}
 #top-panel-briefing .wbtn.on{background:var(--color-accent-700);border-color:var(--color-accent-700);color:#fff}
 </style>
+<style id="tp-alignment-style">
+/* TrendPilot sample alignment v1: isolated from the existing eleven tabs. */
+.tp-align{max-width:1540px;margin:auto;padding:22px 18px 40px;color:#29343d;font:13px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic",sans-serif}
+.tp-align *{box-sizing:border-box}.tp-align h2{font-size:23px;letter-spacing:-.7px;margin:0;color:#263845}.tp-align h3{font-size:14px;margin:0 0 10px}.tp-align p{margin:5px 0}.tp-align button,.tp-align input,.tp-align select{font:inherit}.tp-align button{cursor:pointer}.tp-align button:focus-visible,.tp-align input:focus-visible,.tp-align select:focus-visible,.tp-align summary:focus-visible{outline:3px solid #72a9e8;outline-offset:2px}
+.tp-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px}.tp-sub,.tp-muted{color:#77828a;font-size:11px}.tp-head small{font-size:10px;color:#66828d;letter-spacing:1.8px;font-weight:700;display:block;margin-bottom:3px}.tp-actions,.tp-chips{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.tp-btn{border:1px solid #d8dfe2;border-radius:6px;padding:6px 11px;background:#fff;color:#40505e;white-space:nowrap}.tp-btn.active{background:#244e70;color:#fff;border-color:#244e70}.tp-pill{border:1px solid #dce4e7;border-radius:20px;background:#f7f9fa;padding:3px 9px;font-size:10px;display:inline-block}.tp-pill.ok{color:#1b7467;background:#eaf6f1;border-color:#c8e6dc}.tp-pill.warn{color:#966017;background:#fff6e7;border-color:#f0dfba}
+.tp-bar,.tp-box{background:#fff;border:1px solid #e0e4e5;border-radius:9px;padding:14px 16px;margin-bottom:14px}.tp-bar{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:10px 14px}.tp-note{padding:9px 12px;background:#f0f6fb;border:1px solid #d7e6f3;border-left:3px solid #5284ad;border-radius:5px;color:#4c687b;font-size:11px;margin:12px 0}.tp-section-label{margin:18px 0 9px;font-size:11px;font-weight:600;color:#7c858a;letter-spacing:.3px}.tp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.tp-card{--accent:#1d7b6b;--tint:#eef8f4;border:1px solid #e1e4e5;border-left:4px solid var(--accent);border-radius:9px;background:var(--tint);padding:13px 15px;min-width:0}.tp-card.fire{--accent:#995319;--tint:#fff6eb}.tp-card.setup{--accent:#24649a;--tint:#eff5fc}.tp-card.pattern{--accent:#1d8578;--tint:#eefaf5}.tp-card.high{--accent:#b76623;--tint:#fff6ed}.tp-card.double{--accent:#b94e20;--tint:#fff0db}.tp-card-top{display:flex;justify-content:space-between;align-items:center;gap:6px}.tp-card-title{background:none;border:0;color:var(--accent);padding:0;font-weight:700!important;font-size:15px!important;text-align:left}.tp-count{font-size:25px;font-weight:700;line-height:1.2;color:var(--accent)}.tp-card-desc{font-size:10px;color:#7c8588;margin:6px 0 11px;min-height:31px}.tp-data-row{display:flex;justify-content:space-between;align-items:center;background:#ffffffb8;border-bottom:1px solid #e3e7e5;padding:5px 7px;font-size:11px}.tp-sentiment{font-size:10px;color:#72827b;margin-top:7px}.tp-up{color:#137468;font-weight:600}.tp-down{color:#ae5353;font-weight:600}.tp-zero{color:#72818b}
+.tp-kpis{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin:10px 0}.tp-kpi{border:1px solid #e2e6e8;border-radius:7px;background:#fff;padding:12px 10px}.tp-kpi label{display:block;color:#899198;font-size:10px}.tp-kpi strong{font-size:19px;display:block;color:#2e4f65;line-height:1.6}.tp-kpi small{font-size:10px;color:#8a9298}.tp-holdings{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.tp-holding{border:1px solid #dfe6e7;border-left:3px solid #277c70;border-radius:5px;padding:8px 11px;background:#fff}.tp-holding div{display:flex;justify-content:space-between}.tp-holding small{font-size:10px;color:#808b93}.tp-scroll{width:100%;overflow:auto;overscroll-behavior-x:contain}.tp-table{border-collapse:collapse;width:100%;font-size:11px;white-space:nowrap}.tp-table th{text-align:right;background:#f5f5f1;color:#7b8388;font-weight:500;padding:8px 9px;border-bottom:1px solid #dde2e3}.tp-table td{padding:7px 9px;text-align:right;border-bottom:1px solid #edf0f0}.tp-table th:first-child,.tp-table td:first-child{text-align:left}.tp-table tbody tr:hover{background:#f5f9fc}.tp-table a{color:#285979;text-decoration:none;font-weight:700}.tp-table td.tp-name{max-width:180px;overflow:hidden;text-overflow:ellipsis;text-align:left}.tp-table th button{border:0;background:none;color:inherit;padding:0;cursor:pointer}.tp-table .tp-tag{font-size:9px;border:1px solid #d6e2dd;border-radius:10px;padding:2px 5px;margin:1px;display:inline-block;color:#397567}.tp-chart{width:100%;min-width:620px;height:258px;display:block}.tp-chart text{font:10px sans-serif;fill:#80909c}.tp-legend{display:flex;gap:15px;flex-wrap:wrap;color:#78838a;font-size:11px}.tp-legend i{display:inline-block;width:17px;height:3px;vertical-align:middle;margin-right:4px}.tp-align details>summary{cursor:pointer;font-weight:600;color:#506979;list-style-position:inside}.tp-align details[open]>summary{margin-bottom:10px}.tp-controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.tp-controls input{flex:1;min-width:180px;border:1px solid #d6dde1;border-radius:6px;padding:9px 12px;background:#fff}.tp-controls select{border:1px solid #d6dde1;border-radius:6px;padding:8px;background:white;color:#455761}.tp-footer{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:12px}.tp-empty{text-align:center;padding:22px;color:#819099;font-size:12px}.tp-number{font-variant-numeric:tabular-nums}.tp-pending{border:1px dashed #d9dfe2;background:#fafcfd;border-radius:7px;padding:13px;color:#7d8890;font-size:11px}.tp-split{display:grid;grid-template-columns:1.2fr 1fr;gap:12px}.tp-align .tp-box:last-child{margin-bottom:0}.tp-lineage{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.tp-lineage div{padding:11px;border-radius:6px;background:#f6f8fa;font-size:11px}.tp-lineage strong{display:block;color:#526777;margin-bottom:4px}
+@media(max-width:1000px){.tp-kpis{grid-template-columns:repeat(4,1fr)}.tp-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.tp-split{grid-template-columns:1fr}}
+@media(max-width:600px){.tp-align{padding:14px 10px 28px}.tp-head{flex-direction:column;gap:9px}.tp-align h2{font-size:20px}.tp-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.tp-card{padding:11px 9px}.tp-card-title{font-size:13px!important}.tp-card-desc{min-height:46px}.tp-count{font-size:21px}.tp-kpis{grid-template-columns:repeat(2,1fr)}.tp-kpi:last-child{grid-column:1/-1}.tp-holdings{grid-template-columns:repeat(2,minmax(0,1fr))}.tp-box{padding:12px 10px}.tp-controls{align-items:stretch}.tp-lineage{grid-template-columns:1fr}.tp-footer{align-items:flex-start}.tp-sub{font-size:10px}.tp-data-row{font-size:10px}}
+</style>
 </head>
 <body>
 
@@ -2180,6 +2190,8 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 <!-- ══ 통합 탭바 ══ -->
 <div class="top-tabs">
   <button class="top-tab on" id="ttab-briefing"    onclick="switchTopTab('briefing',this)">🌅 Daily Briefing</button>
+  <button class="top-tab" id="ttab-anchors" onclick="switchTopTab('anchors',this)">📌 앵커 추적</button>
+  <button class="top-tab" id="ttab-activity" onclick="switchTopTab('activity',this)">🔥 종목 활동</button>
   <button class="top-tab" id="ttab-marketpulse" onclick="switchTopTab('marketpulse',this)">📊 Market Pulse</button>
   <button class="top-tab" id="ttab-sector"      onclick="switchTopTab('sector',this)">📈 섹터 분석</button>
   <button class="top-tab" id="ttab-etf"         onclick="switchTopTab('etf',this)">📊 섹터 ETF</button>
@@ -2194,6 +2206,8 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#f5f5f0;col
 </div><!-- /top-sticky-wrap -->
 
 <div class="main-with-sidebar" id="main-content">
+<div class="top-panel" id="top-panel-anchors"><div class="tp-align" id="tp-anchors"></div></div>
+<div class="top-panel" id="top-panel-activity"><div class="tp-align" id="tp-activity"></div></div>
 
 <!-- ══ TOP PANEL: Market Pulse ══ -->
 <!-- ══ Daily Briefing 탭 패널 (v12 신규 / 6 섹션 Top-Down) ══ -->
@@ -12529,6 +12543,7 @@ function switchMarket(mkt, el) {
 }
 
 function switchTopTab(tab, el) {
+  if (window.TrendPilotAlignment) window.TrendPilotAlignment.render(tab);
   // 탭 버튼 on/off
   document.querySelectorAll('.top-tab').forEach(b => b.classList.remove('on'));
   if (el) el.classList.add('on');
@@ -15108,6 +15123,8 @@ function ingestUS(raw) {
   US.market = raw.market || {};
   US.sectors = buildUSSectors(US.data);
   US.catalyst = raw.catalyst || null;
+  window._lastUSRaw = raw;
+  if (window.TrendPilotAlignment) window.TrendPilotAlignment.refresh();
   US.flow = raw.flow || null;   // v13: 진입/편출 흐름 + 60일 추이 (③④)
   try { renderStrategyRoom(); } catch(e) { console.warn('[전략실] 렌더 실패:', e); }
   try { renderStrategyPortfolio(); } catch(e) { console.warn('[전략실 포트폴리오] 렌더 실패:', e); }
@@ -15341,6 +15358,7 @@ async function autoLoad() {
     // 여러 경로에 있으면 data_date 최신 우선
     srResults.sort((a, b) => String(b.json.data_date || '').localeCompare(String(a.json.data_date || '')));
     window.__STRATEGY_ROOM = srResults[0].json;
+    if (window.TrendPilotAlignment) window.TrendPilotAlignment.refresh();
     const sr = window.__STRATEGY_ROOM;
     console.log(`%c[자동로드] 🏛 전략실: ${srResults[0].path} · ${sr.data_date} · NAV ${sr.nav} · 보유 ${(sr.holdings||[]).length} · 신호 ${(sr.signals||[]).length}`, 'color:#7a5a00;font-weight:bold');
     try { if (typeof renderStrategyPortfolio === 'function') renderStrategyPortfolio(); } catch(e) { console.warn('[전략실] 실데이터 렌더 실패:', e); }
@@ -19496,6 +19514,125 @@ function tryRenderBriefingV2(){
     }
   } catch(e) { console.warn('[BriefingV2] 빌드 실패:', e); }
 }
+</script>
+<script id="tp-alignment-script">
+/* Sample-aligned read-only analysis. No trading state or synthetic returns. */
+(function(){
+'use strict';
+const TP=window.TrendPilotAlignment={version:'sample-v1',group:'all',filter:'all',query:'',sector:'all',sort:'pct',descending:true,page:0,size:40};
+const NUM=v=>typeof v==='number'&&Number.isFinite(v);
+const ESC=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const PCT=v=>NUM(v)?`<span class="${v>0?'tp-up':v<0?'tp-down':'tp-zero'}">${v>0?'+':''}${v.toFixed(1)}%</span>`:'<span class="tp-muted">—</span>';
+const F=(v,n=1)=>NUM(v)?v.toFixed(n):'—';
+const mean=xs=>{xs=xs.filter(NUM);return xs.length?xs.reduce((a,b)=>a+b,0)/xs.length:null;};
+const ret=(a,b)=>NUM(a)&&NUM(b)&&b>0?(a/b-1)*100:null;
+const LABELS={all:'전체',fire:'🔥 발화테마',setup:'🧩 셋업',gate:'🛡 엔진 신호',pattern:'📐 G2 패턴',high:'▲ 52주 신고가',double:'▲▲ 더블신고가'};
+const DEFINITIONS={fire:'현재 카탈리스트의 발화 업종에 속한 종목. 매수 지시와 다릅니다.',setup:'기존 셋업 기준: RS≥80, 추세템플릿 전체 조건 중 1개 이하 미달.',gate:'strategy_room.json의 signals. 자금·보유·실적 조건 때문에 실제 체결과 다를 수 있습니다.',pattern:'현재 pattern_count>0. 기존 엔진의 G2 패턴 조건만 적용합니다.',high:'현재 h52_new=true인 종목. 최초 신고가 발생 이벤트 여부는 별도 이력이 필요합니다.',double:'50일 신고가가 52주 신고가보다 1~10거래일 선행한 이벤트. 현재 데이터에는 선행일 필드가 없습니다.'};
+function data(){
+ const raw=window._lastUSRaw||window.__lastRawData||{};
+ const stocks=(typeof US!=='undefined'?US.data:raw.stocks)||[];
+ const sr=window.__STRATEGY_ROOM||null;
+ const catalyst=(typeof US!=='undefined'?US.catalyst:raw.catalyst)||{};
+ const fire=new Set((catalyst.clusters||[]).map(c=>c.cluster));
+ const gate=new Set((sr?.signals||[]).map(s=>s.ticker));
+ const maxCond=Math.max(1,...stocks.map(s=>Array.isArray(s.pass_dots)?s.pass_dots.length:0));
+ const classify=s=>({fire:fire.has(s.industry),setup:(s.rs||0)>=80&&(Array.isArray(s.pass_dots)?s.pass_dots.filter(Boolean).length:0)>=Math.max(1,maxCond-1),gate:gate.has(s.ticker),pattern:(s.pattern_count||0)>0,high:s.h52_new===true});
+ const rows=stocks.filter(s=>String(s.asset_type||'STOCK').toUpperCase()!=='ETF').map(s=>({...s,groups:classify(s)}));
+ return {raw,rows,sr,date:raw.meta?.updated_at?.slice(0,10)||sr?.data_date||'확인 대기'};
+}
+function groups(rows){return Object.fromEntries(['fire','setup','gate','pattern','high'].map(k=>[k,rows.filter(s=>s.groups[k])]));}
+function statRow(label,value){return `<div class="tp-data-row"><span>${label}</span><b>${value}</b></div>`;}
+function card(key,rows){
+ const pending=key==='double';const valid=rows.filter(s=>NUM(s.pct));
+ return `<article class="tp-card ${key}"><div class="tp-card-top"><button class="tp-card-title" ${pending?'disabled':`data-tp-group="${key}"`} title="${ESC(DEFINITIONS[key])}">${LABELS[key]}</button><span class="tp-count">${pending?'—':rows.length.toLocaleString()}</span></div><div class="tp-card-desc">${ESC(DEFINITIONS[key])}</div>${statRow('현재 후보 · 평균 RS',pending?'—':F(mean(rows.map(s=>s.rs)),0))}${statRow('후보의 당일 평균 등락',pending?'—':PCT(mean(rows.map(s=>s.pct))))}${statRow('5 / 20 / 60거래일 성과','<span class="tp-muted">원장 수집 필요</span>')}<div class="tp-sentiment">${pending?'선행일 데이터 필요':`<span class="tp-up">● ${valid.filter(s=>s.pct>0).length}</span> 상승 · ○ ${valid.filter(s=>s.pct===0).length} 보합 · <span class="tp-down">● ${valid.filter(s=>s.pct<0).length}</span> 하락${valid.length<rows.length?` · ${rows.length-valid.length} 결측`:''}`}</div></article>`;
+}
+function kpi(label,value,note){return `<div class="tp-kpi"><label>${label}</label><strong class="tp-number">${value}</strong><small>${note}</small></div>`;}
+function chart(sr){
+ const hist=(sr.nav_history||[]).filter(r=>typeof r.date==='string');
+ if(hist.length<2)return '<div class="tp-empty">NAV 이력이 2개 이상 쌓이면 표시됩니다.</div>';
+ const bench=new Map((sr.bench_history||[]).map(r=>[r.date,r]));
+ const series=[{name:'전략실',key:'nav',color:'#365488'},...['spy','qqq','tqqq'].map((k,i)=>({name:k.toUpperCase(),key:k,color:['#909ba5','#4097a1','#bd864f'][i]}))].map(s=>({...s,values:hist.map(r=>s.key==='nav'?r.nav:bench.get(r.date)?.[s.key])}));
+ const values=series.flatMap(s=>s.values.filter(NUM));if(!values.length)return '<div class="tp-empty">유효한 NAV 값이 없습니다.</div>';
+ const lo=Math.min(...values)-.025,hi=Math.max(...values)+.025;
+ const x=i=>45+i*895/Math.max(1,hist.length-1),y=v=>205-(v-lo)/(hi-lo)*180;
+ let svg='<svg class="tp-chart" viewBox="0 0 980 250" role="img" aria-label="저장된 전략실 NAV와 벤치마크 비교. 결측 구간은 선을 끊어 표시합니다.">';
+ for(let i=0;i<5;i++){let v=lo+(hi-lo)*i/4;svg+=`<line x1="45" x2="940" y1="${y(v)}" y2="${y(v)}" stroke="#edf0f2"/><text x="7" y="${y(v)+4}">${v.toFixed(2)}</text>`;}
+ for(const s of series){let d='',started=false;s.values.forEach((v,i)=>{if(!NUM(v)){started=false;return;}d+=`${started?'L':'M'}${x(i).toFixed(1)},${y(v).toFixed(1)} `;started=true;});svg+=`<path d="${d}" fill="none" stroke="${s.color}" stroke-width="${s.key==='nav'?2.7:1.5}" ${s.key!=='nav'?'stroke-dasharray="5 4"':''}/>`;}
+ [0,Math.floor((hist.length-1)/2),hist.length-1].forEach(i=>svg+=`<text x="${x(i)}" y="236" text-anchor="middle">${ESC(hist[i].date)}</text>`);
+ svg+='</svg>';
+ return `<div class="tp-legend">${series.map(s=>`<span><i style="background:${s.color}"></i>${s.name}</span>`).join('')}<span>초기값 기준 · 비용 포함 여부는 기존 엔진 설정</span></div><div class="tp-scroll">${svg}</div><div class="tp-sub">벤치마크 마지막 유효 기록: ${series.slice(1).map(s=>{let i=s.values.findLastIndex(NUM);return `${s.name} ${i<0?'없음':ESC(hist[i].date)}`;}).join(' · ')}. 최신 결측 구간은 연결하지 않습니다.</div>`;
+}
+function portfolio(sr){
+ if(!sr)return '<section class="tp-box"><h3>🏛 전략실 실제 기록</h3><div class="tp-empty">전략실 데이터가 아직 로드되지 않았습니다.</div></section>';
+ const holds=sr._holdings||[];const cash=sr._cash;
+ const pricesValid=holds.every(h=>NUM(h.cur)&&NUM(h.shares));
+ const mv=pricesValid?holds.reduce((v,h)=>v+h.cur*h.shares,0):null;
+ const nav=NUM(cash)&&NUM(mv)?cash+mv:null;
+ const exp=NUM(nav)&&nav>0?mv/nav*100:null;
+ const trades=sr._closed||[];
+ const base=sr.nav_history?.[0]?.date||'—';
+ return `<section class="tp-box"><div class="tp-card-top"><h3>🏛 전략실 · 실제 페이퍼 트레이딩 기록</h3><span class="tp-pill">${ESC(sr.logic_version||'')}</span></div><div class="tp-sub">${ESC(base)}부터 저장된 계좌 이력 · 샘플의 조합 백테스트와 별개입니다.</div><div class="tp-kpis">${kpi('NAV',F(sr.nav,4),`누적 ${NUM(sr.ret_pct)?sr.ret_pct.toFixed(2)+'%':'—'}`)}${kpi('MDD',F(sr.risk?.mdd)+'%','기존 저장값')}${kpi('청산 기록',`${trades.length}건`,'부분청산 포함')}${kpi('승률 / PF',`${F(sr.trades?.winrate)}% / ${F(sr.trades?.pf,2)}`,'기존 엔진 집계')}${kpi('실제 주식 비중',NUM(exp)?F(exp)+'%':'—','현금 + 평가액 기준')}${kpi('신규 진입 상한',NUM(sr.alloc3l?.hi)?F(sr.alloc3l.hi,0)+'%':'—','기존 보유 강제축소 아님')}${kpi('현재 보유',`${holds.length}종목`,ESC(sr.regime||''))}</div><div class="tp-note">${NUM(exp)&&NUM(sr.alloc3l?.hi)&&exp>sr.alloc3l.hi?'현재 보유 비중이 신규 진입 상한보다 높습니다. 기존 보유를 자동으로 상한까지 줄이는 규칙은 아닙니다. ':''}기존 이력에는 실행 날짜와 거래일이 섞여 있어, 기간·위험 지표는 거래일 정비 후 재검증이 필요합니다.</div><div class="tp-holdings">${holds.map(h=>`<div class="tp-holding"><div><b>${ESC(h.ticker)}</b>${PCT(ret(h.cur,h.entry_px))}</div><small>${ESC(h.entry_date)} 진입 · ${ESC(h.days_in??'—')}일 보유${h.runner?' · 런너':''}</small></div>`).join('')||'<div class="tp-empty">보유 종목 없음</div>'}</div><div style="margin-top:18px">${chart(sr)}</div><details style="margin-top:16px"><summary>청산 원장 ${trades.length}건 · 클릭하여 펼치기</summary><div class="tp-scroll"><table class="tp-table"><thead><tr><th>종목</th><th>진입</th><th>청산</th><th>진입가</th><th>청산가</th><th>가격 수익률</th><th>사유</th><th>부분청산</th></tr></thead><tbody>${trades.slice().reverse().map(t=>`<tr><td><b>${ESC(t.ticker)}</b></td><td>${ESC(t.entry)}</td><td>${ESC(t.exit)}</td><td>${F(t.entry_px,2)}</td><td>${F(t.exit_px,2)}</td><td>${PCT(ret(t.exit_px,t.entry_px))}</td><td>${ESC(t.cat)}</td><td>${t.partial?ESC(t.partial)+'%':'—'}</td></tr>`).join('')||'<tr><td colspan="8">청산 기록 없음</td></tr>'}</tbody></table></div><p class="tp-sub">가격 수익률은 비용 차감 전입니다. 계좌 NAV 및 현금에는 기존 엔진 비용이 반영됩니다.</p></details></section>`;
+}
+function intersections(rows){
+ const arms=[['gate_fire','🛡 엔진 신호 ∩ 🔥 발화테마',s=>s.groups.gate&&s.groups.fire],['gate_high','🛡 엔진 신호 ∩ ▲ 신고가',s=>s.groups.gate&&s.groups.high],['setup_fire','🧩 셋업 ∩ 🔥 발화테마',s=>s.groups.setup&&s.groups.fire],['setup_pattern','🧩 셋업 ∩ 📐 패턴',s=>s.groups.setup&&s.groups.pattern],['triple','🛡 엔진 신호 ∩ 🧩 셋업 ∩ 🔥 발화테마',s=>s.groups.gate&&s.groups.setup&&s.groups.fire]];
+ TP.arms=Object.fromEntries(arms.map(([k,l,fn])=>[k,fn]));
+ return `<section class="tp-box"><h3>▧ 교집합 비교 · 현재 후보</h3><p class="tp-sub">동일한 현재 스냅샷에서 겹치는 종목입니다. 과거 이벤트 교집합이나 전략 수익률이 아닙니다.</p><div class="tp-scroll"><table class="tp-table"><thead><tr><th>조합 · 클릭하여 종목 보기</th><th>현재 종목 수</th><th>평균 RS</th><th>당일 평균 등락</th><th>과거 승률 / NAV</th></tr></thead><tbody>${arms.map(([k,l,fn])=>{let r=rows.filter(fn);return `<tr><td><button class="tp-btn" data-tp-group="${k}">${l}</button></td><td>${r.length}</td><td>${F(mean(r.map(s=>s.rs)),0)}</td><td>${PCT(mean(r.map(s=>s.pct)))}</td><td class="tp-muted">신호 원장 필요</td></tr>`;}).join('')}</tbody></table></div></section>`;
+}
+function anchors(){
+ const el=document.getElementById('tp-anchors');if(!el)return;
+ const {rows,sr,date}=data();const g=groups(rows);
+ const missing=sr?.benchmarks&&['spy','qqq','tqqq'].some(k=>!NUM(sr.benchmarks[k]));
+ el.innerHTML=`<header class="tp-head"><div><small>TRENDPILOT / SIGNAL INTELLIGENCE</small><h2>📌 앵커 추적 · 신호와 성과</h2><p class="tp-sub">현재 신호 → 교집합 → 실제 운용 기록. 후보 수와 과거 성과를 구분해서 확인합니다.</p></div><div class="tp-actions"><span class="tp-pill ok">파일 기준 ${ESC(date)}</span><button class="tp-btn" data-tp-action="activity">종목 활동 보기 ↗</button></div></header><div class="tp-bar"><b>수집 상태</b><span class="tp-pill ${rows.length?'ok':'warn'}">스크리너 ${rows.length.toLocaleString()}종목</span><span class="tp-pill ${sr?'ok':'warn'}">전략실 ${ESC(sr?.data_date||'대기')}</span><span class="tp-pill warn">앵커 원장 미수집</span>${missing?'<span class="tp-pill warn">최신 벤치마크 결측</span>':''}<span class="tp-sub">표시 날짜는 원본 파일의 날짜 필드입니다.</span></div><div class="tp-section-label">우리 스크리닝 — 현재 신호 3타입 · 제목을 누르면 해당 종목으로 이동</div><div class="tp-grid">${['fire','setup','gate'].map(k=>card(k,g[k])).join('')}</div><div class="tp-section-label">패턴 · 신고가 — 화면의 정의에 따라 분리</div><div class="tp-grid">${['pattern','high','double'].map(k=>card(k,g[k]||[])).join('')}</div><div class="tp-note">카드의 당일 등락은 현재 후보의 오늘 움직임입니다. 샘플의 r5·r20·r60은 과거 편입 이후 수익률이므로 서로 다른 통계입니다.</div>${intersections(rows)}${portfolio(sr)}<details class="tp-box"><summary>샘플과의 데이터 연결 범위 · 추가 수집 항목</summary><div class="tp-lineage"><div><strong>지금 연결됨</strong>현재 발화·셋업·패턴·엔진 신호, 교집합 후보, 실제 보유·청산 원장, 저장 NAV와 벤치마크.</div><div><strong>별도 신호 원장 필요</strong>편입일·기준가·편입 경로·거래일별 추적 가격을 축적해야 r5/r20/r60, 코호트, 조합별 백테스트를 계산할 수 있습니다.</div><div><strong>별도 데이터 공급 필요</strong>MarketSurge·IBD 편집국 판정, 5분봉·VWAP·장중 거래량, 50일 신고가 선행일. 현재 파일에서 추정하여 채우지 않습니다.</div></div></details>`;
+}
+const filters={all:()=>true,surge:s=>NUM(s.vol_ratio_50d)&&s.vol_ratio_50d>=1.5,dry:s=>NUM(s.vol_ratio_50d)&&s.vol_ratio_50d<.6,up:s=>NUM(s.pct)&&s.pct>=5,down:s=>NUM(s.pct)&&s.pct<=-5,high:s=>s.h52_new===true,rs:s=>NUM(s.rs)&&s.rs>=90,near:s=>NUM(s.h52_pct)&&s.h52_pct>=-2.5&&s.h52_pct<=0};
+const filterLabels={all:'전체',surge:'🔊 거래량 ≥1.5x',dry:'🔈 거래량 <0.6x',up:'↗ +5% 이상',down:'↘ −5% 이하',high:'▲ 52주 신고가',rs:'RS ≥90',near:'📍 52주 고가 −2.5% 이내'};
+function selected(){const d=data();let rows=d.rows;
+ if(TP.group!=='all')rows=rows.filter(TP.arms?.[TP.group]||((s)=>s.groups[TP.group]));
+ if(TP.sector!=='all')rows=rows.filter(s=>s.sector===TP.sector);
+ if(TP.query){const q=TP.query.toLowerCase();rows=rows.filter(s=>`${s.ticker} ${s.name} ${s.industry}`.toLowerCase().includes(q));}
+ return rows;
+}
+function sorted(rows){return rows.slice().sort((a,b)=>{let av=a[TP.sort],bv=b[TP.sort];const str=['ticker','name','industry','sector','phase'].includes(TP.sort);if(!str){if(!NUM(av))return NUM(bv)?1:0;if(!NUM(bv))return -1;}let cmp=str?String(av||'').localeCompare(String(bv||'')):av-bv;return (TP.descending?-cmp:cmp)||String(a.ticker).localeCompare(String(b.ticker));});}
+function activity(){
+ const el=document.getElementById('tp-activity');if(!el)return;
+ const {rows,date}=data();let sectors=[...new Set(rows.map(s=>s.sector).filter(Boolean))].sort();
+ el.innerHTML=`<header class="tp-head"><div><small>TRENDPILOT / STOCK ACTIVITY</small><h2>🔥 종목 활동</h2><p class="tp-sub">미국 주식 일일 스냅샷 · 장중 실시간 시세가 아닙니다 · 파일 기준 ${ESC(date)}</p></div><div class="tp-actions"><button class="tp-btn" data-tp-action="anchors">← 앵커 추적</button><button class="tp-btn" data-tp-action="reset">필터 초기화</button><button class="tp-btn" data-tp-action="export">현재 결과 CSV</button></div></header><section class="tp-box"><div class="tp-controls"><input id="tp-search" aria-label="종목 검색" placeholder="티커 · 회사명 · 업종 검색 (예: NVDA, 반도체)" value="${ESC(TP.query)}"><select id="tp-sector" aria-label="섹터 선택"><option value="all">모든 섹터</option>${sectors.map(s=>`<option ${TP.sector===s?'selected':''} value="${ESC(s)}">${ESC(s)}</option>`).join('')}</select><select id="tp-group" aria-label="신호 유형 선택">${Object.entries(LABELS).filter(([k])=>k!=='double').map(([k,l])=>`<option value="${k}" ${TP.group===k?'selected':''}>${l}</option>`).join('')}${TP.arms?.[TP.group]?`<option selected value="${ESC(TP.group)}">선택한 교집합</option>`:''}</select></div></section><div class="tp-bar" id="tp-filterbar"></div><section class="tp-box"><div class="tp-sub" style="margin-bottom:8px">RS는 현재 스크리너의 자체 순위입니다. ‘고가 거리’는 52주 고가 대비이며 패턴 피벗 거리가 아닙니다. 표 제목을 눌러 정렬할 수 있습니다.</div><div class="tp-scroll"><table class="tp-table" id="tp-stock-table"><thead><tr>${[['ticker','Ticker'],['name','회사'],['industry','업종'],['price','Price'],['pct','당일 등락'],['vol_ratio_50d','거래량 / 50일'],['rs','RS'],['h52_pct','52주 고가 거리'],['w1','1주 등락'],['phase','Phase']].map(([k,l])=>`<th><button data-tp-sort="${k}">${l} <span data-sort-marker="${k}"></span></button></th>`).join('')}<th>현재 신호</th></tr></thead><tbody id="tp-stock-rows"></tbody></table></div><div class="tp-footer"><span id="tp-result-count" class="tp-sub" aria-live="polite"></span><div class="tp-actions"><button class="tp-btn" id="tp-prev" data-tp-action="prev">이전</button><button class="tp-btn" id="tp-next" data-tp-action="next">다음</button></div></div></section><div class="tp-pending">장중 5분 거래량 · VWAP · Vol/TOD · 돌파 시각은 현재 데이터에 없습니다. 샘플의 실시간 활동을 구현하려면 별도 장중 데이터 수집기가 필요합니다.</div>`;
+ updateRows();
+ document.getElementById('tp-search').addEventListener('input',e=>{TP.query=e.target.value;TP.page=0;updateRows();});
+ document.getElementById('tp-sector').addEventListener('change',e=>{TP.sector=e.target.value;TP.page=0;updateRows();});
+ document.getElementById('tp-group').addEventListener('change',e=>{TP.group=e.target.value;TP.page=0;updateRows();});
+}
+function updateRows(){
+ if(!document.getElementById('tp-stock-rows'))return;
+ const base=selected();document.getElementById('tp-filterbar').innerHTML=Object.entries(filters).map(([k,fn])=>`<button class="tp-btn ${TP.filter===k?'active':''}" aria-pressed="${TP.filter===k}" data-tp-filter="${k}">${filterLabels[k]} <b>${base.filter(fn).length}</b></button>`).join('');
+ const rows=sorted(base.filter(filters[TP.filter]||filters.all));TP.page=Math.min(TP.page,Math.max(0,Math.ceil(rows.length/TP.size)-1));
+ const from=TP.page*TP.size,to=Math.min(from+TP.size,rows.length);
+ document.getElementById('tp-stock-rows').innerHTML=rows.slice(from,to).map(s=>`<tr><td><a target="_blank" rel="noopener noreferrer" href="https://finance.yahoo.com/quote/${encodeURIComponent(s.ticker)}/">${ESC(s.ticker)}</a></td><td class="tp-name" title="${ESC(s.name)}">${ESC(s.name)}</td><td class="tp-name" title="${ESC(s.industry)}">${ESC(s.industry||'—')}</td><td>${F(s.price,2)}</td><td>${PCT(s.pct)}</td><td>${NUM(s.vol_ratio_50d)?F(s.vol_ratio_50d,2)+'x':'—'}</td><td><b>${F(s.rs,0)}</b></td><td>${PCT(s.h52_pct)}</td><td>${PCT(s.w1)}</td><td>${ESC(s.phase??'—')}</td><td>${Object.keys(s.groups).filter(k=>s.groups[k]).map(k=>`<span class="tp-tag">${LABELS[k]}</span>`).join('')||'<span class="tp-muted">—</span>'}</td></tr>`).join('')||'<tr><td colspan="11" class="tp-empty">조건에 맞는 종목이 없습니다. 필터를 바꿔보세요.</td></tr>';
+ document.getElementById('tp-result-count').textContent=`${rows.length?from+1:0}–${to} / ${rows.length.toLocaleString()}종목 · 페이지 ${TP.page+1}`;
+ document.getElementById('tp-prev').disabled=TP.page===0;document.getElementById('tp-next').disabled=to>=rows.length;
+ document.querySelectorAll('[data-sort-marker]').forEach(el=>el.textContent=el.dataset.sortMarker===TP.sort?(TP.descending?'▼':'▲'):'↕');
+}
+function open(tab){switchTopTab(tab,document.getElementById('ttab-'+tab));}
+function exportCsv(){
+ const rows=sorted(selected().filter(filters[TP.filter]||filters.all));
+ const quote=v=>'"'+(NUM(v)?String(v):String(v??'').replace(/^[\s]*[=+@-]/,"'$&")).replace(/"/g,'""')+'"';
+ const keys=['ticker','name','industry','price','pct','vol_ratio_50d','rs','h52_pct','w1','phase'];
+ const csv='\ufeff'+[keys,...rows.map(s=>keys.map(k=>s[k]))].map(r=>r.map(quote).join(',')).join('\r\n');
+ const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=`TrendPilot_candidates_${data().date}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+document.addEventListener('click',e=>{
+ const b=e.target.closest('[data-tp-group],[data-tp-filter],[data-tp-sort],[data-tp-action]');if(!b)return;
+ if(b.dataset.tpGroup){TP.group=b.dataset.tpGroup;TP.filter='all';TP.query='';TP.sector='all';TP.page=0;open('activity');}
+ else if(b.dataset.tpFilter){TP.filter=b.dataset.tpFilter;TP.page=0;updateRows();}
+ else if(b.dataset.tpSort){const k=b.dataset.tpSort;TP.descending=TP.sort===k?!TP.descending:true;TP.sort=k;updateRows();}
+ else switch(b.dataset.tpAction){case 'anchors':open('anchors');break;case 'activity':open('activity');break;case 'reset':Object.assign(TP,{group:'all',filter:'all',query:'',sector:'all',page:0,sort:'pct',descending:true});activity();break;case 'prev':TP.page=Math.max(0,TP.page-1);updateRows();break;case 'next':TP.page++;updateRows();break;case 'export':exportCsv();break;}
+});
+TP.render=function(tab){if(tab==='anchors')anchors();if(tab==='activity')activity();};
+TP.refresh=function(){if(document.getElementById('top-panel-anchors')?.classList.contains('on'))anchors();if(document.getElementById('top-panel-activity')?.classList.contains('on'))activity();};
+TP.test={data,groups,selected,sorted,ret,NUM,chart,portfolio,card};
+if(new URLSearchParams(location.search).get('view')==='anchors')open('anchors');
+})();
+
 </script>
 </body>
 </html>
