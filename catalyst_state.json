@@ -1,61 +1,103 @@
 {
-"_date": "2026-09-11",
+"_date": "2026-09-12",
 "_fired_names": [
-"Advertising Agencies",
-"Broadcasting",
-"Consumer Electronics",
-"Entertainment",
-"Footwear & Accessories",
-"Healthcare Plans",
-"Semiconductors",
-"Tobacco"
+"Auto & Truck Dealerships",
+"Communication Equipment",
+"Computer Hardware",
+"Department Stores",
+"Electronic Components",
+"Electronics & Computer Distribution",
+"Engineering & Construction",
+"Semiconductors"
 ],
-"Broadcasting": {
+"Electronics & Computer Distribution": {
 "consecutive_days": 1,
+"first_fired": "2026-09-12",
+"last_avg_pct": 5.18,
+"ever_fired": true
+},
+"Communication Equipment": {
+"consecutive_days": 1,
+"first_fired": "2026-09-12",
+"last_avg_pct": 5.02,
+"ever_fired": true
+},
+"Department Stores": {
+"consecutive_days": 1,
+"first_fired": "2026-09-12",
+"last_avg_pct": 3.67,
+"ever_fired": true
+},
+"Auto & Truck Dealerships": {
+"consecutive_days": 1,
+"first_fired": "2026-09-12",
+"last_avg_pct": 3.58,
+"ever_fired": true
+},
+"Electronic Components": {
+"consecutive_days": 1,
+"first_fired": "2026-09-12",
+"last_avg_pct": 3.5,
+"ever_fired": true
+},
+"Semiconductors": {
+"consecutive_days": 2,
+"first_fired": "2026-09-11",
+"last_avg_pct": 3.42,
+"ever_fired": true
+},
+"Computer Hardware": {
+"consecutive_days": 1,
+"first_fired": "2026-09-12",
+"last_avg_pct": 3.04,
+"ever_fired": true
+},
+"Engineering & Construction": {
+"consecutive_days": 1,
+"first_fired": "2026-09-12",
+"last_avg_pct": 2.73,
+"ever_fired": true
+},
+"Broadcasting": {
+"consecutive_days": 0,
 "first_fired": "2026-09-11",
 "last_avg_pct": 3.87,
 "ever_fired": true
 },
 "Consumer Electronics": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-11",
 "last_avg_pct": 2.05,
 "ever_fired": true
 },
 "Advertising Agencies": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-11",
 "last_avg_pct": 1.25,
 "ever_fired": true
 },
 "Tobacco": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-11",
 "last_avg_pct": 1.15,
 "ever_fired": true
 },
 "Healthcare Plans": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-11",
 "last_avg_pct": 1.14,
 "ever_fired": true
 },
 "Footwear & Accessories": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-11",
 "last_avg_pct": 0.45,
 "ever_fired": true
 },
 "Entertainment": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-11",
 "last_avg_pct": 0.43,
-"ever_fired": true
-},
-"Semiconductors": {
-"consecutive_days": 1,
-"first_fired": "2026-09-11",
-"last_avg_pct": -1.48,
 "ever_fired": true
 },
 "Silver": {
@@ -116,12 +158,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-09",
 "last_avg_pct": 4.01,
-"ever_fired": true
-},
-"Communication Equipment": {
-"consecutive_days": 0,
-"first_fired": "2026-09-09",
-"last_avg_pct": 2.89,
 "ever_fired": true
 },
 "Aluminum": {
@@ -208,12 +244,6 @@
 "last_avg_pct": 2.62,
 "ever_fired": true
 },
-"Electronics & Computer Distribution": {
-"consecutive_days": 0,
-"first_fired": "2026-09-04",
-"last_avg_pct": 2.52,
-"ever_fired": true
-},
 "Software - Application": {
 "consecutive_days": 0,
 "first_fired": "2026-09-04",
@@ -230,12 +260,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-01",
 "last_avg_pct": 5.83,
-"ever_fired": true
-},
-"Electronic Components": {
-"consecutive_days": 0,
-"first_fired": "2026-09-03",
-"last_avg_pct": 5.01,
 "ever_fired": true
 },
 "Other Industrial Metals & Mining": {
@@ -344,12 +368,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-25",
 "last_avg_pct": 3.37,
-"ever_fired": true
-},
-"Computer Hardware": {
-"consecutive_days": 0,
-"first_fired": "2026-08-25",
-"last_avg_pct": 3.24,
 "ever_fired": true
 },
 "Biotechnology": {
@@ -478,12 +496,6 @@
 "last_avg_pct": 3.07,
 "ever_fired": true
 },
-"Auto & Truck Dealerships": {
-"consecutive_days": 0,
-"first_fired": "2026-08-11",
-"last_avg_pct": 5.91,
-"ever_fired": true
-},
 "Security & Protection Services": {
 "consecutive_days": 0,
 "first_fired": "2026-08-11",
@@ -520,12 +532,6 @@
 "last_avg_pct": 3.02,
 "ever_fired": true
 },
-"Department Stores": {
-"consecutive_days": 0,
-"first_fired": "2026-08-03",
-"last_avg_pct": 7.87,
-"ever_fired": true
-},
 "Airlines": {
 "consecutive_days": 0,
 "first_fired": "2026-08-03",
@@ -542,12 +548,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-03",
 "last_avg_pct": 4.58,
-"ever_fired": true
-},
-"Engineering & Construction": {
-"consecutive_days": 0,
-"first_fired": "2026-07-30",
-"last_avg_pct": 1.6,
 "ever_fired": true
 },
 "Scientific & Technical Instruments": {
