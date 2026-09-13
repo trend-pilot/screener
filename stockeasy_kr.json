@@ -1,5 +1,5 @@
 {
- "data_date": "2026-09-12",
+ "data_date": "2026-09-13",
  "holdings": [
   {
    "name": "LG",
@@ -30,7 +30,7 @@
    "cur": null,
    "ticker": "180640",
    "market": "KOSPI",
-   "rs_score": 68,
+   "rs_score": 69,
    "ibd_rs": 71,
    "is_stage2": false,
    "pass_dots": 6,
@@ -83,7 +83,7 @@
  "code_recovered": [],
  "source": "stockeasy:momentum",
  "strategy_label": "1호 모멘텀",
- "fetched_at": "2026-09-12T11:35:15",
+ "fetched_at": "2026-09-13T12:35:44",
  "diff": {
   "new": [],
   "dropped": [],
