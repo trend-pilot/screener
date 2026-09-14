@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-09-12",
+  "data_date": "2026-09-14",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v2.4)",
   "nav": 0.9898,
@@ -96,11 +96,11 @@
     "tqqq": -0.55
   },
   "risk": {
-    "days": 51,
+    "days": 52,
     "ret": -1.02,
-    "sharpe": -0.59,
-    "sortino": -0.48,
-    "vol": 15.2,
+    "sharpe": -0.58,
+    "sortino": -0.47,
+    "vol": 15.0,
     "mdd": -7.1,
     "ret_mdd": 0.14,
     "day_hi": 3.2,
@@ -374,24 +374,29 @@
       "date": "2026-09-12",
       "nav": 0.9898,
       "chg": -0.15
+    },
+    {
+      "date": "2026-09-14",
+      "nav": 0.9898,
+      "chg": -0.0
     }
   ],
   "holdings": [
     {
       "ticker": "TXG",
       "entry": "2026-08-07",
-      "days": 25,
+      "days": 27,
       "cd": "",
       "entry_px": 52.03,
       "cur": 68.59,
       "runner": false,
       "partial": null,
-      "dte": 38
+      "dte": 37
     },
     {
       "ticker": "WEYS",
       "entry": "2026-08-04",
-      "days": 27,
+      "days": 29,
       "cd": "",
       "entry_px": 40.42,
       "cur": 44.59,
@@ -402,18 +407,18 @@
     {
       "ticker": "HTFL",
       "entry": "2026-08-19",
-      "days": 17,
+      "days": 18,
       "cd": "",
       "entry_px": 45.53,
       "cur": 49.88,
       "runner": false,
       "partial": null,
-      "dte": 42
+      "dte": 41
     },
     {
       "ticker": "PSNL",
       "entry": "2026-08-19",
-      "days": 17,
+      "days": 18,
       "cd": "",
       "entry_px": 15.81,
       "cur": 16.21,
@@ -424,29 +429,29 @@
     {
       "ticker": "MRX",
       "entry": "2026-09-04",
-      "days": 5,
+      "days": 7,
       "cd": "",
       "entry_px": 75.65,
       "cur": 73.0,
       "runner": false,
       "partial": null,
-      "dte": 38
+      "dte": 37
     },
     {
       "ticker": "OKTA",
       "entry": "2026-08-28",
-      "days": 10,
+      "days": 12,
       "cd": "",
       "entry_px": 172.91,
       "cur": 166.5,
       "runner": false,
       "partial": null,
-      "dte": 57
+      "dte": 55
     },
     {
       "ticker": "TECK",
       "entry": "2026-08-22",
-      "days": 15,
+      "days": 16,
       "cd": "",
       "entry_px": 69.2,
       "cur": 66.44,
@@ -457,13 +462,13 @@
     {
       "ticker": "SLB",
       "entry": "2026-09-01",
-      "days": 7,
+      "days": 9,
       "cd": "",
       "entry_px": 60.1,
       "cur": 56.06,
       "runner": false,
       "partial": null,
-      "dte": null
+      "dte": 27
     }
   ],
   "runner_stats": {
@@ -2100,6 +2105,30 @@
         "7": 0,
         "0": 0
       }
+    },
+    {
+      "date": "2026-09-14",
+      "regime": "pressure",
+      "breadth": 49.2,
+      "wdd": 5.0,
+      "alloc_lo": 15,
+      "alloc_hi": 35,
+      "stress": true,
+      "lead_n": 49,
+      "strong_sectors": 4,
+      "t": 3405,
+      "ph": {
+        "4+": 51,
+        "4": 111,
+        "5+": 0,
+        "5": 244,
+        "3": 967,
+        "2": 566,
+        "1": 1216,
+        "6": 250,
+        "7": 0,
+        "0": 0
+      }
     }
   ],
   "market_sent": {
@@ -2478,6 +2507,12 @@
       "spy": 1.0214,
       "qqq": 1.0083,
       "tqqq": 0.9945
+    },
+    {
+      "date": "2026-09-14",
+      "spy": 1.0214,
+      "qqq": 1.0083,
+      "tqqq": 0.9945
     }
   ],
   "_holdings": [
@@ -2490,13 +2525,12 @@
       "entry_value": 0.25,
       "cur": 44.59,
       "max_gain_pct": 15.982187036120731,
-      "days_in": 27,
+      "days_in": 29,
       "current_stop": 40.42,
       "runner": false,
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
-        46.73,
         45.8,
         45.26,
         45.26,
@@ -2525,9 +2559,10 @@
         44.5,
         44.9,
         44.61,
+        44.59,
         44.59
       ],
-      "px_hist_d": "2026-09-12",
+      "px_hist_d": "2026-09-14",
       "dte": null
     },
     {
@@ -2539,13 +2574,12 @@
       "entry_value": 0.12135415031590036,
       "cur": 68.59,
       "max_gain_pct": 31.827791658658477,
-      "days_in": 25,
+      "days_in": 27,
       "current_stop": 57.233000000000004,
       "runner": false,
       "oneill_8w_active": true,
       "reentry": false,
       "px_hist": [
-        57.75,
         58.15,
         56.09,
         56.09,
@@ -2574,10 +2608,11 @@
         65.6,
         67.29,
         66.38,
+        68.59,
         68.59
       ],
-      "px_hist_d": "2026-09-12",
-      "dte": 38,
+      "px_hist_d": "2026-09-14",
+      "dte": 37,
       "oneill_trigger_date": "2026-08-20"
     },
     {
@@ -2589,7 +2624,7 @@
       "entry_value": 0.022095405476656338,
       "cur": 49.88,
       "max_gain_pct": 10.762134856138816,
-      "days_in": 17,
+      "days_in": 18,
       "current_stop": 42.3429,
       "runner": false,
       "oneill_8w_active": false,
@@ -2617,10 +2652,11 @@
         47.75,
         46.67,
         45.49,
+        49.88,
         49.88
       ],
-      "px_hist_d": "2026-09-12",
-      "dte": 42
+      "px_hist_d": "2026-09-14",
+      "dte": 41
     },
     {
       "ticker": "PSNL",
@@ -2631,7 +2667,7 @@
       "entry_value": 0.022095405476656338,
       "cur": 16.21,
       "max_gain_pct": 16.255534471853238,
-      "days_in": 17,
+      "days_in": 18,
       "current_stop": 15.81,
       "runner": false,
       "oneill_8w_active": false,
@@ -2659,9 +2695,10 @@
         16.6,
         16.4,
         16.33,
+        16.21,
         16.21
       ],
-      "px_hist_d": "2026-09-12",
+      "px_hist_d": "2026-09-14",
       "dte": null
     },
     {
@@ -2673,7 +2710,7 @@
       "entry_value": 0.01670763742692094,
       "cur": 66.44,
       "max_gain_pct": 3.497109826589595,
-      "days_in": 15,
+      "days_in": 16,
       "current_stop": 64.356,
       "runner": false,
       "oneill_8w_active": false,
@@ -2698,9 +2735,10 @@
         69.1,
         69.1,
         69.1,
-        69.1
+        69.1,
+        66.44
       ],
-      "px_hist_d": "2026-09-12",
+      "px_hist_d": "2026-09-14",
       "dte": null
     },
     {
@@ -2712,7 +2750,7 @@
       "entry_value": 0.020004321453617746,
       "cur": 166.5,
       "max_gain_pct": 0.07518362153722258,
-      "days_in": 10,
+      "days_in": 12,
       "current_stop": 160.8063,
       "runner": false,
       "oneill_8w_active": false,
@@ -2732,10 +2770,11 @@
         167.6,
         172.74,
         171.11,
+        166.5,
         166.5
       ],
-      "px_hist_d": "2026-09-12",
-      "dte": 57
+      "px_hist_d": "2026-09-14",
+      "dte": 55
     },
     {
       "ticker": "SLB",
@@ -2746,7 +2785,7 @@
       "entry_value": 0.03597288515711614,
       "cur": 56.06,
       "max_gain_pct": 0.0,
-      "days_in": 7,
+      "days_in": 9,
       "current_stop": 55.893,
       "runner": false,
       "oneill_8w_active": false,
@@ -2762,10 +2801,11 @@
         57.51,
         57.51,
         57.51,
-        57.51
+        57.51,
+        56.06
       ],
-      "px_hist_d": "2026-09-12",
-      "dte": null
+      "px_hist_d": "2026-09-14",
+      "dte": 27
     },
     {
       "ticker": "MRX",
@@ -2776,7 +2816,7 @@
       "entry_value": 0.09565773406186473,
       "cur": 73.0,
       "max_gain_pct": 3.463317911434216,
-      "days_in": 5,
+      "days_in": 7,
       "current_stop": 70.3545,
       "runner": false,
       "oneill_8w_active": false,
@@ -2789,10 +2829,11 @@
         76.71,
         75.72,
         74.09,
+        73.0,
         73.0
       ],
-      "px_hist_d": "2026-09-12",
-      "dte": 38
+      "px_hist_d": "2026-09-14",
+      "dte": 37
     }
   ],
   "_closed": [

@@ -1,5 +1,5 @@
 {
-"_date": "2026-09-12",
+"_date": "2026-09-14",
 "_fired_names": [
 "Auto & Truck Dealerships",
 "Communication Equipment",
@@ -11,49 +11,49 @@
 "Semiconductors"
 ],
 "Electronics & Computer Distribution": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-09-12",
 "last_avg_pct": 5.2,
 "ever_fired": true
 },
 "Communication Equipment": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-09-12",
 "last_avg_pct": 5.02,
 "ever_fired": true
 },
 "Department Stores": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-09-12",
 "last_avg_pct": 3.67,
 "ever_fired": true
 },
 "Electronic Components": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-09-12",
 "last_avg_pct": 3.51,
 "ever_fired": true
 },
 "Semiconductors": {
-"consecutive_days": 3,
+"consecutive_days": 4,
 "first_fired": "2026-09-11",
 "last_avg_pct": 3.36,
 "ever_fired": true
 },
 "Auto & Truck Dealerships": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-09-12",
 "last_avg_pct": 3.18,
 "ever_fired": true
 },
 "Engineering & Construction": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-09-12",
 "last_avg_pct": 2.74,
 "ever_fired": true
 },
 "Computer Hardware": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-09-12",
 "last_avg_pct": 2.69,
 "ever_fired": true
