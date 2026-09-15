@@ -1,59 +1,107 @@
 {
-"_date": "2026-09-14",
+"_date": "2026-09-15",
 "_fired_names": [
-"Auto & Truck Dealerships",
-"Communication Equipment",
-"Computer Hardware",
-"Department Stores",
-"Electronic Components",
-"Electronics & Computer Distribution",
-"Engineering & Construction",
-"Semiconductors"
+"Advertising Agencies",
+"Beverages - Non-Alcoholic",
+"Capital Markets",
+"Diagnostics & Research",
+"Entertainment",
+"Medical Care Facilities",
+"Medical Instruments & Supplies",
+"Restaurants"
 ],
+"Beverages - Non-Alcoholic": {
+"consecutive_days": 1,
+"first_fired": "2026-09-15",
+"last_avg_pct": 3.15,
+"ever_fired": true
+},
+"Diagnostics & Research": {
+"consecutive_days": 1,
+"first_fired": "2026-09-15",
+"last_avg_pct": 2.9,
+"ever_fired": true
+},
+"Medical Instruments & Supplies": {
+"consecutive_days": 1,
+"first_fired": "2026-09-15",
+"last_avg_pct": 2.12,
+"ever_fired": true
+},
+"Capital Markets": {
+"consecutive_days": 1,
+"first_fired": "2026-09-15",
+"last_avg_pct": 1.95,
+"ever_fired": true
+},
+"Restaurants": {
+"consecutive_days": 1,
+"first_fired": "2026-09-15",
+"last_avg_pct": 1.84,
+"ever_fired": true
+},
+"Entertainment": {
+"consecutive_days": 1,
+"first_fired": "2026-09-15",
+"last_avg_pct": 1.7,
+"ever_fired": true
+},
+"Advertising Agencies": {
+"consecutive_days": 1,
+"first_fired": "2026-09-15",
+"last_avg_pct": 1.6,
+"ever_fired": true
+},
+"Medical Care Facilities": {
+"consecutive_days": 1,
+"first_fired": "2026-09-15",
+"last_avg_pct": 1.33,
+"ever_fired": true
+},
 "Electronics & Computer Distribution": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-09-12",
 "last_avg_pct": 5.2,
 "ever_fired": true
 },
 "Communication Equipment": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-09-12",
 "last_avg_pct": 5.02,
 "ever_fired": true
 },
 "Department Stores": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-09-12",
 "last_avg_pct": 3.67,
 "ever_fired": true
 },
 "Electronic Components": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-09-12",
 "last_avg_pct": 3.51,
 "ever_fired": true
 },
 "Semiconductors": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-09-11",
 "last_avg_pct": 3.36,
 "ever_fired": true
 },
 "Auto & Truck Dealerships": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-09-12",
 "last_avg_pct": 3.18,
 "ever_fired": true
 },
 "Engineering & Construction": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-09-12",
 "last_avg_pct": 2.74,
 "ever_fired": true
 },
 "Computer Hardware": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-09-12",
 "last_avg_pct": 2.69,
 "ever_fired": true
@@ -68,12 +116,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-11",
 "last_avg_pct": 2.05,
-"ever_fired": true
-},
-"Advertising Agencies": {
-"consecutive_days": 0,
-"first_fired": "2026-09-11",
-"last_avg_pct": 1.25,
 "ever_fired": true
 },
 "Tobacco": {
@@ -94,22 +136,10 @@
 "last_avg_pct": 0.45,
 "ever_fired": true
 },
-"Entertainment": {
-"consecutive_days": 0,
-"first_fired": "2026-09-11",
-"last_avg_pct": 0.43,
-"ever_fired": true
-},
 "Silver": {
 "consecutive_days": 0,
 "first_fired": "2026-09-10",
 "last_avg_pct": 1.6,
-"ever_fired": true
-},
-"Medical Care Facilities": {
-"consecutive_days": 0,
-"first_fired": "2026-09-10",
-"last_avg_pct": 1.52,
 "ever_fired": true
 },
 "Other Precious Metals & Mining": {
@@ -226,12 +256,6 @@
 "last_avg_pct": 2.4,
 "ever_fired": true
 },
-"Capital Markets": {
-"consecutive_days": 0,
-"first_fired": "2026-09-04",
-"last_avg_pct": 6.71,
-"ever_fired": true
-},
 "Financial Data & Stock Exchanges": {
 "consecutive_days": 0,
 "first_fired": "2026-09-04",
@@ -328,12 +352,6 @@
 "last_avg_pct": 1.4,
 "ever_fired": true
 },
-"Restaurants": {
-"consecutive_days": 0,
-"first_fired": "2026-08-30",
-"last_avg_pct": 1.36,
-"ever_fired": true
-},
 "Waste Management": {
 "consecutive_days": 0,
 "first_fired": "2026-08-29",
@@ -394,12 +412,6 @@
 "last_avg_pct": 1.77,
 "ever_fired": true
 },
-"Beverages - Non-Alcoholic": {
-"consecutive_days": 0,
-"first_fired": "2026-08-24",
-"last_avg_pct": 1.71,
-"ever_fired": true
-},
 "Household & Personal Products": {
 "consecutive_days": 0,
 "first_fired": "2026-08-24",
@@ -422,12 +434,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-20",
 "last_avg_pct": 2.3,
-"ever_fired": true
-},
-"Diagnostics & Research": {
-"consecutive_days": 0,
-"first_fired": "2026-08-19",
-"last_avg_pct": 5.32,
 "ever_fired": true
 },
 "Health Information Services": {
@@ -566,12 +572,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-27",
 "last_avg_pct": 3.81,
-"ever_fired": true
-},
-"Medical Instruments & Supplies": {
-"consecutive_days": 0,
-"first_fired": "2026-07-28",
-"last_avg_pct": 3.71,
 "ever_fired": true
 },
 "Luxury Goods": {
