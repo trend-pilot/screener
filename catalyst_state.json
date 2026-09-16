@@ -1,59 +1,101 @@
 {
-"_date": "2026-09-15",
+"_date": "2026-09-16",
 "_fired_names": [
-"Advertising Agencies",
-"Beverages - Non-Alcoholic",
-"Capital Markets",
+"Agricultural Inputs",
+"Chemicals",
 "Diagnostics & Research",
-"Entertainment",
-"Medical Care Facilities",
-"Medical Instruments & Supplies",
-"Restaurants"
+"Health Information Services",
+"Oil & Gas E&P",
+"Oil & Gas Integrated",
+"Oil & Gas Refining & Marketing",
+"Steel"
 ],
-"Beverages - Non-Alcoholic": {
+"Chemicals": {
 "consecutive_days": 1,
+"first_fired": "2026-09-16",
+"last_avg_pct": 3.1,
+"ever_fired": true
+},
+"Diagnostics & Research": {
+"consecutive_days": 2,
+"first_fired": "2026-09-15",
+"last_avg_pct": 2.73,
+"ever_fired": true
+},
+"Oil & Gas Refining & Marketing": {
+"consecutive_days": 1,
+"first_fired": "2026-09-16",
+"last_avg_pct": 2.6,
+"ever_fired": true
+},
+"Oil & Gas E&P": {
+"consecutive_days": 1,
+"first_fired": "2026-09-16",
+"last_avg_pct": 2.51,
+"ever_fired": true
+},
+"Oil & Gas Integrated": {
+"consecutive_days": 1,
+"first_fired": "2026-09-16",
+"last_avg_pct": 2.23,
+"ever_fired": true
+},
+"Agricultural Inputs": {
+"consecutive_days": 1,
+"first_fired": "2026-09-16",
+"last_avg_pct": 2.15,
+"ever_fired": true
+},
+"Health Information Services": {
+"consecutive_days": 1,
+"first_fired": "2026-09-16",
+"last_avg_pct": 1.41,
+"ever_fired": true
+},
+"Steel": {
+"consecutive_days": 1,
+"first_fired": "2026-09-16",
+"last_avg_pct": 1.3,
+"ever_fired": true
+},
+"Beverages - Non-Alcoholic": {
+"consecutive_days": 0,
 "first_fired": "2026-09-15",
 "last_avg_pct": 3.15,
 "ever_fired": true
 },
-"Diagnostics & Research": {
-"consecutive_days": 1,
-"first_fired": "2026-09-15",
-"last_avg_pct": 2.9,
-"ever_fired": true
-},
 "Medical Instruments & Supplies": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-15",
 "last_avg_pct": 2.12,
 "ever_fired": true
 },
 "Capital Markets": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-15",
 "last_avg_pct": 1.95,
 "ever_fired": true
 },
 "Restaurants": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-15",
 "last_avg_pct": 1.84,
 "ever_fired": true
 },
 "Entertainment": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-15",
 "last_avg_pct": 1.7,
 "ever_fired": true
 },
 "Advertising Agencies": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-15",
 "last_avg_pct": 1.6,
 "ever_fired": true
 },
 "Medical Care Facilities": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-15",
 "last_avg_pct": 1.33,
 "ever_fired": true
@@ -196,12 +238,6 @@
 "last_avg_pct": 2.73,
 "ever_fired": true
 },
-"Chemicals": {
-"consecutive_days": 0,
-"first_fired": "2026-09-09",
-"last_avg_pct": 2.45,
-"ever_fired": true
-},
 "Utilities - Regulated Electric": {
 "consecutive_days": 0,
 "first_fired": "2026-09-09",
@@ -280,34 +316,10 @@
 "last_avg_pct": 2.08,
 "ever_fired": true
 },
-"Agricultural Inputs": {
-"consecutive_days": 0,
-"first_fired": "2026-09-01",
-"last_avg_pct": 5.83,
-"ever_fired": true
-},
 "Other Industrial Metals & Mining": {
 "consecutive_days": 0,
 "first_fired": "2026-09-03",
 "last_avg_pct": 3.53,
-"ever_fired": true
-},
-"Steel": {
-"consecutive_days": 0,
-"first_fired": "2026-09-03",
-"last_avg_pct": 3.52,
-"ever_fired": true
-},
-"Oil & Gas Integrated": {
-"consecutive_days": 0,
-"first_fired": "2026-09-01",
-"last_avg_pct": 2.69,
-"ever_fired": true
-},
-"Oil & Gas E&P": {
-"consecutive_days": 0,
-"first_fired": "2026-09-01",
-"last_avg_pct": 2.23,
 "ever_fired": true
 },
 "Oil & Gas Drilling": {
@@ -320,12 +332,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-02",
 "last_avg_pct": 1.59,
-"ever_fired": true
-},
-"Oil & Gas Refining & Marketing": {
-"consecutive_days": 0,
-"first_fired": "2026-08-29",
-"last_avg_pct": 1.44,
 "ever_fired": true
 },
 "Oil & Gas Midstream": {
@@ -434,12 +440,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-20",
 "last_avg_pct": 2.3,
-"ever_fired": true
-},
-"Health Information Services": {
-"consecutive_days": 0,
-"first_fired": "2026-08-18",
-"last_avg_pct": 4.19,
 "ever_fired": true
 },
 "Drug Manufacturers - Specialty & Generic": {
