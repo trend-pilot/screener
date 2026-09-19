@@ -1,67 +1,91 @@
 {
-"_date": "2026-09-18",
+"_date": "2026-09-19",
 "_fired_names": [
+"Capital Markets",
 "Computer Hardware",
-"Diagnostics & Research",
-"Gold",
-"Health Information Services",
+"Financial Data & Stock Exchanges",
+"Footwear & Accessories",
 "Other Industrial Metals & Mining",
-"Other Precious Metals & Mining",
-"Semiconductors",
-"Solar"
+"Scientific & Technical Instruments",
+"Semiconductor Equipment & Materials",
+"Semiconductors"
 ],
-"Solar": {
+"Capital Markets": {
 "consecutive_days": 1,
+"first_fired": "2026-09-19",
+"last_avg_pct": 6.38,
+"ever_fired": true
+},
+"Semiconductor Equipment & Materials": {
+"consecutive_days": 1,
+"first_fired": "2026-09-19",
+"last_avg_pct": 3.55,
+"ever_fired": true
+},
+"Financial Data & Stock Exchanges": {
+"consecutive_days": 1,
+"first_fired": "2026-09-19",
+"last_avg_pct": 3.52,
+"ever_fired": true
+},
+"Semiconductors": {
+"consecutive_days": 2,
+"first_fired": "2026-09-18",
+"last_avg_pct": 2.49,
+"ever_fired": true
+},
+"Footwear & Accessories": {
+"consecutive_days": 1,
+"first_fired": "2026-09-19",
+"last_avg_pct": 2.03,
+"ever_fired": true
+},
+"Scientific & Technical Instruments": {
+"consecutive_days": 1,
+"first_fired": "2026-09-19",
+"last_avg_pct": 1.54,
+"ever_fired": true
+},
+"Other Industrial Metals & Mining": {
+"consecutive_days": 2,
+"first_fired": "2026-09-18",
+"last_avg_pct": 1.22,
+"ever_fired": true
+},
+"Computer Hardware": {
+"consecutive_days": 2,
+"first_fired": "2026-09-18",
+"last_avg_pct": 1.12,
+"ever_fired": true
+},
+"Solar": {
+"consecutive_days": 0,
 "first_fired": "2026-09-18",
 "last_avg_pct": 5.5,
 "ever_fired": true
 },
 "Other Precious Metals & Mining": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-18",
 "last_avg_pct": 5.22,
 "ever_fired": true
 },
-"Computer Hardware": {
-"consecutive_days": 1,
-"first_fired": "2026-09-18",
-"last_avg_pct": 4.36,
-"ever_fired": true
-},
-"Semiconductors": {
-"consecutive_days": 1,
-"first_fired": "2026-09-18",
-"last_avg_pct": 4.05,
-"ever_fired": true
-},
 "Gold": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-18",
 "last_avg_pct": 3.81,
 "ever_fired": true
 },
-"Other Industrial Metals & Mining": {
-"consecutive_days": 1,
-"first_fired": "2026-09-18",
-"last_avg_pct": 3.73,
-"ever_fired": true
-},
 "Health Information Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-18",
 "last_avg_pct": 3.55,
 "ever_fired": true
 },
 "Diagnostics & Research": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-18",
 "last_avg_pct": 3.31,
-"ever_fired": true
-},
-"Footwear & Accessories": {
-"consecutive_days": 0,
-"first_fired": "2026-09-17",
-"last_avg_pct": 2.2,
 "ever_fired": true
 },
 "Gambling": {
@@ -74,12 +98,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-17",
 "last_avg_pct": 1.7,
-"ever_fired": true
-},
-"Semiconductor Equipment & Materials": {
-"consecutive_days": 0,
-"first_fired": "2026-09-17",
-"last_avg_pct": 1.4,
 "ever_fired": true
 },
 "Apparel Manufacturing": {
@@ -152,12 +170,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-15",
 "last_avg_pct": 2.12,
-"ever_fired": true
-},
-"Capital Markets": {
-"consecutive_days": 0,
-"first_fired": "2026-09-15",
-"last_avg_pct": 1.95,
 "ever_fired": true
 },
 "Restaurants": {
@@ -320,12 +332,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-05",
 "last_avg_pct": 2.4,
-"ever_fired": true
-},
-"Financial Data & Stock Exchanges": {
-"consecutive_days": 0,
-"first_fired": "2026-09-04",
-"last_avg_pct": 3.3,
 "ever_fired": true
 },
 "Information Technology Services": {
@@ -566,12 +572,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-03",
 "last_avg_pct": 4.58,
-"ever_fired": true
-},
-"Scientific & Technical Instruments": {
-"consecutive_days": 0,
-"first_fired": "2026-07-31",
-"last_avg_pct": 1.31,
 "ever_fired": true
 },
 "Education & Training Services": {
