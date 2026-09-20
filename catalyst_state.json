@@ -1,59 +1,71 @@
 {
-"_date": "2026-09-19",
+"_date": "2026-09-20",
 "_fired_names": [
 "Capital Markets",
-"Computer Hardware",
+"Copper",
+"Electrical Equipment & Parts",
 "Financial Data & Stock Exchanges",
 "Footwear & Accessories",
 "Other Industrial Metals & Mining",
-"Scientific & Technical Instruments",
 "Semiconductor Equipment & Materials",
 "Semiconductors"
 ],
 "Capital Markets": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-09-19",
-"last_avg_pct": 6.38,
+"last_avg_pct": 3.9,
 "ever_fired": true
 },
 "Semiconductor Equipment & Materials": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-09-19",
-"last_avg_pct": 3.55,
-"ever_fired": true
-},
-"Financial Data & Stock Exchanges": {
-"consecutive_days": 1,
-"first_fired": "2026-09-19",
-"last_avg_pct": 3.52,
+"last_avg_pct": 3.58,
 "ever_fired": true
 },
 "Semiconductors": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-09-18",
-"last_avg_pct": 2.49,
+"last_avg_pct": 2.54,
 "ever_fired": true
 },
-"Footwear & Accessories": {
-"consecutive_days": 1,
+"Financial Data & Stock Exchanges": {
+"consecutive_days": 2,
 "first_fired": "2026-09-19",
 "last_avg_pct": 2.03,
 "ever_fired": true
 },
-"Scientific & Technical Instruments": {
+"Copper": {
 "consecutive_days": 1,
+"first_fired": "2026-09-20",
+"last_avg_pct": 1.3,
+"ever_fired": true
+},
+"Footwear & Accessories": {
+"consecutive_days": 2,
+"first_fired": "2026-09-19",
+"last_avg_pct": 1.13,
+"ever_fired": true
+},
+"Electrical Equipment & Parts": {
+"consecutive_days": 1,
+"first_fired": "2026-09-20",
+"last_avg_pct": 1.02,
+"ever_fired": true
+},
+"Other Industrial Metals & Mining": {
+"consecutive_days": 3,
+"first_fired": "2026-09-18",
+"last_avg_pct": 0.65,
+"ever_fired": true
+},
+"Scientific & Technical Instruments": {
+"consecutive_days": 0,
 "first_fired": "2026-09-19",
 "last_avg_pct": 1.54,
 "ever_fired": true
 },
-"Other Industrial Metals & Mining": {
-"consecutive_days": 2,
-"first_fired": "2026-09-18",
-"last_avg_pct": 1.22,
-"ever_fired": true
-},
 "Computer Hardware": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-09-18",
 "last_avg_pct": 1.12,
 "ever_fired": true
@@ -274,12 +286,6 @@
 "last_avg_pct": -0.17,
 "ever_fired": true
 },
-"Electrical Equipment & Parts": {
-"consecutive_days": 0,
-"first_fired": "2026-09-09",
-"last_avg_pct": 4.01,
-"ever_fired": true
-},
 "Aluminum": {
 "consecutive_days": 0,
 "first_fired": "2026-09-09",
@@ -410,12 +416,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-25",
 "last_avg_pct": 5.58,
-"ever_fired": true
-},
-"Copper": {
-"consecutive_days": 0,
-"first_fired": "2026-08-25",
-"last_avg_pct": 3.37,
 "ever_fired": true
 },
 "Biotechnology": {
