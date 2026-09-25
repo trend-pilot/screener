@@ -1,59 +1,72 @@
 {
-"_date": "2026-09-24",
+"_date": "2026-09-25",
 "_fired_names": [
-"Building Products & Equipment",
-"Computer Hardware",
-"Diagnostics & Research",
-"Electronic Components",
-"Electronics & Computer Distribution",
-"Insurance - Life",
-"Medical Instruments & Supplies",
-"Semiconductor Equipment & Materials"
+"Credit Services",
+"Education & Training Services",
+"Specialty Retail"
 ],
-"Electronics & Computer Distribution": {
+"Credit Services": {
 "consecutive_days": 1,
+"first_fired": "2026-09-25",
+"last_avg_pct": 2.8,
+"ever_fired": true
+},
+"Specialty Retail": {
+"consecutive_days": 1,
+"first_fired": "2026-09-25",
+"last_avg_pct": 2.3,
+"ever_fired": true
+},
+"Education & Training Services": {
+"consecutive_days": 1,
+"first_fired": "2026-09-25",
+"last_avg_pct": 2.15,
+"ever_fired": true
+},
+"Electronics & Computer Distribution": {
+"consecutive_days": 0,
 "first_fired": "2026-09-24",
 "last_avg_pct": 5.4,
 "ever_fired": true
 },
 "Diagnostics & Research": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-24",
 "last_avg_pct": 4.87,
 "ever_fired": true
 },
 "Insurance - Life": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-24",
 "last_avg_pct": 3.53,
 "ever_fired": true
 },
 "Semiconductor Equipment & Materials": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-09-23",
 "last_avg_pct": 2.89,
 "ever_fired": true
 },
 "Electronic Components": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-24",
 "last_avg_pct": 2.53,
 "ever_fired": true
 },
 "Medical Instruments & Supplies": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-24",
 "last_avg_pct": 2.25,
 "ever_fired": true
 },
 "Computer Hardware": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-24",
 "last_avg_pct": 2.1,
 "ever_fired": true
 },
 "Building Products & Equipment": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-24",
 "last_avg_pct": 1.73,
 "ever_fired": true
@@ -584,12 +597,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-03",
 "last_avg_pct": 4.58,
-"ever_fired": true
-},
-"Education & Training Services": {
-"consecutive_days": 0,
-"first_fired": "2026-07-29",
-"last_avg_pct": 4.1,
 "ever_fired": true
 },
 "Travel Services": {
