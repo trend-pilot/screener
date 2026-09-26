@@ -1,5 +1,5 @@
 {
- "data_date": "2026-09-25",
+ "data_date": "2026-09-26",
  "track": "stockeasy:momentum",
  "logic_version": "kr-v1.0 (base v6.15)",
  "cap": "무제한",
@@ -387,9 +387,13 @@
   {
    "date": "2026-09-25",
    "nav": 0.987678
+  },
+  {
+   "date": "2026-09-26",
+   "nav": 0.987678
   }
  ],
- "generated_at": "2026-09-25T12:30:07",
+ "generated_at": "2026-09-26T12:08:19",
  "_cash": 0.041125224962482214,
  "_holdings": [
   {
