@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-09-25",
+  "data_date": "2026-09-26",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v2.4)",
   "nav": 1.0026,
@@ -9,7 +9,7 @@
   "runner_cap": 5,
   "core_count": 5,
   "runner_count": 1,
-  "regime": "🟡 Uptrend Under Pressure",
+  "regime": "🟠 Rally Attempt",
   "signals": [],
   "gates": [
     "G3 Trigger",
@@ -25,11 +25,11 @@
     "tqqq": null
   },
   "risk": {
-    "days": 63,
+    "days": 64,
     "ret": 0.26,
     "sharpe": -0.14,
     "sortino": -0.11,
-    "vol": 13.8,
+    "vol": 13.7,
     "mdd": -7.1,
     "ret_mdd": 0.04,
     "day_hi": 3.2,
@@ -363,6 +363,11 @@
       "date": "2026-09-25",
       "nav": 1.0026,
       "chg": -0.0
+    },
+    {
+      "date": "2026-09-26",
+      "nav": 1.0026,
+      "chg": -0.0
     }
   ],
   "holdings": [
@@ -402,7 +407,7 @@
     {
       "ticker": "HTFL",
       "entry": "2026-08-19",
-      "days": 26,
+      "days": 27,
       "cd": "",
       "entry_px": 45.53,
       "cur": 47.39,
@@ -413,7 +418,7 @@
     {
       "ticker": "PSNL",
       "entry": "2026-08-19",
-      "days": 26,
+      "days": 27,
       "cd": "",
       "entry_px": 15.81,
       "cur": 16.36,
@@ -424,7 +429,7 @@
     {
       "ticker": "TECK",
       "entry": "2026-08-22",
-      "days": 24,
+      "days": 25,
       "cd": "",
       "entry_px": 69.2,
       "cur": 65.52,
@@ -643,7 +648,7 @@
       "rally_low": 7507.77,
       "rally_low_date": "2026-09-16",
       "status": "rally",
-      "rally_day": 5,
+      "rally_day": 7,
       "ftd_date": null,
       "ftd_day": null,
       "ftd_gain_pct": null,
@@ -685,20 +690,36 @@
           "note": "d4 전"
         },
         {
-          "d": "2026-09-23",
+          "d": "2026-09-22",
           "day": 4,
-          "chg": -0.76,
+          "chg": -0.0,
+          "vol": 5286270000,
+          "volc": 9.5,
+          "note": "상승폭 미충족"
+        },
+        {
+          "d": "2026-09-23",
+          "day": 5,
+          "chg": -0.75,
           "vol": 5110910000,
-          "volc": 5.9,
+          "volc": -3.3,
           "note": "하락일"
         },
         {
           "d": "2026-09-24",
-          "day": 5,
+          "day": 6,
           "chg": -0.02,
-          "vol": 2911730000,
-          "volc": -43.0,
+          "vol": 5316390000,
+          "volc": 4.0,
           "note": "하락일"
+        },
+        {
+          "d": "2026-09-25",
+          "day": 7,
+          "chg": 0.51,
+          "vol": 2644756000,
+          "volc": -50.3,
+          "note": "상승폭·거래량 미충족"
         }
       ],
       "name": "S&P 500",
@@ -708,31 +729,15 @@
       "rally_low": 24425.34,
       "rally_low_date": "2026-07-29",
       "status": "ftd",
-      "rally_day": 39,
+      "rally_day": 41,
       "ftd_date": "2026-08-27",
       "ftd_day": 21,
       "ftd_gain_pct": 1.57,
       "ftd_vol_chg_pct": 5.4,
-      "age_bd": 18,
+      "age_bd": 20,
       "window": "stale",
       "late": true,
       "rally_days": [
-        {
-          "d": "2026-08-26",
-          "day": 20,
-          "chg": -0.08,
-          "vol": 7065320000,
-          "volc": -5.6,
-          "note": "하락일"
-        },
-        {
-          "d": "2026-08-27",
-          "day": 21,
-          "chg": 1.57,
-          "vol": 7448410000,
-          "volc": 5.4,
-          "note": "FTD 발생"
-        },
         {
           "d": "2026-08-28",
           "day": 22,
@@ -862,19 +867,35 @@
           "note": "거래량 미충족"
         },
         {
-          "d": "2026-09-23",
+          "d": "2026-09-22",
           "day": 38,
-          "chg": -0.69,
+          "chg": 0.45,
+          "vol": 9334690000,
+          "volc": 5.9,
+          "note": "상승폭 미충족"
+        },
+        {
+          "d": "2026-09-23",
+          "day": 39,
+          "chg": -1.13,
           "vol": 8491740000,
-          "volc": -3.6,
+          "volc": -9.0,
           "note": "하락일"
         },
         {
           "d": "2026-09-24",
-          "day": 39,
+          "day": 40,
           "chg": 0.01,
-          "vol": 7111923000,
-          "volc": -16.2,
+          "vol": 8078820000,
+          "volc": -4.9,
+          "note": "상승폭·거래량 미충족"
+        },
+        {
+          "d": "2026-09-25",
+          "day": 41,
+          "chg": 0.48,
+          "vol": 6299972000,
+          "volc": -22.0,
           "note": "상승폭·거래량 미충족"
         }
       ],
@@ -885,8 +906,8 @@
     "russell": {
       "rally_low": 2810.75,
       "rally_low_date": "2026-09-24",
-      "status": "none",
-      "rally_day": null,
+      "status": "rally",
+      "rally_day": 1,
       "ftd_date": null,
       "ftd_day": null,
       "ftd_gain_pct": null,
@@ -894,26 +915,42 @@
       "age_bd": null,
       "window": null,
       "late": false,
+      "rally_days": [
+        {
+          "d": "2026-09-24",
+          "day": 0,
+          "chg": -0.11,
+          "vol": 5316390000,
+          "volc": 4.0,
+          "note": "저점 (d0)"
+        },
+        {
+          "d": "2026-09-25",
+          "day": 1,
+          "chg": 0.07,
+          "vol": null,
+          "volc": -100.0,
+          "note": "d4 전"
+        }
+      ],
       "name": "Russell 2000",
       "threshold_pct": 1.5
     }
   },
   "market_idx": {
     "sp": {
-      "last": 7704.13,
-      "chg_pct": -0.02,
-      "w1": 2.02,
-      "m1": 0.67,
+      "last": 7743.41,
+      "chg_pct": 0.51,
+      "w1": 1.21,
+      "m1": 0.88,
       "gaps": {
-        "ma21": 0.47,
-        "ma50": 1.0,
-        "ma200": 7.06
+        "ma21": 0.89,
+        "ma50": 1.41,
+        "ma200": 7.47
       },
       "stage": 2,
       "stage_label": "상승 추세",
       "spark": [
-        7499.36,
-        7483.23,
         7483.24,
         7537.43,
         7503.85,
@@ -970,11 +1007,13 @@
         7637.76,
         7650.5,
         7764.7,
+        7764.64,
         7706.03,
-        7704.13
+        7704.13,
+        7743.41
       ],
-      "dd_count": 6,
-      "dd_weighted": 6.0,
+      "dd_count": 5,
+      "dd_weighted": 5.0,
       "dd_days": [
         {
           "d": "2026-08-31",
@@ -1010,13 +1049,6 @@
           "vol_chg_pct": 3.0,
           "kind": "regular",
           "w": 1.0
-        },
-        {
-          "d": "2026-09-23",
-          "drop_pct": -0.76,
-          "vol_chg_pct": 5.9,
-          "kind": "regular",
-          "w": 1.0
         }
       ],
       "dd_strip": [
@@ -1026,8 +1058,6 @@
         null,
         null,
         null,
-        null,
-        null,
         "regular",
         null,
         null,
@@ -1043,27 +1073,27 @@
         null,
         null,
         null,
-        "regular",
+        null,
+        null,
+        null,
         null
       ],
       "name": "S&P 500",
       "ticker": "^GSPC"
     },
     "nasdaq": {
-      "last": 26939.37,
-      "chg_pct": 0.01,
-      "w1": 3.7,
-      "m1": 3.69,
+      "last": 27068.72,
+      "chg_pct": 0.48,
+      "w1": 2.06,
+      "m1": 3.59,
       "gaps": {
-        "ma21": 2.08,
-        "ma50": 3.11,
-        "ma200": 9.48
+        "ma21": 2.2,
+        "ma50": 3.44,
+        "ma200": 9.85
       },
       "stage": 2,
       "stage_label": "상승 추세",
       "spark": [
-        26213.72,
-        26040.03,
         25832.67,
         26121.16,
         25818.69,
@@ -1120,19 +1150,14 @@
         26418.3,
         26522.54,
         27122.09,
+        27244.28,
         26936.04,
-        26939.37
+        26939.37,
+        27068.72
       ],
-      "dd_count": 5,
-      "dd_weighted": 5.0,
+      "dd_count": 4,
+      "dd_weighted": 4.0,
       "dd_days": [
-        {
-          "d": "2026-08-20",
-          "drop_pct": -1.0,
-          "vol_chg_pct": 0.9,
-          "kind": "regular",
-          "w": 1.0
-        },
         {
           "d": "2026-08-28",
           "drop_pct": -0.52,
@@ -1164,8 +1189,6 @@
       ],
       "dd_strip": [
         null,
-        "regular",
-        null,
         null,
         null,
         null,
@@ -1182,6 +1205,8 @@
         null,
         "regular",
         "regular",
+        null,
+        null,
         null,
         null,
         null,
@@ -1193,20 +1218,18 @@
       "ticker": "^IXIC"
     },
     "russell": {
-      "last": 2835.57,
-      "chg_pct": -0.11,
-      "w1": -0.81,
-      "m1": -5.33,
+      "last": 2837.55,
+      "chg_pct": 0.07,
+      "w1": -0.8,
+      "m1": -5.6,
       "gaps": {
-        "ma21": -2.95,
-        "ma50": -4.28,
-        "ma200": 2.31
+        "ma21": -2.43,
+        "ma50": -4.07,
+        "ma200": 2.25
       },
       "stage": 3,
       "stage_label": "고점권 조정",
       "spark": [
-        3024.37,
-        3012.59,
         2996.11,
         3009.54,
         2982.49,
@@ -1263,11 +1286,13 @@
         2874.63,
         2860.4,
         2875.36,
+        2889.92,
         2838.66,
-        2835.57
+        2835.57,
+        2837.55
       ],
-      "dd_count": 7,
-      "dd_weighted": 7.0,
+      "dd_count": 6,
+      "dd_weighted": 6.0,
       "dd_days": [
         {
           "d": "2026-08-31",
@@ -1310,13 +1335,6 @@
           "vol_chg_pct": 75.1,
           "kind": "regular",
           "w": 1.0
-        },
-        {
-          "d": "2026-09-23",
-          "drop_pct": -1.28,
-          "vol_chg_pct": 5.9,
-          "kind": "regular",
-          "w": 1.0
         }
       ],
       "dd_strip": [
@@ -1326,8 +1344,6 @@
         null,
         null,
         null,
-        null,
-        null,
         "regular",
         null,
         null,
@@ -1343,7 +1359,9 @@
         null,
         "regular",
         null,
-        "regular",
+        null,
+        null,
+        null,
         null
       ],
       "name": "Russell 2000",
@@ -1351,21 +1369,21 @@
     }
   },
   "alloc3l": {
-    "lo": 0,
+    "lo": 5,
     "hi": 15,
     "sub2": 0,
-    "sub3": 20,
-    "sub_total": 20,
+    "sub3": 0,
+    "sub_total": 0,
     "lv2": 0,
-    "lv3": 1,
-    "regime": "pressure",
+    "lv3": 0,
+    "regime": "rally",
     "stress": true,
-    "l1_lo": 15,
-    "l1_hi": 35,
-    "lead_n": 7,
+    "l1_lo": 5,
+    "l1_hi": 15,
+    "lead_n": 3,
     "strong_sectors": 1,
-    "strong_ind": 0,
-    "note": "L1 15~35% −테마20 (스트레스 −15 반영)"
+    "strong_ind": 1,
+    "note": "L1 5~15% (스트레스 −15 반영)"
   },
   "daily_history": [
     {
@@ -2423,16 +2441,38 @@
         "7": 0,
         "0": 0
       }
+    },
+    {
+      "date": "2026-09-26",
+      "regime": "rally",
+      "breadth": 0.0,
+      "wdd": 6.0,
+      "alloc_lo": 5,
+      "alloc_hi": 15,
+      "stress": true,
+      "lead_n": 3,
+      "strong_sectors": 1,
+      "t": 417,
+      "ph": {
+        "4+": 3,
+        "4": 3,
+        "5+": 0,
+        "5": 2,
+        "3": 161,
+        "2": 65,
+        "1": 147,
+        "6": 36,
+        "7": 0,
+        "0": 0
+      }
     }
   ],
   "market_sent": {
     "vix": {
-      "last": 15.67,
-      "chg_pct": 3.23,
-      "ma20": 15.67,
+      "last": 14.87,
+      "chg_pct": -5.11,
+      "ma20": 15.68,
       "spark": [
-        16.59,
-        16.15,
         15.57,
         16.13,
         16.9,
@@ -2489,10 +2529,12 @@
         15.44,
         14.81,
         14.87,
+        14.21,
         15.18,
-        15.67
+        15.67,
+        14.87
       ],
-      "level": "보통"
+      "level": "안정"
     }
   },
   "bench_history": [
@@ -2864,12 +2906,18 @@
     },
     {
       "date": "2026-09-24",
+      "spy": 1.0278,
+      "qqq": 1.0464,
+      "tqqq": 1.1032
+    },
+    {
+      "date": "2026-09-25",
       "spy": null,
       "qqq": null,
       "tqqq": null
     },
     {
-      "date": "2026-09-25",
+      "date": "2026-09-26",
       "spy": null,
       "qqq": null,
       "tqqq": null
@@ -2891,7 +2939,6 @@
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
-        44.82,
         45.58,
         45.24,
         44.84,
@@ -2920,9 +2967,10 @@
         44.7,
         44.7,
         44.7,
+        44.7,
         44.7
       ],
-      "px_hist_d": "2026-09-25",
+      "px_hist_d": "2026-09-26",
       "dte": null
     },
     {
@@ -2940,7 +2988,6 @@
       "oneill_8w_active": true,
       "reentry": false,
       "px_hist": [
-        63.8,
         64.72,
         64.26,
         64.85,
@@ -2969,9 +3016,10 @@
         76.6,
         76.6,
         76.6,
+        76.6,
         76.6
       ],
-      "px_hist_d": "2026-09-25",
+      "px_hist_d": "2026-09-26",
       "dte": null,
       "oneill_trigger_date": "2026-08-20",
       "runner_tier": 2
@@ -2985,13 +3033,12 @@
       "entry_value": 0.022095405476656338,
       "cur": 47.39,
       "max_gain_pct": 11.46496815286624,
-      "days_in": 26,
+      "days_in": 27,
       "current_stop": 42.3429,
       "runner": false,
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
-        50.2,
         49.89,
         48.94,
         48.1,
@@ -3020,9 +3067,10 @@
         50.75,
         50.17,
         47.39,
+        47.39,
         47.39
       ],
-      "px_hist_d": "2026-09-25",
+      "px_hist_d": "2026-09-26",
       "dte": null
     },
     {
@@ -3034,13 +3082,12 @@
       "entry_value": 0.022095405476656338,
       "cur": 16.36,
       "max_gain_pct": 16.255534471853238,
-      "days_in": 26,
+      "days_in": 27,
       "current_stop": 15.81,
       "runner": false,
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
-        17.06,
         17.25,
         17.08,
         16.8,
@@ -3069,9 +3116,10 @@
         16.4,
         16.36,
         16.36,
+        16.36,
         16.36
       ],
-      "px_hist_d": "2026-09-25",
+      "px_hist_d": "2026-09-26",
       "dte": null
     },
     {
@@ -3083,13 +3131,12 @@
       "entry_value": 0.01670763742692094,
       "cur": 65.52,
       "max_gain_pct": 3.497109826589595,
-      "days_in": 24,
+      "days_in": 25,
       "current_stop": 64.356,
       "runner": false,
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
-        70.2,
         71.62,
         71.12,
         70.54,
@@ -3118,9 +3165,10 @@
         65.52,
         65.52,
         65.52,
+        65.52,
         65.52
       ],
-      "px_hist_d": "2026-09-25",
+      "px_hist_d": "2026-09-26",
       "dte": null
     },
     {
@@ -3164,9 +3212,10 @@
         182.37,
         196.62,
         196.62,
+        196.62,
         196.62
       ],
-      "px_hist_d": "2026-09-25",
+      "px_hist_d": "2026-09-26",
       "dte": null
     }
   ],

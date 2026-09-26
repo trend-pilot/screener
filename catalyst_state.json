@@ -1,24 +1,28 @@
 {
-"_date": "2026-09-25",
+"_date": "2026-09-26",
 "_fired_names": [
-"Credit Services",
-"Education & Training Services",
-"Specialty Retail"
+"Insurance - Life"
 ],
-"Credit Services": {
+"Insurance - Life": {
 "consecutive_days": 1,
+"first_fired": "2026-09-26",
+"last_avg_pct": 2.23,
+"ever_fired": true
+},
+"Credit Services": {
+"consecutive_days": 0,
 "first_fired": "2026-09-25",
 "last_avg_pct": 2.8,
 "ever_fired": true
 },
 "Specialty Retail": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-25",
 "last_avg_pct": 2.3,
 "ever_fired": true
 },
 "Education & Training Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-09-25",
 "last_avg_pct": 2.15,
 "ever_fired": true
@@ -33,12 +37,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-24",
 "last_avg_pct": 4.87,
-"ever_fired": true
-},
-"Insurance - Life": {
-"consecutive_days": 0,
-"first_fired": "2026-09-24",
-"last_avg_pct": 3.53,
 "ever_fired": true
 },
 "Semiconductor Equipment & Materials": {
