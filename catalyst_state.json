@@ -1,10 +1,65 @@
 {
-"_date": "2026-09-26",
+"_date": "2026-09-27",
 "_fired_names": [
-"Insurance - Life"
+"Airlines",
+"Building Products & Equipment",
+"Consumer Electronics",
+"Farm & Heavy Construction Machinery",
+"Healthcare Plans",
+"Real Estate - Development",
+"Semiconductor Equipment & Materials",
+"Semiconductors"
 ],
-"Insurance - Life": {
+"Semiconductor Equipment & Materials": {
 "consecutive_days": 1,
+"first_fired": "2026-09-27",
+"last_avg_pct": 2.7,
+"ever_fired": true
+},
+"Airlines": {
+"consecutive_days": 1,
+"first_fired": "2026-09-27",
+"last_avg_pct": 2.54,
+"ever_fired": true
+},
+"Semiconductors": {
+"consecutive_days": 1,
+"first_fired": "2026-09-27",
+"last_avg_pct": 2.34,
+"ever_fired": true
+},
+"Building Products & Equipment": {
+"consecutive_days": 1,
+"first_fired": "2026-09-27",
+"last_avg_pct": 2.05,
+"ever_fired": true
+},
+"Real Estate - Development": {
+"consecutive_days": 1,
+"first_fired": "2026-09-27",
+"last_avg_pct": 2.02,
+"ever_fired": true
+},
+"Consumer Electronics": {
+"consecutive_days": 1,
+"first_fired": "2026-09-27",
+"last_avg_pct": 1.93,
+"ever_fired": true
+},
+"Farm & Heavy Construction Machinery": {
+"consecutive_days": 1,
+"first_fired": "2026-09-27",
+"last_avg_pct": 1.84,
+"ever_fired": true
+},
+"Healthcare Plans": {
+"consecutive_days": 1,
+"first_fired": "2026-09-27",
+"last_avg_pct": 1.78,
+"ever_fired": true
+},
+"Insurance - Life": {
+"consecutive_days": 0,
 "first_fired": "2026-09-26",
 "last_avg_pct": 2.23,
 "ever_fired": true
@@ -39,12 +94,6 @@
 "last_avg_pct": 4.87,
 "ever_fired": true
 },
-"Semiconductor Equipment & Materials": {
-"consecutive_days": 0,
-"first_fired": "2026-09-23",
-"last_avg_pct": 2.89,
-"ever_fired": true
-},
 "Electronic Components": {
 "consecutive_days": 0,
 "first_fired": "2026-09-24",
@@ -61,12 +110,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-24",
 "last_avg_pct": 2.1,
-"ever_fired": true
-},
-"Building Products & Equipment": {
-"consecutive_days": 0,
-"first_fired": "2026-09-24",
-"last_avg_pct": 1.73,
 "ever_fired": true
 },
 "Gold": {
@@ -105,12 +148,6 @@
 "last_avg_pct": 2.5,
 "ever_fired": true
 },
-"Airlines": {
-"consecutive_days": 0,
-"first_fired": "2026-09-23",
-"last_avg_pct": 2.48,
-"ever_fired": true
-},
 "Insurance - Diversified": {
 "consecutive_days": 0,
 "first_fired": "2026-09-22",
@@ -121,12 +158,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-19",
 "last_avg_pct": 4.04,
-"ever_fired": true
-},
-"Semiconductors": {
-"consecutive_days": 0,
-"first_fired": "2026-09-18",
-"last_avg_pct": 2.54,
 "ever_fired": true
 },
 "Financial Data & Stock Exchanges": {
@@ -297,22 +328,10 @@
 "last_avg_pct": 3.87,
 "ever_fired": true
 },
-"Consumer Electronics": {
-"consecutive_days": 0,
-"first_fired": "2026-09-11",
-"last_avg_pct": 2.05,
-"ever_fired": true
-},
 "Tobacco": {
 "consecutive_days": 0,
 "first_fired": "2026-09-11",
 "last_avg_pct": 1.15,
-"ever_fired": true
-},
-"Healthcare Plans": {
-"consecutive_days": 0,
-"first_fired": "2026-09-11",
-"last_avg_pct": 1.14,
 "ever_fired": true
 },
 "Silver": {
@@ -367,12 +386,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-05",
 "last_avg_pct": 2.73,
-"ever_fired": true
-},
-"Farm & Heavy Construction Machinery": {
-"consecutive_days": 0,
-"first_fired": "2026-09-05",
-"last_avg_pct": 2.54,
 "ever_fired": true
 },
 "Utilities - Renewable": {
