@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-09-27",
+  "data_date": "2026-09-28",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v2.4)",
   "nav": 1.0417,
@@ -25,11 +25,11 @@
     "tqqq": 11.75
   },
   "risk": {
-    "days": 65,
+    "days": 66,
     "ret": 4.17,
-    "sharpe": 0.86,
-    "sortino": 0.78,
-    "vol": 15.6,
+    "sharpe": 0.85,
+    "sortino": 0.77,
+    "vol": 15.5,
     "mdd": -7.1,
     "ret_mdd": 0.59,
     "day_hi": 3.9,
@@ -373,46 +373,51 @@
       "date": "2026-09-27",
       "nav": 1.0417,
       "chg": 3.9
+    },
+    {
+      "date": "2026-09-28",
+      "nav": 1.0417,
+      "chg": 0.0
     }
   ],
   "holdings": [
     {
       "ticker": "TXG",
       "entry": "2026-08-07",
-      "days": 36,
+      "days": 37,
       "cd": "∞",
       "entry_px": 52.03,
       "cur": 85.71,
       "runner": true,
       "partial": null,
-      "dte": null
+      "dte": 27
     },
     {
       "ticker": "WEYS",
       "entry": "2026-08-04",
-      "days": 38,
+      "days": 39,
       "cd": "",
       "entry_px": 40.42,
       "cur": 47.44,
       "runner": false,
       "partial": null,
-      "dte": null
+      "dte": 25
     },
     {
       "ticker": "OKTA",
       "entry": "2026-08-28",
-      "days": 21,
+      "days": 22,
       "cd": "",
       "entry_px": 172.91,
       "cur": 195.19,
       "runner": false,
       "partial": null,
-      "dte": null
+      "dte": 45
     },
     {
       "ticker": "HTFL",
       "entry": "2026-08-19",
-      "days": 27,
+      "days": 28,
       "cd": "",
       "entry_px": 45.53,
       "cur": 49.17,
@@ -423,7 +428,7 @@
     {
       "ticker": "PSNL",
       "entry": "2026-08-19",
-      "days": 27,
+      "days": 28,
       "cd": "",
       "entry_px": 15.81,
       "cur": 16.46,
@@ -434,7 +439,7 @@
     {
       "ticker": "TECK",
       "entry": "2026-08-22",
-      "days": 25,
+      "days": 26,
       "cd": "",
       "entry_px": 69.2,
       "cur": 66.05,
@@ -2494,6 +2499,30 @@
         "7": 0,
         "0": 0
       }
+    },
+    {
+      "date": "2026-09-28",
+      "regime": "pressure",
+      "breadth": 48.5,
+      "wdd": 6.0,
+      "alloc_lo": 15,
+      "alloc_hi": 35,
+      "stress": true,
+      "lead_n": 58,
+      "strong_sectors": 5,
+      "t": 3386,
+      "ph": {
+        "4+": 43,
+        "4": 122,
+        "5+": 0,
+        "5": 145,
+        "3": 969,
+        "2": 601,
+        "1": 1216,
+        "6": 290,
+        "7": 0,
+        "0": 0
+      }
     }
   ],
   "market_sent": {
@@ -2956,6 +2985,12 @@
       "spy": 1.0334,
       "qqq": 1.0512,
       "tqqq": 1.1175
+    },
+    {
+      "date": "2026-09-28",
+      "spy": 1.0334,
+      "qqq": 1.0512,
+      "tqqq": 1.1175
     }
   ],
   "_holdings": [
@@ -2968,13 +3003,12 @@
       "entry_value": 0.25,
       "cur": 47.44,
       "max_gain_pct": 17.36763978228599,
-      "days_in": 38,
+      "days_in": 39,
       "current_stop": 40.42,
       "runner": false,
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
-        45.24,
         44.84,
         45.39,
         45.39,
@@ -3003,10 +3037,11 @@
         44.7,
         44.7,
         44.7,
+        47.44,
         47.44
       ],
-      "px_hist_d": "2026-09-27",
-      "dte": null
+      "px_hist_d": "2026-09-28",
+      "dte": 25
     },
     {
       "ticker": "TXG",
@@ -3017,13 +3052,12 @@
       "entry_value": 0.12135415031590036,
       "cur": 85.71,
       "max_gain_pct": 64.7318854507015,
-      "days_in": 36,
+      "days_in": 37,
       "current_stop": 65.0375,
       "runner": true,
       "oneill_8w_active": true,
       "reentry": false,
       "px_hist": [
-        64.26,
         64.85,
         61.54,
         61.54,
@@ -3052,10 +3086,11 @@
         76.6,
         76.6,
         76.6,
+        85.71,
         85.71
       ],
-      "px_hist_d": "2026-09-27",
-      "dte": null,
+      "px_hist_d": "2026-09-28",
+      "dte": 27,
       "oneill_trigger_date": "2026-08-20",
       "runner_tier": 2
     },
@@ -3068,13 +3103,12 @@
       "entry_value": 0.022095405476656338,
       "cur": 49.17,
       "max_gain_pct": 11.46496815286624,
-      "days_in": 27,
+      "days_in": 28,
       "current_stop": 42.3429,
       "runner": false,
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
-        48.94,
         48.1,
         47.78,
         47.78,
@@ -3103,9 +3137,10 @@
         47.39,
         47.39,
         47.39,
+        49.17,
         49.17
       ],
-      "px_hist_d": "2026-09-27",
+      "px_hist_d": "2026-09-28",
       "dte": null
     },
     {
@@ -3117,13 +3152,12 @@
       "entry_value": 0.022095405476656338,
       "cur": 16.46,
       "max_gain_pct": 16.255534471853238,
-      "days_in": 27,
+      "days_in": 28,
       "current_stop": 15.81,
       "runner": false,
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
-        17.08,
         16.8,
         17.07,
         17.07,
@@ -3152,9 +3186,10 @@
         16.36,
         16.36,
         16.36,
+        16.46,
         16.46
       ],
-      "px_hist_d": "2026-09-27",
+      "px_hist_d": "2026-09-28",
       "dte": null
     },
     {
@@ -3166,13 +3201,12 @@
       "entry_value": 0.01670763742692094,
       "cur": 66.05,
       "max_gain_pct": 3.497109826589595,
-      "days_in": 25,
+      "days_in": 26,
       "current_stop": 64.356,
       "runner": false,
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
-        71.12,
         70.54,
         69.34,
         69.34,
@@ -3201,9 +3235,10 @@
         65.52,
         65.52,
         65.52,
+        66.05,
         66.05
       ],
-      "px_hist_d": "2026-09-27",
+      "px_hist_d": "2026-09-28",
       "dte": null
     },
     {
@@ -3215,7 +3250,7 @@
       "entry_value": 0.020004321453617746,
       "cur": 195.19,
       "max_gain_pct": 13.71233589728762,
-      "days_in": 21,
+      "days_in": 22,
       "current_stop": 160.8063,
       "runner": false,
       "oneill_8w_active": false,
@@ -3249,10 +3284,11 @@
         196.62,
         196.62,
         196.62,
+        195.19,
         195.19
       ],
-      "px_hist_d": "2026-09-27",
-      "dte": null
+      "px_hist_d": "2026-09-28",
+      "dte": 45
     }
   ],
   "_closed": [

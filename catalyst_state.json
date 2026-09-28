@@ -1,5 +1,5 @@
 {
-"_date": "2026-09-27",
+"_date": "2026-09-28",
 "_fired_names": [
 "Airlines",
 "Building Products & Equipment",
@@ -11,49 +11,49 @@
 "Semiconductors"
 ],
 "Semiconductor Equipment & Materials": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-09-27",
 "last_avg_pct": 2.7,
 "ever_fired": true
 },
 "Airlines": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-09-27",
 "last_avg_pct": 2.54,
 "ever_fired": true
 },
 "Semiconductors": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-09-27",
 "last_avg_pct": 2.34,
 "ever_fired": true
 },
 "Building Products & Equipment": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-09-27",
 "last_avg_pct": 2.05,
 "ever_fired": true
 },
 "Real Estate - Development": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-09-27",
 "last_avg_pct": 2.02,
 "ever_fired": true
 },
 "Consumer Electronics": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-09-27",
 "last_avg_pct": 1.93,
 "ever_fired": true
 },
 "Farm & Heavy Construction Machinery": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-09-27",
 "last_avg_pct": 1.84,
 "ever_fired": true
 },
 "Healthcare Plans": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-09-27",
 "last_avg_pct": 1.78,
 "ever_fired": true
