@@ -1,59 +1,101 @@
 {
-"_date": "2026-09-28",
+"_date": "2026-09-29",
 "_fired_names": [
-"Airlines",
-"Building Products & Equipment",
-"Consumer Electronics",
-"Farm & Heavy Construction Machinery",
-"Healthcare Plans",
+"Airports & Air Services",
+"Apparel Retail",
+"Biotechnology",
+"Coking Coal",
+"Department Stores",
+"Grocery Stores",
 "Real Estate - Development",
-"Semiconductor Equipment & Materials",
-"Semiconductors"
+"Trucking"
 ],
+"Department Stores": {
+"consecutive_days": 1,
+"first_fired": "2026-09-29",
+"last_avg_pct": 1.97,
+"ever_fired": true
+},
+"Apparel Retail": {
+"consecutive_days": 1,
+"first_fired": "2026-09-29",
+"last_avg_pct": 1.72,
+"ever_fired": true
+},
+"Trucking": {
+"consecutive_days": 1,
+"first_fired": "2026-09-29",
+"last_avg_pct": 1.57,
+"ever_fired": true
+},
+"Grocery Stores": {
+"consecutive_days": 1,
+"first_fired": "2026-09-29",
+"last_avg_pct": 1.48,
+"ever_fired": true
+},
+"Biotechnology": {
+"consecutive_days": 1,
+"first_fired": "2026-09-29",
+"last_avg_pct": 1.36,
+"ever_fired": true
+},
+"Airports & Air Services": {
+"consecutive_days": 1,
+"first_fired": "2026-09-29",
+"last_avg_pct": 1.28,
+"ever_fired": true
+},
+"Coking Coal": {
+"consecutive_days": 1,
+"first_fired": "2026-09-29",
+"last_avg_pct": 1.27,
+"ever_fired": true
+},
+"Real Estate - Development": {
+"consecutive_days": 3,
+"first_fired": "2026-09-27",
+"last_avg_pct": 1.25,
+"ever_fired": true
+},
 "Semiconductor Equipment & Materials": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-09-27",
 "last_avg_pct": 2.7,
 "ever_fired": true
 },
 "Airlines": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-09-27",
 "last_avg_pct": 2.54,
 "ever_fired": true
 },
 "Semiconductors": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-09-27",
 "last_avg_pct": 2.34,
 "ever_fired": true
 },
 "Building Products & Equipment": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-09-27",
 "last_avg_pct": 2.05,
 "ever_fired": true
 },
-"Real Estate - Development": {
-"consecutive_days": 2,
-"first_fired": "2026-09-27",
-"last_avg_pct": 2.02,
-"ever_fired": true
-},
 "Consumer Electronics": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-09-27",
 "last_avg_pct": 1.93,
 "ever_fired": true
 },
 "Farm & Heavy Construction Machinery": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-09-27",
 "last_avg_pct": 1.84,
 "ever_fired": true
 },
 "Healthcare Plans": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-09-27",
 "last_avg_pct": 1.78,
 "ever_fired": true
@@ -122,12 +164,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-23",
 "last_avg_pct": 4.48,
-"ever_fired": true
-},
-"Coking Coal": {
-"consecutive_days": 0,
-"first_fired": "2026-09-23",
-"last_avg_pct": 4.1,
 "ever_fired": true
 },
 "Household & Personal Products": {
@@ -304,12 +340,6 @@
 "last_avg_pct": 5.02,
 "ever_fired": true
 },
-"Department Stores": {
-"consecutive_days": 0,
-"first_fired": "2026-09-12",
-"last_avg_pct": 3.67,
-"ever_fired": true
-},
 "Auto & Truck Dealerships": {
 "consecutive_days": 0,
 "first_fired": "2026-09-12",
@@ -382,12 +412,6 @@
 "last_avg_pct": 2.75,
 "ever_fired": true
 },
-"Trucking": {
-"consecutive_days": 0,
-"first_fired": "2026-09-05",
-"last_avg_pct": 2.73,
-"ever_fired": true
-},
 "Utilities - Renewable": {
 "consecutive_days": 0,
 "first_fired": "2026-09-05",
@@ -436,22 +460,10 @@
 "last_avg_pct": 2.23,
 "ever_fired": true
 },
-"Grocery Stores": {
-"consecutive_days": 0,
-"first_fired": "2026-08-29",
-"last_avg_pct": 1.4,
-"ever_fired": true
-},
 "Waste Management": {
 "consecutive_days": 0,
 "first_fired": "2026-08-29",
 "last_avg_pct": 1.31,
-"ever_fired": true
-},
-"Apparel Retail": {
-"consecutive_days": 0,
-"first_fired": "2026-08-29",
-"last_avg_pct": 1.38,
 "ever_fired": true
 },
 "Thermal Coal": {
@@ -470,12 +482,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-25",
 "last_avg_pct": 5.58,
-"ever_fired": true
-},
-"Biotechnology": {
-"consecutive_days": 0,
-"first_fired": "2026-08-25",
-"last_avg_pct": 2.79,
 "ever_fired": true
 },
 "Utilities - Regulated Water": {
@@ -578,12 +584,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-07",
 "last_avg_pct": 2.35,
-"ever_fired": true
-},
-"Airports & Air Services": {
-"consecutive_days": 0,
-"first_fired": "2026-08-07",
-"last_avg_pct": 2.26,
 "ever_fired": true
 },
 "Telecom Services": {
