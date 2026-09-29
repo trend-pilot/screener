@@ -1,29 +1,29 @@
 {
- "as_of": "2026-09-28",
- "src_data_date": "2026-09-28",
- "generated_at": "2026-09-28T19:48:39",
+ "as_of": "2026-09-29",
+ "src_data_date": "2026-09-29",
+ "generated_at": "2026-09-29T13:40:42",
  "n": 1,
  "failed": [],
  "thin": [],
  "data": {
   "272210": {
-   "price": 72600.0,
-   "ma50": 70542.0,
-   "ma200": 92314.75,
-   "vol_ratio_50d": 0.86,
+   "price": 72100.0,
+   "ma50": 70668.0,
+   "ma200": 92447.5,
+   "vol_ratio_50d": 0.64,
    "high_52w": 184000.0,
    "low_52w": 44750.0,
-   "h52_pct": -60.54,
-   "ma50_dist_pct": 2.92,
+   "h52_pct": -60.82,
+   "ma50_dist_pct": 2.03,
    "ma50_break": false,
    "ma50_break_vol": false,
    "above_ma200": false,
-   "dist_days_25": 6,
-   "bars": 266,
+   "dist_days_25": 5,
+   "bars": 267,
    "name": "한화시스템",
-   "last_date": "2026-09-28",
-   "open": 73900.0,
-   "low": 71300.0
+   "last_date": "2026-09-29",
+   "open": 72400.0,
+   "low": 70000.0
   }
  }
 }
