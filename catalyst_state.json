@@ -1,6 +1,14 @@
 {
-"_date": "2026-09-30",
-"_fired_names": [],
+"_date": "2026-10-01",
+"_fired_names": [
+"Real Estate Services"
+],
+"Real Estate Services": {
+"consecutive_days": 1,
+"first_fired": "2026-10-01",
+"last_avg_pct": 1.9,
+"ever_fired": true
+},
 "Department Stores": {
 "consecutive_days": 0,
 "first_fired": "2026-09-29",
@@ -677,12 +685,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-16",
 "last_avg_pct": 3.2,
-"ever_fired": true
-},
-"Real Estate Services": {
-"consecutive_days": 0,
-"first_fired": "2026-07-15",
-"last_avg_pct": 2.9,
 "ever_fired": true
 },
 "Conglomerates": {
