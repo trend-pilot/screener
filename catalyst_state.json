@@ -1,59 +1,50 @@
 {
-"_date": "2026-10-02",
-"_fired_names": [
-"Education & Training Services",
-"Electrical Equipment & Parts",
-"Luxury Goods",
-"Oil & Gas Midstream",
-"Publishing",
-"Rental & Leasing Services",
-"Semiconductors",
-"Staffing & Employment Services"
-],
+"_date": "2026-10-03",
+"_fired_names": [],
 "Publishing": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-02",
 "last_avg_pct": 5.8,
 "ever_fired": true
 },
 "Semiconductors": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-02",
 "last_avg_pct": 4.0,
 "ever_fired": true
 },
 "Luxury Goods": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-02",
 "last_avg_pct": 2.8,
 "ever_fired": true
 },
 "Rental & Leasing Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-02",
 "last_avg_pct": 2.6,
 "ever_fired": true
 },
 "Electrical Equipment & Parts": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-02",
 "last_avg_pct": 2.45,
 "ever_fired": true
 },
 "Oil & Gas Midstream": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-02",
 "last_avg_pct": 2.19,
 "ever_fired": true
 },
 "Education & Training Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-02",
 "last_avg_pct": 2.13,
 "ever_fired": true
 },
 "Staffing & Employment Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-02",
 "last_avg_pct": 2.1,
 "ever_fired": true
