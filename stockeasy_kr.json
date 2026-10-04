@@ -1,5 +1,5 @@
 {
- "data_date": "2026-10-03",
+ "data_date": "2026-10-04",
  "holdings": [
   {
    "name": "한화시스템",
@@ -11,7 +11,7 @@
    "cur": null,
    "ticker": "272210",
    "market": "KOSPI",
-   "rs_score": 82,
+   "rs_score": 81,
    "ibd_rs": 80,
    "is_stage2": false,
    "pass_dots": 3,
@@ -30,7 +30,7 @@
    "cur": null,
    "ticker": "079550",
    "market": "KOSPI",
-   "rs_score": 79,
+   "rs_score": 78,
    "ibd_rs": 71,
    "is_stage2": false,
    "pass_dots": 4,
@@ -87,7 +87,7 @@
    "cur": null,
    "ticker": "018880",
    "market": "KOSPI",
-   "rs_score": 54,
+   "rs_score": 53,
    "ibd_rs": 57,
    "is_stage2": false,
    "pass_dots": 1,
@@ -102,7 +102,7 @@
  "code_recovered": [],
  "source": "stockeasy:momentum",
  "strategy_label": "1호 모멘텀",
- "fetched_at": "2026-10-03T12:26:24",
+ "fetched_at": "2026-10-04T13:10:04",
  "diff": {
   "new": [],
   "dropped": [],
