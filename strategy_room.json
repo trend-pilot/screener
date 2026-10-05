@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-10-04",
+  "data_date": "2026-10-05",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v2.4)",
   "nav": 1.0593,
@@ -10,28 +10,7 @@
   "core_count": 5,
   "runner_count": 1,
   "regime": "🟡 Uptrend Under Pressure",
-  "signals": [
-    {
-      "ticker": "WNC",
-      "industry": "Farm & Heavy Construction Machinery",
-      "pattern": "컵앤핸들",
-      "signal_close": 14.04,
-      "pivot": 14.47,
-      "dist": -3.0,
-      "rvol": 1.85,
-      "score": 87.85
-    },
-    {
-      "ticker": "SMTC",
-      "industry": "Semiconductors",
-      "pattern": "거래량돌파",
-      "signal_close": 194.88,
-      "pivot": 201.99,
-      "dist": -3.5,
-      "rvol": 1.61,
-      "score": 85.77
-    }
-  ],
+  "signals": [],
   "gates": [
     "G3 Trigger",
     "G4 Guard",
@@ -46,11 +25,11 @@
     "tqqq": 13.73
   },
   "risk": {
-    "days": 72,
+    "days": 73,
     "ret": 5.93,
     "sharpe": 1.2,
-    "sortino": 1.05,
-    "vol": 15.0,
+    "sortino": 1.04,
+    "vol": 14.9,
     "mdd": -7.1,
     "ret_mdd": 0.84,
     "day_hi": 3.9,
@@ -429,35 +408,40 @@
       "date": "2026-10-04",
       "nav": 1.0593,
       "chg": 1.27
+    },
+    {
+      "date": "2026-10-05",
+      "nav": 1.0593,
+      "chg": 0.0
     }
   ],
   "holdings": [
     {
       "ticker": "TXG",
       "entry": "2026-08-07",
-      "days": 41,
+      "days": 42,
       "cd": "∞",
       "entry_px": 52.03,
       "cur": 93.5,
       "runner": true,
       "partial": null,
-      "dte": null
+      "dte": 22
     },
     {
       "ticker": "OKTA",
       "entry": "2026-08-28",
-      "days": 26,
+      "days": 27,
       "cd": "",
       "entry_px": 172.91,
       "cur": 211.49,
       "runner": false,
       "partial": null,
-      "dte": null
+      "dte": 40
     },
     {
       "ticker": "HTFL",
       "entry": "2026-08-19",
-      "days": 32,
+      "days": 33,
       "cd": "",
       "entry_px": 45.53,
       "cur": 49.32,
@@ -468,13 +452,13 @@
     {
       "ticker": "PSNL",
       "entry": "2026-08-19",
-      "days": 32,
+      "days": 33,
       "cd": "",
       "entry_px": 15.81,
       "cur": 16.28,
       "runner": false,
       "partial": null,
-      "dte": null
+      "dte": 20
     },
     {
       "ticker": "WNC",
@@ -485,7 +469,7 @@
       "cur": 14.04,
       "runner": false,
       "partial": null,
-      "dte": null
+      "dte": 22
     },
     {
       "ticker": "SMTC",
@@ -496,7 +480,7 @@
       "cur": 194.88,
       "runner": false,
       "partial": null,
-      "dte": null
+      "dte": 35
     }
   ],
   "runner_stats": {
@@ -2697,6 +2681,30 @@
         "7": 0,
         "0": 0
       }
+    },
+    {
+      "date": "2026-10-05",
+      "regime": "pressure",
+      "breadth": 45.4,
+      "wdd": 7.0,
+      "alloc_lo": 15,
+      "alloc_hi": 35,
+      "stress": true,
+      "lead_n": 51,
+      "strong_sectors": 5,
+      "t": 3375,
+      "ph": {
+        "4+": 59,
+        "4": 118,
+        "5+": 0,
+        "5": 149,
+        "3": 927,
+        "2": 549,
+        "1": 1207,
+        "6": 366,
+        "7": 0,
+        "0": 0
+      }
     }
   ],
   "market_sent": {
@@ -3201,6 +3209,12 @@
       "spy": 1.0311,
       "qqq": 1.0584,
       "tqqq": 1.1373
+    },
+    {
+      "date": "2026-10-05",
+      "spy": 1.0311,
+      "qqq": 1.0584,
+      "tqqq": 1.1373
     }
   ],
   "_holdings": [
@@ -3213,13 +3227,12 @@
       "entry_value": 0.12135415031590036,
       "cur": 93.5,
       "max_gain_pct": 79.70401691331924,
-      "days_in": 41,
+      "days_in": 42,
       "current_stop": 65.0375,
       "runner": true,
       "oneill_8w_active": true,
       "reentry": false,
       "px_hist": [
-        61.65,
         63.22,
         62.65,
         62.65,
@@ -3248,10 +3261,11 @@
         88.5,
         88.5,
         88.5,
+        93.5,
         93.5
       ],
-      "px_hist_d": "2026-10-04",
-      "dte": null,
+      "px_hist_d": "2026-10-05",
+      "dte": 22,
       "oneill_trigger_date": "2026-08-20",
       "runner_tier": 2
     },
@@ -3264,13 +3278,12 @@
       "entry_value": 0.022095405476656338,
       "cur": 49.32,
       "max_gain_pct": 11.46496815286624,
-      "days_in": 32,
+      "days_in": 33,
       "current_stop": 42.3429,
       "runner": false,
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
-        50.0,
         49.71,
         48.91,
         48.91,
@@ -3299,9 +3312,10 @@
         49.17,
         49.17,
         49.17,
+        49.32,
         49.32
       ],
-      "px_hist_d": "2026-10-04",
+      "px_hist_d": "2026-10-05",
       "dte": null
     },
     {
@@ -3313,13 +3327,12 @@
       "entry_value": 0.022095405476656338,
       "cur": 16.28,
       "max_gain_pct": 16.255534471853238,
-      "days_in": 32,
+      "days_in": 33,
       "current_stop": 15.81,
       "runner": false,
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
-        16.73,
         16.83,
         17.2,
         17.2,
@@ -3348,10 +3361,11 @@
         16.46,
         16.46,
         16.46,
+        16.28,
         16.28
       ],
-      "px_hist_d": "2026-10-04",
-      "dte": null
+      "px_hist_d": "2026-10-05",
+      "dte": 20
     },
     {
       "ticker": "OKTA",
@@ -3362,13 +3376,12 @@
       "entry_value": 0.020004321453617746,
       "cur": 211.49,
       "max_gain_pct": 22.312185530044548,
-      "days_in": 26,
+      "days_in": 27,
       "current_stop": 172.91,
       "runner": false,
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
-        163.15,
         170.42,
         170.6,
         170.6,
@@ -3397,10 +3410,11 @@
         195.19,
         195.19,
         195.19,
+        211.49,
         211.49
       ],
-      "px_hist_d": "2026-10-04",
-      "dte": null
+      "px_hist_d": "2026-10-05",
+      "dte": 40
     },
     {
       "ticker": "WNC",
@@ -3417,9 +3431,11 @@
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
+        14.04,
         14.04
       ],
-      "px_hist_d": "2026-10-04"
+      "px_hist_d": "2026-10-05",
+      "dte": 22
     },
     {
       "ticker": "SMTC",
@@ -3436,9 +3452,11 @@
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
+        194.88,
         194.88
       ],
-      "px_hist_d": "2026-10-04"
+      "px_hist_d": "2026-10-05",
+      "dte": 35
     }
   ],
   "_closed": [

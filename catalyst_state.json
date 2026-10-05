@@ -1,5 +1,5 @@
 {
-"_date": "2026-10-04",
+"_date": "2026-10-05",
 "_fired_names": [
 "Communication Equipment",
 "Copper",
@@ -11,49 +11,49 @@
 "Semiconductors"
 ],
 "Copper": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-10-04",
 "last_avg_pct": 4.9,
 "ever_fired": true
 },
 "Semiconductors": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-10-04",
 "last_avg_pct": 4.18,
 "ever_fired": true
 },
 "Farm & Heavy Construction Machinery": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-10-04",
 "last_avg_pct": 3.33,
 "ever_fired": true
 },
 "Electronic Components": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-10-04",
 "last_avg_pct": 3.28,
 "ever_fired": true
 },
 "Metal Fabrication": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-10-04",
 "last_avg_pct": 3.12,
 "ever_fired": true
 },
 "Semiconductor Equipment & Materials": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-10-04",
 "last_avg_pct": 2.98,
 "ever_fired": true
 },
 "Electrical Equipment & Parts": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-10-04",
 "last_avg_pct": 2.97,
 "ever_fired": true
 },
 "Communication Equipment": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-10-04",
 "last_avg_pct": 2.85,
 "ever_fired": true
