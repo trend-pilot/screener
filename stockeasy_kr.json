@@ -1,5 +1,5 @@
 {
- "data_date": "2026-10-04",
+ "data_date": "2026-10-05",
  "holdings": [
   {
    "name": "한화시스템",
@@ -102,7 +102,7 @@
  "code_recovered": [],
  "source": "stockeasy:momentum",
  "strategy_label": "1호 모멘텀",
- "fetched_at": "2026-10-04T13:10:04",
+ "fetched_at": "2026-10-05T15:34:45",
  "diff": {
   "new": [],
   "dropped": [],
