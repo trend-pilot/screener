@@ -1,59 +1,107 @@
 {
-"_date": "2026-10-06",
+"_date": "2026-10-07",
 "_fired_names": [
-"Aluminum",
-"Diagnostics & Research",
-"Health Information Services",
-"Healthcare Plans",
-"Medical Devices",
-"Oil & Gas Drilling",
-"Publishing",
-"Steel"
+"Communication Equipment",
+"Electrical Equipment & Parts",
+"Engineering & Construction",
+"Medical Care Facilities",
+"Real Estate - Development",
+"Uranium",
+"Utilities - Independent Power Producers",
+"Utilities - Renewable"
 ],
-"Oil & Gas Drilling": {
+"Utilities - Independent Power Producers": {
 "consecutive_days": 1,
+"first_fired": "2026-10-07",
+"last_avg_pct": 7.3,
+"ever_fired": true
+},
+"Uranium": {
+"consecutive_days": 1,
+"first_fired": "2026-10-07",
+"last_avg_pct": 6.82,
+"ever_fired": true
+},
+"Engineering & Construction": {
+"consecutive_days": 1,
+"first_fired": "2026-10-07",
+"last_avg_pct": 3.36,
+"ever_fired": true
+},
+"Communication Equipment": {
+"consecutive_days": 1,
+"first_fired": "2026-10-07",
+"last_avg_pct": 3.22,
+"ever_fired": true
+},
+"Electrical Equipment & Parts": {
+"consecutive_days": 1,
+"first_fired": "2026-10-07",
+"last_avg_pct": 2.56,
+"ever_fired": true
+},
+"Real Estate - Development": {
+"consecutive_days": 1,
+"first_fired": "2026-10-07",
+"last_avg_pct": 2.1,
+"ever_fired": true
+},
+"Utilities - Renewable": {
+"consecutive_days": 1,
+"first_fired": "2026-10-07",
+"last_avg_pct": 2.02,
+"ever_fired": true
+},
+"Medical Care Facilities": {
+"consecutive_days": 1,
+"first_fired": "2026-10-07",
+"last_avg_pct": 1.91,
+"ever_fired": true
+},
+"Oil & Gas Drilling": {
+"consecutive_days": 0,
 "first_fired": "2026-10-06",
 "last_avg_pct": 4.67,
 "ever_fired": true
 },
 "Health Information Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-06",
 "last_avg_pct": 3.62,
 "ever_fired": true
 },
 "Diagnostics & Research": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-06",
 "last_avg_pct": 3.47,
 "ever_fired": true
 },
 "Aluminum": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-06",
 "last_avg_pct": 3.38,
 "ever_fired": true
 },
 "Steel": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-06",
 "last_avg_pct": 3.25,
 "ever_fired": true
 },
 "Publishing": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-06",
 "last_avg_pct": 2.87,
 "ever_fired": true
 },
 "Healthcare Plans": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-06",
 "last_avg_pct": 2.77,
 "ever_fired": true
 },
 "Medical Devices": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-06",
 "last_avg_pct": 2.56,
 "ever_fired": true
@@ -92,18 +140,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-10-04",
 "last_avg_pct": 2.98,
-"ever_fired": true
-},
-"Electrical Equipment & Parts": {
-"consecutive_days": 0,
-"first_fired": "2026-10-04",
-"last_avg_pct": 2.97,
-"ever_fired": true
-},
-"Communication Equipment": {
-"consecutive_days": 0,
-"first_fired": "2026-10-04",
-"last_avg_pct": 2.85,
 "ever_fired": true
 },
 "Luxury Goods": {
@@ -182,12 +218,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-29",
 "last_avg_pct": 1.27,
-"ever_fired": true
-},
-"Real Estate - Development": {
-"consecutive_days": 0,
-"first_fired": "2026-09-27",
-"last_avg_pct": 1.25,
 "ever_fired": true
 },
 "Airlines": {
@@ -394,22 +424,10 @@
 "last_avg_pct": 1.6,
 "ever_fired": true
 },
-"Medical Care Facilities": {
-"consecutive_days": 0,
-"first_fired": "2026-09-15",
-"last_avg_pct": 1.33,
-"ever_fired": true
-},
 "Auto & Truck Dealerships": {
 "consecutive_days": 0,
 "first_fired": "2026-09-12",
 "last_avg_pct": 3.18,
-"ever_fired": true
-},
-"Engineering & Construction": {
-"consecutive_days": 0,
-"first_fired": "2026-09-12",
-"last_avg_pct": 2.74,
 "ever_fired": true
 },
 "Broadcasting": {
@@ -454,22 +472,10 @@
 "last_avg_pct": 2.28,
 "ever_fired": true
 },
-"Utilities - Independent Power Producers": {
-"consecutive_days": 0,
-"first_fired": "2026-09-05",
-"last_avg_pct": 3.8,
-"ever_fired": true
-},
 "Recreational Vehicles": {
 "consecutive_days": 0,
 "first_fired": "2026-09-05",
 "last_avg_pct": 2.75,
-"ever_fired": true
-},
-"Utilities - Renewable": {
-"consecutive_days": 0,
-"first_fired": "2026-09-05",
-"last_avg_pct": 2.4,
 "ever_fired": true
 },
 "Information Technology Services": {
@@ -518,12 +524,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-27",
 "last_avg_pct": 1.83,
-"ever_fired": true
-},
-"Uranium": {
-"consecutive_days": 0,
-"first_fired": "2026-08-25",
-"last_avg_pct": 5.58,
 "ever_fired": true
 },
 "Utilities - Regulated Water": {
