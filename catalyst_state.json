@@ -1,59 +1,93 @@
 {
-"_date": "2026-10-07",
+"_date": "2026-10-08",
 "_fired_names": [
-"Communication Equipment",
-"Electrical Equipment & Parts",
-"Engineering & Construction",
-"Medical Care Facilities",
-"Real Estate - Development",
-"Uranium",
-"Utilities - Independent Power Producers",
-"Utilities - Renewable"
+"Department Stores",
+"Drug Manufacturers - General",
+"Grocery Stores",
+"Internet Content & Information",
+"Personal Services",
+"Staffing & Employment Services"
 ],
-"Utilities - Independent Power Producers": {
+"Department Stores": {
 "consecutive_days": 1,
+"first_fired": "2026-10-08",
+"last_avg_pct": 2.0,
+"ever_fired": true
+},
+"Internet Content & Information": {
+"consecutive_days": 1,
+"first_fired": "2026-10-08",
+"last_avg_pct": 1.86,
+"ever_fired": true
+},
+"Staffing & Employment Services": {
+"consecutive_days": 1,
+"first_fired": "2026-10-08",
+"last_avg_pct": 1.78,
+"ever_fired": true
+},
+"Drug Manufacturers - General": {
+"consecutive_days": 1,
+"first_fired": "2026-10-08",
+"last_avg_pct": 1.44,
+"ever_fired": true
+},
+"Personal Services": {
+"consecutive_days": 1,
+"first_fired": "2026-10-08",
+"last_avg_pct": 1.28,
+"ever_fired": true
+},
+"Grocery Stores": {
+"consecutive_days": 1,
+"first_fired": "2026-10-08",
+"last_avg_pct": 1.0,
+"ever_fired": true
+},
+"Utilities - Independent Power Producers": {
+"consecutive_days": 0,
 "first_fired": "2026-10-07",
 "last_avg_pct": 7.3,
 "ever_fired": true
 },
 "Uranium": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-07",
 "last_avg_pct": 6.82,
 "ever_fired": true
 },
 "Engineering & Construction": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-07",
 "last_avg_pct": 3.36,
 "ever_fired": true
 },
 "Communication Equipment": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-07",
 "last_avg_pct": 3.22,
 "ever_fired": true
 },
 "Electrical Equipment & Parts": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-07",
 "last_avg_pct": 2.56,
 "ever_fired": true
 },
 "Real Estate - Development": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-07",
 "last_avg_pct": 2.1,
 "ever_fired": true
 },
 "Utilities - Renewable": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-07",
 "last_avg_pct": 2.02,
 "ever_fired": true
 },
 "Medical Care Facilities": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-07",
 "last_avg_pct": 1.91,
 "ever_fired": true
@@ -166,22 +200,10 @@
 "last_avg_pct": 2.13,
 "ever_fired": true
 },
-"Staffing & Employment Services": {
-"consecutive_days": 0,
-"first_fired": "2026-10-02",
-"last_avg_pct": 2.1,
-"ever_fired": true
-},
 "Real Estate Services": {
 "consecutive_days": 0,
 "first_fired": "2026-10-01",
 "last_avg_pct": 1.9,
-"ever_fired": true
-},
-"Department Stores": {
-"consecutive_days": 0,
-"first_fired": "2026-09-29",
-"last_avg_pct": 1.97,
 "ever_fired": true
 },
 "Apparel Retail": {
@@ -194,12 +216,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-29",
 "last_avg_pct": 1.57,
-"ever_fired": true
-},
-"Grocery Stores": {
-"consecutive_days": 0,
-"first_fired": "2026-09-29",
-"last_avg_pct": 1.48,
 "ever_fired": true
 },
 "Biotechnology": {
@@ -556,12 +572,6 @@
 "last_avg_pct": 2.3,
 "ever_fired": true
 },
-"Drug Manufacturers - General": {
-"consecutive_days": 0,
-"first_fired": "2026-08-18",
-"last_avg_pct": 1.73,
-"ever_fired": true
-},
 "Consulting Services": {
 "consecutive_days": 0,
 "first_fired": "2026-08-18",
@@ -596,12 +606,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-13",
 "last_avg_pct": 2.94,
-"ever_fired": true
-},
-"Personal Services": {
-"consecutive_days": 0,
-"first_fired": "2026-08-12",
-"last_avg_pct": 3.07,
 "ever_fired": true
 },
 "Security & Protection Services": {
@@ -647,12 +651,6 @@
 "ever_fired": true
 },
 "Internet Retail": {
-"consecutive_days": 0,
-"first_fired": "2026-07-27",
-"last_avg_pct": 3.66,
-"ever_fired": true
-},
-"Internet Content & Information": {
 "consecutive_days": 0,
 "first_fired": "2026-07-27",
 "last_avg_pct": 3.66,
