@@ -1,45 +1,95 @@
 {
-"_date": "2026-10-08",
+"_date": "2026-10-09",
 "_fired_names": [
-"Department Stores",
-"Drug Manufacturers - General",
-"Grocery Stores",
-"Internet Content & Information",
-"Personal Services",
-"Staffing & Employment Services"
+"Beverages - Brewers",
+"Beverages - Non-Alcoholic",
+"Consulting Services",
+"Gambling",
+"Home Improvement Retail",
+"Marine Shipping",
+"Oil & Gas Integrated",
+"Oil & Gas Refining & Marketing"
 ],
-"Department Stores": {
+"Beverages - Non-Alcoholic": {
 "consecutive_days": 1,
+"first_fired": "2026-10-09",
+"last_avg_pct": 3.21,
+"ever_fired": true
+},
+"Consulting Services": {
+"consecutive_days": 1,
+"first_fired": "2026-10-09",
+"last_avg_pct": 2.91,
+"ever_fired": true
+},
+"Marine Shipping": {
+"consecutive_days": 1,
+"first_fired": "2026-10-09",
+"last_avg_pct": 2.75,
+"ever_fired": true
+},
+"Beverages - Brewers": {
+"consecutive_days": 1,
+"first_fired": "2026-10-09",
+"last_avg_pct": 2.53,
+"ever_fired": true
+},
+"Oil & Gas Refining & Marketing": {
+"consecutive_days": 1,
+"first_fired": "2026-10-09",
+"last_avg_pct": 2.46,
+"ever_fired": true
+},
+"Gambling": {
+"consecutive_days": 1,
+"first_fired": "2026-10-09",
+"last_avg_pct": 2.46,
+"ever_fired": true
+},
+"Oil & Gas Integrated": {
+"consecutive_days": 1,
+"first_fired": "2026-10-09",
+"last_avg_pct": 2.37,
+"ever_fired": true
+},
+"Home Improvement Retail": {
+"consecutive_days": 1,
+"first_fired": "2026-10-09",
+"last_avg_pct": 2.3,
+"ever_fired": true
+},
+"Department Stores": {
+"consecutive_days": 0,
 "first_fired": "2026-10-08",
 "last_avg_pct": 2.0,
 "ever_fired": true
 },
 "Internet Content & Information": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-08",
 "last_avg_pct": 1.86,
 "ever_fired": true
 },
 "Staffing & Employment Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-08",
 "last_avg_pct": 1.78,
 "ever_fired": true
 },
 "Drug Manufacturers - General": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-08",
 "last_avg_pct": 1.44,
 "ever_fired": true
 },
 "Personal Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-08",
 "last_avg_pct": 1.28,
 "ever_fired": true
 },
 "Grocery Stores": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-08",
 "last_avg_pct": 1.0,
 "ever_fired": true
@@ -362,12 +412,6 @@
 "last_avg_pct": 5.22,
 "ever_fired": true
 },
-"Gambling": {
-"consecutive_days": 0,
-"first_fired": "2026-09-17",
-"last_avg_pct": 1.73,
-"ever_fired": true
-},
 "Drug Manufacturers - Specialty & Generic": {
 "consecutive_days": 0,
 "first_fired": "2026-09-17",
@@ -392,34 +436,16 @@
 "last_avg_pct": 3.1,
 "ever_fired": true
 },
-"Oil & Gas Refining & Marketing": {
-"consecutive_days": 0,
-"first_fired": "2026-09-16",
-"last_avg_pct": 2.6,
-"ever_fired": true
-},
 "Oil & Gas E&P": {
 "consecutive_days": 0,
 "first_fired": "2026-09-16",
 "last_avg_pct": 2.51,
 "ever_fired": true
 },
-"Oil & Gas Integrated": {
-"consecutive_days": 0,
-"first_fired": "2026-09-16",
-"last_avg_pct": 2.23,
-"ever_fired": true
-},
 "Agricultural Inputs": {
 "consecutive_days": 0,
 "first_fired": "2026-09-16",
 "last_avg_pct": 2.15,
-"ever_fired": true
-},
-"Beverages - Non-Alcoholic": {
-"consecutive_days": 0,
-"first_fired": "2026-09-15",
-"last_avg_pct": 3.15,
 "ever_fired": true
 },
 "Restaurants": {
@@ -572,22 +598,10 @@
 "last_avg_pct": 2.3,
 "ever_fired": true
 },
-"Consulting Services": {
-"consecutive_days": 0,
-"first_fired": "2026-08-18",
-"last_avg_pct": 1.41,
-"ever_fired": true
-},
 "REIT - Hotel & Motel": {
 "consecutive_days": 0,
 "first_fired": "2026-08-18",
 "last_avg_pct": 1.14,
-"ever_fired": true
-},
-"Marine Shipping": {
-"consecutive_days": 0,
-"first_fired": "2026-08-17",
-"last_avg_pct": 2.43,
 "ever_fired": true
 },
 "Lodging": {
