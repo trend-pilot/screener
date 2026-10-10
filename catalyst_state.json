@@ -1,59 +1,107 @@
 {
-"_date": "2026-10-09",
+"_date": "2026-10-10",
 "_fired_names": [
-"Beverages - Brewers",
-"Beverages - Non-Alcoholic",
-"Consulting Services",
-"Gambling",
-"Home Improvement Retail",
-"Marine Shipping",
-"Oil & Gas Integrated",
-"Oil & Gas Refining & Marketing"
+"Coking Coal",
+"Copper",
+"Drug Manufacturers - Specialty & Generic",
+"Health Information Services",
+"Healthcare Plans",
+"Leisure",
+"Silver",
+"Steel"
 ],
-"Beverages - Non-Alcoholic": {
+"Copper": {
 "consecutive_days": 1,
+"first_fired": "2026-10-10",
+"last_avg_pct": 5.04,
+"ever_fired": true
+},
+"Healthcare Plans": {
+"consecutive_days": 1,
+"first_fired": "2026-10-10",
+"last_avg_pct": 3.82,
+"ever_fired": true
+},
+"Silver": {
+"consecutive_days": 1,
+"first_fired": "2026-10-10",
+"last_avg_pct": 3.5,
+"ever_fired": true
+},
+"Drug Manufacturers - Specialty & Generic": {
+"consecutive_days": 1,
+"first_fired": "2026-10-10",
+"last_avg_pct": 3.21,
+"ever_fired": true
+},
+"Health Information Services": {
+"consecutive_days": 1,
+"first_fired": "2026-10-10",
+"last_avg_pct": 2.9,
+"ever_fired": true
+},
+"Coking Coal": {
+"consecutive_days": 1,
+"first_fired": "2026-10-10",
+"last_avg_pct": 2.75,
+"ever_fired": true
+},
+"Steel": {
+"consecutive_days": 1,
+"first_fired": "2026-10-10",
+"last_avg_pct": 2.24,
+"ever_fired": true
+},
+"Leisure": {
+"consecutive_days": 1,
+"first_fired": "2026-10-10",
+"last_avg_pct": 2.18,
+"ever_fired": true
+},
+"Beverages - Non-Alcoholic": {
+"consecutive_days": 0,
 "first_fired": "2026-10-09",
 "last_avg_pct": 3.21,
 "ever_fired": true
 },
 "Consulting Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-09",
 "last_avg_pct": 2.91,
 "ever_fired": true
 },
 "Marine Shipping": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-09",
 "last_avg_pct": 2.75,
 "ever_fired": true
 },
 "Beverages - Brewers": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-09",
 "last_avg_pct": 2.53,
 "ever_fired": true
 },
 "Oil & Gas Refining & Marketing": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-09",
 "last_avg_pct": 2.46,
 "ever_fired": true
 },
 "Gambling": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-09",
 "last_avg_pct": 2.46,
 "ever_fired": true
 },
 "Oil & Gas Integrated": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-09",
 "last_avg_pct": 2.37,
 "ever_fired": true
 },
 "Home Improvement Retail": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-09",
 "last_avg_pct": 2.3,
 "ever_fired": true
@@ -148,12 +196,6 @@
 "last_avg_pct": 4.67,
 "ever_fired": true
 },
-"Health Information Services": {
-"consecutive_days": 0,
-"first_fired": "2026-10-06",
-"last_avg_pct": 3.62,
-"ever_fired": true
-},
 "Diagnostics & Research": {
 "consecutive_days": 0,
 "first_fired": "2026-10-06",
@@ -166,34 +208,16 @@
 "last_avg_pct": 3.38,
 "ever_fired": true
 },
-"Steel": {
-"consecutive_days": 0,
-"first_fired": "2026-10-06",
-"last_avg_pct": 3.25,
-"ever_fired": true
-},
 "Publishing": {
 "consecutive_days": 0,
 "first_fired": "2026-10-06",
 "last_avg_pct": 2.87,
 "ever_fired": true
 },
-"Healthcare Plans": {
-"consecutive_days": 0,
-"first_fired": "2026-10-06",
-"last_avg_pct": 2.77,
-"ever_fired": true
-},
 "Medical Devices": {
 "consecutive_days": 0,
 "first_fired": "2026-10-06",
 "last_avg_pct": 2.56,
-"ever_fired": true
-},
-"Copper": {
-"consecutive_days": 0,
-"first_fired": "2026-10-04",
-"last_avg_pct": 4.9,
 "ever_fired": true
 },
 "Semiconductors": {
@@ -278,12 +302,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-29",
 "last_avg_pct": 1.28,
-"ever_fired": true
-},
-"Coking Coal": {
-"consecutive_days": 0,
-"first_fired": "2026-09-29",
-"last_avg_pct": 1.27,
 "ever_fired": true
 },
 "Airlines": {
@@ -412,12 +430,6 @@
 "last_avg_pct": 5.22,
 "ever_fired": true
 },
-"Drug Manufacturers - Specialty & Generic": {
-"consecutive_days": 0,
-"first_fired": "2026-09-17",
-"last_avg_pct": 1.28,
-"ever_fired": true
-},
 "Food Distribution": {
 "consecutive_days": 0,
 "first_fired": "2026-09-17",
@@ -482,12 +494,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-11",
 "last_avg_pct": 1.15,
-"ever_fired": true
-},
-"Silver": {
-"consecutive_days": 0,
-"first_fired": "2026-09-10",
-"last_avg_pct": 1.6,
 "ever_fired": true
 },
 "Oil & Gas Equipment & Services": {
