@@ -1,59 +1,77 @@
 {
-"_date": "2026-10-10",
+"_date": "2026-10-11",
 "_fired_names": [
+"Biotechnology",
 "Coking Coal",
 "Copper",
-"Drug Manufacturers - Specialty & Generic",
+"Gold",
 "Health Information Services",
-"Healthcare Plans",
-"Leisure",
 "Silver",
+"Software - Infrastructure",
 "Steel"
 ],
 "Copper": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-10-10",
-"last_avg_pct": 5.04,
+"last_avg_pct": 4.76,
+"ever_fired": true
+},
+"Coking Coal": {
+"consecutive_days": 2,
+"first_fired": "2026-10-10",
+"last_avg_pct": 3.05,
+"ever_fired": true
+},
+"Gold": {
+"consecutive_days": 1,
+"first_fired": "2026-10-11",
+"last_avg_pct": 2.72,
+"ever_fired": true
+},
+"Steel": {
+"consecutive_days": 2,
+"first_fired": "2026-10-10",
+"last_avg_pct": 2.57,
+"ever_fired": true
+},
+"Health Information Services": {
+"consecutive_days": 2,
+"first_fired": "2026-10-10",
+"last_avg_pct": 2.43,
+"ever_fired": true
+},
+"Silver": {
+"consecutive_days": 2,
+"first_fired": "2026-10-10",
+"last_avg_pct": 2.42,
+"ever_fired": true
+},
+"Software - Infrastructure": {
+"consecutive_days": 1,
+"first_fired": "2026-10-11",
+"last_avg_pct": 2.41,
+"ever_fired": true
+},
+"Biotechnology": {
+"consecutive_days": 1,
+"first_fired": "2026-10-11",
+"last_avg_pct": 2.4,
 "ever_fired": true
 },
 "Healthcare Plans": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-10",
 "last_avg_pct": 3.82,
 "ever_fired": true
 },
-"Silver": {
-"consecutive_days": 1,
-"first_fired": "2026-10-10",
-"last_avg_pct": 3.5,
-"ever_fired": true
-},
 "Drug Manufacturers - Specialty & Generic": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-10",
 "last_avg_pct": 3.21,
 "ever_fired": true
 },
-"Health Information Services": {
-"consecutive_days": 1,
-"first_fired": "2026-10-10",
-"last_avg_pct": 2.9,
-"ever_fired": true
-},
-"Coking Coal": {
-"consecutive_days": 1,
-"first_fired": "2026-10-10",
-"last_avg_pct": 2.75,
-"ever_fired": true
-},
-"Steel": {
-"consecutive_days": 1,
-"first_fired": "2026-10-10",
-"last_avg_pct": 2.24,
-"ever_fired": true
-},
 "Leisure": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-10",
 "last_avg_pct": 2.18,
 "ever_fired": true
@@ -292,12 +310,6 @@
 "last_avg_pct": 1.57,
 "ever_fired": true
 },
-"Biotechnology": {
-"consecutive_days": 0,
-"first_fired": "2026-09-29",
-"last_avg_pct": 1.36,
-"ever_fired": true
-},
 "Airports & Air Services": {
 "consecutive_days": 0,
 "first_fired": "2026-09-29",
@@ -356,12 +368,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-24",
 "last_avg_pct": 2.1,
-"ever_fired": true
-},
-"Gold": {
-"consecutive_days": 0,
-"first_fired": "2026-09-23",
-"last_avg_pct": 5.0,
 "ever_fired": true
 },
 "Footwear & Accessories": {
@@ -536,12 +542,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-04",
 "last_avg_pct": 2.1,
-"ever_fired": true
-},
-"Software - Infrastructure": {
-"consecutive_days": 0,
-"first_fired": "2026-09-04",
-"last_avg_pct": 2.08,
 "ever_fired": true
 },
 "REIT - Healthcare Facilities": {
