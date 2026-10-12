@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-10-11",
+  "data_date": "2026-10-12",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v2.4)",
   "nav": 1.0275,
@@ -10,18 +10,7 @@
   "core_count": 6,
   "runner_count": 1,
   "regime": "🟡 Uptrend Under Pressure",
-  "signals": [
-    {
-      "ticker": "NVAX",
-      "industry": "Biotechnology",
-      "pattern": "VCP",
-      "signal_close": 12.75,
-      "pivot": 13.39,
-      "dist": -4.8,
-      "rvol": 3.26,
-      "score": 89.43
-    }
-  ],
+  "signals": [],
   "gates": [
     "G3 Trigger",
     "G4 Guard",
@@ -36,11 +25,11 @@
     "tqqq": 14.11
   },
   "risk": {
-    "days": 79,
+    "days": 80,
     "ret": 2.75,
     "sharpe": 0.41,
-    "sortino": 0.31,
-    "vol": 17.1,
+    "sortino": 0.3,
+    "vol": 17.0,
     "mdd": -7.1,
     "ret_mdd": 0.39,
     "day_hi": 3.9,
@@ -454,35 +443,40 @@
       "date": "2026-10-11",
       "nav": 1.0275,
       "chg": 0.99
+    },
+    {
+      "date": "2026-10-12",
+      "nav": 1.0275,
+      "chg": 0.0
     }
   ],
   "holdings": [
     {
       "ticker": "TXG",
       "entry": "2026-08-07",
-      "days": 46,
+      "days": 47,
       "cd": "∞",
       "entry_px": 52.03,
       "cur": 80.65,
       "runner": true,
       "partial": null,
-      "dte": null
+      "dte": 17
     },
     {
       "ticker": "OKTA",
       "entry": "2026-08-28",
-      "days": 31,
+      "days": 32,
       "cd": "",
       "entry_px": 172.91,
       "cur": 232.13,
       "runner": false,
       "partial": null,
-      "dte": null
+      "dte": 35
     },
     {
       "ticker": "HTFL",
       "entry": "2026-08-19",
-      "days": 37,
+      "days": 38,
       "cd": "",
       "entry_px": 45.53,
       "cur": 49.74,
@@ -493,7 +487,7 @@
     {
       "ticker": "PSNL",
       "entry": "2026-08-19",
-      "days": 37,
+      "days": 38,
       "cd": "",
       "entry_px": 15.81,
       "cur": 16.0,
@@ -510,7 +504,7 @@
       "cur": 12.75,
       "runner": false,
       "partial": null,
-      "dte": null
+      "dte": 17
     },
     {
       "ticker": "SMTC",
@@ -521,7 +515,7 @@
       "cur": 187.3,
       "runner": false,
       "partial": null,
-      "dte": null
+      "dte": 30
     },
     {
       "ticker": "WNC",
@@ -2780,6 +2774,30 @@
         "7": 0,
         "0": 0
       }
+    },
+    {
+      "date": "2026-10-12",
+      "regime": "pressure",
+      "breadth": 56.2,
+      "wdd": 7.0,
+      "alloc_lo": 15,
+      "alloc_hi": 35,
+      "stress": true,
+      "lead_n": 48,
+      "strong_sectors": 3,
+      "t": 3361,
+      "ph": {
+        "4+": 54,
+        "4": 103,
+        "5+": 0,
+        "5": 155,
+        "3": 845,
+        "2": 586,
+        "1": 1204,
+        "6": 414,
+        "7": 0,
+        "0": 0
+      }
     }
   ],
   "market_sent": {
@@ -3326,6 +3344,12 @@
       "spy": 1.0431,
       "qqq": 1.0608,
       "tqqq": 1.1411
+    },
+    {
+      "date": "2026-10-12",
+      "spy": 1.0431,
+      "qqq": 1.0608,
+      "tqqq": 1.1411
     }
   ],
   "_holdings": [
@@ -3338,13 +3362,12 @@
       "entry_value": 0.12135415031590036,
       "cur": 80.65,
       "max_gain_pct": 87.85316163751679,
-      "days_in": 46,
+      "days_in": 47,
       "current_stop": 65.0375,
       "runner": true,
       "oneill_8w_active": true,
       "reentry": false,
       "px_hist": [
-        66.38,
         68.59,
         68.59,
         68.59,
@@ -3373,10 +3396,11 @@
         97.74,
         77.28,
         77.28,
+        80.65,
         80.65
       ],
-      "px_hist_d": "2026-10-11",
-      "dte": null,
+      "px_hist_d": "2026-10-12",
+      "dte": 17,
       "oneill_trigger_date": "2026-08-20",
       "runner_tier": 2
     },
@@ -3389,13 +3413,12 @@
       "entry_value": 0.022095405476656338,
       "cur": 49.74,
       "max_gain_pct": 14.671645069185146,
-      "days_in": 37,
+      "days_in": 38,
       "current_stop": 42.3429,
       "runner": false,
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
-        45.49,
         49.88,
         49.88,
         49.88,
@@ -3424,9 +3447,10 @@
         52.21,
         47.63,
         47.63,
+        49.74,
         49.74
       ],
-      "px_hist_d": "2026-10-11",
+      "px_hist_d": "2026-10-12",
       "dte": null
     },
     {
@@ -3438,13 +3462,12 @@
       "entry_value": 0.022095405476656338,
       "cur": 16.0,
       "max_gain_pct": 16.255534471853238,
-      "days_in": 37,
+      "days_in": 38,
       "current_stop": 15.81,
       "runner": false,
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
-        16.33,
         16.21,
         16.21,
         16.21,
@@ -3473,9 +3496,10 @@
         16.4,
         16.06,
         16.06,
+        16.0,
         16.0
       ],
-      "px_hist_d": "2026-10-11",
+      "px_hist_d": "2026-10-12",
       "dte": null
     },
     {
@@ -3487,13 +3511,12 @@
       "entry_value": 0.020004321453617746,
       "cur": 232.13,
       "max_gain_pct": 34.24903128795327,
-      "days_in": 31,
+      "days_in": 32,
       "current_stop": 190.20100000000002,
       "runner": false,
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
-        171.11,
         166.5,
         166.5,
         166.5,
@@ -3522,10 +3545,11 @@
         218.29,
         220.21,
         220.21,
+        232.13,
         232.13
       ],
-      "px_hist_d": "2026-10-11",
-      "dte": null
+      "px_hist_d": "2026-10-12",
+      "dte": 35
     },
     {
       "ticker": "WNC",
@@ -3549,9 +3573,10 @@
         13.71,
         13.41,
         13.2,
+        13.2,
         13.2
       ],
-      "px_hist_d": "2026-10-11",
+      "px_hist_d": "2026-10-12",
       "dte": 12
     },
     {
@@ -3576,10 +3601,11 @@
         197.2,
         187.49,
         187.49,
+        187.3,
         187.3
       ],
-      "px_hist_d": "2026-10-11",
-      "dte": null
+      "px_hist_d": "2026-10-12",
+      "dte": 30
     },
     {
       "ticker": "NVAX",
@@ -3596,9 +3622,11 @@
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
+        12.75,
         12.75
       ],
-      "px_hist_d": "2026-10-11"
+      "px_hist_d": "2026-10-12",
+      "dte": 17
     }
   ],
   "_closed": [

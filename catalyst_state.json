@@ -1,5 +1,5 @@
 {
-"_date": "2026-10-11",
+"_date": "2026-10-12",
 "_fired_names": [
 "Biotechnology",
 "Coking Coal",
@@ -11,49 +11,49 @@
 "Steel"
 ],
 "Copper": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-10-10",
 "last_avg_pct": 4.76,
 "ever_fired": true
 },
 "Coking Coal": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-10-10",
 "last_avg_pct": 3.05,
 "ever_fired": true
 },
 "Gold": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-10-11",
 "last_avg_pct": 2.72,
 "ever_fired": true
 },
 "Steel": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-10-10",
 "last_avg_pct": 2.57,
 "ever_fired": true
 },
 "Health Information Services": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-10-10",
 "last_avg_pct": 2.43,
 "ever_fired": true
 },
 "Silver": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-10-10",
 "last_avg_pct": 2.42,
 "ever_fired": true
 },
 "Software - Infrastructure": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-10-11",
 "last_avg_pct": 2.41,
 "ever_fired": true
 },
 "Biotechnology": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-10-11",
 "last_avg_pct": 2.4,
 "ever_fired": true
