@@ -1,67 +1,109 @@
 {
-"_date": "2026-10-12",
+"_date": "2026-10-13",
 "_fired_names": [
-"Biotechnology",
-"Coking Coal",
-"Copper",
-"Gold",
-"Health Information Services",
-"Silver",
-"Software - Infrastructure",
-"Steel"
+"Apparel Manufacturing",
+"Beverages - Brewers",
+"Healthcare Plans",
+"Insurance - Reinsurance",
+"Medical Devices",
+"Oil & Gas Integrated",
+"Oil & Gas Midstream",
+"Real Estate - Diversified"
 ],
+"Healthcare Plans": {
+"consecutive_days": 1,
+"first_fired": "2026-10-13",
+"last_avg_pct": 2.04,
+"ever_fired": true
+},
+"Beverages - Brewers": {
+"consecutive_days": 1,
+"first_fired": "2026-10-13",
+"last_avg_pct": 1.97,
+"ever_fired": true
+},
+"Oil & Gas Integrated": {
+"consecutive_days": 1,
+"first_fired": "2026-10-13",
+"last_avg_pct": 1.77,
+"ever_fired": true
+},
+"Real Estate - Diversified": {
+"consecutive_days": 1,
+"first_fired": "2026-10-13",
+"last_avg_pct": 1.75,
+"ever_fired": true
+},
+"Apparel Manufacturing": {
+"consecutive_days": 1,
+"first_fired": "2026-10-13",
+"last_avg_pct": 1.72,
+"ever_fired": true
+},
+"Insurance - Reinsurance": {
+"consecutive_days": 1,
+"first_fired": "2026-10-13",
+"last_avg_pct": 1.67,
+"ever_fired": true
+},
+"Medical Devices": {
+"consecutive_days": 1,
+"first_fired": "2026-10-13",
+"last_avg_pct": 1.52,
+"ever_fired": true
+},
+"Oil & Gas Midstream": {
+"consecutive_days": 1,
+"first_fired": "2026-10-13",
+"last_avg_pct": 1.37,
+"ever_fired": true
+},
 "Copper": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-10-10",
 "last_avg_pct": 4.76,
 "ever_fired": true
 },
 "Coking Coal": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-10-10",
 "last_avg_pct": 3.05,
 "ever_fired": true
 },
 "Gold": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-10-11",
 "last_avg_pct": 2.72,
 "ever_fired": true
 },
 "Steel": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-10-10",
 "last_avg_pct": 2.57,
 "ever_fired": true
 },
 "Health Information Services": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-10-10",
 "last_avg_pct": 2.43,
 "ever_fired": true
 },
 "Silver": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-10-10",
 "last_avg_pct": 2.42,
 "ever_fired": true
 },
 "Software - Infrastructure": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-10-11",
 "last_avg_pct": 2.41,
 "ever_fired": true
 },
 "Biotechnology": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-10-11",
 "last_avg_pct": 2.4,
-"ever_fired": true
-},
-"Healthcare Plans": {
-"consecutive_days": 0,
-"first_fired": "2026-10-10",
-"last_avg_pct": 3.82,
 "ever_fired": true
 },
 "Drug Manufacturers - Specialty & Generic": {
@@ -94,12 +136,6 @@
 "last_avg_pct": 2.75,
 "ever_fired": true
 },
-"Beverages - Brewers": {
-"consecutive_days": 0,
-"first_fired": "2026-10-09",
-"last_avg_pct": 2.53,
-"ever_fired": true
-},
 "Oil & Gas Refining & Marketing": {
 "consecutive_days": 0,
 "first_fired": "2026-10-09",
@@ -110,12 +146,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-10-09",
 "last_avg_pct": 2.46,
-"ever_fired": true
-},
-"Oil & Gas Integrated": {
-"consecutive_days": 0,
-"first_fired": "2026-10-09",
-"last_avg_pct": 2.37,
 "ever_fired": true
 },
 "Home Improvement Retail": {
@@ -232,12 +262,6 @@
 "last_avg_pct": 2.87,
 "ever_fired": true
 },
-"Medical Devices": {
-"consecutive_days": 0,
-"first_fired": "2026-10-06",
-"last_avg_pct": 2.56,
-"ever_fired": true
-},
 "Semiconductors": {
 "consecutive_days": 0,
 "first_fired": "2026-10-04",
@@ -278,12 +302,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-10-02",
 "last_avg_pct": 2.6,
-"ever_fired": true
-},
-"Oil & Gas Midstream": {
-"consecutive_days": 0,
-"first_fired": "2026-10-02",
-"last_avg_pct": 2.19,
 "ever_fired": true
 },
 "Education & Training Services": {
@@ -386,12 +404,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-23",
 "last_avg_pct": 2.93,
-"ever_fired": true
-},
-"Apparel Manufacturing": {
-"consecutive_days": 0,
-"first_fired": "2026-09-23",
-"last_avg_pct": 2.5,
 "ever_fired": true
 },
 "Insurance - Diversified": {
@@ -680,12 +692,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-24",
 "last_avg_pct": 3.56,
-"ever_fired": true
-},
-"Insurance - Reinsurance": {
-"consecutive_days": 0,
-"first_fired": "2026-07-24",
-"last_avg_pct": 3.03,
 "ever_fired": true
 },
 "Insurance - Specialty": {
