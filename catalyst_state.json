@@ -1,10 +1,44 @@
 {
-"_date": "2026-10-14",
+"_date": "2026-10-15",
 "_fired_names": [
-"Specialty Chemicals"
+"Diagnostics & Research",
+"Food Distribution",
+"Household & Personal Products",
+"Medical Care Facilities",
+"Waste Management"
 ],
-"Specialty Chemicals": {
+"Food Distribution": {
 "consecutive_days": 1,
+"first_fired": "2026-10-15",
+"last_avg_pct": 3.3,
+"ever_fired": true
+},
+"Waste Management": {
+"consecutive_days": 1,
+"first_fired": "2026-10-15",
+"last_avg_pct": 1.95,
+"ever_fired": true
+},
+"Diagnostics & Research": {
+"consecutive_days": 1,
+"first_fired": "2026-10-15",
+"last_avg_pct": 1.6,
+"ever_fired": true
+},
+"Medical Care Facilities": {
+"consecutive_days": 1,
+"first_fired": "2026-10-15",
+"last_avg_pct": 1.1,
+"ever_fired": true
+},
+"Household & Personal Products": {
+"consecutive_days": 1,
+"first_fired": "2026-10-15",
+"last_avg_pct": 1.0,
+"ever_fired": true
+},
+"Specialty Chemicals": {
+"consecutive_days": 0,
 "first_fired": "2026-10-14",
 "last_avg_pct": 2.2,
 "ever_fired": true
@@ -231,22 +265,10 @@
 "last_avg_pct": 2.02,
 "ever_fired": true
 },
-"Medical Care Facilities": {
-"consecutive_days": 0,
-"first_fired": "2026-10-07",
-"last_avg_pct": 1.91,
-"ever_fired": true
-},
 "Oil & Gas Drilling": {
 "consecutive_days": 0,
 "first_fired": "2026-10-06",
 "last_avg_pct": 4.67,
-"ever_fired": true
-},
-"Diagnostics & Research": {
-"consecutive_days": 0,
-"first_fired": "2026-10-06",
-"last_avg_pct": 3.47,
 "ever_fired": true
 },
 "Aluminum": {
@@ -393,12 +415,6 @@
 "last_avg_pct": 4.48,
 "ever_fired": true
 },
-"Household & Personal Products": {
-"consecutive_days": 0,
-"first_fired": "2026-09-23",
-"last_avg_pct": 3.33,
-"ever_fired": true
-},
 "Residential Construction": {
 "consecutive_days": 0,
 "first_fired": "2026-09-23",
@@ -445,12 +461,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-18",
 "last_avg_pct": 5.22,
-"ever_fired": true
-},
-"Food Distribution": {
-"consecutive_days": 0,
-"first_fired": "2026-09-17",
-"last_avg_pct": 1.27,
 "ever_fired": true
 },
 "Packaging & Containers": {
@@ -565,12 +575,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-29",
 "last_avg_pct": 2.23,
-"ever_fired": true
-},
-"Waste Management": {
-"consecutive_days": 0,
-"first_fired": "2026-08-29",
-"last_avg_pct": 1.31,
 "ever_fired": true
 },
 "Thermal Coal": {
