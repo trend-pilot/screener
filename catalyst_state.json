@@ -1,38 +1,89 @@
 {
-"_date": "2026-10-15",
+"_date": "2026-10-16",
 "_fired_names": [
-"Diagnostics & Research",
-"Food Distribution",
-"Household & Personal Products",
-"Medical Care Facilities",
-"Waste Management"
+"Apparel Manufacturing",
+"Computer Hardware",
+"Gold",
+"Other Industrial Metals & Mining",
+"Real Estate Services",
+"Recreational Vehicles",
+"Specialty Retail",
+"Travel Services"
 ],
-"Food Distribution": {
+"Recreational Vehicles": {
 "consecutive_days": 1,
+"first_fired": "2026-10-16",
+"last_avg_pct": 5.98,
+"ever_fired": true
+},
+"Gold": {
+"consecutive_days": 1,
+"first_fired": "2026-10-16",
+"last_avg_pct": 5.1,
+"ever_fired": true
+},
+"Computer Hardware": {
+"consecutive_days": 1,
+"first_fired": "2026-10-16",
+"last_avg_pct": 4.84,
+"ever_fired": true
+},
+"Specialty Retail": {
+"consecutive_days": 1,
+"first_fired": "2026-10-16",
+"last_avg_pct": 4.5,
+"ever_fired": true
+},
+"Apparel Manufacturing": {
+"consecutive_days": 1,
+"first_fired": "2026-10-16",
+"last_avg_pct": 4.35,
+"ever_fired": true
+},
+"Travel Services": {
+"consecutive_days": 1,
+"first_fired": "2026-10-16",
+"last_avg_pct": 4.32,
+"ever_fired": true
+},
+"Real Estate Services": {
+"consecutive_days": 1,
+"first_fired": "2026-10-16",
+"last_avg_pct": 4.11,
+"ever_fired": true
+},
+"Other Industrial Metals & Mining": {
+"consecutive_days": 1,
+"first_fired": "2026-10-16",
+"last_avg_pct": 4.02,
+"ever_fired": true
+},
+"Food Distribution": {
+"consecutive_days": 0,
 "first_fired": "2026-10-15",
 "last_avg_pct": 3.3,
 "ever_fired": true
 },
 "Waste Management": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-15",
 "last_avg_pct": 1.95,
 "ever_fired": true
 },
 "Diagnostics & Research": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-15",
 "last_avg_pct": 1.6,
 "ever_fired": true
 },
 "Medical Care Facilities": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-15",
 "last_avg_pct": 1.1,
 "ever_fired": true
 },
 "Household & Personal Products": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-15",
 "last_avg_pct": 1.0,
 "ever_fired": true
@@ -67,12 +118,6 @@
 "last_avg_pct": 1.75,
 "ever_fired": true
 },
-"Apparel Manufacturing": {
-"consecutive_days": 0,
-"first_fired": "2026-10-13",
-"last_avg_pct": 1.72,
-"ever_fired": true
-},
 "Insurance - Reinsurance": {
 "consecutive_days": 0,
 "first_fired": "2026-10-13",
@@ -101,12 +146,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-10-10",
 "last_avg_pct": 3.05,
-"ever_fired": true
-},
-"Gold": {
-"consecutive_days": 0,
-"first_fired": "2026-10-11",
-"last_avg_pct": 2.72,
 "ever_fired": true
 },
 "Steel": {
@@ -331,12 +370,6 @@
 "last_avg_pct": 2.13,
 "ever_fired": true
 },
-"Real Estate Services": {
-"consecutive_days": 0,
-"first_fired": "2026-10-01",
-"last_avg_pct": 1.9,
-"ever_fired": true
-},
 "Apparel Retail": {
 "consecutive_days": 0,
 "first_fired": "2026-09-29",
@@ -385,12 +418,6 @@
 "last_avg_pct": 2.8,
 "ever_fired": true
 },
-"Specialty Retail": {
-"consecutive_days": 0,
-"first_fired": "2026-09-25",
-"last_avg_pct": 2.3,
-"ever_fired": true
-},
 "Electronics & Computer Distribution": {
 "consecutive_days": 0,
 "first_fired": "2026-09-24",
@@ -401,12 +428,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-24",
 "last_avg_pct": 2.25,
-"ever_fired": true
-},
-"Computer Hardware": {
-"consecutive_days": 0,
-"first_fired": "2026-09-24",
-"last_avg_pct": 2.1,
 "ever_fired": true
 },
 "Footwear & Accessories": {
@@ -437,12 +458,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-19",
 "last_avg_pct": 2.03,
-"ever_fired": true
-},
-"Other Industrial Metals & Mining": {
-"consecutive_days": 0,
-"first_fired": "2026-09-18",
-"last_avg_pct": 0.84,
 "ever_fired": true
 },
 "Scientific & Technical Instruments": {
@@ -545,12 +560,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-09",
 "last_avg_pct": 2.28,
-"ever_fired": true
-},
-"Recreational Vehicles": {
-"consecutive_days": 0,
-"first_fired": "2026-09-05",
-"last_avg_pct": 2.75,
 "ever_fired": true
 },
 "Information Technology Services": {
@@ -671,12 +680,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-03",
 "last_avg_pct": 4.58,
-"ever_fired": true
-},
-"Travel Services": {
-"consecutive_days": 0,
-"first_fired": "2026-07-27",
-"last_avg_pct": 3.81,
 "ever_fired": true
 },
 "Internet Retail": {
