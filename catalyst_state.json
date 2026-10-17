@@ -1,61 +1,103 @@
 {
-"_date": "2026-10-16",
+"_date": "2026-10-17",
 "_fired_names": [
-"Apparel Manufacturing",
-"Computer Hardware",
-"Gold",
+"Beverages - Non-Alcoholic",
+"Beverages - Wineries & Distilleries",
+"Chemicals",
+"Insurance - Property & Casualty",
+"Oil & Gas E&P",
 "Other Industrial Metals & Mining",
-"Real Estate Services",
-"Recreational Vehicles",
-"Specialty Retail",
-"Travel Services"
+"Tools & Accessories",
+"Utilities - Regulated Electric"
 ],
-"Recreational Vehicles": {
+"Oil & Gas E&P": {
 "consecutive_days": 1,
+"first_fired": "2026-10-17",
+"last_avg_pct": 3.9,
+"ever_fired": true
+},
+"Beverages - Wineries & Distilleries": {
+"consecutive_days": 1,
+"first_fired": "2026-10-17",
+"last_avg_pct": 2.15,
+"ever_fired": true
+},
+"Utilities - Regulated Electric": {
+"consecutive_days": 1,
+"first_fired": "2026-10-17",
+"last_avg_pct": 2.02,
+"ever_fired": true
+},
+"Beverages - Non-Alcoholic": {
+"consecutive_days": 1,
+"first_fired": "2026-10-17",
+"last_avg_pct": 1.72,
+"ever_fired": true
+},
+"Chemicals": {
+"consecutive_days": 1,
+"first_fired": "2026-10-17",
+"last_avg_pct": 1.7,
+"ever_fired": true
+},
+"Insurance - Property & Casualty": {
+"consecutive_days": 1,
+"first_fired": "2026-10-17",
+"last_avg_pct": 1.68,
+"ever_fired": true
+},
+"Tools & Accessories": {
+"consecutive_days": 1,
+"first_fired": "2026-10-17",
+"last_avg_pct": 1.1,
+"ever_fired": true
+},
+"Other Industrial Metals & Mining": {
+"consecutive_days": 2,
+"first_fired": "2026-10-16",
+"last_avg_pct": 0.4,
+"ever_fired": true
+},
+"Recreational Vehicles": {
+"consecutive_days": 0,
 "first_fired": "2026-10-16",
 "last_avg_pct": 5.98,
 "ever_fired": true
 },
 "Gold": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-16",
 "last_avg_pct": 5.1,
 "ever_fired": true
 },
 "Computer Hardware": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-16",
 "last_avg_pct": 4.84,
 "ever_fired": true
 },
 "Specialty Retail": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-16",
 "last_avg_pct": 4.5,
 "ever_fired": true
 },
 "Apparel Manufacturing": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-16",
 "last_avg_pct": 4.35,
 "ever_fired": true
 },
 "Travel Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-16",
 "last_avg_pct": 4.32,
 "ever_fired": true
 },
 "Real Estate Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-16",
 "last_avg_pct": 4.11,
-"ever_fired": true
-},
-"Other Industrial Metals & Mining": {
-"consecutive_days": 1,
-"first_fired": "2026-10-16",
-"last_avg_pct": 4.02,
 "ever_fired": true
 },
 "Food Distribution": {
@@ -188,12 +230,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-10-10",
 "last_avg_pct": 2.18,
-"ever_fired": true
-},
-"Beverages - Non-Alcoholic": {
-"consecutive_days": 0,
-"first_fired": "2026-10-09",
-"last_avg_pct": 3.21,
 "ever_fired": true
 },
 "Consulting Services": {
@@ -484,18 +520,6 @@
 "last_avg_pct": 1.25,
 "ever_fired": true
 },
-"Chemicals": {
-"consecutive_days": 0,
-"first_fired": "2026-09-16",
-"last_avg_pct": 3.1,
-"ever_fired": true
-},
-"Oil & Gas E&P": {
-"consecutive_days": 0,
-"first_fired": "2026-09-16",
-"last_avg_pct": 2.51,
-"ever_fired": true
-},
 "Agricultural Inputs": {
 "consecutive_days": 0,
 "first_fired": "2026-09-16",
@@ -550,12 +574,6 @@
 "last_avg_pct": -0.17,
 "ever_fired": true
 },
-"Utilities - Regulated Electric": {
-"consecutive_days": 0,
-"first_fired": "2026-09-09",
-"last_avg_pct": 2.29,
-"ever_fired": true
-},
 "Aerospace & Defense": {
 "consecutive_days": 0,
 "first_fired": "2026-09-09",
@@ -580,22 +598,10 @@
 "last_avg_pct": 1.59,
 "ever_fired": true
 },
-"Beverages - Wineries & Distilleries": {
-"consecutive_days": 0,
-"first_fired": "2026-08-29",
-"last_avg_pct": 2.23,
-"ever_fired": true
-},
 "Thermal Coal": {
 "consecutive_days": 0,
 "first_fired": "2026-08-28",
 "last_avg_pct": 2.68,
-"ever_fired": true
-},
-"Tools & Accessories": {
-"consecutive_days": 0,
-"first_fired": "2026-08-27",
-"last_avg_pct": 1.83,
 "ever_fired": true
 },
 "Utilities - Regulated Water": {
@@ -686,12 +692,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-27",
 "last_avg_pct": 3.66,
-"ever_fired": true
-},
-"Insurance - Property & Casualty": {
-"consecutive_days": 0,
-"first_fired": "2026-07-24",
-"last_avg_pct": 3.56,
 "ever_fired": true
 },
 "Insurance - Specialty": {
