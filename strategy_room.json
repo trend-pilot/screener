@@ -1,16 +1,27 @@
 {
-  "data_date": "2026-10-17",
+  "data_date": "2026-10-18",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v2.4)",
-  "nav": 1.0076,
-  "ret_pct": 0.76,
-  "unreal_pct": 5.77,
+  "nav": 0.9821,
+  "ret_pct": -1.79,
+  "unreal_pct": -0.02,
   "cap": 12,
   "runner_cap": 5,
-  "core_count": 3,
-  "runner_count": 1,
+  "core_count": 1,
+  "runner_count": 0,
   "regime": "🟡 Uptrend Under Pressure",
-  "signals": [],
+  "signals": [
+    {
+      "ticker": "KO",
+      "industry": "Beverages - Non-Alcoholic",
+      "pattern": "플랫베이스",
+      "signal_close": 93.9,
+      "pivot": 94.1,
+      "dist": -0.2,
+      "rvol": 1.53,
+      "score": 79.4
+    }
+  ],
   "gates": [
     "G3 Trigger",
     "G4 Guard",
@@ -19,33 +30,33 @@
     "G2 Pattern"
   ],
   "benchmarks": {
-    "strat": 0.76,
-    "spy": null,
-    "qqq": null,
-    "tqqq": null
+    "strat": -1.79,
+    "spy": 2.25,
+    "qqq": 0.22,
+    "tqqq": -4.24
   },
   "risk": {
-    "days": 85,
-    "ret": 0.76,
-    "sharpe": 0.04,
-    "sortino": 0.03,
-    "vol": 16.8,
-    "mdd": -7.1,
-    "ret_mdd": 0.11,
+    "days": 86,
+    "ret": -1.79,
+    "sharpe": -0.4,
+    "sortino": -0.29,
+    "vol": 17.2,
+    "mdd": -8.4,
+    "ret_mdd": 0.21,
     "day_hi": 3.9,
     "day_lo": -5.0,
-    "alpha_voo": null,
-    "alpha_qqq": null
+    "alpha_voo": -4.04,
+    "alpha_qqq": -2.01
   },
   "trades": {
-    "n": 23,
-    "winrate": 26.1,
-    "payoff": 0.9,
-    "pf": 0.32,
-    "avg_win": 7.9,
-    "avg_loss": -8.8,
-    "expectancy": -4.45,
-    "best": 16.6,
+    "n": 27,
+    "winrate": 29.6,
+    "payoff": 1.24,
+    "pf": 0.52,
+    "avg_win": 11.2,
+    "avg_loss": -9.1,
+    "expectancy": -3.06,
+    "best": 34.3,
     "worst": -23.5
   },
   "nav_history": [
@@ -473,49 +484,21 @@
       "date": "2026-10-17",
       "nav": 1.0076,
       "chg": -0.0
+    },
+    {
+      "date": "2026-10-18",
+      "nav": 0.9821,
+      "chg": -2.53
     }
   ],
   "holdings": [
     {
-      "ticker": "TXG",
-      "entry": "2026-08-07",
-      "days": 50,
-      "cd": "∞",
-      "entry_px": 52.03,
-      "cur": 75.19,
-      "runner": true,
-      "partial": null,
-      "dte": null
-    },
-    {
-      "ticker": "OKTA",
-      "entry": "2026-08-28",
-      "days": 35,
+      "ticker": "KO",
+      "entry": "2026-10-18",
+      "days": 0,
       "cd": "",
-      "entry_px": 172.91,
-      "cur": 208.52,
-      "runner": false,
-      "partial": null,
-      "dte": null
-    },
-    {
-      "ticker": "NVAX",
-      "entry": "2026-10-11",
-      "days": 4,
-      "cd": "D-13",
-      "entry_px": 12.75,
-      "cur": 12.82,
-      "runner": false,
-      "partial": null,
-      "dte": 13
-    },
-    {
-      "ticker": "FRO",
-      "entry": "2026-10-13",
-      "days": 2,
-      "cd": "",
-      "entry_px": 59.19,
-      "cur": 59.19,
+      "entry_px": 93.9,
+      "cur": 93.9,
       "runner": false,
       "partial": null,
       "dte": null
@@ -523,15 +506,15 @@
   ],
   "runner_stats": {
     "runner_closed": {
-      "n": 0,
-      "avg": 0.0,
-      "winrate": 0.0,
-      "best": 0.0
+      "n": 1,
+      "avg": 34.3,
+      "winrate": 100,
+      "best": 34.3
     },
     "core_closed": {
-      "n": 23,
-      "avg": -4.4,
-      "winrate": 26,
+      "n": 26,
+      "avg": -4.5,
+      "winrate": 27,
       "best": 16.6
     },
     "reentry": {
@@ -540,20 +523,20 @@
       "winrate": 0.0,
       "best": 0.0
     },
-    "runner_active": 1,
+    "runner_active": 0,
     "reentry_active": 0,
-    "runner_avg_giveback": 0.0
+    "runner_avg_giveback": 53.6
   },
   "closed_summary": {
-    "n": 23,
-    "winrate": 26.1,
-    "avg": -4.45,
-    "best": 16.6,
+    "n": 27,
+    "winrate": 29.6,
+    "avg": -3.06,
+    "best": 34.3,
     "worst": -23.5,
     "categories": [
       [
         "손절",
-        13,
+        15,
         "#A32D2D",
         "#FDECEC"
       ],
@@ -577,7 +560,7 @@
       ],
       [
         "50일선 이탈",
-        1,
+        2,
         "#999",
         "#f5f4ef"
       ],
@@ -586,10 +569,52 @@
         1,
         "#185FA5",
         "#E6F1FB"
+      ],
+      [
+        "Lock 청산",
+        1,
+        "#1a8a4a",
+        "#E8F5E9"
       ]
     ]
   },
   "closed": [
+    {
+      "ticker": "FRO",
+      "entry": "2026-10-13",
+      "exit": "2026-10-18",
+      "days": 3,
+      "entry_px": 59.19,
+      "exit_px": 52.49,
+      "cat": "손절"
+    },
+    {
+      "ticker": "NVAX",
+      "entry": "2026-10-11",
+      "exit": "2026-10-18",
+      "days": 5,
+      "entry_px": 12.75,
+      "exit_px": 11.26,
+      "cat": "손절"
+    },
+    {
+      "ticker": "OKTA",
+      "entry": "2026-08-28",
+      "exit": "2026-10-18",
+      "days": 36,
+      "entry_px": 172.91,
+      "exit_px": 187.26,
+      "cat": "Lock 청산"
+    },
+    {
+      "ticker": "TXG",
+      "entry": "2026-08-07",
+      "exit": "2026-10-18",
+      "days": 51,
+      "entry_px": 52.03,
+      "exit_px": 69.86,
+      "cat": "50일선 이탈"
+    },
     {
       "ticker": "WNC",
       "entry": "2026-10-04",
@@ -1316,9 +1341,9 @@
     "stress": true,
     "l1_lo": 15,
     "l1_hi": 35,
-    "lead_n": 17,
-    "strong_sectors": 3,
-    "strong_ind": 5,
+    "lead_n": 52,
+    "strong_sectors": 1,
+    "strong_ind": 12,
     "note": "L1 15~35% (스트레스 −15 반영)"
   },
   "daily_history": [
@@ -2905,6 +2930,30 @@
         "7": 0,
         "0": 0
       }
+    },
+    {
+      "date": "2026-10-18",
+      "regime": "pressure",
+      "breadth": 44.9,
+      "wdd": 8.0,
+      "alloc_lo": 15,
+      "alloc_hi": 35,
+      "stress": true,
+      "lead_n": 52,
+      "strong_sectors": 1,
+      "t": 3330,
+      "ph": {
+        "4+": 72,
+        "4": 114,
+        "5+": 0,
+        "5": 110,
+        "3": 830,
+        "2": 622,
+        "1": 1168,
+        "6": 414,
+        "7": 0,
+        "0": 0
+      }
     }
   ],
   "market_sent": {
@@ -3478,167 +3527,42 @@
     },
     {
       "date": "2026-10-16",
-      "spy": null,
-      "qqq": null,
-      "tqqq": null
+      "spy": 1.0225,
+      "qqq": 1.0022,
+      "tqqq": 0.9576
     },
     {
       "date": "2026-10-17",
-      "spy": null,
-      "qqq": null,
-      "tqqq": null
+      "spy": 1.0225,
+      "qqq": 1.0022,
+      "tqqq": 0.9576
+    },
+    {
+      "date": "2026-10-18",
+      "spy": 1.0225,
+      "qqq": 1.0022,
+      "tqqq": 0.9576
     }
   ],
   "_holdings": [
     {
-      "ticker": "TXG",
-      "entry_date": "2026-08-07",
-      "entry_px": 52.03,
-      "avg_cost_px": 52.03,
-      "shares": 0.0023312224402098464,
-      "entry_value": 0.12135415031590036,
-      "cur": 75.19,
-      "max_gain_pct": 87.85316163751679,
-      "days_in": 50,
-      "current_stop": 65.0375,
-      "runner": true,
-      "oneill_8w_active": true,
-      "reentry": false,
-      "px_hist": [
-        76.97,
-        76.6,
-        76.6,
-        76.6,
-        76.6,
-        76.6,
-        76.6,
-        76.6,
-        76.6,
-        85.71,
-        85.71,
-        88.5,
-        88.5,
-        88.5,
-        88.5,
-        88.5,
-        93.5,
-        93.5,
-        97.74,
-        97.74,
-        97.74,
-        77.28,
-        77.28,
-        80.65,
-        80.65,
-        75.19,
-        75.19,
-        75.19,
-        75.19,
-        75.19
-      ],
-      "px_hist_d": "2026-10-17",
-      "dte": null,
-      "oneill_trigger_date": "2026-08-20",
-      "runner_tier": 2
-    },
-    {
-      "ticker": "OKTA",
-      "entry_date": "2026-08-28",
-      "entry_px": 172.91,
-      "avg_cost_px": 172.91,
-      "shares": 0.00011563428541710722,
-      "entry_value": 0.020004321453617746,
-      "cur": 208.52,
-      "max_gain_pct": 34.24903128795327,
-      "days_in": 35,
-      "current_stop": 190.20100000000002,
-      "runner": false,
-      "oneill_8w_active": false,
-      "reentry": false,
-      "px_hist": [
-        190.02,
-        182.37,
-        182.37,
-        182.37,
-        182.37,
-        196.62,
-        196.62,
-        196.62,
-        196.62,
-        195.19,
-        195.19,
-        195.19,
-        195.19,
-        195.19,
-        195.19,
-        195.19,
-        211.49,
-        211.49,
-        218.29,
-        218.29,
-        218.29,
-        220.21,
-        220.21,
-        232.13,
-        232.13,
-        227.08,
-        227.08,
-        227.08,
-        208.52,
-        208.52
-      ],
-      "px_hist_d": "2026-10-17",
-      "dte": null
-    },
-    {
-      "ticker": "NVAX",
-      "entry_date": "2026-10-11",
-      "entry_px": 12.75,
-      "avg_cost_px": 12.75,
-      "shares": 0.0016217944662249978,
-      "entry_value": 0.020688218384090906,
-      "cur": 12.82,
-      "max_gain_pct": 0.5490196078431486,
-      "days_in": 4,
-      "current_stop": 11.8575,
-      "runner": false,
-      "oneill_8w_active": false,
-      "reentry": false,
-      "px_hist": [
-        12.75,
-        12.75,
-        12.66,
-        12.66,
-        12.66,
-        12.82,
-        12.82
-      ],
-      "px_hist_d": "2026-10-17",
-      "dte": 13
-    },
-    {
-      "ticker": "FRO",
-      "entry_date": "2026-10-13",
-      "entry_px": 59.19,
-      "avg_cost_px": 59.19,
-      "shares": 0.0011590065487759123,
-      "entry_value": 0.06863589842085727,
-      "cur": 59.19,
+      "ticker": "KO",
+      "entry_date": "2026-10-18",
+      "entry_px": 93.9,
+      "avg_cost_px": 93.9,
+      "shares": 0.0036594398417660657,
+      "entry_value": 0.34379321184240447,
+      "cur": 93.9,
       "max_gain_pct": 0.0,
-      "days_in": 2,
-      "current_stop": 55.046699999999994,
+      "days_in": 0,
+      "current_stop": 87.327,
       "runner": false,
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
-        59.19,
-        59.19,
-        59.19,
-        59.19,
-        59.19
+        93.9
       ],
-      "px_hist_d": "2026-10-17",
-      "dte": null
+      "px_hist_d": "2026-10-18"
     }
   ],
   "_closed": [
@@ -4056,9 +3980,81 @@
       "giveback_pct": 7.5,
       "exit_regime": "rally",
       "mkt_driven": true
+    },
+    {
+      "ticker": "TXG",
+      "entry": "2026-08-07",
+      "exit": "2026-10-18",
+      "days": 51,
+      "entry_px": 52.03,
+      "exit_px": 69.86,
+      "shares": 0.0023312224402098464,
+      "realized": 0.041423619757323005,
+      "cat": "50일선 이탈",
+      "was_runner": true,
+      "runner_tier": 2,
+      "max_gain_pct": 87.9,
+      "reentry": false,
+      "giveback_pct": 53.6,
+      "exit_regime": "pressure",
+      "mkt_driven": true
+    },
+    {
+      "ticker": "OKTA",
+      "entry": "2026-08-28",
+      "exit": "2026-10-18",
+      "days": 36,
+      "entry_px": 172.91,
+      "exit_px": 187.26,
+      "shares": 0.00011563428541710722,
+      "realized": 0.0016385279954461499,
+      "cat": "Lock 청산",
+      "was_runner": false,
+      "runner_tier": null,
+      "max_gain_pct": 34.2,
+      "reentry": false,
+      "giveback_pct": 25.9,
+      "exit_regime": "pressure",
+      "mkt_driven": true
+    },
+    {
+      "ticker": "NVAX",
+      "entry": "2026-10-11",
+      "exit": "2026-10-18",
+      "days": 5,
+      "entry_px": 12.75,
+      "exit_px": 11.26,
+      "shares": 0.0016217944662249978,
+      "realized": -0.0024359433972422767,
+      "cat": "손절",
+      "was_runner": false,
+      "runner_tier": null,
+      "max_gain_pct": 0.5,
+      "reentry": false,
+      "giveback_pct": 12.2,
+      "exit_regime": "pressure",
+      "mkt_driven": true
+    },
+    {
+      "ticker": "FRO",
+      "entry": "2026-10-13",
+      "exit": "2026-10-18",
+      "days": 3,
+      "entry_px": 59.19,
+      "exit_px": 52.49,
+      "shares": 0.0011590065487759123,
+      "realized": -0.007830062802482253,
+      "cat": "손절",
+      "was_runner": false,
+      "runner_tier": null,
+      "max_gain_pct": 0.0,
+      "reentry": false,
+      "giveback_pct": 11.3,
+      "exit_regime": "pressure",
+      "mkt_driven": true
     }
   ],
-  "_cash": 0.7187875894222161,
+  "_cash": 0.6384731077073227,
   "_entries_recent": [
     "2026-08-04",
     "2026-08-04",
@@ -4085,6 +4081,7 @@
     "2026-10-04",
     "2026-10-04",
     "2026-10-11",
-    "2026-10-13"
+    "2026-10-13",
+    "2026-10-18"
   ]
 }
