@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-10-18",
+  "data_date": "2026-10-19",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v2.4)",
   "nav": 0.9821,
@@ -10,18 +10,7 @@
   "core_count": 1,
   "runner_count": 0,
   "regime": "🟡 Uptrend Under Pressure",
-  "signals": [
-    {
-      "ticker": "KO",
-      "industry": "Beverages - Non-Alcoholic",
-      "pattern": "플랫베이스",
-      "signal_close": 93.9,
-      "pivot": 94.1,
-      "dist": -0.2,
-      "rvol": 1.53,
-      "score": 79.4
-    }
-  ],
+  "signals": [],
   "gates": [
     "G3 Trigger",
     "G4 Guard",
@@ -36,11 +25,11 @@
     "tqqq": -4.24
   },
   "risk": {
-    "days": 86,
+    "days": 87,
     "ret": -1.79,
-    "sharpe": -0.4,
+    "sharpe": -0.39,
     "sortino": -0.29,
-    "vol": 17.2,
+    "vol": 17.1,
     "mdd": -8.4,
     "ret_mdd": 0.21,
     "day_hi": 3.9,
@@ -489,6 +478,11 @@
       "date": "2026-10-18",
       "nav": 0.9821,
       "chg": -2.53
+    },
+    {
+      "date": "2026-10-19",
+      "nav": 0.9821,
+      "chg": -0.0
     }
   ],
   "holdings": [
@@ -496,12 +490,12 @@
       "ticker": "KO",
       "entry": "2026-10-18",
       "days": 0,
-      "cd": "",
+      "cd": "D-5",
       "entry_px": 93.9,
       "cur": 93.9,
       "runner": false,
       "partial": null,
-      "dte": null
+      "dte": 5
     }
   ],
   "runner_stats": {
@@ -2954,6 +2948,30 @@
         "7": 0,
         "0": 0
       }
+    },
+    {
+      "date": "2026-10-19",
+      "regime": "pressure",
+      "breadth": 44.9,
+      "wdd": 8.0,
+      "alloc_lo": 15,
+      "alloc_hi": 35,
+      "stress": true,
+      "lead_n": 52,
+      "strong_sectors": 1,
+      "t": 3330,
+      "ph": {
+        "4+": 72,
+        "4": 114,
+        "5+": 0,
+        "5": 110,
+        "3": 827,
+        "2": 620,
+        "1": 1168,
+        "6": 419,
+        "7": 0,
+        "0": 0
+      }
     }
   ],
   "market_sent": {
@@ -3542,6 +3560,12 @@
       "spy": 1.0225,
       "qqq": 1.0022,
       "tqqq": 0.9576
+    },
+    {
+      "date": "2026-10-19",
+      "spy": 1.0225,
+      "qqq": 1.0022,
+      "tqqq": 0.9576
     }
   ],
   "_holdings": [
@@ -3560,9 +3584,11 @@
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
+        93.9,
         93.9
       ],
-      "px_hist_d": "2026-10-18"
+      "px_hist_d": "2026-10-19",
+      "dte": 5
     }
   ],
   "_closed": [
