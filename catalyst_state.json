@@ -1,32 +1,30 @@
 {
-"_date": "2026-10-21",
+"_date": "2026-10-22",
 "_fired_names": [
-"Conglomerates",
-"REIT - Retail",
-"Specialty Chemicals"
+"Insurance - Life"
 ],
-"Specialty Chemicals": {
+"Insurance - Life": {
 "consecutive_days": 1,
+"first_fired": "2026-10-22",
+"last_avg_pct": 1.35,
+"ever_fired": true
+},
+"Specialty Chemicals": {
+"consecutive_days": 0,
 "first_fired": "2026-10-21",
 "last_avg_pct": 1.95,
 "ever_fired": true
 },
 "REIT - Retail": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-21",
 "last_avg_pct": 1.05,
 "ever_fired": true
 },
 "Conglomerates": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-21",
 "last_avg_pct": 1.0,
-"ever_fired": true
-},
-"Insurance - Life": {
-"consecutive_days": 0,
-"first_fired": "2026-10-20",
-"last_avg_pct": 1.5,
 "ever_fired": true
 },
 "Oil & Gas E&P": {
