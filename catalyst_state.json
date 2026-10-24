@@ -1,24 +1,77 @@
 {
-"_date": "2026-10-23",
+"_date": "2026-10-24",
 "_fired_names": [
-"Banks - Regional",
-"Conglomerates",
-"Publishing"
+"Communication Equipment",
+"Diagnostics & Research",
+"Electronic Components",
+"Internet Retail",
+"Oil & Gas E&P",
+"Semiconductor Equipment & Materials",
+"Software - Infrastructure",
+"Specialty Chemicals"
 ],
-"Conglomerates": {
+"Oil & Gas E&P": {
 "consecutive_days": 1,
+"first_fired": "2026-10-24",
+"last_avg_pct": 3.15,
+"ever_fired": true
+},
+"Software - Infrastructure": {
+"consecutive_days": 1,
+"first_fired": "2026-10-24",
+"last_avg_pct": 2.04,
+"ever_fired": true
+},
+"Semiconductor Equipment & Materials": {
+"consecutive_days": 1,
+"first_fired": "2026-10-24",
+"last_avg_pct": 2.01,
+"ever_fired": true
+},
+"Electronic Components": {
+"consecutive_days": 1,
+"first_fired": "2026-10-24",
+"last_avg_pct": 1.7,
+"ever_fired": true
+},
+"Diagnostics & Research": {
+"consecutive_days": 1,
+"first_fired": "2026-10-24",
+"last_avg_pct": 1.57,
+"ever_fired": true
+},
+"Communication Equipment": {
+"consecutive_days": 1,
+"first_fired": "2026-10-24",
+"last_avg_pct": 1.14,
+"ever_fired": true
+},
+"Specialty Chemicals": {
+"consecutive_days": 1,
+"first_fired": "2026-10-24",
+"last_avg_pct": 1.1,
+"ever_fired": true
+},
+"Internet Retail": {
+"consecutive_days": 1,
+"first_fired": "2026-10-24",
+"last_avg_pct": 1.05,
+"ever_fired": true
+},
+"Conglomerates": {
+"consecutive_days": 0,
 "first_fired": "2026-10-23",
 "last_avg_pct": 2.45,
 "ever_fired": true
 },
 "Publishing": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-23",
 "last_avg_pct": 2.25,
 "ever_fired": true
 },
 "Banks - Regional": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-23",
 "last_avg_pct": 1.23,
 "ever_fired": true
@@ -29,22 +82,10 @@
 "last_avg_pct": 1.35,
 "ever_fired": true
 },
-"Specialty Chemicals": {
-"consecutive_days": 0,
-"first_fired": "2026-10-21",
-"last_avg_pct": 1.95,
-"ever_fired": true
-},
 "REIT - Retail": {
 "consecutive_days": 0,
 "first_fired": "2026-10-21",
 "last_avg_pct": 1.05,
-"ever_fired": true
-},
-"Oil & Gas E&P": {
-"consecutive_days": 0,
-"first_fired": "2026-10-17",
-"last_avg_pct": 3.46,
 "ever_fired": true
 },
 "Oil & Gas Integrated": {
@@ -173,12 +214,6 @@
 "last_avg_pct": 1.95,
 "ever_fired": true
 },
-"Diagnostics & Research": {
-"consecutive_days": 0,
-"first_fired": "2026-10-15",
-"last_avg_pct": 1.6,
-"ever_fired": true
-},
 "Medical Care Facilities": {
 "consecutive_days": 0,
 "first_fired": "2026-10-15",
@@ -249,12 +284,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-10-10",
 "last_avg_pct": 2.42,
-"ever_fired": true
-},
-"Software - Infrastructure": {
-"consecutive_days": 0,
-"first_fired": "2026-10-11",
-"last_avg_pct": 2.41,
 "ever_fired": true
 },
 "Biotechnology": {
@@ -359,12 +388,6 @@
 "last_avg_pct": 3.36,
 "ever_fired": true
 },
-"Communication Equipment": {
-"consecutive_days": 0,
-"first_fired": "2026-10-07",
-"last_avg_pct": 3.22,
-"ever_fired": true
-},
 "Electrical Equipment & Parts": {
 "consecutive_days": 0,
 "first_fired": "2026-10-07",
@@ -401,22 +424,10 @@
 "last_avg_pct": 3.33,
 "ever_fired": true
 },
-"Electronic Components": {
-"consecutive_days": 0,
-"first_fired": "2026-10-04",
-"last_avg_pct": 3.28,
-"ever_fired": true
-},
 "Metal Fabrication": {
 "consecutive_days": 0,
 "first_fired": "2026-10-04",
 "last_avg_pct": 3.12,
-"ever_fired": true
-},
-"Semiconductor Equipment & Materials": {
-"consecutive_days": 0,
-"first_fired": "2026-10-04",
-"last_avg_pct": 2.98,
 "ever_fired": true
 },
 "Luxury Goods": {
@@ -705,12 +716,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-03",
 "last_avg_pct": 4.58,
-"ever_fired": true
-},
-"Internet Retail": {
-"consecutive_days": 0,
-"first_fired": "2026-07-27",
-"last_avg_pct": 3.66,
 "ever_fired": true
 },
 "Insurance - Specialty": {
