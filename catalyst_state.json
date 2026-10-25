@@ -1,59 +1,101 @@
 {
-"_date": "2026-10-24",
+"_date": "2026-10-25",
 "_fired_names": [
-"Communication Equipment",
-"Diagnostics & Research",
-"Electronic Components",
-"Internet Retail",
+"Coking Coal",
+"Oil & Gas Drilling",
 "Oil & Gas E&P",
-"Semiconductor Equipment & Materials",
-"Software - Infrastructure",
-"Specialty Chemicals"
+"Oil & Gas Equipment & Services",
+"Oil & Gas Integrated",
+"Oil & Gas Midstream",
+"Staffing & Employment Services",
+"Thermal Coal"
 ],
-"Oil & Gas E&P": {
+"Oil & Gas Drilling": {
 "consecutive_days": 1,
+"first_fired": "2026-10-25",
+"last_avg_pct": 5.61,
+"ever_fired": true
+},
+"Staffing & Employment Services": {
+"consecutive_days": 1,
+"first_fired": "2026-10-25",
+"last_avg_pct": 4.56,
+"ever_fired": true
+},
+"Oil & Gas Equipment & Services": {
+"consecutive_days": 1,
+"first_fired": "2026-10-25",
+"last_avg_pct": 4.27,
+"ever_fired": true
+},
+"Oil & Gas E&P": {
+"consecutive_days": 2,
 "first_fired": "2026-10-24",
-"last_avg_pct": 3.15,
+"last_avg_pct": 3.5,
+"ever_fired": true
+},
+"Oil & Gas Integrated": {
+"consecutive_days": 1,
+"first_fired": "2026-10-25",
+"last_avg_pct": 2.85,
+"ever_fired": true
+},
+"Oil & Gas Midstream": {
+"consecutive_days": 1,
+"first_fired": "2026-10-25",
+"last_avg_pct": 2.62,
+"ever_fired": true
+},
+"Coking Coal": {
+"consecutive_days": 1,
+"first_fired": "2026-10-25",
+"last_avg_pct": 2.57,
+"ever_fired": true
+},
+"Thermal Coal": {
+"consecutive_days": 1,
+"first_fired": "2026-10-25",
+"last_avg_pct": 2.12,
 "ever_fired": true
 },
 "Software - Infrastructure": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-24",
 "last_avg_pct": 2.04,
 "ever_fired": true
 },
 "Semiconductor Equipment & Materials": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-24",
 "last_avg_pct": 2.01,
 "ever_fired": true
 },
 "Electronic Components": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-24",
 "last_avg_pct": 1.7,
 "ever_fired": true
 },
 "Diagnostics & Research": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-24",
 "last_avg_pct": 1.57,
 "ever_fired": true
 },
 "Communication Equipment": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-24",
 "last_avg_pct": 1.14,
 "ever_fired": true
 },
 "Specialty Chemicals": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-24",
 "last_avg_pct": 1.1,
 "ever_fired": true
 },
 "Internet Retail": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-10-24",
 "last_avg_pct": 1.05,
 "ever_fired": true
@@ -88,12 +130,6 @@
 "last_avg_pct": 1.05,
 "ever_fired": true
 },
-"Oil & Gas Integrated": {
-"consecutive_days": 0,
-"first_fired": "2026-10-18",
-"last_avg_pct": 2.7,
-"ever_fired": true
-},
 "Tobacco": {
 "consecutive_days": 0,
 "first_fired": "2026-10-18",
@@ -116,12 +152,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-10-18",
 "last_avg_pct": 1.92,
-"ever_fired": true
-},
-"Oil & Gas Drilling": {
-"consecutive_days": 0,
-"first_fired": "2026-10-18",
-"last_avg_pct": 1.82,
 "ever_fired": true
 },
 "Utilities - Regulated Gas": {
@@ -250,22 +280,10 @@
 "last_avg_pct": 1.52,
 "ever_fired": true
 },
-"Oil & Gas Midstream": {
-"consecutive_days": 0,
-"first_fired": "2026-10-13",
-"last_avg_pct": 1.37,
-"ever_fired": true
-},
 "Copper": {
 "consecutive_days": 0,
 "first_fired": "2026-10-10",
 "last_avg_pct": 4.76,
-"ever_fired": true
-},
-"Coking Coal": {
-"consecutive_days": 0,
-"first_fired": "2026-10-10",
-"last_avg_pct": 3.05,
 "ever_fired": true
 },
 "Steel": {
@@ -344,12 +362,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-10-08",
 "last_avg_pct": 1.86,
-"ever_fired": true
-},
-"Staffing & Employment Services": {
-"consecutive_days": 0,
-"first_fired": "2026-10-08",
-"last_avg_pct": 1.78,
 "ever_fired": true
 },
 "Drug Manufacturers - General": {
@@ -592,12 +604,6 @@
 "last_avg_pct": 3.87,
 "ever_fired": true
 },
-"Oil & Gas Equipment & Services": {
-"consecutive_days": 0,
-"first_fired": "2026-09-10",
-"last_avg_pct": 1.07,
-"ever_fired": true
-},
 "REIT - Residential": {
 "consecutive_days": 0,
 "first_fired": "2026-09-10",
@@ -626,12 +632,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-02",
 "last_avg_pct": 1.59,
-"ever_fired": true
-},
-"Thermal Coal": {
-"consecutive_days": 0,
-"first_fired": "2026-08-28",
-"last_avg_pct": 2.68,
 "ever_fired": true
 },
 "Utilities - Regulated Water": {

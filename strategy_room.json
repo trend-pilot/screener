@@ -1,10 +1,10 @@
 {
-  "data_date": "2026-10-24",
+  "data_date": "2026-10-25",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v2.4)",
-  "nav": 0.9821,
-  "ret_pct": -1.79,
-  "unreal_pct": -0.02,
+  "nav": 0.9777,
+  "ret_pct": -2.23,
+  "unreal_pct": -0.46,
   "cap": 12,
   "runner_cap": 5,
   "core_count": 1,
@@ -12,24 +12,74 @@
   "regime": "🟡 Uptrend Under Pressure",
   "signals": [
     {
-      "ticker": "APPN",
-      "industry": "Software - Infrastructure",
-      "pattern": "VCP",
-      "signal_close": 52.35,
-      "pivot": 54.12,
-      "dist": -3.3,
-      "rvol": 1.65,
-      "score": 94.68
+      "ticker": "RHI",
+      "industry": "Staffing & Employment Services",
+      "pattern": "RS Line 선행",
+      "signal_close": 45.87,
+      "pivot": 47.14,
+      "dist": -2.7,
+      "rvol": 3.62,
+      "score": 97.43
     },
     {
-      "ticker": "CART",
-      "industry": "Internet Retail",
+      "ticker": "KFRC",
+      "industry": "Staffing & Employment Services",
       "pattern": "RS Line 선행",
-      "signal_close": 56.44,
-      "pivot": 57.87,
-      "dist": -2.5,
-      "rvol": 4.35,
-      "score": 94.17
+      "signal_close": 58.5,
+      "pivot": 61.2,
+      "dist": -4.4,
+      "rvol": 1.56,
+      "score": 91.94
+    },
+    {
+      "ticker": "REPX",
+      "industry": "Oil & Gas E&P",
+      "pattern": "파워플레이",
+      "signal_close": 54.18,
+      "pivot": 54.57,
+      "dist": -0.7,
+      "rvol": 1.96,
+      "score": 85.17
+    },
+    {
+      "ticker": "PAA",
+      "industry": "Oil & Gas Midstream",
+      "pattern": "플랫베이스",
+      "signal_close": 26.63,
+      "pivot": 26.85,
+      "dist": -0.8,
+      "rvol": 1.52,
+      "score": 77.74
+    },
+    {
+      "ticker": "E",
+      "industry": "Oil & Gas Integrated",
+      "pattern": "VCP",
+      "signal_close": 62.08,
+      "pivot": 62.16,
+      "dist": -0.1,
+      "rvol": 1.86,
+      "score": 77.55
+    },
+    {
+      "ticker": "PAGP",
+      "industry": "Oil & Gas Midstream",
+      "pattern": "플랫베이스",
+      "signal_close": 28.61,
+      "pivot": 28.73,
+      "dist": -0.4,
+      "rvol": 1.63,
+      "score": 74.5
+    },
+    {
+      "ticker": "TALO",
+      "industry": "Oil & Gas E&P",
+      "pattern": "컵앤핸들",
+      "signal_close": 18.39,
+      "pivot": 18.73,
+      "dist": -1.8,
+      "rvol": 2.36,
+      "score": 72.74
     }
   ],
   "gates": [
@@ -40,23 +90,23 @@
     "G2 Pattern"
   ],
   "benchmarks": {
-    "strat": -1.79,
-    "spy": null,
-    "qqq": null,
-    "tqqq": null
+    "strat": -2.23,
+    "spy": 1.81,
+    "qqq": -0.54,
+    "tqqq": -6.94
   },
   "risk": {
-    "days": 92,
-    "ret": -1.79,
-    "sharpe": -0.38,
-    "sortino": -0.28,
-    "vol": 16.7,
-    "mdd": -8.4,
-    "ret_mdd": 0.21,
+    "days": 93,
+    "ret": -2.23,
+    "sharpe": -0.45,
+    "sortino": -0.33,
+    "vol": 16.6,
+    "mdd": -8.8,
+    "ret_mdd": 0.25,
     "day_hi": 3.9,
     "day_lo": -5.0,
-    "alpha_voo": null,
-    "alpha_qqq": null
+    "alpha_voo": -4.04,
+    "alpha_qqq": -1.69
   },
   "trades": {
     "n": 27,
@@ -529,16 +579,21 @@
       "date": "2026-10-24",
       "nav": 0.9821,
       "chg": -0.0
+    },
+    {
+      "date": "2026-10-25",
+      "nav": 0.9777,
+      "chg": -0.44
     }
   ],
   "holdings": [
     {
       "ticker": "KO",
       "entry": "2026-10-18",
-      "days": 4,
+      "days": 5,
       "cd": "",
       "entry_px": 93.9,
-      "cur": 93.9,
+      "cur": 92.71,
       "runner": false,
       "partial": null,
       "dte": null
@@ -951,8 +1006,8 @@
           "d": "2026-10-23",
           "day": 5,
           "chg": -0.29,
-          "vol": null,
-          "volc": -100.0,
+          "vol": 5062330000,
+          "volc": -15.2,
           "note": "하락일"
         }
       ],
@@ -1382,9 +1437,9 @@
     "stress": true,
     "l1_lo": 15,
     "l1_hi": 35,
-    "lead_n": 12,
-    "strong_sectors": 2,
-    "strong_ind": 5,
+    "lead_n": 51,
+    "strong_sectors": 4,
+    "strong_ind": 17,
     "note": "L1 15~35% (스트레스 −15 반영)"
   },
   "daily_history": [
@@ -3139,6 +3194,30 @@
         "7": 0,
         "0": 0
       }
+    },
+    {
+      "date": "2026-10-25",
+      "regime": "pressure",
+      "breadth": 56.9,
+      "wdd": 5.0,
+      "alloc_lo": 15,
+      "alloc_hi": 35,
+      "stress": true,
+      "lead_n": 51,
+      "strong_sectors": 4,
+      "t": 3327,
+      "ph": {
+        "4+": 74,
+        "4": 95,
+        "5+": 0,
+        "5": 147,
+        "3": 848,
+        "2": 607,
+        "1": 1157,
+        "6": 399,
+        "7": 0,
+        "0": 0
+      }
     }
   ],
   "market_sent": {
@@ -3754,15 +3833,21 @@
     },
     {
       "date": "2026-10-23",
-      "spy": null,
-      "qqq": null,
-      "tqqq": null
+      "spy": 1.0181,
+      "qqq": 0.9946,
+      "tqqq": 0.9306
     },
     {
       "date": "2026-10-24",
-      "spy": null,
-      "qqq": null,
-      "tqqq": null
+      "spy": 1.0181,
+      "qqq": 0.9946,
+      "tqqq": 0.9306
+    },
+    {
+      "date": "2026-10-25",
+      "spy": 1.0181,
+      "qqq": 0.9946,
+      "tqqq": 0.9306
     }
   ],
   "_holdings": [
@@ -3773,9 +3858,9 @@
       "avg_cost_px": 93.9,
       "shares": 0.0036594398417660657,
       "entry_value": 0.34379321184240447,
-      "cur": 93.9,
+      "cur": 92.71,
       "max_gain_pct": 0.0,
-      "days_in": 4,
+      "days_in": 5,
       "current_stop": 87.327,
       "runner": false,
       "oneill_8w_active": false,
@@ -3787,9 +3872,10 @@
         93.9,
         93.9,
         93.9,
-        93.9
+        93.9,
+        92.71
       ],
-      "px_hist_d": "2026-10-24",
+      "px_hist_d": "2026-10-25",
       "dte": null
     }
   ],
