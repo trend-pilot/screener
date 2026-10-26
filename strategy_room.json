@@ -1,13 +1,13 @@
 {
-  "data_date": "2026-10-25",
+  "data_date": "2026-10-26",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v2.4)",
-  "nav": 0.9777,
-  "ret_pct": -2.23,
-  "unreal_pct": -0.46,
+  "nav": 0.9774,
+  "ret_pct": -2.26,
+  "unreal_pct": -0.02,
   "cap": 12,
   "runner_cap": 5,
-  "core_count": 1,
+  "core_count": 2,
   "runner_count": 0,
   "regime": "🟡 Uptrend Under Pressure",
   "signals": [
@@ -22,36 +22,6 @@
       "score": 97.43
     },
     {
-      "ticker": "KFRC",
-      "industry": "Staffing & Employment Services",
-      "pattern": "RS Line 선행",
-      "signal_close": 58.5,
-      "pivot": 61.2,
-      "dist": -4.4,
-      "rvol": 1.56,
-      "score": 91.94
-    },
-    {
-      "ticker": "REPX",
-      "industry": "Oil & Gas E&P",
-      "pattern": "파워플레이",
-      "signal_close": 54.18,
-      "pivot": 54.57,
-      "dist": -0.7,
-      "rvol": 1.96,
-      "score": 85.17
-    },
-    {
-      "ticker": "PAA",
-      "industry": "Oil & Gas Midstream",
-      "pattern": "플랫베이스",
-      "signal_close": 26.63,
-      "pivot": 26.85,
-      "dist": -0.8,
-      "rvol": 1.52,
-      "score": 77.74
-    },
-    {
       "ticker": "E",
       "industry": "Oil & Gas Integrated",
       "pattern": "VCP",
@@ -60,26 +30,6 @@
       "dist": -0.1,
       "rvol": 1.86,
       "score": 77.55
-    },
-    {
-      "ticker": "PAGP",
-      "industry": "Oil & Gas Midstream",
-      "pattern": "플랫베이스",
-      "signal_close": 28.61,
-      "pivot": 28.73,
-      "dist": -0.4,
-      "rvol": 1.63,
-      "score": 74.5
-    },
-    {
-      "ticker": "TALO",
-      "industry": "Oil & Gas E&P",
-      "pattern": "컵앤핸들",
-      "signal_close": 18.39,
-      "pivot": 18.73,
-      "dist": -1.8,
-      "rvol": 2.36,
-      "score": 72.74
     }
   ],
   "gates": [
@@ -90,32 +40,32 @@
     "G2 Pattern"
   ],
   "benchmarks": {
-    "strat": -2.23,
+    "strat": -2.26,
     "spy": 1.81,
     "qqq": -0.54,
     "tqqq": -6.94
   },
   "risk": {
-    "days": 93,
-    "ret": -2.23,
-    "sharpe": -0.45,
-    "sortino": -0.33,
-    "vol": 16.6,
+    "days": 94,
+    "ret": -2.26,
+    "sharpe": -0.46,
+    "sortino": -0.34,
+    "vol": 16.5,
     "mdd": -8.8,
-    "ret_mdd": 0.25,
+    "ret_mdd": 0.26,
     "day_hi": 3.9,
     "day_lo": -5.0,
-    "alpha_voo": -4.04,
-    "alpha_qqq": -1.69
+    "alpha_voo": -4.07,
+    "alpha_qqq": -1.72
   },
   "trades": {
-    "n": 27,
-    "winrate": 29.6,
-    "payoff": 1.24,
+    "n": 28,
+    "winrate": 28.6,
+    "payoff": 1.29,
     "pf": 0.52,
     "avg_win": 11.2,
-    "avg_loss": -9.1,
-    "expectancy": -3.06,
+    "avg_loss": -8.7,
+    "expectancy": -3.0,
     "best": 34.3,
     "worst": -23.5
   },
@@ -584,16 +534,32 @@
       "date": "2026-10-25",
       "nav": 0.9777,
       "chg": -0.44
+    },
+    {
+      "date": "2026-10-26",
+      "nav": 0.9774,
+      "chg": -0.03
     }
   ],
   "holdings": [
     {
-      "ticker": "KO",
-      "entry": "2026-10-18",
-      "days": 5,
+      "ticker": "RHI",
+      "entry": "2026-10-26",
+      "days": 0,
       "cd": "",
-      "entry_px": 93.9,
-      "cur": 92.71,
+      "entry_px": 45.87,
+      "cur": 45.87,
+      "runner": false,
+      "partial": null,
+      "dte": null
+    },
+    {
+      "ticker": "E",
+      "entry": "2026-10-26",
+      "days": 0,
+      "cd": "",
+      "entry_px": 62.08,
+      "cur": 62.08,
       "runner": false,
       "partial": null,
       "dte": null
@@ -607,9 +573,9 @@
       "best": 34.3
     },
     "core_closed": {
-      "n": 26,
-      "avg": -4.5,
-      "winrate": 27,
+      "n": 27,
+      "avg": -4.4,
+      "winrate": 26,
       "best": 16.6
     },
     "reentry": {
@@ -623,9 +589,9 @@
     "runner_avg_giveback": 53.6
   },
   "closed_summary": {
-    "n": 27,
-    "winrate": 29.6,
-    "avg": -3.06,
+    "n": 28,
+    "winrate": 28.6,
+    "avg": -3.0,
     "best": 34.3,
     "worst": -23.5,
     "categories": [
@@ -670,10 +636,25 @@
         1,
         "#1a8a4a",
         "#E8F5E9"
+      ],
+      [
+        "실적전 정리",
+        1,
+        "#73726c",
+        "#f0efea"
       ]
     ]
   },
   "closed": [
+    {
+      "ticker": "KO",
+      "entry": "2026-10-18",
+      "exit": "2026-10-26",
+      "days": 5,
+      "entry_px": 93.9,
+      "exit_px": 92.71,
+      "cat": "실적전 정리"
+    },
     {
       "ticker": "FRO",
       "entry": "2026-10-13",
@@ -3218,6 +3199,30 @@
         "7": 0,
         "0": 0
       }
+    },
+    {
+      "date": "2026-10-26",
+      "regime": "pressure",
+      "breadth": 56.9,
+      "wdd": 5.0,
+      "alloc_lo": 15,
+      "alloc_hi": 35,
+      "stress": true,
+      "lead_n": 51,
+      "strong_sectors": 4,
+      "t": 3327,
+      "ph": {
+        "4+": 74,
+        "4": 96,
+        "5+": 0,
+        "5": 147,
+        "3": 847,
+        "2": 606,
+        "1": 1157,
+        "6": 400,
+        "7": 0,
+        "0": 0
+      }
     }
   ],
   "market_sent": {
@@ -3848,35 +3853,52 @@
       "spy": 1.0181,
       "qqq": 0.9946,
       "tqqq": 0.9306
+    },
+    {
+      "date": "2026-10-26",
+      "spy": 1.0181,
+      "qqq": 0.9946,
+      "tqqq": 0.9306
     }
   ],
   "_holdings": [
     {
-      "ticker": "KO",
-      "entry_date": "2026-10-18",
-      "entry_px": 93.9,
-      "avg_cost_px": 93.9,
-      "shares": 0.0036594398417660657,
-      "entry_value": 0.34379321184240447,
-      "cur": 92.71,
+      "ticker": "RHI",
+      "entry_date": "2026-10-26",
+      "entry_px": 45.87,
+      "avg_cost_px": 45.87,
+      "shares": 0.003727693050534427,
+      "entry_value": 0.17107477486812817,
+      "cur": 45.87,
       "max_gain_pct": 0.0,
-      "days_in": 5,
-      "current_stop": 87.327,
+      "days_in": 0,
+      "current_stop": 42.659099999999995,
       "runner": false,
       "oneill_8w_active": false,
       "reentry": false,
       "px_hist": [
-        93.9,
-        93.9,
-        93.9,
-        93.9,
-        93.9,
-        93.9,
-        93.9,
-        92.71
+        45.87
       ],
-      "px_hist_d": "2026-10-25",
-      "dte": null
+      "px_hist_d": "2026-10-26"
+    },
+    {
+      "ticker": "E",
+      "entry_date": "2026-10-26",
+      "entry_px": 62.08,
+      "avg_cost_px": 62.08,
+      "shares": 0.002754337632538888,
+      "entry_value": 0.17107477486812817,
+      "cur": 62.08,
+      "max_gain_pct": 0.0,
+      "days_in": 0,
+      "current_stop": 57.734399999999994,
+      "runner": false,
+      "oneill_8w_active": false,
+      "reentry": false,
+      "px_hist": [
+        62.08
+      ],
+      "px_hist_d": "2026-10-26"
     }
   ],
   "_closed": [
@@ -4366,9 +4388,27 @@
       "giveback_pct": 11.3,
       "exit_regime": "pressure",
       "mkt_driven": true
+    },
+    {
+      "ticker": "KO",
+      "entry": "2026-10-18",
+      "exit": "2026-10-26",
+      "days": 5,
+      "entry_px": 93.9,
+      "exit_px": 92.71,
+      "shares": 0.0036594398417660657,
+      "realized": -0.004696177446137595,
+      "cat": "실적전 정리",
+      "was_runner": false,
+      "runner_tier": null,
+      "max_gain_pct": 0.0,
+      "reentry": false,
+      "giveback_pct": 1.3,
+      "exit_regime": "pressure",
+      "mkt_driven": true
     }
   ],
-  "_cash": 0.6384731077073227,
+  "_cash": 0.6354205923673333,
   "_entries_recent": [
     "2026-08-04",
     "2026-08-04",
@@ -4396,6 +4436,8 @@
     "2026-10-04",
     "2026-10-11",
     "2026-10-13",
-    "2026-10-18"
+    "2026-10-18",
+    "2026-10-26",
+    "2026-10-26"
   ]
 }

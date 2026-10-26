@@ -1,5 +1,5 @@
 {
-"_date": "2026-10-25",
+"_date": "2026-10-26",
 "_fired_names": [
 "Coking Coal",
 "Oil & Gas Drilling",
@@ -11,49 +11,49 @@
 "Thermal Coal"
 ],
 "Oil & Gas Drilling": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-10-25",
 "last_avg_pct": 5.61,
 "ever_fired": true
 },
 "Staffing & Employment Services": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-10-25",
 "last_avg_pct": 4.56,
 "ever_fired": true
 },
 "Oil & Gas Equipment & Services": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-10-25",
 "last_avg_pct": 4.27,
 "ever_fired": true
 },
 "Oil & Gas E&P": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-10-24",
 "last_avg_pct": 3.5,
 "ever_fired": true
 },
 "Oil & Gas Integrated": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-10-25",
 "last_avg_pct": 2.85,
 "ever_fired": true
 },
 "Oil & Gas Midstream": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-10-25",
 "last_avg_pct": 2.62,
 "ever_fired": true
 },
 "Coking Coal": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-10-25",
 "last_avg_pct": 2.57,
 "ever_fired": true
 },
 "Thermal Coal": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-10-25",
 "last_avg_pct": 2.12,
 "ever_fired": true
