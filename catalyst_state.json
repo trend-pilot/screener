@@ -1,18 +1,67 @@
 {
-"_date": "2026-10-28",
+"_date": "2026-10-29",
 "_fired_names": [
-"Insurance - Life"
+"Biotechnology",
+"Diagnostics & Research",
+"Electrical Equipment & Parts",
+"Electronic Components",
+"Health Information Services",
+"Oil & Gas Drilling",
+"Restaurants",
+"Semiconductor Equipment & Materials"
 ],
-"Insurance - Life": {
+"Biotechnology": {
 "consecutive_days": 1,
-"first_fired": "2026-10-28",
-"last_avg_pct": 1.23,
+"first_fired": "2026-10-29",
+"last_avg_pct": 9.8,
+"ever_fired": true
+},
+"Electrical Equipment & Parts": {
+"consecutive_days": 1,
+"first_fired": "2026-10-29",
+"last_avg_pct": 5.67,
 "ever_fired": true
 },
 "Oil & Gas Drilling": {
+"consecutive_days": 1,
+"first_fired": "2026-10-29",
+"last_avg_pct": 5.11,
+"ever_fired": true
+},
+"Electronic Components": {
+"consecutive_days": 1,
+"first_fired": "2026-10-29",
+"last_avg_pct": 3.77,
+"ever_fired": true
+},
+"Restaurants": {
+"consecutive_days": 1,
+"first_fired": "2026-10-29",
+"last_avg_pct": 3.54,
+"ever_fired": true
+},
+"Diagnostics & Research": {
+"consecutive_days": 1,
+"first_fired": "2026-10-29",
+"last_avg_pct": 2.46,
+"ever_fired": true
+},
+"Health Information Services": {
+"consecutive_days": 1,
+"first_fired": "2026-10-29",
+"last_avg_pct": 2.42,
+"ever_fired": true
+},
+"Semiconductor Equipment & Materials": {
+"consecutive_days": 1,
+"first_fired": "2026-10-29",
+"last_avg_pct": 2.37,
+"ever_fired": true
+},
+"Insurance - Life": {
 "consecutive_days": 0,
-"first_fired": "2026-10-25",
-"last_avg_pct": 5.61,
+"first_fired": "2026-10-28",
+"last_avg_pct": 1.23,
 "ever_fired": true
 },
 "Staffing & Employment Services": {
@@ -61,24 +110,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-10-24",
 "last_avg_pct": 2.04,
-"ever_fired": true
-},
-"Semiconductor Equipment & Materials": {
-"consecutive_days": 0,
-"first_fired": "2026-10-24",
-"last_avg_pct": 2.01,
-"ever_fired": true
-},
-"Electronic Components": {
-"consecutive_days": 0,
-"first_fired": "2026-10-24",
-"last_avg_pct": 1.7,
-"ever_fired": true
-},
-"Diagnostics & Research": {
-"consecutive_days": 0,
-"first_fired": "2026-10-24",
-"last_avg_pct": 1.57,
 "ever_fired": true
 },
 "Communication Equipment": {
@@ -285,22 +316,10 @@
 "last_avg_pct": 2.57,
 "ever_fired": true
 },
-"Health Information Services": {
-"consecutive_days": 0,
-"first_fired": "2026-10-10",
-"last_avg_pct": 2.43,
-"ever_fired": true
-},
 "Silver": {
 "consecutive_days": 0,
 "first_fired": "2026-10-10",
 "last_avg_pct": 2.42,
-"ever_fired": true
-},
-"Biotechnology": {
-"consecutive_days": 0,
-"first_fired": "2026-10-11",
-"last_avg_pct": 2.4,
 "ever_fired": true
 },
 "Drug Manufacturers - Specialty & Generic": {
@@ -391,12 +410,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-10-07",
 "last_avg_pct": 3.36,
-"ever_fired": true
-},
-"Electrical Equipment & Parts": {
-"consecutive_days": 0,
-"first_fired": "2026-10-07",
-"last_avg_pct": 2.56,
 "ever_fired": true
 },
 "Real Estate - Development": {
@@ -565,12 +578,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-16",
 "last_avg_pct": 2.15,
-"ever_fired": true
-},
-"Restaurants": {
-"consecutive_days": 0,
-"first_fired": "2026-09-15",
-"last_avg_pct": 1.84,
 "ever_fired": true
 },
 "Entertainment": {
