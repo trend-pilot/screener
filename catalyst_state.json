@@ -1,6 +1,42 @@
 {
-"_date": "2026-11-04",
-"_fired_names": [],
+"_date": "2026-11-05",
+"_fired_names": [
+"Banks - Regional",
+"Insurance - Diversified",
+"Insurance - Life",
+"REIT - Mortgage",
+"Real Estate Services"
+],
+"Real Estate Services": {
+"consecutive_days": 1,
+"first_fired": "2026-11-05",
+"last_avg_pct": 2.95,
+"ever_fired": true
+},
+"Insurance - Diversified": {
+"consecutive_days": 1,
+"first_fired": "2026-11-05",
+"last_avg_pct": 2.35,
+"ever_fired": true
+},
+"Insurance - Life": {
+"consecutive_days": 1,
+"first_fired": "2026-11-05",
+"last_avg_pct": 2.23,
+"ever_fired": true
+},
+"Banks - Regional": {
+"consecutive_days": 1,
+"first_fired": "2026-11-05",
+"last_avg_pct": 1.59,
+"ever_fired": true
+},
+"REIT - Mortgage": {
+"consecutive_days": 1,
+"first_fired": "2026-11-05",
+"last_avg_pct": 1.2,
+"ever_fired": true
+},
 "Solar": {
 "consecutive_days": 0,
 "first_fired": "2026-11-03",
@@ -169,12 +205,6 @@
 "last_avg_pct": 2.37,
 "ever_fired": true
 },
-"Insurance - Life": {
-"consecutive_days": 0,
-"first_fired": "2026-10-28",
-"last_avg_pct": 1.23,
-"ever_fired": true
-},
 "Staffing & Employment Services": {
 "consecutive_days": 0,
 "first_fired": "2026-10-25",
@@ -253,12 +283,6 @@
 "last_avg_pct": 2.25,
 "ever_fired": true
 },
-"Banks - Regional": {
-"consecutive_days": 0,
-"first_fired": "2026-10-23",
-"last_avg_pct": 1.23,
-"ever_fired": true
-},
 "REIT - Retail": {
 "consecutive_days": 0,
 "first_fired": "2026-10-21",
@@ -329,12 +353,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-10-16",
 "last_avg_pct": 4.35,
-"ever_fired": true
-},
-"Real Estate Services": {
-"consecutive_days": 0,
-"first_fired": "2026-10-16",
-"last_avg_pct": 4.11,
 "ever_fired": true
 },
 "Food Distribution": {
@@ -557,12 +575,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-24",
 "last_avg_pct": 2.25,
-"ever_fired": true
-},
-"Insurance - Diversified": {
-"consecutive_days": 0,
-"first_fired": "2026-09-22",
-"last_avg_pct": 1.85,
 "ever_fired": true
 },
 "Capital Markets": {
