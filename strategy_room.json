@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-11-05",
+  "data_date": "2026-11-06",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v2.4)",
   "nav": 0.9489,
@@ -9,7 +9,7 @@
   "runner_cap": 5,
   "core_count": 3,
   "runner_count": 0,
-  "regime": "🟠 Rally Attempt",
+  "regime": "🔴 Market in Correction",
   "signals": [],
   "gates": [
     "G3 Trigger",
@@ -20,22 +20,22 @@
   ],
   "benchmarks": {
     "strat": -5.11,
-    "spy": null,
-    "qqq": null,
-    "tqqq": null
+    "spy": -1.8,
+    "qqq": -8.64,
+    "tqqq": -29.15
   },
   "risk": {
-    "days": 104,
+    "days": 105,
     "ret": -5.11,
-    "sharpe": -0.87,
+    "sharpe": -0.86,
     "sortino": -0.62,
-    "vol": 16.1,
+    "vol": 16.0,
     "mdd": -11.5,
     "ret_mdd": 0.45,
     "day_hi": 3.9,
     "day_lo": -5.0,
-    "alpha_voo": null,
-    "alpha_qqq": null
+    "alpha_voo": -3.31,
+    "alpha_qqq": 3.53
   },
   "trades": {
     "n": 29,
@@ -568,6 +568,11 @@
       "date": "2026-11-05",
       "nav": 0.9489,
       "chg": 0.0
+    },
+    {
+      "date": "2026-11-06",
+      "nav": 0.9489,
+      "chg": 0.0
     }
   ],
   "holdings": [
@@ -950,10 +955,10 @@
   ],
   "market_ftd": {
     "sp": {
-      "rally_low": 7527.56,
-      "rally_low_date": "2026-10-30",
-      "status": "rally",
-      "rally_day": 2,
+      "rally_low": 7350.35,
+      "rally_low_date": "2026-11-05",
+      "status": "none",
+      "rally_day": null,
       "ftd_date": null,
       "ftd_day": null,
       "ftd_gain_pct": null,
@@ -961,48 +966,14 @@
       "age_bd": null,
       "window": null,
       "late": false,
-      "rally_days": [
-        {
-          "d": "2026-10-30",
-          "day": 0,
-          "chg": -1.82,
-          "vol": 6149170000,
-          "volc": 5.5,
-          "note": "저점 (d0)"
-        },
-        {
-          "d": "2026-11-02",
-          "day": null,
-          "chg": -0.51,
-          "vol": 5712790000,
-          "volc": -7.1,
-          "note": ""
-        },
-        {
-          "d": "2026-11-03",
-          "day": 1,
-          "chg": 0.36,
-          "vol": 5481240000,
-          "volc": -4.1,
-          "note": "d4 전"
-        },
-        {
-          "d": "2026-11-04",
-          "day": 2,
-          "chg": 1.58,
-          "vol": 4562882000,
-          "volc": -16.8,
-          "note": "d4 전"
-        }
-      ],
       "name": "S&P 500",
       "threshold_pct": 1.25
     },
     "nasdaq": {
-      "rally_low": 25145.95,
-      "rally_low_date": "2026-11-02",
-      "status": "rally",
-      "rally_day": 2,
+      "rally_low": 24262.14,
+      "rally_low_date": "2026-11-05",
+      "status": "none",
+      "rally_day": null,
       "ftd_date": null,
       "ftd_day": null,
       "ftd_gain_pct": null,
@@ -1010,47 +981,21 @@
       "age_bd": null,
       "window": null,
       "late": false,
-      "rally_days": [
-        {
-          "d": "2026-11-02",
-          "day": 0,
-          "chg": -1.07,
-          "vol": 9146120000,
-          "volc": 0.9,
-          "note": "저점 (d0)"
-        },
-        {
-          "d": "2026-11-03",
-          "day": 1,
-          "chg": 0.83,
-          "vol": 8347090000,
-          "volc": -8.7,
-          "note": "d4 전"
-        },
-        {
-          "d": "2026-11-04",
-          "day": 2,
-          "chg": 1.44,
-          "vol": 8599012000,
-          "volc": 3.0,
-          "note": "d4 전"
-        }
-      ],
       "name": "NASDAQ",
       "threshold_pct": 1.5
     },
     "russell": {
       "rally_low": 2716.23,
       "rally_low_date": "2026-10-16",
-      "status": "rally",
-      "rally_day": 13,
-      "ftd_date": null,
-      "ftd_day": null,
-      "ftd_gain_pct": null,
-      "ftd_vol_chg_pct": null,
-      "age_bd": null,
-      "window": null,
-      "late": false,
+      "status": "ftd",
+      "rally_day": 14,
+      "ftd_date": "2026-11-04",
+      "ftd_day": 13,
+      "ftd_gain_pct": 1.58,
+      "ftd_vol_chg_pct": 34.8,
+      "age_bd": 1,
+      "window": "golden",
+      "late": true,
       "rally_days": [
         {
           "d": "2026-10-16",
@@ -1160,9 +1105,17 @@
           "d": "2026-11-04",
           "day": 13,
           "chg": 1.58,
+          "vol": 7390830000,
+          "volc": 34.8,
+          "note": "FTD 발생"
+        },
+        {
+          "d": "2026-11-05",
+          "day": 14,
+          "chg": -4.45,
           "vol": null,
           "volc": -100.0,
-          "note": "거래량 미충족"
+          "note": "하락일"
         }
       ],
       "name": "Russell 2000",
@@ -1171,19 +1124,18 @@
   },
   "market_idx": {
     "sp": {
-      "last": 7688.62,
-      "chg_pct": 1.58,
-      "w1": -0.71,
-      "m1": -1.67,
+      "last": 7353.73,
+      "chg_pct": -4.36,
+      "w1": -4.75,
+      "m1": -5.74,
       "gaps": {
-        "ma21": -0.21,
-        "ma50": -0.06,
-        "ma200": 5.03
+        "ma21": -4.29,
+        "ma50": -4.33,
+        "ma200": 0.42
       },
       "stage": 3,
       "stage_label": "고점권 조정",
       "spark": [
-        7748.5,
         7798.99,
         7785.76,
         7745.06,
@@ -1242,7 +1194,8 @@
         7580.07,
         7541.4,
         7568.92,
-        7688.62
+        7688.62,
+        7353.73
       ],
       "dd_count": 6,
       "dd_weighted": 6.0,
@@ -1294,7 +1247,6 @@
         null,
         null,
         null,
-        null,
         "regular",
         "regular",
         null,
@@ -1313,6 +1265,7 @@
         null,
         "regular",
         "regular",
+        null,
         null,
         null,
         null
@@ -1321,19 +1274,18 @@
       "ticker": "^GSPC"
     },
     "nasdaq": {
-      "last": 25736.51,
-      "chg_pct": 1.44,
-      "w1": -3.06,
-      "m1": -6.75,
+      "last": 24315.0,
+      "chg_pct": -5.52,
+      "w1": -7.14,
+      "m1": -11.71,
       "gaps": {
-        "ma21": -2.57,
-        "ma50": -3.0,
-        "ma200": 2.59
+        "ma21": -7.41,
+        "ma50": -8.24,
+        "ma200": -3.1
       },
-      "stage": 3,
-      "stage_label": "고점권 조정",
+      "stage": 4,
+      "stage_label": "하락 추세",
       "spark": [
-        26588.49,
         26803.03,
         26729.16,
         26644.91,
@@ -1392,10 +1344,11 @@
         25437.0,
         25164.31,
         25372.01,
-        25736.51
+        25736.51,
+        24315.0
       ],
-      "dd_count": 5,
-      "dd_weighted": 5.5,
+      "dd_count": 6,
+      "dd_weighted": 6.5,
       "dd_days": [
         {
           "d": "2026-10-08",
@@ -1431,10 +1384,16 @@
           "vol_chg_pct": 0.9,
           "kind": "regular",
           "w": 1.0
+        },
+        {
+          "d": "2026-11-05",
+          "drop_pct": -5.52,
+          "vol_chg_pct": 9.5,
+          "kind": "regular",
+          "w": 1.0
         }
       ],
       "dd_strip": [
-        null,
         null,
         null,
         null,
@@ -1458,25 +1417,25 @@
         "heavy",
         "regular",
         null,
-        null
+        null,
+        "regular"
       ],
       "name": "NASDAQ",
       "ticker": "^IXIC"
     },
     "russell": {
-      "last": 2856.95,
-      "chg_pct": 1.58,
-      "w1": 0.93,
-      "m1": 0.94,
+      "last": 2729.89,
+      "chg_pct": -4.45,
+      "w1": -4.52,
+      "m1": -2.27,
       "gaps": {
-        "ma21": 2.36,
-        "ma50": 0.29,
-        "ma200": 1.76
+        "ma21": -2.09,
+        "ma50": -3.98,
+        "ma200": -2.77
       },
-      "stage": 2,
-      "stage_label": "상승 추세",
+      "stage": 4,
+      "stage_label": "하락 추세",
       "spark": [
-        3045.48,
         3052.85,
         3068.42,
         3057.54,
@@ -1535,7 +1494,8 @@
         2811.84,
         2805.88,
         2812.45,
-        2856.95
+        2856.95,
+        2729.89
       ],
       "dd_count": 4,
       "dd_weighted": 4.0,
@@ -1573,7 +1533,6 @@
         null,
         null,
         null,
-        null,
         "regular",
         null,
         null,
@@ -1592,6 +1551,7 @@
         null,
         null,
         "regular",
+        null,
         null,
         null,
         null
@@ -1602,20 +1562,20 @@
   },
   "alloc3l": {
     "lo": 0,
-    "hi": 0,
-    "sub2": 15,
+    "hi": 10,
+    "sub2": 0,
     "sub3": 0,
-    "sub_total": 15,
-    "lv2": 1,
+    "sub_total": 0,
+    "lv2": 0,
     "lv3": 0,
-    "regime": "rally",
+    "regime": "correction",
     "stress": true,
-    "l1_lo": 5,
-    "l1_hi": 15,
-    "lead_n": 1,
-    "strong_sectors": 0,
-    "strong_ind": 1,
-    "note": "L1 5~15% −섹터15 (스트레스 −15 반영)"
+    "l1_lo": 0,
+    "l1_hi": 10,
+    "lead_n": 17,
+    "strong_sectors": 2,
+    "strong_ind": 6,
+    "note": "L1 0~10% (스트레스 −15 반영)"
   },
   "daily_history": [
     {
@@ -3657,15 +3617,38 @@
         "7": 0,
         "0": 0
       }
+    },
+    {
+      "date": "2026-11-06",
+      "regime": "correction",
+      "breadth": 0.0,
+      "wdd": 6.5,
+      "alloc_lo": 0,
+      "alloc_hi": 10,
+      "stress": true,
+      "lead_n": 17,
+      "strong_sectors": 2,
+      "t": 814,
+      "ph": {
+        "4+": 8,
+        "4": 18,
+        "5+": 0,
+        "5": 28,
+        "3": 197,
+        "2": 203,
+        "1": 263,
+        "6": 97,
+        "7": 0,
+        "0": 0
+      }
     }
   ],
   "market_sent": {
     "vix": {
-      "last": 16.61,
-      "chg_pct": -20.26,
-      "ma20": 17.65,
+      "last": 28.18,
+      "chg_pct": 69.66,
+      "ma20": 18.29,
       "spark": [
-        14.63,
         14.25,
         15.19,
         15.84,
@@ -3724,9 +3707,10 @@
         19.42,
         21.15,
         20.83,
-        16.61
+        16.61,
+        28.18
       ],
-      "level": "보통"
+      "level": "경계"
     }
   },
   "bench_history": [
@@ -4344,15 +4328,21 @@
     },
     {
       "date": "2026-11-04",
-      "spy": null,
-      "qqq": null,
-      "tqqq": null
+      "spy": 1.0273,
+      "qqq": 0.977,
+      "tqqq": 0.8738
     },
     {
       "date": "2026-11-05",
-      "spy": null,
-      "qqq": null,
-      "tqqq": null
+      "spy": 0.982,
+      "qqq": 0.9136,
+      "tqqq": 0.7085
+    },
+    {
+      "date": "2026-11-06",
+      "spy": 0.982,
+      "qqq": 0.9136,
+      "tqqq": 0.7085
     }
   ],
   "_holdings": [
@@ -4381,9 +4371,10 @@
         60.8,
         58.76,
         58.76,
+        58.76,
         58.76
       ],
-      "px_hist_d": "2026-11-05",
+      "px_hist_d": "2026-11-06",
       "dte": null
     },
     {
@@ -4404,9 +4395,10 @@
         5.5,
         5.46,
         5.46,
+        5.46,
         5.46
       ],
-      "px_hist_d": "2026-11-05",
+      "px_hist_d": "2026-11-06",
       "dte": null
     },
     {
@@ -4427,9 +4419,10 @@
         71.57,
         68.45,
         68.45,
+        68.45,
         68.45
       ],
-      "px_hist_d": "2026-11-05",
+      "px_hist_d": "2026-11-06",
       "dte": null
     }
   ],

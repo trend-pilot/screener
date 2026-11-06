@@ -1,38 +1,89 @@
 {
-"_date": "2026-11-05",
+"_date": "2026-11-06",
 "_fired_names": [
-"Banks - Regional",
-"Insurance - Diversified",
-"Insurance - Life",
-"REIT - Mortgage",
-"Real Estate Services"
+"Auto Manufacturers",
+"Luxury Goods",
+"Medical Care Facilities",
+"Medical Instruments & Supplies",
+"Mortgage Finance",
+"REIT - Specialty",
+"Real Estate - Development",
+"Staffing & Employment Services"
 ],
-"Real Estate Services": {
+"Staffing & Employment Services": {
 "consecutive_days": 1,
+"first_fired": "2026-11-06",
+"last_avg_pct": 5.5,
+"ever_fired": true
+},
+"Auto Manufacturers": {
+"consecutive_days": 1,
+"first_fired": "2026-11-06",
+"last_avg_pct": 3.45,
+"ever_fired": true
+},
+"Medical Instruments & Supplies": {
+"consecutive_days": 1,
+"first_fired": "2026-11-06",
+"last_avg_pct": 2.57,
+"ever_fired": true
+},
+"Mortgage Finance": {
+"consecutive_days": 1,
+"first_fired": "2026-11-06",
+"last_avg_pct": 2.27,
+"ever_fired": true
+},
+"REIT - Specialty": {
+"consecutive_days": 1,
+"first_fired": "2026-11-06",
+"last_avg_pct": 1.8,
+"ever_fired": true
+},
+"Real Estate - Development": {
+"consecutive_days": 1,
+"first_fired": "2026-11-06",
+"last_avg_pct": 1.8,
+"ever_fired": true
+},
+"Luxury Goods": {
+"consecutive_days": 1,
+"first_fired": "2026-11-06",
+"last_avg_pct": 1.05,
+"ever_fired": true
+},
+"Medical Care Facilities": {
+"consecutive_days": 1,
+"first_fired": "2026-11-06",
+"last_avg_pct": 0.02,
+"ever_fired": true
+},
+"Real Estate Services": {
+"consecutive_days": 0,
 "first_fired": "2026-11-05",
 "last_avg_pct": 2.95,
 "ever_fired": true
 },
 "Insurance - Diversified": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-05",
 "last_avg_pct": 2.35,
 "ever_fired": true
 },
 "Insurance - Life": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-05",
 "last_avg_pct": 2.23,
 "ever_fired": true
 },
 "Banks - Regional": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-05",
 "last_avg_pct": 1.59,
 "ever_fired": true
 },
 "REIT - Mortgage": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-05",
 "last_avg_pct": 1.2,
 "ever_fired": true
@@ -65,12 +116,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-11-01",
 "last_avg_pct": 4.55,
-"ever_fired": true
-},
-"Luxury Goods": {
-"consecutive_days": 0,
-"first_fired": "2026-10-30",
-"last_avg_pct": 4.52,
 "ever_fired": true
 },
 "Advertising Agencies": {
@@ -203,12 +248,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-10-29",
 "last_avg_pct": 2.37,
-"ever_fired": true
-},
-"Staffing & Employment Services": {
-"consecutive_days": 0,
-"first_fired": "2026-10-25",
-"last_avg_pct": 4.56,
 "ever_fired": true
 },
 "Oil & Gas Equipment & Services": {
@@ -367,12 +406,6 @@
 "last_avg_pct": 1.95,
 "ever_fired": true
 },
-"Medical Care Facilities": {
-"consecutive_days": 0,
-"first_fired": "2026-10-15",
-"last_avg_pct": 1.1,
-"ever_fired": true
-},
 "Household & Personal Products": {
 "consecutive_days": 0,
 "first_fired": "2026-10-15",
@@ -487,12 +520,6 @@
 "last_avg_pct": 3.36,
 "ever_fired": true
 },
-"Real Estate - Development": {
-"consecutive_days": 0,
-"first_fired": "2026-10-07",
-"last_avg_pct": 2.1,
-"ever_fired": true
-},
 "Utilities - Renewable": {
 "consecutive_days": 0,
 "first_fired": "2026-10-07",
@@ -569,12 +596,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-24",
 "last_avg_pct": 5.4,
-"ever_fired": true
-},
-"Medical Instruments & Supplies": {
-"consecutive_days": 0,
-"first_fired": "2026-09-24",
-"last_avg_pct": 2.25,
 "ever_fired": true
 },
 "Capital Markets": {
@@ -703,12 +724,6 @@
 "last_avg_pct": 4.33,
 "ever_fired": true
 },
-"Mortgage Finance": {
-"consecutive_days": 0,
-"first_fired": "2026-08-13",
-"last_avg_pct": 2.94,
-"ever_fired": true
-},
 "Security & Protection Services": {
 "consecutive_days": 0,
 "first_fired": "2026-08-11",
@@ -767,12 +782,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-16",
 "last_avg_pct": 3.2,
-"ever_fired": true
-},
-"Auto Manufacturers": {
-"consecutive_days": 0,
-"first_fired": "2026-07-06",
-"last_avg_pct": 2.9,
 "ever_fired": true
 },
 "Financial Conglomerates": {
