@@ -1,59 +1,89 @@
 {
-"_date": "2026-11-07",
+"_date": "2026-11-08",
 "_fired_names": [
-"Communication Equipment",
-"Electronic Components",
-"Engineering & Construction",
-"Other Precious Metals & Mining",
-"Scientific & Technical Instruments",
+"Aerospace & Defense",
+"Paper & Paper Products",
+"Pollution & Treatment Controls",
+"Semiconductor Equipment & Materials",
 "Semiconductors",
+"Solar",
 "Uranium",
 "Utilities - Independent Power Producers"
 ],
-"Communication Equipment": {
+"Paper & Paper Products": {
 "consecutive_days": 1,
+"first_fired": "2026-11-08",
+"last_avg_pct": 10.4,
+"ever_fired": true
+},
+"Semiconductor Equipment & Materials": {
+"consecutive_days": 1,
+"first_fired": "2026-11-08",
+"last_avg_pct": 7.95,
+"ever_fired": true
+},
+"Pollution & Treatment Controls": {
+"consecutive_days": 1,
+"first_fired": "2026-11-08",
+"last_avg_pct": 7.72,
+"ever_fired": true
+},
+"Utilities - Independent Power Producers": {
+"consecutive_days": 2,
+"first_fired": "2026-11-07",
+"last_avg_pct": 7.59,
+"ever_fired": true
+},
+"Semiconductors": {
+"consecutive_days": 2,
+"first_fired": "2026-11-07",
+"last_avg_pct": 7.13,
+"ever_fired": true
+},
+"Uranium": {
+"consecutive_days": 2,
+"first_fired": "2026-11-07",
+"last_avg_pct": 6.57,
+"ever_fired": true
+},
+"Aerospace & Defense": {
+"consecutive_days": 1,
+"first_fired": "2026-11-08",
+"last_avg_pct": 5.64,
+"ever_fired": true
+},
+"Solar": {
+"consecutive_days": 1,
+"first_fired": "2026-11-08",
+"last_avg_pct": 5.5,
+"ever_fired": true
+},
+"Communication Equipment": {
+"consecutive_days": 0,
 "first_fired": "2026-11-07",
 "last_avg_pct": 5.83,
 "ever_fired": true
 },
-"Semiconductors": {
-"consecutive_days": 1,
-"first_fired": "2026-11-07",
-"last_avg_pct": 4.97,
-"ever_fired": true
-},
 "Scientific & Technical Instruments": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-07",
 "last_avg_pct": 4.63,
 "ever_fired": true
 },
 "Engineering & Construction": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-07",
 "last_avg_pct": 4.59,
 "ever_fired": true
 },
-"Utilities - Independent Power Producers": {
-"consecutive_days": 1,
-"first_fired": "2026-11-07",
-"last_avg_pct": 4.4,
-"ever_fired": true
-},
 "Other Precious Metals & Mining": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-07",
 "last_avg_pct": 4.4,
-"ever_fired": true
-},
-"Uranium": {
-"consecutive_days": 1,
-"first_fired": "2026-11-07",
-"last_avg_pct": 3.95,
 "ever_fired": true
 },
 "Electronic Components": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-07",
 "last_avg_pct": 3.87,
 "ever_fired": true
@@ -136,12 +166,6 @@
 "last_avg_pct": 1.2,
 "ever_fired": true
 },
-"Solar": {
-"consecutive_days": 0,
-"first_fired": "2026-11-03",
-"last_avg_pct": 6.9,
-"ever_fired": true
-},
 "Residential Construction": {
 "consecutive_days": 0,
 "first_fired": "2026-11-03",
@@ -214,12 +238,6 @@
 "last_avg_pct": 1.81,
 "ever_fired": true
 },
-"Pollution & Treatment Controls": {
-"consecutive_days": 0,
-"first_fired": "2026-10-31",
-"last_avg_pct": 3.5,
-"ever_fired": true
-},
 "Consulting Services": {
 "consecutive_days": 0,
 "first_fired": "2026-10-30",
@@ -284,12 +302,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-10-29",
 "last_avg_pct": 2.46,
-"ever_fired": true
-},
-"Semiconductor Equipment & Materials": {
-"consecutive_days": 0,
-"first_fired": "2026-10-29",
-"last_avg_pct": 2.37,
 "ever_fired": true
 },
 "Oil & Gas Equipment & Services": {
@@ -652,12 +664,6 @@
 "last_avg_pct": -0.17,
 "ever_fired": true
 },
-"Aerospace & Defense": {
-"consecutive_days": 0,
-"first_fired": "2026-09-09",
-"last_avg_pct": 2.28,
-"ever_fired": true
-},
 "Information Technology Services": {
 "consecutive_days": 0,
 "first_fired": "2026-09-04",
@@ -698,12 +704,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-21",
 "last_avg_pct": 7.29,
-"ever_fired": true
-},
-"Paper & Paper Products": {
-"consecutive_days": 0,
-"first_fired": "2026-08-20",
-"last_avg_pct": 2.3,
 "ever_fired": true
 },
 "REIT - Hotel & Motel": {
