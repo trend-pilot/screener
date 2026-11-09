@@ -1,5 +1,5 @@
 {
-"_date": "2026-11-08",
+"_date": "2026-11-09",
 "_fired_names": [
 "Aerospace & Defense",
 "Paper & Paper Products",
@@ -11,49 +11,49 @@
 "Utilities - Independent Power Producers"
 ],
 "Paper & Paper Products": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-11-08",
 "last_avg_pct": 10.4,
 "ever_fired": true
 },
 "Semiconductor Equipment & Materials": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-11-08",
 "last_avg_pct": 7.95,
 "ever_fired": true
 },
 "Pollution & Treatment Controls": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-11-08",
 "last_avg_pct": 7.72,
 "ever_fired": true
 },
 "Utilities - Independent Power Producers": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-11-07",
 "last_avg_pct": 7.59,
 "ever_fired": true
 },
 "Semiconductors": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-11-07",
 "last_avg_pct": 7.13,
 "ever_fired": true
 },
 "Uranium": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-11-07",
 "last_avg_pct": 6.57,
 "ever_fired": true
 },
 "Aerospace & Defense": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-11-08",
 "last_avg_pct": 5.64,
 "ever_fired": true
 },
 "Solar": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-11-08",
 "last_avg_pct": 5.5,
 "ever_fired": true
