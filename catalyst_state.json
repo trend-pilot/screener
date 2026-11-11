@@ -1,59 +1,101 @@
 {
-"_date": "2026-11-10",
+"_date": "2026-11-11",
 "_fired_names": [
 "Broadcasting",
-"Communication Equipment",
-"Copper",
-"Electronic Components",
-"Semiconductor Equipment & Materials",
-"Semiconductors",
-"Uranium",
-"Utilities - Independent Power Producers"
+"Education & Training Services",
+"Electronic Gaming & Multimedia",
+"Healthcare Plans",
+"Insurance - Reinsurance",
+"REIT - Hotel & Motel",
+"Security & Protection Services",
+"Staffing & Employment Services"
 ],
+"Broadcasting": {
+"consecutive_days": 2,
+"first_fired": "2026-11-10",
+"last_avg_pct": 5.05,
+"ever_fired": true
+},
+"Electronic Gaming & Multimedia": {
+"consecutive_days": 1,
+"first_fired": "2026-11-11",
+"last_avg_pct": 2.85,
+"ever_fired": true
+},
+"Healthcare Plans": {
+"consecutive_days": 1,
+"first_fired": "2026-11-11",
+"last_avg_pct": 2.7,
+"ever_fired": true
+},
+"Security & Protection Services": {
+"consecutive_days": 1,
+"first_fired": "2026-11-11",
+"last_avg_pct": 2.68,
+"ever_fired": true
+},
+"Insurance - Reinsurance": {
+"consecutive_days": 1,
+"first_fired": "2026-11-11",
+"last_avg_pct": 2.37,
+"ever_fired": true
+},
+"REIT - Hotel & Motel": {
+"consecutive_days": 1,
+"first_fired": "2026-11-11",
+"last_avg_pct": 2.35,
+"ever_fired": true
+},
+"Staffing & Employment Services": {
+"consecutive_days": 1,
+"first_fired": "2026-11-11",
+"last_avg_pct": 2.31,
+"ever_fired": true
+},
+"Education & Training Services": {
+"consecutive_days": 1,
+"first_fired": "2026-11-11",
+"last_avg_pct": 2.26,
+"ever_fired": true
+},
 "Uranium": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-11-07",
 "last_avg_pct": 8.58,
 "ever_fired": true
 },
 "Semiconductor Equipment & Materials": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-11-08",
 "last_avg_pct": 8.5,
 "ever_fired": true
 },
 "Utilities - Independent Power Producers": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-11-07",
 "last_avg_pct": 8.12,
 "ever_fired": true
 },
 "Communication Equipment": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-10",
 "last_avg_pct": 8.09,
 "ever_fired": true
 },
 "Semiconductors": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-11-07",
 "last_avg_pct": 7.79,
 "ever_fired": true
 },
 "Electronic Components": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-10",
 "last_avg_pct": 7.49,
 "ever_fired": true
 },
-"Broadcasting": {
-"consecutive_days": 1,
-"first_fired": "2026-11-10",
-"last_avg_pct": 7.4,
-"ever_fired": true
-},
 "Copper": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-10",
 "last_avg_pct": 7.34,
 "ever_fired": true
@@ -98,12 +140,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-11-07",
 "last_avg_pct": 4.4,
-"ever_fired": true
-},
-"Staffing & Employment Services": {
-"consecutive_days": 0,
-"first_fired": "2026-11-06",
-"last_avg_pct": 5.5,
 "ever_fired": true
 },
 "Auto Manufacturers": {
@@ -472,22 +508,10 @@
 "last_avg_pct": 1.0,
 "ever_fired": true
 },
-"Healthcare Plans": {
-"consecutive_days": 0,
-"first_fired": "2026-10-13",
-"last_avg_pct": 2.04,
-"ever_fired": true
-},
 "Real Estate - Diversified": {
 "consecutive_days": 0,
 "first_fired": "2026-10-13",
 "last_avg_pct": 1.75,
-"ever_fired": true
-},
-"Insurance - Reinsurance": {
-"consecutive_days": 0,
-"first_fired": "2026-10-13",
-"last_avg_pct": 1.67,
 "ever_fired": true
 },
 "Medical Devices": {
@@ -584,12 +608,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-10-02",
 "last_avg_pct": 2.6,
-"ever_fired": true
-},
-"Education & Training Services": {
-"consecutive_days": 0,
-"first_fired": "2026-10-02",
-"last_avg_pct": 2.13,
 "ever_fired": true
 },
 "Trucking": {
@@ -706,12 +724,6 @@
 "last_avg_pct": 7.29,
 "ever_fired": true
 },
-"REIT - Hotel & Motel": {
-"consecutive_days": 0,
-"first_fired": "2026-08-18",
-"last_avg_pct": 1.14,
-"ever_fired": true
-},
 "Lodging": {
 "consecutive_days": 0,
 "first_fired": "2026-08-17",
@@ -722,12 +734,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-08-13",
 "last_avg_pct": 4.33,
-"ever_fired": true
-},
-"Security & Protection Services": {
-"consecutive_days": 0,
-"first_fired": "2026-08-11",
-"last_avg_pct": 2.87,
 "ever_fired": true
 },
 "Telecom Services": {
@@ -758,12 +764,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-23",
 "last_avg_pct": 2.77,
-"ever_fired": true
-},
-"Electronic Gaming & Multimedia": {
-"consecutive_days": 0,
-"first_fired": "2026-07-20",
-"last_avg_pct": 1.11,
 "ever_fired": true
 },
 "Industrial Distribution": {
