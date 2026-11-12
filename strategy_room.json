@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-11-11",
+  "data_date": "2026-11-12",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v2.4)",
   "nav": 0.931,
@@ -25,11 +25,11 @@
     "tqqq": null
   },
   "risk": {
-    "days": 110,
+    "days": 111,
     "ret": -6.9,
     "sharpe": -1.1,
     "sortino": -0.77,
-    "vol": 15.9,
+    "vol": 15.8,
     "mdd": -13.1,
     "ret_mdd": 0.53,
     "day_hi": 3.9,
@@ -598,6 +598,11 @@
       "date": "2026-11-11",
       "nav": 0.931,
       "chg": 0.0
+    },
+    {
+      "date": "2026-11-12",
+      "nav": 0.931,
+      "chg": 0.0
     }
   ],
   "holdings": [],
@@ -967,36 +972,12 @@
     "stress": true,
     "l1_lo": 0,
     "l1_hi": 10,
-    "lead_n": 45,
-    "strong_sectors": 5,
-    "strong_ind": 20,
+    "lead_n": 50,
+    "strong_sectors": 3,
+    "strong_ind": 14,
     "note": "L1 0~10% (스트레스 −15 반영)"
   },
   "daily_history": [
-    {
-      "date": "2026-08-11",
-      "regime": "resumed",
-      "breadth": 61.4,
-      "wdd": 5.0,
-      "alloc_lo": 45,
-      "alloc_hi": 65,
-      "stress": true,
-      "lead_n": 26,
-      "strong_sectors": 0,
-      "t": 3440,
-      "ph": {
-        "4+": 52,
-        "4": 103,
-        "5+": 0,
-        "5": 187,
-        "3": 1024,
-        "2": 723,
-        "1": 1240,
-        "6": 111,
-        "7": 0,
-        "0": 0
-      }
-    },
     {
       "date": "2026-08-12",
       "regime": "resumed",
@@ -3129,6 +3110,30 @@
         "2": 374,
         "1": 575,
         "6": 109,
+        "7": 0,
+        "0": 0
+      }
+    },
+    {
+      "date": "2026-11-12",
+      "regime": "correction",
+      "breadth": 0.0,
+      "wdd": null,
+      "alloc_lo": 0,
+      "alloc_hi": 10,
+      "stress": true,
+      "lead_n": 50,
+      "strong_sectors": 3,
+      "t": 2383,
+      "ph": {
+        "4+": 23,
+        "4": 32,
+        "5+": 0,
+        "5": 137,
+        "3": 663,
+        "2": 526,
+        "1": 824,
+        "6": 178,
         "7": 0,
         "0": 0
       }

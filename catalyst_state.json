@@ -1,59 +1,107 @@
 {
-"_date": "2026-11-11",
+"_date": "2026-11-12",
 "_fired_names": [
-"Broadcasting",
-"Education & Training Services",
-"Electronic Gaming & Multimedia",
-"Healthcare Plans",
-"Insurance - Reinsurance",
-"REIT - Hotel & Motel",
-"Security & Protection Services",
-"Staffing & Employment Services"
+"Computer Hardware",
+"Consumer Electronics",
+"Electronic Components",
+"Gambling",
+"Oil & Gas Refining & Marketing",
+"Semiconductor Equipment & Materials",
+"Semiconductors",
+"Solar"
 ],
+"Consumer Electronics": {
+"consecutive_days": 1,
+"first_fired": "2026-11-12",
+"last_avg_pct": 6.0,
+"ever_fired": true
+},
+"Semiconductors": {
+"consecutive_days": 1,
+"first_fired": "2026-11-12",
+"last_avg_pct": 5.68,
+"ever_fired": true
+},
+"Semiconductor Equipment & Materials": {
+"consecutive_days": 1,
+"first_fired": "2026-11-12",
+"last_avg_pct": 4.88,
+"ever_fired": true
+},
+"Computer Hardware": {
+"consecutive_days": 1,
+"first_fired": "2026-11-12",
+"last_avg_pct": 4.05,
+"ever_fired": true
+},
+"Solar": {
+"consecutive_days": 1,
+"first_fired": "2026-11-12",
+"last_avg_pct": 4.02,
+"ever_fired": true
+},
+"Electronic Components": {
+"consecutive_days": 1,
+"first_fired": "2026-11-12",
+"last_avg_pct": 3.91,
+"ever_fired": true
+},
+"Gambling": {
+"consecutive_days": 1,
+"first_fired": "2026-11-12",
+"last_avg_pct": 3.32,
+"ever_fired": true
+},
+"Oil & Gas Refining & Marketing": {
+"consecutive_days": 1,
+"first_fired": "2026-11-12",
+"last_avg_pct": 3.1,
+"ever_fired": true
+},
 "Broadcasting": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-11-10",
 "last_avg_pct": 5.05,
 "ever_fired": true
 },
 "Electronic Gaming & Multimedia": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-11",
 "last_avg_pct": 2.85,
 "ever_fired": true
 },
 "Healthcare Plans": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-11",
 "last_avg_pct": 2.7,
 "ever_fired": true
 },
 "Security & Protection Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-11",
 "last_avg_pct": 2.68,
 "ever_fired": true
 },
 "Insurance - Reinsurance": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-11",
 "last_avg_pct": 2.37,
 "ever_fired": true
 },
 "REIT - Hotel & Motel": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-11",
 "last_avg_pct": 2.35,
 "ever_fired": true
 },
 "Staffing & Employment Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-11",
 "last_avg_pct": 2.31,
 "ever_fired": true
 },
 "Education & Training Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-11",
 "last_avg_pct": 2.26,
 "ever_fired": true
@@ -62,12 +110,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-11-07",
 "last_avg_pct": 8.58,
-"ever_fired": true
-},
-"Semiconductor Equipment & Materials": {
-"consecutive_days": 0,
-"first_fired": "2026-11-08",
-"last_avg_pct": 8.5,
 "ever_fired": true
 },
 "Utilities - Independent Power Producers": {
@@ -80,18 +122,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-11-10",
 "last_avg_pct": 8.09,
-"ever_fired": true
-},
-"Semiconductors": {
-"consecutive_days": 0,
-"first_fired": "2026-11-07",
-"last_avg_pct": 7.79,
-"ever_fired": true
-},
-"Electronic Components": {
-"consecutive_days": 0,
-"first_fired": "2026-11-10",
-"last_avg_pct": 7.49,
 "ever_fired": true
 },
 "Copper": {
@@ -116,12 +146,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-11-08",
 "last_avg_pct": 5.64,
-"ever_fired": true
-},
-"Solar": {
-"consecutive_days": 0,
-"first_fired": "2026-11-08",
-"last_avg_pct": 5.5,
 "ever_fired": true
 },
 "Scientific & Technical Instruments": {
@@ -472,12 +496,6 @@
 "last_avg_pct": 5.1,
 "ever_fired": true
 },
-"Computer Hardware": {
-"consecutive_days": 0,
-"first_fired": "2026-10-16",
-"last_avg_pct": 4.84,
-"ever_fired": true
-},
 "Specialty Retail": {
 "consecutive_days": 0,
 "first_fired": "2026-10-16",
@@ -550,18 +568,6 @@
 "last_avg_pct": 2.75,
 "ever_fired": true
 },
-"Oil & Gas Refining & Marketing": {
-"consecutive_days": 0,
-"first_fired": "2026-10-09",
-"last_avg_pct": 2.46,
-"ever_fired": true
-},
-"Gambling": {
-"consecutive_days": 0,
-"first_fired": "2026-10-09",
-"last_avg_pct": 2.46,
-"ever_fired": true
-},
 "Internet Content & Information": {
 "consecutive_days": 0,
 "first_fired": "2026-10-08",
@@ -626,12 +632,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-09-27",
 "last_avg_pct": 2.05,
-"ever_fired": true
-},
-"Consumer Electronics": {
-"consecutive_days": 0,
-"first_fired": "2026-09-27",
-"last_avg_pct": 1.93,
 "ever_fired": true
 },
 "Credit Services": {
