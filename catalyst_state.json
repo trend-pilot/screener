@@ -1,61 +1,75 @@
 {
-"_date": "2026-11-12",
+"_date": "2026-11-13",
 "_fired_names": [
-"Computer Hardware",
-"Consumer Electronics",
-"Electronic Components",
-"Gambling",
-"Oil & Gas Refining & Marketing",
-"Semiconductor Equipment & Materials",
-"Semiconductors",
-"Solar"
+"Marine Shipping",
+"Oil & Gas Drilling",
+"Oil & Gas E&P",
+"Oil & Gas Refining & Marketing"
 ],
-"Consumer Electronics": {
+"Marine Shipping": {
 "consecutive_days": 1,
+"first_fired": "2026-11-13",
+"last_avg_pct": 1.77,
+"ever_fired": true
+},
+"Oil & Gas Refining & Marketing": {
+"consecutive_days": 2,
+"first_fired": "2026-11-12",
+"last_avg_pct": 1.72,
+"ever_fired": true
+},
+"Oil & Gas E&P": {
+"consecutive_days": 1,
+"first_fired": "2026-11-13",
+"last_avg_pct": 1.4,
+"ever_fired": true
+},
+"Oil & Gas Drilling": {
+"consecutive_days": 1,
+"first_fired": "2026-11-13",
+"last_avg_pct": 1.05,
+"ever_fired": true
+},
+"Consumer Electronics": {
+"consecutive_days": 0,
 "first_fired": "2026-11-12",
 "last_avg_pct": 6.0,
 "ever_fired": true
 },
 "Semiconductors": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-12",
 "last_avg_pct": 5.68,
 "ever_fired": true
 },
 "Semiconductor Equipment & Materials": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-12",
 "last_avg_pct": 4.88,
 "ever_fired": true
 },
 "Computer Hardware": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-12",
 "last_avg_pct": 4.05,
 "ever_fired": true
 },
 "Solar": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-12",
 "last_avg_pct": 4.02,
 "ever_fired": true
 },
 "Electronic Components": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-12",
 "last_avg_pct": 3.91,
 "ever_fired": true
 },
 "Gambling": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-12",
 "last_avg_pct": 3.32,
-"ever_fired": true
-},
-"Oil & Gas Refining & Marketing": {
-"consecutive_days": 1,
-"first_fired": "2026-11-12",
-"last_avg_pct": 3.1,
 "ever_fired": true
 },
 "Broadcasting": {
@@ -298,12 +312,6 @@
 "last_avg_pct": 2.67,
 "ever_fired": true
 },
-"Oil & Gas Drilling": {
-"consecutive_days": 0,
-"first_fired": "2026-10-31",
-"last_avg_pct": 2.65,
-"ever_fired": true
-},
 "Beverages - Non-Alcoholic": {
 "consecutive_days": 0,
 "first_fired": "2026-11-01",
@@ -380,12 +388,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-10-25",
 "last_avg_pct": 4.27,
-"ever_fired": true
-},
-"Oil & Gas E&P": {
-"consecutive_days": 0,
-"first_fired": "2026-10-24",
-"last_avg_pct": 3.5,
 "ever_fired": true
 },
 "Oil & Gas Integrated": {
@@ -560,12 +562,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-10-10",
 "last_avg_pct": 2.18,
-"ever_fired": true
-},
-"Marine Shipping": {
-"consecutive_days": 0,
-"first_fired": "2026-10-09",
-"last_avg_pct": 2.75,
 "ever_fired": true
 },
 "Internet Content & Information": {
