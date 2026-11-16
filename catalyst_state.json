@@ -1,5 +1,5 @@
 {
-"_date": "2026-11-15",
+"_date": "2026-11-16",
 "_fired_names": [
 "Beverages - Non-Alcoholic",
 "Broadcasting",
@@ -11,49 +11,49 @@
 "Restaurants"
 ],
 "Broadcasting": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-11-14",
 "last_avg_pct": 10.05,
 "ever_fired": true
 },
 "Consulting Services": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-11-15",
 "last_avg_pct": 4.35,
 "ever_fired": true
 },
 "Oil & Gas Drilling": {
-"consecutive_days": 3,
+"consecutive_days": 4,
 "first_fired": "2026-11-13",
 "last_avg_pct": 2.47,
 "ever_fired": true
 },
 "Credit Services": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-11-15",
 "last_avg_pct": 1.91,
 "ever_fired": true
 },
 "Medical Distribution": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-11-14",
 "last_avg_pct": 1.65,
 "ever_fired": true
 },
 "Beverages - Non-Alcoholic": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-11-14",
 "last_avg_pct": 1.62,
 "ever_fired": true
 },
 "Restaurants": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-11-14",
 "last_avg_pct": 1.56,
 "ever_fired": true
 },
 "Farm Products": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-11-14",
 "last_avg_pct": 1.56,
 "ever_fired": true
