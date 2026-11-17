@@ -1,59 +1,107 @@
 {
-"_date": "2026-11-16",
+"_date": "2026-11-17",
 "_fired_names": [
-"Beverages - Non-Alcoholic",
-"Broadcasting",
-"Consulting Services",
-"Credit Services",
-"Farm Products",
-"Medical Distribution",
-"Oil & Gas Drilling",
-"Restaurants"
+"Advertising Agencies",
+"Healthcare Plans",
+"Insurance - Specialty",
+"Integrated Freight & Logistics",
+"Lodging",
+"REIT - Hotel & Motel",
+"Telecom Services",
+"Waste Management"
 ],
+"Healthcare Plans": {
+"consecutive_days": 1,
+"first_fired": "2026-11-17",
+"last_avg_pct": 2.9,
+"ever_fired": true
+},
+"Lodging": {
+"consecutive_days": 1,
+"first_fired": "2026-11-17",
+"last_avg_pct": 1.94,
+"ever_fired": true
+},
+"Integrated Freight & Logistics": {
+"consecutive_days": 1,
+"first_fired": "2026-11-17",
+"last_avg_pct": 1.18,
+"ever_fired": true
+},
+"REIT - Hotel & Motel": {
+"consecutive_days": 1,
+"first_fired": "2026-11-17",
+"last_avg_pct": 1.11,
+"ever_fired": true
+},
+"Insurance - Specialty": {
+"consecutive_days": 1,
+"first_fired": "2026-11-17",
+"last_avg_pct": 1.11,
+"ever_fired": true
+},
+"Waste Management": {
+"consecutive_days": 1,
+"first_fired": "2026-11-17",
+"last_avg_pct": 1.0,
+"ever_fired": true
+},
+"Telecom Services": {
+"consecutive_days": 1,
+"first_fired": "2026-11-17",
+"last_avg_pct": 0.02,
+"ever_fired": true
+},
+"Advertising Agencies": {
+"consecutive_days": 1,
+"first_fired": "2026-11-17",
+"last_avg_pct": -0.44,
+"ever_fired": true
+},
 "Broadcasting": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-11-14",
 "last_avg_pct": 10.05,
 "ever_fired": true
 },
 "Consulting Services": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-11-15",
 "last_avg_pct": 4.35,
 "ever_fired": true
 },
 "Oil & Gas Drilling": {
-"consecutive_days": 4,
+"consecutive_days": 0,
 "first_fired": "2026-11-13",
 "last_avg_pct": 2.47,
 "ever_fired": true
 },
 "Credit Services": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-11-15",
 "last_avg_pct": 1.91,
 "ever_fired": true
 },
 "Medical Distribution": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-11-14",
 "last_avg_pct": 1.65,
 "ever_fired": true
 },
 "Beverages - Non-Alcoholic": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-11-14",
 "last_avg_pct": 1.62,
 "ever_fired": true
 },
 "Restaurants": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-11-14",
 "last_avg_pct": 1.56,
 "ever_fired": true
 },
 "Farm Products": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-11-14",
 "last_avg_pct": 1.56,
 "ever_fired": true
@@ -136,12 +184,6 @@
 "last_avg_pct": 2.85,
 "ever_fired": true
 },
-"Healthcare Plans": {
-"consecutive_days": 0,
-"first_fired": "2026-11-11",
-"last_avg_pct": 2.7,
-"ever_fired": true
-},
 "Security & Protection Services": {
 "consecutive_days": 0,
 "first_fired": "2026-11-11",
@@ -152,12 +194,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-11-11",
 "last_avg_pct": 2.37,
-"ever_fired": true
-},
-"REIT - Hotel & Motel": {
-"consecutive_days": 0,
-"first_fired": "2026-11-11",
-"last_avg_pct": 2.35,
 "ever_fired": true
 },
 "Staffing & Employment Services": {
@@ -326,12 +362,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-11-01",
 "last_avg_pct": 4.55,
-"ever_fired": true
-},
-"Advertising Agencies": {
-"consecutive_days": 0,
-"first_fired": "2026-11-03",
-"last_avg_pct": 3.72,
 "ever_fired": true
 },
 "Home Improvement Retail": {
@@ -544,12 +574,6 @@
 "last_avg_pct": 3.3,
 "ever_fired": true
 },
-"Waste Management": {
-"consecutive_days": 0,
-"first_fired": "2026-10-15",
-"last_avg_pct": 1.95,
-"ever_fired": true
-},
 "Household & Personal Products": {
 "consecutive_days": 0,
 "first_fired": "2026-10-15",
@@ -742,34 +766,16 @@
 "last_avg_pct": 7.29,
 "ever_fired": true
 },
-"Lodging": {
-"consecutive_days": 0,
-"first_fired": "2026-08-17",
-"last_avg_pct": 1.72,
-"ever_fired": true
-},
 "Insurance Brokers": {
 "consecutive_days": 0,
 "first_fired": "2026-08-13",
 "last_avg_pct": 4.33,
 "ever_fired": true
 },
-"Telecom Services": {
-"consecutive_days": 0,
-"first_fired": "2026-08-07",
-"last_avg_pct": 2.05,
-"ever_fired": true
-},
 "Lumber & Wood Production": {
 "consecutive_days": 0,
 "first_fired": "2026-08-03",
 "last_avg_pct": 4.82,
-"ever_fired": true
-},
-"Insurance - Specialty": {
-"consecutive_days": 0,
-"first_fired": "2026-07-24",
-"last_avg_pct": 2.69,
 "ever_fired": true
 },
 "Railroads": {
@@ -782,12 +788,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-16",
 "last_avg_pct": 4.92,
-"ever_fired": true
-},
-"Integrated Freight & Logistics": {
-"consecutive_days": 0,
-"first_fired": "2026-07-16",
-"last_avg_pct": 4.77,
 "ever_fired": true
 },
 "Specialty Business Services": {
