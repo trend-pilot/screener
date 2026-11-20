@@ -1,59 +1,65 @@
 {
-"_date": "2026-11-19",
+"_date": "2026-11-20",
 "_fired_names": [
-"Apparel Manufacturing",
-"Apparel Retail",
-"Business Equipment & Supplies",
-"Department Stores",
-"Footwear & Accessories",
-"Furnishings, Fixtures & Appliances",
-"Leisure",
-"Software - Infrastructure"
+"Biotechnology",
+"Telecom Services"
 ],
-"Department Stores": {
+"Biotechnology": {
 "consecutive_days": 1,
+"first_fired": "2026-11-20",
+"last_avg_pct": -1.22,
+"ever_fired": true
+},
+"Telecom Services": {
+"consecutive_days": 1,
+"first_fired": "2026-11-20",
+"last_avg_pct": -1.49,
+"ever_fired": true
+},
+"Department Stores": {
+"consecutive_days": 0,
 "first_fired": "2026-11-19",
 "last_avg_pct": 9.1,
 "ever_fired": true
 },
 "Apparel Retail": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-19",
 "last_avg_pct": 4.45,
 "ever_fired": true
 },
 "Business Equipment & Supplies": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-19",
 "last_avg_pct": 3.65,
 "ever_fired": true
 },
 "Furnishings, Fixtures & Appliances": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-19",
 "last_avg_pct": 3.49,
 "ever_fired": true
 },
 "Footwear & Accessories": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-19",
 "last_avg_pct": 3.4,
 "ever_fired": true
 },
 "Apparel Manufacturing": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-19",
 "last_avg_pct": 3.18,
 "ever_fired": true
 },
 "Leisure": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-19",
 "last_avg_pct": 3.01,
 "ever_fired": true
 },
 "Software - Infrastructure": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-19",
 "last_avg_pct": 2.72,
 "ever_fired": true
@@ -80,12 +86,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-11-18",
 "last_avg_pct": -0.66,
-"ever_fired": true
-},
-"Biotechnology": {
-"consecutive_days": 0,
-"first_fired": "2026-11-18",
-"last_avg_pct": -0.76,
 "ever_fired": true
 },
 "Oil & Gas E&P": {
@@ -140,12 +140,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-11-17",
 "last_avg_pct": 1.0,
-"ever_fired": true
-},
-"Telecom Services": {
-"consecutive_days": 0,
-"first_fired": "2026-11-17",
-"last_avg_pct": 0.02,
 "ever_fired": true
 },
 "Advertising Agencies": {
