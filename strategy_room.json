@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-11-20",
+  "data_date": "2026-11-21",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v2.4)",
   "nav": 0.8118,
@@ -20,22 +20,22 @@
   ],
   "benchmarks": {
     "strat": -18.82,
-    "spy": -4.09,
-    "qqq": -8.92,
-    "tqqq": -31.2
+    "spy": -7.59,
+    "qqq": -14.09,
+    "tqqq": -42.16
   },
   "risk": {
-    "days": 119,
+    "days": 120,
     "ret": -18.82,
-    "sharpe": -1.81,
-    "sortino": -1.07,
-    "vol": 24.0,
+    "sharpe": -1.8,
+    "sortino": -1.06,
+    "vol": 23.9,
     "mdd": -24.2,
     "ret_mdd": 0.78,
     "day_hi": 3.9,
     "day_lo": -12.8,
-    "alpha_voo": -14.73,
-    "alpha_qqq": -9.9
+    "alpha_voo": -11.23,
+    "alpha_qqq": -4.73
   },
   "trades": {
     "n": 33,
@@ -643,6 +643,11 @@
       "date": "2026-11-20",
       "nav": 0.8118,
       "chg": 0.01
+    },
+    {
+      "date": "2026-11-21",
+      "nav": 0.8118,
+      "chg": 0.01
     }
   ],
   "holdings": [],
@@ -1000,8 +1005,8 @@
   ],
   "market_ftd": {
     "sp": {
-      "rally_low": 7173.63,
-      "rally_low_date": "2026-11-19",
+      "rally_low": 6882.66,
+      "rally_low_date": "2026-11-20",
       "status": "none",
       "rally_day": null,
       "ftd_date": null,
@@ -1015,8 +1020,8 @@
       "threshold_pct": 1.25
     },
     "nasdaq": {
-      "rally_low": 23870.7,
-      "rally_low_date": "2026-11-19",
+      "rally_low": 22513.01,
+      "rally_low_date": "2026-11-20",
       "status": "none",
       "rally_day": null,
       "ftd_date": null,
@@ -1030,8 +1035,8 @@
       "threshold_pct": 1.5
     },
     "russell": {
-      "rally_low": 2653.92,
-      "rally_low_date": "2026-11-19",
+      "rally_low": 2577.09,
+      "rally_low_date": "2026-11-20",
       "status": "none",
       "rally_day": null,
       "ftd_date": null,
@@ -1047,19 +1052,18 @@
   },
   "market_idx": {
     "sp": {
-      "last": 7175.83,
-      "chg_pct": -2.02,
-      "w1": -5.49,
-      "m1": -7.49,
+      "last": 6910.39,
+      "chg_pct": -3.7,
+      "w1": -8.61,
+      "m1": -9.83,
       "gaps": {
-        "ma21": -4.84,
-        "ma50": -6.08,
-        "ma200": -2.34
+        "ma21": -7.92,
+        "ma50": -9.37,
+        "ma200": -5.96
       },
       "stage": 4,
       "stage_label": "하락 추세",
       "spark": [
-        7730.99,
         7711.76,
         7686.14,
         7631.47,
@@ -1118,10 +1122,11 @@
         7416.59,
         7340.53,
         7323.63,
-        7175.83
+        7175.83,
+        6910.39
       ],
-      "dd_count": 8,
-      "dd_weighted": 8.0,
+      "dd_count": 9,
+      "dd_weighted": 9.0,
       "dd_days": [
         {
           "d": "2026-10-22",
@@ -1178,13 +1183,19 @@
           "vol_chg_pct": 4.3,
           "kind": "regular",
           "w": 1.0
+        },
+        {
+          "d": "2026-11-19",
+          "drop_pct": -2.02,
+          "vol_chg_pct": 5.7,
+          "kind": "regular",
+          "w": 1.0
         }
       ],
       "dd_strip": [
         null,
         null,
         null,
-        null,
         "regular",
         null,
         null,
@@ -1202,6 +1213,7 @@
         null,
         "regular",
         null,
+        "regular",
         "regular",
         "regular",
         "regular",
@@ -1211,19 +1223,18 @@
       "ticker": "^GSPC"
     },
     "nasdaq": {
-      "last": 23879.2,
-      "chg_pct": -2.25,
-      "w1": -5.86,
-      "m1": -10.57,
+      "last": 22617.73,
+      "chg_pct": -5.28,
+      "w1": -10.02,
+      "m1": -13.04,
       "gaps": {
-        "ma21": -5.63,
-        "ma50": -8.82,
-        "ma200": -5.08
+        "ma21": -10.04,
+        "ma50": -13.39,
+        "ma200": -10.1
       },
       "stage": 4,
       "stage_label": "하락 추세",
       "spark": [
-        26541.35,
         26402.42,
         26370.89,
         26099.77,
@@ -1282,10 +1293,11 @@
         24509.76,
         24328.38,
         24429.88,
-        23879.2
+        23879.2,
+        22617.73
       ],
-      "dd_count": 7,
-      "dd_weighted": 8.5,
+      "dd_count": 8,
+      "dd_weighted": 10.0,
       "dd_days": [
         {
           "d": "2026-10-22",
@@ -1332,13 +1344,19 @@
         {
           "d": "2026-11-19",
           "drop_pct": -2.25,
-          "vol_chg_pct": 0.9,
+          "vol_chg_pct": 27.8,
+          "kind": "heavy",
+          "w": 1.5
+        },
+        {
+          "d": "2026-11-20",
+          "drop_pct": -5.28,
+          "vol_chg_pct": 0.4,
           "kind": "regular",
           "w": 1.0
         }
       ],
       "dd_strip": [
-        null,
         null,
         null,
         null,
@@ -1362,25 +1380,25 @@
         "regular",
         "regular",
         null,
+        "heavy",
         "regular"
       ],
       "name": "NASDAQ",
       "ticker": "^IXIC"
     },
     "russell": {
-      "last": 2655.11,
-      "chg_pct": -2.18,
-      "w1": -5.14,
-      "m1": -4.53,
+      "last": 2581.79,
+      "chg_pct": -2.76,
+      "w1": -7.48,
+      "m1": -7.26,
       "gaps": {
-        "ma21": -4.75,
-        "ma50": -5.37,
-        "ma200": -5.62
+        "ma21": -7.06,
+        "ma50": -7.77,
+        "ma200": -8.23
       },
       "stage": 4,
       "stage_label": "하락 추세",
       "spark": [
-        3014.34,
         2972.37,
         2956.45,
         2920.13,
@@ -1439,10 +1457,11 @@
         2742.94,
         2701.87,
         2714.31,
-        2655.11
+        2655.11,
+        2581.79
       ],
-      "dd_count": 5,
-      "dd_weighted": 5.0,
+      "dd_count": 6,
+      "dd_weighted": 6.0,
       "dd_days": [
         {
           "d": "2026-10-30",
@@ -1478,6 +1497,13 @@
           "vol_chg_pct": 0.2,
           "kind": "regular",
           "w": 1.0
+        },
+        {
+          "d": "2026-11-19",
+          "drop_pct": -2.18,
+          "vol_chg_pct": 5.7,
+          "kind": "regular",
+          "w": 1.0
         }
       ],
       "dd_strip": [
@@ -1490,7 +1516,6 @@
         null,
         null,
         null,
-        null,
         "regular",
         null,
         null,
@@ -1505,6 +1530,7 @@
         "regular",
         "regular",
         null,
+        "regular",
         null
       ],
       "name": "Russell 2000",
@@ -1523,36 +1549,12 @@
     "stress": true,
     "l1_lo": 0,
     "l1_hi": 10,
-    "lead_n": 44,
+    "lead_n": 48,
     "strong_sectors": 3,
-    "strong_ind": 9,
+    "strong_ind": 12,
     "note": "L1 0~10% (스트레스 −15 반영)"
   },
   "daily_history": [
-    {
-      "date": "2026-08-20",
-      "regime": "resumed",
-      "breadth": 61.1,
-      "wdd": null,
-      "alloc_lo": 75,
-      "alloc_hi": 95,
-      "stress": false,
-      "lead_n": 46,
-      "strong_sectors": 3,
-      "t": 3426,
-      "ph": {
-        "4+": 22,
-        "4": 66,
-        "5+": 0,
-        "5": 236,
-        "3": 1019,
-        "2": 674,
-        "1": 1227,
-        "6": 182,
-        "7": 0,
-        "0": 0
-      }
-    },
     {
       "date": "2026-08-21",
       "regime": "resumed",
@@ -3688,13 +3690,37 @@
         "7": 0,
         "0": 0
       }
+    },
+    {
+      "date": "2026-11-21",
+      "regime": "correction",
+      "breadth": 33.5,
+      "wdd": 10.0,
+      "alloc_lo": 0,
+      "alloc_hi": 10,
+      "stress": true,
+      "lead_n": 48,
+      "strong_sectors": 3,
+      "t": 3224,
+      "ph": {
+        "4+": 7,
+        "4": 11,
+        "5+": 0,
+        "5": 217,
+        "3": 755,
+        "2": 621,
+        "1": 1117,
+        "6": 496,
+        "7": 0,
+        "0": 0
+      }
     }
   ],
   "market_sent": {
     "vix": {
-      "last": 28.44,
-      "chg_pct": 15.8,
-      "ma20": 20.88,
+      "last": 35.89,
+      "chg_pct": 26.2,
+      "ma20": 21.7,
       "spark": [
         14.43,
         14.92,
@@ -3702,7 +3728,6 @@
         15.2,
         14.32,
         14.53,
-        15.3,
         15.72,
         16.46,
         17.84,
@@ -3755,9 +3780,10 @@
         22.91,
         25.46,
         24.56,
-        28.44
+        28.44,
+        35.89
       ],
-      "level": "경계"
+      "level": "공황"
     }
   },
   "bench_history": [
@@ -4471,9 +4497,15 @@
     },
     {
       "date": "2026-11-20",
-      "spy": 0.9591,
-      "qqq": 0.9108,
-      "tqqq": 0.688
+      "spy": 0.9241,
+      "qqq": 0.8591,
+      "tqqq": 0.5784
+    },
+    {
+      "date": "2026-11-21",
+      "spy": 0.9241,
+      "qqq": 0.8591,
+      "tqqq": 0.5784
     }
   ],
   "_holdings": [],

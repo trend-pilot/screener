@@ -1,17 +1,50 @@
 {
-"_date": "2026-11-20",
+"_date": "2026-11-21",
 "_fired_names": [
-"Biotechnology",
-"Telecom Services"
+"Apparel Retail",
+"Insurance - Property & Casualty",
+"Marine Shipping",
+"Medical Care Facilities",
+"Specialty Business Services"
 ],
-"Biotechnology": {
+"Medical Care Facilities": {
 "consecutive_days": 1,
+"first_fired": "2026-11-21",
+"last_avg_pct": 1.1,
+"ever_fired": true
+},
+"Insurance - Property & Casualty": {
+"consecutive_days": 1,
+"first_fired": "2026-11-21",
+"last_avg_pct": 0.1,
+"ever_fired": true
+},
+"Apparel Retail": {
+"consecutive_days": 1,
+"first_fired": "2026-11-21",
+"last_avg_pct": -0.52,
+"ever_fired": true
+},
+"Marine Shipping": {
+"consecutive_days": 1,
+"first_fired": "2026-11-21",
+"last_avg_pct": -1.2,
+"ever_fired": true
+},
+"Specialty Business Services": {
+"consecutive_days": 1,
+"first_fired": "2026-11-21",
+"last_avg_pct": -1.69,
+"ever_fired": true
+},
+"Biotechnology": {
+"consecutive_days": 0,
 "first_fired": "2026-11-20",
 "last_avg_pct": -1.22,
 "ever_fired": true
 },
 "Telecom Services": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-20",
 "last_avg_pct": -1.49,
 "ever_fired": true
@@ -20,12 +53,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-11-19",
 "last_avg_pct": 9.1,
-"ever_fired": true
-},
-"Apparel Retail": {
-"consecutive_days": 0,
-"first_fired": "2026-11-19",
-"last_avg_pct": 4.45,
 "ever_fired": true
 },
 "Business Equipment & Supplies": {
@@ -202,12 +229,6 @@
 "last_avg_pct": 1.85,
 "ever_fired": true
 },
-"Marine Shipping": {
-"consecutive_days": 0,
-"first_fired": "2026-11-13",
-"last_avg_pct": 1.77,
-"ever_fired": true
-},
 "Oil & Gas Refining & Marketing": {
 "consecutive_days": 0,
 "first_fired": "2026-11-12",
@@ -368,12 +389,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-11-06",
 "last_avg_pct": 1.8,
-"ever_fired": true
-},
-"Medical Care Facilities": {
-"consecutive_days": 0,
-"first_fired": "2026-11-06",
-"last_avg_pct": 0.02,
 "ever_fired": true
 },
 "Real Estate Services": {
@@ -560,12 +575,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-10-17",
 "last_avg_pct": 2.02,
-"ever_fired": true
-},
-"Insurance - Property & Casualty": {
-"consecutive_days": 0,
-"first_fired": "2026-10-17",
-"last_avg_pct": 1.68,
 "ever_fired": true
 },
 "Tools & Accessories": {
@@ -788,12 +797,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-07-16",
 "last_avg_pct": 4.92,
-"ever_fired": true
-},
-"Specialty Business Services": {
-"consecutive_days": 0,
-"first_fired": "2026-07-16",
-"last_avg_pct": 3.2,
 "ever_fired": true
 },
 "Financial Conglomerates": {
