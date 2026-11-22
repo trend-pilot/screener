@@ -1,5 +1,5 @@
 {
-  "data_date": "2026-11-21",
+  "data_date": "2026-11-22",
   "track": "g3+g0+g1+g2",
   "logic_version": "v6.15(v2.4)",
   "nav": 0.8118,
@@ -25,11 +25,11 @@
     "tqqq": -42.16
   },
   "risk": {
-    "days": 120,
+    "days": 121,
     "ret": -18.82,
     "sharpe": -1.8,
-    "sortino": -1.06,
-    "vol": 23.9,
+    "sortino": -1.05,
+    "vol": 23.8,
     "mdd": -24.2,
     "ret_mdd": 0.78,
     "day_hi": 3.9,
@@ -648,6 +648,11 @@
       "date": "2026-11-21",
       "nav": 0.8118,
       "chg": 0.01
+    },
+    {
+      "date": "2026-11-22",
+      "nav": 0.8118,
+      "chg": 0.01
     }
   ],
   "holdings": [],
@@ -1125,8 +1130,8 @@
         7175.83,
         6910.39
       ],
-      "dd_count": 9,
-      "dd_weighted": 9.0,
+      "dd_count": 10,
+      "dd_weighted": 10.0,
       "dd_days": [
         {
           "d": "2026-10-22",
@@ -1190,6 +1195,13 @@
           "vol_chg_pct": 5.7,
           "kind": "regular",
           "w": 1.0
+        },
+        {
+          "d": "2026-11-20",
+          "drop_pct": -3.7,
+          "vol_chg_pct": 17.3,
+          "kind": "regular",
+          "w": 1.0
         }
       ],
       "dd_strip": [
@@ -1217,7 +1229,7 @@
         "regular",
         "regular",
         "regular",
-        null
+        "regular"
       ],
       "name": "S&P 500",
       "ticker": "^GSPC"
@@ -1351,7 +1363,7 @@
         {
           "d": "2026-11-20",
           "drop_pct": -5.28,
-          "vol_chg_pct": 0.4,
+          "vol_chg_pct": 18.1,
           "kind": "regular",
           "w": 1.0
         }
@@ -1460,8 +1472,8 @@
         2655.11,
         2581.79
       ],
-      "dd_count": 6,
-      "dd_weighted": 6.0,
+      "dd_count": 7,
+      "dd_weighted": 7.0,
       "dd_days": [
         {
           "d": "2026-10-30",
@@ -1504,6 +1516,13 @@
           "vol_chg_pct": 5.7,
           "kind": "regular",
           "w": 1.0
+        },
+        {
+          "d": "2026-11-20",
+          "drop_pct": -2.76,
+          "vol_chg_pct": 17.3,
+          "kind": "regular",
+          "w": 1.0
         }
       ],
       "dd_strip": [
@@ -1531,7 +1550,7 @@
         "regular",
         null,
         "regular",
-        null
+        "regular"
       ],
       "name": "Russell 2000",
       "ticker": "^RUT"
@@ -1555,30 +1574,6 @@
     "note": "L1 0~10% (스트레스 −15 반영)"
   },
   "daily_history": [
-    {
-      "date": "2026-08-21",
-      "regime": "resumed",
-      "breadth": 61.8,
-      "wdd": 5.0,
-      "alloc_lo": 60,
-      "alloc_hi": 80,
-      "stress": true,
-      "lead_n": 50,
-      "strong_sectors": 3,
-      "t": 3445,
-      "ph": {
-        "4+": 35,
-        "4": 65,
-        "5+": 0,
-        "5": 224,
-        "3": 1050,
-        "2": 677,
-        "1": 1244,
-        "6": 150,
-        "7": 0,
-        "0": 0
-      }
-    },
     {
       "date": "2026-08-22",
       "regime": "resumed",
@@ -3714,6 +3709,30 @@
         "7": 0,
         "0": 0
       }
+    },
+    {
+      "date": "2026-11-22",
+      "regime": "correction",
+      "breadth": 33.5,
+      "wdd": 10.0,
+      "alloc_lo": 0,
+      "alloc_hi": 10,
+      "stress": true,
+      "lead_n": 48,
+      "strong_sectors": 3,
+      "t": 3225,
+      "ph": {
+        "4+": 7,
+        "4": 12,
+        "5+": 0,
+        "5": 216,
+        "3": 754,
+        "2": 624,
+        "1": 1117,
+        "6": 495,
+        "7": 0,
+        "0": 0
+      }
     }
   ],
   "market_sent": {
@@ -3722,12 +3741,12 @@
       "chg_pct": 26.2,
       "ma20": 21.7,
       "spark": [
-        14.43,
         14.92,
         16.34,
         15.2,
         14.32,
         14.53,
+        15.3,
         15.72,
         16.46,
         17.84,
@@ -4503,6 +4522,12 @@
     },
     {
       "date": "2026-11-21",
+      "spy": 0.9241,
+      "qqq": 0.8591,
+      "tqqq": 0.5784
+    },
+    {
+      "date": "2026-11-22",
       "spy": 0.9241,
       "qqq": 0.8591,
       "tqqq": 0.5784
