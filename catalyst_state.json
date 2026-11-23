@@ -1,5 +1,5 @@
 {
-"_date": "2026-11-22",
+"_date": "2026-11-23",
 "_fired_names": [
 "Apparel Retail",
 "Insurance - Property & Casualty",
@@ -8,31 +8,31 @@
 "Specialty Business Services"
 ],
 "Medical Care Facilities": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-11-21",
 "last_avg_pct": 1.1,
 "ever_fired": true
 },
 "Insurance - Property & Casualty": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-11-21",
 "last_avg_pct": 0.1,
 "ever_fired": true
 },
 "Apparel Retail": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-11-21",
 "last_avg_pct": -0.52,
 "ever_fired": true
 },
 "Marine Shipping": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-11-21",
 "last_avg_pct": -1.2,
 "ever_fired": true
 },
 "Specialty Business Services": {
-"consecutive_days": 2,
+"consecutive_days": 3,
 "first_fired": "2026-11-21",
 "last_avg_pct": -1.69,
 "ever_fired": true
