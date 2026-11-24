@@ -1,38 +1,89 @@
 {
-"_date": "2026-11-23",
+"_date": "2026-11-24",
 "_fired_names": [
-"Apparel Retail",
-"Insurance - Property & Casualty",
-"Marine Shipping",
-"Medical Care Facilities",
-"Specialty Business Services"
+"Aluminum",
+"Communication Equipment",
+"Computer Hardware",
+"Electrical Equipment & Parts",
+"Electronic Components",
+"Other Industrial Metals & Mining",
+"Semiconductor Equipment & Materials",
+"Semiconductors"
 ],
+"Semiconductors": {
+"consecutive_days": 1,
+"first_fired": "2026-11-24",
+"last_avg_pct": 13.98,
+"ever_fired": true
+},
+"Semiconductor Equipment & Materials": {
+"consecutive_days": 1,
+"first_fired": "2026-11-24",
+"last_avg_pct": 12.63,
+"ever_fired": true
+},
+"Computer Hardware": {
+"consecutive_days": 1,
+"first_fired": "2026-11-24",
+"last_avg_pct": 10.25,
+"ever_fired": true
+},
+"Electronic Components": {
+"consecutive_days": 1,
+"first_fired": "2026-11-24",
+"last_avg_pct": 9.47,
+"ever_fired": true
+},
+"Communication Equipment": {
+"consecutive_days": 1,
+"first_fired": "2026-11-24",
+"last_avg_pct": 9.27,
+"ever_fired": true
+},
+"Electrical Equipment & Parts": {
+"consecutive_days": 1,
+"first_fired": "2026-11-24",
+"last_avg_pct": 8.76,
+"ever_fired": true
+},
+"Other Industrial Metals & Mining": {
+"consecutive_days": 1,
+"first_fired": "2026-11-24",
+"last_avg_pct": 8.03,
+"ever_fired": true
+},
+"Aluminum": {
+"consecutive_days": 1,
+"first_fired": "2026-11-24",
+"last_avg_pct": 7.93,
+"ever_fired": true
+},
 "Medical Care Facilities": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-11-21",
 "last_avg_pct": 1.1,
 "ever_fired": true
 },
 "Insurance - Property & Casualty": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-11-21",
 "last_avg_pct": 0.1,
 "ever_fired": true
 },
 "Apparel Retail": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-11-21",
 "last_avg_pct": -0.52,
 "ever_fired": true
 },
 "Marine Shipping": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-11-21",
 "last_avg_pct": -1.2,
 "ever_fired": true
 },
 "Specialty Business Services": {
-"consecutive_days": 3,
+"consecutive_days": 0,
 "first_fired": "2026-11-21",
 "last_avg_pct": -1.69,
 "ever_fired": true
@@ -101,18 +152,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-11-18",
 "last_avg_pct": -0.11,
-"ever_fired": true
-},
-"Electrical Equipment & Parts": {
-"consecutive_days": 0,
-"first_fired": "2026-11-18",
-"last_avg_pct": -0.54,
-"ever_fired": true
-},
-"Other Industrial Metals & Mining": {
-"consecutive_days": 0,
-"first_fired": "2026-11-18",
-"last_avg_pct": -0.66,
 "ever_fired": true
 },
 "Oil & Gas E&P": {
@@ -241,34 +280,10 @@
 "last_avg_pct": 6.0,
 "ever_fired": true
 },
-"Semiconductors": {
-"consecutive_days": 0,
-"first_fired": "2026-11-12",
-"last_avg_pct": 5.68,
-"ever_fired": true
-},
-"Semiconductor Equipment & Materials": {
-"consecutive_days": 0,
-"first_fired": "2026-11-12",
-"last_avg_pct": 4.88,
-"ever_fired": true
-},
-"Computer Hardware": {
-"consecutive_days": 0,
-"first_fired": "2026-11-12",
-"last_avg_pct": 4.05,
-"ever_fired": true
-},
 "Solar": {
 "consecutive_days": 0,
 "first_fired": "2026-11-12",
 "last_avg_pct": 4.02,
-"ever_fired": true
-},
-"Electronic Components": {
-"consecutive_days": 0,
-"first_fired": "2026-11-12",
-"last_avg_pct": 3.91,
 "ever_fired": true
 },
 "Gambling": {
@@ -317,12 +332,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-11-07",
 "last_avg_pct": 8.12,
-"ever_fired": true
-},
-"Communication Equipment": {
-"consecutive_days": 0,
-"first_fired": "2026-11-10",
-"last_avg_pct": 8.09,
 "ever_fired": true
 },
 "Copper": {
@@ -647,12 +656,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-10-07",
 "last_avg_pct": 2.02,
-"ever_fired": true
-},
-"Aluminum": {
-"consecutive_days": 0,
-"first_fired": "2026-10-06",
-"last_avg_pct": 3.38,
 "ever_fired": true
 },
 "Farm & Heavy Construction Machinery": {
