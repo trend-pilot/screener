@@ -1,59 +1,107 @@
 {
-"_date": "2026-11-25",
+"_date": "2026-11-26",
 "_fired_names": [
-"Apparel Retail",
-"Biotechnology",
-"Department Stores",
-"Discount Stores",
-"Drug Manufacturers - General",
-"Medical Distribution",
-"Medical Instruments & Supplies",
-"Residential Construction"
+"Coking Coal",
+"Gambling",
+"Gold",
+"Mortgage Finance",
+"Oil & Gas Drilling",
+"Other Precious Metals & Mining",
+"Silver",
+"Solar"
 ],
-"Department Stores": {
+"Solar": {
 "consecutive_days": 1,
+"first_fired": "2026-11-26",
+"last_avg_pct": 5.54,
+"ever_fired": true
+},
+"Silver": {
+"consecutive_days": 1,
+"first_fired": "2026-11-26",
+"last_avg_pct": 4.73,
+"ever_fired": true
+},
+"Mortgage Finance": {
+"consecutive_days": 1,
+"first_fired": "2026-11-26",
+"last_avg_pct": 4.5,
+"ever_fired": true
+},
+"Other Precious Metals & Mining": {
+"consecutive_days": 1,
+"first_fired": "2026-11-26",
+"last_avg_pct": 3.76,
+"ever_fired": true
+},
+"Gold": {
+"consecutive_days": 1,
+"first_fired": "2026-11-26",
+"last_avg_pct": 3.48,
+"ever_fired": true
+},
+"Coking Coal": {
+"consecutive_days": 1,
+"first_fired": "2026-11-26",
+"last_avg_pct": 3.4,
+"ever_fired": true
+},
+"Gambling": {
+"consecutive_days": 1,
+"first_fired": "2026-11-26",
+"last_avg_pct": 3.18,
+"ever_fired": true
+},
+"Oil & Gas Drilling": {
+"consecutive_days": 1,
+"first_fired": "2026-11-26",
+"last_avg_pct": 3.0,
+"ever_fired": true
+},
+"Department Stores": {
+"consecutive_days": 0,
 "first_fired": "2026-11-25",
 "last_avg_pct": 7.33,
 "ever_fired": true
 },
 "Biotechnology": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-25",
 "last_avg_pct": 6.72,
 "ever_fired": true
 },
 "Drug Manufacturers - General": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-25",
 "last_avg_pct": 3.69,
 "ever_fired": true
 },
 "Discount Stores": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-25",
 "last_avg_pct": 3.43,
 "ever_fired": true
 },
 "Residential Construction": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-25",
 "last_avg_pct": 3.07,
 "ever_fired": true
 },
 "Apparel Retail": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-25",
 "last_avg_pct": 2.97,
 "ever_fired": true
 },
 "Medical Distribution": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-25",
 "last_avg_pct": 2.92,
 "ever_fired": true
 },
 "Medical Instruments & Supplies": {
-"consecutive_days": 1,
+"consecutive_days": 0,
 "first_fired": "2026-11-25",
 "last_avg_pct": 2.89,
 "ever_fired": true
@@ -256,12 +304,6 @@
 "last_avg_pct": 4.35,
 "ever_fired": true
 },
-"Oil & Gas Drilling": {
-"consecutive_days": 0,
-"first_fired": "2026-11-13",
-"last_avg_pct": 2.47,
-"ever_fired": true
-},
 "Credit Services": {
 "consecutive_days": 0,
 "first_fired": "2026-11-15",
@@ -302,18 +344,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-11-12",
 "last_avg_pct": 6.0,
-"ever_fired": true
-},
-"Solar": {
-"consecutive_days": 0,
-"first_fired": "2026-11-12",
-"last_avg_pct": 4.02,
-"ever_fired": true
-},
-"Gambling": {
-"consecutive_days": 0,
-"first_fired": "2026-11-12",
-"last_avg_pct": 3.32,
 "ever_fired": true
 },
 "Electronic Gaming & Multimedia": {
@@ -388,22 +418,10 @@
 "last_avg_pct": 4.63,
 "ever_fired": true
 },
-"Other Precious Metals & Mining": {
-"consecutive_days": 0,
-"first_fired": "2026-11-07",
-"last_avg_pct": 4.4,
-"ever_fired": true
-},
 "Auto Manufacturers": {
 "consecutive_days": 0,
 "first_fired": "2026-11-06",
 "last_avg_pct": 3.45,
-"ever_fired": true
-},
-"Mortgage Finance": {
-"consecutive_days": 0,
-"first_fired": "2026-11-06",
-"last_avg_pct": 2.27,
 "ever_fired": true
 },
 "REIT - Specialty": {
@@ -526,12 +544,6 @@
 "last_avg_pct": 2.62,
 "ever_fired": true
 },
-"Coking Coal": {
-"consecutive_days": 0,
-"first_fired": "2026-10-25",
-"last_avg_pct": 2.57,
-"ever_fired": true
-},
 "Thermal Coal": {
 "consecutive_days": 0,
 "first_fired": "2026-10-25",
@@ -598,12 +610,6 @@
 "last_avg_pct": 1.1,
 "ever_fired": true
 },
-"Gold": {
-"consecutive_days": 0,
-"first_fired": "2026-10-16",
-"last_avg_pct": 5.1,
-"ever_fired": true
-},
 "Food Distribution": {
 "consecutive_days": 0,
 "first_fired": "2026-10-15",
@@ -632,12 +638,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-10-10",
 "last_avg_pct": 2.57,
-"ever_fired": true
-},
-"Silver": {
-"consecutive_days": 0,
-"first_fired": "2026-10-10",
-"last_avg_pct": 2.42,
 "ever_fired": true
 },
 "Drug Manufacturers - Specialty & Generic": {
