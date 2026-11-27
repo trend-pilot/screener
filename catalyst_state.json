@@ -1,5 +1,5 @@
 {
-"_date": "2026-11-26",
+"_date": "2026-11-27",
 "_fired_names": [
 "Coking Coal",
 "Gambling",
@@ -11,49 +11,49 @@
 "Solar"
 ],
 "Solar": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-11-26",
 "last_avg_pct": 5.54,
 "ever_fired": true
 },
 "Silver": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-11-26",
 "last_avg_pct": 4.73,
 "ever_fired": true
 },
 "Mortgage Finance": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-11-26",
 "last_avg_pct": 4.5,
 "ever_fired": true
 },
 "Other Precious Metals & Mining": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-11-26",
 "last_avg_pct": 3.76,
 "ever_fired": true
 },
 "Gold": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-11-26",
 "last_avg_pct": 3.48,
 "ever_fired": true
 },
 "Coking Coal": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-11-26",
 "last_avg_pct": 3.4,
 "ever_fired": true
 },
 "Gambling": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-11-26",
 "last_avg_pct": 3.18,
 "ever_fired": true
 },
 "Oil & Gas Drilling": {
-"consecutive_days": 1,
+"consecutive_days": 2,
 "first_fired": "2026-11-26",
 "last_avg_pct": 3.0,
 "ever_fired": true
