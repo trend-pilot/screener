@@ -1,59 +1,83 @@
 {
-"_date": "2026-11-27",
+"_date": "2026-11-28",
 "_fired_names": [
 "Coking Coal",
-"Gambling",
+"Computer Hardware",
 "Gold",
-"Mortgage Finance",
-"Oil & Gas Drilling",
+"Other Industrial Metals & Mining",
 "Other Precious Metals & Mining",
+"Semiconductors",
 "Silver",
-"Solar"
+"Uranium"
 ],
+"Silver": {
+"consecutive_days": 3,
+"first_fired": "2026-11-26",
+"last_avg_pct": 10.8,
+"ever_fired": true
+},
+"Gold": {
+"consecutive_days": 3,
+"first_fired": "2026-11-26",
+"last_avg_pct": 7.18,
+"ever_fired": true
+},
+"Other Precious Metals & Mining": {
+"consecutive_days": 3,
+"first_fired": "2026-11-26",
+"last_avg_pct": 6.39,
+"ever_fired": true
+},
+"Uranium": {
+"consecutive_days": 1,
+"first_fired": "2026-11-28",
+"last_avg_pct": 6.07,
+"ever_fired": true
+},
+"Other Industrial Metals & Mining": {
+"consecutive_days": 1,
+"first_fired": "2026-11-28",
+"last_avg_pct": 5.57,
+"ever_fired": true
+},
+"Semiconductors": {
+"consecutive_days": 1,
+"first_fired": "2026-11-28",
+"last_avg_pct": 5.38,
+"ever_fired": true
+},
+"Computer Hardware": {
+"consecutive_days": 1,
+"first_fired": "2026-11-28",
+"last_avg_pct": 5.25,
+"ever_fired": true
+},
+"Coking Coal": {
+"consecutive_days": 3,
+"first_fired": "2026-11-26",
+"last_avg_pct": 5.22,
+"ever_fired": true
+},
 "Solar": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-11-26",
 "last_avg_pct": 5.54,
 "ever_fired": true
 },
-"Silver": {
-"consecutive_days": 2,
-"first_fired": "2026-11-26",
-"last_avg_pct": 4.73,
-"ever_fired": true
-},
 "Mortgage Finance": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-11-26",
 "last_avg_pct": 4.5,
 "ever_fired": true
 },
-"Other Precious Metals & Mining": {
-"consecutive_days": 2,
-"first_fired": "2026-11-26",
-"last_avg_pct": 3.76,
-"ever_fired": true
-},
-"Gold": {
-"consecutive_days": 2,
-"first_fired": "2026-11-26",
-"last_avg_pct": 3.48,
-"ever_fired": true
-},
-"Coking Coal": {
-"consecutive_days": 2,
-"first_fired": "2026-11-26",
-"last_avg_pct": 3.4,
-"ever_fired": true
-},
 "Gambling": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-11-26",
 "last_avg_pct": 3.18,
 "ever_fired": true
 },
 "Oil & Gas Drilling": {
-"consecutive_days": 2,
+"consecutive_days": 0,
 "first_fired": "2026-11-26",
 "last_avg_pct": 3.0,
 "ever_fired": true
@@ -106,22 +130,10 @@
 "last_avg_pct": 2.89,
 "ever_fired": true
 },
-"Semiconductors": {
-"consecutive_days": 0,
-"first_fired": "2026-11-24",
-"last_avg_pct": 13.98,
-"ever_fired": true
-},
 "Semiconductor Equipment & Materials": {
 "consecutive_days": 0,
 "first_fired": "2026-11-24",
 "last_avg_pct": 12.63,
-"ever_fired": true
-},
-"Computer Hardware": {
-"consecutive_days": 0,
-"first_fired": "2026-11-24",
-"last_avg_pct": 10.25,
 "ever_fired": true
 },
 "Electronic Components": {
@@ -140,12 +152,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-11-24",
 "last_avg_pct": 8.76,
-"ever_fired": true
-},
-"Other Industrial Metals & Mining": {
-"consecutive_days": 0,
-"first_fired": "2026-11-24",
-"last_avg_pct": 8.03,
 "ever_fired": true
 },
 "Aluminum": {
@@ -374,12 +380,6 @@
 "consecutive_days": 0,
 "first_fired": "2026-11-11",
 "last_avg_pct": 2.26,
-"ever_fired": true
-},
-"Uranium": {
-"consecutive_days": 0,
-"first_fired": "2026-11-07",
-"last_avg_pct": 8.58,
 "ever_fired": true
 },
 "Utilities - Independent Power Producers": {
